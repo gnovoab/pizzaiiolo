@@ -7,7 +7,7 @@ export default function DoughMakerPage() {
         <p className="text-[11px] uppercase tracking-[0.4em] text-secondary font-medium">L&apos;Impasto</p>
         <h1 className="font-serif text-4xl sm:text-5xl font-semibold mt-3 text-foreground">Dough Maker</h1>
         <p className="text-muted-foreground text-base mt-3 max-w-xl mx-auto italic">
-          Classic slow-fermentation Neapolitan dough — 1000 g flour, bread-machine workflow.
+          Classic slow-fermentation Neapolitan dough — 500 g flour, bread-machine workflow.
         </p>
       </div>
 
@@ -22,12 +22,12 @@ export default function DoughMakerPage() {
         </CardContent>
       </Card>
 
-      <Section number={1} title="Ingredients" subtitle="1000 g flour — Neapolitan style">
+      <Section number={1} title="Ingredients" subtitle="500 g flour — Neapolitan style">
         <Bullets items={[
-          "1000 g 00 flour (Caputo Pizzeria)",
-          "610–630 g water (start with 620 g)",
-          "25 g salt",
-          "0.5–1 g dry yeast (very small pinch)",
+          "500 g 00 flour (Caputo Pizzeria)",
+          "305–315 g water (start with 310 g)",
+          "12 g salt",
+          "0.3–0.5 g dry yeast (very small pinch)",
         ]} />
         <Callout>👉 This is a classic slow-fermentation Neapolitan dough.</Callout>
       </Section>
@@ -36,10 +36,10 @@ export default function DoughMakerPage() {
         <Subhead>In your Panasonic</Subhead>
         <ol className="space-y-1.5">
           {[
-            "Pour water first (620 g)",
-            "Add flour (1000 g)",
-            "Add salt (25 g) on one side",
-            "Add yeast (0.5–1 g) on opposite side",
+            "Pour water first (310 g)",
+            "Add flour (500 g)",
+            "Add salt (12 g) on one side",
+            "Add yeast (0.3–0.5 g) on opposite side",
           ].map((t, i) => (
             <li key={t} className="text-[15px] flex gap-2.5 leading-relaxed">
               <span className="font-mono font-semibold text-primary shrink-0">{i + 1}.</span>
@@ -77,7 +77,7 @@ export default function DoughMakerPage() {
       </Section>
 
       <Section number={5} title="Balling the Dough">
-        <p className="text-[15px] mb-3">After fermentation, divide into <span className="font-semibold text-primary">230–250 g</span> dough balls — about <span className="font-semibold text-primary">8–10 pizzas</span>.</p>
+        <p className="text-[15px] mb-3">After fermentation, divide into <span className="font-semibold text-primary">230–250 g</span> dough balls — about <span className="font-semibold text-primary">4–5 pizzas</span>.</p>
         <Subhead>Steps</Subhead>
         <Bullets items={[
           "Cut evenly",
@@ -87,7 +87,7 @@ export default function DoughMakerPage() {
         ]} />
       </Section>
 
-      <Section number={6} title="Why This Ratio Works" subtitle="For 1000 g flour">
+      <Section number={6} title="Why This Ratio Works" subtitle="For 500 g flour">
         <Bullets items={[
           "60–63% hydration → balanced for high-heat oven",
           "Low yeast → long fermentation = better flavour",
@@ -102,7 +102,7 @@ export default function DoughMakerPage() {
         ]} />
       </Section>
 
-      <Section number={7} title="Key Mistakes to Avoid" subtitle="Especially with 1 kg dough">
+      <Section number={7} title="Key Mistakes to Avoid" subtitle="Especially with smaller batches">
         <ul className="space-y-2">
           {[
             "Leaving dough warm too long after mixing → overproofing",
