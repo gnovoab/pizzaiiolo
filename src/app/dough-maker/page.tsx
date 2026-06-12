@@ -51,8 +51,12 @@ export default function DoughMakerPage() {
       </Section>
 
       <Section number={3} title="Program">
-        <p className="text-[15px] mb-2">Use the <strong className="font-serif font-semibold text-primary">Pizza Dough</strong> program. It will:</p>
+        <p className="text-[15px] mb-2">
+          Select <strong className="font-serif font-semibold text-primary">Menu 32 — Pizza Dough</strong>.
+          It runs for <HighlightNumbers text="45 minutes" /> and will:
+        </p>
         <Bullets items={["Mix", "Knead", "Stop (no proofing or baking)"]} />
+        <Callout>💡 Press Menu until 32 appears on the display, then Start.</Callout>
       </Section>
 
       <Section number={4} title="After Kneading" subtitle="This is where quality is made">
