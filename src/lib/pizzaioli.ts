@@ -267,6 +267,7 @@ export const PIZZAIOLI: Pizzaiolo[] = [
         { category: "stretching", title: "Stretching technique", url: "https://www.youtube.com/watch?v=psYoC_avA40" },
         { category: "stretching", title: "Stretching (short)", url: "https://www.youtube.com/shorts/RBs5uMlD9MI" },
         { category: "stretching", title: "Stretching with semolina", url: "https://www.youtube.com/watch?v=C45tsYjdONs" },
+        { category: "general", title: "Full pizza guide for beginners", url: "https://www.youtube.com/watch?v=vwWXj4eZHB8" },
       ],
     },
   },
