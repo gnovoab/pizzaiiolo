@@ -206,6 +206,7 @@ export const PIZZAIOLI: Pizzaiolo[] = [
       ],
       videos: [
         { category: "dough", title: "Next-level pizza dough (double fermented + poolish)", url: "https://www.youtube.com/watch?v=lj05Vje86uo&t=328s" },
+        { category: "stretching", title: "Flat pizza", url: "https://www.youtube.com/watch?v=SZflCxA1-a0" },
         { category: "fermentation", title: "How to make poolish for beginners", url: "https://www.youtube.com/watch?v=lAFKQoSMbxI" },
         { category: "stretching", title: "How to stretch a real pizza (slap technique)", url: "https://www.youtube.com/watch?v=h75bxDwT1Ko" },
         { category: "sauce", title: "How to make tomato sauce for pizza", url: "https://www.youtube.com/watch?v=9Ikknmv3DYg" },
