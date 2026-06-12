@@ -40,6 +40,7 @@ export default function DoughMakerPage() {
             "Add flour (500 g)",
             "Add salt (12 g) on one side",
             "Add yeast (0.3–0.5 g) on opposite side",
+            "Select Menu 32 (Pizza Dough) — runs 45 minutes (mix + knead, no proofing)",
           ].map((t, i) => (
             <li key={t} className="text-[15px] flex gap-2.5 leading-relaxed">
               <span className="font-mono font-semibold text-primary shrink-0">{i + 1}.</span>
@@ -50,16 +51,7 @@ export default function DoughMakerPage() {
         <Callout>💡 Keep salt and yeast separated at first — important for yeast health.</Callout>
       </Section>
 
-      <Section number={3} title="Program">
-        <p className="text-[15px] mb-2">
-          Select <strong className="font-serif font-semibold text-primary">Menu 32 — Pizza Dough</strong>.
-          It runs for <HighlightNumbers text="45 minutes" /> and will:
-        </p>
-        <Bullets items={["Mix", "Knead", "Stop (no proofing or baking)"]} />
-        <Callout>💡 Press Menu until 32 appears on the display, then Start.</Callout>
-      </Section>
-
-      <Section number={4} title="After Kneading" subtitle="This is where quality is made">
+      <Section number={3} title="After Kneading" subtitle="This is where quality is made">
         <div className="grid sm:grid-cols-2 gap-4">
           <div className="rounded-xl border border-primary/30 bg-primary/5 p-4">
             <div className="text-[11px] uppercase tracking-[0.15em] text-primary font-semibold mb-2">Option A — Recommended</div>
@@ -80,7 +72,7 @@ export default function DoughMakerPage() {
         </div>
       </Section>
 
-      <Section number={5} title="Balling the Dough">
+      <Section number={4} title="Balling the Dough">
         <p className="text-[15px] mb-3">After fermentation, divide into <span className="font-semibold text-primary">230–250 g</span> dough balls — about <span className="font-semibold text-primary">4–5 pizzas</span>.</p>
         <Subhead>Steps</Subhead>
         <Bullets items={[
@@ -91,7 +83,7 @@ export default function DoughMakerPage() {
         ]} />
       </Section>
 
-      <Section number={6} title="Why This Ratio Works" subtitle="For 500 g flour">
+      <Section number={5} title="Why This Ratio Works" subtitle="For 500 g flour">
         <Bullets items={[
           "60–63% hydration → balanced for high-heat oven",
           "Low yeast → long fermentation = better flavour",
@@ -106,7 +98,7 @@ export default function DoughMakerPage() {
         ]} />
       </Section>
 
-      <Section number={7} title="Key Mistakes to Avoid" subtitle="Especially with smaller batches">
+      <Section number={6} title="Key Mistakes to Avoid" subtitle="Especially with smaller batches">
         <ul className="space-y-2">
           {[
             "Leaving dough warm too long after mixing → overproofing",
