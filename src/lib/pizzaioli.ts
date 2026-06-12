@@ -40,7 +40,7 @@ export const PIZZAIOLI: Pizzaiolo[] = [
       videos: [
         { category: "general", title: "How to make pizza at home (full build)", url: "https://www.youtube.com/watch?v=CGWfHHn6dL8" },
         { category: "stretching", title: "How to stretch pizza correctly (no rolling pin)", url: "https://www.youtube.com/watch?v=AU8HzRuIEwM" },
-        { category: "sauce", title: "Catando salsas de tomate (tomato-sauce tasting)", url: "https://www.youtube.com/watch?v=Gce3CwTJwag" },
+        { category: "fermentation", title: "3h, 12h, and 24h fermentation", url: "https://www.youtube.com/watch?v=rG444gOSIr4&t=1s" },
       ],
     },
   },
