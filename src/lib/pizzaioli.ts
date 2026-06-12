@@ -205,7 +205,7 @@ export const PIZZAIOLI: Pizzaiolo[] = [
         { title: "Why It Works", detail: "The slap-and-flip releases the dough cleanly between hand and counter — friction stays low and the cornicione never gets pressed." },
       ],
       videos: [
-        { category: "dough", title: "Next-level pizza dough (double fermented + poolish)", url: "https://www.youtube.com/watch?v=u7Hd6ZzKgBM" },
+        { category: "dough", title: "Next-level pizza dough (double fermented + poolish)", url: "https://www.youtube.com/watch?v=lj05Vje86uo&t=328s" },
         { category: "fermentation", title: "How to make poolish for beginners", url: "https://www.youtube.com/watch?v=lAFKQoSMbxI" },
         { category: "stretching", title: "How to stretch a real pizza (slap technique)", url: "https://www.youtube.com/watch?v=h75bxDwT1Ko" },
         { category: "sauce", title: "How to make tomato sauce for pizza", url: "https://www.youtube.com/watch?v=9Ikknmv3DYg" },
