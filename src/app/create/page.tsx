@@ -114,7 +114,8 @@ export default function CreatePizzaPage() {
                   v.category === "dough" ? "Dough" :
                   v.category === "fermentation" ? "Fermentation" :
                   v.category === "stretching" ? "Stretching" :
-                  v.category === "sauce" ? "Sauce" : "Overview";
+                  v.category === "sauce" ? "Sauce" :
+                  v.category === "recipe" ? "Recipe" : "Overview";
                 return (
                   <li key={v.url}>
                     <a
