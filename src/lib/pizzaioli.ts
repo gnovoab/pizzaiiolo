@@ -209,12 +209,12 @@ export const PIZZAIOLI: Pizzaiolo[] = [
       videos: [
         { category: "dough", title: "Next-level pizza dough (double fermented + poolish)", url: "https://www.youtube.com/watch?v=lj05Vje86uo&t=328s" },
         { category: "dough", title: "Flat pizza", url: "https://www.youtube.com/watch?v=SZflCxA1-a0" },
+        { category: "hydration", title: "In-depth hydration", url: "https://www.youtube.com/watch?v=nu5iyLdEIjY" },
         { category: "stretching", title: "How to stretch a real pizza (slap technique)", url: "https://www.youtube.com/watch?v=h75bxDwT1Ko" },
         { category: "general", title: "Tips and tricks", url: "https://www.youtube.com/watch?v=NK2HQ0Il8BY" },
         { category: "general", title: "Tips for perfection", url: "https://www.youtube.com/watch?v=oqO4EVobmXc&t=554s" },
         { category: "general", title: "In-depth perfection", url: "https://www.youtube.com/watch?v=vEkkU6uXsHQ" },
         { category: "recipe", title: "My pizzas", url: "https://www.youtube.com/watch?v=rCb03Py2das" },
-        { category: "hydration", title: "In-depth hydration", url: "https://www.youtube.com/watch?v=nu5iyLdEIjY" },
       ],
     },
   },
