@@ -1,0 +1,501 @@
+# Pizza Lab - Product Requirements Document (PRD)
+
+## Overview
+
+Pizza Lab is a web application for pizza enthusiasts and professionals to compare dough recipes from world-renowned pizzaioli, calculate ingredients automatically, plan fermentation schedules, manage preferments (poolish/biga), calculate sauce quantities, and generate shopping lists.
+
+The application should function as a complete pizza-making laboratory and recipe comparison tool.
+
+---
+
+# Primary Goal
+
+Allow users to:
+
+* Compare multiple pizzaioli side-by-side.
+* Adjust hydration, flour, water, yeast, salt, and dough weight.
+* Scale recipes from 1 pizza to 100 pizzas.
+* Compare fermentation approaches.
+* Compare sauce approaches.
+* Generate shopping lists.
+* Calculate dough temperature and water temperature.
+* Experiment with dough styles.
+
+---
+
+# Target Users
+
+## Home Pizza Makers
+
+Users with:
+
+* Ooni
+* Gozney
+* Roccbox
+* Home ovens
+
+## Advanced Enthusiasts
+
+Users interested in:
+
+* Poolish
+* Biga
+* Hydration experiments
+* Fermentation optimization
+
+## Professional Pizza Makers
+
+Users wanting:
+
+* Scaling
+* Cost calculations
+* Production planning
+
+---
+
+# Supported Pizzaioli
+
+## Pino Prestanizzi
+
+| Property     | Value                  |
+| ------------ | ---------------------- |
+| Style        | Traditional Neapolitan |
+| Hydration    | 60%                    |
+| Salt         | 3.0%                   |
+| Yeast        | 0.50%                  |
+| Fermentation | 8-24h                  |
+| Sauce        | Tomato + Salt          |
+
+## Ciro Salvo
+
+| Property     | Value             |
+| ------------ | ----------------- |
+| Style        | Modern Neapolitan |
+| Hydration    | 72%               |
+| Salt         | 2.8%              |
+| Yeast        | 0.10%             |
+| Fermentation | 24-48h            |
+| Sauce        | Tomato + Salt     |
+
+## Mike G
+
+| Property     | Value                   |
+| ------------ | ----------------------- |
+| Style        | Contemporary Neapolitan |
+| Hydration    | 68%                     |
+| Salt         | 2.8%                    |
+| Yeast        | 0.20%                   |
+| Fermentation | 24-48h                  |
+| Sauce        | Tomato + Salt           |
+
+## Eric Ayala
+
+| Property     | Value          |
+| ------------ | -------------- |
+| Style        | Neo-Neapolitan |
+| Hydration    | 68%            |
+| Salt         | 2.8%           |
+| Yeast        | 0.20%          |
+| Fermentation | 48-72h         |
+| Sauce        | Tomato + Salt  |
+
+## Vito Iacopelli
+
+| Property     | Value                     |
+| ------------ | ------------------------- |
+| Style        | Neo-Neapolitan            |
+| Hydration    | 68%                       |
+| Salt         | 3.0%                      |
+| Yeast        | 0.20%                     |
+| Fermentation | 48-72h                    |
+| Preferment   | Poolish                   |
+| Sauce        | Tomato + Salt + Olive Oil |
+
+## MarcPizza
+
+| Property     | Value          |
+| ------------ | -------------- |
+| Style        | Neo-Neapolitan |
+| Hydration    | 70%            |
+| Salt         | 2.8%           |
+| Yeast        | 0.10%          |
+| Fermentation | 48-72h         |
+| Sauce        | Tomato + Salt  |
+
+## Salvatore Salvo
+
+| Property     | Value             |
+| ------------ | ----------------- |
+| Style        | Modern Neapolitan |
+| Hydration    | 72%               |
+| Salt         | 2.8%              |
+| Yeast        | 0.10%             |
+| Fermentation | 36-60h            |
+| Sauce        | Tomato + Salt     |
+
+## Anthony Mangieri
+
+| Property     | Value                        |
+| ------------ | ---------------------------- |
+| Style        | New York / Neapolitan Hybrid |
+| Hydration    | 67%                          |
+| Salt         | 3.0%                         |
+| Yeast        | 0.05%                        |
+| Fermentation | 24-48h                       |
+| Sauce        | Tomato + Salt                |
+
+---
+
+# Core Features
+
+## Dough Calculator
+
+### Inputs
+
+* Number of pizzas
+* Dough ball weight
+* Flour amount
+* Water amount
+* Hydration %
+* Salt %
+* Yeast %
+* Selected pizzaiolo
+
+### Outputs
+
+* Flour
+* Water
+* Salt
+* Yeast
+* Total dough weight
+
+### Formula
+
+```text
+Flour = TotalDough / (1 + Hydration + Salt + Yeast)
+
+Water = Flour × Hydration
+
+Salt = Flour × Salt%
+
+Yeast = Flour × Yeast%
+```
+
+All calculations must update in real time.
+
+---
+
+# Dough Modes
+
+Support:
+
+## Mode 1
+
+Calculate from:
+
+* Number of pizzas
+* Dough ball weight
+
+## Mode 2
+
+Calculate from:
+
+* Flour amount
+
+## Mode 3
+
+Calculate from:
+
+* Water amount
+
+Each mode recalculates all ingredients.
+
+---
+
+# Fermentation Planner
+
+Inputs:
+
+* Room temperature
+* Fridge temperature
+* Desired bake time
+
+Outputs:
+
+* Bulk fermentation duration
+* Cold fermentation duration
+* Balling time
+* Fridge entry time
+* Fridge exit time
+* Estimated readiness
+
+Timeline visualization required.
+
+---
+
+# Poolish Calculator
+
+Inputs:
+
+* Total flour
+* Poolish percentage
+
+Outputs:
+
+* Poolish flour
+* Poolish water
+* Poolish yeast
+
+Typical default:
+
+```text
+Poolish Flour = 50%
+
+Poolish Water = 100% of Poolish Flour
+
+Poolish Yeast = 0.1%
+```
+
+---
+
+# Biga Calculator
+
+Inputs:
+
+* Total flour
+* Biga percentage
+
+Outputs:
+
+* Biga flour
+* Biga water
+* Biga yeast
+
+Default hydration:
+
+```text
+45%
+```
+
+---
+
+# Sauce Calculator
+
+Default:
+
+```text
+100g sauce per pizza
+```
+
+Scale automatically.
+
+For each pizzaiolo store:
+
+* Tomato type
+* Salt percentage
+* Olive oil percentage
+* Basil usage
+
+---
+
+# Shopping List Generator
+
+Automatically aggregate:
+
+* Flour
+* Water
+* Salt
+* Yeast
+* Tomatoes
+* Mozzarella
+* Basil
+* Olive oil
+
+Support:
+
+* Metric units
+* Grams
+* Kilograms
+
+---
+
+# Cost Calculator
+
+Inputs:
+
+* Flour cost/kg
+* Tomato cost/kg
+* Mozzarella cost/kg
+* Olive oil cost/L
+
+Outputs:
+
+* Ingredient costs
+* Cost per pizza
+* Cost per batch
+
+---
+
+# Dough Temperature Calculator
+
+Inputs:
+
+* Room temperature
+* Flour temperature
+* Friction factor
+
+Target:
+
+```text
+23°C
+```
+
+Formula:
+
+```text
+Water Temperature =
+(3 × Target Dough Temp)
+− Room Temp
+− Flour Temp
+− Friction Factor
+```
+
+---
+
+# Yeast Converter
+
+Convert between:
+
+* Instant Dry Yeast
+* Fresh Yeast
+* Active Dry Yeast
+
+Approximate conversions:
+
+```text
+Fresh = Instant × 3
+
+Active Dry = Instant × 1.25
+```
+
+---
+
+# Comparison Dashboard
+
+Visual cards for:
+
+* Hydration
+* Salt
+* Yeast
+* Fermentation
+* Dough style
+
+Charts:
+
+* Hydration comparison
+* Salt comparison
+* Yeast comparison
+* Fermentation comparison
+
+---
+
+# UI Requirements
+
+## Theme
+
+Modern premium design.
+
+Inspired by:
+
+* Apple
+* Linear
+* Notion
+
+Dark mode by default.
+
+Colors:
+
+```text
+Background: #0F1115
+
+Surface: #171A21
+
+Primary: #FF6B35
+
+Secondary: #D4A373
+
+Text: #F5F5F5
+```
+
+---
+
+# Responsive Design
+
+Support:
+
+* Desktop
+* Tablet
+* Mobile
+
+Mobile-first.
+
+---
+
+# Technology Recommendations
+
+Frontend:
+
+* Next.js
+* React
+* TypeScript
+* Tailwind CSS
+* shadcn/ui
+
+Charts:
+
+* Recharts
+
+State Management:
+
+* Zustand
+
+Forms:
+
+* React Hook Form
+
+Validation:
+
+* Zod
+
+---
+
+# Future Enhancements
+
+* User accounts
+* Save recipes
+* Recipe sharing
+* Fermentation notifications
+* AI recipe recommendations
+* Flour database
+* Tomato database
+* Bake logging
+* Dough history tracking
+* Ooni profile presets
+* Gozney profile presets
+
+---
+
+# Success Criteria
+
+A user should be able to:
+
+1. Select a pizzaiolo.
+2. Enter number of pizzas.
+3. Enter dough ball weight.
+4. Instantly receive ingredient quantities.
+5. Compare against other pizzaioli.
+6. Generate a shopping list.
+7. Plan fermentation.
+8. Calculate poolish or biga.
+9. Estimate costs.
+10. Use the application on desktop and mobile.
