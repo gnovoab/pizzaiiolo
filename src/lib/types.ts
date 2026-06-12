@@ -41,7 +41,7 @@ export interface Pizzaiolo {
   technique: PizzaioloTechnique;
 }
 
-export type TechniqueVideoCategory = "dough" | "fermentation" | "stretching" | "sauce" | "general" | "recipe";
+export type TechniqueVideoCategory = "dough" | "fermentation" | "stretching" | "sauce" | "general" | "recipe" | "hydration";
 
 export interface TechniqueVideo {
   category: TechniqueVideoCategory;

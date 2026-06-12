@@ -214,6 +214,7 @@ export const PIZZAIOLI: Pizzaiolo[] = [
         { category: "general", title: "Tips for perfection", url: "https://www.youtube.com/watch?v=oqO4EVobmXc&t=554s" },
         { category: "general", title: "In-depth perfection", url: "https://www.youtube.com/watch?v=vEkkU6uXsHQ" },
         { category: "recipe", title: "My pizzas", url: "https://www.youtube.com/watch?v=rCb03Py2das" },
+        { category: "hydration", title: "In-depth hydration", url: "https://www.youtube.com/watch?v=nu5iyLdEIjY" },
       ],
     },
   },
