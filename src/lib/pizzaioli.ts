@@ -165,6 +165,8 @@ export const PIZZAIOLI: Pizzaiolo[] = [
       videos: [
         { category: "dough", title: "How to make pizza at home", url: "https://www.youtube.com/watch?v=4JaNGYMTviA" },
         { category: "stretching", title: "How to stretch Neapolitan pizza", url: "https://www.youtube.com/watch?v=yKbERrUrhXE" },
+        { category: "recipe", title: "Restaurant pizzas", url: "https://www.youtube.com/watch?v=u8e9LYh6-Yo" },
+        { category: "recipe", title: "Clandestine pizzas", url: "https://www.youtube.com/watch?v=vxQLt4ode2k&t=832s" },
       ],
     },
   },
