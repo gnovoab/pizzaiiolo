@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
@@ -8,7 +9,23 @@ import {
   BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Cell,
 } from "recharts";
 
+/* Scale a gram value string (e.g. "10g", "10–12g", "5–10g") by a factor.
+   Non-numeric strings ("None", "Minimal", "Optional") pass through unchanged. */
+function scaleGrams(raw: string, factor: number): string {
+  const m = raw.match(/^(\d+(?:\.\d+)?)(?:\s*[–-]\s*(\d+(?:\.\d+)?))?\s*g$/i);
+  if (!m) return raw;
+  const fmt = (n: number) => {
+    const v = Math.round(n * 10) / 10;
+    return Number.isInteger(v) ? v.toString() : v.toFixed(1);
+  };
+  const lo = parseFloat(m[1]) * factor;
+  const hi = m[2] ? parseFloat(m[2]) * factor : null;
+  return hi !== null ? `${fmt(lo)}–${fmt(hi)}g` : `${fmt(lo)}g`;
+}
+
 export default function ComparisonPage() {
+  const [tomatoGrams, setTomatoGrams] = useState<number>(1000);
+  const factor = tomatoGrams / 1000;
   const hydrationData = PIZZAIOLI.map(p => ({
     name: p.name.split(" ")[0],
     value: Math.round(p.hydration * 100),
@@ -201,6 +218,43 @@ export default function ComparisonPage() {
         </TabsContent>
 
         <TabsContent value="sauce" className="space-y-6 mt-4">
+          <Card>
+            <CardContent className="py-4 px-5 flex flex-wrap items-center gap-3">
+              <span className="text-[11px] uppercase tracking-[0.15em] text-secondary font-medium">
+                Tomatoes
+              </span>
+              <div className="flex gap-2">
+                {[400, 800, 1000].map((g) => (
+                  <button
+                    key={g}
+                    onClick={() => setTomatoGrams(g)}
+                    className={`px-3 py-1.5 rounded-md font-mono text-sm border transition-colors ${
+                      tomatoGrams === g
+                        ? "bg-primary text-primary-foreground border-primary"
+                        : "bg-card border-border text-foreground hover:bg-primary/10"
+                    }`}
+                  >
+                    {g}g
+                  </button>
+                ))}
+              </div>
+              <div className="flex items-center gap-2">
+                <input
+                  type="number"
+                  min={50}
+                  step={50}
+                  value={tomatoGrams}
+                  onChange={(e) => setTomatoGrams(Math.max(1, Number(e.target.value) || 0))}
+                  className="w-24 px-3 py-1.5 rounded-md border border-border bg-card font-mono text-sm focus:outline-none focus:ring-2 focus:ring-primary/40"
+                />
+                <span className="text-sm text-muted-foreground">g custom</span>
+              </div>
+              <span className="text-xs italic text-muted-foreground ml-auto">
+                Salt and olive oil scale to each pizzaiolo&apos;s ratio.
+              </span>
+            </CardContent>
+          </Card>
+
           <TableCard title="Sauce Profiles" minWidth={1100}>
             <thead>
               <HeaderRow>
@@ -220,9 +274,9 @@ export default function ComparisonPage() {
                   <NameTd color={p.color} name={p.name} index={i} />
                   <Td muted wrap>{p.saucePreference}</Td>
                   <Td muted wrap>{p.saucePhilosophy}</Td>
-                  <Td mono>{p.sauceRecipe1000g.tomatoes}</Td>
-                  <Td mono>{p.sauceRecipe1000g.salt}</Td>
-                  <Td mono>{p.sauceRecipe1000g.oliveOil}</Td>
+                  <Td mono>{tomatoGrams}g</Td>
+                  <Td mono>{scaleGrams(p.sauceRecipe1000g.salt, factor)}</Td>
+                  <Td mono>{scaleGrams(p.sauceRecipe1000g.oliveOil, factor)}</Td>
                   <Td>{p.sauceRecipe1000g.basil}</Td>
                   <Td>{p.sauceRecipe1000g.other}</Td>
                 </BodyRow>
