@@ -16,6 +16,7 @@ const VIDEOS: VideoEntry[] = [
   { number: 6, title: "Pizza making in Markthalle Berlin", category: "Inspiration", url: "https://www.youtube.com/watch?v=OJmVs416a78" },
   { number: 7, title: "Lo Schiaffo di Enzo Coccia",       category: "Stretching",  url: "https://www.youtube.com/watch?v=xzbW8CZx538" },
   { number: 8, title: "Dealing with high-hydration bulk dough", category: "Dough",  url: "https://www.youtube.com/watch?v=bWN9mxR_iXI" },
+  { number: 9, title: "Stretching high-hydration pizza",  category: "Stretching",  url: "https://www.youtube.com/watch?v=Mdq0eUhnUHI" },
 ];
 
 function videoId(url: string): string | null {
