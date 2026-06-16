@@ -12,6 +12,8 @@ const VIDEOS: VideoEntry[] = [
   { number: 2, title: "Another stretching pizza",         category: "Stretching",  url: "https://www.youtube.com/watch?v=mSUIZqOfmnM" },
   { number: 3, title: "Pizza making from different places", category: "Inspiration", url: "https://www.youtube.com/watch?v=yiFEksEWXEc" },
   { number: 4, title: "Cooking with Gozney",              category: "Oven",        url: "https://www.youtube.com/watch?v=wC34d4i_RMs" },
+  { number: 5, title: "Stretching pizza",                 category: "Stretching",  url: "https://www.youtube.com/watch?v=Hu9-NemY5RQ" },
+  { number: 6, title: "Pizza making in Markthalle Berlin", category: "Inspiration", url: "https://www.youtube.com/watch?v=OJmVs416a78" },
 ];
 
 function videoId(url: string): string | null {
