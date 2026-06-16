@@ -14,6 +14,7 @@ const VIDEOS: VideoEntry[] = [
   { number: 4, title: "Cooking with Gozney",              category: "Oven",        url: "https://www.youtube.com/watch?v=wC34d4i_RMs" },
   { number: 5, title: "Stretching pizza",                 category: "Stretching",  url: "https://www.youtube.com/watch?v=Hu9-NemY5RQ" },
   { number: 6, title: "Pizza making in Markthalle Berlin", category: "Inspiration", url: "https://www.youtube.com/watch?v=OJmVs416a78" },
+  { number: 7, title: "Lo Schiaffo di Enzo Coccia",       category: "Stretching",  url: "https://www.youtube.com/watch?v=xzbW8CZx538" },
 ];
 
 function videoId(url: string): string | null {
