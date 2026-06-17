@@ -14,6 +14,7 @@ const NAV = [
   { href: "/fridge", label: "🧊 Fridge", short: "Fridge" },
   { href: "/oven", label: "🔥 Oven", short: "Oven" },
   { href: "/olive-oil", label: "🫒 Olive Oil", short: "Oil" },
+  { href: "/pumpkin-base", label: "🎃 Pumpkin Base", short: "Pumpkin" },
   { href: "/videos", label: "🎬 Videos", short: "Videos" },
   { href: "/preferments", label: "🧫 Preferments", short: "Pref." },
   { href: "/yeast", label: "🔬 Yeast", short: "Yeast" },
@@ -104,7 +105,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
                 pathname === href ? "text-primary" : "text-muted-foreground"
               )}
             >
-              <span className="text-base">{short === "Calc" ? "🍕" : short === "Create" ? "👨‍🍳" : short === "Compare" ? "📊" : short === "Recipes" ? "📖" : short === "Dough" ? "🥖" : short === "Oven" ? "🔥" : short === "Oil" ? "🫒" : short === "Fridge" ? "🧊" : short === "Videos" ? "🎬" : short === "Pref." ? "🧫" : "🍕"}</span>
+              <span className="text-base">{short === "Calc" ? "🍕" : short === "Create" ? "👨‍🍳" : short === "Compare" ? "📊" : short === "Recipes" ? "📖" : short === "Dough" ? "🥖" : short === "Oven" ? "🔥" : short === "Oil" ? "🫒" : short === "Pumpkin" ? "🎃" : short === "Fridge" ? "🧊" : short === "Videos" ? "🎬" : short === "Pref." ? "🧫" : "🍕"}</span>
               <span>{short}</span>
             </Link>
           ))}
