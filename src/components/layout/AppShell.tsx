@@ -6,15 +6,15 @@ import { useState } from "react";
 import { cn } from "@/lib/utils";
 
 const NAV = [
-  { href: "/comparison", label: "📊 Comparison", short: "Compare" },
-  { href: "/", label: "🍕 Calculator", short: "Calc" },
-  { href: "/create", label: "👨‍🍳 Create a Pizza", short: "Create" },
-  { href: "/recipes", label: "📖 Pizza Recipes", short: "Recipes" },
   { href: "/dough-maker", label: "🥖 Dough Maker", short: "Dough" },
   { href: "/fridge", label: "🧊 Fridge", short: "Fridge" },
   { href: "/oven", label: "🔥 Oven", short: "Oven" },
-  { href: "/olive-oil", label: "🫒 Olive Oil", short: "Oil" },
+  { href: "/recipes", label: "📖 Pizza Recipes", short: "Recipes" },
   { href: "/pumpkin-base", label: "🎃 Pumpkin Base", short: "Pumpkin" },
+  { href: "/olive-oil", label: "🫒 Olive Oil", short: "Oil" },
+  { href: "/comparison", label: "📊 Comparison", short: "Compare" },
+  { href: "/", label: "🍕 Calculator", short: "Calc" },
+  { href: "/create", label: "👨‍🍳 Create a Pizza", short: "Create" },
   { href: "/videos", label: "🎬 Videos", short: "Videos" },
   { href: "/preferments", label: "🧫 Preferments", short: "Pref." },
   { href: "/yeast", label: "🔬 Yeast", short: "Yeast" },
