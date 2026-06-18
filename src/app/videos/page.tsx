@@ -18,6 +18,7 @@ const VIDEOS: VideoEntry[] = [
   { number: 8, title: "Dealing with high-hydration bulk dough", category: "Dough",  url: "https://www.youtube.com/watch?v=bWN9mxR_iXI" },
   { number: 9, title: "Stretching high-hydration pizza",  category: "Stretching",  url: "https://www.youtube.com/watch?v=Mdq0eUhnUHI" },
   { number: 10, title: "Step-by-step stretching pizza",   category: "Stretching",  url: "https://www.youtube.com/watch?v=StoORqYZqe8" },
+  { number: 11, title: "Stretching Neapolitan pizza — slow motion", category: "Stretching", url: "https://www.youtube.com/watch?v=piVoAghLW9M" },
 ];
 
 function videoId(url: string): string | null {
