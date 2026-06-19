@@ -19,6 +19,8 @@ const VIDEOS: VideoEntry[] = [
   { number: 9, title: "Stretching high-hydration pizza",  category: "Stretching",  url: "https://www.youtube.com/watch?v=Mdq0eUhnUHI" },
   { number: 10, title: "Step-by-step stretching pizza",   category: "Stretching",  url: "https://www.youtube.com/watch?v=StoORqYZqe8" },
   { number: 11, title: "Stretching Neapolitan pizza — slow motion", category: "Stretching", url: "https://www.youtube.com/watch?v=piVoAghLW9M" },
+  { number: 12, title: "Stretching pizza",                 category: "Stretching",  url: "https://www.youtube.com/watch?v=xS0TI3KSUSE" },
+  { number: 13, title: "Stretching pizza",                 category: "Stretching",  url: "https://www.youtube.com/watch?v=iybaQFesimE" },
 ];
 
 function videoId(url: string): string | null {
