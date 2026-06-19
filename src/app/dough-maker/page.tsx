@@ -549,14 +549,24 @@ export default function DoughMakerPage() {
 
           <div className="rounded-xl border border-border bg-muted/30 p-4">
             <div className="text-[11px] uppercase tracking-[0.2em] text-secondary font-semibold mb-1.5">Video Guide</div>
-            <a
-              href="https://www.youtube.com/watch?v=i1a1QTQ6MNY"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 text-[15px] text-primary hover:underline font-medium"
-            >
-              ▶ New York-Style Pizza tutorial <span className="text-xs opacity-60">↗</span>
-            </a>
+            <div className="flex flex-col gap-1.5">
+              <a
+                href="https://www.youtube.com/watch?v=i1a1QTQ6MNY"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 text-[15px] text-primary hover:underline font-medium"
+              >
+                ▶ New York-Style Pizza tutorial <span className="text-xs opacity-60">↗</span>
+              </a>
+              <a
+                href="https://www.youtube.com/watch?v=R8V0WYS-f7I"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 text-[15px] text-primary hover:underline font-medium"
+              >
+                ▶ NY Pizza style — video guide <span className="text-xs opacity-60">↗</span>
+              </a>
+            </div>
           </div>
         </TabsContent>
 
