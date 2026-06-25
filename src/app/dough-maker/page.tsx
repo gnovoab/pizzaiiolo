@@ -63,36 +63,40 @@ export default function DoughMakerPage() {
             <Callout>💡 Keep salt and yeast separated at first — important for yeast health.</Callout>
           </Section>
 
-          <Section number={3} title="After Kneading" subtitle="This is where quality is made">
+          <Section number={3} title="After Kneading — Short Bulk" subtitle="Puntata: ~1 hour at room temp">
+            <p className="text-[15px] mb-3 leading-relaxed">
+              <HighlightNumbers text="Tip out of the machine onto a lightly floured surface, fold the dough over itself a few times to tighten, cover, and rest 45–60 minutes at room temp." />
+              {" "}This short bulk (the <em>puntata</em>) lets the gluten relax before balling — it is <strong>not</strong> the long ferment.
+            </p>
+            <Callout>💡 The long ferment happens in the fridge — as <strong>balls</strong>, not as a single bulk mass.</Callout>
+          </Section>
+
+          <Section number={4} title="Balling the Dough" subtitle="Staglio anticipato — early balling, the AVPN/pro method">
+            <p className="text-[15px] mb-3">Divide into <span className="font-semibold text-primary">230–250 g</span> balls — about <span className="font-semibold text-primary">4–5 pizzas</span> — straight after the 1-hour puntata, then cold-ferment the balls in the fridge.</p>
             <div className="grid sm:grid-cols-2 gap-4">
               <div className="rounded-xl border border-primary/30 bg-primary/5 p-4">
                 <div className="text-[11px] uppercase tracking-[0.15em] text-primary font-semibold mb-2">Option A — Recommended</div>
-                <div className="font-serif text-base font-semibold mb-1.5">Proper Neapolitan</div>
-                <ul className="text-[15px] space-y-1.5 leading-relaxed">
-                  <li>• <HighlightNumbers text="30–60 min" /> rest at room temp</li>
-                  <li>• Then refrigerate <HighlightNumbers text="24–48 hours" /></li>
-                </ul>
+                <div className="font-serif text-base font-semibold mb-1.5">Cold-fermented balls</div>
+                <ol className="text-[15px] space-y-1.5 leading-relaxed list-decimal pl-4">
+                  <li>Cut evenly on a scale</li>
+                  <li>Fold into tight, smooth balls (seam down)</li>
+                  <li>Place spaced out in a covered, lightly oiled tray</li>
+                  <li>Cold ferment <HighlightNumbers text="24–48 hours" /> in the fridge</li>
+                  <li>Pull out <HighlightNumbers text="4–6 hours" /> before baking to temper at room temp</li>
+                </ol>
               </div>
               <div className="rounded-xl border border-secondary/30 bg-secondary/5 p-4">
-                <div className="text-[11px] uppercase tracking-[0.15em] text-secondary font-semibold mb-2">Option B — Fast Pizza</div>
-                <div className="font-serif text-base font-semibold mb-1.5">Same-day use</div>
-                <ul className="text-[15px] space-y-1.5 leading-relaxed">
-                  <li>• <HighlightNumbers text="2–3 hours" /> room temp</li>
-                  <li>• Less flavour, weaker structure</li>
-                </ul>
+                <div className="text-[11px] uppercase tracking-[0.15em] text-secondary font-semibold mb-2">Option B — Same-day</div>
+                <div className="font-serif text-base font-semibold mb-1.5">Room-temp proof</div>
+                <ol className="text-[15px] space-y-1.5 leading-relaxed list-decimal pl-4">
+                  <li>Ball immediately after the puntata</li>
+                  <li>Rest covered <HighlightNumbers text="4–6 hours" /> at room temp</li>
+                  <li>Bake when balls look puffy and slightly domed</li>
+                </ol>
+                <p className="text-xs text-muted-foreground mt-2 italic">Faster, but less flavour and weaker structure.</p>
               </div>
             </div>
-          </Section>
-
-          <Section number={4} title="Balling the Dough">
-            <p className="text-[15px] mb-3">After fermentation, divide into <span className="font-semibold text-primary">230–250 g</span> dough balls — about <span className="font-semibold text-primary">4–5 pizzas</span>.</p>
-            <Subhead>Steps</Subhead>
-            <Bullets items={[
-              "Cut evenly",
-              "Fold into tight balls",
-              "Store in covered tray/box",
-              "Let rise 2–3 hours before baking",
-            ]} />
+            <Callout>👉 Ready-to-stretch: balls are soft, relaxed, and dome lightly when pushed. If they spring back hard, give them more time at room temp.</Callout>
           </Section>
 
           <Section number={5} title="Why This Ratio Works" subtitle="For 500 g flour">
@@ -116,7 +120,8 @@ export default function DoughMakerPage() {
                 "Leaving dough warm too long after mixing → overproofing",
                 "Using too much flour when shaping → dry crust",
                 "Skipping fridge fermentation → weak flavour",
-                "Not resting dough balls before baking → tight dough, no bubbles",
+                "Cold-fermenting as one big bulk instead of as balls → uneven proof, hard to divide",
+                "Not tempering balls 4–6 hours before baking → tight dough, no bubbles",
               ].map((t) => (
                 <li key={t} className="text-[15px] flex gap-2.5 leading-relaxed">
                   <span className="text-destructive mt-0.5 shrink-0" aria-hidden>❌</span>
