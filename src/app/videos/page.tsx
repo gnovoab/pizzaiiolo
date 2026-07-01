@@ -21,6 +21,7 @@ const VIDEOS: VideoEntry[] = [
   { number: 11, title: "Stretching Neapolitan pizza — slow motion", category: "Stretching", url: "https://www.youtube.com/watch?v=piVoAghLW9M" },
   { number: 12, title: "Stretching pizza",                 category: "Stretching",  url: "https://www.youtube.com/watch?v=xS0TI3KSUSE" },
   { number: 13, title: "Stretching pizza",                 category: "Stretching",  url: "https://www.youtube.com/watch?v=iybaQFesimE" },
+  { number: 14, title: "How to stretch and slap pizza",    category: "Stretching",  url: "https://www.youtube.com/watch?v=e8jO0oUS-LI" },
 ];
 
 function videoId(url: string): string | null {
