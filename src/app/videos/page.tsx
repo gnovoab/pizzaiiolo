@@ -34,6 +34,7 @@ const VIDEOS: VideoEntry[] = [
   { title: "Pizza making in Markthalle Berlin", category: "Making Pizzas",  url: "https://www.youtube.com/watch?v=OJmVs416a78" },
   { title: "Marinara",                          category: "Making Pizzas",  url: "https://www.youtube.com/shorts/j8dtDOemTPk" },
   { title: "Quattro Formaggi",                  category: "Making Pizzas",  url: "https://www.youtube.com/shorts/7OXG78wz8EA" },
+  { title: "Calzone",                           category: "Making Pizzas",  url: "https://www.youtube.com/shorts/cSsncURDc-k" },
   { title: "Restaurant pizzas",                 category: "Making Pizzas",  url: "https://www.youtube.com/watch?v=u8e9LYh6-Yo" },
   { title: "Clandestine pizzas",                category: "Making Pizzas",  url: "https://www.youtube.com/watch?v=vxQLt4ode2k&t=832s" },
 
