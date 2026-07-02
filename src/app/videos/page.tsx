@@ -1,7 +1,15 @@
 import { Card, CardContent } from "@/components/ui/card";
+import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 
 const CATEGORY_ORDER = ["Stretching", "Making Pizzas", "Cooking Pizzas", "Dough"] as const;
 type Category = (typeof CATEGORY_ORDER)[number];
+
+const CATEGORY_SLUG: Record<Category, string> = {
+  "Stretching": "stretching",
+  "Making Pizzas": "making",
+  "Cooking Pizzas": "cooking",
+  "Dough": "dough",
+};
 
 interface VideoEntry {
   number: number;
@@ -44,72 +52,80 @@ export default function VideosPage() {
         </p>
       </div>
 
-      {CATEGORY_ORDER.map((cat) => {
-        const items = VIDEOS.filter((v) => v.category === cat);
-        if (items.length === 0) return null;
-        return (
-          <section key={cat} className="space-y-4">
-            <div className="flex items-baseline justify-between border-b border-border/60 pb-2">
-              <h2 className="font-serif text-2xl sm:text-3xl font-semibold text-foreground">{cat}</h2>
-              <span className="text-[11px] uppercase tracking-[0.2em] text-secondary font-semibold">
-                {items.length} video{items.length === 1 ? "" : "s"}
-              </span>
-            </div>
-            <div className="grid gap-5 sm:grid-cols-2">
-              {items.map((v) => {
-                const id = videoId(v.url);
-                const thumb = id ? `https://img.youtube.com/vi/${id}/hqdefault.jpg` : null;
-                return (
-                  <a
-                    key={v.url}
-                    href={v.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="group block focus:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-xl"
-                  >
-                    <Card className="overflow-hidden transition-shadow hover:shadow-md group-hover:border-primary/40">
-                      <div className="relative aspect-video bg-muted overflow-hidden">
-                        {thumb && (
-                          // eslint-disable-next-line @next/next/no-img-element
-                          <img
-                            src={thumb}
-                            alt={v.title}
-                            className="w-full h-full object-cover transition-transform group-hover:scale-105"
-                            loading="lazy"
-                          />
-                        )}
-                        <div className="absolute inset-0 flex items-center justify-center bg-black/0 group-hover:bg-black/20 transition-colors">
-                          <div className="w-14 h-14 rounded-full bg-primary/90 text-primary-foreground flex items-center justify-center shadow-lg opacity-90 group-hover:opacity-100 group-hover:scale-110 transition-all">
-                            <svg viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6 ml-1">
-                              <path d="M8 5v14l11-7z" />
-                            </svg>
-                          </div>
-                        </div>
-                      </div>
-                      <CardContent className="pt-4 pb-4">
-                        <div className="flex items-start gap-3">
-                          <span className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-primary text-primary-foreground font-serif font-semibold text-sm shrink-0 mt-0.5">
-                            {v.number}
-                          </span>
-                          <div className="flex-1 min-w-0">
-                            <div className="text-[10px] uppercase tracking-[0.15em] text-secondary font-semibold mb-1">
-                              {v.category}
-                            </div>
-                            <div className="font-serif text-base font-semibold leading-snug text-foreground group-hover:text-primary transition-colors">
-                              {v.title}
-                              <span className="text-xs opacity-60 ml-1.5">↗</span>
+      <Tabs defaultValue={CATEGORY_SLUG[CATEGORY_ORDER[0]]}>
+        <TabsList>
+          {CATEGORY_ORDER.map((cat) => {
+            const count = VIDEOS.filter((v) => v.category === cat).length;
+            if (count === 0) return null;
+            return (
+              <TabsTrigger key={cat} value={CATEGORY_SLUG[cat]}>
+                {cat} <span className="opacity-60 ml-1">({count})</span>
+              </TabsTrigger>
+            );
+          })}
+        </TabsList>
+
+        {CATEGORY_ORDER.map((cat) => {
+          const items = VIDEOS.filter((v) => v.category === cat);
+          if (items.length === 0) return null;
+          return (
+            <TabsContent key={cat} value={CATEGORY_SLUG[cat]} className="mt-4">
+              <div className="grid gap-5 sm:grid-cols-2">
+                {items.map((v) => {
+                  const id = videoId(v.url);
+                  const thumb = id ? `https://img.youtube.com/vi/${id}/hqdefault.jpg` : null;
+                  return (
+                    <a
+                      key={v.url}
+                      href={v.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="group block focus:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-xl"
+                    >
+                      <Card className="overflow-hidden transition-shadow hover:shadow-md group-hover:border-primary/40">
+                        <div className="relative aspect-video bg-muted overflow-hidden">
+                          {thumb && (
+                            // eslint-disable-next-line @next/next/no-img-element
+                            <img
+                              src={thumb}
+                              alt={v.title}
+                              className="w-full h-full object-cover transition-transform group-hover:scale-105"
+                              loading="lazy"
+                            />
+                          )}
+                          <div className="absolute inset-0 flex items-center justify-center bg-black/0 group-hover:bg-black/20 transition-colors">
+                            <div className="w-14 h-14 rounded-full bg-primary/90 text-primary-foreground flex items-center justify-center shadow-lg opacity-90 group-hover:opacity-100 group-hover:scale-110 transition-all">
+                              <svg viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6 ml-1">
+                                <path d="M8 5v14l11-7z" />
+                              </svg>
                             </div>
                           </div>
                         </div>
-                      </CardContent>
-                    </Card>
-                  </a>
-                );
-              })}
-            </div>
-          </section>
-        );
-      })}
+                        <CardContent className="pt-4 pb-4">
+                          <div className="flex items-start gap-3">
+                            <span className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-primary text-primary-foreground font-serif font-semibold text-sm shrink-0 mt-0.5">
+                              {v.number}
+                            </span>
+                            <div className="flex-1 min-w-0">
+                              <div className="text-[10px] uppercase tracking-[0.15em] text-secondary font-semibold mb-1">
+                                {v.category}
+                              </div>
+                              <div className="font-serif text-base font-semibold leading-snug text-foreground group-hover:text-primary transition-colors">
+                                {v.title}
+                                <span className="text-xs opacity-60 ml-1.5">↗</span>
+                              </div>
+                            </div>
+                          </div>
+                        </CardContent>
+                      </Card>
+                    </a>
+                  );
+                })}
+              </div>
+            </TabsContent>
+          );
+        })}
+      </Tabs>
     </div>
   );
 }
