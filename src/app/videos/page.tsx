@@ -12,32 +12,35 @@ const CATEGORY_SLUG: Record<Category, string> = {
 };
 
 interface VideoEntry {
-  number: number;
   title: string;
   category: Category;
   url: string;
 }
 
 const VIDEOS: VideoEntry[] = [
-  { number: 1, title: "Stretching perfection",            category: "Stretching",     url: "https://www.youtube.com/watch?v=4oNczFlRktA" },
-  { number: 2, title: "Another stretching pizza",         category: "Stretching",     url: "https://www.youtube.com/watch?v=mSUIZqOfmnM" },
-  { number: 3, title: "Pizza making from different places", category: "Making Pizzas", url: "https://www.youtube.com/watch?v=yiFEksEWXEc" },
-  { number: 4, title: "Cooking with Gozney",              category: "Cooking Pizzas", url: "https://www.youtube.com/watch?v=wC34d4i_RMs" },
-  { number: 5, title: "Stretching pizza",                 category: "Stretching",     url: "https://www.youtube.com/watch?v=Hu9-NemY5RQ" },
-  { number: 6, title: "Pizza making in Markthalle Berlin", category: "Making Pizzas", url: "https://www.youtube.com/watch?v=OJmVs416a78" },
-  { number: 7, title: "Lo Schiaffo di Enzo Coccia",       category: "Stretching",     url: "https://www.youtube.com/watch?v=xzbW8CZx538" },
-  { number: 8, title: "Dealing with high-hydration bulk dough", category: "Dough",    url: "https://www.youtube.com/watch?v=bWN9mxR_iXI" },
-  { number: 9, title: "Stretching high-hydration pizza",  category: "Stretching",     url: "https://www.youtube.com/watch?v=Mdq0eUhnUHI" },
-  { number: 10, title: "Step-by-step stretching pizza",   category: "Stretching",     url: "https://www.youtube.com/watch?v=StoORqYZqe8" },
-  { number: 11, title: "Stretching Neapolitan pizza — slow motion", category: "Stretching", url: "https://www.youtube.com/watch?v=piVoAghLW9M" },
-  { number: 12, title: "Stretching pizza",                 category: "Stretching",    url: "https://www.youtube.com/watch?v=xS0TI3KSUSE" },
-  { number: 13, title: "Stretching pizza",                 category: "Stretching",    url: "https://www.youtube.com/watch?v=iybaQFesimE" },
-  { number: 14, title: "How to stretch and slap pizza",    category: "Stretching",    url: "https://www.youtube.com/watch?v=e8jO0oUS-LI" },
-  { number: 15, title: "Stretching pizza",                 category: "Stretching",    url: "https://www.youtube.com/shorts/AWkD5xtM2Rc" },
-  { number: 16, title: "Cooking pizza",                    category: "Cooking Pizzas", url: "https://www.youtube.com/watch?v=0vwTl23V_fA" },
-  { number: 17, title: "Marinara",                         category: "Making Pizzas",  url: "https://www.youtube.com/shorts/j8dtDOemTPk" },
-  { number: 18, title: "Restaurant pizzas",                category: "Making Pizzas",  url: "https://www.youtube.com/watch?v=u8e9LYh6-Yo" },
-  { number: 19, title: "Clandestine pizzas",               category: "Making Pizzas",  url: "https://www.youtube.com/watch?v=vxQLt4ode2k&t=832s" },
+  { title: "Stretching perfection",             category: "Stretching",     url: "https://www.youtube.com/watch?v=4oNczFlRktA" },
+  { title: "Another stretching pizza",          category: "Stretching",     url: "https://www.youtube.com/watch?v=mSUIZqOfmnM" },
+  { title: "Stretching pizza",                  category: "Stretching",     url: "https://www.youtube.com/watch?v=Hu9-NemY5RQ" },
+  { title: "Lo Schiaffo di Enzo Coccia",        category: "Stretching",     url: "https://www.youtube.com/watch?v=xzbW8CZx538" },
+  { title: "Stretching high-hydration pizza",   category: "Stretching",     url: "https://www.youtube.com/watch?v=Mdq0eUhnUHI" },
+  { title: "Step-by-step stretching pizza",     category: "Stretching",     url: "https://www.youtube.com/watch?v=StoORqYZqe8" },
+  { title: "Stretching Neapolitan pizza — slow motion", category: "Stretching", url: "https://www.youtube.com/watch?v=piVoAghLW9M" },
+  { title: "Stretching pizza",                  category: "Stretching",     url: "https://www.youtube.com/watch?v=xS0TI3KSUSE" },
+  { title: "Stretching pizza",                  category: "Stretching",     url: "https://www.youtube.com/watch?v=iybaQFesimE" },
+  { title: "How to stretch and slap pizza",     category: "Stretching",     url: "https://www.youtube.com/watch?v=e8jO0oUS-LI" },
+  { title: "Stretching pizza",                  category: "Stretching",     url: "https://www.youtube.com/shorts/AWkD5xtM2Rc" },
+
+  { title: "Pizza making from different places", category: "Making Pizzas", url: "https://www.youtube.com/watch?v=yiFEksEWXEc" },
+  { title: "Pizza making in Markthalle Berlin", category: "Making Pizzas",  url: "https://www.youtube.com/watch?v=OJmVs416a78" },
+  { title: "Marinara",                          category: "Making Pizzas",  url: "https://www.youtube.com/shorts/j8dtDOemTPk" },
+  { title: "Quattro Formaggi",                  category: "Making Pizzas",  url: "https://www.youtube.com/shorts/7OXG78wz8EA" },
+  { title: "Restaurant pizzas",                 category: "Making Pizzas",  url: "https://www.youtube.com/watch?v=u8e9LYh6-Yo" },
+  { title: "Clandestine pizzas",                category: "Making Pizzas",  url: "https://www.youtube.com/watch?v=vxQLt4ode2k&t=832s" },
+
+  { title: "Cooking with Gozney",               category: "Cooking Pizzas", url: "https://www.youtube.com/watch?v=wC34d4i_RMs" },
+  { title: "Cooking pizza",                     category: "Cooking Pizzas", url: "https://www.youtube.com/watch?v=0vwTl23V_fA" },
+
+  { title: "Dealing with high-hydration bulk dough", category: "Dough",     url: "https://www.youtube.com/watch?v=bWN9mxR_iXI" },
 ];
 
 function videoId(url: string): string | null {
@@ -75,7 +78,7 @@ export default function VideosPage() {
           return (
             <TabsContent key={cat} value={CATEGORY_SLUG[cat]} className="mt-4">
               <div className="grid gap-5 sm:grid-cols-2">
-                {items.map((v) => {
+                {items.map((v, i) => {
                   const id = videoId(v.url);
                   const thumb = id ? `https://img.youtube.com/vi/${id}/hqdefault.jpg` : null;
                   return (
@@ -108,7 +111,7 @@ export default function VideosPage() {
                         <CardContent className="pt-4 pb-4">
                           <div className="flex items-start gap-3">
                             <span className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-primary text-primary-foreground font-serif font-semibold text-sm shrink-0 mt-0.5">
-                              {v.number}
+                              {i + 1}
                             </span>
                             <div className="flex-1 min-w-0">
                               <div className="text-[10px] uppercase tracking-[0.15em] text-secondary font-semibold mb-1">
