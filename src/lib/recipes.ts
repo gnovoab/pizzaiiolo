@@ -248,7 +248,8 @@ export const RECIPES: PizzaRecipe[] = [
     toppings: "Fior di Latte cheese, Wine-Aged Goat's Cheese, Cow's Cheese aged in straw, sweet cherry tomatoes confit, Selva Blue Cheese fondue, 24-Month aged Parmesan DOP chips, fresh basil.",
     build: "No tomato sauce. Lay down a balanced layer of pre-dried Fior di Latte, wine-aged goat's cheese, and straw-aged cow's cheese. Scatter your cherry tomatoes confit evenly across the surface. Launch and bake for 70 to 80 seconds.",
     postBake: "As soon as it exits onto your board, drizzle a rich, warm fondue of Selva Blue Cheese over the bubbling cheese matrix. Finish with crispy curls of your 24-Month Parmesan DOP chips and fresh basil.",
-    videoGuide: "Mastering Gourmet Multi-Cheese Blends on White Bases",
+    videoGuide: "Quattro Formaggi — short",
+    videoUrl: "https://www.youtube.com/shorts/7OXG78wz8EA",
   },
   {
     id: "bufala-e-fiocco",
