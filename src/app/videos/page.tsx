@@ -32,15 +32,15 @@ const VIDEOS: VideoEntry[] = [
 
   { title: "Pizza making from different places", category: "Making Pizzas", url: "https://www.youtube.com/watch?v=yiFEksEWXEc" },
   { title: "Pizza making in Markthalle Berlin", category: "Making Pizzas",  url: "https://www.youtube.com/watch?v=OJmVs416a78" },
-  { title: "Marinara",                          category: "Making Pizzas",  url: "https://www.youtube.com/shorts/j8dtDOemTPk" },
-  { title: "Quattro Formaggi",                  category: "Making Pizzas",  url: "https://www.youtube.com/shorts/7OXG78wz8EA" },
-  { title: "Calzone",                           category: "Making Pizzas",  url: "https://www.youtube.com/shorts/cSsncURDc-k" },
-  { title: "Prosciutto di Parma",               category: "Making Pizzas",  url: "https://www.youtube.com/shorts/QNiyO1omq_U" },
   { title: "Restaurant pizzas",                 category: "Making Pizzas",  url: "https://www.youtube.com/watch?v=u8e9LYh6-Yo" },
   { title: "Clandestine pizzas",                category: "Making Pizzas",  url: "https://www.youtube.com/watch?v=vxQLt4ode2k&t=832s" },
 
   { title: "Cooking with Gozney",               category: "Cooking Pizzas", url: "https://www.youtube.com/watch?v=wC34d4i_RMs" },
   { title: "Cooking pizza",                     category: "Cooking Pizzas", url: "https://www.youtube.com/watch?v=0vwTl23V_fA" },
+  { title: "Marinara",                          category: "Cooking Pizzas", url: "https://www.youtube.com/shorts/j8dtDOemTPk" },
+  { title: "Quattro Formaggi",                  category: "Cooking Pizzas", url: "https://www.youtube.com/shorts/7OXG78wz8EA" },
+  { title: "Calzone",                           category: "Cooking Pizzas", url: "https://www.youtube.com/shorts/cSsncURDc-k" },
+  { title: "Prosciutto di Parma",               category: "Cooking Pizzas", url: "https://www.youtube.com/shorts/QNiyO1omq_U" },
 
   { title: "Dealing with high-hydration bulk dough", category: "Dough",     url: "https://www.youtube.com/watch?v=bWN9mxR_iXI" },
 ];
