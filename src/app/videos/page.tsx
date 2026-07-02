@@ -35,6 +35,7 @@ const VIDEOS: VideoEntry[] = [
   { title: "Marinara",                          category: "Making Pizzas",  url: "https://www.youtube.com/shorts/j8dtDOemTPk" },
   { title: "Quattro Formaggi",                  category: "Making Pizzas",  url: "https://www.youtube.com/shorts/7OXG78wz8EA" },
   { title: "Calzone",                           category: "Making Pizzas",  url: "https://www.youtube.com/shorts/cSsncURDc-k" },
+  { title: "Prosciutto di Parma",               category: "Making Pizzas",  url: "https://www.youtube.com/shorts/QNiyO1omq_U" },
   { title: "Restaurant pizzas",                 category: "Making Pizzas",  url: "https://www.youtube.com/watch?v=u8e9LYh6-Yo" },
   { title: "Clandestine pizzas",                category: "Making Pizzas",  url: "https://www.youtube.com/watch?v=vxQLt4ode2k&t=832s" },
 
