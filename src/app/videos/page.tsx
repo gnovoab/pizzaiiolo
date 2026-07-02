@@ -36,6 +36,8 @@ const VIDEOS: VideoEntry[] = [
   { number: 15, title: "Stretching pizza",                 category: "Stretching",    url: "https://www.youtube.com/shorts/AWkD5xtM2Rc" },
   { number: 16, title: "Cooking pizza",                    category: "Cooking Pizzas", url: "https://www.youtube.com/watch?v=0vwTl23V_fA" },
   { number: 17, title: "Marinara",                         category: "Making Pizzas",  url: "https://www.youtube.com/shorts/j8dtDOemTPk" },
+  { number: 18, title: "Restaurant pizzas",                category: "Making Pizzas",  url: "https://www.youtube.com/watch?v=u8e9LYh6-Yo" },
+  { number: 19, title: "Clandestine pizzas",               category: "Making Pizzas",  url: "https://www.youtube.com/watch?v=vxQLt4ode2k&t=832s" },
 ];
 
 function videoId(url: string): string | null {
