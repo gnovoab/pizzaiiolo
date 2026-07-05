@@ -43,6 +43,7 @@ const VIDEOS: VideoEntry[] = [
   { title: "Meet the Pizza Master — Enzo Coccia", category: "Making Pizzas",  url: "https://www.youtube.com/watch?v=kugcTACFgmI" },
   { title: "120 Years, 1,600 Pizzas a Day — Pizzeria Starita", category: "Making Pizzas",  url: "https://www.youtube.com/watch?v=uMP90ftSStY" },
   { title: "From grandma's shop to innovative pizza team", category: "Making Pizzas",  url: "https://www.youtube.com/watch?v=mqPwsR5OKBE" },
+  { title: "One of the best Neapolitan pizzerias in Rome - 50 Kalo", category: "Making Pizzas",  url: "https://www.youtube.com/watch?v=eWMfqxfcG0g" },
 
   { title: "Cooking with Gozney",               category: "Cooking Pizzas", url: "https://www.youtube.com/watch?v=wC34d4i_RMs" },
   { title: "Cooking pizza",                     category: "Cooking Pizzas", url: "https://www.youtube.com/watch?v=0vwTl23V_fA" },
