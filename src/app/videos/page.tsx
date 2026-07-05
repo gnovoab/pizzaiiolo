@@ -1,7 +1,7 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 
-const CATEGORY_ORDER = ["Stretching", "Making Pizzas", "Cooking Pizzas", "Dough"] as const;
+const CATEGORY_ORDER = ["Making Pizzas", "Cooking Pizzas", "Stretching", "Dough"] as const;
 type Category = (typeof CATEGORY_ORDER)[number];
 
 const CATEGORY_SLUG: Record<Category, string> = {
@@ -34,6 +34,13 @@ const VIDEOS: VideoEntry[] = [
   { title: "Pizza making in Markthalle Berlin", category: "Making Pizzas",  url: "https://www.youtube.com/watch?v=OJmVs416a78" },
   { title: "Restaurant pizzas",                 category: "Making Pizzas",  url: "https://www.youtube.com/watch?v=u8e9LYh6-Yo" },
   { title: "Clandestine pizzas",                category: "Making Pizzas",  url: "https://www.youtube.com/watch?v=vxQLt4ode2k&t=832s" },
+  { title: "Una sera nella Prima Pizzeria Napoletana STG", category: "Making Pizzas",  url: "https://www.youtube.com/watch?v=1sGxrDAKR98" },
+  { title: "Artisanal pizzeria in Milan — Pizzeria Da Zero", category: "Making Pizzas",  url: "https://www.youtube.com/watch?v=pZTURMnjMM4" },
+  { title: "Campionessa del Mondo di Pizza — Pizzeria Napoli", category: "Making Pizzas",  url: "https://www.youtube.com/watch?v=pYH6Dqo3Sz4" },
+  { title: "Napoli's best Pizzeria? — Busy Saturday Night", category: "Making Pizzas",  url: "https://www.youtube.com/watch?v=bekM69DbAe4" },
+  { title: "Where Pizza Began: Naples' 5 Legendary Pizzerias", category: "Making Pizzas",  url: "https://www.youtube.com/watch?v=JzSI0DpYM0k" },
+  { title: "Top 4 Pizzerie che Sfornano Valanghe di Pizze", category: "Making Pizzas",  url: "https://www.youtube.com/watch?v=msrZgCK3tSU" },
+  { title: "Meet the Pizza Master — Enzo Coccia", category: "Making Pizzas",  url: "https://www.youtube.com/watch?v=kugcTACFgmI" },
 
   { title: "Cooking with Gozney",               category: "Cooking Pizzas", url: "https://www.youtube.com/watch?v=wC34d4i_RMs" },
   { title: "Cooking pizza",                     category: "Cooking Pizzas", url: "https://www.youtube.com/watch?v=0vwTl23V_fA" },
