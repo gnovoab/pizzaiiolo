@@ -42,11 +42,12 @@ const VIDEOS: VideoEntry[] = [
   { title: "Top 4 Pizzerie che Sfornano Valanghe di Pizze", category: "Making Pizzas",  url: "https://www.youtube.com/watch?v=msrZgCK3tSU" },
   { title: "Meet the Pizza Master — Enzo Coccia", category: "Making Pizzas",  url: "https://www.youtube.com/watch?v=kugcTACFgmI" },
   { title: "120 Years, 1,600 Pizzas a Day — Pizzeria Starita", category: "Making Pizzas",  url: "https://www.youtube.com/watch?v=uMP90ftSStY" },
-  { title: "From grandma's shop to innovative pizza team", category: "Making Pizzas",  url: "https://www.youtube.com/watch?v=mqPwsR5OKBE" },
+   { title: "From grandma's shop to innovative pizza team", category: "Making Pizzas",  url: "https://www.youtube.com/watch?v=mqPwsR5OKBE" },
    { title: "One of the best Neapolitan pizzerias in Rome - 50 Kalo", category: "Making Pizzas",  url: "https://www.youtube.com/watch?v=eWMfqxfcG0g" },
    { title: "Leo Spizzirri is here to teach us what makes an authentic napoli-style pizza",         category: "Making Pizzas",  url: "https://www.youtube.com/watch?v=xf80u_Kcf7U" },
    { title: "A Day at Antica Pizzeria da Michele in Naples",            category: "Making Pizzas",  url: "https://www.youtube.com/watch?v=MTA1GkLPBTY" },
    { title: "L’Antica Pizzeria da Michele Bari branch",         category: "Making Pizzas",  url: "https://www.youtube.com/watch?v=3AI9HhUP4D4" },
+   { title: "The Contemporary Pizzas on Ciro Cascella 3.0",       category: "Making Pizzas",  url: "https://www.youtube.com/watch?v=aP37be4uHDo" },
 
    { title: "Cooking with Gozney",               category: "Cooking Pizzas", url: "https://www.youtube.com/watch?v=wC34d4i_RMs" },
   { title: "Cooking pizza",                     category: "Cooking Pizzas", url: "https://www.youtube.com/watch?v=0vwTl23V_fA" },
