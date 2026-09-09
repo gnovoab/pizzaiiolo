@@ -50,7 +50,7 @@ const VIDEOS: VideoEntry[] = [
    { title: "The Contemporary Pizzas on Ciro Cascella 3.0",       category: "Making Pizzas",  url: "https://www.youtube.com/watch?v=aP37be4uHDo" },
    { title: "Pizzeria Ina short",               category: "Making Pizzas",  url: "https://www.youtube.com/shorts/fGby6kmbh7c" },
 
-    { title: "Pizza en bandeja",                 category: "Cooking Pizzas",  url: "https://www.youtube.com/shorts/vmuVySxuGC0" },
+    { title: "Pizza en bandeja",                 category: "Cooking Pizzas",  url: "https://www.youtube.com/shorts/vmuVySxuGC0" },§§§
    { title: "Cooking with Gozney",               category: "Cooking Pizzas", url: "https://www.youtube.com/watch?v=wC34d4i_RMs" },
   { title: "Cooking pizza",                     category: "Cooking Pizzas", url: "https://www.youtube.com/watch?v=0vwTl23V_fA" },
   { title: "Marinara",                          category: "Cooking Pizzas", url: "https://www.youtube.com/shorts/j8dtDOemTPk" },
