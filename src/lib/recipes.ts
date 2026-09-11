@@ -1,7 +1,7 @@
 import type { PizzaRecipe, PizzaRecipeCategory } from "./types";
 
 export const RECIPE_CATEGORIES: { id: PizzaRecipeCategory; label: string; blurb: string }[] = [
-  { id: "classic", label: "Classic", blurb: "Margherita, Napolitan, Parma, Parma Bianca, Chorizo, Double Pepperoni & Hot Honey, Bufala e Fiocco, Tettoia — Four Cheese & Truffle." },
+  { id: "classic", label: "Classic", blurb: "Margherita, Napolitan, Parma, Parma Bianca, Chorizo, Double Pepperoni & Hot Honey, Bufala e Fiocco, Tettoia — Four Cheese & Truffle, Pesto & Burrata." },
   { id: "pumpkin", label: "Pumpkin Base", blurb: "Replace tomato with smooth roasted pumpkin cream — Sfiziosa, Sfiziosa Signature, Mantovana, Norcina, Zucca & Pancetta." },
 ];
 
@@ -646,6 +646,41 @@ export const RECIPES: PizzaRecipe[] = [
       ] },
       { title: "6. Final Touch", sections: [
         { intro: "At the exit:", bullets: ["Add crispy pancetta", "Add 3–4 large leaves of fresh basil"] },
+      ] },
+    ],
+  },
+  {
+    id: "pesto-burrata",
+    number: 14,
+    name: "Pesto & Burrata",
+    style: "Traditional Base — Fresh Pesto & Cold Burrata",
+    category: "classic",
+    image: "/pizzas/pesto-burrata.jpeg",
+    toppings: "Rega San Marzano DOP peeled tomatoes, fine salt, Genovese basil pesto, Fior di Latte mozzarella, burrata, extra-virgin olive oil, optional flaky sea salt.",
+    build: "Rega San Marzano → pesto → Fior di Latte → Gozney → burrata → EVOO. A hand-crushed raw tomato base with spoonfuls of Genovese pesto and light Fior di Latte, baked hot, then finished post-bake with torn cool, creamy burrata and a generous drizzle of good EVOO.",
+    postBake: "Serve immediately.",
+    videoGuide: "Fresh Pesto Base & Post-Bake Burrata",
+    steps: [
+      { title: "1. Prepare the Rega Tomato", sections: [
+        { bullets: ["60–70 g Rega San Marzano DOP peeled tomatoes in a bowl", "Crush gently by hand into a rustic sauce with some small pieces remaining", "Add just a small pinch of fine salt", "Don't cook the tomatoes", "If particularly watery, leave some liquid behind rather than putting it all on the pizza"] },
+      ] },
+      { title: "2. Prepare the Pizza", sections: [
+        { bullets: ["Stretch the dough to around 30–32 cm", "Spread the 60–70 g Rega tomato evenly over the centre, leaving the rim clear"] },
+        { intro: "Add:", bullets: ["35–40 g pesto, in small spoonfuls", "50 g Fior di Latte, distributed fairly lightly", "A very small drizzle of EVOO to finish"] },
+        { intro: "Note:", bullets: ["Don't overload it — the burrata added afterwards provides a lot of richness"] },
+      ] },
+      { title: "3. Bake in the Gozney", sections: [
+        { bullets: ["Get the oven properly hot, around 430–450°C at the stone/floor", "Launch the pizza and immediately turn the flame down slightly if necessary", "Bake for approximately 60–90 seconds", "Rotate the pizza every 15–20 seconds"] },
+        { intro: "You're looking for:", bullets: ["Well-risen, leopard-spotted crust", "Melted Fior di Latte", "Tomato bubbling", "Pesto still relatively fresh rather than burnt"] },
+      ] },
+      { title: "4. Add the Burrata", sections: [
+        { intro: "Important:", bullets: ["Do NOT bake the burrata"] },
+        { bullets: ["Take the pizza out and immediately tear the 80–100 g burrata into several pieces", "Distribute it over the hot pizza"] },
+        { intro: "Finish with:", bullets: ["A generous drizzle of good EVOO", "Tiny pinch of flaky salt if needed", "Serve immediately"] },
+      ] },
+      { title: "5. Final Build", sections: [
+        { bullets: ["Rega San Marzano → pesto → Fior di Latte → Gozney → burrata → EVOO"] },
+        { intro: "Why it works:", bullets: ["The combination of the hot, crisp pizza with cool, creamy burrata is what makes this work particularly well"] },
       ] },
     ],
   },
