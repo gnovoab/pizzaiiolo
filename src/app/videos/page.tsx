@@ -57,6 +57,12 @@ const VIDEOS: VideoEntry[] = [
   { title: "Quattro Formaggi",                  category: "Cooking Pizzas", url: "https://www.youtube.com/shorts/7OXG78wz8EA" },
   { title: "Calzone",                           category: "Cooking Pizzas", url: "https://www.youtube.com/shorts/cSsncURDc-k" },
   { title: "Prosciutto di Parma",               category: "Cooking Pizzas", url: "https://www.youtube.com/shorts/QNiyO1omq_U" },
+  { title: "Bacon and Red Onion",              category: "Cooking Pizzas", url: "https://www.youtube.com/shorts/I09R6iH_Ffc" },
+  { title: "Burratina",                        category: "Cooking Pizzas", url: "https://www.youtube.com/shorts/RZrUSM39iZk" },
+  { title: "Pesto & Burrata",                  category: "Cooking Pizzas", url: "https://www.youtube.com/shorts/g9XuOND3Iwg" },
+  { title: "Pesto Pizza",                      category: "Cooking Pizzas", url: "https://www.youtube.com/shorts/lGcfuySUayI" },
+  { title: "Mortadella, Stracciatella, Pistachios", category: "Cooking Pizzas", url: "https://www.youtube.com/shorts/6fwb1Rck6Jg" },
+  { title: "Cacio e Pepe",                     category: "Cooking Pizzas", url: "https://www.youtube.com/shorts/q8AwTWUlu8s" },
 
   { title: "Dealing with high-hydration bulk dough", category: "Dough",     url: "https://www.youtube.com/watch?v=bWN9mxR_iXI" },
 ];
