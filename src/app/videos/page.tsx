@@ -52,6 +52,7 @@ const VIDEOS: VideoEntry[] = [
    { title: "Nome Pizzeria: Nennè Pizza",       category: "Making Pizzas",  url: "https://www.youtube.com/watch?v=jbKdgQ3_d5w" },
    { title: "Nome Pizzeria: Sarchiapone",       category: "Making Pizzas",  url: "https://www.youtube.com/watch?v=x_EY_EfB0Sw" },
    { title: "Nome Pizzeria: Carosello",         category: "Making Pizzas",  url: "https://www.youtube.com/watch?v=piPSOF68Krs" },
+   { title: "Seu Pizza Illuminati — Pier Daniele Seu e Valeria Zuppardo", category: "Making Pizzas",  url: "https://www.youtube.com/watch?v=lT7d6cDUe5o" },
 
     { title: "Pizza en bandeja",                 category: "Cooking Pizzas",  url: "https://www.youtube.com/shorts/vmuVySxuGC0" },
    { title: "Cooking with Gozney",               category: "Cooking Pizzas", url: "https://www.youtube.com/watch?v=wC34d4i_RMs" },
