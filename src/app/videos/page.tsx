@@ -49,6 +49,9 @@ const VIDEOS: VideoEntry[] = [
    { title: "L’Antica Pizzeria da Michele Bari branch",         category: "Making Pizzas",  url: "https://www.youtube.com/watch?v=3AI9HhUP4D4" },
    { title: "The Contemporary Pizzas on Ciro Cascella 3.0",       category: "Making Pizzas",  url: "https://www.youtube.com/watch?v=aP37be4uHDo" },
    { title: "Pizzeria Ina short",               category: "Making Pizzas",  url: "https://www.youtube.com/shorts/fGby6kmbh7c" },
+   { title: "Nome Pizzeria: Nennè Pizza",       category: "Making Pizzas",  url: "https://www.youtube.com/watch?v=jbKdgQ3_d5w" },
+   { title: "Nome Pizzeria: Sarchiapone",       category: "Making Pizzas",  url: "https://www.youtube.com/watch?v=x_EY_EfB0Sw" },
+   { title: "Nome Pizzeria: Carosello",         category: "Making Pizzas",  url: "https://www.youtube.com/watch?v=piPSOF68Krs" },
 
     { title: "Pizza en bandeja",                 category: "Cooking Pizzas",  url: "https://www.youtube.com/shorts/vmuVySxuGC0" },
    { title: "Cooking with Gozney",               category: "Cooking Pizzas", url: "https://www.youtube.com/watch?v=wC34d4i_RMs" },

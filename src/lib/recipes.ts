@@ -104,8 +104,8 @@ export const RECIPES: PizzaRecipe[] = [
     name: "Parma Bianca",
     category: "classic",
     image: "https://ginopizzaovens.com/cdn/shop/articles/gino-pizza-fior-latte-parma-ham-rocket-parmesan.jpg?v=1683056519&width=1500",
-    toppings: "Fior di Latte cheese, Parma ham (Prosciutto di Parma), rocket (arugula), Parmigiano-Reggiano, extra virgin olive oil.",
-    build: "Bianca base (no tomato) with Fior di Latte baked in, then prosciutto, rocket, Parmigiano and EVOO post-bake.",
+    toppings: "Fior di Latte cheese, ricotta, Jamón de Cebo Ibérico (Iberico ham), rocket (arugula), Parmigiano-Reggiano, extra virgin olive oil.",
+    build: "Bianca base (no tomato) with Fior di Latte and ricotta dollops baked in, then Jamón de Cebo Ibérico, rocket, Parmigiano and EVOO post-bake.",
     steps: [
       { title: "1. Dough", sections: [
         { bullets: ["Neapolitan-style dough (00 flour, well-fermented, elastic)", "250–270 g dough ball", "Stretch to 28–33 cm", "Light, airy cornicione", "Do not degas edge gas"] },
@@ -115,17 +115,17 @@ export const RECIPES: PizzaRecipe[] = [
         { bullets: ["No tomato sauce", "No olive oil under cheese (Neapolitan standard)", "Optional: tiny pinch of fine sea salt only"] },
         { intro: "Key idea:", bullets: ["Clean dough expression — dairy must define flavour, not fat or tomato"] },
       ] },
-      { title: "3. Fior di Latte (Pre-Bake Application)", sections: [
-        { bullets: ["Well-drained Fior di Latte", "Torn irregular pieces (not uniform cubes)", "Even but light distribution", "Leave small gaps for melt flow"] },
-        { intro: "Effect:", bullets: ["Melts directly in oven", "Becomes integrated dairy layer", "Avoids post-bake reconstruction"] },
+      { title: "3. Fior di Latte & Ricotta (Pre-Bake Application)", sections: [
+        { bullets: ["Well-drained Fior di Latte", "Torn irregular pieces (not uniform cubes)", "Small spaced dollops of ricotta", "Even but light distribution", "Leave small gaps for melt flow"] },
+        { intro: "Effect:", bullets: ["Melts directly in oven", "Ricotta adds creamy, milky pockets", "Becomes integrated dairy layer", "Avoids post-bake reconstruction"] },
       ] },
       { title: "4. Bake (Single Cycle Only)", sections: [
         { bullets: ["🪨 Stone: 380–400°C", "🔥 Air: 430–480°C", "⏱ 60–75 seconds"] },
         { intro: "Goal:", bullets: ["Full bake of dough", "Full melt of Fior di Latte in-oven", "Light blistering on cornicione", "Slight browning on exposed cheese edges"] },
         { intro: "Critical rule:", bullets: ["No second oven entry — everything must finish in one bake"] },
       ] },
-      { title: "5. Post-Bake Prosciutto Layer", sections: [
-        { bullets: ["Prosciutto di Parma (or Serrano)", "Paper-thin slices", "Draped loosely over hot mozzarella"] },
+      { title: "5. Post-Bake Ibérico Ham Layer", sections: [
+        { bullets: ["Jamón de Cebo Ibérico (Iberico ham)", "Paper-thin slices", "Draped loosely over hot mozzarella"] },
         { intro: "Effect:", bullets: ["Fat softens from residual heat", "Salt blooms across warm dairy", "Texture remains silk-like, not cooked"] },
       ] },
       { title: "6. Rocket (Post-Bake)", sections: [
@@ -242,9 +242,9 @@ export const RECIPES: PizzaRecipe[] = [
     name: "Bufala e Fiocco",
     style: "Classic — Pure White Premium",
     category: "classic",
-    image: "https://scontent.flhr9-1.fna.fbcdn.net/v/t39.30808-6/480138739_3945406999044661_6825552996257367831_n.jpg?stp=dst-jpg_tt6&cstp=mx1024x768&ctp=s1024x768&_nc_cat=109&ccb=1-7&_nc_sid=833d8c&_nc_eui2=AeESTacag-rQBkLvMBIEzMIwZw60hQzyhuRnDrSFDPKG5Bv3ojM5YChd6oFBi0r7ttI&_nc_ohc=3u-u3tqmoEQQ7kNvwE-RWmr&_nc_oc=AdoRaXadxeKNkTjtpSdPVkPURwzrdVJOzfRjFJpVCkMR6BBMf9w2ox7ghDLxgA1rzNIAPAPELzSgcKeaR9nimRQM&_nc_zt=23&_nc_ht=scontent.flhr9-1.fna&_nc_gid=MwLrnxM3gpfyDXzOrA6U8Q&_nc_ss=7b2a8&oh=00_AQIWDeiGpL2T1Tq8IKzur9hQTlfWjGTMZnYQ3phXsP3CVA&oe=6AA78A2F",
-    toppings: "San Marzano tomato base, light Fior di Latte (optional stabilization layer), Mozzarella di Bufala DOP (post-bake), fiocco di prosciutto, early-harvest Campanian extra virgin olive oil, optional flaky sea salt and basil.",
-    build: "Thin San Marzano tomato base with an optional light Fior di Latte stabilizer, baked clean and then layered post-bake with torn Mozzarella di Bufala DOP, fiocco di prosciutto and a finish of Campanian EVOO.",
+    image: "https://www.fllifiorentinoblog.it/wp-content/uploads/2022/11/316661686_3326119354306765_8744321983837170150_n.jpg",
+    toppings: "San Marzano tomato base, light Fior di Latte (optional stabilization layer), Mozzarella di Bufala DOP (pre-bake), fiocco di prosciutto or Serrano ham, early-harvest Campanian extra virgin olive oil, optional flaky sea salt and basil.",
+    build: "Thin San Marzano tomato base with an optional light Fior di Latte stabilizer and torn Mozzarella di Bufala DOP baked in, then finished post-bake with fiocco di prosciutto or Serrano ham and Campanian EVOO.",
     steps: [
       { title: "1. Dough", sections: [
         { bullets: ["48-hour fermented Neapolitan dough", "63–65% hydration", "250–260 g dough ball", "30–32 cm stretch", "Soft, highly extensible gluten network", "Strong cornicione gas retention"] },
@@ -259,23 +259,22 @@ export const RECIPES: PizzaRecipe[] = [
         { intro: "Effect:", bullets: ["Creates gentle melt base", "Helps stabilize bufala during post-bake placement", "Prevents watery separation"] },
         { intro: "Note:", bullets: ["Some traditional versions skip this entirely; this is a modern stabilization upgrade"] },
       ] },
-      { title: "4. Bake", sections: [
+      { title: "4. Mozzarella di Bufala (Pre-Bake Layer)", sections: [
+        { bullets: ["Mozzarella di Bufala DOP", "Well-drained for several hours", "Torn into large irregular pieces", "Placed on the tomato base before baking", "Leave small gaps for melt flow"] },
+        { intro: "Effect:", bullets: ["Melts into a creamy, milky layer", "Integrates with the tomato base", "Rich dairy character throughout"] },
+      ] },
+      { title: "5. Bake", sections: [
         { bullets: ["🪨 Stone: 380–400°C", "🔥 Oven air: 430–480°C", "⏱ 60–75 seconds", "Rotate every 15–20 seconds"] },
-        { intro: "What must happen:", bullets: ["Crust fully blistered and airy", "Tomato slightly concentrated", "Base remains light, not dry", "No overcooking (critical for final assembly integrity)"] },
+        { intro: "What must happen:", bullets: ["Crust fully blistered and airy", "Tomato slightly concentrated", "Bufala melted and glossy (not watery)", "Base remains light, not dry"] },
       ] },
-      { title: "5. Mozzarella di Bufala (Post-Bake Layer — Critical Rule)", sections: [
-        { bullets: ["Mozzarella di Bufala DOP", "Well-drained for several hours", "Torn into large irregular pieces"] },
-        { intro: "Application:", bullets: ["Placed immediately after baking while base is still hot"] },
-        { intro: "Effect:", bullets: ["Creamy, milky bursts", "Cold/warm contrast against hot crust", "Fresh dairy aroma preserved (not melted into oil)"] },
-      ] },
-      { title: "6. Fiocco di Prosciutto", sections: [
-        { bullets: ["Fiocco di prosciutto (lean cured ham)", "Paper-thin slices", "Light draping over bufala"] },
+      { title: "6. Fiocco di Prosciutto or Serrano (Post-Bake)", sections: [
+        { bullets: ["Fiocco di prosciutto or Serrano ham (lean cured ham)", "Paper-thin slices", "Light draping over the melted bufala"] },
         { intro: "Effect:", bullets: ["Delicate saltiness", "Soft cured sweetness", "Melt-in-mouth texture from residual heat only"] },
         { intro: "Key principle:", bullets: ["Never cook it — only warm it gently"] },
       ] },
       { title: "7. Rest Phase (Important)", sections: [
         { bullets: ["20–30 seconds after assembly"] },
-        { intro: "Why:", bullets: ["Allows bufala to relax slightly", "Prevents sliding", "Lets prosciutto fat bloom gently"] },
+        { intro: "Why:", bullets: ["Lets the cured ham fat bloom gently", "Allows residual heat to warm the slices", "Settles the toppings before slicing"] },
       ] },
       { title: "8. Final EVOO Finish", sections: [
         { bullets: ["Early-harvest Campanian extra virgin olive oil", "Very light micro-dots or spiral"] },
