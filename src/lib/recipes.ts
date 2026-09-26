@@ -1,7 +1,7 @@
 import type { PizzaRecipe, PizzaRecipeCategory } from "./types";
 
 export const RECIPE_CATEGORIES: { id: PizzaRecipeCategory; label: string; blurb: string }[] = [
-  { id: "classic", label: "Classic", blurb: "Margherita, Bufalina, Napolitan, Cosacca, Parma, Parma Bianca, Bufala e Fiocco, Diavola, Double Pepperoni & Hot Honey, Chorizo, Quattro Formaggi, Tettoia — Four Cheese & Truffle, Pesto & Burrata." },
+  { id: "classic", label: "Classic", blurb: "Margherita, Bufalina, Napolitan, Cosacca, Parma, Parma Bianca, Bufala e Fiocco, Diavola, Double Pepperoni & Hot Honey, Chorizo, Quattro Formaggi, Tettoia — Four Cheese & Truffle, Pesto & Burrata, Mortadella and Pistachio, La Oro Verde." },
   { id: "pumpkin", label: "Pumpkin Base", blurb: "Replace tomato with smooth roasted pumpkin cream — Sfiziosa, Sfiziosa Signature, Mantovana, Norcina, Zucca & Pancetta." },
 ];
 
@@ -448,8 +448,114 @@ export const RECIPES: PizzaRecipe[] = [
     videoGuide: "Achieving the Perfect Golden Crunch on Croutons",
   },
   {
-    id: "sfiziosa-basilico",
+    id: "pesto-burrata",
     number: 13,
+    name: "Pesto & Burrata",
+    style: "Traditional Base — Fresh Pesto & Cold Burrata",
+    category: "classic",
+    image: "/pizzas/pesto-burrata.jpeg",
+    toppings: "Rega San Marzano DOP peeled tomatoes, fine salt, Genovese basil pesto, Fior di Latte mozzarella, burrata, extra-virgin olive oil, optional flaky sea salt.",
+    menuIngredients: "Tomato, pesto, mozzarella, burrata, olive oil",
+    build: "Rega San Marzano → pesto → Fior di Latte → Gozney → burrata → EVOO. A hand-crushed raw tomato base with spoonfuls of Genovese pesto and light Fior di Latte, baked hot, then finished post-bake with torn cool, creamy burrata and a generous drizzle of good EVOO.",
+    postBake: "Serve immediately.",
+    videoGuide: "Fresh Pesto Base & Post-Bake Burrata",
+    steps: [
+      { title: "1. Prepare the Rega Tomato", sections: [
+        { bullets: ["60–70 g Rega San Marzano DOP peeled tomatoes in a bowl", "Crush gently by hand into a rustic sauce with some small pieces remaining", "Add just a small pinch of fine salt", "Don't cook the tomatoes", "If particularly watery, leave some liquid behind rather than putting it all on the pizza"] },
+      ] },
+      { title: "2. Prepare the Pizza", sections: [
+        { bullets: ["Stretch the dough to around 30–32 cm", "Spread the 60–70 g Rega tomato evenly over the centre, leaving the rim clear"] },
+        { intro: "Add:", bullets: ["35–40 g pesto, in small spoonfuls", "50 g Fior di Latte, distributed fairly lightly", "A very small drizzle of EVOO to finish"] },
+        { intro: "Note:", bullets: ["Don't overload it — the burrata added afterwards provides a lot of richness"] },
+      ] },
+      { title: "3. Bake in the Gozney", sections: [
+        { bullets: ["Get the oven properly hot, around 430–450°C at the stone/floor", "Launch the pizza and immediately turn the flame down slightly if necessary", "Bake for approximately 60–90 seconds", "Rotate the pizza every 15–20 seconds"] },
+        { intro: "You're looking for:", bullets: ["Well-risen, leopard-spotted crust", "Melted Fior di Latte", "Tomato bubbling", "Pesto still relatively fresh rather than burnt"] },
+      ] },
+      { title: "4. Add the Burrata", sections: [
+        { intro: "Important:", bullets: ["Do NOT bake the burrata"] },
+        { bullets: ["Take the pizza out and immediately tear the 80–100 g burrata into several pieces", "Distribute it over the hot pizza"] },
+        { intro: "Finish with:", bullets: ["A generous drizzle of good EVOO", "Tiny pinch of flaky salt if needed", "Serve immediately"] },
+      ] },
+      { title: "5. Final Build", sections: [
+        { bullets: ["Rega San Marzano → pesto → Fior di Latte → Gozney → burrata → EVOO"] },
+        { intro: "Why it works:", bullets: ["The combination of the hot, crisp pizza with cool, creamy burrata is what makes this work particularly well"] },
+      ] },
+    ],
+  },
+  {
+    id: "mortadella-pistachio",
+    number: 14,
+    name: "Mortadella and Pistachio",
+    style: "White Pizza — Mortadella, Ricotta & Pistachio",
+    category: "classic",
+    image: "https://myhusbandmakespies.com/wp-content/uploads/2025/07/mortadella-ricotta-pizza-ooni-baked.jpg",
+    toppings: "Fior di Latte mozzarella, extra virgin olive oil (Olio Caiazzano / Tonda del Matese), Mortadella di Suino Nero Casertano, fresh cow's milk ricotta, granella di pistacchio (Bronte pistachios), fresh basil leaves.",
+    menuIngredients: "Mozzarella, mortadella, ricotta, pistachio, basil",
+    build: "A hot, crispy white pizza base cooked with Fior di Latte, topped post-bake with cool, ultra-premium Casertano black pig mortadella, fresh creamed ricotta, crunchy pistachios, and intense local Caiazzano extra virgin olive oil.",
+    postBake: "Drape the mortadella loosely in ribbon-like folds over the hot melted cheese, pipe or dollop the smooth ricotta between the folds, scatter the pistachio granella generously, then finish with fresh basil leaves and a final swirl of raw Olio Extravergine Caiazzano.",
+    steps: [
+      { title: "1. Toppings & Proportions (Per 250g–280g Dough Ball)", sections: [
+        { intro: "Pre-Bake:", bullets: ["70g–80g Fior di Latte Mozzarella (cubed or cut into strips and well-drained)", "Extra Virgin Olive Oil (preferably an intense single-varietal like Olio Caiazzano / Tonda del Matese)"] },
+        { intro: "Post-Bake (Finishing Touches):", bullets: ["60g–70g Mortadella di Suino Nero Casertano (thinly sliced, high-grade artisanal mortadella)", "40g Fresh Cow's Milk Ricotta", "15g Granella di Pistacchio (coarsely chopped/crushed Bronte or high-quality pistachios)", "Extra Virgin Olive Oil (for the final raw finish)", "Fresh Basil leaves"] },
+      ] },
+      { title: "2. Prep the Ricotta", sections: [
+        { bullets: ["Whisk the fresh ricotta in a small bowl with a tiny splash of extra virgin olive oil and a pinch of salt until smooth and velvety", "Transfer to a piping bag (or use two spoons to form neat quenelles/dollops)"] },
+      ] },
+      { title: "3. Drain the Fior di Latte", sections: [
+        { bullets: ["Cut the mozzarella into strips 1–2 hours ahead and let it drain thoroughly in a sieve"] },
+      ] },
+      { title: "4. Stretch & Pre-Bake", sections: [
+        { bullets: ["Stretch your dough ball on semolina rimacinata, leaving an airy, raised cornicione", "Lay the drained Fior di Latte evenly across the bare dough disc", "Add a very light drizzle of olive oil"] },
+      ] },
+      { title: "5. Bake", sections: [
+        { intro: "Pizza Oven (450°C–500°C / 850°F+):", bullets: ["Bake for 60–90 seconds until the crust is puffed with dark leopard spots and the fior di latte is completely melted"] },
+        { intro: "Home Oven with Steel/Stone:", bullets: ["Bake at maximum temperature for 5–7 minutes until golden and bubbling"] },
+      ] },
+      { title: "6. Post-Bake Layering (The Pepe in Grani Method)", sections: [
+        { bullets: ["As soon as the pizza comes out of the oven, drape the thin slices of Mortadella di Nero Casertano loosely in ribbon-like folds (a rose) over the hot melted cheese", "Pipe or dollop the smooth ricotta directly onto or between the folds of mortadella", "Generously scatter the granella di pistacchio over the top for crucial crunch", "Finish with fresh basil leaves and a final swirl of raw Olio Extravergine Caiazzano"] },
+      ] },
+    ],
+  },
+  {
+    id: "la-oro-verde",
+    number: 15,
+    name: "La Oro Verde",
+    style: "White Pizza — Mortadella, Stracciatella & Pistachio Pesto",
+    category: "classic",
+    image: "https://assets.tmecosys.com/image/upload/t_web_rdp_recipe_584x480_1_5x/img/recipe/ras/Assets/a211bd6f00b7a30664e5d05480027f27/Derivates/01948b21d82cfcb00473494c5780e3b3e3d00e52.jpg",
+    toppings: "Fior di Latte mozzarella, extra virgin olive oil, thinly sliced artisanal Mortadella, fresh cold Stracciatella di Burrata, Pistachio Pesto (Pesto di Pistacchio), granella di pistacchio, fresh basil leaves.",
+    menuIngredients: "Mozzarella, mortadella, stracciatella, pistachio pesto, basil",
+    build: "A hot, crispy white pizza base cooked with Fior di Latte, topped post-bake with warm ribbons of artisanal mortadella, cold creamy stracciatella di burrata, generous pistachio pesto, crunchy pistachio granella, and fresh basil.",
+    postBake: "Drape the mortadella in loose ribbon-like folds over the hot melted cheese, spoon dollops of cold stracciatella across and between the folds, drizzle generously with pistachio pesto, then finish with crushed granella di pistacchio, fresh basil leaves, and a final light swirl of raw extra virgin olive oil.",
+    steps: [
+      { title: "1. Toppings & Proportions (Per 250g–280g Dough Ball)", sections: [
+        { intro: "Pre-Bake (Base):", bullets: ["60g–70g Fior di Latte Mozzarella (cubed and well-drained)", "Extra Virgin Olive Oil (light drizzle)"] },
+        { intro: "Post-Bake (The Fresh Layering):", bullets: ["60g–70g Mortadella (thinly sliced, artisanal)", "60g–70g Stracciatella di Burrata (fresh, cold)", "3–4 tbsp Pistachio Pesto (Pesto di Pistacchio)", "15g Granella di Pistacchio (coarsely crushed pistachios)", "Fresh Basil Leaves", "Extra Virgin Olive Oil"] },
+      ] },
+      { title: "2. Fire Up the Gozney", sections: [
+        { bullets: ["Pre-heat your oven until the stone floor hits 450°C–480°C (840°F–900°F)", "Lower the flame slightly right before launching to protect the top of the crust"] },
+      ] },
+      { title: "3. Stretch the Dough", sections: [
+        { bullets: ["Stretch your dough disc on semolina rimacinata, keeping a soft, elevated cornicione"] },
+      ] },
+      { title: "4. Pre-Bake Assembly", sections: [
+        { bullets: ["Scatter the Fior di Latte evenly across the bare dough", "Add a very light swirl of Extra Virgin Olive Oil"] },
+      ] },
+      { title: "5. Bake (60–90 Seconds)", sections: [
+        { bullets: ["Launch into your Gozney and rotate every 15–20 seconds", "Cook until the base is crisp, the fior di latte is completely melted, and the crust has signature leopard spots"] },
+      ] },
+      { title: "6. Post-Bake Finishing (Layering Steps)", sections: [
+        { intro: "1. Mortadella:", bullets: ["As soon as the pizza leaves the oven, drape the thin slices of Mortadella over the melted fior di latte in loose, ribbon-like folds (a rose)", "The heat from the crust will warm the meat and render its delicate fats"] },
+        { intro: "2. Stracciatella:", bullets: ["Spoon dollops of cold Stracciatella across and between the mortadella folds"] },
+        { intro: "3. Pistachio Pesto:", bullets: ["Drizzle the Pistachio Pesto generously over the stracciatella and mortadella"] },
+        { intro: "4. Crunch & Garnish:", bullets: ["Finish with a heavy dusting of crushed Granella di Pistacchio, fresh basil leaves, and a final light swirl of raw Extra Virgin Olive Oil"] },
+      ] },
+    ],
+  },
+  {
+    id: "sfiziosa-basilico",
+    number: 16,
     name: "Sfiziosa (Basilico)",
     style: "Pumpkin Base — Mushroom & Pancetta",
     category: "pumpkin",
@@ -495,7 +601,7 @@ export const RECIPES: PizzaRecipe[] = [
   },
   {
     id: "sfiziosa-signature",
-    number: 14,
+    number: 17,
     name: "Sfiziosa Signature Edition",
     style: "Pumpkin Base — Premium Mushroom, Pancetta & Sage",
     category: "pumpkin",
@@ -552,7 +658,7 @@ export const RECIPES: PizzaRecipe[] = [
   },
   {
     id: "sfiziosa-aqua",
-    number: 15,
+    number: 18,
     name: "Sfiziosa Aqua & Farina",
     style: "Pumpkin Base — Smoked Pork, Burrata & Truffle",
     category: "pumpkin",
@@ -615,7 +721,7 @@ export const RECIPES: PizzaRecipe[] = [
   },
   {
     id: "mantovana",
-    number: 16,
+    number: 19,
     name: "Mantovana (Acqua e Farina Signature Edition)",
     style: "Pumpkin Base — Gorgonzola & Smoked Boucané",
     category: "pumpkin",
@@ -680,7 +786,7 @@ export const RECIPES: PizzaRecipe[] = [
   },
   {
     id: "norcina",
-    number: 17,
+    number: 20,
     name: "Norcina (Acqua e Farina Signature Edition)",
     style: "Pumpkin Base — Porcini & Fennel Sausage",
     category: "pumpkin",
@@ -736,7 +842,7 @@ export const RECIPES: PizzaRecipe[] = [
   },
   {
     id: "zucca-pancetta",
-    number: 18,
+    number: 21,
     name: "Zucca & Pancetta",
     style: "Pumpkin Base — Simple & Classic",
     category: "pumpkin",
@@ -762,42 +868,6 @@ export const RECIPES: PizzaRecipe[] = [
       ] },
       { title: "6. Final Touch", sections: [
         { intro: "At the exit:", bullets: ["Add crispy pancetta", "Add 3–4 large leaves of fresh basil"] },
-      ] },
-    ],
-  },
-  {
-    id: "pesto-burrata",
-    number: 19,
-    name: "Pesto & Burrata",
-    style: "Traditional Base — Fresh Pesto & Cold Burrata",
-    category: "classic",
-    image: "/pizzas/pesto-burrata.jpeg",
-    toppings: "Rega San Marzano DOP peeled tomatoes, fine salt, Genovese basil pesto, Fior di Latte mozzarella, burrata, extra-virgin olive oil, optional flaky sea salt.",
-    menuIngredients: "Tomato, pesto, mozzarella, burrata, olive oil",
-    build: "Rega San Marzano → pesto → Fior di Latte → Gozney → burrata → EVOO. A hand-crushed raw tomato base with spoonfuls of Genovese pesto and light Fior di Latte, baked hot, then finished post-bake with torn cool, creamy burrata and a generous drizzle of good EVOO.",
-    postBake: "Serve immediately.",
-    videoGuide: "Fresh Pesto Base & Post-Bake Burrata",
-    steps: [
-      { title: "1. Prepare the Rega Tomato", sections: [
-        { bullets: ["60–70 g Rega San Marzano DOP peeled tomatoes in a bowl", "Crush gently by hand into a rustic sauce with some small pieces remaining", "Add just a small pinch of fine salt", "Don't cook the tomatoes", "If particularly watery, leave some liquid behind rather than putting it all on the pizza"] },
-      ] },
-      { title: "2. Prepare the Pizza", sections: [
-        { bullets: ["Stretch the dough to around 30–32 cm", "Spread the 60–70 g Rega tomato evenly over the centre, leaving the rim clear"] },
-        { intro: "Add:", bullets: ["35–40 g pesto, in small spoonfuls", "50 g Fior di Latte, distributed fairly lightly", "A very small drizzle of EVOO to finish"] },
-        { intro: "Note:", bullets: ["Don't overload it — the burrata added afterwards provides a lot of richness"] },
-      ] },
-      { title: "3. Bake in the Gozney", sections: [
-        { bullets: ["Get the oven properly hot, around 430–450°C at the stone/floor", "Launch the pizza and immediately turn the flame down slightly if necessary", "Bake for approximately 60–90 seconds", "Rotate the pizza every 15–20 seconds"] },
-        { intro: "You're looking for:", bullets: ["Well-risen, leopard-spotted crust", "Melted Fior di Latte", "Tomato bubbling", "Pesto still relatively fresh rather than burnt"] },
-      ] },
-      { title: "4. Add the Burrata", sections: [
-        { intro: "Important:", bullets: ["Do NOT bake the burrata"] },
-        { bullets: ["Take the pizza out and immediately tear the 80–100 g burrata into several pieces", "Distribute it over the hot pizza"] },
-        { intro: "Finish with:", bullets: ["A generous drizzle of good EVOO", "Tiny pinch of flaky salt if needed", "Serve immediately"] },
-      ] },
-      { title: "5. Final Build", sections: [
-        { bullets: ["Rega San Marzano → pesto → Fior di Latte → Gozney → burrata → EVOO"] },
-        { intro: "Why it works:", bullets: ["The combination of the hot, crisp pizza with cool, creamy burrata is what makes this work particularly well"] },
       ] },
     ],
   },
