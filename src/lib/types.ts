@@ -80,6 +80,8 @@ export interface PizzaRecipe {
   style?: string;
   category: PizzaRecipeCategory;
   toppings: string;
+  /** Short, customer-facing ingredient list for the Menu page (e.g. "Tomato, mozzarella, basil"). */
+  menuIngredients?: string;
   build: string;
   postBake?: string;
   specialRule?: { label: string; detail: string };
