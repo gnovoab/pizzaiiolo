@@ -1,8 +1,10 @@
 import type { PizzaRecipe, PizzaRecipeCategory } from "./types";
 
 export const RECIPE_CATEGORIES: { id: PizzaRecipeCategory; label: string; blurb: string }[] = [
-  { id: "classic", label: "Classic", blurb: "Margherita, Bufalina, Napolitan, Cosacca, Parma, Parma Bianca, Bufala e Fiocco, Diavola, Double Pepperoni & Hot Honey, Chorizo, Quattro Formaggi, Tettoia — Four Cheese & Truffle, Pesto & Burrata, Mortadella and Pistachio, La Oro Verde." },
-  { id: "pumpkin", label: "Pumpkin Base", blurb: "Replace tomato with smooth roasted pumpkin cream — Sfiziosa, Sfiziosa Signature, Mantovana, Norcina, Zucca & Pancetta." },
+  { id: "classic", label: "Classic", blurb: "Margherita, Bufalina, Marinara, Cosacca, Napolitan, Diavola, Parma, Parma Bianca, Prosciutto e Funghi, Capricciosa, Quattro Formaggi, Ortolana." },
+  { id: "calzone-focaccia", label: "Calzone & Focaccia", blurb: "Folded and stuffed specialties — Ripieno (Calzone)." },
+  { id: "innovative", label: "Innovative", blurb: "Modern and rustic twists on Italian tradition — Bufala e Iberico, Double Pepperoni & Hot Honey, Chorizo, Tettoia — Four Cheese & Truffle, Cacio e Pepe, Carbonara, Amatriciana, Gricia, 'Nduja & Hot Honey, Calabrese, Pesto & Burrata, Mortadella and Pistachio, La Oro Verde, Boscaiola." },
+  { id: "pumpkin", label: "Pumpkin Base", blurb: "Replace tomato with smooth roasted pumpkin cream — Sfiziosa, Sfiziosa Signature, Mantovana, Norcina, Zucca & Pancetta, Zucca, Gorgonzola & Noci." },
 ];
 
 export const RECIPES: PizzaRecipe[] = [
@@ -67,25 +69,37 @@ export const RECIPES: PizzaRecipe[] = [
     ],
   },
   {
-    id: "napoli",
+    id: "marinara",
     number: 3,
-    name: "Napolitan",
+    name: "Marinara",
+    style: "Historic Naples — No Cheese",
     category: "classic",
-    image: "https://italianfoodforever.com/wp-content/uploads/2015/01/napolipizza4.jpg",
-    toppings: "San Marzano tomatoes, pre-dried mozzarella strips, premium Cantabrian anchovies, Kalamata black olives (halved and pitted), rinsed capers, fresh garlic, dried wild oregano.",
-    menuIngredients: "Tomato, mozzarella, anchovies, olives, capers, garlic, oregano",
-    build: "Spread your tomato base over the dough circle. Lay down your mozzarella matchsticks. Securely map out the anchovy fillets, olive halves, and a scattered tablespoon of rinsed capers. Finish with one garlic clove sliced paper-thin and a generous pinch of dried wild oregano.",
-    postBake: "Serve immediately.",
-    videoGuide: "True Italian Savory Flavors & Anchovy Placement",
+    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTbF4nIbd7R8H5Ugiak8LK3jFHSZ3_ULRo6lC7wE3Ru6Q&s=10",
+    toppings: "San Marzano tomato sauce, thinly sliced fresh garlic, dried wild oregano, fresh basil leaves, extra virgin olive oil. No cheese.",
+    menuIngredients: "Tomato, garlic, oregano, basil, olive oil",
+    build: "The classic Neapolitan Pizza Marinara is the oldest, purest pizza in Naples — created for sailors (marinai) returning from sea. It contains no cheese whatsoever. Its legendary flavor relies entirely on high-quality tomatoes, pungent garlic, fragrant oregano, and rich extra virgin olive oil.",
+    postBake: "Add a tiny splash of raw extra virgin olive oil post-bake if desired.",
     steps: [
-      { title: "1. Tomato Base", sections: [{ bullets: ["~60–70g crushed San Marzano tomatoes", "Spread evenly in a thin circular layer", "No spiral patterning — just uniform coverage", "1–2 cm clean cornicione border", "No seasoning or only a microscopic pinch of salt"] }] },
-      { title: "2. Mozzarella", sections: [{ bullets: ["Fior di Latte, very well-drained", "Torn irregular pieces (not matchsticks)", "Sparse distribution", "Visible tomato between pieces", "Goal: light coverage, not full melt blanket"] }] },
-      { title: "3. Anchovy (Primary Salt Source)", sections: [{ bullets: ["2–3 anchovy fillets max", "Placed after mozzarella", "Broken into smaller segments and distributed lightly", "No pattern, no “mapping”", "Anchovy = seasoning, not feature"] }] },
-      { title: "4. Olives (Optional — Choose Instead of Capers)", sections: [{ bullets: ["4–6 black olives, pitted and halved", "Light scatter only", "OR omit entirely for stricter Naples style"] }] },
-      { title: "5. Capers (Optional — Only If No Olives)", sections: [{ bullets: ["1 tsp, well rinsed and dried", "Sparse distribution", "Must not overlap with anchovy clusters"] }] },
-      { title: "6. Garlic (Optional, Very Controlled)", sections: [{ bullets: ["2–4 ultra-thin slices", "Only if you want a Marinara-adjacent influence", "Should not brown or cluster"] }] },
-      { title: "7. Oregano (Style Dependent)", sections: [{ bullets: ["Pinch of dried oregano", "Only if aiming for Marinara-leaning profile", "Otherwise omit for Salvo-style balance"] }] },
-      { title: "8. Olive Oil (Final Balance Element)", sections: [{ bullets: ["Light EVOO drizzle (Campania-style)", "Pre-bake: optional micro drizzle, OR", "Post-bake: preferred (cleaner aroma expression)"] }] },
+      { title: "1. Toppings & Proportions (Per 250g–280g Dough Ball)", sections: [
+        { bullets: ["90g–100g San Marzano Tomato Sauce (crushed DOP San Marzano tomatoes with 1g fine salt per 100g)", "1–2 Cloves Fresh Garlic (sliced razor-thin using a knife or mandoline)", "1 tsp Dried Wild Oregano (preferably Mediterranean or Calabrian oregano on the stem)", "Fresh Basil Leaves (4–5 leaves)", "Extra Virgin Olive Oil (a generous spiral—roughly 10g–15g)"] },
+      ] },
+      { title: "2. Slice the Garlic Thinly", sections: [
+        { bullets: ["Slice the garlic as thinly as possible"] },
+        { intro: "Why:", bullets: ["If the garlic slices are too thick, they won't cook through in 60–90 seconds and will taste harsh and raw"] },
+      ] },
+      { title: "3. Stretch the Dough", sections: [
+        { bullets: ["Stretch your dough ball on semolina rimacinata, preserving an airy, pronounced cornicione"] },
+      ] },
+      { title: "4. Assemble", sections: [
+        { bullets: ["Ladle the San Marzano tomato sauce into the center and spread it almost all the way to the edge (Marinara takes slightly more sauce than a Margherita)", "Scatter the thin garlic slices evenly across the tomato sauce", "Rub the dried oregano between your palms directly over the pizza to release its aromatic oils", "Add the fresh basil leaves", "Finish with a generous, spiral drizzle of extra virgin olive oil starting from the center outward"] },
+        { intro: "Why the oil matters:", bullets: ["The oil is essential in a Marinara as it fries the garlic slices in the sauce during baking"] },
+      ] },
+      { title: "5. Bake", sections: [
+        { intro: "Gozney / High-Heat Pizza Oven (450°C–480°C):", bullets: ["Launch and bake for 60–90 seconds, turning every 15–20 seconds", "Watch closely: without cheese to insulate the top, the tomato and garlic cook quickly into a sweet, rich, aromatic sauce while the crust turns crisp and leopard-spotted"] },
+      ] },
+      { title: "6. Finish", sections: [
+        { bullets: ["Add a tiny splash of raw extra virgin olive oil post-bake if desired"] },
+      ] },
     ],
   },
   {
@@ -118,8 +132,64 @@ export const RECIPES: PizzaRecipe[] = [
     ],
   },
   {
-    id: "seven-stars-parma",
+    id: "napoli",
     number: 5,
+    name: "Napolitan",
+    category: "classic",
+    image: "https://italianfoodforever.com/wp-content/uploads/2015/01/napolipizza4.jpg",
+    toppings: "San Marzano tomatoes, pre-dried mozzarella strips, premium Cantabrian anchovies, Kalamata black olives (halved and pitted), rinsed capers, fresh garlic, dried wild oregano.",
+    menuIngredients: "Tomato, mozzarella, anchovies, olives, capers, garlic, oregano",
+    build: "Spread your tomato base over the dough circle. Lay down your mozzarella matchsticks. Securely map out the anchovy fillets, olive halves, and a scattered tablespoon of rinsed capers. Finish with one garlic clove sliced paper-thin and a generous pinch of dried wild oregano.",
+    postBake: "Serve immediately.",
+    videoGuide: "True Italian Savory Flavors & Anchovy Placement",
+    steps: [
+      { title: "1. Tomato Base", sections: [{ bullets: ["~60–70g crushed San Marzano tomatoes", "Spread evenly in a thin circular layer", "No spiral patterning — just uniform coverage", "1–2 cm clean cornicione border", "No seasoning or only a microscopic pinch of salt"] }] },
+      { title: "2. Mozzarella", sections: [{ bullets: ["Fior di Latte, very well-drained", "Torn irregular pieces (not matchsticks)", "Sparse distribution", "Visible tomato between pieces", "Goal: light coverage, not full melt blanket"] }] },
+      { title: "3. Anchovy (Primary Salt Source)", sections: [{ bullets: ["2–3 anchovy fillets max", "Placed after mozzarella", "Broken into smaller segments and distributed lightly", "No pattern, no “mapping”", "Anchovy = seasoning, not feature"] }] },
+      { title: "4. Olives (Optional — Choose Instead of Capers)", sections: [{ bullets: ["4–6 black olives, pitted and halved", "Light scatter only", "OR omit entirely for stricter Naples style"] }] },
+      { title: "5. Capers (Optional — Only If No Olives)", sections: [{ bullets: ["1 tsp, well rinsed and dried", "Sparse distribution", "Must not overlap with anchovy clusters"] }] },
+      { title: "6. Garlic (Optional, Very Controlled)", sections: [{ bullets: ["2–4 ultra-thin slices", "Only if you want a Marinara-adjacent influence", "Should not brown or cluster"] }] },
+      { title: "7. Oregano (Style Dependent)", sections: [{ bullets: ["Pinch of dried oregano", "Only if aiming for Marinara-leaning profile", "Otherwise omit for Salvo-style balance"] }] },
+      { title: "8. Olive Oil (Final Balance Element)", sections: [{ bullets: ["Light EVOO drizzle (Campania-style)", "Pre-bake: optional micro drizzle, OR", "Post-bake: preferred (cleaner aroma expression)"] }] },
+    ],
+  },
+  {
+    id: "diavola",
+    number: 6,
+    name: "Diavola",
+    style: "Margherita con Salame Piccante",
+    category: "classic",
+    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTHd4NQF9AoDHLYIDv3yGqhdZq9HBRfQ8WuGZUuR5s9Vw&s=10",
+    toppings: "San Marzano tomato sauce, Fior di Latte mozzarella, Salame Piccante (Neapolitan spicy salami, Calabrian Soppressata, or pepperoni), Parmigiano-Reggiano, fresh basil, extra virgin olive oil, optional chili flakes or chili oil.",
+    menuIngredients: "Tomato, mozzarella, spicy salami, Parmigiano, basil",
+    build: "A Margherita topped with spicy cured salami — no olives required. (Quick tip: if you order this in Italy, always ask for Salame Piccante rather than \"pepperoni,\" as peperoni with one \"p\" means bell peppers in Italian!)",
+    postBake: "Post-bake, add fresh basil or an optional drizzle of spicy chili-infused extra virgin olive oil.",
+    steps: [
+      { title: "1. Toppings & Proportions (Per 250g–280g Dough Ball)", sections: [
+        { bullets: ["80g San Marzano Tomato Sauce (crushed DOP San Marzano tomatoes with 1g fine salt per 100g)", "80g–90g Fior di Latte Mozzarella (cubed or cut into strips and well-drained)", "50g–60g Salame Piccante (thinly sliced Neapolitan spicy salami, Calabrian Soppressata, or pepperoni)", "15g Parmigiano-Reggiano (finely grated)", "4–5 Fresh Basil Leaves", "Extra Virgin Olive Oil", "Dried Chili Flakes or Chili Oil (optional, for extra heat)"] },
+      ] },
+      { title: "2. Prep the Cheese", sections: [
+        { bullets: ["Cut the Fior di Latte into strips and drain in a sieve for 30–60 minutes"] },
+        { intro: "Why:", bullets: ["Keeping excess moisture off the top ensures the rendered fats from the salami blend smoothly with the cheese rather than becoming watery"] },
+      ] },
+      { title: "3. Stretch the Dough", sections: [
+        { bullets: ["Stretch your dough ball using semolina", "Leave an airy 1.5–2 cm cornicione"] },
+      ] },
+      { title: "4. Assemble", sections: [
+        { bullets: ["Spread the San Marzano tomato sauce evenly from the center outward in a spiral", "Dust with the finely grated Parmigiano-Reggiano", "Distribute the drained Fior di Latte strips across the sauce", "Lay the slices of Salame Piccante evenly across the pizza", "Add fresh basil leaves and a light drizzle of extra virgin olive oil before launching into the oven"] },
+      ] },
+      { title: "5. Bake", sections: [
+        { intro: "Pizza Oven (450°C–500°C / 850°F+):", bullets: ["Bake for 60–90 seconds", "The high heat crisps the edges of the salami slices, making them cup up slightly and release their spicy oil over the melted mozzarella"] },
+        { intro: "Home Oven with Pizza Steel/Stone:", bullets: ["Bake at max temp near the top heating element for 5–7 minutes until the crust is leopard-spotted and the salami edges are crisp"] },
+      ] },
+      { title: "6. Finish", sections: [
+        { bullets: ["Post-bake, add fresh basil or an optional drizzle of spicy chili-infused extra virgin olive oil"] },
+      ] },
+    ],
+  },
+  {
+    id: "seven-stars-parma",
+    number: 7,
     name: "Parma",
     style: "Single-Bake with Fresh Post-Bake Bufala",
     category: "classic",
@@ -159,7 +229,7 @@ export const RECIPES: PizzaRecipe[] = [
   },
   {
     id: "parma-bianca",
-    number: 6,
+    number: 8,
     name: "Parma Bianca",
     category: "classic",
     image: "https://ginopizzaovens.com/cdn/shop/articles/gino-pizza-fior-latte-parma-ham-rocket-parmesan.jpg?v=1683056519&width=1500",
@@ -203,78 +273,173 @@ export const RECIPES: PizzaRecipe[] = [
     ],
   },
   {
-    id: "bufala-e-fiocco",
-    number: 7,
-    name: "Bufala e Fiocco",
-    style: "50 Kalò — Signature Pizza Bianca",
+    id: "prosciutto-e-funghi",
+    number: 9,
+    name: "Prosciutto e Funghi",
+    style: "Classic Neapolitan — Ham & Mushroom",
     category: "classic",
-    image: "https://www.fllifiorentinoblog.it/wp-content/uploads/2022/11/316661686_3326119354306765_8744321983837170150_n.jpg",
-    toppings: "Mozzarella di Bufala Campana DOP, thin-sliced Fiocco di Prosciutto Crudo (or aged Parma ham), extra virgin olive oil, fresh basil. Zero tomato sauce.",
-    menuIngredients: "Mozzarella di bufala, prosciutto, basil, olive oil",
-    build: "A signature white pizza (pizza bianca) from Ciro Salvo's 50 Kalò. Relies entirely on high-quality ingredients: Mozzarella di Bufala Campana DOP baked into the base, then finished post-bake with delicate Fiocco di Prosciutto Crudo, EVOO and fresh basil.",
+    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRAP5MdbljTAVL7meY_XhtUQ1HIdHrEIdsxxZk_dqVevQ&s=10",
+    toppings: "San Marzano tomato sauce (Agro Sarnese-Nocerino DOP), house-made Fior di Latte mozzarella, sliced prosciutto cotto (cooked ham), Champignon mushrooms, Parmigiano Reggiano DOP aged 24 months, fresh basil, extra virgin olive oil from the Sorrento Peninsula.",
+    menuIngredients: "Tomato, mozzarella, cooked ham, Champignon mushrooms, Parmigiano Reggiano, basil, olive oil",
+    build: "A comforting, familiar classic built on San Marzano tomatoes from the Agro Sarnese-Nocerino DOP and our own house-made Fior di Latte. Sliced prosciutto cotto and Champignon mushrooms bake right into the pizza, then it's finished with shavings of Parmigiano Reggiano DOP aged 24 months, fresh basil and a drizzle of extra virgin olive oil from the Sorrento Peninsula.",
+    postBake: "Finish with shaved Parmigiano Reggiano DOP, fresh basil leaves and a drizzle of Sorrento Peninsula extra virgin olive oil.",
     steps: [
-      { title: "1. Toppings & Assembly (Per 250g–280g Dough Ball)", sections: [
-        { bullets: ["100 g Mozzarella di Bufala Campana DOP", "50–60 g Fiocco di Prosciutto Crudo (or high-grade 24-month Prosciutto di Parma)", "Extra Virgin Olive Oil (preferably DOP Colline Salernitane)", "Fresh basil leaves"] },
+      { title: "1. Dough", sections: [{ bullets: ["250–280 g dough ball", "Stretch to 30–32 cm", "Preserve a light, airy cornicione"] }] },
+      { title: "2. Tomato Base", sections: [{ bullets: ["70–80 g San Marzano tomato sauce (Agro Sarnese-Nocerino DOP)", "Spread in a thin, even layer", "Leave a clean 1.5–2 cm border"] }] },
+      { title: "3. Mozzarella, Ham & Mushroom", sections: [{ bullets: ["90–100 g house-made Fior di Latte, torn into pieces", "50–60 g prosciutto cotto (cooked ham), thinly sliced", "40–50 g Champignon mushrooms, thinly sliced"] }] },
+      { title: "4. Bake", sections: [{ bullets: ["🪨 Stone: 400–430°C", "⏱ Cook time: 70–90 seconds", "🔄 Rotate every 15–20 seconds"] }] },
+      { title: "5. Finish", sections: [{ bullets: ["Shave Parmigiano Reggiano DOP (24 months) over the hot pizza", "Scatter fresh basil leaves", "Finish with a drizzle of extra virgin olive oil from the Sorrento Peninsula"] }] },
+    ],
+  },
+  {
+    id: "capricciosa",
+    number: 10,
+    name: "Capricciosa",
+    style: "Neapolitan Big Four — Ham, Mushroom, Artichoke & Olive",
+    category: "classic",
+    image: "https://positano.lv/wp-content/uploads/2021/12/Capricciosa-1.png",
+    toppings: "San Marzano tomato sauce (Agro Sarnese-Nocerino DOP), Fior di Latte mozzarella, prosciutto cotto (cooked ham), Salame di Mugnano del Cardinale (garlic-and-pepper cured salami), Funghi Champignon, Carciofini Mammarelle artichoke hearts, Parmigiano-Reggiano DOP aged 24 months, fresh basil, extra virgin olive oil from the Sorrento Peninsula.",
+    menuIngredients: "Tomato, mozzarella, cooked ham, salami, mushroom, artichoke, Parmigiano, basil",
+    build: "One of Naples' 'Big Four' classics alongside Margherita, Marinara and Diavola. Prosciutto cotto, spicy Salame di Mugnano del Cardinale, Funghi Champignon and quartered Carciofini Mammarelle are scattered together over Fior di Latte and dusted with aged Parmigiano-Reggiano, then finished with fresh basil and a spiral of Sorrento Peninsula extra virgin olive oil.",
+    postBake: "Finish with fresh basil and a light final drizzle of raw Penisola Sorrentina EVOO straight out of the oven.",
+    steps: [
+      { title: "1. Toppings & Proportions (Per 250g–280g Dough Ball)", sections: [
+        { bullets: ["80g Pomodoro San Marzano dell'Agro Sarnese-Nocerino DOP (crushed tomatoes with 1g fine salt per 100g)", "70g–80g Fior di Latte (cubed/sliced and thoroughly drained)", "40g Prosciutto Cotto (high-grade cooked ham, torn into bite-sized pieces)", "30g Salame di Mugnano del Cardinale (traditional Neapolitan garlic-and-pepper cured salami, thinly sliced)", "30g Funghi Champignon (fresh button mushrooms, thinly sliced)", "35g Carciofini Mammarelle (Roman/Neapolitan artichoke hearts in oil, thoroughly drained and quartered)", "15g Parmigiano-Reggiano DOP 24 mesi (finely grated)", "4–5 Fresh Basil Leaves", "Olio Extravergine della Penisola Sorrentina DOP (spiral drizzle)"] },
       ] },
-      { title: "2. Prep the Mozzarella di Bufala", sections: [
-        { bullets: ["Slice or tear the buffalo mozzarella 1 to 2 hours beforehand", "Place it in a colander in the fridge to drain excess liquid"] },
-        { intro: "Why:", bullets: ["So it won't make your white pizza base soggy"] },
+      { title: "2. Moisture Control (Essential Step)", sections: [
+        { intro: "Fior di Latte:", bullets: ["Drain in a sieve for at least 1–2 hours"] },
+        { intro: "Artichokes (Carciofini):", bullets: ["Gently press the artichoke quarters between paper towels to remove excess oil/brine so they crisp up rather than boil on the pizza"] },
+        { intro: "Mushrooms:", bullets: ["Slice thinly so they roast fast under high heat"] },
       ] },
       { title: "3. Stretch the Dough", sections: [
-        { bullets: ["Stretch a ~260 g dough ball using semolina on your work surface", "Form a 12-inch disc", "Leave a raised cornicione (outer crust)"] },
+        { bullets: ["Stretch your dough disc on semolina rimacinata, leaving an airy 1.5–2 cm cornicione"] },
       ] },
-      { title: "4. Assemble the White Base", sections: [
-        { bullets: ["Distribute the drained Mozzarella di Bufala evenly across the base", "Add a light drizzle of extra virgin olive oil", "Add a couple of fresh basil leaves"] },
+      { title: "4. Assemble", sections: [
+        { bullets: ["Spread the San Marzano tomato sauce evenly outward in a quick spiral", "Dust with Parmigiano-Reggiano DOP 24 mesi", "Scatter the drained Fior di Latte across the base", "Distribute the Funghi Champignon, Prosciutto Cotto, Salame di Mugnano del Cardinale, and quartered Carciofini Mammarelle evenly over the cheese", "Add fresh basil leaves and a light spiral of Olio Extravergine della Penisola Sorrentina DOP"] },
       ] },
       { title: "5. Bake", sections: [
-        { intro: "High-heat pizza oven (450°C–500°C / 850°F+):", bullets: ["Bake for 60–90 seconds until the crust is leopard-spotted and the mozzarella is melted"] },
-        { intro: "Home oven with pizza steel/stone (max temp ~275°C / 530°F):", bullets: ["Pre-bake the dough base with just the mozzarella and a light drizzle of oil for 5–7 minutes until cooked through and golden"] },
+        { intro: "Gozney (450°C–480°C):", bullets: ["Lower the flame slightly right before launching to allow the stone heat to cook through the heavier topping load without burning the top", "Bake for 60–90 seconds, rotating every 15–20 seconds until the crust is puffed and leopard-spotted, the salami edges curl, and the artichokes are slightly charred"] },
       ] },
-      { title: "6. Post-Bake Finishing", sections: [
-        { bullets: ["Immediately upon taking the pizza out, drape the delicate slices of Fiocco di Prosciutto Crudo over the warm melted mozzarella so the fat gently renders from the heat of the crust", "Finish with a fresh leaf of basil and a final swirl of raw Extra Virgin Olive Oil"] },
+      { title: "6. Finish", sections: [
+        { bullets: ["Finish with fresh basil and a light final drizzle of raw Penisola Sorrentina EVOO out of the oven"] },
       ] },
     ],
   },
   {
-    id: "diavola",
-    number: 8,
-    name: "Diavola",
-    style: "Margherita con Salame Piccante",
+    id: "quattro-formaggi",
+    number: 11,
+    name: "Quattro Formaggi",
+    style: "Classic Neapolitan — Pizza Bianca",
     category: "classic",
-    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTHd4NQF9AoDHLYIDv3yGqhdZq9HBRfQ8WuGZUuR5s9Vw&s=10",
-    toppings: "San Marzano tomato sauce, Fior di Latte mozzarella, Salame Piccante (Neapolitan spicy salami, Calabrian Soppressata, or pepperoni), Parmigiano-Reggiano, fresh basil, extra virgin olive oil, optional chili flakes or chili oil.",
-    menuIngredients: "Tomato, mozzarella, spicy salami, Parmigiano, basil",
-    build: "A Margherita topped with spicy cured salami — no olives required. (Quick tip: if you order this in Italy, always ask for Salame Piccante rather than \"pepperoni,\" as peperoni with one \"p\" means bell peppers in Italian!)",
-    postBake: "Post-bake, add fresh basil or an optional drizzle of spicy chili-infused extra virgin olive oil.",
+    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQib4tBZbanA4_Cd1takByQB8S_KSC4VKJpP0-Tey91vQ&s=10",
+    toppings: "Fior di Latte mozzarella, ricotta, Gorgonzola DOP, Parmigiano-Reggiano, extra virgin olive oil, optional fresh basil.",
+    menuIngredients: "Mozzarella, ricotta, gorgonzola, Parmigiano",
+    build: "The classic Neapolitan Quattro Formaggi is a white pizza (pizza bianca) engineered to balance four distinct cheese profiles: a structural melting base (Fior di Latte), a creamy mild accent (Ricotta), a sharp salty kick (Parmigiano-Reggiano), and a rich, spicy bite (Gorgonzola).",
+    postBake: "Finish with a fresh basil leaf and a tiny extra drizzle of raw extra virgin olive oil if desired.",
     steps: [
       { title: "1. Toppings & Proportions (Per 250g–280g Dough Ball)", sections: [
-        { bullets: ["80g San Marzano Tomato Sauce (crushed DOP San Marzano tomatoes with 1g fine salt per 100g)", "80g–90g Fior di Latte Mozzarella (cubed or cut into strips and well-drained)", "50g–60g Salame Piccante (thinly sliced Neapolitan spicy salami, Calabrian Soppressata, or pepperoni)", "15g Parmigiano-Reggiano (finely grated)", "4–5 Fresh Basil Leaves", "Extra Virgin Olive Oil", "Dried Chili Flakes or Chili Oil (optional, for extra heat)"] },
+        { bullets: ["60g–70g Fior di Latte Mozzarella (cubed or cut into strips)", "40g Ricotta Cheese (fresh cow's milk ricotta)", "30g Gorgonzola DOP (preferably Dolce for smooth melting, or Piccante for a sharper blue punch)", "20g Parmigiano-Reggiano (freshly, finely grated)", "Extra Virgin Olive Oil", "Fresh Basil leaves (optional)"] },
       ] },
-      { title: "2. Prep the Cheese", sections: [
-        { bullets: ["Cut the Fior di Latte into strips and drain in a sieve for 30–60 minutes"] },
-        { intro: "Why:", bullets: ["Keeping excess moisture off the top ensures the rendered fats from the salami blend smoothly with the cheese rather than becoming watery"] },
+      { title: "2. Prep the Fior di Latte & Ricotta", sections: [
+        { bullets: ["Cut the Fior di Latte into strips or cubes and drain for at least 30–60 minutes in a sieve", "Whisk or loosen the ricotta in a small bowl with a tiny splash of olive oil or water so it's smooth and easy to dollop"] },
       ] },
-      { title: "3. Stretch the Dough", sections: [
-        { bullets: ["Stretch your dough ball using semolina", "Leave an airy 1.5–2 cm cornicione"] },
+      { title: "3. Stretch the Base", sections: [
+        { bullets: ["Stretch your dough ball on semolina", "Leave a generous cornicione"] },
       ] },
-      { title: "4. Assemble", sections: [
-        { bullets: ["Spread the San Marzano tomato sauce evenly from the center outward in a spiral", "Dust with the finely grated Parmigiano-Reggiano", "Distribute the drained Fior di Latte strips across the sauce", "Lay the slices of Salame Piccante evenly across the pizza", "Add fresh basil leaves and a light drizzle of extra virgin olive oil before launching into the oven"] },
+      { title: "4. Layer the Cheeses", sections: [
+        { intro: "Base Layer:", bullets: ["Dust the stretched dough directly with the finely grated Parmigiano-Reggiano", "Placing the hard cheese directly on the dough creates an aromatic, toasted crust layer"] },
+        { intro: "Melt Layer:", bullets: ["Distribute the Fior di Latte evenly over the base"] },
+        { intro: "Accent Layer:", bullets: ["Drop small, spaced-out dollops of Ricotta and crumbled nuggets of Gorgonzola across the top using two spoons", "Keeping Gorgonzola in isolated clusters prevents its bold flavor from overpowering every single bite"] },
       ] },
-      { title: "5. Bake", sections: [
-        { intro: "Pizza Oven (450°C–500°C / 850°F+):", bullets: ["Bake for 60–90 seconds", "The high heat crisps the edges of the salami slices, making them cup up slightly and release their spicy oil over the melted mozzarella"] },
-        { intro: "Home Oven with Pizza Steel/Stone:", bullets: ["Bake at max temp near the top heating element for 5–7 minutes until the crust is leopard-spotted and the salami edges are crisp"] },
+      { title: "5. Oil & Bake", sections: [
+        { bullets: ["Swirl extra virgin olive oil over the top before baking"] },
+        { intro: "Pizza Oven (450°C–500°C / 850°F+):", bullets: ["Bake for 60–90 seconds", "Watch closely: cheese-only pizzas burn slightly faster than tomato-sauced bases"] },
+        { intro: "Home Oven with Steel/Stone:", bullets: ["Bake near the top heating element for 5–7 minutes until the cheeses are bubbling and the crust is deeply golden"] },
       ] },
       { title: "6. Finish", sections: [
-        { bullets: ["Post-bake, add fresh basil or an optional drizzle of spicy chili-infused extra virgin olive oil"] },
+        { bullets: ["Finish with a fresh basil leaf and a tiny extra drizzle of raw extra virgin olive oil if desired"] },
+      ] },
+    ],
+  },
+  {
+    id: "ortolana",
+    number: 12,
+    name: "Ortolana",
+    style: "Gourmet Neapolitan — Presìdi Slow Food Campania Vegetables",
+    category: "classic",
+    image: "/pizzas/ortolana.png",
+    toppings: "Pacchetelle di San Marzano Kiros (whole tomato fillets), Fior di Latte, pre-grilled Melanzane, pre-grilled Zucchine San Pasquale, roasted Pappacella Napoletana peppers (Presìdi Slow Food), Carciofini Mammarelle, Parmigiano-Reggiano DOP 24 mesi, fresh basil, extra virgin olive oil (Colline Salernitane DOP).",
+    menuIngredients: "Pacchetelle tomato, Fior di Latte, grilled eggplant & zucchini, roasted Pappacella peppers, artichokes, Parmigiano",
+    build: "This traditional Gourmet Neapolitan Ortolana features regional, Presìdi Slow Food Campania produce. Using Pacchetelle (whole plum tomato fillets preserved in glass jars) instead of blended sauce gives juicy bursts of sweet tomato that complement the charred, roasted vegetables.",
+    postBake: "Top with a final touch of raw Colline Salernitane EVOO right out of the oven.",
+    steps: [
+      { title: "1. The Topping Build (Per 250g–280g Dough Ball)", sections: [
+        { bullets: ["60g Pacchetelle di San Marzano Kiros (hand-crushed tomato fillets, lightly drained)", "65g–70g Fior di Latte (cubed and thoroughly drained)", "25g Melanzane (sliced thin and pre-grilled)", "25g Zucchine San Pasquale (sliced into rounds or ribbons and light-grilled)", "25g Pappacella Napoletana Presìdi Slow Food (sweet/spicy heirloom peppers, roasted, peeled, and sliced into strips)", "30g Carciofini Mammarelle (quartered Roman/Neapolitan artichoke hearts in oil, well-drained)", "15g Parmigiano-Reggiano DOP 24 mesi (finely grated)", "4–5 Fresh Basil Leaves", "Olio Extravergine delle Colline Salernitane DOP (generous spiral)"] },
+      ] },
+      { title: "2. Vegetable Moisture Control", sections: [
+        { intro: "Pacchetelle:", bullets: ["Gently spoon out the tomato fillets and crush them lightly by hand", "Let them sit in a strainer briefly so excess juice drains off"] },
+        { intro: "Melanzane & Zucchine San Pasquale:", bullets: ["Slice 4–5mm thin", "Grill quickly on a hot skillet until charred marks appear"] },
+        { intro: "Pappacella Peppers & Carciofini:", bullets: ["Press gently between paper towels to remove excess brine or oil"] },
+      ] },
+      { title: "3. Stretch the Dough", sections: [
+        { bullets: ["Stretch your dough ball on semolina rimacinata, preserving an airy, pronounced cornicione"] },
+      ] },
+      { title: "4. Pre-Bake Assembly", sections: [
+        { bullets: ["Distribute the hand-crushed Pacchetelle tomatoes across the base in scattered clusters rather than a continuous flat layer", "Dust evenly with Parmigiano-Reggiano DOP 24 mesi", "Scatter the drained Fior di Latte across the base", "Arrange the pre-grilled zucchini, eggplant, roasted Pappacella strips, and quartered Carciofini Mammarelle over the cheese", "Add fresh basil leaves and a spiral of Olio Extravergine delle Colline Salernitane DOP"] },
+      ] },
+      { title: "5. Bake (Gozney at 450°C–480°C)", sections: [
+        { bullets: ["Launch and bake for 60–90 seconds, turning every 15–20 seconds", "The high ambient flame caramelizes the sweet Pappacella peppers and artichokes while melting the Fior di Latte into the tomato fillets"] },
+      ] },
+      { title: "6. Finish", sections: [
+        { bullets: ["Top with a final touch of raw Colline Salernitane EVOO right out of the oven"] },
+      ] },
+    ],
+  },
+  {
+    id: "ripieno-calzone",
+    number: 13,
+    name: "Ripieno (Calzone)",
+    style: "Folded Neapolitan Calzone — Ricotta, Fior di Latte & Salame",
+    category: "calzone-focaccia",
+    image: "https://media-cdn.tripadvisor.com/media/photo-s/11/91/05/29/calzone-al-forno-ripieno.jpg",
+    toppings: "Interior: fresh ricotta, Fior di Latte mozzarella, Salame di Mugnano del Cardinale, coarsely ground black pepper. Exterior: San Marzano tomato sauce (Agro Sarnese-Nocerino DOP), Parmigiano-Reggiano DOP aged 24 months, extra virgin olive oil (Colline Salernitane DOP), fresh basil.",
+    menuIngredients: "Ricotta, mozzarella, salami, tomato, Parmigiano, basil",
+    build: "A folded calzone built around a creamy ricotta and Fior di Latte filling studded with diced Salame di Mugnano del Cardinale and cracked black pepper. The dough is stretched thin and even (no built-up cornicione, since the whole edge is folded and sealed), filled on one half, folded into a crescent and crimped tight. The exterior is finished with crushed San Marzano tomato and grated Parmigiano-Reggiano before baking, then a fresh basil leaf and a final touch of raw EVOO right out of the oven.",
+    postBake: "Finish with a fresh basil leaf and a final touch of raw Colline Salernitane EVOO right out of the oven.",
+    steps: [
+      { title: "1. Interior Filling & Exterior Topping (Per 250g–280g Dough Ball)", sections: [
+        { intro: "The Interior Filling:", bullets: ["60g Fresh Ricotta (whisked until creamy)", "60g Fior di Latte (cubed and thoroughly drained)", "40g Salame di Mugnano del Cardinale (diced into small cubes or thin strips)", "1/2 tsp Coarsely Ground Black Pepper (Pepe nero)"] },
+        { intro: "The Exterior Topping:", bullets: ["50g–60g Pomodoro San Marzano dell'Agro Sarnese-Nocerino DOP (crushed)", "15g Parmigiano-Reggiano DOP 24 mesi (finely grated)", "Olio Extravergine delle Colline Salernitane DOP", "Fresh Basil leaves"] },
+      ] },
+      { title: "2. Prep the Ricotta Cream", sections: [
+        { bullets: ["In a bowl, whisk the fresh ricotta with a pinch of salt and the freshly cracked black pepper until smooth"] },
+      ] },
+      { title: "3. Stretch the Dough", sections: [
+        { bullets: ["Stretch your dough disc on semolina into a flat 11–12 inch round", "Keep the thickness even — do not build a large cornicione since the entire edge will be folded and sealed"] },
+      ] },
+      { title: "4. Fill One Half (Bottom Crescent)", sections: [
+        { bullets: ["Spread the creamed ricotta smoothly over one half of the dough disc, leaving a 2 cm clean border around the edge", "Scatter the drained Fior di Latte and diced Salame di Mugnano del Cardinale evenly over the ricotta"] },
+      ] },
+      { title: "5. Fold & Seal", sections: [
+        { bullets: ["Fold the empty half of the dough over the filled half to form a crescent shape", "Press and crimp the border firmly to seal, preventing the filling from leaking during the bake"] },
+      ] },
+      { title: "6. Exterior Topping", sections: [
+        { bullets: ["Spread the crushed San Marzano tomato sauce over the top of the sealed calzone", "Dust with finely grated Parmigiano-Reggiano DOP 24 mesi", "Add a light drizzle of Olio Extravergine delle Colline Salernitane DOP"] },
+      ] },
+      { title: "7. Bake", sections: [
+        { intro: "Gozney (400°C–450°C):", bullets: ["Bake for 90–120 seconds, rotating every 20–30 seconds, until the exterior is deeply golden and blistered and the interior filling is fully melted"] },
+      ] },
+      { title: "8. Finish", sections: [
+        { bullets: ["Finish with a fresh basil leaf and a final touch of raw EVOO right out of the oven"] },
       ] },
     ],
   },
   {
     id: "double-pepperoni-hot-honey",
-    number: 9,
+    number: 14,
     name: "Double Pepperoni & Hot Honey",
     style: "Modern Crowd-Pleaser",
-    category: "classic",
+    category: "innovative",
     image: "https://coolfooddude.com/wp-content/uploads/2020/12/Double-Pepperoni-and-honey-PIzza.jpg",
     toppings: "San Marzano tomato sauce, low-moisture mozzarella, aged provolone, cup-and-char pepperoni, spicy dry-cured salami (piccante salame), Calabrian hot honey, fermented chili vinegar, flaky sea salt, early-harvest Campanian extra virgin olive oil.",
     menuIngredients: "Tomato, mozzarella, provolone, pepperoni, hot honey",
@@ -326,10 +491,10 @@ export const RECIPES: PizzaRecipe[] = [
   },
   {
     id: "chorizo",
-    number: 10,
+    number: 15,
     name: "Chorizo",
     style: "Inspired by Franco Manca UK",
-    category: "classic",
+    category: "innovative",
     image: "https://image.eatencdn.com/image/1f55d2e1-e560-4a16-94a0-dcc00041e6cb/small/image.jpg",
     toppings: "San Marzano tomatoes, standard mozzarella strips, dry and semi-dry cured Iberico chorizo, blue cheese (Stilton or Gorgonzola).",
     menuIngredients: "Tomato, mozzarella, chorizo, blue cheese",
@@ -366,47 +531,44 @@ export const RECIPES: PizzaRecipe[] = [
     ],
   },
   {
-    id: "quattro-formaggi",
-    number: 11,
-    name: "Quattro Formaggi",
-    style: "Classic Neapolitan — Pizza Bianca",
-    category: "classic",
-    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQib4tBZbanA4_Cd1takByQB8S_KSC4VKJpP0-Tey91vQ&s=10",
-    toppings: "Fior di Latte mozzarella, ricotta, Gorgonzola DOP, Parmigiano-Reggiano, extra virgin olive oil, optional fresh basil.",
-    menuIngredients: "Mozzarella, ricotta, gorgonzola, Parmigiano",
-    build: "The classic Neapolitan Quattro Formaggi is a white pizza (pizza bianca) engineered to balance four distinct cheese profiles: a structural melting base (Fior di Latte), a creamy mild accent (Ricotta), a sharp salty kick (Parmigiano-Reggiano), and a rich, spicy bite (Gorgonzola).",
-    postBake: "Finish with a fresh basil leaf and a tiny extra drizzle of raw extra virgin olive oil if desired.",
+    id: "bufala-e-iberico",
+    number: 16,
+    name: "Bufala e Iberico",
+    style: "50 Kalò — Signature Pizza Bianca",
+    category: "innovative",
+    image: "https://www.fllifiorentinoblog.it/wp-content/uploads/2022/11/316661686_3326119354306765_8744321983837170150_n.jpg",
+    toppings: "Mozzarella di Bufala Campana DOP, thin-sliced Jamón Ibérico, extra virgin olive oil, fresh basil. Zero tomato sauce.",
+    menuIngredients: "Mozzarella di bufala, Jamón Ibérico, basil, olive oil",
+    build: "A signature white pizza (pizza bianca) from Ciro Salvo's 50 Kalò. Relies entirely on high-quality ingredients: Mozzarella di Bufala Campana DOP baked into the base, then finished post-bake with delicate Jamón Ibérico, EVOO and fresh basil.",
     steps: [
-      { title: "1. Toppings & Proportions (Per 250g–280g Dough Ball)", sections: [
-        { bullets: ["60g–70g Fior di Latte Mozzarella (cubed or cut into strips)", "40g Ricotta Cheese (fresh cow's milk ricotta)", "30g Gorgonzola DOP (preferably Dolce for smooth melting, or Piccante for a sharper blue punch)", "20g Parmigiano-Reggiano (freshly, finely grated)", "Extra Virgin Olive Oil", "Fresh Basil leaves (optional)"] },
+      { title: "1. Toppings & Assembly (Per 250g–280g Dough Ball)", sections: [
+        { bullets: ["100 g Mozzarella di Bufala Campana DOP", "50–60 g Jamón Ibérico, thinly sliced", "Extra Virgin Olive Oil (preferably DOP Colline Salernitane)", "Fresh basil leaves"] },
       ] },
-      { title: "2. Prep the Fior di Latte & Ricotta", sections: [
-        { bullets: ["Cut the Fior di Latte into strips or cubes and drain for at least 30–60 minutes in a sieve", "Whisk or loosen the ricotta in a small bowl with a tiny splash of olive oil or water so it's smooth and easy to dollop"] },
+      { title: "2. Prep the Mozzarella di Bufala", sections: [
+        { bullets: ["Slice or tear the buffalo mozzarella 1 to 2 hours beforehand", "Place it in a colander in the fridge to drain excess liquid"] },
+        { intro: "Why:", bullets: ["So it won't make your white pizza base soggy"] },
       ] },
-      { title: "3. Stretch the Base", sections: [
-        { bullets: ["Stretch your dough ball on semolina", "Leave a generous cornicione"] },
+      { title: "3. Stretch the Dough", sections: [
+        { bullets: ["Stretch a ~260 g dough ball using semolina on your work surface", "Form a 12-inch disc", "Leave a raised cornicione (outer crust)"] },
       ] },
-      { title: "4. Layer the Cheeses", sections: [
-        { intro: "Base Layer:", bullets: ["Dust the stretched dough directly with the finely grated Parmigiano-Reggiano", "Placing the hard cheese directly on the dough creates an aromatic, toasted crust layer"] },
-        { intro: "Melt Layer:", bullets: ["Distribute the Fior di Latte evenly over the base"] },
-        { intro: "Accent Layer:", bullets: ["Drop small, spaced-out dollops of Ricotta and crumbled nuggets of Gorgonzola across the top using two spoons", "Keeping Gorgonzola in isolated clusters prevents its bold flavor from overpowering every single bite"] },
+      { title: "4. Assemble the White Base", sections: [
+        { bullets: ["Distribute the drained Mozzarella di Bufala evenly across the base", "Add a light drizzle of extra virgin olive oil", "Add a couple of fresh basil leaves"] },
       ] },
-      { title: "5. Oil & Bake", sections: [
-        { bullets: ["Swirl extra virgin olive oil over the top before baking"] },
-        { intro: "Pizza Oven (450°C–500°C / 850°F+):", bullets: ["Bake for 60–90 seconds", "Watch closely: cheese-only pizzas burn slightly faster than tomato-sauced bases"] },
-        { intro: "Home Oven with Steel/Stone:", bullets: ["Bake near the top heating element for 5–7 minutes until the cheeses are bubbling and the crust is deeply golden"] },
+      { title: "5. Bake", sections: [
+        { intro: "High-heat pizza oven (450°C–500°C / 850°F+):", bullets: ["Bake for 60–90 seconds until the crust is leopard-spotted and the mozzarella is melted"] },
+        { intro: "Home oven with pizza steel/stone (max temp ~275°C / 530°F):", bullets: ["Pre-bake the dough base with just the mozzarella and a light drizzle of oil for 5–7 minutes until cooked through and golden"] },
       ] },
-      { title: "6. Finish", sections: [
-        { bullets: ["Finish with a fresh basil leaf and a tiny extra drizzle of raw extra virgin olive oil if desired"] },
+      { title: "6. Post-Bake Finishing", sections: [
+        { bullets: ["Immediately upon taking the pizza out, drape the delicate slices of Jamón Ibérico over the warm melted mozzarella so the fat gently renders from the heat of the crust", "Finish with a fresh leaf of basil and a final swirl of raw Extra Virgin Olive Oil"] },
       ] },
     ],
   },
   {
     id: "tettoia-four-cheese-truffle",
-    number: 12,
+    number: 17,
     name: "Tettoia — Four Cheese & Truffle",
     style: "Classic — Gourmet White Pizza",
-    category: "classic",
+    category: "innovative",
     image: "https://rs-menus-api.roocdn.com/images/2018fd22-bd00-4726-bae8-5c9cc89ce052/image.jpeg",
     toppings: "Fior di Latte mozzarella, Gorgonzola DOP, Parmigiano-Reggiano, Bufala DOP, truffle croutons, truffle oil, chilli flakes.",
     menuIngredients: "Mozzarella, gorgonzola, Parmigiano, bufala, truffle",
@@ -448,11 +610,210 @@ export const RECIPES: PizzaRecipe[] = [
     videoGuide: "Achieving the Perfect Golden Crunch on Croutons",
   },
   {
+    id: "cacio-e-pepe",
+    number: 18,
+    name: "Cacio e Pepe",
+    style: "Stefano Callegari — Ice-Cube & Post-Bake Pecorino Emulsion",
+    category: "innovative",
+    image: "https://d3h1lg3ksw6i6b.cloudfront.net/media/image/2018/07/02/bb7c436164c0454fb27f55eadbcb9cde_Cacio_e_Pepe_SimoPizza__Credit+Francesco+Sapienza.jpg",
+    toppings: "Finely grated Pecorino Romano DOP, coarsely toasted and cracked whole black peppercorns, extra virgin olive oil, ice cubes (melted into the bake to create the emulsion).",
+    menuIngredients: "Pecorino Romano, cracked black pepper, olive oil",
+    build: "In a 450°C+ oven, raw Pecorino Romano burns instantly — so Stefano Callegari's technique places ice cubes directly on the raw dough before baking, creating a pool of boiling starchy water on the surface. As soon as the pizza is pulled from the oven, finely grated Pecorino is showered over that hot puddle: the residual heat instantly binds the cheese fat and protein with the starchy water, forming the exact creamy emulsion (cremina) of traditional Cacio e Pepe pasta.",
+    postBake: "Immediately shower the entire hot center with the finely grated Pecorino Romano and swirl it into the boiling pool of melted ice water with a spoon or spatula until velvety, then finish with a heavy dusting of toasted cracked black pepper and a final swirl of extra virgin olive oil.",
+    videoGuide: "Stefano Callegari's Ice-Cube Cacio e Pepe Technique",
+    steps: [
+      { title: "1. Ingredients (Per 250g–280g Dough Ball)", sections: [
+        { bullets: ["4–6 Ice Cubes (standard ice tray size)", "60g–70g Pecorino Romano DOP (extremely finely grated using a Microplane)", "2 tsp Whole Black Peppercorns (coarsely toasted and cracked)", "Extra Virgin Olive Oil"] },
+      ] },
+      { title: "2. Prep the Dough & Pepper", sections: [
+        { bullets: ["Stretch your dough ball on semolina rimacinata, keeping a defined cornicione"] },
+        { intro: "Toast the pepper:", bullets: ["Toast whole black peppercorns in a dry pan until fragrant", "Crush coarsely with a mortar and pestle or heavy pan"] },
+      ] },
+      { title: "3. Add the Ice & Bake", sections: [
+        { bullets: ["Place 4–6 ice cubes directly in the center of the raw stretched dough", "Sprinkle a small pinch of cracked pepper around the dough", "Drizzle a touch of extra virgin olive oil"] },
+        { intro: "Bake:", bullets: ["Launch into your Gozney / pizza oven at 450°C–480°C", "As it bakes, the ice melts rapidly and boils into a hot puddle of starchy water on the crust while keeping the center flat and hydrated"] },
+      ] },
+      { title: "4. The Creamy Finish (Post-Bake Emulsion)", sections: [
+        { bullets: ["As soon as the crust is puffed and leopard-spotted (around 60–90 seconds), pull the pizza out", "Immediately shower the entire hot center with the 60g–70g of finely grated Pecorino Romano"] },
+        { intro: "Why it works:", bullets: ["The starchy, hot water instantly binds with the cheese fat and protein, forming the exact creamy emulsion (cremina) of traditional Cacio e Pepe pasta"] },
+        { intro: "Finish:", bullets: ["Using a spoon or spatula, quickly swirl the cheese into the boiling pool of melted ice water", "Finish with a heavy dusting of toasted cracked black pepper and a final swirl of extra virgin olive oil"] },
+      ] },
+    ],
+  },
+  {
+    id: "carbonara",
+    number: 19,
+    name: "Carbonara",
+    style: "Pecorino, Crispy Pork & Egg Yolk Drizzle",
+    category: "innovative",
+    image: "https://www.vincenzosplate.com/wp-content/uploads/2022/10/1500x1500-Photo-4_1951-How-to-Make-CARBONARA-PIZZA-Like-an-Italian-V1.jpg",
+    toppings: "Crispy pre-rendered pancetta or guanciale, Pecorino Romano DOP (baked in and post-bake), coarsely cracked black pepper, extra virgin olive oil, post-bake egg yolk drizzle.",
+    menuIngredients: "Pecorino Romano, crispy guanciale, egg yolk, black pepper",
+    build: "A pizza translation of pasta carbonara. A bare dough disc is showered with Pecorino Romano and crispy pre-rendered pancetta or guanciale, then baked until the cheese melts into the rendered pork fat. As soon as it leaves the oven, a smooth whisked egg yolk is drizzled across the piping-hot crust — the residual heat instantly warms and sets it into a silky, glossy cream — before a final shower of Pecorino and cracked black pepper.",
+    postBake: "Drizzle the whisked egg yolk in a zigzag or spiral across the piping-hot pizza so the crust's heat sets it into a silky, glossy cream, then shower with the remaining Pecorino Romano and a final heavy dusting of coarsely cracked black pepper.",
+    steps: [
+      { title: "1. Toppings & Proportions (Per 250g–280g Dough Ball)", sections: [
+        { intro: "Pre-Bake (The Base):", bullets: ["60g–70g Pancetta or Guanciale (diced into lardons and pre-rendered in a pan until crispy)", "25g Pecorino Romano DOP (finely grated)", "Coarsely cracked black pepper", "Extra Virgin Olive Oil (light swirl)"] },
+        { intro: "Post-Bake (The Drizzle & Finish):", bullets: ["2 Fresh Egg Yolks (whisked smoothly with 1 tbsp warm water or a drop of olive oil so it drizzles easily)", "20g Pecorino Romano DOP (for the final shower)", "Extra cracked black pepper"] },
+      ] },
+      { title: "2. Pre-Cook the Pork", sections: [
+        { bullets: ["Fry the pancetta/guanciale in a dry pan over medium heat for 3–5 minutes until crisp and golden", "Drain on paper towels"] },
+      ] },
+      { title: "3. Prep the Yolk Drizzle", sections: [
+        { bullets: ["In a small bowl or squeeze bottle, whisk the 2 egg yolks with 1 tbsp warm water and a tiny drop of olive oil until fluid and smooth enough to drizzle", "Keep at room temperature"] },
+      ] },
+      { title: "4. Stretch & Assemble Base", sections: [
+        { bullets: ["Stretch your dough disc on semolina, keeping a pronounced cornicione", "Shower the bare dough directly with 25g of finely grated Pecorino Romano", "Scatter the crispy pre-cooked pancetta evenly across the Pecorino", "Add a pinch of cracked black pepper and a very light drizzle of olive oil"] },
+      ] },
+      { title: "5. Bake in the Gozney (60–90 Seconds)", sections: [
+        { bullets: ["Launch into your Gozney at 450°C–480°C", "Bake until the crust is puffed and leopard-spotted and the Pecorino has melted into the rendered pork fat on the dough"] },
+      ] },
+      { title: "6. Post-Bake Finishing", sections: [
+        { bullets: ["Pull the pizza out of the oven", "Drizzle the whisked egg yolk in a zigzag or spiral across the piping-hot pizza — the heat of the crust instantly warms and sets the yolk into a silky, glossy cream", "Shower with the remaining 20g fresh Pecorino Romano and a final heavy dusting of coarsely cracked black pepper"] },
+      ] },
+    ],
+  },
+  {
+    id: "amatriciana",
+    number: 20,
+    name: "Amatriciana",
+    style: "Roman Pasta-Inspired — Guanciale, Tomato & Pecorino",
+    category: "innovative",
+    image: "https://doublethespoonfuls.com/wp-content/uploads/2023/07/amatriciana-pizza-finished.jpg",
+    toppings: "San Marzano tomato sauce (infused with rendered guanciale fat), Fior di Latte mozzarella, crispy pre-rendered guanciale, Pecorino Romano DOP, dried red chili flakes, extra virgin olive oil, optional fresh basil.",
+    menuIngredients: "Tomato, mozzarella, guanciale, Pecorino Romano, chili",
+    build: "Pizza all'Amatriciana translates Amatrice's iconic pasta sauce onto a high-heat Neapolitan base. The magic lies in the contrast between sweet San Marzano tomato sauce, rich rendered guanciale (cured pork cheek), sharp Pecorino Romano DOP, and a hint of fresh chili heat. Because raw guanciale releases a lot of fat at high oven temperatures, pre-rendering the pork is crucial to avoid a soggy center.",
+    postBake: "Immediately shower the remaining Pecorino Romano DOP over the piping-hot tomato sauce so it melts into a silky coating. Scatter the reserved crispy guanciale over the top for maximum crunch, add fresh basil if desired, and finish with a light swirl of raw EVOO or chili oil.",
+    steps: [
+      { title: "1. Ingredients & Proportions (Per 250g–280g Dough Ball)", sections: [
+        { intro: "For the Crispy Pork:", bullets: ["60g Guanciale (sliced into 5mm strips / lardons) — Pancetta works as a fine substitute if guanciale isn't available"] },
+        { intro: "For the Base & Toppings:", bullets: ["80g Pomodoro San Marzano DOP (crushed tomatoes with 1g fine salt per 100g)", "60g Fior di Latte Mozzarella (cubed and thoroughly drained)", "25g Pecorino Romano DOP (finely grated)", "1/2 tsp Dried Red Chili Flakes (Peperoncino, or a splash of chili oil)", "Extra Virgin Olive Oil", "Fresh Basil leaves (optional)"] },
+      ] },
+      { title: "2. Pre-Render the Guanciale (Crucial Step)", sections: [
+        { bullets: ["Fry the guanciale strips in a dry skillet over medium-low heat for 4–5 minutes until the fat renders out and the edges turn crispy and golden", "Remove the crispy pork and drain on paper towels"] },
+        { intro: "The Pro Touch:", bullets: ["Stir 1 tsp of the rendered warm guanciale fat directly into your San Marzano tomato sauce for a rich, authentic flavor profile throughout the base"] },
+      ] },
+      { title: "3. Prep the Cheese", sections: [
+        { bullets: ["Cut your Fior di Latte into strips or cubes and let it drain in a sieve for at least 1–2 hours"] },
+      ] },
+      { title: "4. Stretch & Assemble", sections: [
+        { bullets: ["Stretch your dough disc on semolina rimacinata, leaving an elevated cornicione", "Ladle the San Marzano tomato sauce (infused with the guanciale fat) evenly over the base", "Dust with half of the finely grated Pecorino Romano (about 10g–15g) and the dried chili flakes", "Scatter the drained Fior di Latte across the sauce", "Distribute three-quarters of the pre-cooked crispy guanciale over the top", "Add a very light spiral drizzle of Extra Virgin Olive Oil"] },
+      ] },
+      { title: "5. Bake in the Gozney (60–90 Seconds)", sections: [
+        { bullets: ["Ensure your Gozney floor stone is preheated to 450°C–480°C (840°F–900°F)", "Turn the flame down to medium-high right before launching", "Launch and turn every 15–20 seconds until the crust is puffed with dark leopard spots and the cheese is fully melted and bubbling"] },
+      ] },
+      { title: "6. Post-Bake Finishing", sections: [
+        { bullets: ["Pull the pizza out of the oven", "Immediately shower the remaining 10g–15g of fresh Pecorino Romano DOP over the piping-hot tomato sauce so it melts into a silky coating", "Scatter the reserved crispy guanciale over the top for maximum crunch, add fresh basil if desired, and finish with a light swirl of raw EVOO or chili oil"] },
+      ] },
+    ],
+  },
+  {
+    id: "gricia",
+    number: 21,
+    name: "Gricia",
+    style: "Roman Pasta-Inspired — Guanciale & Pecorino, No Tomato",
+    category: "innovative",
+    image: "https://cache.marieclaire.fr/data/photo/w1475_ci/6w/pizza-a-la-gricia.webp",
+    toppings: "Fior di Latte mozzarella, crispy pre-rendered guanciale, Pecorino Romano DOP (baked in and as a post-bake cremina), coarsely cracked toasted black pepper, extra virgin olive oil. No tomato.",
+    menuIngredients: "Mozzarella, guanciale, Pecorino Romano, black pepper",
+    build: "Pizza alla Gricia translates Rome's oldest pasta sauce — the direct ancestor of both Carbonara and Amatriciana — onto a high-heat Neapolitan white base (pizza bianca). Because a Gricia relies entirely on guanciale, Pecorino Romano, and toasted black pepper, baking it in a high-heat Gozney (450°C–480°C) requires managing the pork fat and creating a smooth cheese emulsion post-bake so the Pecorino doesn't separate or burn.",
+    postBake: "As soon as the pizza comes out of the oven, spoon or drizzle the Pecorino cremina across the hot melted Fior di Latte — the heat of the crust binds the cream smoothly with the melted cheese. Top with the remaining reserved crispy guanciale for texture contrast, then finish with a heavy shower of freshly cracked toasted black pepper and a final dusting of raw Pecorino Romano.",
+    steps: [
+      { title: "1. Toppings & Proportions (Per 250g–280g Dough Ball)", sections: [
+        { intro: "Pre-Bake (The Base & Pork):", bullets: ["60g Fior di Latte Mozzarella (cubed and thoroughly drained)", "60g Guanciale (sliced into 5mm strips / lardons)", "15g Pecorino Romano DOP (finely grated)", "1 tsp Whole Black Peppercorns (toasted and coarsely cracked)"] },
+        { intro: "Post-Bake (The Pecorino Cremina & Finish):", bullets: ["30g Pecorino Romano DOP (finely grated)", "2–3 tbsp Starchy Hot Water (or hot pasta/pizza cooking water)", "Extra cracked black pepper", "Extra Virgin Olive Oil (light swirl)"] },
+      ] },
+      { title: "2. Pre-Render the Guanciale (Crucial Step)", sections: [
+        { bullets: ["Fry the guanciale strips in a dry skillet over low-medium heat for 4–5 minutes until the fat renders out and the edges turn golden and crispy", "Drain on paper towels and reserve 1 tsp of the warm rendered pork fat in a bowl"] },
+        { intro: "Why:", bullets: ["Launching raw guanciale into a 450°C Gozney will cause excess grease to pool in the center of the dough"] },
+      ] },
+      { title: "3. Make the Gricia Pecorino Paste (La Cremina)", sections: [
+        { bullets: ["In a small bowl, whisk together the 30g Pecorino Romano, 1 tsp of saved rendered guanciale fat, and 2–3 tbsp of hot water until you form a smooth, velvety cheese paste"] },
+      ] },
+      { title: "4. Stretch & Assemble Base", sections: [
+        { bullets: ["Stretch your dough disc on semolina rimacinata, leaving an airy, raised cornicione", "Dust the bare base with the initial 15g Pecorino Romano", "Scatter the drained Fior di Latte evenly across the dough", "Distribute three-quarters of the pre-cooked crispy guanciale over the cheese", "Add a pinch of cracked black pepper and a very light swirl of olive oil"] },
+      ] },
+      { title: "5. Bake in the Gozney (60–90 Seconds)", sections: [
+        { bullets: ["Fire your Gozney floor stone to 450°C–480°C", "Lower the flame slightly right before launching", "Launch and turn every 15–20 seconds until the crust is leopard-spotted and the Fior di Latte is completely melted"] },
+      ] },
+      { title: "6. Post-Bake Finishing", sections: [
+        { bullets: ["As soon as the pizza comes out of the oven, spoon or drizzle the Pecorino cremina across the hot melted Fior di Latte — the heat of the crust will bind the cream smoothly with the melted cheese", "Top with the remaining reserved crispy guanciale for texture contrast", "Finish with a heavy shower of freshly cracked toasted black pepper and a final dusting of raw Pecorino Romano"] },
+      ] },
+    ],
+  },
+  {
+    id: "nduja-honey",
+    number: 22,
+    name: "'Nduja & Hot Honey",
+    style: "Calabrian Spice Meets Sweet Heat",
+    category: "innovative",
+    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS-QIDb-C5YJ62kzmEGA9VLPE-dkJbayXDcvR90G2p1PjLMsJr48qWq6no&s=10",
+    toppings: "San Marzano tomato sauce, Fior di Latte mozzarella, spreadable 'Nduja di Spilinga, fresh red chili flakes, extra virgin olive oil, post-bake hot honey.",
+    menuIngredients: "Tomato, mozzarella, 'nduja, hot honey, chili",
+    build: "The 'Nduja & Hot Honey Pizza balances the slow-building, smoky heat of Calabrian spicy sausage with sweet, infused honey. Because honey burns instantly under intense, direct heat, the hot honey must be drizzled strictly post-bake, allowing it to warm and loosen over the hot pizza without caramelizing into a bitter crust.",
+    postBake: "As soon as you pull the pizza from the oven onto your cutting board, drizzle the hot honey in a fine zigzag or spiral across the entire pie. The residual heat will instantly thin the honey, allowing it to fuse with the rendered 'Nduja oil.",
+    steps: [
+      { title: "1. Ingredients & Proportions (Per 250g–280g Dough Ball)", sections: [
+        { intro: "Pre-Bake:", bullets: ["80g Pomodoro San Marzano DOP (crushed tomatoes with 1g fine salt per 100g)", "70g Fior di Latte (cubed/cut into strips, drained thoroughly)", "35g–40g Spreadable 'Nduja di Spilinga (pinched into hazelnut-sized pieces)", "1/2 tsp Fresh Red Chili Flakes (Peperoncino)", "Extra Virgin Olive Oil (light swirl)"] },
+        { intro: "Post-Bake (The Finish):", bullets: ["1.5–2 tbsp Hot Honey (warmed slightly for a smooth, consistent drizzle)"] },
+      ] },
+      { title: "2. Moisture & 'Nduja Prep", sections: [
+        { intro: "Fior di Latte:", bullets: ["Drain in a sieve for at least 1–2 hours to prevent pooling water"] },
+        { intro: "'Nduja:", bullets: ["Keep at room temperature so it remains soft", "Roll into small hazelnut-sized dollops with wet fingers", "Small, even pieces allow the spicy pork fat to render and the weeping-oil effect to distribute across the sauce without creating heavy soggy patches"] },
+      ] },
+      { title: "3. Stretch the Dough", sections: [
+        { bullets: ["Stretch your dough disc on semolina rimacinata, preserving an airy, raised cornicione"] },
+      ] },
+      { title: "4. Pre-Bake Assembly", sections: [
+        { bullets: ["Ladle the San Marzano tomato sauce into the center and spread outward in a smooth spiral", "Distribute the drained Fior di Latte across the base", "Dot the small pieces of 'Nduja evenly over the cheese and sauce", "Scatter the fresh red chili flakes for an extra layer of sharp heat", "Add a light spiral of Extra Virgin Olive Oil"] },
+      ] },
+      { title: "5. Bake (Gozney at 450°C–480°C)", sections: [
+        { bullets: ["Launch into your Gozney and bake for 60–90 seconds, turning every 15–20 seconds", "Watch as the 'Nduja melts into a glossy orange-red paprika oil that pools gently into the San Marzano sauce and melted mozzarella"] },
+      ] },
+      { title: "6. Post-Bake Hot Honey Finish", sections: [
+        { bullets: ["As soon as you pull the pizza from the oven onto your cutting board, drizzle the hot honey in a fine zigzag or spiral across the entire pie", "The residual heat will instantly thin the honey, allowing it to fuse with the rendered 'Nduja oil"] },
+      ] },
+    ],
+  },
+  {
+    id: "calabrese",
+    number: 23,
+    name: "Calabrese",
+    style: "Gorgonzola, 'Nduja & Fior di Latte — White Pizza",
+    category: "innovative",
+    image: "https://media-cdn.tripadvisor.com/media/photo-s/1b/9e/0f/61/nduja-e-gorgonzola.jpg",
+    toppings: "Fior di Latte mozzarella, Gorgonzola Dolce DOP, 'Nduja di Spilinga, Parmigiano-Reggiano DOP aged 24 months, fresh basil, Olio Extravergine del Cilento DOP. No tomato.",
+    menuIngredients: "Mozzarella, gorgonzola, 'nduja, Parmigiano, basil",
+    build: "A white pizza built on the contrast between mild, creamy Gorgonzola Dolce and small dollops of fiery 'Nduja di Spilinga, which render into a glossy red oil during the bake and weep their paprika spice into the pool of melted Fior di Latte.",
+    postBake: "Add a tiny final swirl of raw Olio Extravergine del Cilento DOP immediately upon removal from the oven.",
+    steps: [
+      { title: "1. Ingredients & Proportions (Per 250g–280g Dough Ball)", sections: [
+        { bullets: ["60g Fior di Latte (cubed/cut into strips, drained thoroughly)", "40g Gorgonzola Dolce DOP (broken into small dollops)", "35g–40g 'Nduja di Spilinga (rolled into small hazelnut-sized dollops)", "15g Parmigiano-Reggiano DOP 24 mesi (finely grated)", "4–5 Fresh Basil Leaves", "Olio Extravergine del Cilento DOP (spiral drizzle)"] },
+      ] },
+      { title: "2. Moisture & Temperature Control", sections: [
+        { intro: "Fior di Latte:", bullets: ["Drain in a sieve for at least 1–2 hours"] },
+        { intro: "'Nduja Prep:", bullets: ["Keep the 'Nduja at room temperature so it is soft", "Pinch off small hazelnut-sized pieces with wet fingers", "Placing small dollops across the pizza ensures it renders quickly into the cheese without creating heavy, dense spots"] },
+      ] },
+      { title: "3. Stretch the Dough", sections: [
+        { bullets: ["Stretch your dough disc on semolina rimacinata, preserving an airy, raised cornicione"] },
+      ] },
+      { title: "4. Pre-Bake Assembly", sections: [
+        { bullets: ["Dust the bare dough directly with the Parmigiano-Reggiano DOP 24 mesi", "Distribute the drained Fior di Latte evenly over the base", "Scatter dollops of the Gorgonzola Dolce DOP in between the fior di latte", "Dot the small pieces of 'Nduja di Spilinga evenly across the top", "Add fresh basil leaves and a light spiral of Olio Extravergine del Cilento DOP"] },
+      ] },
+      { title: "5. Bake (Gozney at 450°C–480°C)", sections: [
+        { bullets: ["Launch into your Gozney and bake for 60–90 seconds, rotating every 15–20 seconds", "Watch as the 'Nduja melts into a glossy red oil, weeping its paprika spice into the mild, creamy pool of Gorgonzola and fior di latte"] },
+      ] },
+      { title: "6. Finish", sections: [
+        { bullets: ["Add a tiny final swirl of raw Olio Extravergine del Cilento DOP immediately upon removal from the oven"] },
+      ] },
+    ],
+  },
+  {
     id: "pesto-burrata",
-    number: 13,
+    number: 24,
     name: "Pesto & Burrata",
     style: "Traditional Base — Fresh Pesto & Cold Burrata",
-    category: "classic",
+    category: "innovative",
     image: "/pizzas/pesto-burrata.jpeg",
     toppings: "Rega San Marzano DOP peeled tomatoes, fine salt, Genovese basil pesto, Fior di Latte mozzarella, burrata, extra-virgin olive oil, optional flaky sea salt.",
     menuIngredients: "Tomato, pesto, mozzarella, burrata, olive oil",
@@ -485,10 +846,10 @@ export const RECIPES: PizzaRecipe[] = [
   },
   {
     id: "mortadella-pistachio",
-    number: 14,
+    number: 25,
     name: "Mortadella and Pistachio",
     style: "White Pizza — Mortadella, Ricotta & Pistachio",
-    category: "classic",
+    category: "innovative",
     image: "https://myhusbandmakespies.com/wp-content/uploads/2025/07/mortadella-ricotta-pizza-ooni-baked.jpg",
     toppings: "Fior di Latte mozzarella, extra virgin olive oil (Olio Caiazzano / Tonda del Matese), Mortadella di Suino Nero Casertano, fresh cow's milk ricotta, granella di pistacchio (Bronte pistachios), fresh basil leaves.",
     menuIngredients: "Mozzarella, mortadella, ricotta, pistachio, basil",
@@ -519,10 +880,10 @@ export const RECIPES: PizzaRecipe[] = [
   },
   {
     id: "la-oro-verde",
-    number: 15,
+    number: 26,
     name: "La Oro Verde",
     style: "White Pizza — Mortadella, Stracciatella & Pistachio Pesto",
-    category: "classic",
+    category: "innovative",
     image: "https://assets.tmecosys.com/image/upload/t_web_rdp_recipe_584x480_1_5x/img/recipe/ras/Assets/a211bd6f00b7a30664e5d05480027f27/Derivates/01948b21d82cfcb00473494c5780e3b3e3d00e52.jpg",
     toppings: "Fior di Latte mozzarella, extra virgin olive oil, thinly sliced artisanal Mortadella, fresh cold Stracciatella di Burrata, Pistachio Pesto (Pesto di Pistacchio), granella di pistacchio, fresh basil leaves.",
     menuIngredients: "Mozzarella, mortadella, stracciatella, pistachio pesto, basil",
@@ -554,8 +915,41 @@ export const RECIPES: PizzaRecipe[] = [
     ],
   },
   {
+    id: "boscaiola",
+    number: 27,
+    name: "Boscaiola",
+    style: "Forester's Pizza — Sausage & Mushroom, Pizza Bianca",
+    category: "innovative",
+    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS4c90OTCp_IEocTO38KnTvWuXxhkRs-NpLzRLtET9QDw&s=10",
+    toppings: "Fior di Latte (or Provola Affumicata), fresh Italian pork sausage (Salsiccia), Porcini or Champignon mushrooms, Parmigiano-Reggiano DOP 24 mesi, extra virgin olive oil. No tomato.",
+    menuIngredients: "Mozzarella or smoked provola, sausage, mushroom, Parmigiano",
+    build: "Pizza alla Boscaiola (\"forester's pizza\") is a classic autumnal pie built around earthiness and smoke. In Naples, it is traditionally made as a white pizza (pizza bianca) using fresh Italian sausage (Salsiccia) and mushrooms (Funghi Porcini or Champignon) over a base of Fior di Latte or smoked Provola. The main technical rule for your Gozney is pre-cooking the mushrooms (to remove their high water content) and pinching raw fresh sausage into small nuggets so they cook through completely in 60–90 seconds.",
+    postBake: "Finish with fresh thyme or a tiny swirl of raw EVOO right out of the oven.",
+    steps: [
+      { title: "1. Ingredients & Proportions (Per 250g–280g Dough Ball)", sections: [
+        { intro: "Pre-Bake:", bullets: ["70g Fior di Latte (or Provola Affumicata for a smoky twist, cubed and well-drained)", "50g Fresh Italian Pork Sausage (Salsiccia) (casing removed, crumbled into small hazelnut-sized pieces)", "40g Mushrooms (Porcini or fresh Champignon, sliced thinly)", "15g Parmigiano-Reggiano DOP 24 mesi (finely grated)", "Extra Virgin Olive Oil (light swirl)"] },
+        { intro: "Optional Finish:", bullets: ["Fresh Thyme leaves or chopped parsley", "Extra Virgin Olive Oil"] },
+      ] },
+      { title: "2. Pre-Sauté the Mushrooms", sections: [
+        { bullets: ["Sauté the sliced mushrooms in a dry skillet over medium-high heat with a tiny splash of olive oil and a pinch of salt for 2–3 minutes until they release their liquid and soften", "Drain on paper towels"] },
+      ] },
+      { title: "3. Prep the Sausage", sections: [
+        { bullets: ["Remove the sausage meat from its casing and pinch into small, loose hazelnut-sized nuggets using wet fingers", "Keep them small so the high ambient heat in your Gozney renders the fat and cooks the meat through thoroughly in under 90 seconds"] },
+      ] },
+      { title: "4. Stretch & Assemble", sections: [
+        { bullets: ["Stretch your dough disc on semolina rimacinata, preserving an airy, raised cornicione", "Dust the bare base directly with the Parmigiano-Reggiano DOP 24 mesi", "Scatter the drained Fior di Latte across the base", "Distribute the pre-sautéed mushrooms and raw sausage nuggets evenly over the cheese", "Add a light spiral of Extra Virgin Olive Oil"] },
+      ] },
+      { title: "5. Bake in the Gozney (60–90 Seconds)", sections: [
+        { bullets: ["Preheat your Gozney floor stone to 450°C–480°C (840°F–900°F). Turn the flame down slightly right before launching", "Launch and turn every 15–20 seconds. The high heat roasts the sausage, crisps the edges of the mushrooms, and melts the cheese into a savory pool"] },
+      ] },
+      { title: "6. Finish", sections: [
+        { bullets: ["Finish with fresh thyme or a tiny swirl of raw EVOO right out of the oven"] },
+      ] },
+    ],
+  },
+  {
     id: "sfiziosa-basilico",
-    number: 16,
+    number: 28,
     name: "Sfiziosa (Basilico)",
     style: "Pumpkin Base — Mushroom & Pancetta",
     category: "pumpkin",
@@ -601,7 +995,7 @@ export const RECIPES: PizzaRecipe[] = [
   },
   {
     id: "sfiziosa-signature",
-    number: 17,
+    number: 29,
     name: "Sfiziosa Signature Edition",
     style: "Pumpkin Base — Premium Mushroom, Pancetta & Sage",
     category: "pumpkin",
@@ -658,12 +1052,12 @@ export const RECIPES: PizzaRecipe[] = [
   },
   {
     id: "sfiziosa-aqua",
-    number: 18,
+    number: 30,
     name: "Sfiziosa Aqua & Farina",
     style: "Pumpkin Base — Smoked Pork, Burrata & Truffle",
     category: "pumpkin",
-    image: "https://scontent.flhr9-1.fna.fbcdn.net/v/t39.30808-6/571466278_1237159945100672_1926828052624926628_n.jpg?stp=dst-jpg_tt6&cstp=mx2048x1536&ctp=s2048x1536&_nc_cat=107&ccb=1-7&_nc_sid=833d8c&_nc_eui2=AeFK42PZvQRooognWuagh-jNPdn2WeKt30092fZZ4q3fTfkn9xh4kU2LmoxCNw7UqFI&_nc_ohc=XaYzmzGlkV0Q7kNvwFQHmL2&_nc_oc=Adp9BpzS8K00CAGoZE4HmNZU45fnjIhogIb26WcPs5LlsejU3sqI2cXWBSn4WyBkqoCrcjyqQpn4Q5Xy33W2Q0qw&_nc_zt=23&_nc_ht=scontent.flhr9-1.fna&_nc_gid=arZvg0Hil20Af3p6iJj6Vg&_nc_ss=7b2a8&oh=00_AQIiX0G40lKeWf_Q5NFtxWk_E37OA-uv2M-nGfYxZWwP6g&oe=6AA7BB33",
-    toppings: "Roasted pumpkin cream, mozzarella, smoked boucané, fresh Burrata, black truffle cream.",
+    image: "/pizzas/sfiziosa-aqua.jpg",
+    toppings: "Roasted pumpkin cream, mozzarella, smoked bacon, fresh Burrata, black truffle cream.",
     build: "Pumpkin cream over a Parmigiano scaffold, Fior di Latte and smoked guanciale, finished post-bake with hand-torn burrata, truffle cream, crispy sage, aged white balsamic and Campanian EVOO.",
     steps: [
       { title: "1. Dough", sections: [
@@ -721,13 +1115,13 @@ export const RECIPES: PizzaRecipe[] = [
   },
   {
     id: "mantovana",
-    number: 19,
+    number: 31,
     name: "Mantovana (Acqua e Farina Signature Edition)",
-    style: "Pumpkin Base — Gorgonzola & Smoked Boucané",
+    style: "Pumpkin Base — Gorgonzola & Smoked Bacon",
     category: "pumpkin",
     image: "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/28/c3/7a/78/caption.jpg?w=1100&h=-1&s=1",
-    toppings: "Roasted pumpkin cream, 24–30 month Parmigiano-Reggiano, Fior di Latte mozzarella, quick-pickled red onions, Gorgonzola Dolce, pre-cooked smoked boucané, crispy sage, aged white balsamic, early-harvest Campanian extra virgin olive oil.",
-    build: "Roasted pumpkin cream over a Parmigiano scaffold, Fior di Latte and quick-pickled red onions, Gorgonzola Dolce in waves and smoked boucané, finished with crispy sage, aged white balsamic and Campanian EVOO.",
+    toppings: "Roasted pumpkin cream, 24–30 month Parmigiano-Reggiano, Fior di Latte mozzarella, quick-pickled red onions, Gorgonzola Dolce, pre-cooked smoked bacon, crispy sage, aged white balsamic, early-harvest Campanian extra virgin olive oil.",
+    build: "Roasted pumpkin cream over a Parmigiano scaffold, Fior di Latte and quick-pickled red onions, Gorgonzola Dolce in waves and smoked bacon, finished with crispy sage, aged white balsamic and Campanian EVOO.",
     steps: [
       { title: "1. Dough", sections: [
         { bullets: ["48-hour fermented Neapolitan dough", "63–65% hydration", "260 g dough ball", "Opened to 30–32 cm", "Well-preserved rim gas"] },
@@ -757,15 +1151,15 @@ export const RECIPES: PizzaRecipe[] = [
         { intro: "Effect:", bullets: ["Creates pockets of creamy blue-cheese richness"] },
         { intro: "Key principle:", bullets: ["The Gorgonzola should appear in waves, not dominate every bite"] },
       ] },
-      { title: "7. Smoked Boucané", sections: [
+      { title: "7. Smoked Bacon", sections: [
         { intro: "Preparation:", bullets: ["Pre-cooked and lightly rendered beforehand", "Cut into thin strips or small batons"] },
         { intro: "Placement:", bullets: ["Even distribution", "Avoid clusters"] },
         { intro: "Effect:", bullets: ["Provides smoke, salt and meaty depth"] },
-        { intro: "Key principle:", bullets: ["Think of boucané as seasoning rather than a primary topping"] },
+        { intro: "Key principle:", bullets: ["Think of bacon as seasoning rather than a primary topping"] },
       ] },
       { title: "8. Bake", sections: [
         { bullets: ["🪨 Stone: 390–400°C", "🔥 Air: 440–480°C", "⏱ 70–80 seconds", "Rotate every 15–20 seconds"] },
-        { intro: "Goal:", bullets: ["Pumpkin concentrates", "Mozzarella melts", "Gorgonzola softens", "Boucané crisps lightly", "Cornicione develops leopard spotting"] },
+        { intro: "Goal:", bullets: ["Pumpkin concentrates", "Mozzarella melts", "Gorgonzola softens", "Bacon crisps lightly", "Cornicione develops leopard spotting"] },
       ] },
       { title: "9. Crispy Sage", sections: [
         { intro: "Preparation:", bullets: ["Flash-fried sage leaves", "Crumbled lightly after baking"] },
@@ -786,11 +1180,11 @@ export const RECIPES: PizzaRecipe[] = [
   },
   {
     id: "norcina",
-    number: 20,
+    number: 32,
     name: "Norcina (Acqua e Farina Signature Edition)",
     style: "Pumpkin Base — Porcini & Fennel Sausage",
     category: "pumpkin",
-    image: "https://scontent.flhr9-1.fna.fbcdn.net/v/t39.30808-6/489022469_9789919247725162_7131124196770001929_n.jpg?stp=dst-jpg_tt6&cstp=mx1320x908&ctp=s1320x908&_nc_cat=109&ccb=1-7&_nc_sid=833d8c&_nc_eui2=AeFU96gPF1WD3wqvYnQPTWl-LRaK8v4uu-wtFory_i677Eu1dyEp9h7MOMhlR2UAiR0&_nc_ohc=DLzmqDLt-GYQ7kNvwEcRmps&_nc_oc=AdpRueh3Z0vpIVo3GrxOpb6SX2rUYv9dRn69wlw2Q_Y2guxzztNDN7kBfQVoWoFBgSRwdSrmyZOcs8beqDpe7obP&_nc_zt=23&_nc_ht=scontent.flhr9-1.fna&_nc_gid=MRR_mW27WOsFwOYl3ixrqw&_nc_ss=7b2a8&oh=00_AQIemyR222LWscC7Cr12sNifooijkg1bs4wpjF_c8yZtwQ&oe=6AA79F50",
+    image: "/pizzas/norcina.jpg",
     toppings: "Roasted pumpkin cream, 24–30 month Parmigiano-Reggiano, Fior di Latte mozzarella, pre-sautéed porcini (ceps), fennel sausage meat, crispy sage, aged white balsamic, early-harvest Campanian extra virgin olive oil.",
     build: "Roasted pumpkin cream over a Parmigiano scaffold, Fior di Latte, pre-sautéed porcini and rustic chunks of fennel sausage, finished with crispy sage, aged white balsamic and Campanian EVOO.",
     steps: [
@@ -842,7 +1236,7 @@ export const RECIPES: PizzaRecipe[] = [
   },
   {
     id: "zucca-pancetta",
-    number: 21,
+    number: 33,
     name: "Zucca & Pancetta",
     style: "Pumpkin Base — Simple & Classic",
     category: "pumpkin",
@@ -869,6 +1263,25 @@ export const RECIPES: PizzaRecipe[] = [
       { title: "6. Final Touch", sections: [
         { intro: "At the exit:", bullets: ["Add crispy pancetta", "Add 3–4 large leaves of fresh basil"] },
       ] },
+    ],
+  },
+  {
+    id: "zucca-gorgonzola-noci",
+    number: 34,
+    name: "Zucca, Gorgonzola & Noci",
+    style: "Pumpkin Base — Gorgonzola & Walnuts",
+    category: "pumpkin",
+    image: "https://blog.giallozafferano.it/ricettechepassione/wp-content/uploads/2019/10/pizza-zucca-e-gorgonzola-con-nociv.jpg",
+    toppings: "Roasted pumpkin cream, Fior di Latte mozzarella, Gorgonzola Dolce, toasted walnuts, honey drizzle, fresh sage.",
+    menuIngredients: "Pumpkin, mozzarella, gorgonzola, walnuts, honey",
+    build: "A sweet-and-savory pumpkin pizza that diversifies away from the pork-heavy Sfiziosa/Norcina/Zucca & Pancetta lineup: roasted pumpkin cream and Fior di Latte baked with waves of Gorgonzola Dolce, then finished with toasted walnuts, crispy sage and a light honey drizzle.",
+    postBake: "Scatter toasted walnuts and crispy sage, then finish with a light drizzle of honey.",
+    steps: [
+      { title: "1. Dough", sections: [{ bullets: ["250–280 g dough ball", "Stretch to 30–32 cm"] }] },
+      { title: "2. Pumpkin Base", sections: [{ bullets: ["80 g roasted pumpkin cream, spread evenly", "Leave a clean border for the cornicione"] }] },
+      { title: "3. Cheese", sections: [{ bullets: ["80–90 g Fior di Latte, torn into pieces", "40 g Gorgonzola Dolce, dolloped in small spoonfuls"] }] },
+      { title: "4. Bake", sections: [{ bullets: ["🪨 Stone: 400–430°C", "⏱ Cook time: 70–90 seconds", "🔄 Rotate every 15–20 seconds"] }] },
+      { title: "5. Finish", sections: [{ bullets: ["Scatter toasted walnut pieces and crispy fried sage", "Finish with a light drizzle of honey"] }] },
     ],
   },
 ];

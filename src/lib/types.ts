@@ -58,6 +58,7 @@ export interface PizzaioloTechnique {
 
 export type PizzaRecipeCategory =
   | "classic"
+  | "innovative"
   | "fifty-kalo"
   | "pizzaerium"
   | "calzone-focaccia"

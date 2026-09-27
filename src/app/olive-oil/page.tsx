@@ -13,7 +13,7 @@ const ROWS: Row[] = [
   { pizza: "Napoli",                       style: "Red (Savory)",     region: "Campania",                 profile: "Strong peppery, herbaceous",           whenToUse: "Post-bake finish only" },
   { pizza: "Seven Stars Parma",            style: "White / Gourmet",  region: "Tuscany",                  profile: "Herbal, structured, aromatic",         whenToUse: "Post-bake over ham & rocket" },
   { pizza: "Quattro Formaggi",             style: "White / Gourmet",  region: "Tuscany or Liguria",       profile: "Herbal rich or soft buttery",          whenToUse: "Post-bake after baking" },
-  { pizza: "Bufala e Fiocco",              style: "White Premium",    region: "Liguria",                  profile: "Light, delicate, clean",               whenToUse: "Very light post-bake only" },
+  { pizza: "Bufala e Iberico",             style: "White Premium",    region: "Liguria",                  profile: "Light, delicate, clean",               whenToUse: "Very light post-bake only" },
   { pizza: "Bianca Prosciutto e Funghi",   style: "White Mushroom",   region: "Tuscany",                  profile: "Earthy, aromatic",                     whenToUse: "Post-bake finish" },
   { pizza: "Del Monaco DOP",               style: "Red Premium",      region: "Campania (intense blend)", profile: "Strong, bold, structured",             whenToUse: "Light post-bake finish" },
   { pizza: "Il Mascalzone Calzone",        style: "Stuffed / Heavy",  region: "Puglia blend",             profile: "Rounded, mild fruitiness",             whenToUse: "Light pre-bake or post-bake" },
