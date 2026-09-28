@@ -3,7 +3,7 @@ import type { PizzaRecipe, PizzaRecipeCategory } from "./types";
 export const RECIPE_CATEGORIES: { id: PizzaRecipeCategory; label: string; blurb: string }[] = [
   { id: "classic", label: "Classic", blurb: "Margherita, Bufalina, Marinara, Cosacca, Napolitan, Diavola, Parma, Parma Bianca, Prosciutto e Funghi, Capricciosa, Quattro Formaggi, Ortolana." },
   { id: "calzone-focaccia", label: "Calzone & Focaccia", blurb: "Folded and stuffed specialties — Ripieno (Calzone)." },
-  { id: "innovative", label: "Innovative", blurb: "Modern and rustic twists on Italian tradition — Bufala e Iberico, Double Pepperoni & Hot Honey, Chorizo, Tettoia — Four Cheese & Truffle, Cacio e Pepe, Carbonara, Amatriciana, Gricia, 'Nduja & Hot Honey, Calabrese, Pesto & Burrata, Mortadella and Pistachio, La Oro Verde, Boscaiola." },
+  { id: "innovative", label: "Innovative", blurb: "Modern and rustic twists on Italian tradition — Cetarese, Bufala e Iberico, Double Pepperoni & Hot Honey, Chorizo, Tettoia — Four Cheese & Truffle, Cacio e Pepe, Carbonara, Amatriciana, Gricia, 'Nduja & Hot Honey, Calabrese, Pesto & Burrata, Mortadella and Pistachio, La Oro Verde, Boscaiola." },
   { id: "pumpkin", label: "Pumpkin Base", blurb: "Replace tomato with smooth roasted pumpkin cream — Sfiziosa, Sfiziosa Signature, Mantovana, Norcina, Zucca & Pancetta, Zucca, Gorgonzola & Noci." },
 ];
 
@@ -944,6 +944,41 @@ export const RECIPES: PizzaRecipe[] = [
       ] },
       { title: "6. Finish", sections: [
         { bullets: ["Finish with fresh thyme or a tiny swirl of raw EVOO right out of the oven"] },
+      ] },
+    ],
+  },
+  {
+    id: "cetarese",
+    number: 35,
+    name: "Cetarese",
+    style: "Pizza di Cetara — Amalfi Coast, Post-Bake Anchovy",
+    category: "innovative",
+    image: "https://lnx.spaghettitaliani.com/si/wp-content/uploads/2022/02/Pizza-Cetarese.jpg",
+    toppings: "Sweet red or yellow cherry tomatoes (Piennolo del Vesuvio or Corbara — UK sub: Piccolo/Santini cherry tomatoes or Finest/Extra Special San Marzano), fiordilatte or a dollop of fresh stracciatella, desalted capers, black or crushed green olives, garlic, wild oregano, extra virgin olive oil; finished post-bake with whole Alici di Cetara (salted cured anchovies) and, if available, a few drops of colatura di alici.",
+    menuIngredients: "Cherry tomatoes, fiordilatte or stracciatella, capers, olives, garlic, oregano, Alici di Cetara anchovies (post-bake)",
+    build: "Pizza Cetarese (or Pizza di Cetara) pays homage to Cetara, a small fishing village on the Amalfi Coast famous for its anchovies and colatura di alici. It shifts the classic Neapolitan focus onto bold, salty seafood accents — Cetara's anchovies and colatura, capers, and olives — balanced against sweet cherry tomatoes, with cheese kept light or optional. The critical technical rule is adding the anchovies POST-BAKE: high-grade salted anchovies contain delicate oils that dry out, turn bitter, and release harsh saltiness if exposed to a 480°C flame.",
+    postBake: "As soon as the pizza comes out of the oven, drape the delicate Alici di Cetara fillets whole across the top. The ambient heat from the hot cheese will soften the anchovy fillets, releasing their rich, savory umami into the crust without cooking away their sweetness. Finish with a drizzle of extra virgin olive oil and, if available, a few drops of colatura di alici.",
+    videoGuide: "Post-Bake Anchovy Placement — Alici di Cetara",
+    steps: [
+      { title: "1. Ingredients & Proportions (Per 250g–280g Dough Ball)", sections: [
+        { intro: "Pre-Bake Toppings:", bullets: ["70g sweet red or yellow cherry tomato fillets (Piennolo/Corbara, or UK-sourced Piccolo/Santini cherry tomatoes/Finest San Marzano)", "60g–70g Fiordilatte (cubed and well-drained) or a dollop of fresh stracciatella", "15g capers (salted, thoroughly rinsed and desalted)", "30g black or crushed green olives (pitted and halved)", "1 tsp wild dried oregano", "1 clove garlic (sliced razor-thin, optional)", "Extra virgin olive oil"] },
+        { intro: "Post-Bake Finish:", bullets: ["6–8 whole fillets of Alici di Cetara (salted cured anchovies)", "Extra virgin olive oil", "A few drops of colatura di alici (optional, if available)"] },
+      ] },
+      { title: "2. Desalt & Prep", sections: [
+        { intro: "Capers:", bullets: ["Soak the salted capers in warm water for 20 minutes to draw out excess salt", "Pat dry thoroughly on paper towels"] },
+        { intro: "Cheese:", bullets: ["Cut fiordilatte into strips 1–2 hours in advance and strain out excess moisture, or keep stracciatella chilled until the pizza comes out of the oven"] },
+      ] },
+      { title: "3. Stretch the Dough", sections: [
+        { bullets: ["Stretch your dough disc on semolina rimacinata", "Preserve a high, airy cornicione"] },
+      ] },
+      { title: "4. Pre-Bake Assembly", sections: [
+        { bullets: ["Scatter the sweet cherry tomato fillets in a light layer over the base", "If using fiordilatte, scatter the drained cheese across the tomatoes now; if using stracciatella, add it after the bake instead", "Distribute the desalted capers, halved olives, thin garlic slices, and a generous pinch of wild oregano", "Drizzle with a spiral of extra virgin olive oil"] },
+      ] },
+      { title: "5. Bake (450°C–480°C)", sections: [
+        { bullets: ["Launch and bake for 60–90 seconds, rotating every 15–20 seconds", "The intense heat blisters the tomatoes, melts the fiordilatte, and toasts the oregano and capers into a fragrant topping"] },
+      ] },
+      { title: "6. Post-Bake Anchovy Finish", sections: [
+        { bullets: ["As soon as the pizza comes out of the oven, drape the whole Alici di Cetara fillets across the top", "If using stracciatella instead of fiordilatte, spoon it on now alongside the anchovies", "The ambient heat will soften the anchovy fillets, releasing their umami without cooking away their sweetness", "Finish with a drizzle of raw EVOO and, if available, a few drops of colatura di alici"] },
       ] },
     ],
   },
