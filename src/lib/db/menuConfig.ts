@@ -12,6 +12,8 @@ export interface GabriellosMenuItem {
   price: number;
   image?: string;
   available: boolean;
+  /** Independent from `available` — controls visibility on the catering site/menu, not online ordering or the tablet menu. */
+  cateringAvailable: boolean;
 }
 
 interface MenuDoc {
@@ -24,6 +26,7 @@ interface MenuDoc {
   price: number;
   image?: string;
   available: boolean;
+  cateringAvailable?: boolean;
   updatedAt: Date;
 }
 
@@ -38,6 +41,7 @@ function toGabriellosMenuItem(doc: MenuDoc): GabriellosMenuItem {
     price: doc.price,
     image: doc.image,
     available: doc.available,
+    cateringAvailable: doc.cateringAvailable ?? false,
   };
 }
 

@@ -21,6 +21,7 @@ const NAV = [
   { href: "/preferments", label: "🧫 Preferments", short: "Pref." },
   { href: "/yeast", label: "🔬 Yeast", short: "Yeast" },
   { href: "/gabriellos", label: "🍽️ Gabriellos Menu", short: "Gabriellos" },
+  { href: "/gabriellos/catering", label: "🎉 Catering Menu", short: "Catering" },
 ];
 
 export function AppShell({ children }: { children: React.ReactNode }) {

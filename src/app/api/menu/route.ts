@@ -23,6 +23,7 @@ function isValidItem(item: unknown): item is GabriellosMenuItem {
     typeof i.price === "number" &&
     Number.isFinite(i.price) &&
     typeof i.available === "boolean" &&
+    typeof i.cateringAvailable === "boolean" &&
     (i.style === undefined || typeof i.style === "string") &&
     (i.image === undefined || typeof i.image === "string")
   );

@@ -10,10 +10,10 @@ export default auth((req) => {
   if (process.env.DISABLE_AUTH === "true") return NextResponse.next();
   if (req.nextUrl.pathname === "/gabriellos/login") return NextResponse.next();
   if (req.auth) return NextResponse.next();
-  if (req.nextUrl.pathname.startsWith("/api/menu")) {
+  if (req.nextUrl.pathname.startsWith("/api/menu") || req.nextUrl.pathname.startsWith("/api/settings")) {
     return NextResponse.json({ error: "unauthorized" }, { status: 401 });
   }
   return NextResponse.redirect(new URL("/gabriellos/login", req.url));
 });
 
-export const config = { matcher: ["/gabriellos/:path*", "/api/menu/:path*"] };
+export const config = { matcher: ["/gabriellos/:path*", "/api/menu/:path*", "/api/settings/:path*"] };

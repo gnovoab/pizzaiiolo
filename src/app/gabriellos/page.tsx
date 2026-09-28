@@ -26,6 +26,46 @@ export default function GabriellosAdminPage() {
   const [status, setStatus] = useState<"idle" | "loading" | "saving" | "saved" | "error">("loading");
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
+  const [showPrices, setShowPrices] = useState(true);
+  const [settingsStatus, setSettingsStatus] = useState<"idle" | "loading" | "saving" | "saved" | "error">("loading");
+  const [settingsError, setSettingsError] = useState<string | null>(null);
+
+  useEffect(() => {
+    fetch("/api/settings")
+      .then((r) => {
+        if (!r.ok) throw new Error(`Failed to load settings (${r.status})`);
+        return r.json() as Promise<{ showPrices: boolean }>;
+      })
+      .then((s) => {
+        setShowPrices(s.showPrices);
+        setSettingsStatus("idle");
+      })
+      .catch((e) => {
+        setSettingsError(e instanceof Error ? e.message : "Could not load settings.");
+        setSettingsStatus("error");
+      });
+  }, []);
+
+  async function handleSaveSettings() {
+    setSettingsStatus("saving");
+    setSettingsError(null);
+    try {
+      const res = await fetch("/api/settings", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ showPrices }),
+      });
+      if (!res.ok) {
+        const body = await res.json().catch(() => ({}) as { error?: string });
+        throw new Error(body.error ?? `Save failed (${res.status})`);
+      }
+      setSettingsStatus("saved");
+    } catch (e) {
+      setSettingsError(e instanceof Error ? e.message : "Could not save settings.");
+      setSettingsStatus("error");
+    }
+  }
+
   useEffect(() => {
     fetch("/api/menu")
       .then((r) => {
@@ -50,6 +90,7 @@ export default function GabriellosAdminPage() {
               category: existing?.category ?? guessCategory(r.category),
               price: existing?.price ?? 0,
               available: existing?.available ?? false,
+              cateringAvailable: existing?.cateringAvailable ?? false,
               description: existing?.description ?? r.menuIngredients ?? r.toppings,
             };
           })
@@ -101,6 +142,7 @@ export default function GabriellosAdminPage() {
         price: r.price,
         image: r.image,
         available: r.available,
+        cateringAvailable: r.cateringAvailable,
       }));
       const res = await fetch("/api/menu", {
         method: "POST",
@@ -136,6 +178,32 @@ export default function GabriellosAdminPage() {
         >
           Sign out
         </button>
+      </div>
+
+      <div className="flex flex-wrap items-center gap-4 rounded-lg border border-border bg-card px-4 py-3">
+        <label className="flex items-center gap-2 text-sm font-medium">
+          <input
+            type="checkbox"
+            checked={showPrices}
+            disabled={settingsStatus === "loading"}
+            onChange={(e) => setShowPrices(e.target.checked)}
+          />
+          Show prices on tablet &amp; catering displays
+        </label>
+        <button
+          onClick={handleSaveSettings}
+          disabled={settingsStatus === "loading" || settingsStatus === "saving"}
+          className="rounded-full bg-secondary text-secondary-foreground text-sm font-semibold px-4 py-1.5 hover:brightness-110 active:scale-[0.99] transition disabled:opacity-50"
+        >
+          {settingsStatus === "saving" ? "Saving…" : "Save"}
+        </button>
+        {settingsStatus === "saved" && <span className="text-sm text-green-700">Saved.</span>}
+        {settingsStatus === "error" && settingsError && (
+          <span className="text-sm text-destructive">{settingsError}</span>
+        )}
+        <span className="text-xs text-muted-foreground basis-full">
+          Online ordering always shows prices regardless of this setting.
+        </span>
       </div>
 
       {status === "loading" && <p className="text-sm text-muted-foreground">Loading menu…</p>}

@@ -3,7 +3,7 @@ import type { PizzaRecipe, PizzaRecipeCategory } from "./types";
 export const RECIPE_CATEGORIES: { id: PizzaRecipeCategory; label: string; blurb: string }[] = [
   { id: "classic", label: "Classic", blurb: "Margherita, Bufalina, Marinara, Cosacca, Napolitan, Diavola, Parma, Parma Bianca, Prosciutto e Funghi, Capricciosa, Quattro Formaggi, Ortolana." },
   { id: "calzone-focaccia", label: "Calzone & Focaccia", blurb: "Folded and stuffed specialties — Ripieno (Calzone)." },
-  { id: "innovative", label: "Innovative", blurb: "Modern and rustic twists on Italian tradition — Cetarese, Bufala e Iberico, Double Pepperoni & Hot Honey, Chorizo, Tettoia — Four Cheese & Truffle, Cacio e Pepe, Carbonara, Amatriciana, Gricia, 'Nduja & Hot Honey, Calabrese, Pesto & Burrata, Mortadella and Pistachio, La Oro Verde, Boscaiola." },
+  { id: "innovative", label: "Innovative", blurb: "Modern and rustic twists on Italian tradition — Cetarese, Bufala e Iberico, Double Pepperoni & Hot Honey, Chorizo, Tettoia — Four Cheese & Truffle, Cacio e Pepe, Carbonara, Amatriciana, Gricia, 'Nduja & Hot Honey, Calabrese, Pesto & Burrata, Mortadella and Pistachio, Boscaiola, Cetarese, La Oro Verde." },
   { id: "pumpkin", label: "Pumpkin Base", blurb: "Replace tomato with smooth roasted pumpkin cream — Sfiziosa, Sfiziosa Signature, Mantovana, Norcina, Zucca & Pancetta, Zucca, Gorgonzola & Noci." },
 ];
 
@@ -879,44 +879,8 @@ export const RECIPES: PizzaRecipe[] = [
     ],
   },
   {
-    id: "la-oro-verde",
-    number: 26,
-    name: "La Oro Verde",
-    style: "White Pizza — Mortadella, Stracciatella & Pistachio Pesto",
-    category: "innovative",
-    image: "https://assets.tmecosys.com/image/upload/t_web_rdp_recipe_584x480_1_5x/img/recipe/ras/Assets/a211bd6f00b7a30664e5d05480027f27/Derivates/01948b21d82cfcb00473494c5780e3b3e3d00e52.jpg",
-    toppings: "Fior di Latte mozzarella, extra virgin olive oil, thinly sliced artisanal Mortadella, fresh cold Stracciatella di Burrata, Pistachio Pesto (Pesto di Pistacchio), granella di pistacchio, fresh basil leaves.",
-    menuIngredients: "Mozzarella, mortadella, stracciatella, pistachio pesto, basil",
-    build: "A hot, crispy white pizza base cooked with Fior di Latte, topped post-bake with warm ribbons of artisanal mortadella, cold creamy stracciatella di burrata, generous pistachio pesto, crunchy pistachio granella, and fresh basil.",
-    postBake: "Drape the mortadella in loose ribbon-like folds over the hot melted cheese, spoon dollops of cold stracciatella across and between the folds, drizzle generously with pistachio pesto, then finish with crushed granella di pistacchio, fresh basil leaves, and a final light swirl of raw extra virgin olive oil.",
-    steps: [
-      { title: "1. Toppings & Proportions (Per 250g–280g Dough Ball)", sections: [
-        { intro: "Pre-Bake (Base):", bullets: ["60g–70g Fior di Latte Mozzarella (cubed and well-drained)", "Extra Virgin Olive Oil (light drizzle)"] },
-        { intro: "Post-Bake (The Fresh Layering):", bullets: ["60g–70g Mortadella (thinly sliced, artisanal)", "60g–70g Stracciatella di Burrata (fresh, cold)", "3–4 tbsp Pistachio Pesto (Pesto di Pistacchio)", "15g Granella di Pistacchio (coarsely crushed pistachios)", "Fresh Basil Leaves", "Extra Virgin Olive Oil"] },
-      ] },
-      { title: "2. Fire Up the Gozney", sections: [
-        { bullets: ["Pre-heat your oven until the stone floor hits 450°C–480°C (840°F–900°F)", "Lower the flame slightly right before launching to protect the top of the crust"] },
-      ] },
-      { title: "3. Stretch the Dough", sections: [
-        { bullets: ["Stretch your dough disc on semolina rimacinata, keeping a soft, elevated cornicione"] },
-      ] },
-      { title: "4. Pre-Bake Assembly", sections: [
-        { bullets: ["Scatter the Fior di Latte evenly across the bare dough", "Add a very light swirl of Extra Virgin Olive Oil"] },
-      ] },
-      { title: "5. Bake (60–90 Seconds)", sections: [
-        { bullets: ["Launch into your Gozney and rotate every 15–20 seconds", "Cook until the base is crisp, the fior di latte is completely melted, and the crust has signature leopard spots"] },
-      ] },
-      { title: "6. Post-Bake Finishing (Layering Steps)", sections: [
-        { intro: "1. Mortadella:", bullets: ["As soon as the pizza leaves the oven, drape the thin slices of Mortadella over the melted fior di latte in loose, ribbon-like folds (a rose)", "The heat from the crust will warm the meat and render its delicate fats"] },
-        { intro: "2. Stracciatella:", bullets: ["Spoon dollops of cold Stracciatella across and between the mortadella folds"] },
-        { intro: "3. Pistachio Pesto:", bullets: ["Drizzle the Pistachio Pesto generously over the stracciatella and mortadella"] },
-        { intro: "4. Crunch & Garnish:", bullets: ["Finish with a heavy dusting of crushed Granella di Pistacchio, fresh basil leaves, and a final light swirl of raw Extra Virgin Olive Oil"] },
-      ] },
-    ],
-  },
-  {
     id: "boscaiola",
-    number: 27,
+    number: 26,
     name: "Boscaiola",
     style: "Forester's Pizza — Sausage & Mushroom, Pizza Bianca",
     category: "innovative",
@@ -949,7 +913,7 @@ export const RECIPES: PizzaRecipe[] = [
   },
   {
     id: "cetarese",
-    number: 35,
+    number: 27,
     name: "Cetarese",
     style: "Pizza di Cetara — Amalfi Coast, Post-Bake Anchovy",
     category: "innovative",
@@ -979,6 +943,42 @@ export const RECIPES: PizzaRecipe[] = [
       ] },
       { title: "6. Post-Bake Anchovy Finish", sections: [
         { bullets: ["As soon as the pizza comes out of the oven, drape the whole Alici di Cetara fillets across the top", "If using stracciatella instead of fiordilatte, spoon it on now alongside the anchovies", "The ambient heat will soften the anchovy fillets, releasing their umami without cooking away their sweetness", "Finish with a drizzle of raw EVOO and, if available, a few drops of colatura di alici"] },
+      ] },
+    ],
+  },
+  {
+    id: "la-oro-verde",
+    number: 35,
+    name: "La Oro Verde",
+    style: "White Pizza — Mortadella, Stracciatella & Pistachio Pesto",
+    category: "innovative",
+    image: "https://assets.tmecosys.com/image/upload/t_web_rdp_recipe_584x480_1_5x/img/recipe/ras/Assets/a211bd6f00b7a30664e5d05480027f27/Derivates/01948b21d82cfcb00473494c5780e3b3e3d00e52.jpg",
+    toppings: "Fior di Latte mozzarella, extra virgin olive oil, thinly sliced artisanal Mortadella, fresh cold Stracciatella di Burrata, Pistachio Pesto (Pesto di Pistacchio), granella di pistacchio, fresh basil leaves.",
+    menuIngredients: "Mozzarella, mortadella, stracciatella, pistachio pesto, basil",
+    build: "A hot, crispy white pizza base cooked with Fior di Latte, topped post-bake with warm ribbons of artisanal mortadella, cold creamy stracciatella di burrata, generous pistachio pesto, crunchy pistachio granella, and fresh basil.",
+    postBake: "Drape the mortadella in loose ribbon-like folds over the hot melted cheese, spoon dollops of cold stracciatella across and between the folds, drizzle generously with pistachio pesto, then finish with crushed granella di pistacchio, fresh basil leaves, and a final light swirl of raw extra virgin olive oil.",
+    steps: [
+      { title: "1. Toppings & Proportions (Per 250g–280g Dough Ball)", sections: [
+        { intro: "Pre-Bake (Base):", bullets: ["60g–70g Fior di Latte Mozzarella (cubed and well-drained)", "Extra Virgin Olive Oil (light drizzle)"] },
+        { intro: "Post-Bake (The Fresh Layering):", bullets: ["60g–70g Mortadella (thinly sliced, artisanal)", "60g–70g Stracciatella di Burrata (fresh, cold)", "3–4 tbsp Pistachio Pesto (Pesto di Pistacchio)", "15g Granella di Pistacchio (coarsely crushed pistachios)", "Fresh Basil Leaves", "Extra Virgin Olive Oil"] },
+      ] },
+      { title: "2. Fire Up the Gozney", sections: [
+        { bullets: ["Pre-heat your oven until the stone floor hits 450°C–480°C (840°F–900°F)", "Lower the flame slightly right before launching to protect the top of the crust"] },
+      ] },
+      { title: "3. Stretch the Dough", sections: [
+        { bullets: ["Stretch your dough disc on semolina rimacinata, keeping a soft, elevated cornicione"] },
+      ] },
+      { title: "4. Pre-Bake Assembly", sections: [
+        { bullets: ["Scatter the Fior di Latte evenly across the bare dough", "Add a very light swirl of Extra Virgin Olive Oil"] },
+      ] },
+      { title: "5. Bake (60–90 Seconds)", sections: [
+        { bullets: ["Launch into your Gozney and rotate every 15–20 seconds", "Cook until the base is crisp, the fior di latte is completely melted, and the crust has signature leopard spots"] },
+      ] },
+      { title: "6. Post-Bake Finishing (Layering Steps)", sections: [
+        { intro: "1. Mortadella:", bullets: ["As soon as the pizza leaves the oven, drape the thin slices of Mortadella over the melted fior di latte in loose, ribbon-like folds (a rose)", "The heat from the crust will warm the meat and render its delicate fats"] },
+        { intro: "2. Stracciatella:", bullets: ["Spoon dollops of cold Stracciatella across and between the mortadella folds"] },
+        { intro: "3. Pistachio Pesto:", bullets: ["Drizzle the Pistachio Pesto generously over the stracciatella and mortadella"] },
+        { intro: "4. Crunch & Garnish:", bullets: ["Finish with a heavy dusting of crushed Granella di Pistacchio, fresh basil leaves, and a final light swirl of raw Extra Virgin Olive Oil"] },
       ] },
     ],
   },
