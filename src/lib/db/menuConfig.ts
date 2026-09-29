@@ -1,6 +1,6 @@
 import clientPromise from "./mongo";
 
-export type MenuCategory = "classic" | "innovative" | "calzone-focaccia" | "specials";
+export type MenuCategory = "classic" | "innovative" | "le-nostre" | "calzone-focaccia" | "specials";
 
 export interface GabriellosMenuItem {
   id: string;

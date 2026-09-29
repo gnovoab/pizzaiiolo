@@ -6,7 +6,7 @@ import { getMenuConfig, saveMenuConfig, type GabriellosMenuItem } from "@/lib/db
 // that would otherwise fail if MONGODB_URI isn't set at build time.
 export const dynamic = "force-dynamic";
 
-const CATEGORIES = new Set(["classic", "innovative", "calzone-focaccia", "specials"]);
+const CATEGORIES = new Set(["classic", "innovative", "le-nostre", "calzone-focaccia", "specials"]);
 
 function isValidItem(item: unknown): item is GabriellosMenuItem {
   if (typeof item !== "object" || item === null) return false;

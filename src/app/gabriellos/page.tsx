@@ -11,6 +11,7 @@ type Row = GabriellosMenuItem;
 const CATEGORY_OPTIONS: { id: MenuCategory; label: string }[] = [
   { id: "classic", label: "Classic" },
   { id: "innovative", label: "Innovative" },
+  { id: "le-nostre", label: "Le Nostre" },
   { id: "calzone-focaccia", label: "Calzone & Focaccia" },
   { id: "specials", label: "Limited Time Only" },
 ];
@@ -19,6 +20,35 @@ function guessCategory(c: PizzaRecipeCategory): MenuCategory {
   if (c === "calzone-focaccia") return "calzone-focaccia";
   if (c === "innovative") return "innovative";
   return "classic"; // classic + pumpkin default to classic until owner reassigns
+}
+
+// `number` is the single global ordering key (drives both the admin list and
+// the public menu/catering display). To keep it meaningful, it must always
+// form contiguous per-category blocks in `CATEGORY_OPTIONS` order — Classic,
+// then Innovative, then Calzone & Focaccia, then Limited Time Only — with the
+// existing relative order preserved inside each category. Call this after
+// any change that can affect category membership (e.g. moving an item to a
+// different section) so numbers stay consistent; `justMovedId`, if given, is
+// placed last within its (new) category instead of keeping its old rank.
+function renumberByCategory(list: Row[], justMovedId?: string): Row[] {
+  const newNumberById = new Map<string, number>();
+  let counter = 1;
+  for (const cat of CATEGORY_OPTIONS) {
+    const items = list
+      .filter((r) => r.category === cat.id)
+      .sort((a, b) => {
+        if (justMovedId) {
+          if (a.id === justMovedId) return 1;
+          if (b.id === justMovedId) return -1;
+        }
+        return a.number - b.number;
+      });
+    for (const item of items) {
+      newNumberById.set(item.id, counter);
+      counter++;
+    }
+  }
+  return list.map((r) => ({ ...r, number: newNumberById.get(r.id) ?? r.number }));
 }
 
 export default function GabriellosAdminPage() {
@@ -74,27 +104,29 @@ export default function GabriellosAdminPage() {
       })
       .then((remote) => {
         const byId = new Map(remote.map((r) => [r.id, r]));
-        setRows(
-          RECIPES.map((r) => {
-            const existing = byId.get(r.id);
-            // RECIPES values are only fallback defaults for items never saved
-            // to Mongo yet — once an item has been saved, its Mongo values
-            // (including any admin-edited name/style/description/number)
-            // always win.
-            return {
-              id: r.id,
-              number: existing?.number ?? r.number,
-              name: existing?.name ?? r.name,
-              style: existing?.style ?? r.style,
-              image: existing?.image ?? r.image,
-              category: existing?.category ?? guessCategory(r.category),
-              price: existing?.price ?? 0,
-              available: existing?.available ?? false,
-              cateringAvailable: existing?.cateringAvailable ?? false,
-              description: existing?.description ?? r.menuIngredients ?? r.toppings,
-            };
-          })
-        );
+        const merged = RECIPES.map((r) => {
+          const existing = byId.get(r.id);
+          // RECIPES values are only fallback defaults for items never saved
+          // to Mongo yet — once an item has been saved, its Mongo values
+          // (including any admin-edited name/style/description/number)
+          // always win.
+          return {
+            id: r.id,
+            number: existing?.number ?? r.number,
+            name: existing?.name ?? r.name,
+            style: existing?.style ?? r.style,
+            image: existing?.image ?? r.image,
+            category: existing?.category ?? guessCategory(r.category),
+            price: existing?.price ?? 0,
+            available: existing?.available ?? false,
+            cateringAvailable: existing?.cateringAvailable ?? false,
+            description: existing?.description ?? r.menuIngredients ?? r.toppings,
+          };
+        });
+        // Normalize numbers to contiguous per-category blocks (Classic →
+        // Innovative → Calzone & Focaccia → Limited Time Only), preserving
+        // each item's existing relative order within its category.
+        setRows(renumberByCategory(merged));
         setStatus("idle");
       })
       .catch((e) => {
@@ -105,6 +137,17 @@ export default function GabriellosAdminPage() {
 
   function updateRow(id: string, patch: Partial<Row>) {
     setRows((prev) => prev.map((r) => (r.id === id ? { ...r, ...patch } : r)));
+  }
+
+  // Moving an item to a different section: it should adopt the numbering of
+  // its new section (placed last within it), and every item's number is
+  // recomputed so the whole list stays a clean, contiguous, category-ordered
+  // sequence (no leftover gaps or out-of-place numbers from its old section).
+  function handleCategoryChange(id: string, newCategory: MenuCategory) {
+    setRows((prev) => {
+      const withNewCategory = prev.map((r) => (r.id === id ? { ...r, category: newCategory } : r));
+      return renumberByCategory(withNewCategory, id);
+    });
   }
 
   // Reorder within a category by swapping `number` with the adjacent item
@@ -293,7 +336,7 @@ export default function GabriellosAdminPage() {
 
                     <select
                       value={r.category}
-                      onChange={(e) => updateRow(r.id, { category: e.target.value as MenuCategory })}
+                      onChange={(e) => handleCategoryChange(r.id, e.target.value as MenuCategory)}
                       className="rounded border border-border px-2 py-1 text-sm mt-1.5"
                     >
                       {CATEGORY_OPTIONS.map((c) => (

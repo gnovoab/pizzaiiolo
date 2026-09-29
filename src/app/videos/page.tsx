@@ -68,6 +68,15 @@ const VIDEOS: VideoEntry[] = [
   { title: "Pesto Pizza",                      category: "Cooking Pizzas", url: "https://www.youtube.com/shorts/lGcfuySUayI" },
   { title: "Mortadella, Stracciatella, Pistachios", category: "Cooking Pizzas", url: "https://www.youtube.com/shorts/6fwb1Rck6Jg" },
   { title: "Cacio e Pepe",                     category: "Cooking Pizzas", url: "https://www.youtube.com/shorts/q8AwTWUlu8s" },
+  { title: "Cosacca",                          category: "Cooking Pizzas", url: "https://www.youtube.com/shorts/ZI231wvnZtA" },
+  { title: "Carbonara",                        category: "Cooking Pizzas", url: "https://www.youtube.com/watch?v=WzK_OfiHnpg" },
+  { title: "Napolitan (Anchovies)",            category: "Cooking Pizzas", url: "https://www.youtube.com/shorts/sekbRulg8iA" },
+  { title: "Cetarese",                         category: "Cooking Pizzas", url: "https://www.youtube.com/shorts/NTx-rgtDH14" },
+  { title: "Marinara",                         category: "Cooking Pizzas", url: "https://www.youtube.com/shorts/SsJtUw2jnV4" },
+  { title: "Campagnola",                       category: "Cooking Pizzas", url: "https://www.youtube.com/shorts/rVVF0TIPtFc" },
+  { title: "Margherita Macchiata",             category: "Cooking Pizzas", url: "https://www.youtube.com/shorts/os-6iufgy9E" },
+  { title: "Quattro Latte e 'Nduja",           category: "Cooking Pizzas", url: "https://www.youtube.com/shorts/TkejTs74130" },
+  { title: "Marinara Gialla",                  category: "Cooking Pizzas", url: "https://www.youtube.com/shorts/pFQqAXboCeY" },
 
   { title: "Dealing with high-hydration bulk dough", category: "Dough",     url: "https://www.youtube.com/watch?v=bWN9mxR_iXI" },
 ];

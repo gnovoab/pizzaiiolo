@@ -2,7 +2,7 @@ import { RECIPES } from "@/lib/recipes";
 import type { PizzaRecipe } from "@/lib/types";
 
 export default function MenuPage() {
-  const pizzas = RECIPES.filter((r) => r.category !== "pumpkin").sort((a, b) => a.number - b.number);
+  const pizzas = [...RECIPES].sort((a, b) => a.number - b.number);
 
   return (
     <div className="space-y-8">

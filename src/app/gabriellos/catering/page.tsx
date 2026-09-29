@@ -7,6 +7,7 @@ import type { GabriellosMenuItem, MenuCategory } from "@/lib/db/menuConfig";
 const CATEGORY_OPTIONS: { id: MenuCategory; label: string }[] = [
   { id: "classic", label: "Classic" },
   { id: "innovative", label: "Innovative" },
+  { id: "le-nostre", label: "Le Nostre" },
   { id: "calzone-focaccia", label: "Calzone & Focaccia" },
   { id: "specials", label: "Limited Time Only" },
 ];
