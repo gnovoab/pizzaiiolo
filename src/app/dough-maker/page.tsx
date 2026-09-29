@@ -8,7 +8,7 @@ export default function DoughMakerPage() {
         <p className="text-[11px] uppercase tracking-[0.4em] text-secondary font-medium">L&apos;Impasto</p>
         <h1 className="font-serif text-4xl sm:text-5xl font-semibold mt-3 text-foreground">Dough Maker</h1>
         <p className="text-muted-foreground text-base mt-3 max-w-xl mx-auto italic">
-          Neapolitan, Deep Dish, Detroit-Style, NY, Roman &amp; Sicilian doughs from your bread machine — 500 g flour, Panasonic SD-ZX2522KXG.
+          Neapolitan, Deep Dish, Detroit-Style, NY, Roman &amp; Sicilian doughs from your bread machine — 500 g flour (Caputo 00 &amp; Nuvola), Panasonic SD-ZX2522KXG.
         </p>
       </div>
 
@@ -16,9 +16,10 @@ export default function DoughMakerPage() {
         <CardHeader className="pb-3 border-b border-border/60">
           <CardTitle className="font-serif text-xl">Equipment</CardTitle>
         </CardHeader>
-        <CardContent className="pt-4 grid sm:grid-cols-3 gap-3">
+        <CardContent className="pt-4 grid sm:grid-cols-4 gap-3">
           <EquipmentItem icon="🍞" name="Panasonic SD-ZX2522KXG" detail="Bread machine" />
           <EquipmentItem icon="🌾" name="Caputo Pizzeria 00" detail="Flour" />
+          <EquipmentItem icon="☁️" name="Caputo Nuvola" detail="Flour" />
           <EquipmentItem icon="🔥" name="Gozney Arc" detail="Gas pizza oven" />
         </CardContent>
       </Card>
@@ -26,6 +27,8 @@ export default function DoughMakerPage() {
       <Tabs defaultValue="neapolitan">
         <TabsList>
           <TabsTrigger value="neapolitan">🇮🇹 Neapolitan Pizza</TabsTrigger>
+          <TabsTrigger value="neapolitan2">🇮🇹 Napolitan 2.0</TabsTrigger>
+          <TabsTrigger value="poolish">🫧 Poolish</TabsTrigger>
           <TabsTrigger value="roman">🇮🇹 Roman Thin Pizza</TabsTrigger>
           <TabsTrigger value="sicilian">🇮🇹 Sicilian-Style Pizza</TabsTrigger>
           <TabsTrigger value="ny">🇺🇸 NY Pizza</TabsTrigger>
@@ -129,6 +132,280 @@ export default function DoughMakerPage() {
                 </li>
               ))}
             </ul>
+          </Section>
+        </TabsContent>
+
+        <TabsContent value="neapolitan2" className="space-y-6 mt-4">
+          <p className="text-[15px] text-muted-foreground italic border-l-2 border-primary/30 pl-3 leading-relaxed">
+            <HighlightNumbers text="Eric Ayala's updated 2-stage pizza dough recipe, scaled for the Panasonic SD-ZX2522KXG at 500 g total flour. Because this process relies on long, cool fermentations instead of heat, the Panasonic is used solely for mixing and kneading, rather than letting it run the full heated program." />
+          </p>
+
+          <Section number={1} title="Ingredients" subtitle="500 g total flour">
+            <Bullets items={[
+              "250 g Caputo Nuvola Flour — gives the airy, high-volume cornicione (rim)",
+              "250 g Caputo Pizzeria 00 Flour — provides traditional texture and strength",
+              "320 g cool tap water — ~64% hydration for a soft, light dough",
+              "12 g fine sea salt — ~2.4% salt",
+              "~0.15 g Caputo dry yeast — a tiny speck (approx. 1/16 tsp)",
+              "Caputo Semolina Rimacinata, as needed — for dusting the work surface when shaping",
+            ]} />
+          </Section>
+
+          <Section number={2} title="Mixing in the Panasonic" subtitle="10–12 minutes">
+            <ol className="space-y-1.5">
+              {[
+                "Pour the 320 g cool tap water into the pan",
+                "Add the tiny speck (~0.15 g) of Caputo dry yeast into the water",
+                "Add the 250 g Caputo Nuvola, 250 g Caputo Pizzeria, and 12 g salt on top",
+                "Select Program 28 (Pizza Dough) and press Start",
+                "Let the machine knead for 10 to 12 minutes until the dough comes together into a smooth ball",
+                "Stop & Cancel the program manually before the machine starts its warming or proving cycle — do not let the machine heat the dough",
+              ].map((t, i) => (
+                <li key={t} className="text-[15px] flex gap-2.5 leading-relaxed">
+                  <span className="font-mono font-semibold text-primary shrink-0">{i + 1}.</span>
+                  <span><HighlightNumbers text={t} /></span>
+                </li>
+              ))}
+            </ol>
+            <Callout>💡 The machine is used for mixing and kneading only — never let it start heating or proving.</Callout>
+          </Section>
+
+          <Section number={3} title="1st Ferment" subtitle="Bulk rest at ~15°C">
+            <Bullets items={[
+              "Remove the dough from the pan and place it into a lightly oiled container with a lid",
+              "Rest the whole block of dough in a cool spot (around 15°C–16°C, e.g., a wine cellar or cool room) for 18 to 21 hours",
+              "The dough will expand significantly despite the minimal yeast",
+            ]} />
+          </Section>
+
+          <Section number={4} title="Balling (Staglio) & 2nd Ferment">
+            <Bullets items={[
+              "Dump the relaxed dough onto your surface",
+              "Gently divide into 3 equal balls (~270 g each) without overworking or squeezing out all the air",
+              "Place the dough balls into a covered dough box or container and rest at room temperature (20°C–22°C) for 8 to 10 hours until puffy and soft",
+            ]} />
+          </Section>
+
+          <Section number={5} title="Stretching & Baking">
+            <Bullets items={[
+              "Generously coat your work surface with Caputo Semolina Rimacinata",
+              "Gently press the air out from the center toward the edges to build the outer rim (cornicione)",
+              "Stretch, top with San Marzano tomatoes and mozzarella, and bake at the highest temperature your oven can reach",
+            ]} />
+          </Section>
+        </TabsContent>
+
+        <TabsContent value="poolish" className="space-y-6 mt-4">
+          <p className="text-[15px] text-muted-foreground italic border-l-2 border-primary/30 pl-3 leading-relaxed">
+            <HighlightNumbers text="If you want to achieve the absolute gold standard of modern Neapolitan (Canotto-style) pizza in your Gozney, the best approach is to switch from a direct dough to a 100% Poolish Preferment method combined with a cold ferment. This is the technique favored by contemporary Italian master pizzaiolos (like Vito Iacopelli and Diego Vitagliano) and Gozney's own recipe developers. It produces a crust that is dramatically airier, far lighter on the stomach, and explodes into giant, blistered rims under high heat." />
+          </p>
+
+          <Section number={1} title="Why the 100% Poolish + Cold Ferment Wins">
+            <Bullets items={[
+              "Explosive Micro-Bubbling — A Poolish creates heavy enzymatic activity before the final mix. When this liquid starter hits the 450°C Gozney stone, the micro-bubbles expand instantly, puffing the rim into a hollow shell",
+              "Softness Without Toughness — Because half the flour gets pre-hydrated overnight, the gluten network becomes extremely relaxed and extensible. You get zero rubbery chew",
+              "Deep, Sweet Wheat Flavor — The extended preferment breaks down complex starches into natural sugars, producing a fragrant, sweet, buttery crust aroma instead of a sharp yeast smell",
+            ]} />
+            <Callout>👉 Scaled precisely for 500 g total flour (250 g Caputo Nuvola + 250 g Caputo Pizzeria), using the Panasonic only for the final short knead.</Callout>
+          </Section>
+
+          <Section number={2} title="Two Critical Adjustments for the Gozney" subtitle="500 g flour and 335 g water (67% hydration) are correct — yeast and honey are not">
+            <p className="text-[15px] mb-4 leading-relaxed">
+              <HighlightNumbers text="The 500 g flour total and 335 g water (67% hydration) are calculated correctly, but there are two critical adjustments to the yeast and honey before you mix this for your Gozney." />
+            </p>
+            <div className="grid sm:grid-cols-2 gap-4">
+              <div className="rounded-xl border border-destructive/30 bg-destructive/5 p-4">
+                <div className="text-[11px] uppercase tracking-[0.15em] text-destructive font-semibold mb-2">1. Drop the Honey Completely (0 g)</div>
+                <p className="text-[15px] leading-relaxed"><span className="font-semibold">The Error:</span> Adding 3 g of honey to a Poolish cooked in a Gozney at 450–500°C will cause the rim to char and burn too quickly before the inside cooks through. Honey is meant for home ovens (250°C).</p>
+                <p className="text-[15px] leading-relaxed mt-2"><span className="font-semibold">The Fix:</span> 0 g honey. At 450°C, the natural sugars released by the Poolish are more than enough to give you perfect leopard spotting without burning.</p>
+              </div>
+              <div className="rounded-xl border border-destructive/30 bg-destructive/5 p-4">
+                <div className="text-[11px] uppercase tracking-[0.15em] text-destructive font-semibold mb-2">2. Reduce the Yeast (0.4–0.5 g max)</div>
+                <p className="text-[15px] leading-relaxed"><span className="font-semibold">The Error:</span> 0.8 g of dry yeast across a Poolish + 24-hour cold ferment is too aggressive for 500 g of flour. The dough will over-proof in the fridge, become overly acidic, lose its gluten strength, and collapse or tear when stretched.</p>
+                <p className="text-[15px] leading-relaxed mt-2"><span className="font-semibold">The Fix:</span> 0.4 g to 0.5 g total dry yeast (about a generous 1/8 tsp).</p>
+              </div>
+            </div>
+          </Section>
+
+          <Section number={3} title="Corrected Final Measurements" subtitle="Gozney + Panasonic setup">
+            <div className="overflow-x-auto -mx-1">
+              <table className="w-full text-[15px] border-collapse min-w-[560px]">
+                <thead>
+                  <tr className="border-b border-border/70 text-left text-[11px] uppercase tracking-wider text-muted-foreground">
+                    <th className="py-2 px-1 font-semibold">Ingredient</th>
+                    <th className="py-2 px-1 font-semibold">Measurement</th>
+                    <th className="py-2 px-1 font-semibold">% Ratio</th>
+                    <th className="py-2 px-1 font-semibold">Purpose in the Recipe</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {[
+                    ["Caputo Nuvola Flour", "250 g", "50%", "High gas retention for an airy rim"],
+                    ["Caputo Pizzeria 00 Flour", "250 g", "50%", "Strength and elasticity for the base"],
+                    ["Cool Water", "335 g", "67%", "Moisture for a cloud-like interior in high heat"],
+                    ["Trapani / Fine Sea Salt", "12 g", "2.4%", "Gluten structure and taste"],
+                    ["Caputo Instant Dry Yeast", "0.4 g", "0.08%", "Just a generous 1/8 tsp for the entire process"],
+                    ["Honey / Sugar", "0 g", "0%", "Omit for Gozney to prevent burning"],
+                  ].map((row) => (
+                    <tr key={row[0]} className="border-b border-border/40 last:border-0">
+                      <td className="py-2 px-1 font-medium text-foreground">{row[0]}</td>
+                      <td className="py-2 px-1 font-mono text-primary font-semibold whitespace-nowrap">{row[1]}</td>
+                      <td className="py-2 px-1 font-mono whitespace-nowrap">{row[2]}</td>
+                      <td className="py-2 px-1 text-muted-foreground">{row[3]}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </Section>
+
+          <Section number={4} title="How to Divide the Yeast Exactly Between Steps" subtitle="Splitting 0.4 g across the Poolish and final mix">
+            <div className="grid sm:grid-cols-2 gap-4">
+              <div className="rounded-xl border border-primary/30 bg-primary/5 p-4">
+                <div className="text-[11px] uppercase tracking-[0.15em] text-primary font-semibold mb-2">Step 1 — The Poolish (Day 1)</div>
+                <ul className="text-[15px] space-y-1.5 leading-relaxed list-disc pl-4">
+                  <li>250 g Caputo Nuvola</li>
+                  <li>250 g Water</li>
+                  <li>0.3 g Yeast (a standard 1/8 tsp pinch)</li>
+                </ul>
+                <p className="text-[15px] mt-2 leading-relaxed">Mix, leave 1 hour on the counter, then fridge for 16–18 hours.</p>
+              </div>
+              <div className="rounded-xl border border-secondary/30 bg-secondary/5 p-4">
+                <div className="text-[11px] uppercase tracking-[0.15em] text-secondary font-semibold mb-2">Step 2 — The Final Mix (Day 2)</div>
+                <ul className="text-[15px] space-y-1.5 leading-relaxed list-disc pl-4">
+                  <li>All of the cold Poolish</li>
+                  <li>250 g Caputo Pizzeria</li>
+                  <li>85 g Water</li>
+                  <li>12 g Salt</li>
+                  <li>0.1 g Yeast (a tiny micro-pinch)</li>
+                </ul>
+                <p className="text-[15px] mt-2 leading-relaxed">Mix in the Panasonic on Program 28 for 6–8 minutes, then fridge for 24 hours.</p>
+              </div>
+            </div>
+          </Section>
+
+          <Section number={5} title="Phase 1: The Poolish Preferment" subtitle="Day 1 — Morning">
+            <ol className="space-y-1.5">
+              {[
+                "In a glass jar or bowl, mix 250 g of the water and 0.3 g of dry yeast (a standard 1/8 tsp pinch) until dissolved",
+                "Whisk in 250 g of the Caputo Nuvola flour until a smooth, pancake-like batter forms",
+                "Cover loosely and leave on the counter at room temperature for 1 hour to kickstart fermentation, then place in the refrigerator (4°C) for 16–18 hours",
+              ].map((t, i) => (
+                <li key={t} className="text-[15px] flex gap-2.5 leading-relaxed">
+                  <span className="font-mono font-semibold text-primary shrink-0">{i + 1}.</span>
+                  <span><HighlightNumbers text={t} /></span>
+                </li>
+              ))}
+            </ol>
+            <Callout>💡 It will double in size and become bubbly. No honey — the natural sugars from the Poolish are enough for a Gozney-hot bake.</Callout>
+          </Section>
+
+          <Section number={6} title="Phase 2: The Final Knead" subtitle="Day 2 — Morning">
+            <ol className="space-y-1.5">
+              {[
+                "Scrape the cold, bubbly Poolish directly into your Panasonic bread pan",
+                "Pour in the remaining 85 g of cold water",
+                "Add the remaining 250 g Caputo Pizzeria flour, the remaining 0.1 g dry yeast (a tiny micro-pinch), and the 12 g salt",
+                "Select Program 28 (Pizza) and run for 6 to 8 minutes max — just until a smooth, cohesive dough ball forms around the blade",
+                "Stop/Cancel the machine immediately",
+              ].map((t, i) => (
+                <li key={t} className="text-[15px] flex gap-2.5 leading-relaxed">
+                  <span className="font-mono font-semibold text-primary shrink-0">{i + 1}.</span>
+                  <span><HighlightNumbers text={t} /></span>
+                </li>
+              ))}
+            </ol>
+          </Section>
+
+          <Section number={7} title="Phase 3: Cold Ferment & Balling" subtitle="Day 2 to Day 3">
+            <Bullets items={[
+              "Transfer the dough to an airtight container and place it back in the fridge (4°C) for 24 hours",
+              "5 to 6 hours before baking on Day 3, take the cold dough out and divide it into 3 equal balls (~280 g each)",
+              "Shape gently into tight balls, place in a covered proofing box, and let rise at room temperature (20°C–22°C) until doubled, pillowy, and soft",
+            ]} />
+          </Section>
+
+          <p className="text-[15px] text-muted-foreground italic border-l-2 border-primary/30 pl-3 leading-relaxed">
+            <HighlightNumbers text="Handling a 67% hydration Poolish dough requires a different touch than a lower-hydration direct dough. Because the preferment makes the gluten extremely extensible (stretchy and relaxed), the dough will open up almost effortlessly, but it can tear if pulled aggressively or stretched from the center. Here is the step-by-step master technique for shaping, launching, and controlling the flame in your Gozney (Roccbox, Arc, or Dome) to achieve a giant, airy cornicione without burning." />
+          </p>
+
+          <Section number={8} title="Preheat the Gozney & Prep Your Station" subtitle="Set up before touching the dough">
+            <Bullets items={[
+              "Preheat the oven: turn your Gozney flame to MAX for 30–40 minutes until the stone temperature reads 430–450°C (800–840°F) on an infrared thermometer",
+              "Prep the workstation: dump a generous mound of Caputo Semolina Rimacinata onto your work surface",
+              "Dough box prep: dust the top of your dough balls inside the proofing container with a light sprinkling of semolina so your hands don't stick when lifting them out",
+            ]} />
+          </Section>
+
+          <Section number={9} title="Extract the Dough Ball" subtitle="Preserve the gas structure">
+            <Bullets items={[
+              "Use a wide flexible dough spatula/scraper to scoop around the dough ball",
+              "Lift gently from underneath — do not pull from the top, or you will deflate the delicate gas pockets built up by the Poolish",
+              "Drop the ball directly into the mound of semolina, coating both the top and bottom completely",
+            ]} />
+          </Section>
+
+          <Section number={10} title="Form the Rim (Gas Pushing Technique)" subtitle="Never touch the outer ring!">
+            <Bullets items={[
+              "Place the semolina-coated dough ball on a clean spot on your counter",
+              "Keeping your fingers flat and joined together, press into the dough starting 1.5 cm (0.5 inch) away from the edge",
+              "Push the trapped air outwards toward the rim using short, firm presses. Work your way down, flip the dough over, and repeat the process going back up",
+            ]} />
+            <Callout>⚠️ Rule: Never press down on the outer 1.5 cm edge — this ring must stay uncompressed to expand into a giant, airy cornicione.</Callout>
+          </Section>
+
+          <Section number={11} title="Open the Base" subtitle="Neapolitan Slap or Knuckle Stretch — avoid pulling from the center">
+            <div className="grid sm:grid-cols-2 gap-4">
+              <div className="rounded-xl border border-primary/30 bg-primary/5 p-4">
+                <div className="font-serif text-base font-semibold mb-1.5">Steering Wheel / Gravity Method</div>
+                <p className="text-[15px] leading-relaxed">Pick up the dough by holding the inner boundary of the rim with both hands, letting gravity pull the dough down while rotating it like a steering wheel.</p>
+              </div>
+              <div className="rounded-xl border border-secondary/30 bg-secondary/5 p-4">
+                <div className="font-serif text-base font-semibold mb-1.5">Knuckle Stretch</div>
+                <p className="text-[15px] leading-relaxed">Make two fists, place your knuckles beneath the inner circle of the dough, and gently pull your hands apart. Rotate 90° and repeat.</p>
+              </div>
+            </div>
+            <Callout>👉 Stop stretching once the base reaches 28–30 cm (11–12 inches). The middle will feel thin, while the outer rim will look noticeably thick and puffy.</Callout>
+          </Section>
+
+          <Section number={12} title="Top & Load the Peel" subtitle="Keep movement fast to prevent sticking">
+            <Bullets items={[
+              "Perforated peel: lightly dust your launch peel with a tiny bit of semolina (shake off any excess)",
+              "Quick topping: spread your crushed San Marzano DOP tomatoes, fresh mozzarella, olive oil, and basil quickly — high-hydration dough absorbs moisture fast, so if toppings sit too long, the dough will stick to the peel",
+              "Drag the pizza onto your peel in one smooth, confident movement",
+            ]} />
+          </Section>
+
+          <Section number={13} title="Flame Management & Baking in the Gozney" subtitle="Prevent burning the high rim">
+            <ol className="space-y-1.5">
+              {[
+                "Lower the flame: right before launching, turn the Gozney burner knob down to LOW (or medium-low) — the high-hydration rim expands so tall that a maximum top flame will scorch it before the interior bakes",
+                "The launch: aim for the back-middle of the stone (where heat is most even) and slide the pizza off the peel with a crisp back-and-forth motion",
+                "The first turn: let the pizza cook untouched for 25–30 seconds until the base sets and the back rim begins to puff and spot",
+                "Rotate: insert your turning peel under the firm base and rotate 180° so the front rim moves toward the back flame. Turn every 15 seconds",
+              ].map((t, i) => (
+                <li key={t} className="text-[15px] flex gap-2.5 leading-relaxed">
+                  <span className="font-mono font-semibold text-primary shrink-0">{i + 1}.</span>
+                  <span><HighlightNumbers text={t} /></span>
+                </li>
+              ))}
+            </ol>
+            <Callout>🔥 Total bake time: 75 to 90 seconds.</Callout>
+          </Section>
+
+          <Section number={14} title="Post-Bake Rest" subtitle="Maintain crispness">
+            <Bullets items={[
+              "Retrieve the pizza and place it onto a wire cooling rack for 60 seconds before moving it to a wooden cutting board or plate",
+            ]} />
+            <Callout>💡 Why? Placing a 67% hydration pizza directly onto a flat board creates steam underneath, turning the bottom crust soggy. A cooling rack lets steam vent, keeping the bottom shell crisp.</Callout>
+          </Section>
+
+          <Section number={15} title="Critical Reminders for High Hydration (67%)">
+            <Bullets items={[
+              "Use semolina, not 00 flour, for dusting — raw 00 flour burns at 450°C and tastes bitter. Semolina acts like tiny ball bearings beneath the wet dough and slides off the perforated peel cleanly",
+              "Keep sauce cold/room temp — never put warm tomato sauce on high-hydration dough; it weakens the gluten instantly and causes tears",
+              "Don't overload the middle — high-hydration dough is delicate. Keep your sauce layer thin and cheese spread evenly so the center doesn't get weighed down or soggy",
+            ]} />
           </Section>
         </TabsContent>
 
