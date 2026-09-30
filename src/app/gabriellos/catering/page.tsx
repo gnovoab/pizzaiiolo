@@ -8,6 +8,7 @@ const CATEGORY_OPTIONS: { id: MenuCategory; label: string }[] = [
   { id: "classic", label: "Classic" },
   { id: "innovative", label: "Innovative" },
   { id: "le-nostre", label: "Le Nostre" },
+  { id: "pumpkin", label: "Pumpkin Base" },
   { id: "calzone-focaccia", label: "Calzone & Focaccia" },
   { id: "specials", label: "Limited Time Only" },
 ];

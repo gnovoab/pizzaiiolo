@@ -1,4 +1,4 @@
-import { RECIPES } from "@/lib/recipes";
+import { RECIPES, RECIPE_CATEGORIES } from "@/lib/recipes";
 import type { PizzaRecipe } from "@/lib/types";
 
 export default function MenuPage() {
@@ -14,10 +14,27 @@ export default function MenuPage() {
         </p>
       </div>
 
-      <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-        {pizzas.map((r) => (
-          <MenuCard key={r.id} recipe={r} />
-        ))}
+      <div className="space-y-10">
+        {RECIPE_CATEGORIES.map((c) => {
+          const cPizzas = pizzas.filter((r) => r.category === c.id);
+          if (cPizzas.length === 0) return null;
+          return (
+            <section key={c.id} className="space-y-4">
+              <div className="flex items-end justify-between gap-4 border-b-2 border-primary/20 pb-3">
+                <div>
+                  <h2 className="font-serif text-2xl sm:text-3xl font-semibold text-foreground">{c.label}</h2>
+                  <p className="text-sm text-muted-foreground mt-1 italic">{c.blurb}</p>
+                </div>
+                <span className="font-mono text-xs text-muted-foreground shrink-0">{cPizzas.length} pizzas</span>
+              </div>
+              <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+                {cPizzas.map((r) => (
+                  <MenuCard key={r.id} recipe={r} />
+                ))}
+              </div>
+            </section>
+          );
+        })}
       </div>
     </div>
   );

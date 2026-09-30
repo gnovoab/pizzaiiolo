@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, Fraunces, JetBrains_Mono } from "next/font/google";
+import { Inter, Fraunces, JetBrains_Mono, Caveat } from "next/font/google";
 import "./globals.css";
 import { AppShell } from "@/components/layout/AppShell";
 
@@ -22,6 +22,12 @@ const mono = JetBrains_Mono({
   display: "swap",
 });
 
+const caveat = Caveat({
+  variable: "--font-script",
+  subsets: ["latin"],
+  display: "swap",
+});
+
 export const metadata: Metadata = {
   title: "Pizza Lab",
   description: "Professional pizza dough calculator and recipe tool",
@@ -35,7 +41,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${inter.variable} ${fraunces.variable} ${mono.variable}`}
+      className={`${inter.variable} ${fraunces.variable} ${mono.variable} ${caveat.variable}`}
     >
       <body className="bg-background text-foreground antialiased">
         <AppShell>{children}</AppShell>

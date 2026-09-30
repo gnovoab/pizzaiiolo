@@ -12,6 +12,7 @@ const CATEGORY_OPTIONS: { id: MenuCategory; label: string }[] = [
   { id: "classic", label: "Classic" },
   { id: "innovative", label: "Innovative" },
   { id: "le-nostre", label: "Le Nostre" },
+  { id: "pumpkin", label: "Pumpkin Base" },
   { id: "calzone-focaccia", label: "Calzone & Focaccia" },
   { id: "specials", label: "Limited Time Only" },
 ];
@@ -19,13 +20,15 @@ const CATEGORY_OPTIONS: { id: MenuCategory; label: string }[] = [
 function guessCategory(c: PizzaRecipeCategory): MenuCategory {
   if (c === "calzone-focaccia") return "calzone-focaccia";
   if (c === "innovative") return "innovative";
-  return "classic"; // classic + pumpkin default to classic until owner reassigns
+  if (c === "pumpkin") return "pumpkin";
+  return "classic";
 }
 
 // `number` is the single global ordering key (drives both the admin list and
 // the public menu/catering display). To keep it meaningful, it must always
 // form contiguous per-category blocks in `CATEGORY_OPTIONS` order — Classic,
-// then Innovative, then Calzone & Focaccia, then Limited Time Only — with the
+// then Innovative, then Le Nostre, then Pumpkin Base, then Calzone & Focaccia,
+// then Limited Time Only — with the
 // existing relative order preserved inside each category. Call this after
 // any change that can affect category membership (e.g. moving an item to a
 // different section) so numbers stay consistent; `justMovedId`, if given, is

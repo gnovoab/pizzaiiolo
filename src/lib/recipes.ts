@@ -4,7 +4,7 @@ export const RECIPE_CATEGORIES: { id: PizzaRecipeCategory; label: string; blurb:
   { id: "classic", label: "Classic", blurb: "Margherita, Bufalina, Cosacca, Marinara, Napolitan, Diavola, Parma, Parma Bianca, Prosciutto e Funghi, Capricciosa, Quattro Formaggi, Ortolana, Ripieno (Calzone)." },
   { id: "calzone-focaccia", label: "Calzone & Focaccia", blurb: "Folded and stuffed specialties." },
   { id: "innovative", label: "Innovative", blurb: "Modern and rustic twists on Italian tradition — Double Pepperoni & Hot Honey, Chorizo, Burratina, Bufala e Iberico, Tettoia — Four Cheese & Truffle, Calabrese, Quattro Latte e 'Nduja, 'Nduja & Hot Honey, Cetarese, Cacio e Pepe, Carbonara, Amatriciana, Gricia, Pesto & Burrata, Salsiccia al Pesto, Boscaiola, Mortadella and Pistachio, La Oro Verde." },
-  { id: "pumpkin", label: "Pumpkin Base", blurb: "Replace tomato with smooth roasted pumpkin cream — Sfiziosa, Sfiziosa Signature, Mantovana, Norcina, Zucca & Pancetta, Zucca, Gorgonzola & Noci." },
+  { id: "pumpkin", label: "Pumpkin Base", blurb: "Replace tomato with smooth roasted pumpkin cream — Sfiziosa, Sfiziosa Signature, Mantovana, Norcina, Zucca Salsiccia e Provola, Zucca e 'Nduja, Zucca Guanciale e Rosmarino, Zucca, Gorgonzola & Noci." },
 ];
 
 export const RECIPES: PizzaRecipe[] = [
@@ -1535,46 +1535,112 @@ export const RECIPES: PizzaRecipe[] = [
     ],
   },
   {
-    id: "zucca-pancetta",
+    id: "zucca-salsiccia-provola",
     number: 42,
-    name: "Zucca & Pancetta",
-    style: "Pumpkin Base — Simple & Classic",
+    name: "Zucca, Salsiccia e Provola",
+    style: "Pumpkin Base — Smoked Provola & Pork Sausage",
+    category: "pumpkin",
+    image: "https://media-cdn.tripadvisor.com/media/photo-s/14/b3/50/80/zucca-salsiccia-e-provola.jpg",
+    toppings: "Greci or Demetra pumpkin cream, Smoked Provola di Agerola, raw fresh pork sausage, Pecorino Romano, fresh basil, extra virgin olive oil.",
+    menuIngredients: "Pumpkin cream, smoked provola, pork sausage, pecorino, basil",
+    build: "The smoky, melted Provola and rich pork sausage balance either pumpkin base beautifully — giving a sweeter contrast with Greci or a deep savory-herb note with Demetra.",
+    postBake: "Transfer to a wire cooling rack for 60 seconds, then microplane 8–10 g of Pecorino Romano over the hot crust and center. Slice and serve.",
+    steps: [
+      { title: "1. Ingredients", sections: [
+        { intro: "Base:", bullets: ["75 g prepared Greci OR Demetra Pumpkin Cream"] },
+        { intro: "Cheese:", bullets: ["80 g Smoked Provola di Agerola (cut into strips and well-drained)"] },
+        { intro: "Meat:", bullets: ["60 g Raw fresh pork sausage (casing removed, crumbled into small dime-sized pieces)"] },
+        { intro: "Finish:", bullets: ["8–10 g Pecorino Romano (microplaned post-bake), fresh basil, EVOO"] },
+      ] },
+      { title: "2. Stretch Dough", sections: [
+        { intro: "Form base without flattening edges:", bullets: ["Open your 280 g dough ball in semolina to 28–30 cm (11–12 in), pushing gas into the outer ring (cornicione)"] },
+      ] },
+      { title: "3. Pre-Bake Assembly", sections: [
+        { intro: "Raw sausage sits on top to cook directly under flame:", bullets: ["Spread 75 g of prepared Greci or Demetra Pumpkin Cream across the center", "Scatter 80 g of drained Smoked Provola di Agerola strips", "Distribute 60 g of crumbled raw pork sausage over the cheese", "Add 3–4 fresh basil leaves and a thin spiral of EVOO"] },
+      ] },
+      { title: "4. Launch & Gozney Bake (75–90 Seconds)", sections: [
+        { intro: "Sausage sizzles while provola melts smoothly:", bullets: ["Launch into your preheated 430–450°C Gozney and turn the burner to LOW immediately", "Bake for 75–90 seconds, rotating every 15 seconds so the raw sausage cooks through completely and the provola bubbles into the pumpkin cream"] },
+      ] },
+      { title: "5. Post-Bake Finish", sections: [
+        { intro: "Sharp sheep's milk finish:", bullets: ["Transfer to a wire cooling rack for 60 seconds", "Microplane 8–10 g of Pecorino Romano over the hot crust and center. Slice and serve"] },
+      ] },
+    ],
+  },
+  {
+    id: "zucca-nduja",
+    number: 43,
+    name: "Zucca e 'Nduja",
+    style: "Pumpkin Base — 'Nduja & Stracciatella",
+    category: "pumpkin",
+    image: "https://media-cdn.tripadvisor.com/media/photo-s/1f/ce/83/00/zucca-e-nduja.jpg",
+    toppings: "Greci or Demetra pumpkin cream, Fior di Latte, 'Nduja di Spilinga, fresh Stracciatella (or Burrata), fresh basil, extra virgin olive oil.",
+    menuIngredients: "Pumpkin cream, mozzarella, 'nduja, stracciatella, basil",
+    build: "A high-contrast gourmet pie. If using Greci, the 'Nduja creates a sharp sweet-and-spicy punch. If using Demetra, the onion/wine aromatics combine with the 'Nduja for a rich, savory chili finish.",
+    postBake: "Transfer to a wire rack for 60 seconds, then spoon 80–90 g of fresh, creamy Stracciatella (or 1 whole opened Burrata) over the center of the pizza. Serve immediately.",
+    steps: [
+      { title: "1. Ingredients", sections: [
+        { intro: "Base:", bullets: ["75 g prepared Greci OR Demetra Pumpkin Cream"] },
+        { intro: "Cheese (Pre-Bake):", bullets: ["70 g Fior di Latte (cut into strips and well-drained)"] },
+        { intro: "Spicy Element:", bullets: ["30–35 g 'Nduja di Spilinga (rolled into small dollops at room temperature)"] },
+        { intro: "Finish (Post-Bake):", bullets: ["80–90 g fresh Stracciatella (or 1 whole room-temperature Burrata opened post-bake), fresh basil, EVOO"] },
+      ] },
+      { title: "2. Stretch Dough", sections: [
+        { intro: "Preserve gas pockets in the cornicione:", bullets: ["Open your 280 g dough ball in semolina to 28–30 cm, preserving a prominent outer rim"] },
+      ] },
+      { title: "3. Pre-Bake Assembly", sections: [
+        { intro: "'Nduja renders red chili oil into the pumpkin cream:", bullets: ["Spread 75 g of Greci or Demetra Pumpkin Cream over the base", "Scatter 70 g of drained Fior di Latte", "Dot 30–35 g of room-temperature 'Nduja di Spilinga across the mozzarella", "Add 3–4 fresh basil leaves and a light spiral of EVOO"] },
+      ] },
+      { title: "4. Launch & Gozney Bake (75–90 Seconds)", sections: [
+        { intro: "Low flame prevents white cream from scorching:", bullets: ["Launch onto the 430–450°C stone and turn the burner to LOW immediately", "Bake for 75–90 seconds, turning every 15 seconds as the 'Nduja melts its red spicy oil into the pumpkin base"] },
+      ] },
+      { title: "5. Post-Bake Stracciatella Crown", sections: [
+        { intro: "Cool creamy crown against hot spicy base:", bullets: ["Transfer to a wire rack for 60 seconds", "Spoon 80–90 g of fresh, creamy Stracciatella (or 1 whole opened Burrata) over the center of the pizza. Serve immediately"] },
+      ] },
+    ],
+  },
+  {
+    id: "zucca-guanciale-rosmarino",
+    number: 44,
+    name: "Zucca, Guanciale e Rosmarino",
+    style: "Pumpkin Base — Guanciale & Rosemary",
     category: "pumpkin",
     image: "https://foodionista.com/wp-content/uploads/2022/10/zucca-pancetta.jpg",
-    toppings: "Yellow pumpkin cream, fresh mozzarella (fior di latte or buffalo), crispy pancetta, fresh basil, extra virgin olive oil.",
-    build: "Spread pumpkin cream evenly, add mozzarella, drizzle with olive oil, bake, then finish with crispy pancetta and fresh basil.",
+    toppings: "Greci or Demetra pumpkin cream, Fior di Latte, fresh rosemary, Guanciale, Pecorino Romano, extra virgin olive oil.",
+    menuIngredients: "Pumpkin cream, mozzarella, rosemary, guanciale, pecorino",
+    build: "An aromatic, crispy pie. Fresh rosemary infuses into the pumpkin sauce during the bake, topped with crispy cured guanciale strips.",
+    postBake: "Rest on a wire rack for 60 seconds, scatter warm crispy guanciale (if pan-fried separately) and microplane 8–10 g of Pecorino Romano over the top. Serve immediately.",
     steps: [
-      { title: "1. Dough", sections: [
-        { bullets: ["250–280 g pizza dough ball", "Authentic Neapolitan pizza dough", "Stretch to 30–32 cm"] },
+      { title: "1. Ingredients", sections: [
+        { intro: "Base:", bullets: ["75 g prepared Greci OR Demetra Pumpkin Cream"] },
+        { intro: "Cheese:", bullets: ["75 g Fior di Latte (cut into strips and well-drained)"] },
+        { intro: "Aromatics:", bullets: ["1 tsp finely chopped fresh rosemary leaves"] },
+        { intro: "Cured Pork:", bullets: ["50–60 g Guanciale (cut into thin strips). Can be baked pre-bake OR crisp-pan-fried separately and added post-bake"] },
+        { intro: "Finish:", bullets: ["8–10 g Pecorino Romano (microplaned post-bake), EVOO"] },
       ] },
-      { title: "2. Spread the Sauce", sections: [
-        { bullets: ["80 g yellow pumpkin cream", "Spread evenly using a spoon starting from the center", "Leave half an inch at the edge without sauce to create a nice cornicione that will puff up in the oven"] },
+      { title: "2. Stretch Dough", sections: [
+        { intro: "Open an extensible, thin base:", bullets: ["Open your 280 g dough ball in semolina to 28–30 cm"] },
       ] },
-      { title: "3. Add Toppings", sections: [
-        { bullets: ["80–100 g fresh mozzarella (fior di latte or buffalo)", "Spread evenly throughout the pizza"] },
+      { title: "3. Pre-Bake Assembly", sections: [
+        { intro: "Rosemary releases aromatic oils in the oven:", bullets: ["Spread 75 g of Greci or Demetra Pumpkin Cream", "Scatter 75 g of drained Fior di Latte", "Sprinkle 1 tsp of chopped fresh rosemary evenly over the cheese and sauce", "(If baking guanciale directly on the pie): scatter thin raw guanciale strips over the top so the pork fat renders into the pumpkin cream", "Drizzle a thin spiral of EVOO"] },
       ] },
-      { title: "4. Olive Oil", sections: [
-        { bullets: ["5 g extra virgin olive oil", "A light drizzle"] },
+      { title: "4. Launch & Gozney Bake (75–90 Seconds)", sections: [
+        { intro: "Renders pork fat while keeping dough crisp:", bullets: ["Launch into the Gozney and turn burner down to LOW immediately", "Bake for 75–90 seconds, rotating every 15 seconds until the rim balloons and the guanciale edges crisp up"] },
       ] },
-      { title: "5. Bake", sections: [
-        { bullets: ["🪨 Wood fire or gas oven: 430°C/806°F", "⏱ 20–30 seconds before turning", "🔄 Turn every 20–30 seconds", "Maximum 90 seconds total"] },
-        { intro: "Home oven alternative:", bullets: ["Preheat at hottest setting", "Bake for 4–8 minutes"] },
-      ] },
-      { title: "6. Final Touch", sections: [
-        { intro: "At the exit:", bullets: ["Add crispy pancetta", "Add 3–4 large leaves of fresh basil"] },
+      { title: "5. Post-Bake Finish", sections: [
+        { intro: "Add pan-crisped guanciale (if pre-fried) & cheese:", bullets: ["Rest on a wire rack for 60 seconds", "(If crisping guanciale separately in a pan): scatter the warm, ultra-crispy guanciale strips over the hot pizza now", "Microplane 8–10 g of Pecorino Romano over the top. Serve immediately"] },
       ] },
     ],
   },
   {
     id: "zucca-gorgonzola-noci",
-    number: 43,
+    number: 45,
     name: "Zucca, Gorgonzola & Noci",
     style: "Pumpkin Base — Gorgonzola & Walnuts",
     category: "pumpkin",
     image: "https://blog.giallozafferano.it/ricettechepassione/wp-content/uploads/2019/10/pizza-zucca-e-gorgonzola-con-nociv.jpg",
     toppings: "Roasted pumpkin cream, Fior di Latte mozzarella, Gorgonzola Dolce, toasted walnuts, honey drizzle, fresh sage.",
     menuIngredients: "Pumpkin, mozzarella, gorgonzola, walnuts, honey",
-    build: "A sweet-and-savory pumpkin pizza that diversifies away from the pork-heavy Sfiziosa/Norcina/Zucca & Pancetta lineup: roasted pumpkin cream and Fior di Latte baked with waves of Gorgonzola Dolce, then finished with toasted walnuts, crispy sage and a light honey drizzle.",
+    build: "A sweet-and-savory pumpkin pizza that diversifies away from the pork-heavy Sfiziosa/Norcina/Zucca Salsiccia lineup: roasted pumpkin cream and Fior di Latte baked with waves of Gorgonzola Dolce, then finished with toasted walnuts, crispy sage and a light honey drizzle.",
     postBake: "Scatter toasted walnuts and crispy sage, then finish with a light drizzle of honey.",
     steps: [
       { title: "1. Dough", sections: [{ bullets: ["250–280 g dough ball", "Stretch to 30–32 cm"] }] },
