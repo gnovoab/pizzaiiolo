@@ -110,8 +110,52 @@ export function calcCost(inputs: CostInputs): CostResult {
 }
 
 export function calcWaterTemp(roomTemp: number, flourTemp: number, frictionFactor: number): number {
-  const target = 23;
+  const target = 22; // target final dough temperature (°C) for the Famag IM 5-S-10V (HH) spiral mixer
   return 3 * target - roomTemp - flourTemp - frictionFactor;
+}
+
+export interface FlourBlendPercents {
+  pizzeria: number; // 0-1, Caputo Pizzeria 00
+  nuvola: number;   // 0-1, Caputo Nuvola / Nuvola Super
+  tipo1: number;    // 0-1, Caputo Tipo 1
+}
+
+export interface FlourBlendGrams {
+  pizzeria: number;
+  nuvola: number;
+  tipo1: number;
+  semolina: number; // dusting / optional additive, on top of the 100% blend
+}
+
+/**
+ * Dynamic gram allocation for a flour blend across the total flour weight (g).
+ * Semolina Rimacinata is an optional additive used for dusting/extra crunch,
+ * calculated separately from the 100% Pizzeria/Nuvola/Tipo 1 blend.
+ */
+export function calcFlourBlendGrams(
+  totalFlour: number,
+  blend: FlourBlendPercents,
+  semolinaAddPercent: number
+): FlourBlendGrams {
+  return {
+    pizzeria: totalFlour * blend.pizzeria,
+    nuvola: totalFlour * blend.nuvola,
+    tipo1: totalFlour * blend.tipo1,
+    semolina: totalFlour * semolinaAddPercent,
+  };
+}
+
+/**
+ * Automatic recommended hydration adjustment based on blend composition:
+ * - Base target hydration is 62%.
+ * - If Nuvola > 20%, raise to 65% (higher gas retention needs more water).
+ * - If Tipo 1 > 15%, add +1% to compensate for bran's higher water absorption.
+ */
+export function suggestedBlendHydration(blend: FlourBlendPercents): number {
+  let hydration = 0.62;
+  if (blend.nuvola > 0.20) hydration = 0.65;
+  if (blend.tipo1 > 0.15) hydration += 0.01;
+  return hydration;
 }
 
 export function convertYeast(instant: number): { instant: number; fresh: number; activeDry: number } {

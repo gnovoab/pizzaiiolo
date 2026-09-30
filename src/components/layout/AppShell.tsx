@@ -5,24 +5,49 @@ import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { cn } from "@/lib/utils";
 
-const NAV = [
-  { href: "/dough-maker", label: "🥖 Dough Maker", short: "Dough" },
-  { href: "/fridge", label: "🧊 Fridge", short: "Fridge" },
-  { href: "/oven", label: "🔥 Oven", short: "Oven" },
-  { href: "/recipes", label: "📖 Pizza Recipes", short: "Recipes" },
-  { href: "/menu", label: "🧾 Menu", short: "Menu" },
-  { href: "/pumpkin-base", label: "🎃 Pumpkin Base", short: "Pumpkin" },
-  { href: "/olive-oil", label: "🫒 Olive Oil", short: "Oil" },
-  { href: "/pizza-styles", label: "📋 Pizza Styles", short: "Styles" },
-  { href: "/comparison", label: "📊 Comparison", short: "Compare" },
-  { href: "/", label: "🍕 Calculator", short: "Calc" },
-  { href: "/create", label: "👨‍🍳 Create a Pizza", short: "Create" },
-  { href: "/videos", label: "🎬 Videos", short: "Videos" },
-  { href: "/preferments", label: "🧫 Preferments", short: "Pref." },
-  { href: "/yeast", label: "🔬 Yeast", short: "Yeast" },
-  { href: "/gabriellos", label: "🍽️ Gabriellos Menu", short: "Gabriellos" },
-  { href: "/gabriellos/catering", label: "🎉 Catering Menu", short: "Catering" },
+const NAV_SECTIONS = [
+  {
+    title: "Dough & Menu",
+    items: [
+      { href: "/dough-maker", label: "🥖 Dough Maker", short: "Dough" },
+      { href: "/recipes", label: "📖 Pizza Recipes", short: "Recipes" },
+      { href: "/menu", label: "🧾 Menu", short: "Menu" },
+      { href: "/videos", label: "🎬 Videos", short: "Videos" },
+    ],
+  },
+  {
+    title: "Ingredients & Process",
+    items: [
+      { href: "/flour-guide", label: "🌾 Flour Guide", short: "Flour" },
+      { href: "/spiral-mixer", label: "🌀 Spiral Mixer", short: "Mixer" },
+      { href: "/fermentation", label: "⏱️ Fermentation", short: "Ferment" },
+      { href: "/fridge", label: "🧊 Fridge", short: "Fridge" },
+      { href: "/oven", label: "🔥 Oven", short: "Oven" },
+      { href: "/olive-oil", label: "🫒 Olive Oil", short: "Oil" },
+      { href: "/pumpkin-base", label: "🎃 Pumpkin Base", short: "Pumpkin" },
+      { href: "/preferments", label: "🧫 Preferments", short: "Pref." },
+      { href: "/yeast", label: "🔬 Yeast", short: "Yeast" },
+      { href: "/pizza-styles", label: "📋 Pizza Styles", short: "Styles" },
+    ],
+  },
+  {
+    title: "Pizzaiolo",
+    items: [
+      { href: "/comparison", label: "📊 Comparison", short: "Compare" },
+      { href: "/", label: "🍕 Calculator", short: "Calc" },
+      { href: "/create", label: "👨‍🍳 Create a Pizza", short: "Create" },
+    ],
+  },
+  {
+    title: "3rd Party Menus",
+    items: [
+      { href: "/gabriellos", label: "🍽️ Gabriellos Menu", short: "Gabriellos" },
+      { href: "/gabriellos/catering", label: "🎉 Catering Menu", short: "Catering" },
+    ],
+  },
 ];
+
+const NAV = NAV_SECTIONS.flatMap((s) => s.items);
 
 export function AppShell({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
@@ -36,20 +61,27 @@ export function AppShell({ children }: { children: React.ReactNode }) {
           <span className="font-serif text-2xl font-semibold tracking-tight text-primary">Pizza Lab</span>
           <p className="text-xs text-muted-foreground mt-1 italic">Dough · Fire · Flour</p>
         </div>
-        <nav className="flex-1 p-3 space-y-1">
-          {NAV.map(({ href, label }) => (
-            <Link
-              key={href}
-              href={href}
-              className={cn(
-                "flex items-center gap-2 px-3 py-2 rounded-lg text-sm font-medium transition-colors",
-                pathname === href
-                  ? "bg-primary/15 text-primary"
-                  : "text-foreground/75 hover:text-foreground hover:bg-sidebar-accent"
-              )}
-            >
-              {label}
-            </Link>
+        <nav className="flex-1 p-3 space-y-5 overflow-y-auto">
+          {NAV_SECTIONS.map((section) => (
+            <div key={section.title} className="space-y-1">
+              <p className="px-3 text-[10px] uppercase tracking-[0.15em] text-muted-foreground font-semibold">
+                {section.title}
+              </p>
+              {section.items.map(({ href, label }) => (
+                <Link
+                  key={href}
+                  href={href}
+                  className={cn(
+                    "flex items-center gap-2 px-3 py-2 rounded-lg text-sm font-medium transition-colors",
+                    pathname === href
+                      ? "bg-primary/15 text-primary"
+                      : "text-foreground/75 hover:text-foreground hover:bg-sidebar-accent"
+                  )}
+                >
+                  {label}
+                </Link>
+              ))}
+            </div>
           ))}
         </nav>
         <div className="p-4 border-t border-border">
@@ -77,22 +109,31 @@ export function AppShell({ children }: { children: React.ReactNode }) {
 
         {/* Mobile menu */}
         {mobileOpen && (
-          <div className="md:hidden bg-card border-b border-border z-30">
-            <nav className="p-3 grid grid-cols-3 gap-1">
-              {NAV.map(({ href, short }) => (
-                <Link
-                  key={href}
-                  href={href}
-                  onClick={() => setMobileOpen(false)}
-                  className={cn(
-                    "text-center px-2 py-2 rounded-lg text-xs font-medium transition-colors",
-                    pathname === href
-                      ? "bg-primary/15 text-primary"
-                      : "text-muted-foreground hover:text-foreground hover:bg-muted"
-                  )}
-                >
-                  {short}
-                </Link>
+          <div className="md:hidden bg-card border-b border-border z-30 max-h-[70vh] overflow-y-auto">
+            <nav className="p-3 space-y-3">
+              {NAV_SECTIONS.map((section) => (
+                <div key={section.title}>
+                  <p className="px-1 pb-1 text-[10px] uppercase tracking-[0.15em] text-muted-foreground font-semibold">
+                    {section.title}
+                  </p>
+                  <div className="grid grid-cols-3 gap-1">
+                    {section.items.map(({ href, short }) => (
+                      <Link
+                        key={href}
+                        href={href}
+                        onClick={() => setMobileOpen(false)}
+                        className={cn(
+                          "text-center px-2 py-2 rounded-lg text-xs font-medium transition-colors",
+                          pathname === href
+                            ? "bg-primary/15 text-primary"
+                            : "text-muted-foreground hover:text-foreground hover:bg-muted"
+                        )}
+                      >
+                        {short}
+                      </Link>
+                    ))}
+                  </div>
+                </div>
               ))}
             </nav>
           </div>
@@ -109,7 +150,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
                 pathname === href ? "text-primary" : "text-muted-foreground"
               )}
             >
-              <span className="text-base">{short === "Calc" ? "🍕" : short === "Create" ? "👨‍🍳" : short === "Compare" ? "📊" : short === "Recipes" ? "📖" : short === "Menu" ? "🧾" : short === "Dough" ? "🥖" : short === "Oven" ? "🔥" : short === "Oil" ? "🫒" : short === "Pumpkin" ? "🎃" : short === "Fridge" ? "🧊" : short === "Styles" ? "📋" : short === "Videos" ? "🎬" : short === "Pref." ? "🧫" : "🍕"}</span>
+              <span className="text-base">{short === "Recipes" ? "📖" : short === "Menu" ? "🧾" : short === "Dough" ? "🥖" : short === "Oven" ? "🔥" : short === "Oil" ? "🫒" : short === "Pumpkin" ? "🎃" : short === "Fridge" ? "🧊" : short === "Styles" ? "📋" : short === "Videos" ? "🎬" : short === "Pref." ? "🧫" : short === "Mixer" ? "🌀" : short === "Ferment" ? "⏱️" : short === "Create" ? "👨‍🍳" : short === "Compare" ? "📊" : "🍕"}</span>
               <span>{short}</span>
             </Link>
           ))}

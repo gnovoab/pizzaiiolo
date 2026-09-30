@@ -24,7 +24,7 @@ export default function FridgePage() {
 
         <Subhead className="mt-5">Divide &amp; Ball</Subhead>
         <Bullets items={[
-          "Divide the bulk dough into equal portions (e.g. 250g–270g)",
+          "Divide the bulk dough into equal portions (e.g. 280g)",
           "Ball them tightly to build surface tension",
           "A tight ball is the key to a beautiful, airy crust",
         ]} />

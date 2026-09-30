@@ -39,7 +39,7 @@ export function buildRecipeSteps(p: Pizzaiolo, dough: DoughResult): RecipeStep[]
   steps.push({
     icon: "🥣",
     title: "Mix the dough",
-    detail: `Gradually add ${Math.round(dough.flour)}g flour to the water. ${yeastText} Mix until a shaggy mass forms, then knead 10–15 min until smooth and elastic. Final dough temp ~22–24°C.`,
+    detail: `Gradually add ${Math.round(dough.flour)}g flour to the water. ${yeastText} Mix until a shaggy mass forms, then knead 8–10 min on the Famag spiral mixer (Speed 1–5) until smooth and elastic. Target final dough temp ~22°C.`,
   });
 
   steps.push({

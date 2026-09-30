@@ -3,7 +3,7 @@
 import { useMemo } from "react";
 import { usePizzaStore } from "@/store/usePizzaStore";
 import { PIZZAIOLI } from "@/lib/pizzaioli";
-import { calcDough, fmt } from "@/lib/calculations";
+import { calcDough, calcWaterTemp, fmt } from "@/lib/calculations";
 import { buildRecipeSteps } from "@/lib/recipeSteps";
 import { calcBakePlan, buildBakeEvents, fmtBakeDate } from "@/lib/bakeSchedule";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -32,6 +32,11 @@ export default function CreatePizzaPage() {
   );
 
   const steps = useMemo(() => buildRecipeSteps(pizzaiolo, result), [pizzaiolo, result]);
+
+  const waterTemp = useMemo(
+    () => calcWaterTemp(store.roomTempForWater, store.flourTemp, store.frictionFactor),
+    [store.roomTempForWater, store.flourTemp, store.frictionFactor]
+  );
 
   const plan = useMemo(
     () => calcBakePlan(store.bakeDate, store.bakeTime, pizzaiolo.fermentationMin, pizzaiolo.fermentationMax),
@@ -165,10 +170,10 @@ export default function CreatePizzaPage() {
           </>
         )}
         {store.doughMode === "flour" && (
-          <Field label="Flour (g)" value={store.flourInput} onChange={v => set({ flourInput: v })} min={100} max={5000} step={10} />
+          <Field label="Flour (g)" value={store.flourInput} onChange={v => set({ flourInput: v })} min={1000} max={3000} step={10} />
         )}
         {store.doughMode === "water" && (
-          <Field label="Water (g)" value={store.waterInput} onChange={v => set({ waterInput: v })} min={100} max={5000} step={10} />
+          <Field label="Water (g)" value={store.waterInput} onChange={v => set({ waterInput: v })} min={1000} max={3000} step={10} />
         )}
         <p className="text-sm text-muted-foreground italic border-l-2 border-primary/30 pl-3 mt-1">
           Hydration, salt and yeast are locked to <span style={{ color: pizzaiolo.color }} className="font-semibold not-italic">{pizzaiolo.name}</span>&apos;s
@@ -199,7 +204,30 @@ export default function CreatePizzaPage() {
         </CardContent>
       </Card>
 
-      <NumberedCard n={3} title="Bake Schedule">
+      <NumberedCard n={3} title="Water Temperature" subtitle="Famag spiral mixer — Ff 3.0°C">
+        <div className="grid sm:grid-cols-3 gap-3">
+          <Field label="Room Temp (°C)" value={store.roomTempForWater} onChange={v => set({ roomTempForWater: v })} min={10} max={35} step={1} />
+          <Field label="Flour Temp (°C)" value={store.flourTemp} onChange={v => set({ flourTemp: v })} min={5} max={30} step={1} />
+          <Field label="Friction Factor (°C)" value={store.frictionFactor} onChange={v => set({ frictionFactor: v })} min={0} max={10} step={0.5} />
+        </div>
+        <div className="mt-2 flex justify-between items-baseline bg-primary/8 border border-primary/20 rounded-lg px-3 py-2.5" style={{ backgroundColor: "rgba(194,65,12,0.08)" }}>
+          <span className="font-serif text-base font-semibold">Target Water Temp</span>
+          <span className="font-mono font-bold text-primary text-lg">{fmt(waterTemp, 1)}°C</span>
+        </div>
+        {waterTemp < 5 ? (
+          <div className="flex items-center gap-2 px-3 py-2 rounded-lg text-sm font-medium w-fit bg-blue-700/10 text-blue-800 border border-blue-700/30">
+            🧊 Use ice-chilled water — target is near or below fridge temperature.
+          </div>
+        ) : waterTemp < 15 ? (
+          <div className="flex items-center gap-2 px-3 py-2 rounded-lg text-sm font-medium w-fit bg-blue-700/10 text-blue-800 border border-blue-700/30">
+            ❄️ Use refrigerated water for this batch to hit the target dough temp.
+          </div>
+        ) : (
+          <p className="text-sm text-muted-foreground italic">Cool tap water should be sufficient to reach this target.</p>
+        )}
+      </NumberedCard>
+
+      <NumberedCard n={4} title="Bake Schedule">
         <div className="grid grid-cols-2 gap-3">
           <div>
             <label className="text-[11px] uppercase tracking-[0.15em] text-secondary font-semibold block mb-1.5">Bake Date</label>
@@ -249,7 +277,7 @@ export default function CreatePizzaPage() {
       <Card>
         <CardHeader className="pb-3 border-b border-border/60">
           <CardTitle className="font-serif text-xl flex items-center gap-3 flex-wrap">
-            <span className="inline-flex items-center justify-center w-9 h-9 rounded-full bg-primary text-primary-foreground font-serif font-semibold text-base shadow-sm shrink-0">4</span>
+            <span className="inline-flex items-center justify-center w-9 h-9 rounded-full bg-primary text-primary-foreground font-serif font-semibold text-base shadow-sm shrink-0">5</span>
             <span>The Process</span>
             <span className="text-xs font-normal text-muted-foreground italic">— {pizzaiolo.fermentationApproach}</span>
           </CardTitle>
@@ -277,13 +305,16 @@ export default function CreatePizzaPage() {
   );
 }
 
-function NumberedCard({ n, title, children }: { n: number; title: string; children: React.ReactNode }) {
+function NumberedCard({ n, title, subtitle, children }: { n: number; title: string; subtitle?: string; children: React.ReactNode }) {
   return (
     <Card>
       <CardHeader className="pb-3 border-b border-border/60">
         <CardTitle className="font-serif text-xl flex items-center gap-3">
           <span className="inline-flex items-center justify-center w-9 h-9 rounded-full bg-primary text-primary-foreground font-serif font-semibold text-base shadow-sm shrink-0">{n}</span>
-          <span>{title}</span>
+          <span className="flex-1 min-w-0">
+            <span className="block leading-tight">{title}</span>
+            {subtitle && <span className="block text-xs font-sans font-normal text-muted-foreground italic mt-0.5 normal-case tracking-normal">{subtitle}</span>}
+          </span>
         </CardTitle>
       </CardHeader>
       <CardContent className="pt-4 space-y-4">{children}</CardContent>

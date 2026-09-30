@@ -8,7 +8,7 @@ export default function DoughMakerPage() {
         <p className="text-[11px] uppercase tracking-[0.4em] text-secondary font-medium">L&apos;Impasto</p>
         <h1 className="font-serif text-4xl sm:text-5xl font-semibold mt-3 text-foreground">Dough Maker</h1>
         <p className="text-muted-foreground text-base mt-3 max-w-xl mx-auto italic">
-          Neapolitan, Deep Dish, Detroit-Style, NY, Roman &amp; Sicilian doughs from your bread machine — 500 g flour (Caputo 00 &amp; Nuvola), Panasonic SD-ZX2522KXG.
+          Neapolitan, Deep Dish, Detroit-Style, NY, Roman &amp; Sicilian doughs from your spiral mixer — 1,000–3,000 g flour batches (Caputo 00 &amp; Nuvola), Famag IM 5-S-10V (HH).
         </p>
       </div>
 
@@ -17,7 +17,7 @@ export default function DoughMakerPage() {
           <CardTitle className="font-serif text-xl">Equipment</CardTitle>
         </CardHeader>
         <CardContent className="pt-4 grid sm:grid-cols-4 gap-3">
-          <EquipmentItem icon="🍞" name="Panasonic SD-ZX2522KXG" detail="Bread machine" />
+          <EquipmentItem icon="🌀" name="Famag IM 5-S-10V (HH)" detail="Spiral mixer — dual rotation" />
           <EquipmentItem icon="🌾" name="Caputo Pizzeria 00" detail="Flour" />
           <EquipmentItem icon="☁️" name="Caputo Nuvola" detail="Flour" />
           <EquipmentItem icon="🔥" name="Gozney Arc" detail="Gas pizza oven" />
@@ -37,25 +37,24 @@ export default function DoughMakerPage() {
         </TabsList>
 
         <TabsContent value="neapolitan" className="space-y-6 mt-4">
-          <Section number={1} title="Ingredients" subtitle="500 g flour — Neapolitan style">
+          <Section number={1} title="Ingredients" subtitle="1,000 g flour — Neapolitan style">
             <Bullets items={[
-              "500 g 00 flour (Caputo Pizzeria)",
-              "305–315 g water (start with 310 g)",
-              "12 g salt",
-              "0.3–0.5 g dry yeast (very small pinch)",
+              "1,000 g 00 flour (Caputo Pizzeria)",
+              "610–630 g water (start with 620 g)",
+              "24 g salt",
+              "0.6–1 g dry yeast (very small pinch)",
             ]} />
-            <Callout>👉 This is a classic slow-fermentation Neapolitan dough.</Callout>
+            <Callout>👉 This is a classic slow-fermentation Neapolitan dough. Doing a bigger cook? Double every quantity again for a full 2,000 g (2 kg) batch.</Callout>
           </Section>
 
-          <Section number={2} title="Bread Machine Loading Order">
-            <Subhead>In your Panasonic</Subhead>
+          <Section number={2} title="Famag Spiral Mixer Timeline" subtitle="8–10 minutes total — dual rotation, Ff 3.0°C">
+            <Subhead>In your Famag IM 5-S-10V (HH)</Subhead>
             <ol className="space-y-1.5">
               {[
-                "Pour water first (310 g)",
-                "Add flour (500 g)",
-                "Add salt (12 g) on one side",
-                "Add yeast (0.3–0.5 g) on opposite side",
-                "Select Menu 32 (Pizza Dough) — runs 45 minutes (mix + knead, no proofing)",
+                "0–1 min (Speed 1, 90 RPM): Pour the 620 g cold water into the bowl and dissolve the yeast (0.6–1 g)",
+                "1–3 min (Speed 1–2): Add ~70% of the flour (about 700 g); mix until a smooth batter forms around the breaker bar",
+                "3–5 min (Speed 2–3): Add the salt (24 g) and the remaining 30% of flour (about 300 g); mix until no dry flour remains",
+                "5–9 min (Speed 4–5): Increase speed to build the gluten matrix until the dough detaches cleanly from the bowl sides into a smooth ring",
               ].map((t, i) => (
                 <li key={t} className="text-[15px] flex gap-2.5 leading-relaxed">
                   <span className="font-mono font-semibold text-primary shrink-0">{i + 1}.</span>
@@ -63,7 +62,7 @@ export default function DoughMakerPage() {
                 </li>
               ))}
             </ol>
-            <Callout>💡 Keep salt and yeast separated at first — important for yeast health.</Callout>
+            <Callout>💡 Keep salt and yeast separated at first — important for yeast health. Target total knead time: 8–10 minutes.</Callout>
           </Section>
 
           <Section number={3} title="After Kneading — Short Bulk" subtitle="Puntata: ~1 hour at room temp">
@@ -75,7 +74,7 @@ export default function DoughMakerPage() {
           </Section>
 
           <Section number={4} title="Balling the Dough" subtitle="Staglio anticipato — early balling, the AVPN/pro method">
-            <p className="text-[15px] mb-3">Divide into <span className="font-semibold text-primary">230–250 g</span> balls — about <span className="font-semibold text-primary">4–5 pizzas</span> — straight after the 1-hour puntata, then cold-ferment the balls in the fridge.</p>
+            <p className="text-[15px] mb-3">Divide into <span className="font-semibold text-primary">280 g</span> balls — about <span className="font-semibold text-primary">7–8 pizzas</span> — straight after the 1-hour puntata, then cold-ferment the balls in the fridge.</p>
             <div className="grid sm:grid-cols-2 gap-4">
               <div className="rounded-xl border border-primary/30 bg-primary/5 p-4">
                 <div className="text-[11px] uppercase tracking-[0.15em] text-primary font-semibold mb-2">Option A — Recommended</div>
@@ -102,7 +101,7 @@ export default function DoughMakerPage() {
             <Callout>👉 Ready-to-stretch: balls are soft, relaxed, and dome lightly when pushed. If they spring back hard, give them more time at room temp.</Callout>
           </Section>
 
-          <Section number={5} title="Why This Ratio Works" subtitle="For 500 g flour">
+          <Section number={5} title="Why This Ratio Works" subtitle="For 1,000 g flour">
             <Bullets items={[
               "60–63% hydration → balanced for high-heat oven",
               "Low yeast → long fermentation = better flavour",
@@ -137,29 +136,28 @@ export default function DoughMakerPage() {
 
         <TabsContent value="neapolitan2" className="space-y-6 mt-4">
           <p className="text-[15px] text-muted-foreground italic border-l-2 border-primary/30 pl-3 leading-relaxed">
-            <HighlightNumbers text="Eric Ayala's updated 2-stage pizza dough recipe, scaled for the Panasonic SD-ZX2522KXG at 500 g total flour. Because this process relies on long, cool fermentations instead of heat, the Panasonic is used solely for mixing and kneading, rather than letting it run the full heated program." />
+            <HighlightNumbers text="Eric Ayala's updated 2-stage pizza dough recipe, scaled for the Famag IM 5-S-10V (HH) spiral mixer at 1,000 g total flour. Because this process relies on long, cool fermentations instead of heat, the Famag is used solely for mixing and kneading — there is no heated program to worry about." />
           </p>
 
-          <Section number={1} title="Ingredients" subtitle="500 g total flour">
+          <Section number={1} title="Ingredients" subtitle="1,000 g total flour">
             <Bullets items={[
-              "250 g Caputo Nuvola Flour — gives the airy, high-volume cornicione (rim)",
-              "250 g Caputo Pizzeria 00 Flour — provides traditional texture and strength",
-              "320 g cool tap water — ~64% hydration for a soft, light dough",
-              "12 g fine sea salt — ~2.4% salt",
-              "~0.15 g Caputo dry yeast — a tiny speck (approx. 1/16 tsp)",
+              "500 g Caputo Nuvola Flour — gives the airy, high-volume cornicione (rim)",
+              "500 g Caputo Pizzeria 00 Flour — provides traditional texture and strength",
+              "640 g cool tap water — ~64% hydration for a soft, light dough",
+              "24 g fine sea salt — ~2.4% salt",
+              "~0.3 g Caputo dry yeast — a tiny speck (approx. 1/8 tsp)",
               "Caputo Semolina Rimacinata, as needed — for dusting the work surface when shaping",
             ]} />
+            <Callout>👉 Doing a bigger cook? Double every quantity again for a full 2,000 g (2 kg) batch.</Callout>
           </Section>
 
-          <Section number={2} title="Mixing in the Panasonic" subtitle="10–12 minutes">
+          <Section number={2} title="Mixing in the Famag" subtitle="8–10 minutes, Speed 1–5">
             <ol className="space-y-1.5">
               {[
-                "Pour the 320 g cool tap water into the pan",
-                "Add the tiny speck (~0.15 g) of Caputo dry yeast into the water",
-                "Add the 250 g Caputo Nuvola, 250 g Caputo Pizzeria, and 12 g salt on top",
-                "Select Program 32 (Pizza Dough) and press Start",
-                "Let the machine knead for 10 to 12 minutes until the dough comes together into a smooth ball",
-                "Stop & Cancel the program manually before the machine starts its warming or proving cycle — do not let the machine heat the dough",
+                "0–1 min (Speed 1, 90 RPM): Pour the 640 g cool tap water into the bowl and dissolve the tiny speck (~0.3 g) of Caputo dry yeast",
+                "1–3 min (Speed 1–2): Add ~70% of the flour (350 g Nuvola + 200 g Pizzeria); mix until a smooth batter forms around the breaker bar",
+                "3–5 min (Speed 2–3): Add the 24 g salt and the remaining 30% of flour (150 g Nuvola + 300 g Pizzeria); mix until no dry flour remains",
+                "5–9 min (Speed 4–5): Build the gluten matrix until the dough detaches cleanly from the bowl sides into a smooth ring",
               ].map((t, i) => (
                 <li key={t} className="text-[15px] flex gap-2.5 leading-relaxed">
                   <span className="font-mono font-semibold text-primary shrink-0">{i + 1}.</span>
@@ -167,7 +165,7 @@ export default function DoughMakerPage() {
                 </li>
               ))}
             </ol>
-            <Callout>💡 The machine is used for mixing and kneading only — never let it start heating or proving.</Callout>
+            <Callout>💡 The Famag is used for mixing and kneading only — no heated or proving cycle to worry about. Target total knead time: 8–10 minutes.</Callout>
           </Section>
 
           <Section number={3} title="1st Ferment" subtitle="Bulk rest at ~15°C">
@@ -181,7 +179,7 @@ export default function DoughMakerPage() {
           <Section number={4} title="Balling (Staglio) & 2nd Ferment">
             <Bullets items={[
               "Dump the relaxed dough onto your surface",
-              "Gently divide into 3 equal balls (~270 g each) without overworking or squeezing out all the air",
+              "Gently divide into 6 equal balls (~275 g each) without overworking or squeezing out all the air",
               "Place the dough balls into a covered dough box or container and rest at room temperature (20°C–22°C) for 8 to 10 hours until puffy and soft",
             ]} />
           </Section>
@@ -206,28 +204,28 @@ export default function DoughMakerPage() {
               "Softness Without Toughness — Because half the flour gets pre-hydrated overnight, the gluten network becomes extremely relaxed and extensible. You get zero rubbery chew",
               "Deep, Sweet Wheat Flavor — The extended preferment breaks down complex starches into natural sugars, producing a fragrant, sweet, buttery crust aroma instead of a sharp yeast smell",
             ]} />
-            <Callout>👉 Scaled precisely for 500 g total flour (250 g Caputo Nuvola + 250 g Caputo Pizzeria), using the Panasonic only for the final short knead.</Callout>
+            <Callout>👉 Scaled precisely for 1,000 g total flour (500 g Caputo Nuvola + 500 g Caputo Pizzeria), using the Famag spiral mixer only for the final short knead. Doing a bigger cook? Double every quantity again for a full 2,000 g (2 kg) batch.</Callout>
           </Section>
 
-          <Section number={2} title="Two Critical Adjustments for the Gozney" subtitle="500 g flour and 335 g water (67% hydration) are correct — yeast and honey are not">
+          <Section number={2} title="Two Critical Adjustments for the Gozney" subtitle="1,000 g flour and 670 g water (67% hydration) are correct — yeast and honey are not">
             <p className="text-[15px] mb-4 leading-relaxed">
-              <HighlightNumbers text="The 500 g flour total and 335 g water (67% hydration) are calculated correctly, but there are two critical adjustments to the yeast and honey before you mix this for your Gozney." />
+              <HighlightNumbers text="The 1,000 g flour total and 670 g water (67% hydration) are calculated correctly, but there are two critical adjustments to the yeast and honey before you mix this for your Gozney." />
             </p>
             <div className="grid sm:grid-cols-2 gap-4">
               <div className="rounded-xl border border-destructive/30 bg-destructive/5 p-4">
                 <div className="text-[11px] uppercase tracking-[0.15em] text-destructive font-semibold mb-2">1. Drop the Honey Completely (0 g)</div>
-                <p className="text-[15px] leading-relaxed"><span className="font-semibold">The Error:</span> Adding 3 g of honey to a Poolish cooked in a Gozney at 450–500°C will cause the rim to char and burn too quickly before the inside cooks through. Honey is meant for home ovens (250°C).</p>
+                <p className="text-[15px] leading-relaxed"><span className="font-semibold">The Error:</span> Adding 6 g of honey to a Poolish cooked in a Gozney at 450–500°C will cause the rim to char and burn too quickly before the inside cooks through. Honey is meant for home ovens (250°C).</p>
                 <p className="text-[15px] leading-relaxed mt-2"><span className="font-semibold">The Fix:</span> 0 g honey. At 450°C, the natural sugars released by the Poolish are more than enough to give you perfect leopard spotting without burning.</p>
               </div>
               <div className="rounded-xl border border-destructive/30 bg-destructive/5 p-4">
-                <div className="text-[11px] uppercase tracking-[0.15em] text-destructive font-semibold mb-2">2. Reduce the Yeast (0.4–0.5 g max)</div>
-                <p className="text-[15px] leading-relaxed"><span className="font-semibold">The Error:</span> 0.8 g of dry yeast across a Poolish + 24-hour cold ferment is too aggressive for 500 g of flour. The dough will over-proof in the fridge, become overly acidic, lose its gluten strength, and collapse or tear when stretched.</p>
-                <p className="text-[15px] leading-relaxed mt-2"><span className="font-semibold">The Fix:</span> 0.4 g to 0.5 g total dry yeast (about a generous 1/8 tsp).</p>
+                <div className="text-[11px] uppercase tracking-[0.15em] text-destructive font-semibold mb-2">2. Reduce the Yeast (0.8–1.0 g max)</div>
+                <p className="text-[15px] leading-relaxed"><span className="font-semibold">The Error:</span> 1.6 g of dry yeast across a Poolish + 24-hour cold ferment is too aggressive for 1,000 g of flour. The dough will over-proof in the fridge, become overly acidic, lose its gluten strength, and collapse or tear when stretched.</p>
+                <p className="text-[15px] leading-relaxed mt-2"><span className="font-semibold">The Fix:</span> 0.8 g to 1.0 g total dry yeast (about a generous 1/4 tsp).</p>
               </div>
             </div>
           </Section>
 
-          <Section number={3} title="Corrected Final Measurements" subtitle="Gozney + Panasonic setup">
+          <Section number={3} title="Corrected Final Measurements" subtitle="Gozney + Famag setup">
             <div className="overflow-x-auto -mx-1">
               <table className="w-full text-[15px] border-collapse min-w-[560px]">
                 <thead>
@@ -240,11 +238,11 @@ export default function DoughMakerPage() {
                 </thead>
                 <tbody>
                   {[
-                    ["Caputo Nuvola Flour", "250 g", "50%", "High gas retention for an airy rim"],
-                    ["Caputo Pizzeria 00 Flour", "250 g", "50%", "Strength and elasticity for the base"],
-                    ["Cool Water", "335 g", "67%", "Moisture for a cloud-like interior in high heat"],
-                    ["Trapani / Fine Sea Salt", "12 g", "2.4%", "Gluten structure and taste"],
-                    ["Caputo Instant Dry Yeast", "0.4 g", "0.08%", "Just a generous 1/8 tsp for the entire process"],
+                    ["Caputo Nuvola Flour", "500 g", "50%", "High gas retention for an airy rim"],
+                    ["Caputo Pizzeria 00 Flour", "500 g", "50%", "Strength and elasticity for the base"],
+                    ["Cool Water", "670 g", "67%", "Moisture for a cloud-like interior in high heat"],
+                    ["Trapani / Fine Sea Salt", "24 g", "2.4%", "Gluten structure and taste"],
+                    ["Caputo Instant Dry Yeast", "0.8 g", "0.08%", "Just a generous 1/4 tsp for the entire process"],
                     ["Honey / Sugar", "0 g", "0%", "Omit for Gozney to prevent burning"],
                   ].map((row) => (
                     <tr key={row[0]} className="border-b border-border/40 last:border-0">
@@ -264,9 +262,9 @@ export default function DoughMakerPage() {
               <div className="rounded-xl border border-primary/30 bg-primary/5 p-4">
                 <div className="text-[11px] uppercase tracking-[0.15em] text-primary font-semibold mb-2">Step 1 — The Poolish (Day 1)</div>
                 <ul className="text-[15px] space-y-1.5 leading-relaxed list-disc pl-4">
-                  <li>250 g Caputo Nuvola</li>
-                  <li>250 g Water</li>
-                  <li>0.3 g Yeast (a standard 1/8 tsp pinch)</li>
+                  <li>500 g Caputo Nuvola</li>
+                  <li>500 g Water</li>
+                  <li>0.6 g Yeast (a standard 1/4 tsp pinch)</li>
                 </ul>
                 <p className="text-[15px] mt-2 leading-relaxed">Mix, leave 1 hour on the counter, then fridge for 16–18 hours.</p>
               </div>
@@ -274,12 +272,12 @@ export default function DoughMakerPage() {
                 <div className="text-[11px] uppercase tracking-[0.15em] text-secondary font-semibold mb-2">Step 2 — The Final Mix (Day 2)</div>
                 <ul className="text-[15px] space-y-1.5 leading-relaxed list-disc pl-4">
                   <li>All of the cold Poolish</li>
-                  <li>250 g Caputo Pizzeria</li>
-                  <li>85 g Water</li>
-                  <li>12 g Salt</li>
-                  <li>0.1 g Yeast (a tiny micro-pinch)</li>
+                  <li>500 g Caputo Pizzeria</li>
+                  <li>170 g Water</li>
+                  <li>24 g Salt</li>
+                  <li>0.2 g Yeast (a tiny micro-pinch)</li>
                 </ul>
-                <p className="text-[15px] mt-2 leading-relaxed">Mix in the Panasonic on Program 32 for 6–8 minutes, then fridge for 24 hours.</p>
+                <p className="text-[15px] mt-2 leading-relaxed">Mix in the Famag on Speed 1–3 for 6–8 minutes, then fridge for 24 hours.</p>
               </div>
             </div>
           </Section>
@@ -287,8 +285,8 @@ export default function DoughMakerPage() {
           <Section number={5} title="Phase 1: The Poolish Preferment" subtitle="Day 1 — Morning">
             <ol className="space-y-1.5">
               {[
-                "In a glass jar or bowl, mix 250 g of the water and 0.3 g of dry yeast (a standard 1/8 tsp pinch) until dissolved",
-                "Whisk in 250 g of the Caputo Nuvola flour until a smooth, pancake-like batter forms",
+                "In a glass jar or bowl, mix 500 g of the water and 0.6 g of dry yeast (a standard 1/4 tsp pinch) until dissolved",
+                "Whisk in 500 g of the Caputo Nuvola flour until a smooth, pancake-like batter forms",
                 "Cover loosely and leave on the counter at room temperature for 1 hour to kickstart fermentation, then place in the refrigerator (4°C) for 16–18 hours",
               ].map((t, i) => (
                 <li key={t} className="text-[15px] flex gap-2.5 leading-relaxed">
@@ -303,11 +301,11 @@ export default function DoughMakerPage() {
           <Section number={6} title="Phase 2: The Final Knead" subtitle="Day 2 — Morning">
             <ol className="space-y-1.5">
               {[
-                "Scrape the cold, bubbly Poolish directly into your Panasonic bread pan",
-                "Pour in the remaining 85 g of cold water",
-                "Add the remaining 250 g Caputo Pizzeria flour, the remaining 0.1 g dry yeast (a tiny micro-pinch), and the 12 g salt",
-                "Select Program 32 (Pizza) and run for 6 to 8 minutes max — just until a smooth, cohesive dough ball forms around the blade",
-                "Stop/Cancel the machine immediately",
+                "Scrape the cold, bubbly Poolish directly into the Famag bowl",
+                "Pour in the remaining 170 g of cold water",
+                "Add the remaining 500 g Caputo Pizzeria flour, the remaining 0.2 g dry yeast (a tiny micro-pinch), and the 24 g salt",
+                "Run Speed 1–2 for the first 2–3 minutes, then Speed 3–4 for 6 to 8 minutes max — just until a smooth, cohesive dough ball detaches from the bowl",
+                "Stop the mixer immediately once the dough is smooth",
               ].map((t, i) => (
                 <li key={t} className="text-[15px] flex gap-2.5 leading-relaxed">
                   <span className="font-mono font-semibold text-primary shrink-0">{i + 1}.</span>
@@ -320,7 +318,7 @@ export default function DoughMakerPage() {
           <Section number={7} title="Phase 3: Cold Ferment & Balling" subtitle="Day 2 to Day 3">
             <Bullets items={[
               "Transfer the dough to an airtight container and place it back in the fridge (4°C) for 24 hours",
-              "5 to 6 hours before baking on Day 3, take the cold dough out and divide it into 3 equal balls (~280 g each)",
+              "5 to 6 hours before baking on Day 3, take the cold dough out and divide it into 6 equal balls (~280 g each)",
               "Shape gently into tight balls, place in a covered proofing box, and let rise at room temperature (20°C–22°C) until doubled, pillowy, and soft",
             ]} />
           </Section>
@@ -411,18 +409,18 @@ export default function DoughMakerPage() {
 
         <TabsContent value="deepdish" className="space-y-6 mt-4">
           <p className="text-[15px] text-muted-foreground italic border-l-2 border-primary/30 pl-3 leading-relaxed">
-            <HighlightNumbers text="This guide synthesizes your specific equipment (Panasonic SD-ZX2522KXG) and ingredients with professional techniques to create a deep-pan pizza." />
+            <HighlightNumbers text="This guide synthesizes your specific equipment (Famag IM 5-S-10V (HH) spiral mixer) and ingredients with professional techniques to create a deep-pan pizza. Quantities below use 1,000 g total flour (yields roughly two 9–10 inch pans) — double everything again for a 2,000 g (2 kg) batch." />
           </p>
 
           <Section number={1} title="The Poolish" subtitle="The Kickstart">
             <p className="text-[15px] text-muted-foreground italic mb-3">Do this the night before or at least 4 hours before mixing the final dough.</p>
             <Subhead>Combine</Subhead>
             <Bullets items={[
-              "In a clean bowl, mix 100g of All-Purpose Flour and 100g of water (room temperature)",
+              "In a clean bowl, mix 200g of All-Purpose Flour and 200g of water (room temperature)",
             ]} />
             <Subhead className="mt-4">Add Yeast</Subhead>
             <Bullets items={[
-              "Add roughly 0.1g (a tiny pinch) of your dry yeast",
+              "Add roughly 0.2g (a tiny pinch) of your dry yeast",
             ]} />
             <Subhead className="mt-4">Rest</Subhead>
             <Bullets items={[
@@ -431,36 +429,36 @@ export default function DoughMakerPage() {
             ]} />
           </Section>
 
-          <Section number={2} title="The Final Dough" subtitle="Bread Maker">
-            <p className="text-[15px] text-muted-foreground italic mb-3">Use your Panasonic SD-ZX2522KXG.</p>
-            <Subhead>Add to Pan</Subhead>
+          <Section number={2} title="The Final Dough" subtitle="Spiral Mixer">
+            <p className="text-[15px] text-muted-foreground italic mb-3">Use your Famag IM 5-S-10V (HH).</p>
+            <Subhead>Add to Bowl</Subhead>
             <Bullets items={[
-              "Add the remaining 400g of All-Purpose Flour and 175g–190g of water (55–58% hydration) to the bread maker pan",
+              "Add the remaining 800g of All-Purpose Flour and 350g–380g of water (55–58% hydration) to the Famag bowl",
             ]} />
             <Subhead className="mt-4">Add Poolish</Subhead>
             <Bullets items={[
               "Add the active poolish from Phase 1",
-              "Add 1g instant dry yeast for reliable rise",
+              "Add 2g instant dry yeast for reliable rise",
             ]} />
             <Subhead className="mt-4">Add Sweetener</Subhead>
             <Bullets items={[
-              "Add 1–2 tsp of honey (this aids crust color and yeast activity)",
+              "Add 2–4 tsp of honey (this aids crust color and yeast activity)",
             ]} />
             <Subhead className="mt-4">Add Fat</Subhead>
             <Bullets items={[
-              "Add 25g butter or olive oil — essential for that tender, shortbread-like deep dish crust",
+              "Add 50g butter or olive oil — essential for that tender, shortbread-like deep dish crust",
             ]} />
-            <Subhead className="mt-4">Set Program</Subhead>
+            <Subhead className="mt-4">Mixing Speed</Subhead>
             <Bullets items={[
-              'Select a "Dough" or "Pizza" cycle',
+              "Run Speed 1–2 for 2–3 minutes to combine, then Speed 3–4 to knead",
             ]} />
             <Subhead className="mt-4">The Salt Rule</Subhead>
             <Bullets items={[
-              "Since salt can inhibit yeast, add your 10g of salt roughly 5 minutes after the machine starts kneading, or towards the end of the initial mix",
+              "Since salt can inhibit yeast, add your 20g of salt roughly 5 minutes after the mixer starts kneading, or towards the end of the initial mix",
             ]} />
             <Subhead className="mt-4">Knead</Subhead>
             <Bullets items={[
-              "Let the machine finish the kneading cycle",
+              "Let the mixer run until the dough is smooth and pulls cleanly from the bowl — about 8–10 minutes total",
             ]} />
           </Section>
 
@@ -535,7 +533,7 @@ export default function DoughMakerPage() {
           </Section>
 
           <div className="border-l-2 border-primary/30 pl-4 py-1 text-sm text-muted-foreground italic leading-relaxed">
-            <HighlightNumbers text="Pro tip: Since you are using a bread maker, the poolish method ensures you get that professional, long-fermented flavor profile despite the convenience of the machine. If you find the dough too wet when pressing into the pan, reduce the water in the final dough step by 10g next time." />
+            <HighlightNumbers text="Pro tip: Since you are using a spiral mixer, the poolish method ensures you get that professional, long-fermented flavor profile despite the convenience of the machine. If you find the dough too wet when pressing into the pan, reduce the water in the final dough step by 10g next time." />
           </div>
 
           <div className="rounded-xl border border-border bg-muted/30 p-4">
@@ -553,13 +551,13 @@ export default function DoughMakerPage() {
 
         <TabsContent value="detroit" className="space-y-6 mt-4">
             <p className="text-[15px] text-muted-foreground italic border-l-2 border-primary/30 pl-3 leading-relaxed">
-              <HighlightNumbers text="This guide combines your Panasonic SD-ZX2522KXG for precision dough development with your Gozney Arc for professional-level crust finishing." />
+              <HighlightNumbers text="This guide combines your Famag IM 5-S-10V (HH) spiral mixer for precision dough development with your Gozney Arc for professional-level crust finishing. Quantities below use 1,000 g total flour (yields roughly two standard Detroit pans) — double everything again for a 2,000 g (2 kg) batch." />
             </p>
 
-            <Section number={1} title="The Dough" subtitle="Panasonic SD-ZX2522KXG">
+            <Section number={1} title="The Dough" subtitle="Famag IM 5-S-10V (HH)">
               <Subhead>Standard Recipe</Subhead>
               <Bullets items={[
-                "Use your standard recipe (500g Bread Flour, ~340g water, 12g salt, 0.5g yeast) + 1–2 tsp honey",
+                "Use your standard recipe (1,000g Bread Flour, ~680g water, 24g salt, 1g yeast) + 2–4 tsp honey",
               ]} />
 
               <Subhead className="mt-4">
@@ -572,27 +570,27 @@ export default function DoughMakerPage() {
                   How to prepare the poolish
                 </summary>
                 <div className="px-3 pb-3 text-[13px] leading-relaxed text-muted-foreground space-y-2">
-                  <p><strong className="text-foreground">Ratio:</strong> Mix 100g of your Bread Flour and 100g of room-temperature water.</p>
-                  <p><strong className="text-foreground">Yeast:</strong> Add a very small pinch of your dry yeast (~0.1g). Too much will cause it to ferment too quickly.</p>
+                  <p><strong className="text-foreground">Ratio:</strong> Mix 200g of your Bread Flour and 200g of room-temperature water.</p>
+                  <p><strong className="text-foreground">Yeast:</strong> Add a very small pinch of your dry yeast (~0.2g). Too much will cause it to ferment too quickly.</p>
                   <p><strong className="text-foreground">Rest:</strong> Stir until smooth, cover, and let sit at room temperature for 4–8 hours.</p>
                   <p><strong className="text-foreground">Visual cue:</strong> Surface covered in bubbles and frothy.</p>
-                  <p>When ready, scrape the bubbly poolish into your Panasonic pan along with the remaining flour, water, and yeast before the Dough cycle.</p>
+                  <p>When ready, scrape the bubbly poolish into the Famag bowl along with the remaining flour, water, and yeast before mixing.</p>
                 </div>
               </details>
               <Bullets items={[
-                "Mix 100g flour, 100g water, and a pinch of yeast 4–8 hours before",
+                "Mix 200g flour, 200g water, and a pinch of yeast 4–8 hours before",
                 "Cover and let it ferment at room temperature until bubbly and active",
               ]} />
 
-              <Subhead className="mt-4">Bread Maker Cycle</Subhead>
+              <Subhead className="mt-4">Spiral Mixer</Subhead>
               <Bullets items={[
-                "Add all ingredients to the Panasonic pan",
-                'Run the "Dough" cycle',
+                "Add all ingredients to the Famag bowl",
+                "Run Speed 1–2 for 2–3 minutes, then Speed 3–4 for 6–8 minutes until smooth",
               ]} />
 
               <Subhead className="mt-4">Salt</Subhead>
               <Bullets items={[
-                "Add the 12g of salt 5 minutes after the cycle starts",
+                "Add the 24g of salt 5 minutes after the mixer starts",
               ]} />
 
               <Subhead className="mt-4">Bulk Rise</Subhead>
@@ -682,7 +680,7 @@ export default function DoughMakerPage() {
             <div className="rounded-xl border border-primary/30 bg-primary/5 p-4 space-y-2">
               <div className="text-[11px] uppercase tracking-[0.15em] text-primary font-semibold">Pro Summary for Your Gear</div>
               <ul className="text-[15px] space-y-1.5 leading-relaxed">
-                <li>🍞 <strong className="text-foreground">Panasonic:</strong> Takes care of the heavy lifting of kneading and initial fermentation.</li>
+                <li>🌀 <strong className="text-foreground">Famag:</strong> Takes care of the heavy lifting of kneading and initial fermentation.</li>
                 <li>🧊 <strong className="text-foreground">Cold Ferment:</strong> Your secret weapon for deep flavor.</li>
                 <li>🔥 <strong className="text-foreground">Gozney Arc:</strong> Used as a low-temperature deck oven. Keeping the flame LOW and using the par-bake method prevents the top from burning while the bottom gets that signature cracker-like crunch.</li>
               </ul>
@@ -713,27 +711,27 @@ export default function DoughMakerPage() {
 
         <TabsContent value="ny" className="space-y-6 mt-4">
             <p className="text-[15px] text-muted-foreground italic border-l-2 border-primary/30 pl-3 leading-relaxed">
-              <HighlightNumbers text="To get that authentic, foldable, crispy-yet-chewy New York slice, this lower-hydration, oil-enriched dough is designed for your Gozney Arc's stone-baking capabilities." />
+              <HighlightNumbers text="To get that authentic, foldable, crispy-yet-chewy New York slice, this lower-hydration, oil-enriched dough is designed for your Gozney Arc's stone-baking capabilities. Quantities below use 1,000 g total flour — double everything again for a 2,000 g (2 kg) batch." />
             </p>
 
-            <Section number={1} title="The Proper NY Dough Recipe" subtitle="Panasonic SD-ZX2522KXG">
+            <Section number={1} title="The Proper NY Dough Recipe" subtitle="Famag IM 5-S-10V (HH)">
               <Subhead>Ingredients</Subhead>
               <Bullets items={[
-                "500g Bread Flour (or High-Gluten Flour — essential for that signature NY chew)",
-                "290g Water (Cold)",
-                "15g Olive Oil (essential for the NY texture)",
-                "12g Salt",
-                "0.3g Dry Yeast (a tiny pinch — NY dough needs a slower, longer rise)",
-                "1 tsp Honey (optional, for better browning)",
+                "1,000g Bread Flour (or High-Gluten Flour — essential for that signature NY chew)",
+                "580g Water (Cold)",
+                "30g Olive Oil (essential for the NY texture)",
+                "24g Salt",
+                "0.6g Dry Yeast (a tiny pinch — NY dough needs a slower, longer rise)",
+                "2 tsp Honey (optional, for better browning)",
               ]} />
 
               <Subhead className="mt-4">The Procedure</Subhead>
               <Bullets items={[
-                "Poolish (optional): Mix 100g flour, 100g water, pinch of yeast. Let sit 4–8 hours.",
-                "Bread Maker: Add all ingredients (including poolish). Select the Dough cycle.",
-                "Salt &amp; Oil: Add salt and olive oil 5 minutes after the machine starts kneading.",
-                'The "Crispy" Adjustment: When the machine beeps, take the dough out and hand-knead it for 60 seconds on the counter. Feel for a supple, elastic texture. If it feels sticky, add a dusting of flour. This hand-work connects you to the dough structure.',
-                "Balling: When the cycle ends, divide into two equal pieces (~400g each). Roll into tight, smooth balls.",
+                "Poolish (optional): Mix 200g flour, 200g water, pinch of yeast. Let sit 4–8 hours.",
+                "Spiral Mixer: Add all ingredients (including poolish) to the Famag bowl. Run Speed 1–2 for 2–3 minutes, then Speed 3–4 until smooth.",
+                "Salt &amp; Oil: Add salt and olive oil 5 minutes after the mixer starts kneading.",
+                'The "Crispy" Adjustment: When the dough detaches cleanly from the bowl (around 8–10 minutes total), take it out and hand-knead it for 60 seconds on the counter. Feel for a supple, elastic texture. If it feels sticky, add a dusting of flour. This hand-work connects you to the dough structure.',
+                "Balling: Once done, divide into four equal pieces (~400g each). Roll into tight, smooth balls.",
                 "Cold Ferment: Place each ball into a separate, lightly oiled container. Refrigerate for 24–72 hours. This is the key to the New York flavor and structure.",
               ]} />
             </Section>
@@ -820,7 +818,7 @@ export default function DoughMakerPage() {
                   <tbody>
                     <tr className="border-b border-primary/10">
                       <td className="py-2 pr-4 text-secondary font-medium align-top whitespace-nowrap">Hydration</td>
-                      <td className="py-2"><HighlightNumbers text="58% (290g water / 500g flour) — keeps it foldable, not soggy." /></td>
+                      <td className="py-2"><HighlightNumbers text="58% (580g water / 1,000g flour) — keeps it foldable, not soggy." /></td>
                     </tr>
                     <tr className="border-b border-primary/10">
                       <td className="py-2 pr-4 text-secondary font-medium align-top whitespace-nowrap">Fermentation</td>
@@ -864,26 +862,26 @@ export default function DoughMakerPage() {
 
         <TabsContent value="roman" className="space-y-6 mt-4">
             <p className="text-[15px] text-muted-foreground italic border-l-2 border-primary/30 pl-3 leading-relaxed">
-              <HighlightNumbers text="Roman thin-crust pizza (Pizza Tonda Romana) is the antithesis of the soft, airy Neapolitan style. Thin, biscuit-like, and shatteringly crispy with zero flop." />
+              <HighlightNumbers text="Roman thin-crust pizza (Pizza Tonda Romana) is the antithesis of the soft, airy Neapolitan style. Thin, biscuit-like, and shatteringly crispy with zero flop. Quantities below use 1,000 g total flour — double everything again for a 2,000 g (2 kg) batch." />
             </p>
 
-            <Section number={1} title="The Roman Dough" subtitle="Panasonic SD-ZX2522KXG">
+            <Section number={1} title="The Roman Dough" subtitle="Famag IM 5-S-10V (HH)">
               <p className="text-[15px] text-muted-foreground italic mb-3">The key difference: olive oil and lower hydration for a crisp rather than chewy crust.</p>
 
               <Subhead>Ingredients</Subhead>
               <Bullets items={[
-                '500g Strong 00 Flour (W300+) or Bread Flour (or a blend of 400g strong flour + 100g Semolina Rimacinata for extra crunch)',
-                "275g–285g Water (aim for ~55–57% hydration)",
-                "25g Extra Virgin Olive Oil (the secret to elasticity and biscuit texture)",
-                "12g Salt",
-                "0.3g Dry Yeast",
+                '1,000g Strong 00 Flour (W300+) or Bread Flour (or a blend of 800g strong flour + 200g Semolina Rimacinata for extra crunch)',
+                "550g–570g Water (aim for ~55–57% hydration)",
+                "50g Extra Virgin Olive Oil (the secret to elasticity and biscuit texture)",
+                "24g Salt",
+                "0.6g Dry Yeast",
               ]} />
 
               <Subhead className="mt-4">Method</Subhead>
               <Bullets items={[
-                "Add ingredients to the Panasonic and run the Dough cycle.",
+                "Add ingredients to the Famag bowl and run Speed 1–2 for 2–3 minutes, then Speed 3–4 until smooth (8–10 minutes total).",
                 "Add salt and oil 5 minutes into the kneading process.",
-                "Once the cycle finishes, bulk ferment in a covered bowl for 1 hour at room temp.",
+                "Once mixing finishes, bulk ferment in a covered bowl for 1 hour at room temp.",
                 "Cold Ferment: Transfer to the fridge for 12–24 hours. Vital for breaking down proteins and creating a light, digestible structure.",
               ]} />
             </Section>
@@ -947,24 +945,24 @@ export default function DoughMakerPage() {
 
         <TabsContent value="sicilian" className="space-y-6 mt-4">
             <p className="text-[15px] text-muted-foreground italic border-l-2 border-primary/30 pl-3 leading-relaxed">
-              <HighlightNumbers text="Sicilian-style pizza (Sfincione) is built on a pan-proof method — a sponge-like, airy crumb that soaks up sauce while maintaining a crispy, fried bottom." />
+              <HighlightNumbers text="Sicilian-style pizza (Sfincione) is built on a pan-proof method — a sponge-like, airy crumb that soaks up sauce while maintaining a crispy, fried bottom. Quantities below use 1,000 g total flour (yields roughly two pans) — double everything again for a 2,000 g (2 kg) batch." />
             </p>
 
-            <Section number={1} title="The Sicilian Dough" subtitle="Panasonic SD-ZX2522KXG">
+            <Section number={1} title="The Sicilian Dough" subtitle="Famag IM 5-S-10V (HH)">
               <Subhead>Ingredients</Subhead>
               <Bullets items={[
-                "500g High-Protein Bread Flour (better than 00 for that tall, airy sponge)",
-                "350g Water (70% hydration — Sicilian dough should be quite soft and tacky)",
-                "20g Extra Virgin Olive Oil",
-                "10g Salt",
-                "0.5g Dry Yeast",
+                "1,000g High-Protein Bread Flour (better than 00 for that tall, airy sponge)",
+                "700g Water (70% hydration — Sicilian dough should be quite soft and tacky)",
+                "40g Extra Virgin Olive Oil",
+                "20g Salt",
+                "1g Dry Yeast",
               ]} />
 
               <Subhead className="mt-4">Method</Subhead>
               <Bullets items={[
-                "Add ingredients to the Panasonic pan. Run the Dough cycle.",
-                "Add salt and oil 5 minutes after the cycle starts.",
-                "Once the cycle finishes, let the dough rest in a lightly oiled bowl for 1 hour at room temperature.",
+                "Add ingredients to the Famag bowl. Run Speed 1–2 for 2–3 minutes, then Speed 3–4 until smooth (8–10 minutes total).",
+                "Add salt and oil 5 minutes after mixing starts.",
+                "Once mixing finishes, let the dough rest in a lightly oiled bowl for 1 hour at room temperature.",
               ]} />
             </Section>
 

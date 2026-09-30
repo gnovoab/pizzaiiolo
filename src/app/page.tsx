@@ -116,10 +116,10 @@ export default function CalculatorPage() {
               </>
             )}
             {store.doughMode === "flour" && (
-              <Field label="Flour (g)" value={store.flourInput} onChange={v => set({ flourInput: v })} min={100} max={5000} step={10} />
+              <Field label="Flour (g)" value={store.flourInput} onChange={v => set({ flourInput: v })} min={1000} max={3000} step={10} />
             )}
             {store.doughMode === "water" && (
-              <Field label="Water (g)" value={store.waterInput} onChange={v => set({ waterInput: v })} min={100} max={5000} step={10} />
+              <Field label="Water (g)" value={store.waterInput} onChange={v => set({ waterInput: v })} min={1000} max={3000} step={10} />
             )}
             <div className="border-t border-border/60 pt-4 space-y-5">
               <PercentField label="Hydration" value={store.hydration} onChange={v => set({ hydration: v })} min={0.50} max={0.85} />

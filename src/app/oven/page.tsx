@@ -57,7 +57,7 @@ export default function OvenPage() {
 
       <Section number={2} title="Dough Handling">
         <Bullets items={[
-          "Dough weight: 250–270 g",
+          "Dough weight: 280 g",
           "Stretch to 28–33 cm",
           "Keep a defined outer rim (cornicione)",
           "Do not degas edges (air = structure)",
