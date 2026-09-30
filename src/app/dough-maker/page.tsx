@@ -157,7 +157,7 @@ export default function DoughMakerPage() {
                 "Pour the 320 g cool tap water into the pan",
                 "Add the tiny speck (~0.15 g) of Caputo dry yeast into the water",
                 "Add the 250 g Caputo Nuvola, 250 g Caputo Pizzeria, and 12 g salt on top",
-                "Select Program 28 (Pizza Dough) and press Start",
+                "Select Program 32 (Pizza Dough) and press Start",
                 "Let the machine knead for 10 to 12 minutes until the dough comes together into a smooth ball",
                 "Stop & Cancel the program manually before the machine starts its warming or proving cycle — do not let the machine heat the dough",
               ].map((t, i) => (
@@ -279,7 +279,7 @@ export default function DoughMakerPage() {
                   <li>12 g Salt</li>
                   <li>0.1 g Yeast (a tiny micro-pinch)</li>
                 </ul>
-                <p className="text-[15px] mt-2 leading-relaxed">Mix in the Panasonic on Program 28 for 6–8 minutes, then fridge for 24 hours.</p>
+                <p className="text-[15px] mt-2 leading-relaxed">Mix in the Panasonic on Program 32 for 6–8 minutes, then fridge for 24 hours.</p>
               </div>
             </div>
           </Section>
@@ -306,7 +306,7 @@ export default function DoughMakerPage() {
                 "Scrape the cold, bubbly Poolish directly into your Panasonic bread pan",
                 "Pour in the remaining 85 g of cold water",
                 "Add the remaining 250 g Caputo Pizzeria flour, the remaining 0.1 g dry yeast (a tiny micro-pinch), and the 12 g salt",
-                "Select Program 28 (Pizza) and run for 6 to 8 minutes max — just until a smooth, cohesive dough ball forms around the blade",
+                "Select Program 32 (Pizza) and run for 6 to 8 minutes max — just until a smooth, cohesive dough ball forms around the blade",
                 "Stop/Cancel the machine immediately",
               ].map((t, i) => (
                 <li key={t} className="text-[15px] flex gap-2.5 leading-relaxed">
