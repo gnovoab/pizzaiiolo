@@ -49,11 +49,118 @@ function calculateDoughBatch(flourWeight: number, ballWeight: number) {
   };
 }
 
+/** Shape consumed by <BatchSummary>; every per-style batch calculator below extends this. */
+interface DoughBatchSummary {
+  flourWeight: number;
+  water: number;
+  salt: number;
+  yeastMin: number;
+  yeastMax: number;
+  totalDoughMin: number;
+  fullBalls: number;
+  ballWeight: number;
+  remainder: number;
+}
+
+// Neapolitan 2.0 tab baker's percentages (fixed, of total flour weight) —
+// derived from the published 2-stage recipe (500 g Nuvola + 500 g Pizzeria +
+// 640 g water + 24 g salt + 0.3 g yeast per 1,000 g total flour).
+const N2_NUVOLA_PCT = 0.5;
+const N2_PIZZERIA_PCT = 0.5;
+const N2_HYDRATION_PCT = 0.64;
+const N2_SALT_PCT = 0.024;
+const N2_YEAST_PCT = 0.0003;
+// Stage-1/stage-2 flour-addition split during mixing, each expressed as a
+// percentage of that flour type's own total (the published recipe adds
+// Nuvola and Pizzeria in different proportions at each stage).
+const N2_NUVOLA_FIRST_PCT = 0.7;
+const N2_NUVOLA_REMAINING_PCT = 0.3;
+const N2_PIZZERIA_FIRST_PCT = 0.4;
+const N2_PIZZERIA_REMAINING_PCT = 0.6;
+
+/** Single source of truth for every Neapolitan 2.0-tab quantity. */
+function calculateNeapolitan2Batch(flourWeight: number, ballWeight: number) {
+  const nuvola = flourWeight * N2_NUVOLA_PCT;
+  const pizzeria = flourWeight * N2_PIZZERIA_PCT;
+  const water = flourWeight * N2_HYDRATION_PCT;
+  const salt = flourWeight * N2_SALT_PCT;
+  const yeast = flourWeight * N2_YEAST_PCT;
+
+  const nuvolaFirst = nuvola * N2_NUVOLA_FIRST_PCT;
+  const nuvolaRemaining = nuvola * N2_NUVOLA_REMAINING_PCT;
+  const pizzeriaFirst = pizzeria * N2_PIZZERIA_FIRST_PCT;
+  const pizzeriaRemaining = pizzeria * N2_PIZZERIA_REMAINING_PCT;
+
+  const totalDough = flourWeight + water + salt + yeast;
+  const fullBalls = Math.max(1, Math.floor(totalDough / ballWeight));
+  const remainder = Math.max(0, totalDough - fullBalls * ballWeight);
+
+  return {
+    flourWeight, nuvola, pizzeria, water, salt,
+    yeastMin: yeast, yeastMax: yeast,
+    nuvolaFirst, nuvolaRemaining, pizzeriaFirst, pizzeriaRemaining,
+    totalDoughMin: totalDough,
+    ballWeight, fullBalls, remainder,
+  } satisfies DoughBatchSummary & Record<string, number>;
+}
+
+// Poolish tab baker's percentages (fixed, of total flour weight) — derived
+// from the published 100% Poolish + cold-ferment recipe (500 g Nuvola in the
+// poolish stage + 500 g Pizzeria in the final mix, 670 g total water, 24 g
+// salt, 0.8 g total yeast split 0.6 g poolish / 0.2 g final mix, per 1,000 g
+// total flour).
+const POOLISH_NUVOLA_PCT = 0.5;
+const POOLISH_PIZZERIA_PCT = 0.5;
+const POOLISH_STAGE_WATER_PCT = 0.5;
+const POOLISH_FINAL_WATER_PCT = 0.17;
+const POOLISH_SALT_PCT = 0.024;
+const POOLISH_STAGE_YEAST_PCT = 0.0006;
+const POOLISH_FINAL_YEAST_PCT = 0.0002;
+
+/** Single source of truth for every Poolish-tab quantity. */
+function calculatePoolishBatch(flourWeight: number, ballWeight: number) {
+  const nuvola = flourWeight * POOLISH_NUVOLA_PCT;
+  const pizzeria = flourWeight * POOLISH_PIZZERIA_PCT;
+  const poolishWater = flourWeight * POOLISH_STAGE_WATER_PCT;
+  const finalWater = flourWeight * POOLISH_FINAL_WATER_PCT;
+  const water = poolishWater + finalWater;
+  const salt = flourWeight * POOLISH_SALT_PCT;
+  const poolishYeast = flourWeight * POOLISH_STAGE_YEAST_PCT;
+  const finalYeast = flourWeight * POOLISH_FINAL_YEAST_PCT;
+  const yeast = poolishYeast + finalYeast;
+
+  const totalDough = flourWeight + water + salt + yeast;
+  const fullBalls = Math.max(1, Math.floor(totalDough / ballWeight));
+  const remainder = Math.max(0, totalDough - fullBalls * ballWeight);
+
+  return {
+    flourWeight, nuvola, pizzeria, water, salt,
+    yeastMin: yeast, yeastMax: yeast,
+    poolishWater, finalWater, poolishYeast, finalYeast,
+    totalDoughMin: totalDough,
+    ballWeight, fullBalls, remainder,
+  } satisfies DoughBatchSummary & Record<string, number>;
+}
+
 export default function DoughMakerPage() {
   const [flourAmount, setFlourAmount] = useState(1000);
   const [ballWeight, setBallWeight] = useState(280);
 
   const batch = useMemo(() => calculateDoughBatch(flourAmount, ballWeight), [flourAmount, ballWeight]);
+
+  const [neapolitan2FlourAmount, setNeapolitan2FlourAmount] = useState(1000);
+  const [neapolitan2BallWeight, setNeapolitan2BallWeight] = useState(275);
+  const neapolitan2Batch = useMemo(
+    () => calculateNeapolitan2Batch(neapolitan2FlourAmount, neapolitan2BallWeight),
+    [neapolitan2FlourAmount, neapolitan2BallWeight]
+  );
+
+  const [poolishFlourAmount, setPoolishFlourAmount] = useState(1000);
+  const [poolishBallWeight, setPoolishBallWeight] = useState(280);
+  const poolishBatch = useMemo(
+    () => calculatePoolishBatch(poolishFlourAmount, poolishBallWeight),
+    [poolishFlourAmount, poolishBallWeight]
+  );
 
   return (
     <div className="space-y-10">
@@ -284,27 +391,35 @@ export default function DoughMakerPage() {
 
         <TabsContent value="neapolitan2" className="space-y-6 mt-4">
           <p className="text-[15px] text-muted-foreground italic border-l-2 border-primary/30 pl-3 leading-relaxed">
-            <HighlightNumbers text="Eric Ayala's updated 2-stage pizza dough recipe, scaled for the Famag IM 5-S-10V (HH) spiral mixer at 1,000 g total flour. Because this process relies on long, cool fermentations instead of heat, the Famag is used solely for mixing and kneading — there is no heated program to worry about." />
+            <HighlightNumbers text="Eric Ayala's updated 2-stage pizza dough recipe, scaled for the Famag IM 5-S-10V (HH) spiral mixer. Because this process relies on long, cool fermentations instead of heat, the Famag is used solely for mixing and kneading — there is no heated program to worry about." />
           </p>
 
-          <Section number={1} title="Ingredients" subtitle="1,000 g total flour">
+          <Section number={1} title="Ingredients" subtitle={`${formatWeight(neapolitan2Batch.flourWeight)} total flour — 50/50 Nuvola & Pizzeria`}>
+            <div className="grid sm:grid-cols-2 gap-4 mb-5">
+              <Field label="Total Flour (g)" value={neapolitan2FlourAmount} onChange={setNeapolitan2FlourAmount} min={1000} max={3000} step={10} />
+              <Field label="Dough Ball Size (g)" value={neapolitan2BallWeight} onChange={setNeapolitan2BallWeight} min={200} max={400} step={5} />
+            </div>
+
+            <BatchSummary batch={neapolitan2Batch} />
+
+            <Subhead className="mt-5">Current Recipe</Subhead>
             <Bullets items={[
-              "500 g Caputo Nuvola Flour — gives the airy, high-volume cornicione (rim)",
-              "500 g Caputo Pizzeria 00 Flour — provides traditional texture and strength",
-              "640 g cool tap water — ~64% hydration for a soft, light dough",
-              "24 g fine sea salt — ~2.4% salt",
-              "~0.3 g Caputo dry yeast — a tiny speck (approx. 1/8 tsp)",
+              `${formatWeight(neapolitan2Batch.nuvola)} Caputo Nuvola Flour — gives the airy, high-volume cornicione (rim)`,
+              `${formatWeight(neapolitan2Batch.pizzeria)} Caputo Pizzeria 00 Flour — provides traditional texture and strength`,
+              `${formatWeight(neapolitan2Batch.water)} cool tap water — ~64% hydration for a soft, light dough`,
+              `${formatWeight(neapolitan2Batch.salt)} fine sea salt — ~2.4% salt`,
+              `${formatWeightPrecise(neapolitan2Batch.yeastMin)} Caputo dry yeast — a tiny speck (approx. 1/8 tsp)`,
               "Caputo Semolina Rimacinata, as needed — for dusting the work surface when shaping",
             ]} />
-            <Callout>👉 Doing a bigger cook? Double every quantity again for a full 2,000 g (2 kg) batch.</Callout>
+            <Callout>👉 Choose your flour quantity above and every ingredient scales automatically using the same baker&apos;s percentages.</Callout>
           </Section>
 
           <Section number={2} title="Mixing in the Famag" subtitle="8–10 minutes, Speed 1–5">
             <ol className="space-y-1.5">
               {[
-                "0–1 min (Speed 1, 90 RPM): Pour the 640 g cool tap water into the bowl and dissolve the tiny speck (~0.3 g) of Caputo dry yeast",
-                "1–3 min (Speed 1–2): Add ~70% of the flour (350 g Nuvola + 200 g Pizzeria); mix until a smooth batter forms around the breaker bar",
-                "3–5 min (Speed 2–3): Add the 24 g salt and the remaining 30% of flour (150 g Nuvola + 300 g Pizzeria); mix until no dry flour remains",
+                `0–1 min (Speed 1, 90 RPM): Pour the ${formatWeight(neapolitan2Batch.water)} cool tap water into the bowl and dissolve the tiny speck (${formatWeightPrecise(neapolitan2Batch.yeastMin)}) of Caputo dry yeast`,
+                `1–3 min (Speed 1–2): Add the first portion of flour (${formatWeight(neapolitan2Batch.nuvolaFirst)} Nuvola + ${formatWeight(neapolitan2Batch.pizzeriaFirst)} Pizzeria); mix until a smooth batter forms around the breaker bar`,
+                `3–5 min (Speed 2–3): Add the ${formatWeight(neapolitan2Batch.salt)} salt and the remaining flour (${formatWeight(neapolitan2Batch.nuvolaRemaining)} Nuvola + ${formatWeight(neapolitan2Batch.pizzeriaRemaining)} Pizzeria); mix until no dry flour remains`,
                 "5–9 min (Speed 4–5): Build the gluten matrix until the dough detaches cleanly from the bowl sides into a smooth ring",
               ].map((t, i) => (
                 <li key={t} className="text-[15px] flex gap-2.5 leading-relaxed">
@@ -325,9 +440,14 @@ export default function DoughMakerPage() {
           </Section>
 
           <Section number={4} title="Balling (Staglio) & 2nd Ferment">
+            <p className="text-[15px] mb-3">
+              Divide the dough into <span className="font-semibold text-primary">{formatWeight(neapolitan2BallWeight)}</span> portions, producing{" "}
+              <span className="font-semibold text-primary">{neapolitan2Batch.fullBalls} dough ball{neapolitan2Batch.fullBalls === 1 ? "" : "s"}</span>
+              {neapolitan2Batch.remainder > 0.5 ? <> plus approximately <span className="font-semibold text-primary">{formatWeight(neapolitan2Batch.remainder)}</span> remaining dough</> : null}.
+            </p>
             <Bullets items={[
               "Dump the relaxed dough onto your surface",
-              "Gently divide into 6 equal balls (~275 g each) without overworking or squeezing out all the air",
+              "Gently divide into equal balls without overworking or squeezing out all the air",
               "Place the dough balls into a covered dough box or container and rest at room temperature (20°C–22°C) for 8 to 10 hours until puffy and soft",
             ]} />
           </Section>
@@ -352,12 +472,16 @@ export default function DoughMakerPage() {
               "Softness Without Toughness — Because half the flour gets pre-hydrated overnight, the gluten network becomes extremely relaxed and extensible. You get zero rubbery chew",
               "Deep, Sweet Wheat Flavor — The extended preferment breaks down complex starches into natural sugars, producing a fragrant, sweet, buttery crust aroma instead of a sharp yeast smell",
             ]} />
-            <Callout>👉 Scaled precisely for 1,000 g total flour (500 g Caputo Nuvola + 500 g Caputo Pizzeria), using the Famag spiral mixer only for the final short knead. Doing a bigger cook? Double every quantity again for a full 2,000 g (2 kg) batch.</Callout>
+            <Callout>👉 Uses the Famag spiral mixer only for the final short knead. Choose your flour quantity in the next section and every ingredient scales automatically using the same baker&apos;s percentages.</Callout>
           </Section>
 
-          <Section number={2} title="Two Critical Adjustments for the Gozney" subtitle="1,000 g flour and 670 g water (67% hydration) are correct — yeast and honey are not">
+          <Section number={2} title="Two Critical Adjustments for the Gozney" subtitle={`${formatWeight(poolishBatch.flourWeight)} flour and ${formatWeight(poolishBatch.water)} water (67% hydration) are correct — yeast and honey are not`}>
+            <div className="grid sm:grid-cols-2 gap-4 mb-5">
+              <Field label="Total Flour (g)" value={poolishFlourAmount} onChange={setPoolishFlourAmount} min={1000} max={3000} step={10} />
+              <Field label="Dough Ball Size (g)" value={poolishBallWeight} onChange={setPoolishBallWeight} min={200} max={400} step={5} />
+            </div>
             <p className="text-[15px] mb-4 leading-relaxed">
-              <HighlightNumbers text="The 1,000 g flour total and 670 g water (67% hydration) are calculated correctly, but there are two critical adjustments to the yeast and honey before you mix this for your Gozney." />
+              <HighlightNumbers text={`The ${formatWeight(poolishBatch.flourWeight)} flour total and ${formatWeight(poolishBatch.water)} water (67% hydration) are calculated correctly, but there are two critical adjustments to the yeast and honey before you mix this for your Gozney.`} />
             </p>
             <div className="grid sm:grid-cols-2 gap-4">
               <div className="rounded-xl border border-destructive/30 bg-destructive/5 p-4">
@@ -366,14 +490,15 @@ export default function DoughMakerPage() {
                 <p className="text-[15px] leading-relaxed mt-2"><span className="font-semibold">The Fix:</span> 0 g honey. At 450°C, the natural sugars released by the Poolish are more than enough to give you perfect leopard spotting without burning.</p>
               </div>
               <div className="rounded-xl border border-destructive/30 bg-destructive/5 p-4">
-                <div className="text-[11px] uppercase tracking-[0.15em] text-destructive font-semibold mb-2">2. Reduce the Yeast (0.8–1.0 g max)</div>
+                <div className="text-[11px] uppercase tracking-[0.15em] text-destructive font-semibold mb-2">2. Reduce the Yeast (0.8–1.0 g max per 1,000 g flour)</div>
                 <p className="text-[15px] leading-relaxed"><span className="font-semibold">The Error:</span> 1.6 g of dry yeast across a Poolish + 24-hour cold ferment is too aggressive for 1,000 g of flour. The dough will over-proof in the fridge, become overly acidic, lose its gluten strength, and collapse or tear when stretched.</p>
-                <p className="text-[15px] leading-relaxed mt-2"><span className="font-semibold">The Fix:</span> 0.8 g to 1.0 g total dry yeast (about a generous 1/4 tsp).</p>
+                <p className="text-[15px] leading-relaxed mt-2"><span className="font-semibold">The Fix:</span> 0.8 g to 1.0 g total dry yeast per 1,000 g flour (about a generous 1/4 tsp).</p>
               </div>
             </div>
           </Section>
 
           <Section number={3} title="Corrected Final Measurements" subtitle="Gozney + Famag setup">
+            <BatchSummary batch={poolishBatch} />
             <div className="overflow-x-auto -mx-1">
               <table className="w-full text-[15px] border-collapse min-w-[560px]">
                 <thead>
@@ -386,11 +511,11 @@ export default function DoughMakerPage() {
                 </thead>
                 <tbody>
                   {[
-                    ["Caputo Nuvola Flour", "500 g", "50%", "High gas retention for an airy rim"],
-                    ["Caputo Pizzeria 00 Flour", "500 g", "50%", "Strength and elasticity for the base"],
-                    ["Cool Water", "670 g", "67%", "Moisture for a cloud-like interior in high heat"],
-                    ["Trapani / Fine Sea Salt", "24 g", "2.4%", "Gluten structure and taste"],
-                    ["Caputo Instant Dry Yeast", "0.8 g", "0.08%", "Just a generous 1/4 tsp for the entire process"],
+                    ["Caputo Nuvola Flour", formatWeight(poolishBatch.nuvola), "50%", "High gas retention for an airy rim"],
+                    ["Caputo Pizzeria 00 Flour", formatWeight(poolishBatch.pizzeria), "50%", "Strength and elasticity for the base"],
+                    ["Cool Water", formatWeight(poolishBatch.water), "67%", "Moisture for a cloud-like interior in high heat"],
+                    ["Trapani / Fine Sea Salt", formatWeight(poolishBatch.salt), "2.4%", "Gluten structure and taste"],
+                    ["Caputo Instant Dry Yeast", formatWeightPrecise(poolishBatch.yeastMin), "0.08%", "Just a generous 1/4 tsp for the entire process"],
                     ["Honey / Sugar", "0 g", "0%", "Omit for Gozney to prevent burning"],
                   ].map((row) => (
                     <tr key={row[0]} className="border-b border-border/40 last:border-0">
@@ -405,14 +530,14 @@ export default function DoughMakerPage() {
             </div>
           </Section>
 
-          <Section number={4} title="How to Divide the Yeast Exactly Between Steps" subtitle="Splitting 0.4 g across the Poolish and final mix">
+          <Section number={4} title="How to Divide the Yeast Exactly Between Steps" subtitle={`Splitting ${formatWeightPrecise(poolishBatch.poolishYeast + poolishBatch.finalYeast)} across the Poolish and final mix`}>
             <div className="grid sm:grid-cols-2 gap-4">
               <div className="rounded-xl border border-primary/30 bg-primary/5 p-4">
                 <div className="text-[11px] uppercase tracking-[0.15em] text-primary font-semibold mb-2">Step 1 — The Poolish (Day 1)</div>
                 <ul className="text-[15px] space-y-1.5 leading-relaxed list-disc pl-4">
-                  <li>500 g Caputo Nuvola</li>
-                  <li>500 g Water</li>
-                  <li>0.6 g Yeast (a standard 1/4 tsp pinch)</li>
+                  <li>{formatWeight(poolishBatch.nuvola)} Caputo Nuvola</li>
+                  <li>{formatWeight(poolishBatch.poolishWater)} Water</li>
+                  <li>{formatWeightPrecise(poolishBatch.poolishYeast)} Yeast (a standard 1/4 tsp pinch)</li>
                 </ul>
                 <p className="text-[15px] mt-2 leading-relaxed">Mix, leave 1 hour on the counter, then fridge for 16–18 hours.</p>
               </div>
@@ -420,10 +545,10 @@ export default function DoughMakerPage() {
                 <div className="text-[11px] uppercase tracking-[0.15em] text-secondary font-semibold mb-2">Step 2 — The Final Mix (Day 2)</div>
                 <ul className="text-[15px] space-y-1.5 leading-relaxed list-disc pl-4">
                   <li>All of the cold Poolish</li>
-                  <li>500 g Caputo Pizzeria</li>
-                  <li>170 g Water</li>
-                  <li>24 g Salt</li>
-                  <li>0.2 g Yeast (a tiny micro-pinch)</li>
+                  <li>{formatWeight(poolishBatch.pizzeria)} Caputo Pizzeria</li>
+                  <li>{formatWeight(poolishBatch.finalWater)} Water</li>
+                  <li>{formatWeight(poolishBatch.salt)} Salt</li>
+                  <li>{formatWeightPrecise(poolishBatch.finalYeast)} Yeast (a tiny micro-pinch)</li>
                 </ul>
                 <p className="text-[15px] mt-2 leading-relaxed">Mix in the Famag on Speed 1–3 for 6–8 minutes, then fridge for 24 hours.</p>
               </div>
@@ -433,8 +558,8 @@ export default function DoughMakerPage() {
           <Section number={5} title="Phase 1: The Poolish Preferment" subtitle="Day 1 — Morning">
             <ol className="space-y-1.5">
               {[
-                "In a glass jar or bowl, mix 500 g of the water and 0.6 g of dry yeast (a standard 1/4 tsp pinch) until dissolved",
-                "Whisk in 500 g of the Caputo Nuvola flour until a smooth, pancake-like batter forms",
+                `In a glass jar or bowl, mix ${formatWeight(poolishBatch.poolishWater)} of the water and ${formatWeightPrecise(poolishBatch.poolishYeast)} of dry yeast (a standard 1/4 tsp pinch) until dissolved`,
+                `Whisk in ${formatWeight(poolishBatch.nuvola)} of the Caputo Nuvola flour until a smooth, pancake-like batter forms`,
                 "Cover loosely and leave on the counter at room temperature for 1 hour to kickstart fermentation, then place in the refrigerator (4°C) for 16–18 hours",
               ].map((t, i) => (
                 <li key={t} className="text-[15px] flex gap-2.5 leading-relaxed">
@@ -450,8 +575,8 @@ export default function DoughMakerPage() {
             <ol className="space-y-1.5">
               {[
                 "Scrape the cold, bubbly Poolish directly into the Famag bowl",
-                "Pour in the remaining 170 g of cold water",
-                "Add the remaining 500 g Caputo Pizzeria flour, the remaining 0.2 g dry yeast (a tiny micro-pinch), and the 24 g salt",
+                `Pour in the remaining ${formatWeight(poolishBatch.finalWater)} of cold water`,
+                `Add the remaining ${formatWeight(poolishBatch.pizzeria)} Caputo Pizzeria flour, the remaining ${formatWeightPrecise(poolishBatch.finalYeast)} dry yeast (a tiny micro-pinch), and the ${formatWeight(poolishBatch.salt)} salt`,
                 "Run Speed 1–2 for the first 2–3 minutes, then Speed 3–4 for 6 to 8 minutes max — just until a smooth, cohesive dough ball detaches from the bowl",
                 "Stop the mixer immediately once the dough is smooth",
               ].map((t, i) => (
@@ -466,7 +591,7 @@ export default function DoughMakerPage() {
           <Section number={7} title="Phase 3: Cold Ferment & Balling" subtitle="Day 2 to Day 3">
             <Bullets items={[
               "Transfer the dough to an airtight container and place it back in the fridge (4°C) for 24 hours",
-              "5 to 6 hours before baking on Day 3, take the cold dough out and divide it into 6 equal balls (~280 g each)",
+              `5 to 6 hours before baking on Day 3, take the cold dough out and divide it into ${poolishBatch.fullBalls} equal ball${poolishBatch.fullBalls === 1 ? "" : "s"} (~${formatWeight(poolishBatch.ballWeight)} each)${poolishBatch.remainder > 0.5 ? ` plus approximately ${formatWeight(poolishBatch.remainder)} remaining dough` : ""}`,
               "Shape gently into tight balls, place in a covered proofing box, and let rise at room temperature (20°C–22°C) until doubled, pillowy, and soft",
             ]} />
           </Section>
@@ -1244,13 +1369,20 @@ function formatWeight(n: number): string {
   return `${fmtG(n, 0)} g`;
 }
 
-/** Formats a yeast range to a fixed one decimal place, e.g. (0.6, 1.0) -> "0.6–1.0 g". */
+/** Formats a yeast range to a fixed one decimal place, e.g. (0.6, 1.0) -> "0.6–1.0 g". Collapses to a single value when min equals max. */
 function formatYeast(min: number, max: number): string {
   if (isNaN(min) || isNaN(max) || !isFinite(min) || !isFinite(max)) return "—";
+  if (Math.abs(max - min) < 0.001) return `${min.toFixed(1)} g`;
   return `${min.toFixed(1)}–${max.toFixed(1)} g`;
 }
 
-function BatchSummary({ batch }: { batch: ReturnType<typeof calculateDoughBatch> }) {
+/** Formats a small quantity (e.g. yeast) to a fixed one decimal place, e.g. 0.6 -> "0.6 g". */
+function formatWeightPrecise(n: number): string {
+  if (isNaN(n) || !isFinite(n)) return "—";
+  return `${n.toFixed(1)} g`;
+}
+
+function BatchSummary({ batch }: { batch: DoughBatchSummary }) {
   return (
     <div className="rounded-xl border border-border/60 bg-muted/30 p-4 mb-5">
       <div className="text-[11px] uppercase tracking-[0.15em] text-secondary font-semibold mb-3">Batch Summary</div>
