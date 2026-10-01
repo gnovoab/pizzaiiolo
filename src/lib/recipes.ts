@@ -14,16 +14,16 @@ const BUFALINA_TRILOGY_TABLE: RecipeComparisonTable = {
 };
 
 export const RECIPE_CATEGORIES: { id: PizzaRecipeCategory; label: string; blurb: string }[] = [
-  { id: "classic", label: "Classic", blurb: "Margherita, Bufalina Classica, Bufalina a Freddo, Bufalina de la Casa, Cosacca, Marinara, Napoletana, Diavola, Prosciutto e Rucola, Ibérica Bianca, Prosciutto e Funghi, Capricciosa, Quattro Formaggi, Ortolana, Ripieno (Calzone)." },
+  { id: "classic", label: "Classic", blurb: "Cosacca, Marinara, Margherita, Margherita della Casa, Margherita Duo, Margherita Macchiata, Marinara al Salame, Burratina, Bufalina Classica, Bufalina a Freddo, Bufalina de la Casa, Napoletana, Diavola, Prosciutto e Rucola, Ibérica Bianca, Prosciutto e Funghi, Capricciosa, Quattro Formaggi, Ortolana, Ripieno (Calzone)." },
   { id: "calzone-focaccia", label: "Calzone & Focaccia", blurb: "Folded and stuffed specialties." },
-  { id: "innovative", label: "Innovative", blurb: "Modern and rustic twists on Italian tradition — Double Pepperoni & Hot Honey, Chorizo and Gorgonzola, Burratina, Bufala e Ibérico, Tettoia — Four Cheese & Truffle, Calabrese, Quattro Latte e 'Nduja, 'Nduja & Hot Honey, Cetarese, Cacio e Pepe, Carbonara, Amatriciana, Gricia, Pesto Cremosa, Burrata & Pesto, Salsiccia al Pesto, Boscaiola, Mortadella and Pistachio, La Oro Verde." },
-  { id: "pumpkin", label: "Pumpkin Base", blurb: "Replace tomato with smooth roasted pumpkin cream — Sfiziosa, Sfiziosa Signature, Mantovana, Norcina, Zucca Salsiccia e Provola, Zucca e 'Nduja, Zucca Guanciale e Rosmarino, Zucca, Gorgonzola & Noci." },
+  { id: "innovative", label: "Innovative", blurb: "Modern and rustic twists on Italian tradition — Double Pepperoni & Hot Honey, Chorizo and Gorgonzola, Bufala e Ibérico, Tettoia — Four Cheese & Truffle, Calabrese, Quattro Latte e 'Nduja, 'Nduja & Hot Honey, Cetarese, Cacio e Pepe, Carbonara, Amatriciana, Gricia, Pesto Cremosa, Burrata & Pesto, Salsiccia al Pesto, Boscaiola, Mortadella and Pistachio, La Oro Verde." },
+  { id: "pumpkin", label: "Pumpkin Base", blurb: "Replace tomato with smooth roasted pumpkin cream — Sfiziosa, Mantovana, Norcina, Zucca Salsiccia e Provola, Zucca e 'Nduja, Zucca Guanciale e Rosmarino, Zucca, Gorgonzola & Noci." },
 ];
 
 export const RECIPES: PizzaRecipe[] = [
   {
     id: "margherita",
-    number: 1,
+    number: 3,
     name: "Margherita",
     style: "Traditional Base — San Marzano DOP, Fior di Latte & Dual-Oil Protocol",
     category: "classic",
@@ -57,7 +57,7 @@ export const RECIPES: PizzaRecipe[] = [
   },
   {
     id: "bufalina-classica",
-    number: 2,
+    number: 7,
     name: "Bufalina Classica",
     style: "Traditional Neapolitan — Integrated Hot San Marzano & Melted Buffalo Mozzarella",
     category: "classic",
@@ -93,7 +93,7 @@ export const RECIPES: PizzaRecipe[] = [
   },
   {
     id: "bufalina-a-freddo",
-    number: 3,
+    number: 8,
     name: "Bufalina a Freddo",
     style: "Contemporary Neapolitan — Hot Blistered Tomato & Cold Silky Buffalo Crown",
     category: "classic",
@@ -128,7 +128,7 @@ export const RECIPES: PizzaRecipe[] = [
   },
   {
     id: "bufalina-de-la-casa",
-    number: 4,
+    number: 9,
     name: "Bufalina de la Casa",
     style: "House Neapolitan — Fresh Datterini, Buffalo Mozzarella & Dual-Oil Finish",
     category: "classic",
@@ -168,7 +168,7 @@ export const RECIPES: PizzaRecipe[] = [
   },
   {
     id: "cosacca",
-    number: 5,
+    number: 1,
     name: "Cosacca",
     style: "Historic Neapolitan — San Marzano DOP, Pecorino Romano & Dual-Oil Protocol",
     category: "classic",
@@ -201,7 +201,7 @@ export const RECIPES: PizzaRecipe[] = [
   },
   {
     id: "marinara",
-    number: 6,
+    number: 2,
     name: "Marinara",
     style: "Historic Neapolitan — San Marzano DOP, Garlic, Wild Oregano & Dual EVOO",
     category: "classic",
@@ -238,7 +238,7 @@ export const RECIPES: PizzaRecipe[] = [
   },
   {
     id: "napoli",
-    number: 7,
+    number: 13,
     name: "Napoletana",
     style: "Classic Neapolitan — San Marzano DOP, Fior di Latte, Cantabrian Anchovies, Capers & Olives",
     category: "classic",
@@ -276,7 +276,7 @@ export const RECIPES: PizzaRecipe[] = [
   },
   {
     id: "diavola",
-    number: 8,
+    number: 14,
     name: "Diavola",
     style: "Margherita con Salame Piccante — San Marzano DOP, Fior di Latte & Spicy Salami",
     category: "classic",
@@ -312,7 +312,7 @@ export const RECIPES: PizzaRecipe[] = [
   },
   {
     id: "seven-stars-parma",
-    number: 9,
+    number: 17,
     name: "Prosciutto e Rucola",
     style: "Contemporary Neapolitan — Thermal & Textural Contrasts",
     category: "classic",
@@ -359,7 +359,7 @@ export const RECIPES: PizzaRecipe[] = [
   },
   {
     id: "parma-bianca",
-    number: 10,
+    number: 18,
     name: "Ibérica Bianca",
     style: "Contemporary Neapolitan White Base — Ibérico Fat, Ricotta & Lorenzo N°5",
     category: "classic",
@@ -396,7 +396,7 @@ export const RECIPES: PizzaRecipe[] = [
   },
   {
     id: "prosciutto-e-funghi",
-    number: 11,
+    number: 15,
     name: "Prosciutto e Funghi",
     style: "Classic Neapolitan — San Marzano DOP, Fior di Latte, Prosciutto Cotto & Champignons",
     category: "classic",
@@ -449,7 +449,7 @@ export const RECIPES: PizzaRecipe[] = [
   },
   {
     id: "capricciosa",
-    number: 12,
+    number: 16,
     name: "Capricciosa",
     style: "House Classic — Prosciutto Cotto, Salame, Artichokes & Champignons",
     category: "classic",
@@ -503,7 +503,7 @@ export const RECIPES: PizzaRecipe[] = [
   },
   {
     id: "quattro-formaggi",
-    number: 13,
+    number: 12,
     name: "Quattro Formaggi",
     style: "Classic Neapolitan Pizza Bianca — Fior di Latte, Ricotta, Gorgonzola Dolce & Parmigiano",
     category: "classic",
@@ -538,7 +538,7 @@ export const RECIPES: PizzaRecipe[] = [
   },
   {
     id: "ortolana",
-    number: 14,
+    number: 19,
     name: "Ortolana",
     style: "Gourmet Neapolitan — Slow Food Pappacella Peppers, Grilled Veggies & Pacchetelle Fillets",
     category: "classic",
@@ -573,7 +573,7 @@ export const RECIPES: PizzaRecipe[] = [
   },
   {
     id: "ripieno-calzone",
-    number: 15,
+    number: 20,
     name: "Ripieno (Calzone)",
     style: "Classic Folded Neapolitan — Creamed Ricotta, Fior di Latte & Salame",
     category: "classic",
@@ -612,7 +612,7 @@ export const RECIPES: PizzaRecipe[] = [
   },
   {
     id: "double-pepperoni-hot-honey",
-    number: 16,
+    number: 21,
     name: "Double Pepperoni & Hot Honey",
     style: "Modern Crowd-Pleaser — Cup-and-Char, Salame Piccante, Provolone & Calabrian Honey",
     category: "innovative",
@@ -647,7 +647,7 @@ export const RECIPES: PizzaRecipe[] = [
   },
   {
     id: "chorizo",
-    number: 17,
+    number: 22,
     name: "Chorizo and Gorgonzola",
     style: "Modern Neapolitan — Paprika Spice & Creamy Blue Pockets",
     category: "innovative",
@@ -682,53 +682,8 @@ export const RECIPES: PizzaRecipe[] = [
     ],
   },
   {
-    id: "burratina",
-    number: 18,
-    name: "Burratina",
-    style: "Contemporary Neapolitan — Volcanic Piennolo DOP & Post-Bake Burrata Crown",
-    category: "innovative",
-    image: "https://www.rtagency.it/menu/pizzeria%20carmnella/images/cafona-carm.jpeg",
-    toppings: "70g–80g Pomodorino del Piennolo del Vesuvio DOP (crushed a pacchetelle by hand), 8g Pecorino Romano DOP (finely grated), 0.5g wild mountain oregano (Origano di Montagna), 4–5 fresh basil leaves (split: 2–3 pre-bake, 1–2 post-bake), 2g–3g Elizondo Nº3 Picual EVOO (spiral micro-drizzle pre-launch), 100g Burrata di Putignano or Burrata di Andria DOP (120g max for 33cm stretched base; removed from refrigeration sufficiently ahead of service to take the chill off), 3g–4g Barbera Lorenzo N°5 EVOO (Nocellara del Belice DOP — finishing swirl over opened burrata).",
-    menuIngredients: "Red Piennolo tomato, Pecorino Romano, oregano, basil, olive oil, Burrata di Putignano (post-bake)",
-    build: "A contemporary masterclass in thermal contrast — blistered, concentrated Vesuvian Piennolo DOP tomatoes baked with mountain oregano and Pecorino Romano, crowned post-bake with a fresh, silky Pugliese Burrata.",
-    postBake: "Transfer directly to a wooden board and rest for 30–40 seconds to allow excess surface steam to dissipate and the base to settle. Place the room-temperature Putignano Burrata centrally on the hot base, cross-cut and open the pouch so the stracciatella spills over the tomatoes, scatter the remaining basil, and finish with a 3g–4g swirl of Barbera Lorenzo N°5 EVOO across the opened burrata and crust. Slice and serve immediately.",
-    flavorProgression: "Blistered Piennolo DOP → sharp Pecorino Romano & oregano → cool creamy Burrata stracciatella → sweet basil → almond-smooth Lorenzo N°5 finish",
-    steps: [
-      { title: "1. Pre-Prep", sections: [
-        { bullets: [
-          "Hand-crush 70g–80g Piennolo del Vesuvio DOP tomatoes a pacchetelle.",
-          "Remove 100g Burrata from refrigeration sufficiently ahead of service to take the chill off so the internal stracciatella is not ice-cold.",
-          "Finely grate 8g Pecorino Romano DOP.",
-        ] },
-      ] },
-      { title: "2. Dough Prep", sections: [
-        { bullets: ["Hand-stretch 280g dough ball to 30–33cm on semolina rimacinata, preserving gas in an airy 1.5–2cm cornicione."] },
-      ] },
-      { title: "3. Layer Assembly (In Exact Order)", sections: [
-        { intro: "Layer 1 — Piennolo DOP:", bullets: ["Spread 70g–80g crushed Piennolo tomatoes evenly across the dough, leaving a clean 1.5–2cm border."] },
-        { intro: "Layer 2 — Cheese & Oregano:", bullets: ["Dust 8g finely grated Pecorino Romano DOP and 0.5g mountain oregano evenly over the tomatoes."] },
-        { intro: "Layer 3 — Basil & Picual:", bullets: ["Tuck 2–3 fresh basil leaves into the tomatoes and finish with a 2g–3g spiral micro-drizzle of Elizondo Nº3 Picual EVOO."] },
-      ] },
-      { title: "4. Gozney Bake", sections: [
-        { intro: "Gozney / High-Heat Oven:", bullets: [
-          "🪨 Stone floor target: 430°C–450°C",
-          "🔥 Dome: 450°C–480°C",
-          "Manage top flame dynamically after launch, reducing as needed so the sweet Piennolo tomatoes blister and concentrate without scorching.",
-          "⏱ Cook Time: 75–90 seconds — rotate regularly for even blistering and colour.",
-        ] },
-      ] },
-      { title: "5. Rest & Sequential Post-Bake Staging", sections: [
-        { bullets: ["Transfer directly to a wooden board and rest for 30–40 seconds to allow excess surface steam to dissipate and the base to settle."] },
-        { intro: "Stage 1 — Burrata Crown:", bullets: ["Place the room-temperature Putignano Burrata centrally on the hot base. Make a light cross cut (+) in the outer skin of the top knot and gently open the pouch so the creamy stracciatella spills over the blistered Piennolo tomatoes."] },
-        { intro: "Stage 2 — Basil & Finishing Oil:", bullets: ["Scatter 1–2 fresh basil leaves over the stracciatella and finish with a 3g–4g swirl of Barbera Lorenzo N°5 EVOO across the opened burrata and crust.", "Slice and serve immediately."] },
-        { intro: "Technical Thermal Note:", bullets: ["Burrata must never enter the oven; extreme heat causes its delicate cream to separate into whey, saturating the crust. Resting the pizza for 30–40 seconds on a wooden board before crowning with room-temperature burrata preserves the thermal contrast between blistered, concentrated Vesuvian tomatoes and cool, silky stracciatella cream."] },
-        { intro: "Profile:", bullets: ["Blistered Piennolo DOP → sharp Pecorino Romano & oregano → cool creamy Burrata stracciatella → sweet basil → almond-smooth Lorenzo N°5 finish"] },
-      ] },
-    ],
-  },
-  {
     id: "bufala-e-iberico",
-    number: 19,
+    number: 25,
     name: "Bufala e Ibérico",
     style: "Contemporary Neapolitan White Base — Inspired by Neapolitan Bufala e Fiocco Concepts",
     category: "innovative",
@@ -765,7 +720,7 @@ export const RECIPES: PizzaRecipe[] = [
   },
   {
     id: "tettoia-four-cheese-truffle",
-    number: 20,
+    number: 24,
     name: "Tettoia — Four Cheese & Truffle",
     style: "Gourmet White Pizza — Four Cheese Blend, Baked Truffle Croutons & Chili Lift",
     category: "innovative",
@@ -804,7 +759,7 @@ export const RECIPES: PizzaRecipe[] = [
   },
   {
     id: "calabrese",
-    number: 21,
+    number: 27,
     name: "Calabrese",
     style: "Contemporary White Base — Hybrid 'Nduja di Spilinga & Gorgonzola Dolce Pockets",
     category: "innovative",
@@ -852,7 +807,7 @@ export const RECIPES: PizzaRecipe[] = [
   },
   {
     id: "quattro-latte-e-nduja",
-    number: 22,
+    number: 28,
     name: "Quattro Latte e 'Nduja",
     style: "Four-Milk Pizza Bianca — Buffalo Ricotta, Fior di Latte, Pecorino & Goat Cacioricotta",
     category: "innovative",
@@ -901,7 +856,7 @@ export const RECIPES: PizzaRecipe[] = [
   },
   {
     id: "nduja-honey",
-    number: 23,
+    number: 29,
     name: "'Nduja & Hot Honey",
     style: "Sweet Heat Neapolitan — 'Nduja di Spilinga & Hot Honey",
     category: "innovative",
@@ -949,7 +904,7 @@ export const RECIPES: PizzaRecipe[] = [
   },
   {
     id: "cetarese",
-    number: 24,
+    number: 26,
     name: "Cetarese",
     style: "Amalfi Coast Tribute — Blistered Piennolo, Gaeta Olives, Capers & Post-Bake Alici di Cetara",
     category: "innovative",
@@ -997,7 +952,7 @@ export const RECIPES: PizzaRecipe[] = [
   },
   {
     id: "cacio-e-pepe",
-    number: 25,
+    number: 30,
     name: "Cacio e Pepe",
     style: "Callegari-Inspired Roman Pizza — Ice-Cube Bake & Pecorino Romano Cremina",
     category: "innovative",
@@ -1042,7 +997,7 @@ export const RECIPES: PizzaRecipe[] = [
   },
   {
     id: "carbonara",
-    number: 26,
+    number: 31,
     name: "Carbonara",
     style: "Contemporary Roman-Inspired — Crispy Guanciale, Pecorino Romano & Warm Yolk Crema",
     category: "innovative",
@@ -1084,7 +1039,7 @@ export const RECIPES: PizzaRecipe[] = [
   },
   {
     id: "amatriciana",
-    number: 27,
+    number: 32,
     name: "Amatriciana",
     style: "Roman Classic Redefined — San Marzano DOP, Guanciale, Pecorino Romano & Peperoncino",
     category: "innovative",
@@ -1127,7 +1082,7 @@ export const RECIPES: PizzaRecipe[] = [
   },
   {
     id: "gricia",
-    number: 28,
+    number: 33,
     name: "Gricia",
     style: "Roman White Classic — Crispy Guanciale, Pecorino Romano & Tellicherry Pepper",
     category: "innovative",
@@ -1169,7 +1124,7 @@ export const RECIPES: PizzaRecipe[] = [
   },
   {
     id: "pesto-cremosa",
-    number: 29,
+    number: 34,
     name: "Pesto Cremosa",
     style: "Contemporary Pizza Bianca — Baked Genovese Pesto & Burrata Stracciatella Crown",
     category: "innovative",
@@ -1215,7 +1170,7 @@ export const RECIPES: PizzaRecipe[] = [
   },
   {
     id: "burrata-and-pesto",
-    number: 47,
+    number: 35,
     name: "Burrata & Pesto",
     style: "Contemporary Pizza Bianca — Baked Genovese Pesto & Burrata Stracciatella",
     category: "innovative",
@@ -1258,7 +1213,7 @@ export const RECIPES: PizzaRecipe[] = [
   },
   {
     id: "salsiccia-al-pesto",
-    number: 30,
+    number: 36,
     name: "Salsiccia al Pesto",
     style: "Contemporary Pizza Bianca — Smoked Agerola Provola, Genoese Pesto & Fennel Pork Sausage",
     category: "innovative",
@@ -1302,7 +1257,7 @@ export const RECIPES: PizzaRecipe[] = [
   },
   {
     id: "boscaiola",
-    number: 31,
+    number: 37,
     name: "Boscaiola",
     style: "Contemporary Boscaiola — Fennel Sausage, Sautéed Mushrooms & Parmigiano-Reggiano",
     category: "innovative",
@@ -1345,7 +1300,7 @@ export const RECIPES: PizzaRecipe[] = [
   },
   {
     id: "mortadella-e-pistacchio",
-    number: 32,
+    number: 38,
     name: "Mortadella e Pistacchio",
     style: "Contemporary Pizza Bianca — Mortadella Ribbons, Whipped Ricotta & Bronte Pistachio",
     category: "innovative",
@@ -1387,7 +1342,7 @@ export const RECIPES: PizzaRecipe[] = [
   },
   {
     id: "la-oro-verde",
-    number: 33,
+    number: 39,
     name: "La Oro Verde",
     style: "Contemporary Pizza Bianca — Mortadella Ribbons, Cold Stracciatella & Pistachio Pesto",
     category: "innovative",
@@ -1430,7 +1385,7 @@ export const RECIPES: PizzaRecipe[] = [
   },
   {
     id: "margherita-della-casa",
-    number: 34,
+    number: 4,
     name: "Margherita della Casa",
     style: "House Margherita — San Marzano, Blistered Piennolo, Buffalo Mozzarella & Pecorino Crown",
     category: "classic",
@@ -1475,7 +1430,7 @@ export const RECIPES: PizzaRecipe[] = [
   },
   {
     id: "margherita-duo",
-    number: 35,
+    number: 6,
     name: "Margherita Duo",
     style: "Dual-Color Piennolo — Yellow & Red Vesuvian Tomatoes & Agerola Fior di Latte",
     category: "classic",
@@ -1518,7 +1473,7 @@ export const RECIPES: PizzaRecipe[] = [
   },
   {
     id: "margherita-macchiata",
-    number: 36,
+    number: 5,
     name: "Margherita Macchiata",
     style: "Blistered Piennolo, Fior di Latte & Post-Bake Pesto Macchie",
     category: "classic",
@@ -1562,7 +1517,7 @@ export const RECIPES: PizzaRecipe[] = [
   },
   {
     id: "marinara-al-salame",
-    number: 37,
+    number: 11,
     name: "Marinara al Salame",
     style: "Yellow Marinara — Vesuvian Yellow Tomatoes, Neapolitan Salami & Mountain Oregano",
     category: "classic",
@@ -1607,8 +1562,8 @@ export const RECIPES: PizzaRecipe[] = [
   },
   {
     id: "burratina-della-casa",
-    number: 48,
-    name: "Burratina della Casa",
+    number: 10,
+    name: "Burratina",
     style: "House Burratina Pizza — Red Piennolo, Mountain Oregano & Creamy Putignano Burratina",
     category: "classic",
     image: "https://www.rtagency.it/menu/pizzeria%20carmnella/images/cafona-carm.jpeg",
@@ -1650,378 +1605,291 @@ export const RECIPES: PizzaRecipe[] = [
   },
   {
     id: "sfiziosa-basilico",
-    number: 38,
+    number: 47,
     name: "Sfiziosa (Basilico)",
-    style: "Pumpkin Base — Mushroom & Pancetta",
+    style: "Pumpkin Cream Base — Sautéed Mushrooms, Pancetta, Sage-Infused EVOO & Parmigiano",
     category: "pumpkin",
-    toppings: "Smooth roasted pumpkin cream (pumpkin roasted with rosemary, olive oil and salt, then blended smooth), pre-sautéed mushrooms, mozzarella strips, pancetta.",
-    build: "Pumpkin cream base with Fior di Latte, sautéed mushrooms and pancetta, finished with sage oil and grated Parmigiano.",
-    steps: [
-      { title: "1. Dough", sections: [
-        { bullets: ["Neapolitan-style dough", "250–270 g dough ball", "24–48 hour fermentation", "63–65% hydration", "Hand-stretched to 30–32 cm", "Preserve rim gas during opening"] },
-        { intro: "Key idea:", bullets: ["The topping combination is rich and earthy, so the crust should remain light and airy"] },
-      ] },
-      { title: "2. Pumpkin Cream Base", sections: [
-        { bullets: ["Roasted pumpkin purée", "Small amount of extra virgin olive oil", "Pinch of sea salt", "Tiny touch of nutmeg (optional)", "Apply a thin, even layer"] },
-        { intro: "Effect:", bullets: ["Provides sweetness and creaminess", "Replaces tomato acidity with autumnal depth"] },
-        { intro: "Key idea:", bullets: ["Pumpkin should be a base, not a thick soup layer"] },
-      ] },
-      { title: "3. Mozzarella", sections: [
-        { bullets: ["Fior di Latte", "Well-drained", "Cut into strips rather than chunks", "Distribute evenly with small gaps"] },
-        { intro: "Effect:", bullets: ["Creates melt channels through the pumpkin cream", "Prevents the pizza from becoming heavy"] },
-      ] },
-      { title: "4. Mushrooms", sections: [
-        { intro: "Preparation:", bullets: ["Sauté mushrooms before topping", "Cook off excess moisture completely", "Light seasoning only"] },
-        { intro: "Placement:", bullets: ["Even distribution across the pizza", "Avoid piling"] },
-        { intro: "Effect:", bullets: ["Concentrated mushroom flavor", "Prevents water release during baking"] },
-        { intro: "Key idea:", bullets: ["Mushrooms should contribute umami, not steam"] },
-      ] },
-      { title: "5. Pancetta", sections: [
-        { bullets: ["Thin slices or small batons", "Distributed evenly", "Avoid dense clusters"] },
-        { intro: "Effect:", bullets: ["Fat renders into the pumpkin and mushrooms", "Provides the salt element that balances the sweet pumpkin"] },
-      ] },
-      { title: "6. Bake", sections: [
-        { bullets: ["🪨 Stone: 380–400°C", "🔥 Air: 430–480°C", "⏱ 70–80 seconds", "🔄 Rotate every 15–20 seconds"] },
-        { intro: "Goal:", bullets: ["Pancetta lightly crisps", "Mozzarella melts without flooding", "Pumpkin cream remains silky", "Cornicione develops leopard spotting"] },
-      ] },
-      { title: "7. Finish (Recommended Upgrade)", sections: [
-        { intro: "Sage oil:", bullets: ["Extra virgin olive oil infused with fresh sage", "Applied sparingly after bake"] },
-        { intro: "Effect:", bullets: ["Adds aromatic lift", "Complements both pumpkin and pancetta"] },
-      ] },
-      { title: "8. Final Finish", sections: [
-        { intro: "Parmigiano-Reggiano:", bullets: ["Finely grated", "Light snowfall after baking"] },
-        { intro: "Effect:", bullets: ["Adds umami and nuttiness", "Connects the mushroom and pumpkin flavors"] },
-      ] },
-    ],
-  },
-  {
-    id: "sfiziosa-signature",
-    number: 39,
-    name: "Sfiziosa Signature Edition",
-    style: "Pumpkin Base — Premium Mushroom, Pancetta & Sage",
-    category: "pumpkin",
-    toppings: "Roasted pumpkin cream, 24–30 month Parmigiano-Reggiano, Fior di Latte mozzarella, sautéed chestnut mushrooms, sautéed oyster mushrooms, sautéed porcini mushrooms, pancetta arrotolata or guanciale, crispy sage, brown butter, aged white balsamic, early-harvest Campanian extra virgin olive oil.",
-    build: "Roasted pumpkin cream over a Parmigiano umami scaffold, Fior di Latte and a three-mushroom blend, pancetta or guanciale, finished with Parmigiano snow, crispy sage, brown butter EVOO and a whisper of aged white balsamic.",
-    steps: [
-      { title: "1. Dough", sections: [
-        { bullets: ["48-hour fermented Neapolitan dough", "63–65% hydration", "260 g dough ball", "30–32 cm pizza", "Strong but highly extensible gluten network"] },
-        { intro: "Goal:", bullets: ["A light, airy crust capable of supporting rich autumnal toppings without feeling heavy"] },
-      ] },
-      { title: "2. Pumpkin Cream", sections: [
-        { intro: "Build:", bullets: ["Roasted Delica, Kabocha, or butternut pumpkin", "Campanian EVOO", "Sea salt", "Tiny pinch white pepper", "Tiny pinch nutmeg", "Puree until silky", "Apply thinly"] },
-        { intro: "Why roasted?", bullets: ["Caramelization", "Nuttiness", "Sweetness — without introducing excess water"] },
-      ] },
-      { title: "3. Parmigiano Foundation", sections: [
-        { intro: "Before mozzarella:", bullets: ["Very light dusting of 24–30 month Parmigiano-Reggiano"] },
-        { intro: "Effect:", bullets: ["Creates an umami scaffold beneath the toppings", "Technique often found in elite modern Neapolitan pizzas"] },
-      ] },
-      { title: "4. Fior di Latte", sections: [
-        { bullets: ["Premium Fior di Latte", "Thoroughly drained", "Torn into irregular strips"] },
-        { intro: "Placement:", bullets: ["Moderate coverage", "Leave visible pumpkin zones"] },
-        { intro: "Effect:", bullets: ["Allows contrast between pumpkin and dairy"] },
-      ] },
-      { title: "5. Mushroom Layer", sections: [
-        { intro: "Best blend (instead of one mushroom):", bullets: ["50% chestnut mushrooms", "30% oyster mushrooms", "20% porcini"] },
-        { intro: "Preparation:", bullets: ["Sauté separately", "Remove moisture completely"] },
-        { intro: "Effect:", bullets: ["Creates layered mushroom flavor rather than generic mushroom taste"] },
-      ] },
-      { title: "6. Pancetta", sections: [
-        { intro: "Upgrade — use:", bullets: ["Pancetta arrotolata, OR", "Guanciale", "Thin slices, distributed evenly"] },
-        { intro: "Effect:", bullets: ["Rendered fat", "Sweetness", "Cured depth — far superior to generic bacon"] },
-      ] },
-      { title: "7. Bake", sections: [
-        { bullets: ["🪨 Stone: 390–400°C", "🔥 Air: 440–480°C", "⏱ 70–80 seconds"] },
-        { intro: "Goal:", bullets: ["Pancetta edges crisp", "Mushrooms roast slightly", "Pumpkin concentrates", "Fior di Latte melts into creamy pockets"] },
-      ] },
-      { title: "8. Parmigiano Snow", sections: [
-        { intro: "Immediately after bake:", bullets: ["Freshly grated 30-month Parmigiano-Reggiano", "Very light"] },
-        { intro: "Effect:", bullets: ["Adds aroma and umami lift"] },
-      ] },
-      { title: "9. Crispy Sage", sections: [
-        { intro: "Preparation:", bullets: ["Flash-fry sage leaves", "Drain thoroughly", "Crumble lightly over pizza"] },
-        { intro: "Effect:", bullets: ["Aromatic bridge between pumpkin and pancetta", "A classic northern Italian pairing"] },
-      ] },
-      { title: "10. Brown Butter & Sage EVOO Finish", sections: [
-        { intro: "Blend:", bullets: ["Brown butter", "Early-harvest Campanian EVOO", "Tiny droplets only"] },
-        { intro: "Effect:", bullets: ["Adds extraordinary aroma without making the pizza greasy"] },
-      ] },
-      { title: "11. Acid Counterpoint (Secret Weapon)", sections: [
-        { intro: "The one thing almost every pumpkin pizza lacks — a tiny amount of acidity:", bullets: ["A few drops of aged white balsamic, OR", "Apple cider vinegar reduction", "Applied extremely sparingly"] },
-        { intro: "Effect:", bullets: ["Cuts richness", "Keeps the palate refreshed", "Makes the pumpkin taste sweeter without adding sugar"] },
-      ] },
-    ],
-  },
-  {
-    id: "sfiziosa-aqua",
-    number: 40,
-    name: "Sfiziosa Aqua & Farina",
-    style: "Pumpkin Base — Smoked Pork, Burrata & Truffle",
-    category: "pumpkin",
-    image: "/pizzas/sfiziosa-aqua.jpg",
-    toppings: "Roasted pumpkin cream, mozzarella, smoked bacon, fresh Burrata, black truffle cream.",
-    build: "Pumpkin cream over a Parmigiano scaffold, Fior di Latte and smoked guanciale, finished post-bake with hand-torn burrata, truffle cream, crispy sage, aged white balsamic and Campanian EVOO.",
-    steps: [
-      { title: "1. Dough", sections: [
-        { bullets: ["48-hour fermented Neapolitan dough", "63–65% hydration", "260 g dough ball", "Opened to 30–32 cm", "Well-preserved rim gas"] },
-        { intro: "Goal:", bullets: ["Create a light structure capable of carrying multiple rich toppings"] },
-      ] },
-      { title: "2. Pumpkin Cream Base", sections: [
-        { intro: "Build:", bullets: ["Roasted pumpkin (Delica, Kabocha or Butternut)", "Early-harvest EVOO", "Sea salt", "Tiny pinch nutmeg", "Tiny pinch white pepper", "Puree until smooth", "Apply thinly and evenly"] },
-        { intro: "Effect:", bullets: ["Provides sweetness and body without excessive moisture"] },
-        { intro: "Key principle:", bullets: ["Roasted pumpkin only — never boiled", "Roasting develops natural sugars and concentrates flavor"] },
-      ] },
-      { title: "3. Parmigiano Foundation", sections: [
-        { intro: "Before mozzarella:", bullets: ["Light dusting of 24–30 month Parmigiano-Reggiano"] },
-        { intro: "Effect:", bullets: ["Creates a deep umami layer underneath the dairy"] },
-      ] },
-      { title: "4. Mozzarella", sections: [
-        { bullets: ["Fior di Latte", "Thoroughly drained", "Torn into strips", "Moderate coverage", "Allow pumpkin cream to remain visible"] },
-        { intro: "Effect:", bullets: ["Creates a creamy bridge between pumpkin and burrata"] },
-      ] },
-      { title: "5. Smoked Pork", sections: [
-        { intro: "Best choice:", bullets: ["Smoked guanciale (if available)", "Otherwise: high-quality smoked pancetta"] },
-        { intro: "Placement:", bullets: ["Distributed evenly", "No clustering"] },
-        { intro: "Effect:", bullets: ["Provides smoke, salt and rendered fat"] },
-        { intro: "Key principle:", bullets: ["This is the pizza’s savory backbone"] },
-      ] },
-      { title: "6. Bake", sections: [
-        { bullets: ["🪨 Stone: 390–400°C", "🔥 Air: 440–480°C", "⏱ 70–80 seconds", "Rotate every 15–20 seconds"] },
-        { intro: "Goal:", bullets: ["Pumpkin concentrates", "Mozzarella melts", "Pork lightly crisps", "Cornicione develops strong leopard spotting"] },
-      ] },
-      { title: "7. Burrata (Post-Bake)", sections: [
-        { intro: "Critical rule:", bullets: ["Never bake the burrata"] },
-        { intro: "After the pizza exits the oven:", bullets: ["Tear burrata by hand", "Place in 4–6 generous pockets"] },
-        { intro: "Effect:", bullets: ["Creates hot/cold contrast", "Maintains the fresh milk character"] },
-      ] },
-      { title: "8. Truffle Cream", sections: [
-        { intro: "Application:", bullets: ["Apply after burrata", "Very light zig-zag"] },
-        { intro: "Effect:", bullets: ["Provides aroma rather than domination"] },
-        { intro: "Critical rule:", bullets: ["Most truffle pizzas fail because they use too much truffle", "The goal is perfume, not saturation"] },
-      ] },
-      { title: "9. Crispy Sage", sections: [
-        { intro: "Preparation:", bullets: ["Flash-fried sage leaves", "Crumbled lightly over the pizza"] },
-        { intro: "Why:", bullets: ["Sage is one of the best companions to pumpkin, burrata and smoked pork", "It creates a bridge between all three"] },
-      ] },
-      { title: "10. Acid Lift (The Missing Element)", sections: [
-        { intro: "Without acidity this pizza becomes too rich.", bullets: [] },
-        { intro: "Best option — aged white balsamic:", bullets: ["3–5 tiny drops only"] },
-        { intro: "Effect:", bullets: ["Brightens the pumpkin", "Cuts through burrata fat", "Makes the truffle seem more aromatic"] },
-      ] },
-      { title: "11. Final EVOO", sections: [
-        { intro: "Style — early-harvest Campanian EVOO:", bullets: ["Tomato leaf", "Green almond", "Artichoke", "Gentle pepper finish"] },
-        { intro: "Application:", bullets: ["Micro-dots only"] },
-        { intro: "Effect:", bullets: ["Adds freshness without competing with truffle"] },
-      ] },
-    ],
-  },
-  {
-    id: "mantovana",
-    number: 41,
-    name: "Mantovana (Acqua e Farina Signature Edition)",
-    style: "Pumpkin Base — Gorgonzola & Smoked Bacon",
-    category: "pumpkin",
-    image: "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/28/c3/7a/78/caption.jpg?w=1100&h=-1&s=1",
-    toppings: "Roasted pumpkin cream, 24–30 month Parmigiano-Reggiano, Fior di Latte mozzarella, quick-pickled red onions, Gorgonzola Dolce, pre-cooked smoked bacon, crispy sage, aged white balsamic, early-harvest Campanian extra virgin olive oil.",
-    build: "Roasted pumpkin cream over a Parmigiano scaffold, Fior di Latte and quick-pickled red onions, Gorgonzola Dolce in waves and smoked bacon, finished with crispy sage, aged white balsamic and Campanian EVOO.",
-    steps: [
-      { title: "1. Dough", sections: [
-        { bullets: ["48-hour fermented Neapolitan dough", "63–65% hydration", "260 g dough ball", "Opened to 30–32 cm", "Well-preserved rim gas"] },
-        { intro: "Goal:", bullets: ["Provide enough strength for the rich toppings while remaining light and airy"] },
-      ] },
-      { title: "2. Pumpkin Cream Base", sections: [
-        { intro: "Build:", bullets: ["Roasted pumpkin (Delica, Kabocha or Butternut)", "Early-harvest EVOO", "Sea salt", "Tiny pinch white pepper", "Tiny pinch nutmeg", "Pureed until silky", "Apply a thin, even layer"] },
-        { intro: "Effect:", bullets: ["Provides sweetness and acts as the flavor canvas for the stronger toppings"] },
-        { intro: "Key principle:", bullets: ["Roasted pumpkin only", "The caramelized notes are essential"] },
-      ] },
-      { title: "3. Parmigiano Foundation", sections: [
-        { intro: "Before mozzarella:", bullets: ["Light dusting of 24–30 month Parmigiano-Reggiano"] },
-        { intro: "Effect:", bullets: ["Creates an umami foundation beneath the dairy", "Helps connect the pumpkin and Gorgonzola"] },
-      ] },
-      { title: "4. Mozzarella", sections: [
-        { bullets: ["Fior di Latte", "Thoroughly drained", "Cut into matchsticks", "Moderate coverage", "Leave visible pumpkin zones"] },
-        { intro: "Effect:", bullets: ["Provides creamy melt without masking the pumpkin"] },
-      ] },
-      { title: "5. Red Onions", sections: [
-        { intro: "Preparation:", bullets: ["Thinly sliced", "Ideally quick-pickled for 10–15 minutes, then drained"] },
-        { intro: "Placement:", bullets: ["Scattered evenly"] },
-        { intro: "Effect:", bullets: ["Adds sweetness, brightness and texture"] },
-        { intro: "Why upgrade?", bullets: ["Raw onions often remain too aggressive in a 70–80 second bake", "A quick pickle softens them and introduces subtle acidity"] },
-      ] },
-      { title: "6. Gorgonzola", sections: [
-        { intro: "Preferred style — Gorgonzola Dolce:", bullets: ["Use small spaced crumbles", "Do not blanket the pizza"] },
-        { intro: "Effect:", bullets: ["Creates pockets of creamy blue-cheese richness"] },
-        { intro: "Key principle:", bullets: ["The Gorgonzola should appear in waves, not dominate every bite"] },
-      ] },
-      { title: "7. Smoked Bacon", sections: [
-        { intro: "Preparation:", bullets: ["Pre-cooked and lightly rendered beforehand", "Cut into thin strips or small batons"] },
-        { intro: "Placement:", bullets: ["Even distribution", "Avoid clusters"] },
-        { intro: "Effect:", bullets: ["Provides smoke, salt and meaty depth"] },
-        { intro: "Key principle:", bullets: ["Think of bacon as seasoning rather than a primary topping"] },
-      ] },
-      { title: "8. Bake", sections: [
-        { bullets: ["🪨 Stone: 390–400°C", "🔥 Air: 440–480°C", "⏱ 70–80 seconds", "Rotate every 15–20 seconds"] },
-        { intro: "Goal:", bullets: ["Pumpkin concentrates", "Mozzarella melts", "Gorgonzola softens", "Bacon crisps lightly", "Cornicione develops leopard spotting"] },
-      ] },
-      { title: "9. Crispy Sage", sections: [
-        { intro: "Preparation:", bullets: ["Flash-fried sage leaves", "Crumbled lightly after baking"] },
-        { intro: "Effect:", bullets: ["Creates a classic pairing with both pumpkin and Gorgonzola"] },
-        { intro: "Why:", bullets: ["Sage is the missing aromatic bridge in most pumpkin pizzas"] },
-      ] },
-      { title: "10. Acid Lift", sections: [
-        { intro: "Without acidity, the pizza can become heavy.", bullets: [] },
-        { intro: "Best option — aged white balsamic:", bullets: ["3–5 tiny drops only"] },
-        { intro: "Effect:", bullets: ["Brightens pumpkin sweetness", "Cuts through blue-cheese richness", "Extends palate freshness"] },
-      ] },
-      { title: "11. Final EVOO", sections: [
-        { intro: "Style — early-harvest Campanian EVOO:", bullets: ["Tomato leaf", "Green almond", "Artichoke", "Clean pepper finish"] },
-        { intro: "Application:", bullets: ["Micro-dots only"] },
-        { intro: "Effect:", bullets: ["Adds freshness and aroma"] },
-      ] },
-    ],
-  },
-  {
-    id: "norcina",
-    number: 42,
-    name: "Norcina (Acqua e Farina Signature Edition)",
-    style: "Pumpkin Base — Porcini & Fennel Sausage",
-    category: "pumpkin",
-    image: "/pizzas/norcina.jpg",
-    toppings: "Roasted pumpkin cream, 24–30 month Parmigiano-Reggiano, Fior di Latte mozzarella, pre-sautéed porcini (ceps), fennel sausage meat, crispy sage, aged white balsamic, early-harvest Campanian extra virgin olive oil.",
-    build: "Roasted pumpkin cream over a Parmigiano scaffold, Fior di Latte, pre-sautéed porcini and rustic chunks of fennel sausage, finished with crispy sage, aged white balsamic and Campanian EVOO.",
-    steps: [
-      { title: "1. Dough", sections: [
-        { bullets: ["48-hour fermented Neapolitan dough", "63–65% hydration", "260 g dough ball", "30–32 cm stretch", "Well-preserved cornicione gas", "Strong but elastic gluten network"] },
-        { intro: "Goal:", bullets: ["Support heavy umami toppings without collapsing or turning dense"] },
-      ] },
-      { title: "2. Pumpkin Cream Base", sections: [
-        { intro: "Build:", bullets: ["Roasted pumpkin (Delica / Kabocha preferred)", "Early-harvest EVOO", "Sea salt", "White pepper (tiny pinch)", "Optional: micro pinch nutmeg", "Blend until silky", "Apply thin layer"] },
-        { intro: "Effect:", bullets: ["Sweet base layer", "Softens sausage intensity", "Balances porcini earthiness"] },
-        { intro: "Key idea:", bullets: ["Pumpkin is the “sweet frame” that holds everything together"] },
-      ] },
-      { title: "3. Parmigiano Foundation (Critical Upgrade)", sections: [
-        { intro: "Before mozzarella:", bullets: ["Light dusting of 24–30 month Parmigiano-Reggiano"] },
-        { intro: "Effect:", bullets: ["Adds umami backbone", "Connects mushroom + sausage fats", "Prevents flavor flatness"] },
-      ] },
-      { title: "4. Mozzarella", sections: [
-        { bullets: ["Fior di Latte", "Well-drained", "Torn into irregular strips", "Moderate coverage with visible pumpkin zones"] },
-        { intro: "Effect:", bullets: ["Creamy melt structure", "Prevents sausage dryness", "Keeps pizza cohesive"] },
-      ] },
-      { title: "5. Porcini (Ceps)", sections: [
-        { intro: "Preparation (CRITICAL):", bullets: ["Pre-sautéed porcini", "Fully moisture-reduced (no water left in pan)", "Light seasoning only (salt, maybe garlic oil touch)"] },
-        { intro: "Placement:", bullets: ["Even scatter across pizza", "Avoid clustering"] },
-        { intro: "Effect:", bullets: ["Deep forest umami", "Nutty, earthy complexity", "Aromatic backbone of the pizza"] },
-      ] },
-      { title: "6. Fennel Sausage Meat", sections: [
-        { intro: "Preparation:", bullets: ["Raw sausage removed from casing", "Lightly broken into small rustic chunks", "Not compacted"] },
-        { intro: "Placement:", bullets: ["Distributed evenly but not densely"] },
-        { intro: "Effect:", bullets: ["Fat renders into pumpkin and cheese", "Fennel gives aromatic lift", "Provides savory sweetness"] },
-        { intro: "Key principle:", bullets: ["Do NOT overload — sausage must “breathe” on the pizza"] },
-      ] },
-      { title: "7. Bake", sections: [
-        { bullets: ["🪨 Stone: 390–400°C", "🔥 Air: 440–480°C", "⏱ 70–80 seconds", "Rotate every 15–20 seconds"] },
-        { intro: "What must happen:", bullets: ["Sausage lightly crisps at edges", "Fat renders into pumpkin layer", "Porcini concentrates, not steams", "Mozzarella melts into creamy pockets", "Cornicione blisters properly"] },
-      ] },
-      { title: "8. Crispy Sage (Essential Upgrade)", sections: [
-        { intro: "Preparation:", bullets: ["Flash-fried sage leaves", "Crumbled after baking"] },
-        { intro: "Effect:", bullets: ["Cuts through sausage fat", "Elevates pumpkin sweetness", "Adds aromatic Italian “forest” note"] },
-      ] },
-      { title: "9. Acid Lift (Optional but Powerful)", sections: [
-        { intro: "Best option — aged white balsamic (very light):", bullets: ["3–5 micro drops only"] },
-        { intro: "Effect:", bullets: ["Brightens earthy mushrooms", "Prevents heaviness", "Adds subtle lift to fennel sausage"] },
-      ] },
-      { title: "10. Final EVOO Finish", sections: [
-        { intro: "Style — early-harvest Campanian EVOO:", bullets: ["Green almond", "Artichoke", "Tomato leaf", "Light pepper finish"] },
-        { intro: "Application:", bullets: ["Micro-dots only"] },
-      ] },
-    ],
-  },
-  {
-    id: "zucca-salsiccia-provola",
-    number: 43,
-    name: "Zucca, Salsiccia e Provola",
-    style: "Pumpkin Base — Smoked Provola & Pork Sausage",
-    category: "pumpkin",
-    image: "https://media-cdn.tripadvisor.com/media/photo-s/14/b3/50/80/zucca-salsiccia-e-provola.jpg",
-    toppings: "Greci or Demetra pumpkin cream, Smoked Provola di Agerola, raw fresh pork sausage, Pecorino Romano, fresh basil, extra virgin olive oil.",
-    menuIngredients: "Pumpkin cream, smoked provola, pork sausage, pecorino, basil",
-    build: "The smoky, melted Provola and rich pork sausage balance either pumpkin base beautifully — giving a sweeter contrast with Greci or a deep savory-herb note with Demetra.",
-    postBake: "Transfer to a wire cooling rack for 60 seconds, then microplane 8–10 g of Pecorino Romano over the hot crust and center. Slice and serve.",
-    steps: [
-      { title: "1. Ingredients", sections: [
-        { intro: "Base:", bullets: ["75 g prepared Greci OR Demetra Pumpkin Cream"] },
-        { intro: "Cheese:", bullets: ["80 g Smoked Provola di Agerola (cut into strips and well-drained)"] },
-        { intro: "Meat:", bullets: ["60 g Raw fresh pork sausage (casing removed, crumbled into small dime-sized pieces)"] },
-        { intro: "Finish:", bullets: ["8–10 g Pecorino Romano (microplaned post-bake), fresh basil, EVOO"] },
-      ] },
-      { title: "2. Stretch Dough", sections: [
-        { intro: "Form base without flattening edges:", bullets: ["Open your 280 g dough ball in semolina to 28–30 cm (11–12 in), pushing gas into the outer ring (cornicione)"] },
-      ] },
-      { title: "3. Pre-Bake Assembly", sections: [
-        { intro: "Raw sausage sits on top to cook directly under flame:", bullets: ["Spread 75 g of prepared Greci or Demetra Pumpkin Cream across the center", "Scatter 80 g of drained Smoked Provola di Agerola strips", "Distribute 60 g of crumbled raw pork sausage over the cheese", "Add 3–4 fresh basil leaves and a thin spiral of EVOO"] },
-      ] },
-      { title: "4. Launch & Gozney Bake (75–90 Seconds)", sections: [
-        { intro: "Sausage sizzles while provola melts smoothly:", bullets: ["Launch into your preheated 430–450°C Gozney and turn the burner to LOW immediately", "Bake for 75–90 seconds, rotating every 15 seconds so the raw sausage cooks through completely and the provola bubbles into the pumpkin cream"] },
-      ] },
-      { title: "5. Post-Bake Finish", sections: [
-        { intro: "Sharp sheep's milk finish:", bullets: ["Transfer to a wire cooling rack for 60 seconds", "Microplane 8–10 g of Pecorino Romano over the hot crust and center. Slice and serve"] },
-      ] },
-    ],
-  },
-  {
-    id: "zucca-nduja",
-    number: 44,
-    name: "Zucca e 'Nduja",
-    style: "Pumpkin Base — 'Nduja & Stracciatella",
-    category: "pumpkin",
-    image: "https://media-cdn.tripadvisor.com/media/photo-s/1f/ce/83/00/zucca-e-nduja.jpg",
-    toppings: "Greci or Demetra pumpkin cream, Fior di Latte, 'Nduja di Spilinga, fresh Stracciatella (or Burrata), fresh basil, extra virgin olive oil.",
-    menuIngredients: "Pumpkin cream, mozzarella, 'nduja, stracciatella, basil",
-    build: "A high-contrast gourmet pie. If using Greci, the 'Nduja creates a sharp sweet-and-spicy punch. If using Demetra, the onion/wine aromatics combine with the 'Nduja for a rich, savory chili finish.",
-    postBake: "Transfer to a wire rack for 60 seconds, then spoon 80–90 g of fresh, creamy Stracciatella (or 1 whole opened Burrata) over the center of the pizza. Serve immediately.",
-    steps: [
-      { title: "1. Ingredients", sections: [
-        { intro: "Base:", bullets: ["75 g prepared Greci OR Demetra Pumpkin Cream"] },
-        { intro: "Cheese (Pre-Bake):", bullets: ["70 g Fior di Latte (cut into strips and well-drained)"] },
-        { intro: "Spicy Element:", bullets: ["30–35 g 'Nduja di Spilinga (rolled into small dollops at room temperature)"] },
-        { intro: "Finish (Post-Bake):", bullets: ["80–90 g fresh Stracciatella (or 1 whole room-temperature Burrata opened post-bake), fresh basil, EVOO"] },
-      ] },
-      { title: "2. Stretch Dough", sections: [
-        { intro: "Preserve gas pockets in the cornicione:", bullets: ["Open your 280 g dough ball in semolina to 28–30 cm, preserving a prominent outer rim"] },
-      ] },
-      { title: "3. Pre-Bake Assembly", sections: [
-        { intro: "'Nduja renders red chili oil into the pumpkin cream:", bullets: ["Spread 75 g of Greci or Demetra Pumpkin Cream over the base", "Scatter 70 g of drained Fior di Latte", "Dot 30–35 g of room-temperature 'Nduja di Spilinga across the mozzarella", "Add 3–4 fresh basil leaves and a light spiral of EVOO"] },
-      ] },
-      { title: "4. Launch & Gozney Bake (75–90 Seconds)", sections: [
-        { intro: "Low flame prevents white cream from scorching:", bullets: ["Launch onto the 430–450°C stone and turn the burner to LOW immediately", "Bake for 75–90 seconds, turning every 15 seconds as the 'Nduja melts its red spicy oil into the pumpkin base"] },
-      ] },
-      { title: "5. Post-Bake Stracciatella Crown", sections: [
-        { intro: "Cool creamy crown against hot spicy base:", bullets: ["Transfer to a wire rack for 60 seconds", "Spoon 80–90 g of fresh, creamy Stracciatella (or 1 whole opened Burrata) over the center of the pizza. Serve immediately"] },
-      ] },
-    ],
-  },
-  {
-    id: "zucca-guanciale-e-rosmarino",
-    number: 45,
-    name: "Zucca, Guanciale e Rosmarino",
-    style: "Pumpkin Cream Base — Crispy Guanciale, Fresh Rosemary & Pecorino Romano",
-    category: "pumpkin",
-    image: "https://foodionista.com/wp-content/uploads/2022/10/zucca-pancetta.jpg",
-    toppings: "Strictly no tomato sauce. 70g thick, spreadable prepared pumpkin cream (e.g., Greci or Demetra), 60g well-drained Fior di Latte (hand-torn into strips, drained for 1+ hours), 0.5g–0.7g finely chopped fresh rosemary leaves, 40g Guanciale (cut into thin strips, pan-crisped separately and drained completely; zero reserved fat added to the pie), 8g finely microplaned Pecorino Romano DOP (post-bake), zero pre-bake oil, 3g Barbera Lorenzo Nº5 EVOO (Nocellara del Belice DOP — post-bake finishing swirl).",
-    menuIngredients: "Pumpkin cream, Fior di Latte, rosemary, crispy guanciale, Pecorino Romano",
-    build: "A refined autumn-winter white pizza — sweet pumpkin cream and melting Fior di Latte baked with fresh rosemary, then finished with crisp guanciale, Pecorino Romano and Lorenzo Nº5 EVOO.",
-    postBake: "Transfer directly to a wooden board and rest for 30–40 seconds to allow excess surface steam to dissipate and the base to stabilize. Scatter the warm, pan-crisped guanciale strips across the hot pizza, microplane 8g Pecorino Romano DOP evenly over the top, and finish with a 3g swirl of Barbera Lorenzo Nº5 EVOO. Slice and serve immediately.",
-    flavorProgression: "Velvety pumpkin cream → creamy Fior di Latte → aromatic fresh rosemary → crispy guanciale → sharp Pecorino Romano → almond-smooth Lorenzo N°5 finish",
+    toppings: "Strictly no tomato sauce. 60g Greci Crema di Zucca Mantovana whisked with 12g water (~72g total finished base; chosen for its clean, naturally sweet profile), 60g well-drained Fior di Latte (cut into clean strips, drained for 1+ hours), 40g sautéed mushrooms (sliced/pieces, well-browned with excess moisture evaporated, cooled), 35g pancetta (small batons or thin strips, lightly rendered separately and drained), 3g sage-infused extra virgin olive oil (post-bake finishing oil), 7g finely microplaned 24–30 month Parmigiano-Reggiano DOP (post-bake), zero pre-bake oil.",
+    menuIngredients: "Pumpkin cream, Fior di Latte, sautéed mushrooms, pancetta, sage-infused EVOO, Parmigiano",
+    build: "A deeply earthy and comforting signature interpretation inspired by Basilico in Flic en Flac, Mauritius — smooth Mantuan pumpkin cream and melting Fior di Latte baked with sautéed mushrooms and pancetta, finished post-bake with sage-infused EVOO and microplaned Parmigiano-Reggiano.",
+    postBake: "Transfer directly to a wooden board and rest for 30–40 seconds to allow excess surface steam to dissipate and the base to stabilize. Drizzle 3g sage-infused EVOO over the hot pizza, then microplane 7g Parmigiano-Reggiano DOP in a light snowfall over the top. Slice and serve immediately.",
+    flavorProgression: "Smooth pumpkin cream → melting Fior di Latte → sautéed forest mushrooms → rendered pancetta → sage-infused EVOO → microplaned Parmigiano-Reggiano snowfall",
+    inspiredBy: "A signature interpretation inspired by Basilico in Flic en Flac, Mauritius.",
     steps: [
       { title: "1. Pre-Prep", sections: [
-        { bullets: ["Drain 60g Fior di Latte strips in a sieve for at least 1 hour. Finely chop 0.5g–0.7g fresh rosemary leaves."] },
-        { intro: "Guanciale Prep:", bullets: ["Sauté 40g thin guanciale strips in a dry skillet over medium-low heat until golden and ultra-crisp. Drain completely on paper towels (reserve no fat for the pizza)."] },
+        { bullets: ["Drain 60g Fior di Latte strips in a sieve for at least 1 hour. Whisk 60g Greci Crema di Zucca Mantovana with 12g water until completely smooth (~72g base). Sauté 40g mushrooms in small pieces until well-browned and free moisture evaporates; cool completely. Lightly render 35g pancetta strips separately and drain. Infuse a small batch of EVOO with fresh sage and strain (3g needed per pizza)."] },
       ] },
       { title: "2. Dough Prep", sections: [
         { bullets: ["Hand-stretch 280g dough ball to 30–32cm on semolina rimacinata, preserving gas in an airy 1.5–2cm cornicione."] },
       ] },
       { title: "3. Layer Assembly (In Exact Order)", sections: [
-        { intro: "Layer 1 — Pumpkin Cream:", bullets: ["Spread 70g thick, spreadable pumpkin cream evenly across the base, leaving a clean 1.5–2cm rim."] },
+        { intro: "Layer 1 — Pumpkin Cream:", bullets: ["Spread 72g prepared Greci pumpkin base evenly across the dough, leaving a clean 1.5–2cm rim."] },
+        { intro: "Layer 2 — Fior di Latte:", bullets: ["Scatter 60g drained Fior di Latte strips evenly across the pumpkin."] },
+        { intro: "Layer 3 — Mushrooms & Pancetta:", bullets: ["Distribute 40g sautéed mushrooms and 35g rendered pancetta evenly across the pizza without dense clustering."] },
+        { intro: "Layer 4 — Oil:", bullets: ["Zero pre-bake oil."] },
+      ] },
+      { title: "4. Gozney Bake", sections: [
+        { intro: "Gozney / High-Heat Oven:", bullets: [
+          "🪨 Stone floor target: 430°C–440°C",
+          "🔥 Dome: 450°C–480°C",
+          "Manage top flame dynamically after launch, rotating regularly to brown the pancetta and cornicione evenly while allowing the Fior di Latte to melt without excessive scorching.",
+          "🔄 Rotate regularly until the cornicione is fully inflated and leopard-spotted.",
+          "⏱ Cook Time: 75–85 seconds.",
+        ] },
+      ] },
+      { title: "5. Rest & Sequential Post-Bake Staging", sections: [
+        { bullets: ["Transfer directly to a wooden board and rest for 30–40 seconds to allow excess surface steam to dissipate and the base to stabilize."] },
+        { intro: "Stage 1 (Sage EVOO & Parmigiano Finish):", bullets: ["Drizzle 3g sage-infused EVOO over the hot pizza. Microplane 7g Parmigiano-Reggiano DOP in a light snowfall over the top. Slice and serve immediately."] },
+        { intro: "Technical Moisture & Thermal Note:", bullets: ["Sautéing the mushrooms before assembly reduces their free moisture and concentrates their flavor, helping limit excess steam during the short Gozney bake. Lightly rendering the pancetta separately gives more control over its fat and texture. The clean Greci pumpkin base provides a restrained sweet-savoury foundation, while post-bake sage-infused EVOO and Parmigiano add aromatic and umami depth without competing with the mushroom profile."] },
+        { intro: "Profile:", bullets: ["Smooth pumpkin cream → melting Fior di Latte → sautéed forest mushrooms → rendered pancetta → sage-infused EVOO → microplaned Parmigiano-Reggiano snowfall"] },
+      ] },
+    ],
+  },
+  {
+    id: "sfiziosa",
+    number: 46,
+    name: "Sfiziosa",
+    style: "Pumpkin Cream Base — Smoked Guanciale, Fresh Burrata, Black Truffle Cream & Crispy Sage",
+    category: "pumpkin",
+    image: "/pizzas/sfiziosa-aqua.jpg",
+    toppings: "Strictly no tomato sauce. 60g Greci Crema di Zucca Mantovana whisked with 12g water (~72g total finished base; chosen for its clean, naturally sweet profile that allows delicate truffle aromas to shine), 7g finely microplaned 24–30 month Parmigiano-Reggiano DOP (dusted over the pumpkin base), 60g well-drained Fior di Latte (hand-torn into rustic strips, drained for 1+ hours), 35g smoked guanciale (cut into thin strips and lightly rendered separately, drained well and cooled), 80g fresh Burrata (torn by hand into 5–6 irregular pockets, post-bake), 8g black truffle cream (applied as 6–8 very small dots/short strokes mostly over the burrata, post-bake), 4 fresh sage leaves (fried separately until crisp, drained well, lightly crumbled, post-bake), 3 micro-drops aged white balsamic vinegar (post-bake), zero pre-bake oil, 2g early-harvest Campanian EVOO (post-bake finishing micro-dots).",
+    menuIngredients: "Pumpkin cream, Parmigiano, Fior di Latte, smoked guanciale, burrata, black truffle cream",
+    build: "A luxurious signature interpretation inspired by Acqua e Farina in Beau Bassin, Mauritius — clean Greci pumpkin cream and Parmigiano layered beneath melting Fior di Latte and smoked guanciale, crowned post-bake with fresh burrata, a delicate black truffle cream perfume, crispy sage, aged white balsamic, and early-harvest Campanian EVOO.",
+    postBake: "Transfer directly to a wooden board and rest for 30–40 seconds to allow excess surface steam to dissipate and the base to stabilize. Tear 80g fresh burrata by hand and place into 5–6 irregular pockets across the hot pie. Apply 8g black truffle cream as 6–8 very small dots/short strokes over the burrata, scatter the 4 lightly crumbled crisp sage leaves, and apply 3 micro-drops of aged white balsamic vinegar over the burrata. Finish with light micro-dots of early-harvest Campanian EVOO (2g total). Slice and serve immediately.",
+    flavorProgression: "Clean Greci pumpkin cream → 30-mo Parmigiano umami → creamy Fior di Latte → smoked guanciale → fresh burrata pockets → black truffle cream perfume → crisp fried sage → aged balsamic lift → early-harvest Campanian EVOO micro-dots",
+    inspiredBy: "A signature interpretation inspired by Acqua e Farina in Beau Bassin, Mauritius.",
+    steps: [
+      { title: "1. Pre-Prep", sections: [
+        { bullets: ["Drain 60g Fior di Latte strips in a sieve for at least 1 hour. Whisk 60g Greci Crema di Zucca Mantovana with 12g water until completely smooth (~72g base). Pre-cook and lightly render 35g smoked guanciale strips, drain and cool. Fry 4 fresh sage leaves separately until crisp and drain. Keep 80g fresh burrata chilled until service."] },
+      ] },
+      { title: "2. Dough Prep", sections: [
+        { bullets: ["Hand-stretch 280g dough ball to 30–32cm on semolina rimacinata, preserving gas in an airy 1.5–2cm cornicione."] },
+      ] },
+      { title: "3. Layer Assembly (In Exact Order)", sections: [
+        { intro: "Layer 1 — Pumpkin Cream:", bullets: ["Spread 72g prepared Greci pumpkin base evenly across the dough, leaving a clean 1.5–2cm rim."] },
+        { intro: "Layer 2 — Parmigiano Foundation:", bullets: ["Dust 7g microplaned 24–30 month Parmigiano-Reggiano evenly over the pumpkin cream."] },
+        { intro: "Layer 3 — Fior di Latte:", bullets: ["Scatter 60g drained Fior di Latte strips across the umami foundation."] },
+        { intro: "Layer 4 — Smoked Guanciale:", bullets: ["Distribute 35g rendered smoked guanciale strips evenly across the pizza."] },
+        { intro: "Layer 5 — Oil:", bullets: ["Zero pre-bake oil."] },
+      ] },
+      { title: "4. Gozney Bake", sections: [
+        { intro: "Gozney / High-Heat Oven:", bullets: [
+          "🪨 Stone floor target: 430°C–440°C",
+          "🔥 Dome: 450°C–480°C",
+          "Manage top flame dynamically post-launch — keep the burner on low-to-moderate so the pumpkin heats evenly, the Fior di Latte melts, and the smoked guanciale lightly crisps without excessive scorching.",
+          "🔄 Rotate regularly until the cornicione is fully inflated and leopard-spotted.",
+          "⏱ Cook Time: 75–85 seconds.",
+        ] },
+      ] },
+      { title: "5. Rest & Sequential Post-Bake Staging", sections: [
+        { bullets: ["Transfer directly to a wooden board and rest for 30–40 seconds to allow excess surface steam to dissipate and the base to stabilize."] },
+        { intro: "Stage 1 (Burrata Crown):", bullets: ["Tear 80g fresh burrata by hand and place into 5–6 irregular pockets across the hot pie."] },
+        { intro: "Stage 2 (Truffle, Sage & Acid Lift):", bullets: ["Apply 8g black truffle cream as 6–8 very small dots/short strokes over the burrata. Scatter the 4 lightly crumbled crisp sage leaves and apply 3 micro-drops of aged white balsamic vinegar over the burrata."] },
+        { intro: "Stage 3 (Oil Finish):", bullets: ["Apply light micro-dots of early-harvest Campanian EVOO (2g total). Slice and serve immediately."] },
+        { intro: "Technical Moisture & Thermal Note:", bullets: ["The clean, naturally sweet profile of the Greci pumpkin cream provides a restrained base for the black truffle cream, while the post-bake burrata keeps its fresh milky character distinct from the hot pumpkin, Fior di Latte, and smoked guanciale. Applying the truffle cream post-bake avoids exposing it to high oven heat, maintaining its aromatic perfume."] },
+        { intro: "Profile:", bullets: ["Clean Greci pumpkin cream → 30-mo Parmigiano umami → creamy Fior di Latte → smoked guanciale → fresh burrata pockets → black truffle cream perfume → crisp fried sage → aged balsamic lift → early-harvest Campanian EVOO micro-dots"] },
+      ] },
+    ],
+  },
+  {
+    id: "mantovana",
+    number: 44,
+    name: "Mantovana",
+    style: "Pumpkin Cream Base — Gorgonzola Dolce, Smoked Bacon, Quick-Pickled Onions & Crispy Sage",
+    category: "pumpkin",
+    image: "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/28/c3/7a/78/caption.jpg?w=1100&h=-1&s=1",
+    toppings: "Strictly no tomato sauce. 70g Demetra Crema di Zucca (stirred thoroughly, used direct-from-jar at room temperature; chosen for its savoury onion, leek and wine seasoning), 8g finely microplaned 24–30 month Parmigiano-Reggiano DOP (dusted over the pumpkin base), 60g well-drained Fior di Latte (cut into matchsticks, drained for 1+ hours), 20g thinly sliced red onions (quick-pickled in mild white wine vinegar for 10–15 minutes, drained extremely well, and gently squeezed of excess vinegar), 25g Gorgonzola Dolce (spaced in even waves), 35g smoked bacon (pre-cooked and lightly rendered until exterior begins to colour, drained and cooled), 4 fresh sage leaves (fried separately until crisp, drained well, post-bake), 3 micro-drops aged white balsamic vinegar (post-bake), zero pre-bake oil, 2g early-harvest Campanian EVOO (post-bake finishing micro-dots).",
+    menuIngredients: "Pumpkin cream, Parmigiano, Fior di Latte, pickled onions, Gorgonzola Dolce, smoked bacon, crispy sage",
+    build: "A refined signature interpretation inspired by Acqua e Farina in Beau Bassin, Mauritius — savoury Demetra pumpkin cream and Parmigiano layered beneath melting Fior di Latte, mild quick-pickled red onions, Gorgonzola Dolce, and smoked bacon, finished with crisp sage, aged white balsamic and early-harvest Campanian EVOO.",
+    postBake: "Transfer directly to a wooden board and rest for 30–40 seconds to allow excess surface steam to dissipate and the base to stabilize. Scatter the 4 crisp sage leaves (lightly crumbled) over the hot pizza, apply exactly 3 micro-drops of aged white balsamic vinegar over the Gorgonzola and bacon, then finish with light micro-dots of early-harvest Campanian EVOO (2g total). Slice and serve immediately.",
+    flavorProgression: "Savoury Demetra pumpkin cream → 30-mo Parmigiano umami → creamy Fior di Latte → mild quick-pickled red onions → Gorgonzola Dolce waves → smoked bacon strips → crisp fried sage → aged balsamic lift → early-harvest Campanian EVOO micro-dots",
+    inspiredBy: "A signature interpretation inspired by Acqua e Farina in Beau Bassin, Mauritius.",
+    steps: [
+      { title: "1. Pre-Prep", sections: [
+        { bullets: ["Drain 60g Fior di Latte matchsticks in a sieve for at least 1 hour. Thinly slice red onions, quick-pickle in mild white wine vinegar for 10–15 minutes, drain extremely well, and gently squeeze off excess vinegar. Pre-cook and lightly render 35g smoked bacon, then drain and cool. Fry 4 fresh sage leaves separately until crisp and drain. Stir Demetra pumpkin cream thoroughly."] },
+      ] },
+      { title: "2. Dough Prep", sections: [
+        { bullets: ["Hand-stretch 280g dough ball to 30–32cm on semolina rimacinata, preserving gas in an airy 1.5–2cm cornicione."] },
+      ] },
+      { title: "3. Layer Assembly (In Exact Order)", sections: [
+        { intro: "Layer 1 — Pumpkin Cream:", bullets: ["Spread 70g Demetra Crema di Zucca evenly across the base, leaving a clean 1.5–2cm rim."] },
+        { intro: "Layer 2 — Parmigiano Foundation:", bullets: ["Dust 8g microplaned 24–30 month Parmigiano-Reggiano evenly over the pumpkin cream."] },
+        { intro: "Layer 3 — Fior di Latte:", bullets: ["Scatter 60g drained Fior di Latte matchsticks across the umami foundation."] },
+        { intro: "Layer 4 — Onions, Gorgonzola & Bacon:", bullets: ["Distribute the pickled red onions in small quantities, 25g Gorgonzola crumbles, and 35g smoked bacon strips evenly across the pizza."] },
+        { intro: "Layer 5 — Oil:", bullets: ["Zero pre-bake oil."] },
+      ] },
+      { title: "4. Gozney Bake", sections: [
+        { intro: "Gozney / High-Heat Oven:", bullets: [
+          "🪨 Stone floor target: 430°C–440°C",
+          "🔥 Dome: 450°C–480°C",
+          "Manage top flame dynamically post-launch — keep the burner on low-to-moderate so the pumpkin heats evenly, the Gorgonzola softens, the bacon lightly crisps, and the Fior di Latte melts without excessive scorching.",
+          "🔄 Rotate regularly until the cornicione is fully inflated and leopard-spotted.",
+          "⏱ Cook Time: 75–85 seconds.",
+        ] },
+      ] },
+      { title: "5. Rest & Sequential Post-Bake Staging", sections: [
+        { bullets: ["Transfer directly to a wooden board and rest for 30–40 seconds to allow excess surface steam to dissipate and the base to stabilize."] },
+        { intro: "Stage 1 (Crispy Sage & Balsamic):", bullets: ["Scatter the 4 crisp sage leaves (lightly crumbled) over the hot pizza. Apply exactly 3 micro-drops of aged white balsamic vinegar over the Gorgonzola and bacon."] },
+        { intro: "Stage 2 (Oil Finish):", bullets: ["Apply light micro-dots of early-harvest Campanian EVOO (2g total). Slice and serve immediately."] },
+        { intro: "Technical Moisture & Thermal Note:", bullets: ["The Demetra pumpkin cream and 8g Parmigiano foundation create a rich, savoury umami base that balances the tangy brightness of mild quick-pickled red onions, the creamy funk of Gorgonzola Dolce, and the rich smoke of bacon. Quick-pickling the onions softens their raw bite and adds a controlled acidic contrast to the rich pumpkin, Gorgonzola, and smoked bacon, while the post-bake application of crispy sage, 3 micro-drops of aged white balsamic, and early-harvest EVOO adds a final acidic and aromatic lift."] },
+        { intro: "Profile:", bullets: ["Savoury Demetra pumpkin cream → 30-mo Parmigiano umami → creamy Fior di Latte → mild quick-pickled red onions → Gorgonzola Dolce waves → smoked bacon strips → crisp fried sage → aged balsamic lift → early-harvest Campanian EVOO micro-dots"] },
+      ] },
+    ],
+  },
+  {
+    id: "norcina",
+    number: 43,
+    name: "Norcina",
+    style: "Pumpkin Cream Base — Porcini, Fennel Sausage, Parmigiano & Crispy Sage",
+    category: "pumpkin",
+    image: "/pizzas/norcina.jpg",
+    toppings: "Strictly no tomato sauce. 70g Demetra Crema di Zucca (stirred thoroughly, used direct-from-jar at room temperature; chosen for its savoury onion, leek and wine seasoning), 8g finely microplaned 24–30 month Parmigiano-Reggiano DOP (dusted over the pumpkin base), 60g well-drained Fior di Latte (hand-torn into rustic strips, drained for 1+ hours), 35g pre-sautéed porcini ceps (sautéed until released moisture has evaporated, cooled before building), 45g fresh fennel sausage meat (casing removed, broken into small 5–8mm pieces; lightly pre-cooking and cooling before building is recommended for reproducibility and moisture control), 4 fresh sage leaves (fried separately until crisp, drained well, post-bake), 4 micro-drops aged white balsamic vinegar (post-bake), zero pre-bake oil, 2g early-harvest Campanian EVOO (post-bake finishing micro-dots).",
+    menuIngredients: "Pumpkin cream, Parmigiano, Fior di Latte, porcini, fennel sausage, crispy sage",
+    build: "A refined signature interpretation inspired by Acqua e Farina in Beau Bassin, Mauritius — savoury Demetra pumpkin cream and Parmigiano layered beneath melting Fior di Latte, pre-sautéed porcini and fennel sausage, finished with crisp sage, aged white balsamic and early-harvest Campanian EVOO.",
+    postBake: "Transfer directly to a wooden board and rest for 30–40 seconds to allow excess surface steam to dissipate and the base to stabilize. Scatter the 4 crisp sage leaves over the hot pizza, apply exactly 4 micro-drops of aged white balsamic vinegar over the mushrooms and sausage, then finish with light micro-dots of early-harvest Campanian EVOO (2g total). Slice and serve immediately.",
+    flavorProgression: "Savoury Demetra pumpkin cream → 30-mo Parmigiano umami → creamy Fior di Latte → sautéed porcini ceps → aromatic fennel sausage → crisp fried sage → aged balsamic lift → early-harvest Campanian EVOO micro-dots",
+    inspiredBy: "A signature interpretation inspired by Acqua e Farina in Beau Bassin, Mauritius.",
+    steps: [
+      { title: "1. Pre-Prep", sections: [
+        { bullets: ["Drain 60g Fior di Latte strips in a sieve for at least 1 hour. Sauté 35g porcini ceps until free surface moisture has evaporated, then cool. Remove casings from 45g fennel sausage, break into small 5–8mm pieces (and optionally pre-cook lightly). Fry 4 fresh sage leaves separately until crisp and drain. Stir Demetra pumpkin cream thoroughly."] },
+      ] },
+      { title: "2. Dough Prep", sections: [
+        { bullets: ["Hand-stretch 280g dough ball to 30–32cm on semolina rimacinata, preserving gas in an airy 1.5–2cm cornicione."] },
+      ] },
+      { title: "3. Layer Assembly (In Exact Order)", sections: [
+        { intro: "Layer 1 — Pumpkin Cream:", bullets: ["Spread 70g Demetra Crema di Zucca evenly across the base, leaving a clean 1.5–2cm rim."] },
+        { intro: "Layer 2 — Parmigiano Foundation:", bullets: ["Dust 8g microplaned 24–30 month Parmigiano-Reggiano evenly over the pumpkin cream."] },
+        { intro: "Layer 3 — Fior di Latte:", bullets: ["Scatter 60g drained Fior di Latte strips across the umami foundation."] },
+        { intro: "Layer 4 — Porcini & Sausage:", bullets: ["Distribute 35g pre-sautéed porcini and 45g small fennel sausage pieces evenly across the pizza."] },
+        { intro: "Layer 5 — Oil:", bullets: ["Zero pre-bake oil."] },
+      ] },
+      { title: "4. Gozney Bake", sections: [
+        { intro: "Gozney / High-Heat Oven:", bullets: [
+          "🪨 Stone floor target: 430°C–440°C",
+          "🔥 Dome: 450°C–480°C",
+          "Manage top flame dynamically post-launch — keep the burner on low-to-moderate so the sausage cooks evenly, the porcini remain browned rather than dried, and the Parmigiano and Fior di Latte melt without excessive scorching.",
+          "🔄 Rotate regularly until the cornicione is fully inflated and leopard-spotted.",
+          "⏱ Cook Time: 75–85 seconds.",
+        ] },
+      ] },
+      { title: "5. Rest & Sequential Post-Bake Staging", sections: [
+        { bullets: ["Transfer directly to a wooden board and rest for 30–40 seconds to allow excess surface steam to dissipate and the base to stabilize."] },
+        { intro: "Stage 1 (Crispy Sage & Balsamic):", bullets: ["Scatter the 4 crisp sage leaves over the hot pizza. Apply exactly 4 micro-drops of aged white balsamic vinegar over the mushrooms and sausage."] },
+        { intro: "Stage 2 (Oil Finish):", bullets: ["Apply light micro-dots of early-harvest Campanian EVOO (2g total). Slice and serve immediately."] },
+        { intro: "Technical Moisture & Thermal Note:", bullets: ["The Demetra pumpkin cream and 8g Parmigiano foundation create a rich, savory umami base that anchors the earthy porcini ceps and aromatic fennel sausage. Moisture-reducing the porcini prior to baking prevents steaming, while the post-bake application of crispy sage, 4 micro-drops of aged white balsamic, and early-harvest EVOO cuts through the pork fats and provides a vibrant aromatic lift."] },
+        { intro: "Profile:", bullets: ["Savoury Demetra pumpkin cream → 30-mo Parmigiano umami → creamy Fior di Latte → sautéed porcini ceps → aromatic fennel sausage → crisp fried sage → aged balsamic lift → early-harvest Campanian EVOO micro-dots"] },
+      ] },
+    ],
+  },
+  {
+    id: "zucca-salsiccia-e-provola",
+    number: 42,
+    name: "Zucca, Salsiccia e Provola",
+    style: "Pumpkin Cream Base — Smoked Provola, Crumbled Fresh Sausage & Pecorino Romano",
+    category: "pumpkin",
+    image: "https://media-cdn.tripadvisor.com/media/photo-s/14/b3/50/80/zucca-salsiccia-e-provola.jpg",
+    toppings: "Strictly no tomato sauce. 70g Demetra Crema di Zucca (stirred thoroughly, used direct-from-jar at room temperature; chosen for its savoury, herb-forward depth that complements the pork sausage), 70g Smoked Provola di Agerola (cut into thin irregular strips, well-drained for 1+ hours), 45g–50g fresh pork sausage (casing removed, broken into small 5–8mm pieces; brief pre-cooking in a pan until just done is recommended for absolute safety and consistency), zero basil, 8g finely microplaned Pecorino Romano DOP (post-bake), zero pre-bake oil, 3g Barbera Lorenzo Nº5 EVOO (Nocellara del Belice DOP — post-bake finishing swirl).",
+    menuIngredients: "Pumpkin cream, smoked provola, pork sausage, Pecorino Romano",
+    build: "A hearty, smoky winter white pizza — savoury Demetra pumpkin cream and melting Smoked Provola di Agerola baked with fresh pork sausage, then finished post-bake with sharp Pecorino Romano and Lorenzo Nº5 EVOO.",
+    postBake: "Transfer directly to a wooden board and rest for 30–40 seconds to allow excess surface steam to dissipate and the base to stabilize. Microplane 8g Pecorino Romano DOP finely across the hot crust and center, and finish with a 3g swirl of Barbera Lorenzo Nº5 EVOO. Slice and serve immediately.",
+    flavorProgression: "Savoury Demetra pumpkin cream → smoky Smoked Provola → savory pork sausage → sharp Pecorino Romano → almond-smooth Lorenzo N°5 finish",
+    steps: [
+      { title: "1. Pre-Prep", sections: [
+        { bullets: ["Drain 70g Smoked Provola strips in a sieve for at least 1 hour. Remove casings from 45g–50g fresh pork sausage and break into small 5–8mm pieces (optional but recommended: briefly pan-cook until just done and drain completely). Stir the Demetra pumpkin cream thoroughly in its container."] },
+      ] },
+      { title: "2. Dough Prep", sections: [
+        { bullets: ["Hand-stretch 280g dough ball to 30–32cm on semolina rimacinata, preserving gas in an airy 1.5–2cm cornicione."] },
+      ] },
+      { title: "3. Layer Assembly (In Exact Order)", sections: [
+        { intro: "Layer 1 — Pumpkin Cream:", bullets: ["Spread 70g Demetra Crema di Zucca evenly across the base, leaving a clean 1.5–2cm rim."] },
+        { intro: "Layer 2 — Smoked Provola:", bullets: ["Scatter 70g drained Smoked Provola strips evenly over the pumpkin cream."] },
+        { intro: "Layer 3 — Sausage:", bullets: ["Distribute 45g–50g of small sausage pieces evenly across the cheese and pumpkin base."] },
+        { intro: "Layer 4 — Oil:", bullets: ["Zero pre-bake oil."] },
+      ] },
+      { title: "4. Gozney Bake", sections: [
+        { intro: "Gozney / High-Heat Oven:", bullets: [
+          "🪨 Stone floor target: 430°C–440°C",
+          "🔥 Dome: 450°C–480°C",
+          "Manage top flame dynamically post-launch — keep the burner on low-to-moderate so the sausage cooks evenly and the Smoked Provola melts smoothly into the pumpkin without excessive scorching.",
+          "🔄 Rotate regularly until the cornicione is fully inflated and leopard-spotted.",
+          "⏱ Cook Time: 75–85 seconds.",
+        ] },
+      ] },
+      { title: "5. Rest & Sequential Post-Bake Staging", sections: [
+        { bullets: ["Transfer directly to a wooden board and rest for 30–40 seconds to allow excess surface steam to dissipate and the base to stabilize."] },
+        { intro: "Stage 1 (Pecorino & Oil Finish):", bullets: ["Microplane 8g Pecorino Romano DOP finely across the hot crust and center. Apply a 3g finishing swirl of Barbera Lorenzo Nº5 EVOO. Slice and serve immediately."] },
+        { intro: "Technical Moisture & Thermal Note:", bullets: ["Demetra Crema di Zucca provides a pre-seasoned, savoury pumpkin background that pairs naturally with the rich smokiness of Provola di Agerola and the savory fat of fresh pork sausage. Sizing the sausage into small 5–8mm pieces ensures even cooking during the 75–85 second bake, while the post-bake dusting of sharp Pecorino Romano and Lorenzo EVOO provides the final aromatic balance."] },
+        { intro: "Profile:", bullets: ["Savoury Demetra pumpkin cream → smoky Smoked Provola → savory pork sausage → sharp Pecorino Romano → almond-smooth Lorenzo N°5 finish"] },
+      ] },
+    ],
+  },
+  {
+    id: "zucca-e-nduja",
+    number: 41,
+    name: "Zucca e 'Nduja",
+    style: "Pumpkin Cream Base — Spicy 'Nduja di Spilinga & Cool Stracciatella",
+    category: "pumpkin",
+    image: "https://media-cdn.tripadvisor.com/media/photo-s/1f/ce/83/00/zucca-e-nduja.jpg",
+    toppings: "Strictly no tomato sauce. 70g Demetra Crema di Zucca (stirred thoroughly, used direct-from-jar at room temperature; primary house choice for its savoury depth), 60g well-drained Fior di Latte (hand-torn into strips, drained for 1+ hours), 30g 'Nduja di Spilinga (room temperature, divided into 6–8 small pieces), 50g fresh cold Stracciatella di Burrata (spooned into 5–6 distinct pools, post-bake), 2–3 fresh basil leaves (post-bake), zero pre-bake oil, 3g Barbera Lorenzo Nº5 EVOO (Nocellara del Belice DOP — post-bake finishing swirl).",
+    menuIngredients: "Pumpkin cream, Fior di Latte, 'Nduja, Stracciatella, basil",
+    build: "A striking balance of sweet and fiery heat — savoury Demetra pumpkin cream and melting Fior di Latte baked with Calabrian 'Nduja, crowned post-bake with cool fresh Stracciatella, fresh basil, and Lorenzo Nº5 EVOO.",
+    postBake: "Transfer directly to a wooden board and rest for 30–40 seconds to allow excess surface steam to dissipate and the base to stabilize. Spoon 50g of cold Stracciatella di Burrata in 5–6 distinct pools across the hot, spicy pumpkin and 'Nduja base, scatter 2–3 fresh basil leaves, and finish with a 3g swirl of Barbera Lorenzo Nº5 EVOO. Slice and serve immediately.",
+    flavorProgression: "Savoury Demetra pumpkin cream → creamy Fior di Latte → baking 'Nduja integration → cool fresh Stracciatella → fresh basil → almond-smooth Lorenzo N°5 finish",
+    steps: [
+      { title: "1. Pre-Prep", sections: [
+        { bullets: ["Drain 60g Fior di Latte strips in a sieve for at least 1 hour. Keep 50g Stracciatella chilled until service. Portion 30g 'Nduja di Spilinga into 6–8 small pieces at room temperature. Stir the Demetra pumpkin cream thoroughly."] },
+      ] },
+      { title: "2. Dough Prep", sections: [
+        { bullets: ["Hand-stretch 280g dough ball to 30–32cm on semolina rimacinata, preserving gas in an airy 1.5–2cm cornicione."] },
+      ] },
+      { title: "3. Layer Assembly (In Exact Order)", sections: [
+        { intro: "Layer 1 — Pumpkin Cream:", bullets: ["Spread 70g Demetra Crema di Zucca evenly across the base, leaving a clean 1.5–2cm rim."] },
         { intro: "Layer 2 — Fior di Latte:", bullets: ["Scatter 60g drained Fior di Latte strips evenly over the pumpkin cream."] },
+        { intro: "Layer 3 — 'Nduja:", bullets: ["Dot 30g 'Nduja di Spilinga across 6–8 small pieces over the mozzarella and pumpkin base."] },
+        { intro: "Layer 4 — Oil:", bullets: ["Zero pre-bake oil."] },
+      ] },
+      { title: "4. Gozney Bake", sections: [
+        { intro: "Gozney / High-Heat Oven:", bullets: [
+          "🪨 Stone floor target: 430°C–440°C",
+          "🔥 Dome: 450°C–480°C",
+          "Manage top flame dynamically post-launch — keep the burner on low-to-moderate so the pumpkin heats through, the Fior di Latte melts, and the 'Nduja integrates its fat, pork flavor, and chili character with the pumpkin and mozzarella during the bake without scorching.",
+          "🔄 Rotate regularly until the cornicione is fully inflated and leopard-spotted.",
+          "⏱ Cook Time: 75–85 seconds.",
+        ] },
+      ] },
+      { title: "5. Rest & Sequential Post-Bake Staging", sections: [
+        { bullets: ["Transfer directly to a wooden board and rest for 30–40 seconds to allow excess surface steam to dissipate and the base to stabilize."] },
+        { intro: "Stage 1 (Stracciatella Crown):", bullets: ["Spoon 50g of cold Stracciatella di Burrata in 5–6 distinct pools across the hot, spicy pumpkin and 'Nduja base."] },
+        { intro: "Stage 2 (Herb & Oil Finish):", bullets: ["Scatter 2–3 fresh basil leaves over the pizza. Apply a 3g finishing swirl of Barbera Lorenzo Nº5 EVOO. Slice and serve immediately."] },
+        { intro: "Technical Moisture & Thermal Note:", bullets: ["Demetra Crema di Zucca provides a pre-seasoned, savoury pumpkin foundation that pairs exceptionally well with the rich, spicy pork fats of 'Nduja di Spilinga. Baking the 'Nduja directly into the pie integrates its chili character, while crowning the hot base with 50g of cool Stracciatella and fresh basil post-bake delivers the defining sweet-spicy-creamy contrast."] },
+        { intro: "Profile:", bullets: ["Savoury Demetra pumpkin cream → creamy Fior di Latte → baking 'Nduja integration → cool fresh Stracciatella → fresh basil → almond-smooth Lorenzo N°5 finish"] },
+      ] },
+    ],
+  },
+  {
+    id: "zucca-guanciale-e-rosmarino",
+    number: 40,
+    name: "Zucca, Guanciale e Rosmarino",
+    style: "Pumpkin Cream Base — Crispy Guanciale, Fresh Rosemary & Pecorino Romano",
+    category: "pumpkin",
+    image: "https://foodionista.com/wp-content/uploads/2022/10/zucca-pancetta.jpg",
+    toppings: "Strictly no tomato sauce. 70g Demetra Crema di Zucca (stirred thoroughly, used direct-from-jar at room temperature without added water or seasoning; chosen for its savoury onion, leek, and wine seasoning), 60g well-drained Fior di Latte (hand-torn into strips, drained for 1+ hours), 0.5g–0.7g finely chopped fresh rosemary leaves, 40g Guanciale (cut into thin strips, pan-crisped separately and drained completely; zero reserved fat added to the pie), 8g finely microplaned Pecorino Romano DOP (post-bake), zero pre-bake oil, 3g Barbera Lorenzo Nº5 EVOO (Nocellara del Belice DOP — post-bake finishing swirl).",
+    menuIngredients: "Pumpkin cream, Fior di Latte, rosemary, crispy guanciale, Pecorino Romano",
+    build: "A refined autumn-winter white pizza — savoury Demetra pumpkin cream and melting Fior di Latte baked with fresh rosemary, then finished with crisp guanciale, Pecorino Romano and Lorenzo Nº5 EVOO.",
+    postBake: "Transfer directly to a wooden board and rest for 30–40 seconds to allow excess surface steam to dissipate and the base to stabilize. Scatter the warm, pan-crisped guanciale strips across the hot pizza, microplane 8g Pecorino Romano DOP evenly over the top, and finish with a 3g swirl of Barbera Lorenzo Nº5 EVOO. Slice and serve immediately.",
+    flavorProgression: "Savoury Demetra pumpkin cream → creamy Fior di Latte → aromatic fresh rosemary → crispy guanciale → sharp Pecorino Romano → almond-smooth Lorenzo N°5 finish",
+    steps: [
+      { title: "1. Pre-Prep", sections: [
+        { bullets: ["Drain 60g Fior di Latte strips in a sieve for at least 1 hour. Finely chop 0.5g–0.7g fresh rosemary leaves."] },
+        { intro: "Pumpkin Base Prep:", bullets: ["Open the Demetra jar, stir thoroughly, and weigh out 70g directly at room temperature (test consistency; reduce gently only if unusually loose)."] },
+        { intro: "Guanciale Prep:", bullets: ["Sauté 40g thin guanciale strips in a dry skillet over medium-low heat until golden and ultra-crisp. Drain completely on paper towels (reserved fat: 0g used on pizza)."] },
+      ] },
+      { title: "2. Dough Prep", sections: [
+        { bullets: ["Hand-stretch 280g dough ball to 30–32cm on semolina rimacinata, preserving gas in an airy 1.5–2cm cornicione."] },
+      ] },
+      { title: "3. Layer Assembly (In Exact Order)", sections: [
+        { intro: "Layer 1 — Pumpkin Cream:", bullets: ["Spread 70g Demetra Crema di Zucca evenly across the dough, leaving a clean 1.5–2cm rim."] },
+        { intro: "Layer 2 — Fior di Latte:", bullets: ["Scatter 60g drained Fior di Latte strips evenly over the pumpkin layer."] },
         { intro: "Layer 3 — Rosemary:", bullets: ["Sprinkle 0.5g–0.7g finely chopped fresh rosemary evenly across the cheese and pumpkin base."] },
         { intro: "Layer 4 — Oil:", bullets: ["Zero pre-bake oil."] },
       ] },
@@ -2038,32 +1906,56 @@ export const RECIPES: PizzaRecipe[] = [
         { bullets: ["Transfer directly to a wooden board and rest for 30–40 seconds to allow excess surface steam to dissipate and the base to stabilize."] },
         { intro: "Stage 1 (Crispy Guanciale):", bullets: ["Scatter the warm, pan-crisped guanciale strips across the hot pizza."] },
         { intro: "Stage 2 (Pecorino & Oil Finish):", bullets: ["Microplane 8g Pecorino Romano DOP evenly over the top. Finish with a 3g finishing swirl of Barbera Lorenzo Nº5 EVOO. Slice and serve immediately."] },
-        { intro: "Technical Moisture & Thermal Note:", bullets: ["Pan-crisping the guanciale separately limits its exposure to intense dome heat and allows the pizza to retain the guanciale's crisp texture when added post-bake. Spreading a thick, spreadable pumpkin cream base beneath the Fior di Latte and rosemary creates a sweet, velvety foundation that balances the sharp, salty Pecorino Romano."] },
-        { intro: "Profile:", bullets: ["Velvety pumpkin cream → creamy Fior di Latte → aromatic fresh rosemary → crispy guanciale → sharp Pecorino Romano → almond-smooth Lorenzo N°5 finish"] },
+        { intro: "Technical Moisture & Thermal Note:", bullets: ["Demetra Crema di Zucca is applied directly at 70g, utilizing its prepared onion, leek, and wine seasoning to complement the guanciale, rosemary, and Pecorino. Pan-crisping the guanciale separately limits its exposure to intense dome heat, preserving its crisp texture when added post-bake against the velvety pumpkin and melted Fior di Latte."] },
+        { intro: "Profile:", bullets: ["Savoury Demetra pumpkin cream → creamy Fior di Latte → aromatic fresh rosemary → crispy guanciale → sharp Pecorino Romano → almond-smooth Lorenzo N°5 finish"] },
       ] },
     ],
   },
   {
-    id: "zucca-gorgonzola-noci",
-    number: 46,
+    id: "zucca-gorgonzola-e-noci",
+    number: 45,
     name: "Zucca, Gorgonzola & Noci",
-    style: "Pumpkin Base — Gorgonzola & Walnuts",
+    style: "Pumpkin Cream Base — Gorgonzola Dolce, Toasted Walnuts, Crisp Sage & Acacia Honey",
     category: "pumpkin",
     image: "https://blog.giallozafferano.it/ricettechepassione/wp-content/uploads/2019/10/pizza-zucca-e-gorgonzola-con-nociv.jpg",
-    toppings: "Roasted pumpkin cream, Fior di Latte mozzarella, Gorgonzola Dolce, toasted walnuts, honey drizzle, fresh sage.",
-    menuIngredients: "Pumpkin, mozzarella, gorgonzola, walnuts, honey",
-    build: "A sweet-and-savory pumpkin pizza that diversifies away from the pork-heavy Sfiziosa/Norcina/Zucca Salsiccia lineup: roasted pumpkin cream and Fior di Latte baked with waves of Gorgonzola Dolce, then finished with toasted walnuts, crispy sage and a light honey drizzle.",
-    postBake: "Scatter toasted walnuts and crispy sage, then finish with a light drizzle of honey.",
+    toppings: "Strictly no tomato sauce. 60g Greci Crema di Zucca Mantovana whisked with 12g water (house standard — ~72g total finished base, no added salt or oil), 60g well-drained Fior di Latte (hand-torn into strips, drained for 1+ hours), 30g Gorgonzola Dolce (dolloped in small, even spoonfuls), 15g walnut pieces (dry-toasted separately, rough-chopped, post-bake), 4 fresh sage leaves (fried separately until crisp, drained well, post-bake), 7g acacia honey (post-bake drizzle), zero pre-bake oil, 2g Barbera Lorenzo Nº5 EVOO (Nocellara del Belice DOP — post-bake finishing lift).",
+    menuIngredients: "Pumpkin cream, Fior di Latte, Gorgonzola Dolce, walnuts, sage, honey",
+    build: "A refined sweet-and-savory winter white pizza — clean pumpkin cream and melting Fior di Latte baked with Gorgonzola Dolce, then finished with toasted walnuts, crisp sage, delicate acacia honey, and Lorenzo Nº5 EVOO.",
+    postBake: "Transfer directly to a wooden board and rest for 30–40 seconds to allow excess surface steam to dissipate and the base to stabilize. Scatter the toasted walnut pieces and crisp sage leaves over the hot pizza, drizzle 7g acacia honey directly onto the gorgonzola and walnuts, and finish with a light 2g swirl of Barbera Lorenzo Nº5 EVOO. Slice and serve immediately.",
+    flavorProgression: "Clean Greci pumpkin cream → creamy Fior di Latte → melting Gorgonzola Dolce → toasted walnuts → crispy sage → delicate honey drizzle → almond-smooth Lorenzo N°5 finish",
     steps: [
-      { title: "1. Dough", sections: [{ bullets: ["250–280 g dough ball", "Stretch to 30–32 cm"] }] },
-      { title: "2. Pumpkin Base", sections: [{ bullets: ["80 g roasted pumpkin cream, spread evenly", "Leave a clean border for the cornicione"] }] },
-      { title: "3. Cheese", sections: [{ bullets: ["80–90 g Fior di Latte, torn into pieces", "40 g Gorgonzola Dolce, dolloped in small spoonfuls"] }] },
-      { title: "4. Bake", sections: [{ bullets: ["🪨 Stone: 400–430°C", "⏱ Cook time: 70–90 seconds", "🔄 Rotate every 15–20 seconds"] }] },
-      { title: "5. Finish", sections: [{ bullets: ["Scatter toasted walnut pieces and crispy fried sage", "Finish with a light drizzle of honey"] }] },
+      { title: "1. Pre-Prep", sections: [
+        { bullets: ["Drain 60g Fior di Latte strips in a sieve for at least 1 hour. Whisk 60g Greci Crema di Zucca Mantovana with 12g water until smooth (~72g base). Dry-toast 15g walnuts separately until fragrant, cool, and rough-chop. Fry 4 fresh sage leaves separately until crisp, drain on paper towels."] },
+      ] },
+      { title: "2. Dough Prep", sections: [
+        { bullets: ["Hand-stretch 280g dough ball to 30–32cm on semolina rimacinata, preserving gas in an airy 1.5–2cm cornicione."] },
+      ] },
+      { title: "3. Layer Assembly (In Exact Order)", sections: [
+        { intro: "Layer 1 — Pumpkin Cream:", bullets: ["Spread 72g prepared Greci pumpkin base evenly across the dough, leaving a clean 1.5–2cm rim."] },
+        { intro: "Layer 2 — Fior di Latte:", bullets: ["Scatter 60g drained Fior di Latte strips evenly over the pumpkin layer."] },
+        { intro: "Layer 3 — Gorgonzola Dolce:", bullets: ["Dollop 30g Gorgonzola Dolce in small spoonfuls across the cheese and pumpkin base."] },
+        { intro: "Layer 4 — Oil:", bullets: ["Zero pre-bake oil."] },
+      ] },
+      { title: "4. Gozney Bake", sections: [
+        { intro: "Gozney / High-Heat Oven:", bullets: [
+          "🪨 Stone floor target: 430°C–440°C",
+          "🔥 Dome: 450°C–480°C",
+          "Manage top flame dynamically post-launch — keep the burner on low-to-moderate so the pumpkin heats through and the Gorgonzola melts smoothly into the Fior di Latte without scorching under excessive heat.",
+          "🔄 Rotate regularly until the cornicione is fully inflated and leopard-spotted.",
+          "⏱ Cook Time: 75–85 seconds.",
+        ] },
+      ] },
+      { title: "5. Rest & Sequential Post-Bake Staging", sections: [
+        { bullets: ["Transfer directly to a wooden board and rest for 30–40 seconds to allow excess surface steam to dissipate and the base to stabilize."] },
+        { intro: "Stage 1 (Crunch & Herb):", bullets: ["Scatter the toasted walnut pieces and crisp sage leaves over the hot pizza."] },
+        { intro: "Stage 2 (Honey & Oil Finish):", bullets: ["Drizzle 7g acacia honey directly onto the gorgonzola and walnuts, followed immediately by a light 2g finishing swirl of Barbera Lorenzo Nº5 EVOO. Slice and serve immediately."] },
+        { intro: "Technical Moisture & Thermal Note:", bullets: ["Greci Crema di Zucca Mantovana (prepared with its 20% water integration) provides a clean, naturally sweet pumpkin canvas that highlights the creamy funk of Gorgonzola Dolce. Staging the dry-toasted walnuts, crisp sage, acacia honey, and Lorenzo EVOO entirely post-bake preserves their distinct textures and aromatic clarity against the hot, melted cheese matrix."] },
+        { intro: "Profile:", bullets: ["Clean Greci pumpkin cream → creamy Fior di Latte → melting Gorgonzola Dolce → toasted walnuts → crispy sage → delicate honey drizzle → almond-smooth Lorenzo N°5 finish"] },
+      ] },
     ],
   },
 ];
 
 export function getRecipesByCategory(category: PizzaRecipeCategory): PizzaRecipe[] {
-  return RECIPES.filter((r) => r.category === category);
+  return RECIPES.filter((r) => r.category === category).sort((a, b) => a.number - b.number);
 }

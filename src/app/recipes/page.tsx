@@ -4,17 +4,6 @@ import { Fragment, useEffect, useState } from "react";
 import { RECIPES, RECIPE_CATEGORIES, getRecipesByCategory } from "@/lib/recipes";
 import type { PizzaRecipe, RecipeStep, RecipeStepSection } from "@/lib/types";
 
-/** Featured "Le Nostre" (rustic / house-style) section, shown on this page only, right after Innovative. */
-const RUSTIC_IDS = [
-  "margherita-della-casa",
-  "margherita-duo",
-  "margherita-macchiata",
-  "marinara-al-salame",
-  "burratina-della-casa",
-];
-const RUSTIC_BLURB =
-  "Margherita della Casa, Margherita Duo, Margherita Macchiata, Marinara al Salame, Burratina della Casa.";
-
 export default function RecipesPage() {
   const [selected, setSelected] = useState<PizzaRecipe | null>(null);
 
@@ -39,53 +28,26 @@ export default function RecipesPage() {
         </p>
       </div>
 
-      {(() => {
-        const rusticItems = RECIPES.filter((r) => RUSTIC_IDS.includes(r.id)).sort((a, b) => a.number - b.number);
-        const rusticSection =
-          rusticItems.length === 0 ? null : (
-            <section key="rustic" className="space-y-5">
-              <div className="flex items-end justify-between gap-4 border-b-2 border-primary/20 pb-3">
-                <div>
-                  <h2 className="font-serif text-2xl sm:text-3xl font-semibold">Le Nostre</h2>
-                  <p className="text-sm text-muted-foreground mt-1 italic">{RUSTIC_BLURB}</p>
-                </div>
-                <span className="font-mono text-xs text-muted-foreground shrink-0">{rusticItems.length} pizzas</span>
+      {RECIPE_CATEGORIES.map((c) => {
+        const items = getRecipesByCategory(c.id);
+        if (items.length === 0) return null;
+        return (
+          <section key={c.id} className="space-y-5">
+            <div className="flex items-end justify-between gap-4 border-b-2 border-primary/20 pb-3">
+              <div>
+                <h2 className="font-serif text-2xl sm:text-3xl font-semibold">{c.label}</h2>
+                <p className="text-sm text-muted-foreground mt-1 italic">{c.blurb}</p>
               </div>
-              <div className="grid gap-4 sm:gap-5 md:grid-cols-2">
-                {rusticItems.map((r) => (
-                  <MenuItem key={r.id} recipe={r} onClick={() => setSelected(r)} />
-                ))}
-              </div>
-            </section>
-          );
-
-        return RECIPE_CATEGORIES.map((c) => {
-          const items = getRecipesByCategory(c.id).filter((r) => !RUSTIC_IDS.includes(r.id));
-          const categorySection =
-            items.length === 0 ? null : (
-              <section key={c.id} className="space-y-5">
-                <div className="flex items-end justify-between gap-4 border-b-2 border-primary/20 pb-3">
-                  <div>
-                    <h2 className="font-serif text-2xl sm:text-3xl font-semibold">{c.label}</h2>
-                    <p className="text-sm text-muted-foreground mt-1 italic">{c.blurb}</p>
-                  </div>
-                  <span className="font-mono text-xs text-muted-foreground shrink-0">{items.length} pizzas</span>
-                </div>
-                <div className="grid gap-4 sm:gap-5 md:grid-cols-2">
-                  {items.map((r) => (
-                    <MenuItem key={r.id} recipe={r} onClick={() => setSelected(r)} />
-                  ))}
-                </div>
-              </section>
-            );
-          return (
-            <Fragment key={c.id}>
-              {categorySection}
-              {c.id === "innovative" && rusticSection}
-            </Fragment>
-          );
-        });
-      })()}
+              <span className="font-mono text-xs text-muted-foreground shrink-0">{items.length} pizzas</span>
+            </div>
+            <div className="grid gap-4 sm:gap-5 md:grid-cols-2">
+              {items.map((r) => (
+                <MenuItem key={r.id} recipe={r} onClick={() => setSelected(r)} />
+              ))}
+            </div>
+          </section>
+        );
+      })}
 
       {selected && (
         <RecipeModal
