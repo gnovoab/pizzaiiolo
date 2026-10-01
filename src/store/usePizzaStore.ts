@@ -54,6 +54,8 @@ interface PizzaState {
   flourPizzeriaPercent: number;
   flourNuvolaPercent: number;
   flourTipo1Percent: number;
+  flourCuocoPercent: number;
+  flourIntegralePercent: number;
   flourSemolinaAddPercent: number;
 
   // Actions
@@ -106,6 +108,8 @@ export const usePizzaStore = create<PizzaState>()(
       flourPizzeriaPercent: 1.0,
       flourNuvolaPercent: 0,
       flourTipo1Percent: 0,
+      flourCuocoPercent: 0,
+      flourIntegralePercent: 0,
       flourSemolinaAddPercent: 0,
 
       set: (partial) => set(partial),

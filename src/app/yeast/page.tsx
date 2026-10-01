@@ -9,6 +9,7 @@ type YeastType = "instant" | "fresh" | "activeDry";
 export default function YeastPage() {
   const [inputType, setInputType] = useState<YeastType>("instant");
   const [amount, setAmount] = useState(2);
+  const [coldHours, setColdHours] = useState(24);
 
   const converted = useMemo(() => {
     let instantGrams: number;
@@ -17,6 +18,20 @@ export default function YeastPage() {
     else instantGrams = amount / 1.25;
     return convertYeast(instantGrams);
   }, [inputType, amount]);
+
+  // Recommended Dosage Note: yeast activity doesn't stop at 4°C, it only slows down —
+  // so the longer the total cold fermentation, the less yeast should be used up front
+  // to avoid over-proofing (collapsed cornicione, sour/boozy flavor) by bake day.
+  const dosageNote = useMemo(() => {
+    if (coldHours <= 24) {
+      return { level: "ok" as const, text: "Standard dosage is appropriate for a same-day to 24h cold fermentation." };
+    } else if (coldHours <= 48) {
+      return { level: "warn" as const, text: "For a 24–48h cold rest, cut yeast to roughly 50%–70% of a same-day dose to avoid over-proofing." };
+    } else if (coldHours <= 72) {
+      return { level: "warn" as const, text: "For a 48–72h multi-day cold rest, use only 30%–50% of a same-day dose — the dough keeps fermenting slowly even at 4°C (39°F)." };
+    }
+    return { level: "danger" as const, text: "Beyond 72h, use a bare trace of yeast (under 20% of a same-day dose) or switch to a poolish/biga preferment — standard doses will over-proof and collapse the dough before bake day." };
+  }, [coldHours]);
 
   const types: { key: YeastType; label: string; desc: string; icon: string }[] = [
     { key: "instant", label: "Instant Dry Yeast", desc: "Active Dry × 0.8 / Fresh ÷ 3", icon: "🟡" },
@@ -96,6 +111,35 @@ export default function YeastPage() {
           </Card>
         ))}
       </div>
+
+      {/* Recommended Dosage Note */}
+      <Card>
+        <CardHeader><CardTitle className="text-base">Recommended Dosage Note</CardTitle></CardHeader>
+        <CardContent className="space-y-3">
+          <div>
+            <div className="flex justify-between mb-1">
+              <label className="text-sm text-muted-foreground">Total Cold Fermentation Duration</label>
+              <span className="text-sm font-mono font-medium">{coldHours} h</span>
+            </div>
+            <input
+              type="range" min={8} max={96} step={4} value={coldHours}
+              onChange={e => setColdHours(Number(e.target.value))}
+              className="w-full accent-primary cursor-pointer"
+            />
+          </div>
+          <p
+            className={`text-sm rounded-lg p-3 border ${
+              dosageNote.level === "ok"
+                ? "bg-primary/5 border-primary/20 text-foreground"
+                : dosageNote.level === "warn"
+                ? "bg-amber-500/10 border-amber-500/30 text-amber-900 dark:text-amber-300"
+                : "bg-red-500/10 border-red-500/30 text-red-900 dark:text-red-300"
+            }`}
+          >
+            {dosageNote.text}
+          </p>
+        </CardContent>
+      </Card>
 
       {/* Conversion table */}
       <Card>

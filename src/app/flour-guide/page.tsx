@@ -34,23 +34,43 @@ const FLOUR_PROFILES: FlourProfile[] = [
     profile: "Double-milled golden durum wheat flour.",
     characteristics: "Primarily used for stretching/dusting to prevent dough from sticking to the peel, creating a light, non-burnt bottom crust. Optionally add 5%–10% into dough for extra crunch.",
     hydration: "Dusting / optional additive", color: "#B45309" },
+  { name: "Caputo Cuoco / Chef 00", tagline: "The Extended-Cold-Fermentation Flour", protein: "13.0%", strength: "W300–W320",
+    profile: "High-strength flour built for extended cold fermentation (48h–72h) in commercial spiral mixers.",
+    characteristics: "Blend 20%–30% with Pizzeria 00 to maintain dough structure during multi-day fridge rests.",
+    hydration: "63%–65%", color: "#9D4EDD" },
+  { name: "Caputo Saccorosso 00", tagline: "The Ultra-Strong Professional", protein: "13.5%", strength: "W320–W350",
+    profile: "Ultra-strong professional flour for high-hydration or preferment (Biga/Poolish) workflows.",
+    characteristics: "Ideal as a base for 70%+ hydration batches in the Famag HH.",
+    hydration: "70%+", color: "#DC2626" },
+  { name: "Caputo Manitoba Oro", tagline: "The Structural Booster", protein: "14.5%", strength: "W370–W390",
+    profile: "Structural \"booster\" flour made from high-protein Canadian spring wheat.",
+    characteristics: "10%–15% max blend to reinforce dough elasticity and prevent tearing in high-water recipes.",
+    hydration: "Booster only, 10%–15% max", color: "#D4A017" },
+  { name: "Caputo Integrale / Whole Wheat", tagline: "The Rustic Whole-Grain", protein: "12.5%", strength: "Whole Grain",
+    profile: "100% unrefined flour with full natural bran and germ.",
+    characteristics: "5%–10% blend to add rustic whole-grain aroma, deeper coloration, and earthy flavor notes.",
+    hydration: "65%–67% (absorbs more water due to bran content)", color: "#6B4423" },
 ];
 
 interface BlendPreset {
   id: string; name: string; tagline: string;
-  pizzeria: number; nuvola: number; tipo1: number;
+  pizzeria: number; nuvola: number; tipo1: number; cuoco: number; integrale: number;
   hydrationRange: string; result: string;
 }
 
 const PRESETS: BlendPreset[] = [
-  { id: "traditional", name: "100% Traditional Neapolitan", tagline: "Default", pizzeria: 1.0, nuvola: 0, tipo1: 0,
+  { id: "traditional", name: "100% Traditional Neapolitan", tagline: "Default", pizzeria: 1.0, nuvola: 0, tipo1: 0, cuoco: 0, integrale: 0,
     hydrationRange: "62% – 63%", result: "Authentic STG Neapolitan softness, smooth stretching, balanced bite." },
-  { id: "canotto", name: "The Contemporary \"Super-Puff\"", tagline: "Canotto Style", pizzeria: 0.70, nuvola: 0.30, tipo1: 0,
+  { id: "canotto", name: "The Contemporary \"Super-Puff\"", tagline: "Canotto Style", pizzeria: 0.70, nuvola: 0.30, tipo1: 0, cuoco: 0, integrale: 0,
     hydrationRange: "64% – 66%", result: "Massive, light, melt-in-your-mouth airy crust with giant air bubbles." },
-  { id: "rustic", name: "The Rustic Gourmet", tagline: "", pizzeria: 0.80, nuvola: 0, tipo1: 0.20,
+  { id: "rustic", name: "The Rustic Gourmet", tagline: "", pizzeria: 0.80, nuvola: 0, tipo1: 0.20, cuoco: 0, integrale: 0,
     hydrationRange: "64% – 65%", result: "Enhanced wheat flavor, rich golden bake color, slightly crispier rim." },
-  { id: "master", name: "The Ultimate 3-Flour Master Blend", tagline: "", pizzeria: 0.60, nuvola: 0.25, tipo1: 0.15,
+  { id: "master", name: "The Ultimate 3-Flour Master Blend", tagline: "", pizzeria: 0.60, nuvola: 0.25, tipo1: 0.15, cuoco: 0, integrale: 0,
     hydrationRange: "65%", result: "Maximum volume from Nuvola, deep aroma from Tipo 1, easy handling from Pizzeria 00." },
+  { id: "cold-rest-48h", name: "Preset E: The 48-Hour Cold Rest", tagline: "Strength & Elasticity", pizzeria: 0.75, nuvola: 0, tipo1: 0, cuoco: 0.25, integrale: 0,
+    hydrationRange: "63% – 65%", result: "Extended 48h–72h cold bulk ferment without dough structural degradation." },
+  { id: "rustic-whole-grain", name: "Preset F: The Rustic Whole-Grain Blend", tagline: "", pizzeria: 0.85, nuvola: 0, tipo1: 0.10, cuoco: 0, integrale: 0.05,
+    hydrationRange: "64% – 66%", result: "Maximum rustic flavor profile with rich crust charring." },
 ];
 
 export default function FlourGuidePage() {
@@ -58,8 +78,14 @@ export default function FlourGuidePage() {
   const { set } = store;
 
   const blend = useMemo(
-    () => ({ pizzeria: store.flourPizzeriaPercent, nuvola: store.flourNuvolaPercent, tipo1: store.flourTipo1Percent }),
-    [store.flourPizzeriaPercent, store.flourNuvolaPercent, store.flourTipo1Percent]
+    () => ({
+      pizzeria: store.flourPizzeriaPercent,
+      nuvola: store.flourNuvolaPercent,
+      tipo1: store.flourTipo1Percent,
+      cuoco: store.flourCuocoPercent,
+      integrale: store.flourIntegralePercent,
+    }),
+    [store.flourPizzeriaPercent, store.flourNuvolaPercent, store.flourTipo1Percent, store.flourCuocoPercent, store.flourIntegralePercent]
   );
 
   const grams = useMemo(
@@ -75,18 +101,46 @@ export default function FlourGuidePage() {
       flourPizzeriaPercent: p.pizzeria,
       flourNuvolaPercent: p.nuvola,
       flourTipo1Percent: p.tipo1,
+      flourCuocoPercent: p.cuoco,
+      flourIntegralePercent: p.integrale,
     });
   }
 
-  function setNuvola(v: number) {
-    const tipo1 = Math.min(store.flourTipo1Percent, 1 - v);
-    set({ flourBlendPreset: "custom", flourNuvolaPercent: v, flourTipo1Percent: tipo1, flourPizzeriaPercent: 1 - v - tipo1 });
+  // Pizzeria 00 always fills the remainder; adjusting one secondary flour
+  // proportionally scales the others down if they no longer fit.
+  function setBlendComponent(component: "nuvola" | "tipo1" | "cuoco" | "integrale", v: number) {
+    const current = {
+      nuvola: store.flourNuvolaPercent,
+      tipo1: store.flourTipo1Percent,
+      cuoco: store.flourCuocoPercent,
+      integrale: store.flourIntegralePercent,
+    };
+    current[component] = v;
+    const othersTotal = (Object.keys(current) as (keyof typeof current)[])
+      .filter(k => k !== component)
+      .reduce((sum, k) => sum + current[k], 0);
+    const remaining = 1 - v;
+    if (othersTotal > remaining && othersTotal > 0) {
+      const scale = remaining / othersTotal;
+      (Object.keys(current) as (keyof typeof current)[])
+        .filter(k => k !== component)
+        .forEach(k => { current[k] *= scale; });
+    }
+    const pizzeria = 1 - current.nuvola - current.tipo1 - current.cuoco - current.integrale;
+    set({
+      flourBlendPreset: "custom",
+      flourNuvolaPercent: current.nuvola,
+      flourTipo1Percent: current.tipo1,
+      flourCuocoPercent: current.cuoco,
+      flourIntegralePercent: current.integrale,
+      flourPizzeriaPercent: pizzeria,
+    });
   }
 
-  function setTipo1(v: number) {
-    const nuvola = Math.min(store.flourNuvolaPercent, 1 - v);
-    set({ flourBlendPreset: "custom", flourTipo1Percent: v, flourNuvolaPercent: nuvola, flourPizzeriaPercent: 1 - v - nuvola });
-  }
+  const setNuvola = (v: number) => setBlendComponent("nuvola", v);
+  const setTipo1 = (v: number) => setBlendComponent("tipo1", v);
+  const setCuoco = (v: number) => setBlendComponent("cuoco", v);
+  const setIntegrale = (v: number) => setBlendComponent("integrale", v);
 
 
   return (
@@ -134,6 +188,8 @@ export default function FlourGuidePage() {
                   {Math.round(p.pizzeria * 100)}% Pizzeria 00
                   {p.nuvola > 0 && ` + ${Math.round(p.nuvola * 100)}% Nuvola`}
                   {p.tipo1 > 0 && ` + ${Math.round(p.tipo1 * 100)}% Tipo 1`}
+                  {p.cuoco > 0 && ` + ${Math.round(p.cuoco * 100)}% Cuoco`}
+                  {p.integrale > 0 && ` + ${Math.round(p.integrale * 100)}% Integrale`}
                 </div>
                 <div className="text-xs text-secondary uppercase tracking-wide mt-1.5">Target Hydration: {p.hydrationRange}</div>
                 <p className="text-sm text-muted-foreground mt-2 leading-relaxed">{p.result}</p>
@@ -154,8 +210,10 @@ export default function FlourGuidePage() {
         </CardHeader>
         <CardContent className="pt-4 space-y-5">
           <Field label="Total Flour (g)" value={store.flourInput} onChange={v => set({ flourInput: v })} min={1000} max={3000} step={10} />
-          <PercentSlider label="Caputo Nuvola" value={store.flourNuvolaPercent} onChange={setNuvola} max={1 - store.flourTipo1Percent} />
-          <PercentSlider label="Caputo Tipo 1" value={store.flourTipo1Percent} onChange={setTipo1} max={1 - store.flourNuvolaPercent} />
+          <PercentSlider label="Caputo Nuvola" value={store.flourNuvolaPercent} onChange={setNuvola} max={1 - (store.flourTipo1Percent + store.flourCuocoPercent + store.flourIntegralePercent)} />
+          <PercentSlider label="Caputo Tipo 1" value={store.flourTipo1Percent} onChange={setTipo1} max={1 - (store.flourNuvolaPercent + store.flourCuocoPercent + store.flourIntegralePercent)} />
+          <PercentSlider label="Caputo Cuoco / Chef 00" value={store.flourCuocoPercent} onChange={setCuoco} max={1 - (store.flourNuvolaPercent + store.flourTipo1Percent + store.flourIntegralePercent)} />
+          <PercentSlider label="Caputo Integrale / Whole Wheat" value={store.flourIntegralePercent} onChange={setIntegrale} max={1 - (store.flourNuvolaPercent + store.flourTipo1Percent + store.flourCuocoPercent)} />
           <PercentSlider label="Semolina Rimacinata (dusting additive)" value={store.flourSemolinaAddPercent} onChange={v => set({ flourSemolinaAddPercent: v })} max={0.10} />
 
           <div className="border-t border-border/60 pt-4 space-y-2">
@@ -163,6 +221,8 @@ export default function FlourGuidePage() {
               { label: "Caputo Pizzeria 00", value: grams.pizzeria, pct: blend.pizzeria },
               { label: "Caputo Nuvola", value: grams.nuvola, pct: blend.nuvola },
               { label: "Caputo Tipo 1", value: grams.tipo1, pct: blend.tipo1 },
+              { label: "Caputo Cuoco / Chef 00", value: grams.cuoco, pct: blend.cuoco },
+              { label: "Caputo Integrale / Whole Wheat", value: grams.integrale, pct: blend.integrale },
             ].filter(r => r.pct > 0).map(r => (
               <div key={r.label} className="flex justify-between items-baseline py-1.5 border-b border-border/40 last:border-0">
                 <span className="text-muted-foreground text-[15px]">{r.label} <span className="text-xs">({Math.round(r.pct * 100)}%)</span></span>

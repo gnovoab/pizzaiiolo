@@ -22,6 +22,12 @@ export default function PreferentsPage() {
     yeastPercent: store.bigaYeastPercent,
   }), [store.bigaTotalFlour, store.bigaPercent, store.bigaHydration, store.bigaYeastPercent]);
 
+  // Remaining Water = Total Target Water (Total Flour * Target Hydration) - Preferment Water.
+  // Target Hydration is the shared recipe hydration (set on the Dough Calculator) so it
+  // always matches the final dough this preferment is being built for.
+  const poolishRemainingWater = store.poolishTotalFlour * store.hydration - poolish.poolishWater;
+  const bigaRemainingWater = store.bigaTotalFlour * store.hydration - biga.bigaWater;
+
   return (
     <div className="space-y-6">
       <div>
@@ -40,7 +46,7 @@ export default function PreferentsPage() {
             </CardHeader>
             <CardContent className="space-y-4">
               <SliderRow label="Total Flour (g)" value={store.poolishTotalFlour}
-                onChange={v => set({ poolishTotalFlour: v })} min={100} max={3000} step={50} display={`${store.poolishTotalFlour}g`} />
+                onChange={v => set({ poolishTotalFlour: v })} min={500} max={3000} step={50} display={`${store.poolishTotalFlour}g`} />
               <SliderRow label="Poolish %" value={store.poolishPercent * 100}
                 onChange={v => set({ poolishPercent: v / 100 })} min={20} max={80} step={5} display={`${Math.round(store.poolishPercent * 100)}%`} />
               <SliderRow label="Poolish Yeast %" value={store.poolishYeastPercent * 100}
@@ -56,7 +62,11 @@ export default function PreferentsPage() {
               <ResultRow label="Poolish Yeast" value={`${fmt(poolish.poolishYeast, 2)} g`} />
               <div className="pt-2 border-t border-border">
                 <ResultRow label="Remaining Flour" value={`${fmt(poolish.mainFlour, 1)} g`} highlight />
+                <ResultRow label="Remaining Water" value={`${fmt(poolishRemainingWater, 1)} g`} highlight />
               </div>
+              <p className="text-[11px] text-muted-foreground/70">
+                Remaining Water = Total Flour × {Math.round(store.hydration * 100)}% target hydration − Poolish Water. Adjust target hydration on the Dough Calculator.
+              </p>
               <div className="text-xs text-muted-foreground bg-muted rounded-lg p-3 mt-2">
                 <p className="font-medium text-foreground mb-1">Instructions:</p>
                 <p>Mix poolish flour + water + yeast. Ferment 12–16h at room temp until bubbly. Add to main dough.</p>
@@ -75,7 +85,7 @@ export default function PreferentsPage() {
             </CardHeader>
             <CardContent className="space-y-4">
               <SliderRow label="Total Flour (g)" value={store.bigaTotalFlour}
-                onChange={v => set({ bigaTotalFlour: v })} min={100} max={3000} step={50} display={`${store.bigaTotalFlour}g`} />
+                onChange={v => set({ bigaTotalFlour: v })} min={500} max={3000} step={50} display={`${store.bigaTotalFlour}g`} />
               <SliderRow label="Biga %" value={store.bigaPercent * 100}
                 onChange={v => set({ bigaPercent: v / 100 })} min={20} max={100} step={5} display={`${Math.round(store.bigaPercent * 100)}%`} />
               <SliderRow label="Biga Hydration" value={store.bigaHydration * 100}
@@ -93,10 +103,14 @@ export default function PreferentsPage() {
               <ResultRow label="Biga Yeast" value={`${fmt(biga.bigaYeast, 2)} g`} />
               <div className="pt-2 border-t border-border">
                 <ResultRow label="Remaining Flour" value={`${fmt(biga.mainFlour, 1)} g`} highlight />
+                <ResultRow label="Remaining Water" value={`${fmt(bigaRemainingWater, 1)} g`} highlight />
               </div>
+              <p className="text-[11px] text-muted-foreground/70">
+                Remaining Water = Total Flour × {Math.round(store.hydration * 100)}% target hydration − Biga Water. Adjust target hydration on the Dough Calculator.
+              </p>
               <div className="text-xs text-muted-foreground bg-muted rounded-lg p-3 mt-2">
                 <p className="font-medium text-foreground mb-1">Instructions:</p>
-                <p>Mix biga ingredients into rough dough. Ferment 16–20h at 16–18°C. Incorporate into final dough.</p>
+                <p>Mix biga using Famag Reverse Speed (Contro-Rotazione) at Speed 1 for 2–3 mins to keep the dough shaggy and un-kneaded. Ferment 16–20h at 16–18°C before final mix.</p>
               </div>
             </CardContent>
           </Card>

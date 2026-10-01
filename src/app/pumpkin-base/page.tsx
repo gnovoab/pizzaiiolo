@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 
@@ -12,7 +13,63 @@ export default function PumpkinBasePage() {
         </p>
       </div>
 
-      <Section number={1} title="Homemade Pumpkin Base" subtitle="The artisan method — most authentic flavor profile">
+      <Section number={1} title="Culinary Preparation & Moisture Management Guide" subtitle="From raw pumpkin to a smooth, dough-safe crema">
+        <div className="space-y-4">
+          <SubStep label="Varietal Selection">
+            Recommended: <strong className="font-serif text-foreground not-italic">Delica Pumpkin</strong>, Crown Prince, or Butternut Squash. Delica is preferred for its lower water content and intense natural sweetness.
+          </SubStep>
+          <SubStep label="Roasting Protocol (Water Reduction)">
+            <ol className="space-y-1.5 list-decimal pl-5">
+              <li><HighlightNumbers text="Cube 500 g pumpkin, toss with 1 tbsp EVOO, salt, pepper, and 2 unpeeled garlic cloves." /></li>
+              <li><HighlightNumbers text="Roast at 200°C (390°F) for 35–40 minutes until soft and caramelized at the edges." /></li>
+              <li><HighlightNumbers text="Blend until silky smooth (add 30–50 ml hot water or vegetable stock only if needed to adjust consistency)." /></li>
+            </ol>
+          </SubStep>
+        </div>
+        <Callout>
+          ⚠️ Moisture Alert: Never use boiled pumpkin or canned puree without reducing it in a pan first — excess moisture ruins dough rise in high-heat ovens.
+        </Callout>
+      </Section>
+
+      <Section number={2} title="Assembly & Baking Rules" subtitle="Layering the crema and choosing a cheese that complements its sweetness">
+        <ul className="space-y-1.5">
+          <li><strong className="font-serif text-foreground not-italic">Base Layering:</strong> <HighlightNumbers text="Spread a thin layer (approx. 70g–80g per 280g dough ball), leaving a 2cm border for the cornicione to puff." /></li>
+          <li><strong className="font-serif text-foreground not-italic">Cheese Selection:</strong> Scamorza Affumicata (Smoked Mozzarella) or well-drained Fior di Latte, both chosen to complement the pumpkin&apos;s sweetness.</li>
+        </ul>
+      </Section>
+
+      <Section number={3} title="Preset Specialty Pizza Recipes" subtitle="Two signature builds on the Crema di Zucca base">
+        <div className="grid sm:grid-cols-2 gap-4">
+          <RecipeCard
+            name="La Zucca e Tartufo"
+            tagline="Gourmet White"
+            base="Pumpkin Crema + Fior di Latte"
+            postBake="Crispy Guanciale strips + Toasted Pine Nuts"
+            oil="Belazu White Truffle EVOO (Post-bake)"
+          />
+          <RecipeCard
+            name="Zucca, Salsiccia e Scamorza"
+            tagline="Rustic Contemporary"
+            base="Pumpkin Crema + Smoked Scamorza + Crumbled Italian Fennel Sausage"
+            postBake="Fresh Basil + Fried Sage Leaf"
+            oil="Barbera Lorenzo Nº5 (Creamy & Delicate EVOO)"
+          />
+        </div>
+      </Section>
+
+      <Section number={4} title="Integration with Flour & Mixer Pages" subtitle="Pairing the crema with the right dough blend">
+        <p className="text-muted-foreground leading-relaxed">
+          Pumpkin Base pizzas bake beautifully with{" "}
+          <Link href="/flour-guide" className="text-primary font-semibold underline underline-offset-2 hover:text-primary/80">
+            Preset B: Super-Puff Canotto Blend
+          </Link>{" "}
+          (<HighlightNumbers text="70% Pizzeria 00 + 30% Nuvola at 65% Hydration" />) — the giant, airy rim frames the rich yellow base visually. See the{" "}
+          <Link href="/flour-guide" className="text-primary underline underline-offset-2 hover:text-primary/80">Flour Guide</Link> for blend ratios and the{" "}
+          <Link href="/spiral-mixer" className="text-primary underline underline-offset-2 hover:text-primary/80">Spiral Mixer</Link> page for the mixing protocol.
+        </p>
+      </Section>
+
+      <Section number={5} title="Homemade Pumpkin Base" subtitle="The artisan method — most authentic flavor profile">
         <div className="space-y-4">
           <SubStep label="Roast">
             <HighlightNumbers text="Cube 800 g of pumpkin (Butternut/Hokkaido) into 3 cm pieces. Toss with olive oil, salt, 3 cloves of garlic (skin-on), and 2 shallots (halved). Roast on a parchment-lined, rimmed baking sheet at 200°C until deeply caramelized (30–40 min)." />
@@ -29,7 +86,7 @@ export default function PumpkinBasePage() {
         </div>
       </Section>
 
-      <Section number={2} title="Ready-Made Bases" subtitle="Greci vs. Demetra">
+      <Section number={6} title="Ready-Made Bases" subtitle="Greci vs. Demetra">
         <Callout>
           Between the two, <strong className="text-foreground not-italic">Greci (Prontofresco) Crema di Zucca Mantovana</strong> is the industry standard for Italian pizzerias.
         </Callout>
@@ -52,7 +109,7 @@ export default function PumpkinBasePage() {
         </div>
       </Section>
 
-      <Section number={3} title="Doctoring a Tinned Base" subtitle="The professional way — never use straight from the tin">
+      <Section number={7} title="Doctoring a Tinned Base" subtitle="The professional way — never use straight from the tin">
         <Callout>
           ⚠️ Both products contain moisture intended to help them serve as risotto or soup bases. For pizza, you must &quot;doctor&quot; them.
         </Callout>
@@ -71,7 +128,7 @@ export default function PumpkinBasePage() {
         </ol>
       </Section>
 
-      <Section number={4} title="Checklist for Success">
+      <Section number={8} title="Checklist for Success">
         <div className="overflow-x-auto">
           <table className="w-full text-sm border-collapse" style={{ minWidth: 600 }}>
             <thead>
@@ -103,7 +160,7 @@ export default function PumpkinBasePage() {
         </Callout>
       </Section>
 
-      <Section number={5} title="Pumpkin Cream Base Preparation Guide" subtitle="Choose your brand and prepare the base in a small bowl prior to pizza assembly">
+      <Section number={9} title="Pumpkin Cream Base Preparation Guide" subtitle="Choose your brand and prepare the base in a small bowl prior to pizza assembly">
         <div className="grid sm:grid-cols-2 gap-4">
           <div className="rounded-xl border border-primary/30 bg-primary/5 p-4">
             <div className="text-[11px] uppercase tracking-[0.15em] text-primary font-semibold mb-2">Option A</div>
@@ -127,7 +184,7 @@ export default function PumpkinBasePage() {
         </div>
       </Section>
 
-      <Section number={6} title="Brand-Specific Preparation Guides" subtitle="Pick a tab — Greci or Demetra — for seasoning the crema di zucca on a 67% hydration Poolish dough">
+      <Section number={10} title="Brand-Specific Preparation Guides" subtitle="Pick a tab — Greci or Demetra — for seasoning the crema di zucca on a 67% hydration Poolish dough">
         <Tabs defaultValue="greci">
           <TabsList>
             <TabsTrigger value="greci">🎃 Greci Crema di Zucca</TabsTrigger>
@@ -206,7 +263,7 @@ export default function PumpkinBasePage() {
         </Tabs>
       </Section>
 
-      <Section number={7} title="Ideal Cheese & Flavor Pairings" subtitle="Because pumpkin sauce is sweet and low-acid, it pairs best with smoky, salty, or spicy toppings">
+      <Section number={11} title="Ideal Cheese & Flavor Pairings" subtitle="Because pumpkin sauce is sweet and low-acid, it pairs best with smoky, salty, or spicy toppings">
         <ul className="space-y-1.5">
           <li><strong className="font-serif text-foreground not-italic">Best Mozzarella:</strong> Provola Affumicata di Agerola (Smoked Mozzarella). The smoke cuts through the sweet pumpkin cream exceptionally well. (If using standard Fior di Latte, ensure you add a salty cured meat.)</li>
           <li><strong className="font-serif text-foreground not-italic">Best Cured Meats:</strong> Salsiccia Fresca (crumbled raw pork sausage), &apos;Nduja di Spilinga, Crispy Guanciale, or Pancetta.</li>
@@ -215,7 +272,7 @@ export default function PumpkinBasePage() {
         </ul>
       </Section>
 
-      <Section number={8} title="Gozney Assembly & Baking Sequence" subtitle="Greci Crema di Zucca on a 67% hydration Poolish dough">
+      <Section number={12} title="Gozney Assembly & Baking Sequence" subtitle="Greci Crema di Zucca on a 67% hydration Poolish dough">
         <ol className="space-y-3">
           <li>
             <span className="font-serif text-foreground font-semibold">1. Preheat &amp; Stretch</span>
@@ -278,6 +335,20 @@ function SubStep({ label, children }: { label: string; children: React.ReactNode
 
 function Callout({ children }: { children: React.ReactNode }) {
   return <p className="text-sm text-muted-foreground italic border-l-2 border-primary/30 pl-3 mt-3">{children}</p>;
+}
+
+function RecipeCard({ name, tagline, base, postBake, oil }: { name: string; tagline: string; base: string; postBake: string; oil: string }) {
+  return (
+    <div className="rounded-xl border border-primary/30 bg-primary/5 p-4">
+      <div className="text-[11px] uppercase tracking-[0.15em] text-primary font-semibold mb-1">{tagline}</div>
+      <div className="font-serif text-lg font-semibold mb-2.5 text-foreground">{name}</div>
+      <ul className="space-y-1.5 text-[14px]">
+        <li><strong className="font-serif text-foreground not-italic">Base:</strong> <span className="text-muted-foreground">{base}</span></li>
+        <li><strong className="font-serif text-foreground not-italic">Post-Bake Toppings:</strong> <span className="text-muted-foreground">{postBake}</span></li>
+        <li><strong className="font-serif text-foreground not-italic">Oil Drizzle:</strong> <span className="text-muted-foreground">{oil}</span></li>
+      </ul>
+    </div>
+  );
 }
 
 function HighlightNumbers({ text }: { text: string }) {

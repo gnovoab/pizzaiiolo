@@ -20,6 +20,9 @@ export default function FermentationPage() {
   const yeast24Low = 0.8 * scale, yeast24High = 1.0 * scale;
   const yeast48Low = 0.4 * scale, yeast48High = 0.6 * scale;
 
+  const fullBalls = ballWeight > 0 ? Math.floor(result.totalDough / ballWeight) : 0;
+  const remainingDough = result.totalDough - fullBalls * ballWeight;
+
   return (
     <div className="space-y-10">
       <div className="text-center pb-6 border-b border-border/70">
@@ -51,7 +54,10 @@ export default function FermentationPage() {
         </div>
         <div className="mt-4 space-y-1">
           <ResultRow label="Total Dough" value={`${fmt(result.totalDough, 0)} g`} />
-          <ResultRow label="Yield" value={`≈ ${result.numPizzas} balls`} highlight />
+          <ResultRow label="Yield" value={`${fullBalls} full ${fmt(ballWeight, 0)} g balls`} highlight />
+          {remainingDough >= 1 && (
+            <ResultRow label="Remaining Dough" value={`${fmt(remainingDough, 0)} g (mini pizza / panuozzo)`} />
+          )}
         </div>
       </Section>
 

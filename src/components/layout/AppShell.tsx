@@ -10,7 +10,7 @@ const NAV_SECTIONS = [
     title: "Dough & Menu",
     items: [
       { href: "/dough-maker", label: "🥖 Dough Maker", short: "Dough" },
-      { href: "/recipes", label: "📖 Pizza Recipes", short: "Recipes" },
+      { href: "/", label: "📖 Pizza Recipes", short: "Recipes" },
       { href: "/menu", label: "🧾 Menu", short: "Menu" },
       { href: "/videos", label: "🎬 Videos", short: "Videos" },
     ],
@@ -34,7 +34,7 @@ const NAV_SECTIONS = [
     title: "Pizzaiolo",
     items: [
       { href: "/comparison", label: "📊 Comparison", short: "Compare" },
-      { href: "/", label: "🍕 Calculator", short: "Calc" },
+      { href: "/calculator", label: "🍕 Calculator", short: "Calc" },
       { href: "/create", label: "👨‍🍳 Create a Pizza", short: "Create" },
     ],
   },

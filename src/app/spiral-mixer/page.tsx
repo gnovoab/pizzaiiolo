@@ -5,11 +5,17 @@ import { usePizzaStore } from "@/store/usePizzaStore";
 import { calcWaterTemp, fmt } from "@/lib/calculations";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
-const PHASES = [
-  "0–1 min (Speed 1, 90 RPM): Pour the water and dissolve the yeast",
-  "1–3 min (Speed 1–2): Add ~70% of the total flour; mix until a smooth batter forms around the breaker bar",
-  "3–5 min (Speed 2–3): Add the salt and the remaining 30% of flour; mix until no dry flour remains",
-  "5–9 min (Speed 4–5): Increase speed to build the gluten matrix until the dough detaches cleanly from the bowl sides into a smooth ring",
+interface Phase {
+  text: string;
+  note?: string;
+}
+
+const PHASES: Phase[] = [
+  { text: "0–1 min (Speed 1, 90 RPM): Pour the water and dissolve the yeast",
+    note: "Engage Reverse Rotation at Speed 1 (90 RPM) to hydrate flour and yeast cleanly without kicking up flour dust." },
+  { text: "1–3 min (Speed 1–2): Add ~70% of the total flour; mix until a smooth batter forms around the breaker bar" },
+  { text: "3–5 min (Speed 2–3): Add the salt and the remaining 30% of flour; mix until no dry flour remains" },
+  { text: "5–9 min (Speed 4–5): Increase speed to build the gluten matrix until the dough detaches cleanly from the bowl sides into a smooth ring" },
 ];
 
 export default function SpiralMixerPage() {
@@ -24,6 +30,23 @@ export default function SpiralMixerPage() {
     () => calcWaterTemp(store.roomTempForWater, store.flourTemp, store.frictionFactor),
     [store.roomTempForWater, store.flourTemp, store.frictionFactor]
   );
+
+  // Dynamic Bassinage Protocol: above 65% hydration, hold back 15% of the water
+  // to trickle in during Phase 4 once the initial gluten structure has formed.
+  const isHighHydration = store.hydration > 0.65;
+  const bassinage = useMemo(
+    () => ({
+      initialWater: store.waterInput * 0.85,
+      bassinageWater: store.waterInput * 0.15,
+    }),
+    [store.waterInput]
+  );
+
+  // Thermal Threshold Alert: if the room is hot enough that friction/ambient
+  // heat risks pushing the FDT past the 24°C max, suggest substituting part
+  // of the water weight with crushed ice.
+  const roomTooWarm = store.roomTempForWater > 23;
+  const iceWeight = store.waterInput * 0.20;
 
   return (
     <div className="space-y-10">
@@ -80,18 +103,57 @@ export default function SpiralMixerPage() {
             </p>
           </div>
         )}
+
+        <div className="mt-3 flex justify-between items-baseline">
+          <span className="text-[15px] text-foreground/80">Final Dough Temp — Target Range (Max Limit)</span>
+          <span className="font-mono font-semibold text-primary">21°C – 23°C (24°C)</span>
+        </div>
+        {roomTooWarm && (
+          <p className="mt-3 text-sm font-medium text-destructive border-l-2 border-destructive/40 pl-3">
+            ⚠️ Room temperature exceeds 23°C — substitute 20% of the cold water weight with crushed ice to absorb motor friction ({fmt(iceWeight, 0)} g ice, replacing an equal weight of water).
+          </p>
+        )}
       </Section>
 
       <Section number={2} title="4-Phase Mixing Protocol" subtitle="8–10 minutes total — dual rotation, Ff 3.0°C">
         <Subhead>In your Famag IM 5-S-10V (HH)</Subhead>
         <ol className="space-y-1.5">
-          {PHASES.map((t, i) => (
-            <li key={t} className="text-[15px] flex gap-2.5 leading-relaxed">
-              <span className="font-mono font-semibold text-primary shrink-0">{i + 1}.</span>
-              <span><HighlightNumbers text={t} /></span>
+          {PHASES.map((p, i) => (
+            <li key={p.text} className="text-[15px] leading-relaxed">
+              <div className="flex gap-2.5">
+                <span className="font-mono font-semibold text-primary shrink-0">{i + 1}.</span>
+                <span><HighlightNumbers text={p.text} /></span>
+              </div>
+              {p.note && (
+                <p className="text-sm text-muted-foreground italic border-l-2 border-primary/30 pl-3 mt-1 ml-6">
+                  <HighlightNumbers text={p.note} />
+                </p>
+              )}
             </li>
           ))}
         </ol>
+
+        {isHighHydration && (
+          <div className="mt-4 rounded-lg border border-primary/30 bg-primary/8 p-3.5" style={{ backgroundColor: "rgba(194,65,12,0.08)" }}>
+            <Subhead className="mb-1.5">Dynamic Bassinage Protocol — Hydration {fmt(store.hydration * 100, 0)}% &gt; 65%</Subhead>
+            <p className="text-sm text-foreground/80 leading-relaxed">
+              High hydration detected — split the water into two additions instead of pouring it all in Phase 1:
+            </p>
+            <ul className="text-[15px] mt-2 space-y-1">
+              <li className="flex justify-between">
+                <span className="text-muted-foreground">Initial Water (Phase 1, 85%)</span>
+                <span className="font-mono font-semibold text-foreground">{fmt(bassinage.initialWater, 0)} g</span>
+              </li>
+              <li className="flex justify-between">
+                <span className="text-muted-foreground">Bassinage Water (Phase 4, Speed 5–7, 15%)</span>
+                <span className="font-mono font-semibold text-foreground">{fmt(bassinage.bassinageWater, 0)} g</span>
+              </li>
+            </ul>
+            <p className="text-sm text-muted-foreground italic border-l-2 border-primary/30 pl-3 mt-2">
+              Trickle the reserved 15% slowly into the bowl during Phase 4 once the initial gluten structure has formed.
+            </p>
+          </div>
+        )}
       </Section>
 
       <Section

@@ -64,6 +64,31 @@ export default function FridgePage() {
           "Always mark the container with the date it entered the freezer",
           "Use your dough within 2 weeks for the best results",
         ]} />
+
+        <div className="mt-6 pt-6 border-t border-border/60">
+          <div className="font-serif text-base font-semibold mb-3 text-foreground">Cold Fermentation &amp; Refrigerator Calibration Guide</div>
+
+          <Subhead>1. Fridge Temperature &amp; Zone Guide</Subhead>
+          <Bullets items={[
+            "Target Temperature: 4°C (39°F)",
+            "Zone Placement: store dough on the lowest shelf near the back (coldest, most stable zone) — avoid door shelves or top shelves",
+            "Thermal Mass Factor: large batches (2 kg+) take 3–4 hours to cool down to 4°C, extending effective room-temperature yeast activity during early refrigeration",
+          ]} />
+
+          <Subhead className="mt-5">2. Maturation vs. Fermentation Education</Subhead>
+          <Bullets items={[
+            "4°C suppresses yeast gas production while allowing amylase/protease enzymes to break down starches into digestible simple sugars",
+            'Cold maturation is what prevents "heavy stomach" feeling after eating Neapolitan pizza',
+          ]} />
+
+          <Subhead className="mt-5">3. Temperature Recovery (Appretto Phase)</Subhead>
+          <Bullets items={[
+            "Crucial Rule: always bring dough balls out of the fridge 2 to 4 hours before baking to reach 18°C–20°C before stretching",
+          ]} />
+          <p className="text-[15px] text-muted-foreground mt-2 italic border-l-2 border-destructive/40 pl-3">
+            <strong className="text-foreground not-italic">Warning:</strong> Stretching cold dough straight from the fridge causes &ldquo;snap-back&rdquo; elasticity and cold spots that burn quickly in high-heat ovens.
+          </p>
+        </div>
       </Section>
 
       <Section number={4} title="Recovery &mdash; The Thaw &amp; Wake-Up Phase">

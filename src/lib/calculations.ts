@@ -115,22 +115,26 @@ export function calcWaterTemp(roomTemp: number, flourTemp: number, frictionFacto
 }
 
 export interface FlourBlendPercents {
-  pizzeria: number; // 0-1, Caputo Pizzeria 00
-  nuvola: number;   // 0-1, Caputo Nuvola / Nuvola Super
-  tipo1: number;    // 0-1, Caputo Tipo 1
+  pizzeria: number;  // 0-1, Caputo Pizzeria 00
+  nuvola: number;    // 0-1, Caputo Nuvola / Nuvola Super
+  tipo1: number;     // 0-1, Caputo Tipo 1
+  cuoco: number;     // 0-1, Caputo Cuoco / Chef 00 (extended cold fermentation)
+  integrale: number; // 0-1, Caputo Integrale / Whole Wheat
 }
 
 export interface FlourBlendGrams {
   pizzeria: number;
   nuvola: number;
   tipo1: number;
+  cuoco: number;
+  integrale: number;
   semolina: number; // dusting / optional additive, on top of the 100% blend
 }
 
 /**
  * Dynamic gram allocation for a flour blend across the total flour weight (g).
  * Semolina Rimacinata is an optional additive used for dusting/extra crunch,
- * calculated separately from the 100% Pizzeria/Nuvola/Tipo 1 blend.
+ * calculated separately from the 100% blend.
  */
 export function calcFlourBlendGrams(
   totalFlour: number,
@@ -141,6 +145,8 @@ export function calcFlourBlendGrams(
     pizzeria: totalFlour * blend.pizzeria,
     nuvola: totalFlour * blend.nuvola,
     tipo1: totalFlour * blend.tipo1,
+    cuoco: totalFlour * blend.cuoco,
+    integrale: totalFlour * blend.integrale,
     semolina: totalFlour * semolinaAddPercent,
   };
 }
@@ -150,11 +156,13 @@ export function calcFlourBlendGrams(
  * - Base target hydration is 62%.
  * - If Nuvola > 20%, raise to 65% (higher gas retention needs more water).
  * - If Tipo 1 > 15%, add +1% to compensate for bran's higher water absorption.
+ * - If Integrale > 5%, add +1% to compensate for bran's higher water absorption.
  */
 export function suggestedBlendHydration(blend: FlourBlendPercents): number {
   let hydration = 0.62;
   if (blend.nuvola > 0.20) hydration = 0.65;
   if (blend.tipo1 > 0.15) hydration += 0.01;
+  if (blend.integrale > 0.05) hydration += 0.01;
   return hydration;
 }
 
