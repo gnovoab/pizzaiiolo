@@ -1,7 +1,39 @@
+"use client";
+
+import { useMemo, useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 
+// Neapolitan Pizza tab ratios (fixed percentages of flour weight) — the single
+// source of truth every dynamic quantity in that tab is derived from.
+const NEAPOLITAN_HYDRATION_LOW = 0.61;
+const NEAPOLITAN_HYDRATION_MID = 0.62;
+const NEAPOLITAN_HYDRATION_HIGH = 0.63;
+const NEAPOLITAN_SALT_PCT = 0.024;
+const NEAPOLITAN_YEAST_LOW = 0.0006;
+const NEAPOLITAN_YEAST_HIGH = 0.001;
+const NEAPOLITAN_FLOUR_STAGE_1_PCT = 0.7;
+const NEAPOLITAN_FLOUR_STAGE_2_PCT = 0.3;
+
 export default function DoughMakerPage() {
+  const [flourAmount, setFlourAmount] = useState(1000);
+  const [ballWeight, setBallWeight] = useState(280);
+
+  const n = useMemo(() => {
+    const waterLow = flourAmount * NEAPOLITAN_HYDRATION_LOW;
+    const waterMid = flourAmount * NEAPOLITAN_HYDRATION_MID;
+    const waterHigh = flourAmount * NEAPOLITAN_HYDRATION_HIGH;
+    const salt = flourAmount * NEAPOLITAN_SALT_PCT;
+    const yeastLow = flourAmount * NEAPOLITAN_YEAST_LOW;
+    const yeastHigh = flourAmount * NEAPOLITAN_YEAST_HIGH;
+    const yeastMid = (yeastLow + yeastHigh) / 2;
+    const flourStage1 = flourAmount * NEAPOLITAN_FLOUR_STAGE_1_PCT;
+    const flourStage2 = flourAmount * NEAPOLITAN_FLOUR_STAGE_2_PCT;
+    const totalDough = flourAmount + waterMid + salt + yeastMid;
+    const numBalls = Math.max(1, Math.floor(totalDough / ballWeight));
+    return { waterLow, waterMid, waterHigh, salt, yeastLow, yeastHigh, flourStage1, flourStage2, totalDough, numBalls };
+  }, [flourAmount, ballWeight]);
+
   return (
     <div className="space-y-10">
       <div className="text-center pb-6 border-b border-border/70">
@@ -37,23 +69,28 @@ export default function DoughMakerPage() {
         </TabsList>
 
         <TabsContent value="neapolitan" className="space-y-6 mt-4">
-          <Section number={1} title="Ingredients" subtitle="1,000 g flour — Neapolitan style">
+          <Section number={1} title="Batch Size & Ingredients" subtitle={`${fmtG(flourAmount)} g flour — Neapolitan style`}>
+            <div className="grid sm:grid-cols-2 gap-4 mb-5">
+              <Field label="Flour (g)" value={flourAmount} onChange={setFlourAmount} min={1000} max={3000} step={10} />
+              <Field label="Dough Ball Size (g)" value={ballWeight} onChange={setBallWeight} min={200} max={400} step={10} />
+            </div>
+            <Subhead>Current Recipe</Subhead>
             <Bullets items={[
-              "1,000 g 00 flour (Caputo Pizzeria)",
-              "610–630 g water (start with 620 g)",
-              "24 g salt",
-              "0.6–1 g dry yeast (very small pinch)",
+              `${fmtG(flourAmount)} g 00 flour (Caputo Pizzeria)`,
+              `${fmtG(n.waterLow)}–${fmtG(n.waterHigh)} g water (start with ${fmtG(n.waterMid)} g)`,
+              `${fmtG(n.salt)} g salt`,
+              `${fmtG(n.yeastLow, 1)}–${fmtG(n.yeastHigh, 1)} g dry yeast (very small pinch)`,
             ]} />
-            <Callout>👉 This is a classic slow-fermentation Neapolitan dough. Doing a bigger cook? Double every quantity again for a full 2,000 g (2 kg) batch.</Callout>
+            <Callout>👉 Approximately {fmtG(n.totalDough)} g total dough — about {n.numBalls} × {fmtG(ballWeight)} g balls. The entire recipe scales automatically from the Flour slider above.</Callout>
           </Section>
 
           <Section number={2} title="Famag Spiral Mixer Timeline" subtitle="8–10 minutes total — dual rotation, Ff 3.0°C">
             <Subhead>In your Famag IM 5-S-10V (HH)</Subhead>
             <ol className="space-y-1.5">
               {[
-                "0–1 min (Speed 1, 90 RPM): Pour the 620 g cold water into the bowl and dissolve the yeast (0.6–1 g)",
-                "1–3 min (Speed 1–2): Add ~70% of the flour (about 700 g); mix until a smooth batter forms around the breaker bar",
-                "3–5 min (Speed 2–3): Add the salt (24 g) and the remaining 30% of flour (about 300 g); mix until no dry flour remains",
+                `0–1 min (Speed 1, 90 RPM): Pour the ${fmtG(n.waterMid)} g cold water into the bowl and dissolve the yeast (${fmtG(n.yeastLow, 1)}–${fmtG(n.yeastHigh, 1)} g)`,
+                `1–3 min (Speed 1–2): Add ~70% of the flour (about ${fmtG(n.flourStage1)} g); mix until a smooth batter forms around the breaker bar`,
+                `3–5 min (Speed 2–3): Add the salt (${fmtG(n.salt)} g) and the remaining 30% of flour (about ${fmtG(n.flourStage2)} g); mix until no dry flour remains`,
                 "5–9 min (Speed 4–5): Increase speed to build the gluten matrix until the dough detaches cleanly from the bowl sides into a smooth ring",
               ].map((t, i) => (
                 <li key={t} className="text-[15px] flex gap-2.5 leading-relaxed">
@@ -74,7 +111,7 @@ export default function DoughMakerPage() {
           </Section>
 
           <Section number={4} title="Balling the Dough" subtitle="Staglio anticipato — early balling, the AVPN/pro method">
-            <p className="text-[15px] mb-3">Divide into <span className="font-semibold text-primary">280 g</span> balls — about <span className="font-semibold text-primary">7–8 pizzas</span> — straight after the 1-hour puntata, then cold-ferment the balls in the fridge.</p>
+            <p className="text-[15px] mb-3">Divide into <span className="font-semibold text-primary">{fmtG(ballWeight)} g</span> balls — about <span className="font-semibold text-primary">{n.numBalls} pizzas</span> — straight after the 1-hour puntata, then cold-ferment the balls in the fridge.</p>
             <div className="grid sm:grid-cols-2 gap-4">
               <div className="rounded-xl border border-primary/30 bg-primary/5 p-4">
                 <div className="text-[11px] uppercase tracking-[0.15em] text-primary font-semibold mb-2">Option A — Recommended</div>
@@ -101,11 +138,11 @@ export default function DoughMakerPage() {
             <Callout>👉 Ready-to-stretch: balls are soft, relaxed, and dome lightly when pushed. If they spring back hard, give them more time at room temp.</Callout>
           </Section>
 
-          <Section number={5} title="Why This Ratio Works" subtitle="For 1,000 g flour">
+          <Section number={5} title="Why This Ratio Works" subtitle={`For ${fmtG(flourAmount)} g flour`}>
             <Bullets items={[
-              "60–63% hydration → balanced for high-heat oven",
+              `${Math.round(NEAPOLITAN_HYDRATION_LOW * 100)}–${Math.round(NEAPOLITAN_HYDRATION_HIGH * 100)}% hydration → balanced for high-heat oven`,
               "Low yeast → long fermentation = better flavour",
-              "Salt ~2.8% → strengthens gluten without killing elasticity",
+              `Salt ~${(NEAPOLITAN_SALT_PCT * 100).toFixed(1)}% → strengthens gluten without killing elasticity`,
             ]} />
             <Subhead className="mt-4">This Gives</Subhead>
             <Bullets items={[
@@ -1084,6 +1121,26 @@ function Bullets({ items }: { items: string[] }) {
 
 function Callout({ children }: { children: React.ReactNode }) {
   return <p className="text-sm text-muted-foreground italic border-l-2 border-primary/30 pl-3 mt-3">{children}</p>;
+}
+
+function fmtG(n: number, decimals = 0): string {
+  return n.toLocaleString("en-US", { minimumFractionDigits: 0, maximumFractionDigits: decimals });
+}
+
+function Field({ label, value, onChange, min, max, step = 1 }: {
+  label: string; value: number; onChange: (v: number) => void; min: number; max: number; step?: number;
+}) {
+  return (
+    <div>
+      <div className="flex justify-between items-baseline mb-2">
+        <label className="text-[15px] text-foreground/80">{label}</label>
+        <span className="font-mono font-semibold text-primary">{fmtG(value)}</span>
+      </div>
+      <input type="range" min={min} max={max} step={step} value={value}
+        onChange={e => onChange(Number(e.target.value))}
+        className="w-full accent-primary cursor-pointer" />
+    </div>
+  );
 }
 
 function EquipmentItem({ icon, name, detail }: { icon: string; name: string; detail: string }) {

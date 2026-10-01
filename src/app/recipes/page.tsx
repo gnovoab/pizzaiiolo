@@ -9,11 +9,10 @@ const RUSTIC_IDS = [
   "margherita-della-casa",
   "margherita-duo",
   "margherita-macchiata",
-  "buffalina-de-la-casa",
   "marinara-al-salame",
 ];
 const RUSTIC_BLURB =
-  "Margherita della Casa, Margherita Duo, Margherita Macchiata, Buffalina de la Casa, Marinara al Salame.";
+  "Margherita della Casa, Margherita Duo, Margherita Macchiata, Marinara al Salame.";
 
 export default function RecipesPage() {
   const [selected, setSelected] = useState<PizzaRecipe | null>(null);
@@ -87,7 +86,16 @@ export default function RecipesPage() {
         });
       })()}
 
-      {selected && <RecipeModal recipe={selected} onClose={() => setSelected(null)} />}
+      {selected && (
+        <RecipeModal
+          recipe={selected}
+          onClose={() => setSelected(null)}
+          onSwitchRecipe={(id) => {
+            const next = RECIPES.find((r) => r.id === id);
+            if (next) setSelected(next);
+          }}
+        />
+      )}
     </div>
   );
 }
@@ -119,7 +127,15 @@ function MenuItem({ recipe, onClick }: { recipe: PizzaRecipe; onClick: () => voi
   );
 }
 
-function RecipeModal({ recipe, onClose }: { recipe: PizzaRecipe; onClose: () => void }) {
+function RecipeModal({
+  recipe,
+  onClose,
+  onSwitchRecipe,
+}: {
+  recipe: PizzaRecipe;
+  onClose: () => void;
+  onSwitchRecipe: (id: string) => void;
+}) {
   return (
     <div
       className="fixed inset-0 z-50 flex items-end sm:items-center justify-center p-0 sm:p-4 bg-foreground/40 backdrop-blur-sm"
@@ -157,10 +173,69 @@ function RecipeModal({ recipe, onClose }: { recipe: PizzaRecipe; onClose: () => 
             {recipe.style && <p className="text-sm text-secondary italic mt-1">{recipe.style}</p>}
           </div>
 
+          {recipe.flavorProgression && (
+            <div className="flex flex-wrap items-center gap-1.5">
+              {recipe.flavorProgression.split("→").map((step, i, arr) => (
+                <Fragment key={i}>
+                  <span className="inline-block text-xs sm:text-[13px] font-medium px-2.5 py-1 rounded-full bg-primary/10 text-primary border border-primary/30">
+                    {step.trim()}
+                  </span>
+                  {i < arr.length - 1 && <span className="text-muted-foreground text-xs" aria-hidden>→</span>}
+                </Fragment>
+              ))}
+            </div>
+          )}
+
           <div className="rounded-xl border border-border bg-muted/60 p-4">
             <div className="text-[11px] uppercase tracking-[0.2em] text-secondary font-semibold mb-1.5">Ingredients</div>
             <p className="text-[15px] leading-relaxed text-foreground">{recipe.toppings}</p>
           </div>
+
+          {recipe.variations && recipe.variations.length > 0 && (
+            <div className="rounded-xl border-2 border-secondary/40 bg-secondary/5 p-4 space-y-4">
+              <div className="flex items-start justify-between gap-3 flex-wrap">
+                <div className="text-[11px] uppercase tracking-[0.2em] text-secondary font-bold">Style Variation</div>
+                <div className="flex flex-col items-end gap-2">
+                  {recipe.variations.map((v) => (
+                    <button
+                      key={v.relatedId}
+                      onClick={() => onSwitchRecipe(v.relatedId)}
+                      title={v.summary}
+                      className="shrink-0 inline-flex items-center gap-1.5 text-sm font-semibold px-3.5 py-2 rounded-full bg-secondary text-secondary-foreground hover:opacity-90 transition-opacity"
+                    >
+                      View {v.relatedName} <span aria-hidden>→</span>
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              {recipe.comparisonTable && (
+                <div className="overflow-x-auto rounded-lg border border-border/70">
+                  <table className="w-full text-sm border-collapse">
+                    <thead>
+                      <tr className="bg-muted/80">
+                        {recipe.comparisonTable.headers.map((h) => (
+                          <th key={h} className="text-left font-semibold px-3 py-2 text-foreground border-b border-border/70 whitespace-nowrap">
+                            {h}
+                          </th>
+                        ))}
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {recipe.comparisonTable.rows.map((row) => (
+                        <tr key={row.label} className="odd:bg-card even:bg-muted/30">
+                          <td className="px-3 py-2 font-medium text-muted-foreground border-b border-border/50 whitespace-nowrap">{row.label}</td>
+                          {row.values.map((v, i) => (
+                            <td key={i} className="px-3 py-2 text-foreground border-b border-border/50">{v}</td>
+                          ))}
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              )}
+            </div>
+          )}
 
           <div>
             <div className="flex items-center gap-3 mb-4">

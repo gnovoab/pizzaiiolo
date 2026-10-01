@@ -74,6 +74,23 @@ export interface RecipeStep {
   sections: RecipeStepSection[];
 }
 
+/** Links a recipe to a sibling "style variation" (e.g. Bufalina Classica ↔ Bufalina a Freddo). */
+export interface RecipeVariation {
+  /** id/slug of the related recipe. */
+  relatedId: string;
+  /** Display name of the related recipe, e.g. "Bufalina a Freddo". */
+  relatedName: string;
+  /** Short descriptor of what differs, e.g. "Baked vs. Post-Bake Buffalo Mozzarella". */
+  summary?: string;
+}
+
+/** A spec-by-spec comparison table rendered alongside the variation switch. */
+export interface RecipeComparisonTable {
+  /** Column headers, e.g. ["Spec", "Bufalina Classica", "Bufalina a Freddo"]. */
+  headers: string[];
+  rows: { label: string; values: string[] }[];
+}
+
 export interface PizzaRecipe {
   id: string;
   number: number;
@@ -85,11 +102,17 @@ export interface PizzaRecipe {
   menuIngredients?: string;
   build: string;
   postBake?: string;
+  /** Arrow-separated taste-journey summary (e.g. "Bright San Marzano → creamy Fior di Latte → ... → peppery Coratina finish"), rendered as a flavor-progression badge. */
+  flavorProgression?: string;
   specialRule?: { label: string; detail: string };
   videoGuide?: string;
   videoUrl?: string;
   image?: string;
   steps?: RecipeStep[];
+  /** Sibling "style variation" recipes this one can switch to/compare against (e.g. the Bufalina trilogy). */
+  variations?: RecipeVariation[];
+  /** Side-by-side spec comparison table, shown next to the variation switch. */
+  comparisonTable?: RecipeComparisonTable;
 }
 
 export interface SauceProfile {
