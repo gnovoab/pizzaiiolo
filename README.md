@@ -1,36 +1,33 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Pizza Lab (pizzaiiolo) — v1.0
+
+A pizzaiolo's cookbook web app (dough calculators, pizzaiolo comparisons, recipe
+manual, fermentation/oven/flour guides) that also hosts **Gabriellos**, a real
+restaurant's live menu and catering admin tool backed by MongoDB and gated by
+Google sign-in.
+
+> 🤖 **AI agents / new contributors: read [`PROJECT_CONTEXT.md`](./PROJECT_CONTEXT.md)
+> first.** It documents the full tech stack, repository layout, every nav tab/section,
+> the Gabriellos data flow & auth model, and conventions to follow before editing.
 
 ## Getting Started
 
-First, run the development server:
-
 ```bash
+npm install
+cp .env.example .env.local   # fill in MONGODB_URI, AUTH_GOOGLE_ID/SECRET, AUTH_SECRET, ADMIN_EMAIL
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) to see the Cookbook (home page).
+The Gabriellos admin tool lives at `/gabriellos` (requires Google sign-in as the
+`ADMIN_EMAIL` account); the public live menu is at `/menu`.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Other scripts: `npm run build`, `npm run start`, `npm run lint`.
+Typecheck only: `npx tsc --noEmit`.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Stack
 
-## Learn More
+Next.js 16 (App Router) · React 19 · TypeScript · Tailwind CSS v4 + shadcn/ui ·
+Zustand (Cookbook state) · MongoDB (Gabriellos data) · Auth.js / Google OAuth
+(Gabriellos auth) · deployed on Vercel.
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+See [`PROJECT_CONTEXT.md`](./PROJECT_CONTEXT.md) for full details.

@@ -1,6 +1,9 @@
 import clientPromise from "./mongo";
 
-export type MenuCategory = "classic" | "innovative" | "pumpkin" | "le-nostre" | "calzone-focaccia" | "specials";
+// Categories are now admin-managed (create/rename/reorder/delete) and stored
+// in the `categories` collection — see src/lib/db/categories.ts. A menu
+// item's `category` is just the id of one of those documents.
+export type MenuCategory = string;
 
 export interface GabriellosMenuItem {
   id: string;

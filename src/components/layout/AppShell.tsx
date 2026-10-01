@@ -4,14 +4,14 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { cn } from "@/lib/utils";
+import { APP_VERSION } from "@/lib/version";
 
 const NAV_SECTIONS = [
   {
-    title: "Dough & Menu",
+    title: "Making Pizza",
     items: [
-      { href: "/dough-maker", label: "🥖 Dough Maker", short: "Dough" },
-      { href: "/", label: "📖 Pizza Recipes", short: "Recipes" },
-      { href: "/menu", label: "🧾 Menu", short: "Menu" },
+      { href: "/dough-maker", label: "🥖 Dough", short: "Dough" },
+      { href: "/", label: "📖 Recipes", short: "Recipes" },
       { href: "/videos", label: "🎬 Videos", short: "Videos" },
     ],
   },
@@ -39,9 +39,10 @@ const NAV_SECTIONS = [
     ],
   },
   {
-    title: "3rd Party Menus",
+    title: "Menus",
     items: [
-      { href: "/gabriellos", label: "🍽️ Gabriellos Menu", short: "Gabriellos" },
+      { href: "/menu", label: "🧾 La Carta", short: "La Carta" },
+      { href: "/gabriellos", label: "🍽️ Gabriellos Settings", short: "Gabriellos" },
       { href: "/gabriellos/catering", label: "🎉 Catering Menu", short: "Catering" },
     ],
   },
@@ -60,6 +61,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
         <div className="px-5 py-6 border-b border-border">
           <span className="font-serif text-2xl font-semibold tracking-tight text-primary">Pizza Lab</span>
           <p className="text-xs text-muted-foreground mt-1 italic">Dough · Fire · Flour</p>
+          <p className="text-[10px] text-muted-foreground/70 mt-1 font-mono">v{APP_VERSION}</p>
         </div>
         <nav className="flex-1 p-3 space-y-5 overflow-y-auto">
           {NAV_SECTIONS.map((section) => (
@@ -93,7 +95,9 @@ export function AppShell({ children }: { children: React.ReactNode }) {
       <div className="flex-1 flex flex-col min-w-0">
         {/* Mobile top bar */}
         <header className="md:hidden flex items-center justify-between px-4 py-3 border-b border-border bg-card sticky top-0 z-40">
-          <span className="text-lg font-bold text-primary">Pizza Lab</span>
+          <span className="text-lg font-bold text-primary">
+            Pizza Lab <span className="text-[10px] font-mono font-normal text-muted-foreground/70">v{APP_VERSION}</span>
+          </span>
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
             className="text-muted-foreground hover:text-foreground p-1"
@@ -150,7 +154,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
                 pathname === href ? "text-primary" : "text-muted-foreground"
               )}
             >
-              <span className="text-base">{short === "Recipes" ? "📖" : short === "Menu" ? "🧾" : short === "Dough" ? "🥖" : short === "Oven" ? "🔥" : short === "Oil" ? "🫒" : short === "Pumpkin" ? "🎃" : short === "Fridge" ? "🧊" : short === "Styles" ? "📋" : short === "Videos" ? "🎬" : short === "Pref." ? "🧫" : short === "Mixer" ? "🌀" : short === "Ferment" ? "⏱️" : short === "Create" ? "👨‍🍳" : short === "Compare" ? "📊" : "🍕"}</span>
+              <span className="text-base">{short === "Recipes" ? "📖" : short === "La Carta" ? "🧾" : short === "Dough" ? "🥖" : short === "Oven" ? "🔥" : short === "Oil" ? "🫒" : short === "Pumpkin" ? "🎃" : short === "Fridge" ? "🧊" : short === "Styles" ? "📋" : short === "Videos" ? "🎬" : short === "Pref." ? "🧫" : short === "Mixer" ? "🌀" : short === "Ferment" ? "⏱️" : short === "Create" ? "👨‍🍳" : short === "Compare" ? "📊" : "🍕"}</span>
               <span>{short}</span>
             </Link>
           ))}
