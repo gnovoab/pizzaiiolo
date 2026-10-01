@@ -5,7 +5,7 @@ const BUFALINA_TRILOGY_TABLE: RecipeComparisonTable = {
   headers: ["Spec", "Bufalina Classica", "Bufalina a Freddo", "Bufalina de la Casa"],
   rows: [
     { label: "Tomato Base", values: ["80–90g San Marzano DOP", "80–90g San Marzano DOP", "100–110g Fresh Datterini Fillets"] },
-    { label: "Umami Layer", values: ["None", "None", "8–10g 36M Parmigiano Reggiano"] },
+    { label: "Umami Layer", values: ["3–4g Parmigiano Reggiano", "None", "None"] },
     { label: "Buffalo Mozzarella", values: ["80–90g (Baked)", "90–100g (Post-Bake)", "85–90g (Baked)"] },
     { label: "Pre-Bake Oil", values: ["None", "None", "2–3g Elizondo Nº3 Picual"] },
     { label: "Finishing Oil", values: ["Frantoio Muraglia Coratina", "Frantoio Muraglia Coratina", "Barbera Lorenzo N°5"] },
@@ -14,7 +14,7 @@ const BUFALINA_TRILOGY_TABLE: RecipeComparisonTable = {
 };
 
 export const RECIPE_CATEGORIES: { id: PizzaRecipeCategory; label: string; blurb: string }[] = [
-  { id: "classic", label: "Classic", blurb: "Margherita, Bufalina Classica, Bufalina a Freddo, Bufalina de la Casa, Cosacca, Marinara, Napolitan, Diavola, Prosciutto e Rucola, Ibérica Bianca, Prosciutto e Funghi, Capricciosa, Quattro Formaggi, Ortolana, Ripieno (Calzone)." },
+  { id: "classic", label: "Classic", blurb: "Margherita, Bufalina Classica, Bufalina a Freddo, Bufalina de la Casa, Cosacca, Marinara, Napoletana, Diavola, Prosciutto e Rucola, Ibérica Bianca, Prosciutto e Funghi, Capricciosa, Quattro Formaggi, Ortolana, Ripieno (Calzone)." },
   { id: "calzone-focaccia", label: "Calzone & Focaccia", blurb: "Folded and stuffed specialties." },
   { id: "innovative", label: "Innovative", blurb: "Modern and rustic twists on Italian tradition — Double Pepperoni & Hot Honey, Chorizo and Gorgonzola, Burratina, Bufala e Ibérico, Tettoia — Four Cheese & Truffle, Calabrese, Quattro Latte e 'Nduja, 'Nduja & Hot Honey, Cetarese, Cacio e Pepe, Carbonara, Amatriciana, Gricia, Pesto & Burrata, Salsiccia al Pesto, Boscaiola, Mortadella and Pistachio, La Oro Verde." },
   { id: "pumpkin", label: "Pumpkin Base", blurb: "Replace tomato with smooth roasted pumpkin cream — Sfiziosa, Sfiziosa Signature, Mantovana, Norcina, Zucca Salsiccia e Provola, Zucca e 'Nduja, Zucca Guanciale e Rosmarino, Zucca, Gorgonzola & Noci." },
@@ -28,35 +28,27 @@ export const RECIPES: PizzaRecipe[] = [
     style: "Traditional Base — San Marzano DOP, Fior di Latte & Dual-Oil Protocol",
     category: "classic",
     image: "https://data.thefeedfeed.com/static/2021/04/13/16183401006075e904223ae.jpg",
-    toppings: "70g–80g hand-crushed raw San Marzano DOP tomatoes, fine sea salt, 80g–90g well-drained Fior di Latte mozzarella, 4–5 fresh basil leaves, Elizondo Nº3 Picual EVOO (pre-bake), Frantoio Muraglia Coratina EVOO (post-bake finish).",
+    toppings: "70g–80g hand-crushed raw San Marzano DOP tomatoes, fine sea salt, 80g–90g well-drained Fior di Latte mozzarella, 4–5 fresh basil leaves, Elizondo Nº3 Picual EVOO (pre-bake), Frantoio Muraglia Coratina EVOO (post-bake finish). No hard cheese.",
     menuIngredients: "Tomato, mozzarella, basil, olive oil",
-    build: "The benchmark Neapolitan pie — clean San Marzano DOP, well-drained Fior di Latte, split basil staging, and dual-tier EVOO integration. Character: bright, clean and classically balanced.",
-    postBake: "Rest 30 seconds on a wooden board (not a wire rack), scatter 1–2 fresh basil leaves, finish with a 3–4g swirl of Frantoio Muraglia Coratina EVOO, then slice and serve immediately.",
+    build: "The quintessential benchmark Neapolitan pie — clean San Marzano DOP, well-drained Fior di Latte, split basil staging, and our house dual-tier EVOO protocol.",
+    postBake: "Transfer directly to a wooden board and rest for 30 seconds (do NOT use a wire rack). Scatter 1–2 fresh basil leaves and finish with a 3g–4g swirl of Frantoio Muraglia Coratina EVOO. Slice and serve immediately.",
     flavorProgression: "Bright San Marzano → creamy melted Fior di Latte → warm basil & fruity Picual → fresh basil → peppery Coratina finish",
     videoGuide: "Classic San Marzano Tomato Sauce & Assembly",
     steps: [
       { title: "1. Dough Prep", sections: [
-        { bullets: ["Stretch the 280g dough ball to 30–33cm on Caputo Semolina Rimacinata", "Flatten gently from the centre outward, pushing dough toward the perimeter to preserve gas in the cornicione"] },
-        { intro: "Never:", bullets: ["Do not press out edge gas — preserve an airy, uncompressed 1.5–2cm cornicione"] },
+        { bullets: ["Hand-stretch the 280g dough ball to 30–33cm on Caputo Semolina Rimacinata", "Flatten gently from the centre outward, pushing gas toward the perimeter to form a pronounced 1.5–2cm cornicione"] },
       ] },
-      { title: "2. Sauce Layer", sections: [
-        { bullets: ["Apply 70g–80g hand-crushed San Marzano DOP tomatoes", "Spread outward in a spiral, leaving a clean 1–2cm border", "Season with a light pinch of fine sea salt"] },
-        { intro: "Note:", bullets: ["If the tomatoes are excessively wet, drain in a sieve for 10–15 minutes before assembly"] },
-        { intro: "Never:", bullets: ["No olive oil is ever stirred into the raw tomato sauce"] },
+      { title: "2. Layer Assembly (In Exact Order)", sections: [
+        { intro: "Layer 1 — San Marzano:", bullets: ["Apply 70g–80g hand-crushed San Marzano DOP tomatoes", "Spread outward in a spiral, leaving a clean 1.5–2cm border", "Season with a light pinch of fine sea salt"] },
+        { intro: "Layer 2 — Fior di Latte:", bullets: ["Scatter 80g–90g well-drained Fior di Latte irregular pieces across the tomato sauce, leaving small gaps between pieces to minimise moisture pooling"] },
+        { intro: "Layer 3 — Basil:", bullets: ["Tuck 2–3 small basil leaves under or between the mozzarella pieces to protect them from direct flame scorching"] },
+        { intro: "Layer 4 — Picual:", bullets: ["Apply a light 2g–3g micro-drizzle of Elizondo Nº3 Picual EVOO over the build for fresh green/fruity integration during the bake"] },
       ] },
-      { title: "3. Cheese & Basil Staging", sections: [
-        { bullets: ["Scatter 80g–90g well-drained Fior di Latte evenly across the tomato, torn into irregular pieces", "Leave small gaps between pieces to minimise moisture pooling", "Tuck 2–3 small basil leaves under or between the mozzarella pieces to protect them from direct flame scorching"] },
-      ] },
-      { title: "4. Pre-Bake Oil Drizzle", sections: [
-        { bullets: ["Apply a light 2g–3g micro-drizzle of Elizondo Nº3 Picual EVOO over the assembled pizza"] },
-        { intro: "Purpose:", bullets: ["Fresh green/fruity integration during the bake"] },
-      ] },
-      { title: "5. Launch Check & Gozney Bake", sections: [
-        { bullets: ["Ensure the pizza slides cleanly on the peel"] },
+      { title: "3. Gozney Bake", sections: [
         { intro: "Gozney / High-Heat Oven:", bullets: ["🪨 Stone Floor: 420°C–440°C", "🔥 Dome/Air: 450°C–480°C", "⏱ Cook Time: 60–75 seconds"] },
-        { bullets: ["Rotate regularly and adjust the top flame dynamically according to cornicione browning and mozzarella colour — do not follow a fixed flame setting"] },
+        { bullets: ["Rotate regularly and adjust the top flame dynamically based on cornicione rise and mozzarella melt"] },
       ] },
-      { title: "6. Rest & Finish", sections: [
+      { title: "4. Rest & Finish", sections: [
         { intro: "Rest Protocol:", bullets: ["Transfer directly to a WOODEN BOARD (do NOT use a wire rack) and rest for 30 seconds"] },
         { bullets: ["Scatter 1–2 fresh basil leaves", "Finish with a 3g–4g swirl of Frantoio Muraglia Coratina EVOO", "Slice and serve immediately"] },
         { intro: "Profile:", bullets: ["Bright San Marzano → creamy melted Fior di Latte → warm basil & fruity Picual → fresh basil → peppery Coratina finish"] },
@@ -70,13 +62,14 @@ export const RECIPES: PizzaRecipe[] = [
     style: "Traditional Neapolitan — Integrated Hot San Marzano & Melted Buffalo Mozzarella",
     category: "classic",
     image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTTS95WYSPFblZrzxmXUcNGNROGg7uib_xsYLYqWMFhRg&s=10",
-    toppings: "San Marzano DOP tomato sauce, Mozzarella di Bufala Campana DOP (baked), fresh basil leaves, Frantoio Muraglia Coratina EVOO.",
-    menuIngredients: "Tomato, mozzarella di bufala, basil, olive oil",
-    build: "Bufalina Classica is the traditional, integrated take on Margherita con Bufala: the buffalo mozzarella is drained and rested, then baked directly into the hot San Marzano DOP sauce so the fat melts straight into the tomato. Character: integrated, hot, savoury and classic.",
+    toppings: "80g–90g San Marzano DOP tomato sauce, 3g–4g finely grated Parmigiano Reggiano DOP, Mozzarella di Bufala Campana DOP (baked), fresh basil leaves, Frantoio Muraglia Coratina EVOO.",
+    menuIngredients: "Tomato, mozzarella di bufala, Parmigiano Reggiano, basil, olive oil",
+    build: "Bufalina Classica is the traditional, integrated take on Margherita con Bufala: a light dusting of Parmigiano Reggiano seasons the sauce before the buffalo mozzarella is drained, rested, then baked directly into the hot San Marzano DOP sauce so the fat melts straight into the tomato. Character: integrated, hot, savoury and classic.",
     postBake: "Rest 30 seconds on a wooden board, then finish with 1–2 fresh basil leaves and a light swirl of Frantoio Muraglia Coratina EVOO (Intense Fruity).",
+    flavorProgression: "Hot San Marzano → savoury Parmigiano Reggiano → melted creamy buffalo → cooked basil → intense Coratina finish",
     variations: [
       { relatedId: "bufalina-a-freddo", relatedName: "Bufalina a Freddo", summary: "Baked vs. Post-Bake Buffalo Mozzarella — integrated heat vs. cold, silky contrast." },
-      { relatedId: "bufalina-de-la-casa", relatedName: "Bufalina de la Casa", summary: "San Marzano classic vs. sweet Datterini & 36-Month Parmigiano house special." },
+      { relatedId: "bufalina-de-la-casa", relatedName: "Bufalina de la Casa", summary: "San Marzano classic vs. sweet Datterini & dual-oil house special." },
     ],
     comparisonTable: BUFALINA_TRILOGY_TABLE,
     steps: [
@@ -87,14 +80,14 @@ export const RECIPES: PizzaRecipe[] = [
         { bullets: ["Tear 80g–90g Mozzarella di Bufala Campana DOP into large pieces", "Place in a sieve over a bowl and refrigerate UNCOVERED for 1–2 hours", "Rest at room temperature for 30 minutes before baking"] },
       ] },
       { title: "3. Stretch & Assemble", sections: [
-        { bullets: ["Stretch the 280g dough ball to 30–33cm", "Spread 80g–90g sauce, leaving a 1.5–2cm rim clear", "Distribute the 80g–90g drained Bufala evenly", "Tuck 2–3 fresh basil leaves under the cheese", "No oil before baking"] },
+        { bullets: ["Stretch the 280g dough ball to 30–33cm", "Spread 80g–90g sauce, leaving a 1.5–2cm rim clear", "Lightly dust 3g–4g finely grated Parmigiano Reggiano DOP directly over the sauce", "Distribute the 80g–90g drained Bufala evenly", "Tuck 2–3 fresh basil leaves under the cheese", "No oil before baking"] },
       ] },
       { title: "4. Gozney Bake", sections: [
         { intro: "Gozney / High-Heat Oven:", bullets: ["🧱 Stone Floor: 430°C–440°C", "⏱ Cook Time: 60–90 seconds", "🔥 Adjust top flame dynamically based on cornicione browning"] },
       ] },
       { title: "5. Rest & Finish", sections: [
         { bullets: ["Rest 30 seconds on a WOODEN BOARD (no wire rack)", "Finish with 1–2 fresh basil leaves and a light swirl of Frantoio Muraglia Coratina EVOO"] },
-        { intro: "Profile:", bullets: ["Hot San Marzano → melted creamy buffalo → cooked basil → intense Coratina finish"] },
+        { intro: "Profile:", bullets: ["Hot San Marzano → savoury Parmigiano Reggiano → melted creamy buffalo → cooked basil → intense Coratina finish"] },
       ] },
     ],
   },
@@ -111,7 +104,7 @@ export const RECIPES: PizzaRecipe[] = [
     postBake: "Rest 30 seconds on a wooden board, tear 90g–100g cold/room-temp Bufala directly over the hot sauce base, scatter 1–2 fresh basil leaves and finish with a light swirl of Frantoio Muraglia Coratina EVOO (Intense Fruity).",
     variations: [
       { relatedId: "bufalina-classica", relatedName: "Bufalina Classica", summary: "Post-Bake vs. Baked Buffalo Mozzarella — cold, silky contrast vs. integrated heat." },
-      { relatedId: "bufalina-de-la-casa", relatedName: "Bufalina de la Casa", summary: "Thermal contrast classic vs. sweet Datterini & 36-Month Parmigiano house special." },
+      { relatedId: "bufalina-de-la-casa", relatedName: "Bufalina de la Casa", summary: "Thermal contrast classic vs. sweet Datterini & dual-oil house special." },
     ],
     comparisonTable: BUFALINA_TRILOGY_TABLE,
     steps: [
@@ -137,38 +130,39 @@ export const RECIPES: PizzaRecipe[] = [
     id: "bufalina-de-la-casa",
     number: 4,
     name: "Bufalina de la Casa",
-    style: "House Neapolitan — Fresh Datterini, Buffalo Mozzarella & 36-Month Parmigiano",
+    style: "House Neapolitan — Fresh Datterini, Buffalo Mozzarella & Dual-Oil Finish",
     category: "classic",
     image: "https://www.rtagency.it/menu/pizzeria%20carmnella/images/doc-carmnella.jpg",
-    toppings: "100g–110g sweet Datterini tomatoes (filleted lengthwise, lightly salted, drained), 8g–10g Parmigiano Reggiano DOP 36-Month, 85g–90g Mozzarella di Bufala Campana DOP, 4–5 fresh basil leaves, Elizondo Nº3 Picual EVOO pre-bake, Barbera Lorenzo N°5 EVOO finishing swirl.",
-    menuIngredients: "Datterini tomato, Parmigiano Reggiano, buffalo mozzarella, basil, olive oil",
-    build: "House-style Neapolitan built around sweet fresh Datterini fillets, a 36-month Parmigiano umami layer, creamy buffalo mozzarella, and a Barbera Lorenzo N°5 finish. Character: sweet, rich, complex, and umami-driven.",
-    postBake: "Rest 30 seconds on a wooden board, then scatter 1–2 fresh basil leaves and finish with a 3g–4g swirl of Barbera Lorenzo N°5 EVOO (Monovarietal Nocellara del Belice DOP).",
+    toppings: "100g–110g fresh Datterini tomatoes (filleted lengthwise, lightly salted, drained), 85g–90g Mozzarella di Bufala Campana DOP, 4–5 fresh basil leaves, Elizondo Nº3 Picual EVOO pre-bake, Barbera Lorenzo N°5 EVOO finishing swirl. No hard cheese.",
+    menuIngredients: "Datterini tomato, buffalo mozzarella, basil, olive oil",
+    build: "Our flagship house Bufalina inspired by classic Naples restraint — sweet filleted Datterini tomatoes, rich Mozzarella di Bufala Campana DOP, and a smooth Barbera Lorenzo N°5 finish.",
+    postBake: "Rest 30–60 seconds on a wooden board, then scatter 1–2 fresh basil leaves and finish with a 3g–4g swirl of Barbera Lorenzo N°5 EVOO (Nocellara del Belice DOP).",
+    inspiredBy: "Inspired by Pizzeria Carmnella dal 1892 — Pizza DOC.",
     variations: [
-      { relatedId: "bufalina-classica", relatedName: "Bufalina Classica", summary: "Sweet Datterini & 36-Month Parmigiano house special vs. San Marzano classic." },
-      { relatedId: "bufalina-a-freddo", relatedName: "Bufalina a Freddo", summary: "Sweet Datterini & 36-Month Parmigiano house special vs. thermal contrast classic." },
+      { relatedId: "bufalina-classica", relatedName: "Bufalina Classica", summary: "Sweet Datterini & dual-oil house special vs. San Marzano classic." },
+      { relatedId: "bufalina-a-freddo", relatedName: "Bufalina a Freddo", summary: "Sweet Datterini & dual-oil house special vs. thermal contrast classic." },
     ],
     comparisonTable: BUFALINA_TRILOGY_TABLE,
     steps: [
-      { title: "1. Prep Datterini", sections: [
-        { bullets: ["Slice Datterini lengthwise into thin fillets", "Season lightly with fine sea salt", "Place in a sieve for 10 minutes to draw out excess juice — do not add oil"] },
+      { title: "1. Pre-Prep", sections: [
+        { bullets: ["Slice fresh Datterini tomatoes lengthwise into fillets, toss with a tiny pinch of fine sea salt, and drain in a sieve for 10 minutes", "Tear 85g–90g Mozzarella di Bufala Campana DOP into large pieces and drain thoroughly in a sieve"] },
       ] },
-      { title: "2. Drain Buffalo", sections: [
-        { bullets: ["Tear 85g–90g Mozzarella di Bufala Campana DOP into medium pieces", "Drain UNCOVERED in a sieve in the fridge for 1–2 hours", "Rest at room temperature for 30 minutes pre-bake"] },
+      { title: "2. Dough Prep", sections: [
+        { bullets: ["Hand-stretch the 280g dough ball to 30–33cm on semolina rimacinata, preserving gas in the 1.5–2cm cornicione"] },
       ] },
-      { title: "3. Stretch Dough", sections: [
-        { bullets: ["Stretch the 280g dough ball to 30cm–33cm on semolina rimacinata, preserving a soft cornicione"] },
+      { title: "3. Layer Assembly (In Exact Order)", sections: [
+        { intro: "Layer 1 — Datterini Fillets:", bullets: ["Spread 100g–110g filleted Datterini tomatoes evenly across the dough, leaving a 1.5–2cm rim clean"] },
+        { intro: "Layer 2 — Bufala DOP:", bullets: ["Distribute 85g–90g well-drained Bufala DOP pieces over the Datterini layer"] },
+        { intro: "Layer 3 — Basil:", bullets: ["Tuck 2–3 fresh basil leaves under the Bufala pieces"] },
+        { intro: "Layer 4 — Picual:", bullets: ["Apply a 2g–3g spiral micro-drizzle of Elizondo Nº3 Picual EVOO over the build"] },
       ] },
-      { title: "4. Layer Assembly", sections: [
-        { bullets: ["Spread 100g–110g drained Datterini fillets evenly, leaving a 1.5–2cm rim clear", "Grate 8g–10g Parmigiano Reggiano DOP 36-Month directly onto the tomatoes", "Arrange the drained 85g–90g Bufala DOP evenly", "Tuck 2–3 fresh basil leaves between the cheese", "Micro-drizzle 2g–3g Elizondo Nº3 Picual EVOO"] },
+      { title: "4. Gozney Bake", sections: [
+        { intro: "Gozney / High-Heat Oven:", bullets: ["🧱 Stone Floor: 430°C–440°C", "⏱ Cook Time: 60–90 seconds", "🔥 Manage top flame dynamically to allow the Datterini fillets to soften, sweeten, and blister while controlling buffalo cheese melting"] },
       ] },
-      { title: "5. Gozney Bake", sections: [
-        { intro: "Gozney / High-Heat Oven:", bullets: ["🧱 Stone Floor: 430°C–440°C", "⏱ Cook Time: 60–90 seconds", "🔥 Turn regularly and adjust top flame to prevent cheese scorching"] },
-      ] },
-      { title: "6. Rest & Finish", sections: [
-        { intro: "Rest Protocol:", bullets: ["Rest 30 seconds on a WOODEN BOARD (do NOT use a wire rack)"] },
-        { bullets: ["Scatter 1–2 fresh basil leaves and finish with a 3g–4g swirl of Barbera Lorenzo N°5 EVOO"] },
-        { intro: "Profile:", bullets: ["Sweet blistered Datterini → savory Parmigiano 36M umami → rich creamy buffalo → fresh herbal basil → buttery Lorenzo N°5 finish"] },
+      { title: "5. Rest & Finish", sections: [
+        { intro: "Rest Protocol:", bullets: ["Transfer directly to a WOODEN BOARD and rest for 30–60 seconds"] },
+        { bullets: ["Scatter 1–2 fresh basil leaves and finish with a 3g–4g swirl of Barbera Lorenzo N°5 EVOO", "Slice and serve immediately"] },
+        { intro: "Profile:", bullets: ["Sweet blistered Datterini → rich creamy buffalo → warm basil → baked Picual → buttery Lorenzo N°5 finish"] },
       ] },
     ],
   },
@@ -197,7 +191,7 @@ export const RECIPES: PizzaRecipe[] = [
         { intro: "Layer 4 — Picual:", bullets: ["Apply a 2g–3g spiral drizzle of Elizondo Nº3 Picual EVOO over the build"] },
       ] },
       { title: "3. Gozney Bake", sections: [
-        { intro: "Gozney / High-Heat Oven:", bullets: ["🪨 Stone Floor: 430°C–450°C", "🔥 Manage the top flame dynamically after launch, reducing as needed to control Pecorino browning while allowing the cornicione to develop strong leopard spotting", "⏱ Cook Time: 75–90 seconds", "🔄 Rotate regularly for an even rise, browning and leopard spotting"] },
+        { intro: "Gozney / High-Heat Oven:", bullets: ["🪨 Stone Floor: 430°C–450°C", "🔥 Manage the top flame dynamically after launch, reducing as needed to control Pecorino browning while allowing the cornicione to develop even blistering and colour", "⏱ Cook Time: 75–90 seconds", "🔄 Rotate regularly for an even rise, browning and leopard spotting"] },
       ] },
       { title: "4. Rest & Finish", sections: [
         { bullets: ["Transfer directly to a wooden board and rest for 30–60 seconds", "Distribute the remaining 2g–3g of finely grated Pecorino Romano DOP as a light snowfall over the hot pizza", "Finish with a 2g–3g swirl of Frantoio Muraglia Coratina EVOO", "Slice and serve immediately"] },
@@ -231,10 +225,10 @@ export const RECIPES: PizzaRecipe[] = [
         { intro: "Layer 2 — Garlic:", bullets: ["Scatter 4g–6g razor-thin garlic slices evenly over the tomato sauce, avoiding clumping"] },
         { intro: "Layer 3 — Oregano:", bullets: ["Rub 0.8g–1.2g wild oregano between your palms directly over the tomato and garlic"] },
         { intro: "Layer 4 — Basil:", bullets: ["Tuck 4–5 fresh basil leaves naturally into the sauce"] },
-        { intro: "Layer 5 — Picual:", bullets: ["Apply a 3g–4g spiral drizzle of Elizondo Nº3 Picual EVOO over the entire build, ensuring the garlic slices are lightly coated to protect them from scorching"] },
+        { intro: "Layer 5 — Picual:", bullets: ["Apply a 3g–4g spiral drizzle of Elizondo Nº3 Picual EVOO over the entire build, lightly coating the garlic"] },
       ] },
       { title: "4. Gozney Bake", sections: [
-        { intro: "Gozney / High-Heat Oven:", bullets: ["🪨 Stone Floor: 430°C–450°C", "🔥 Manage the top flame dynamically after launch to allow the tomato sauce to reduce and concentrate while allowing the garlic to soften and sweeten without scorching the herbs", "⏱ Cook Time: 75–90 seconds", "🔄 Rotate regularly for an even rise and leopard spotting"] },
+        { intro: "Gozney / High-Heat Oven:", bullets: ["🪨 Stone Floor: 430°C–450°C", "🔥 Manage the top flame dynamically to heat and lightly concentrate the tomato while allowing the garlic to soften and sweeten without scorching", "⏱ Cook Time: 75–90 seconds", "🔄 Rotate regularly for an even rise and leopard spotting"] },
       ] },
       { title: "5. Rest & Finish", sections: [
         { bullets: ["Transfer directly to a wooden board and rest for 30–60 seconds", "Apply a 3g–4g finishing swirl of Frantoio Muraglia Coratina EVOO across the hot pie", "Slice and serve immediately"] },
@@ -245,38 +239,38 @@ export const RECIPES: PizzaRecipe[] = [
   {
     id: "napoli",
     number: 7,
-    name: "Napolitan",
+    name: "Napoletana",
+    style: "Classic Neapolitan — San Marzano DOP, Fior di Latte, Cantabrian Anchovies, Capers & Olives",
     category: "classic",
     image: "https://italianfoodforever.com/wp-content/uploads/2015/01/napolipizza4.jpg",
-    toppings: "San Marzano tomatoes, pre-dried mozzarella strips, premium Cantabrian anchovies, Kalamata black olives (halved and pitted), rinsed capers, fresh garlic, dried wild oregano.",
-    menuIngredients: "Tomato, mozzarella, anchovies, olives, capers, garlic, oregano",
-    build: "Open the 280g dough ball to a 30–33cm disc. Spread your well-drained tomato base over the dough circle. Lay down your mozzarella matchsticks. Securely map out the anchovy fillets, olive halves, and a scattered tablespoon of rinsed capers. Finish with one garlic clove sliced paper-thin and a generous pinch of dried wild oregano.",
-    postBake: "Finish with a post-bake swirl of Barbera Lorenzo Nº5 (softens the anchovy punch with a creamy finish) or Frantoio Muraglia Coratina (for a bold, peppery kick), then serve immediately.",
+    toppings: "75g–80g hand-crushed San Marzano DOP tomatoes (well-drained), 70g–80g well-drained Fior di Latte (hand-torn), 2–3 Cantabrian anchovy fillets (broken into 1cm segments), 4g–5g rinsed salted capers, 4–6 pitted & halved Kalamata or Gaeta black olives, 0.5g–0.8g dried wild oregano, 2–3 fresh basil leaves, 2g–3g Elizondo Nº3 Picual EVOO pre-bake, 3g–4g Barbera Lorenzo Nº5 EVOO (or Frantoio Muraglia Coratina) post-bake. No hard cheese, no garlic.",
+    menuIngredients: "San Marzano DOP, Fior di Latte, Cantabrian anchovies, capers, olives, wild oregano",
+    build: "The quintessential savory Neapolitan classic — pairing San Marzano DOP, well-drained Fior di Latte, Cantabrian anchovies, Kalamata olives, rinsed capers, and wild oregano.",
+    postBake: "Transfer directly to a wooden board and rest for 30–60 seconds, then apply a 3g–4g finishing swirl of Barbera Lorenzo Nº5 EVOO (or Frantoio Muraglia Coratina) across the hot pie. Slice and serve immediately.",
+    flavorProgression: "Concentrated San Marzano → creamy Fior di Latte → savory Cantabrian anchovy umami → briny caper & olive accent → fragrant oregano → smooth Lorenzo Nº5 finish",
     videoGuide: "True Italian Savory Flavors & Anchovy Placement",
     videoUrl: "https://www.youtube.com/shorts/sekbRulg8iA",
     steps: [
-      { title: "1. Base & Portioning", sections: [
-        { bullets: ["280g dough ball, hand-stretched to a 30–33cm disc", "75g–80g crushed San Marzano DOP tomatoes, well-drained to prevent sogginess", "Spread evenly in a thin circular layer", "No spiral patterning — just uniform coverage", "1–2 cm clean cornicione border", "No seasoning or only a microscopic pinch of salt"] },
+      { title: "1. Pre-Prep", sections: [
+        { bullets: ["Drain crushed San Marzano DOP tomatoes in a fine sieve for 10 minutes", "Hand-tear Fior di Latte into rustic pieces and drain thoroughly in a sieve for 1–2 hours", "Rinse 4g–5g capers thoroughly under cold water to strip excess salt brine and pat completely dry on paper towels", "Break 2–3 Cantabrian anchovy fillets into small 1cm segments", "Pit and halve 4–6 Kalamata black olives"] },
       ] },
-      { title: "2. Mozzarella", sections: [{ bullets: ["Fior di Latte, very well-drained", "Torn irregular pieces (not matchsticks)", "Sparse distribution", "Visible tomato between pieces", "Goal: light coverage, not full melt blanket"] }] },
-      { title: "3. Anchovy (Primary Salt Source)", sections: [
-        { bullets: ["2–3 anchovy fillets max", "Placed after mozzarella", "Broken into smaller segments and distributed lightly", "No pattern, no “mapping”", "Anchovy = seasoning, not feature"] },
-        { intro: "Tip:", bullets: ["Tuck anchovy segments and thin garlic slices against the mozzarella or sauce so they melt into an umami glaze rather than burning under high heat"] },
-        { intro: "Salinity Rule:", bullets: ["Anchovies are the primary salt source — keep capers rinsed and sparse (see Step 5) so the overall salt balance doesn't tip over"] },
+      { title: "2. Dough Prep", sections: [
+        { bullets: ["Hand-stretch the 280g dough ball to 30–33cm on Caputo Semolina Rimacinata, preserving gas in the airy 1.5–2cm cornicione"] },
       ] },
-      { title: "4. Olives (Optional — Choose Instead of Capers)", sections: [{ bullets: ["4–6 black olives, pitted and halved", "Light scatter only", "OR omit entirely for stricter Naples style"] }] },
-      { title: "5. Capers (Optional — Only If No Olives)", sections: [
-        { bullets: ["1 tsp, well rinsed and dried", "Sparse distribution", "Must not overlap with anchovy clusters"] },
-        { intro: "Salinity Rule:", bullets: ["Rinse capers thoroughly under cold water to strip excess brine — unrinsed capers stacked on top of the anchovies will easily overpower the pizza's salt balance"] },
+      { title: "3. Layer Assembly (In Exact Order)", sections: [
+        { intro: "Layer 1 — San Marzano:", bullets: ["Spread 75g–80g well-drained San Marzano DOP evenly across the center, leaving a 1.5–2cm clean rim — do NOT add extra salt"] },
+        { intro: "Layer 2 — Fior di Latte:", bullets: ["Scatter 70g–80g Fior di Latte sparsely over the sauce, leaving visible tomato between pieces"] },
+        { intro: "Layer 3 — Anchovies & Herbs:", bullets: ["Distribute anchovy segments across the pie, tucking them gently against mozzarella pieces to prevent scorching", "Rub 0.5g–0.8g wild oregano between your palms over the build and add 2–3 basil leaves"] },
+        { intro: "Layer 4 — Capers & Olives:", bullets: ["Scatter rinsed capers and halved black olives in open spaces, ensuring they do not stack directly on anchovy segments"] },
+        { intro: "Layer 5 — Picual:", bullets: ["Apply a 2g–3g spiral micro-drizzle of Elizondo Nº3 Picual EVOO over the build"] },
       ] },
-      { title: "6. Garlic (Optional, Very Controlled)", sections: [
-        { bullets: ["2–4 ultra-thin slices", "Only if you want a Marinara-adjacent influence", "Should not brown or cluster"] },
-        { intro: "Tip:", bullets: ["Tuck anchovy segments and thin garlic slices against the mozzarella or sauce so they melt into an umami glaze rather than burning under high heat"] },
+      { title: "4. Gozney Bake", sections: [
+        { intro: "Gozney / High-Heat Oven:", bullets: ["🪨 Stone Floor: 430°C–450°C", "🔥 Manage the top flame dynamically after launch to allow the tomato sauce to reduce and the cheese to melt cleanly without crisping the anchovies into bitter chips", "⏱ Cook Time: 75–90 seconds", "🔄 Rotate regularly for an even rise and leopard spotting"] },
       ] },
-      { title: "7. Oregano (Style Dependent)", sections: [{ bullets: ["Pinch of dried oregano", "Only if aiming for Marinara-leaning profile", "Otherwise omit for Salvo-style balance"] }] },
-      { title: "8. Olive Oil (Final Balance Element)", sections: [
-        { intro: "Pre-Bake:", bullets: ["Micro-drizzle of Elizondo Nº3 Picual EVOO"] },
-        { intro: "Post-Bake (Choose One):", bullets: ["Barbera Lorenzo Nº5 (Nocellara del Belice DOP) — a creamy, delicate swirl that softens the anchovy punch", "Frantoio Muraglia Coratina (Intense Fruity) — for a bold, peppery kick that stands up to the anchovy and garlic"] },
+      { title: "5. Rest & Finish", sections: [
+        { bullets: ["Transfer directly to a wooden board and rest for 30–60 seconds", "Apply a 3g–4g finishing swirl of Barbera Lorenzo Nº5 EVOO (or Frantoio Muraglia Coratina) across the hot pie", "Slice and serve immediately"] },
+        { intro: "Technical Salinity Note:", bullets: ["Cantabrian anchovies serve as the primary salt source for the entire pizza — thoroughly rinsing capers under cold water and tucking anchovies into the mozzarella matrix prevents the salt balance from overpowering the palate"] },
+        { intro: "Profile:", bullets: ["Concentrated San Marzano → creamy Fior di Latte → savory Cantabrian anchovy umami → briny caper & olive accent → fragrant oregano → smooth Lorenzo Nº5 finish"] },
       ] },
     ],
   },
@@ -284,34 +278,35 @@ export const RECIPES: PizzaRecipe[] = [
     id: "diavola",
     number: 8,
     name: "Diavola",
-    style: "Margherita con Salame Piccante",
+    style: "Margherita con Salame Piccante — San Marzano DOP, Fior di Latte & Spicy Salami",
     category: "classic",
     image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTHd4NQF9AoDHLYIDv3yGqhdZq9HBRfQ8WuGZUuR5s9Vw&s=10",
-    toppings: "San Marzano tomato sauce, Fior di Latte mozzarella, Salame Piccante (Neapolitan spicy salami, Calabrian Soppressata, or pepperoni), Parmigiano-Reggiano, fresh basil, Elizondo Nº3 Picual EVOO, Frantoio Muraglia Coratina EVOO, optional chili flakes or chili oil.",
+    toppings: "75g–80g hand-crushed San Marzano DOP tomatoes + light pinch of fine sea salt, 80g–90g well-drained Fior di Latte (hand-torn), 35g–45g thinly sliced Salame Piccante (preferably Salame Napoletano; Ventricina or Soppressata Calabrese DOP as regional alternatives), 6g–8g Parmigiano Reggiano DOP (finely grated), 4–5 fresh basil leaves (split pre/post-bake), 2g–3g Elizondo Nº3 Picual EVOO pre-bake, 3g–4g Frantoio Muraglia Coratina EVOO post-bake. Optional: micro-drizzle of Calabrian chili oil.",
     menuIngredients: "Tomato, mozzarella, spicy salami, Parmigiano, basil",
-    build: "A 280g dough ball, hand-stretched to a 30–33cm disc, topped with a Margherita base and spicy cured salami — no olives required. (Quick tip: if you order this in Italy, always ask for Salame Piccante rather than \"pepperoni,\" as peperoni with one \"p\" means bell peppers in Italian!)",
-    postBake: "Post-bake, add fresh basil and a finishing swirl of Frantoio Muraglia Coratina EVOO (Intense Fruity) to complement the spicy salami, or an optional drizzle of chili-infused olive oil.",
+    build: "A fiery Neapolitan classic featuring bright San Marzano DOP, well-drained Fior di Latte, thinly sliced Salame Napoletano, and a peppery Coratina EVOO finish.",
+    postBake: "Transfer directly to a wooden board and rest for 30–60 seconds, scatter 1–2 fresh basil leaves and finish with a 3g–4g swirl of Frantoio Muraglia Coratina EVOO (and optional micro-drizzle of Calabrian chili oil). Slice and serve immediately.",
+    flavorProgression: "Bright San Marzano → creamy Fior di Latte → blistered spicy salami → toasted Parmigiano umami → peppery Coratina finish",
     steps: [
-      { title: "1. Toppings & Proportions (280g Dough Ball, 30–33cm Stretch)", sections: [
-        { bullets: ["280g dough ball, hand-stretched to a 30–33cm disc", "80g San Marzano Tomato Sauce (crushed DOP San Marzano tomatoes with 1g fine salt per 100g)", "80g–90g Fior di Latte Mozzarella (cubed or cut into strips and well-drained)", "35g–45g Salame Piccante (thinly sliced Neapolitan spicy salami, Calabrian Soppressata, or pepperoni)", "15g Parmigiano-Reggiano (finely grated)", "4–5 Fresh Basil Leaves", "Elizondo Nº3 Picual EVOO (pre-bake light drizzle)", "Frantoio Muraglia Coratina EVOO (Intense Fruity — post-bake finish)", "Dried Chili Flakes or Chili Oil (optional, for extra heat)"] },
-        { intro: "Why 35g–45g:", bullets: ["Keeping the salami to 35g–45g gives full coverage without the rendered fat pooling into excess oil on the bake"] },
+      { title: "1. Pre-Prep", sections: [
+        { bullets: ["Drain crushed San Marzano DOP tomatoes in a fine sieve for 10 minutes", "Hand-tear 80g–90g Fior di Latte into irregular rustic strips and drain in a sieve for 1–2 hours", "Thinly slice 35g–45g Salame Piccante"] },
       ] },
-      { title: "2. Prep the Cheese", sections: [
-        { bullets: ["Cut the Fior di Latte into strips and drain in a sieve for 30–60 minutes"] },
-        { intro: "Why:", bullets: ["Keeping excess moisture off the top ensures the rendered fats from the salami blend smoothly with the cheese rather than becoming watery"] },
+      { title: "2. Dough Prep", sections: [
+        { bullets: ["Hand-stretch the 280g dough ball to 30–33cm on semolina rimacinata, preserving gas in the airy 1.5–2cm cornicione"] },
       ] },
-      { title: "3. Stretch the Dough", sections: [
-        { bullets: ["Stretch your 280g dough ball using semolina to a 30–33 cm disc", "Leave an airy 1.5–2 cm cornicione"] },
+      { title: "3. Layer Assembly (In Exact Order)", sections: [
+        { intro: "Layer 1 — San Marzano:", bullets: ["Spread 75g–80g seasoned San Marzano DOP evenly across the center, leaving a 1.5–2cm clean rim"] },
+        { intro: "Layer 2 — Parmigiano Dusting:", bullets: ["Distribute 6g–8g finely grated Parmigiano Reggiano DOP directly over the tomato sauce"] },
+        { intro: "Layer 3 — Fior di Latte:", bullets: ["Scatter 80g–90g well-drained Fior di Latte strips over the tomato and Parmigiano layer"] },
+        { intro: "Layer 4 — Salame Piccante & Basil:", bullets: ["Distribute 35g–45g Salame Piccante slices evenly across the pie", "Tuck 2–3 fresh basil leaves between or under cheese/salami slices"] },
+        { intro: "Layer 5 — Picual:", bullets: ["Apply a 2g–3g spiral micro-drizzle of Elizondo Nº3 Picual EVOO over the build"] },
       ] },
-      { title: "4. Assemble", sections: [
-        { bullets: ["Spread the San Marzano tomato sauce evenly from the center outward in a spiral", "Dust with the finely grated Parmigiano-Reggiano", "Distribute the drained Fior di Latte strips across the sauce", "Lay the 35g–45g of Salame Piccante evenly across the pizza", "Add fresh basil leaves and a light drizzle of Elizondo Nº3 Picual EVOO before launching into the oven"] },
+      { title: "4. Gozney Bake", sections: [
+        { intro: "Gozney / High-Heat Oven:", bullets: ["🪨 Stone Floor: 420°C–440°C", "🔥 Dome: 450°C–480°C", "🔥 Manage the top flame dynamically after launch to allow the salami edges to render and blister while controlling cheese browning and fat release", "⏱ Cook Time: 60–75 seconds", "🔄 Rotate regularly for an even cook"] },
       ] },
-      { title: "5. Bake", sections: [
-        { intro: "Gozney / High-Heat Oven:", bullets: ["🪨 Floor: 420°C–450°C", "🔥 Air: 450°C–480°C", "🔥 Flame: turn down to LOW/MEDIUM immediately after launch to prevent burnt salami edges", "⏱ Cook time: 60–75 seconds total", "The heat crisps the edges of the salami slices, making them cup up slightly and release their spicy oil over the melted mozzarella"] },
-        { intro: "Home Oven with Pizza Steel/Stone:", bullets: ["Bake at max temp near the top heating element for 5–7 minutes until the crust is leopard-spotted and the salami edges are crisp"] },
-      ] },
-      { title: "6. Finish", sections: [
-        { bullets: ["Post-bake, add fresh basil and a finishing swirl of Frantoio Muraglia Coratina EVOO (Intense Fruity) to complement the spicy salami, or an optional drizzle of chili-infused olive oil"] },
+      { title: "5. Rest & Finish", sections: [
+        { bullets: ["Transfer directly to a wooden board and rest for 30–60 seconds", "Scatter 1–2 fresh basil leaves and finish with a 3g–4g swirl of Frantoio Muraglia Coratina EVOO (and optional micro-drizzle of Calabrian chili oil)", "Slice and serve immediately"] },
+        { intro: "Technical Moisture & Fat Note:", bullets: ["The salami provides enough rendered fat to reinforce the spicy profile during the bake — keeping the Parmigiano to 6g–8g and thoroughly draining the Fior di Latte helps maintain a balanced center without excessive surface grease"] },
+        { intro: "Profile:", bullets: ["Bright San Marzano → creamy Fior di Latte → blistered spicy salami → toasted Parmigiano umami → peppery Coratina finish"] },
       ] },
     ],
   },
@@ -319,40 +314,37 @@ export const RECIPES: PizzaRecipe[] = [
     id: "seven-stars-parma",
     number: 9,
     name: "Prosciutto e Rucola",
-    style: "Contemporary Neapolitan — Thermal & Texture Contrasts",
+    style: "Contemporary Neapolitan — Thermal & Textural Contrasts",
     category: "classic",
     image: "https://theuppercrustpizzeria.co.uk/cdn/shop/products/Parma.jpg?v=1639743529",
-    toppings: "San Marzano tomato sauce stirred with Elizondo Nº3 Picual EVOO, Mozzarella di Bufala DOP mixed with a touch of Fior di Latte (pre-bake), extra fresh Mozzarella di Bufala DOP (post-bake), paper-thin cured ham (Serrano Ham or Prosciutto), fresh wild rocket (arugula) tossed in Barbera Lorenzo Nº5, Barbera Lorenzo Nº5 finishing swirl.",
-    menuIngredients: "Tomato, mozzarella di bufala, Serrano ham or Prosciutto, arugula, olive oil",
-    build: "Hot blistered base topped with melted & fresh Bufala DOP, paper-thin cured ham (Serrano Ham or Prosciutto), fresh wild rocket, and finished with Barbera Lorenzo Nº5 EVOO.",
+    toppings: "70g–80g hand-crushed San Marzano DOP tomatoes + light pinch of fine sea salt, 50g well-drained Fior di Latte + 20g Mozzarella di Bufala DOP (pre-bake), 25g–30g fresh Mozzarella di Bufala DOP (post-bake), 35g–40g Prosciutto di Parma DOP or San Daniele DOP (post-bake), 15g–20g wild rocket tossed in 1g–2g Barbera Lorenzo Nº5 (post-bake), 10g–12g Parmigiano Reggiano DOP shavings (post-bake), 2g–3g Elizondo Nº3 Picual EVOO pre-bake, 3g–4g Barbera Lorenzo Nº5 EVOO post-bake.",
+    menuIngredients: "Tomato, mozzarella di bufala, Prosciutto di Parma, arugula, Parmigiano",
+    build: "A contemporary masterclass in thermal contrast — crisp baked crust topped sequentially with cool post-bake Bufala DOP, heat-warmed Prosciutto di Parma, peppery wild rocket, and shaved Parmigiano.",
+    postBake: "Transfer directly to a wooden board and rest for 30–40 seconds to vent excess steam, then sequentially stage the fresh Bufala DOP, Prosciutto di Parma, dressed wild rocket, and shaved Parmigiano, finishing with a 3g–4g swirl of Barbera Lorenzo Nº5 EVOO. Slice and serve immediately.",
+    flavorProgression: "Hot San Marzano → cool creamy Bufala DOP → warm relaxed Prosciutto di Parma → peppery wild rocket → sharp shaved Parmigiano → almond-smooth Lorenzo Nº5 finish",
     steps: [
-      { title: "1. Base Layer", sections: [
-        { bullets: ["San Marzano tomato sauce, thin and even", "Stir in Elizondo Nº3 Picual EVOO before spreading"] },
-        { intro: "Key idea:", bullets: ["Tomato = moisture + acidity base"] },
+      { title: "1. Pre-Prep", sections: [
+        { bullets: ["Hand-crush San Marzano DOP tomatoes and season with fine sea salt", "Combine 50g well-drained Fior di Latte and 20g Bufala DOP for the pre-bake layer", "Lightly toss 15g–20g fresh wild rocket with 1g–2g Barbera Lorenzo Nº5 in a bowl", "Shave 10g–12g Parmigiano Reggiano into thin ribbons"] },
       ] },
-      { title: "2. Cheese Mix (Pre-Bake)", sections: [
-        { bullets: ["Mozzarella di Bufala DOP mixed with a small amount of Fior di Latte", "Well-drained before mixing", "Torn and scattered evenly across the tomato base"] },
-        { intro: "Effect:", bullets: ["Fior di Latte adds structural melt and stability", "Bufala keeps the rich, creamy dairy character"] },
+      { title: "2. Dough Prep", sections: [
+        { bullets: ["Hand-stretch the 280g dough ball to 30–33cm on semolina rimacinata, preserving gas in an airy 1.5cm cornicione"] },
       ] },
-      { title: "3. Bake (Single Bake Only)", sections: [
-        { intro: "Gozney / High-Heat Oven:", bullets: ["🪨 Floor/Stone: 420°C–440°C", "🔥 Dome/Air: 450°C–480°C", "⏱ Cook time: 60–75 seconds"] },
-        { intro: "Goal:", bullets: ["A sturdy, crisp base that holds up under the fresh post-bake toppings without structural folding", "Crust fully blistered and airy", "Cheese mix melted and glossy", "Everything finishes in one bake — no flash return"] },
+      { title: "3. Layer Assembly (In Exact Order)", sections: [
+        { intro: "Layer 1 — San Marzano:", bullets: ["Spread 70g–80g seasoned San Marzano DOP evenly across the center, leaving a 1.5–2cm clean rim"] },
+        { intro: "Layer 2 — Pre-Bake Cheese:", bullets: ["Scatter the 70g Fior di Latte / Bufala mix over the tomato, leaving small gaps"] },
+        { intro: "Layer 3 — Picual:", bullets: ["Apply a 2g–3g spiral micro-drizzle of Elizondo Nº3 Picual EVOO over the build"] },
       ] },
-      { title: "4. Fresh Bufala (Post-Bake)", sections: [
-        { bullets: ["A little more fresh Mozzarella di Bufala DOP, torn", "Placed straight onto the hot, just-baked pizza"] },
-        { intro: "Effect:", bullets: ["Adds a cool, creamy contrast against the melted cheese underneath"] },
+      { title: "4. Gozney Bake", sections: [
+        { intro: "Gozney / High-Heat Oven:", bullets: ["🪨 Stone Floor: 420°C–440°C", "🔥 Dome: 450°C–480°C", "⏱ Cook Time: 60–75 seconds", "🔄 Rotate regularly until the crust is fully blistered and structured to support cold toppings"] },
       ] },
-      { title: "5. Cured Ham — Serrano / Prosciutto (Primary Cured Meat)", sections: [
-        { bullets: ["Paper-thin Serrano Ham or Prosciutto", "Draped loosely over the fresh bufala"] },
-        { intro: "Effect:", bullets: ["Fat gently relaxes from residual heat, not cooked", "Quality paper-thin cured ham's pronounced savory bite and nutty fat profile creates a superior contrast with the warm Bufala mozzarella and peppery rocket"] },
-      ] },
-      { title: "6. Rocket (Arugula)", sections: [
-        { bullets: ["Fresh wild rocket, hand-torn", "Added on top, no heat exposure"] },
-        { intro: "Tip:", bullets: ["Lightly toss the fresh wild rocket with a drop of Barbera Lorenzo Nº5 before laying it over the cured ham — the smooth, sweet almond notes of this oil perfectly balance the peppery rocket and salty ham without adding bitterness"] },
-        { intro: "Effect:", bullets: ["Fresh peppery lift against warm dairy and ham"] },
-      ] },
-      { title: "7. Olive Oil Finish", sections: [
-        { bullets: ["Finishing swirl of Barbera Lorenzo Nº5 (Nocellara del Belice)"] },
+      { title: "5. Rest & Sequential Post-Bake Staging", sections: [
+        { bullets: ["Transfer directly to a wooden board and rest for 30–40 seconds to vent excess steam"] },
+        { intro: "Stage 1 — Fresh Bufala:", bullets: ["Distribute 25g–30g fresh room-temperature Bufala DOP separately across the hot melted base"] },
+        { intro: "Stage 2 — Prosciutto:", bullets: ["Drape 35g–40g paper-thin Prosciutto di Parma loosely over the pizza, allowing the delicate fat to gently warm and relax from residual heat without cooking"] },
+        { intro: "Stage 3 — Rocket:", bullets: ["Mound the dressed wild rocket directly over the prosciutto"] },
+        { intro: "Stage 4 — Parmigiano & Finishing Oil:", bullets: ["Scatter shaved Parmigiano ribbons over the rocket and finish with a 3g–4g swirl of Barbera Lorenzo Nº5 EVOO", "Slice and serve immediately"] },
+        { intro: "Technical Thermal Note:", bullets: ["Resting the base for 30–40 seconds before staging prevents steam wilting — draping the Prosciutto di Parma loosely allows the cured fat to warm and relax naturally from residual surface heat, softening its texture and releasing aromatic volatile oils without cooking or toughening the meat"] },
+        { intro: "Profile:", bullets: ["Hot San Marzano → cool creamy Bufala DOP → warm relaxed Prosciutto di Parma → peppery wild rocket → sharp shaved Parmigiano → almond-smooth Lorenzo Nº5 finish"] },
       ] },
     ],
   },
@@ -360,47 +352,36 @@ export const RECIPES: PizzaRecipe[] = [
     id: "parma-bianca",
     number: 10,
     name: "Ibérica Bianca",
-    style: "Contemporary Neapolitan White Base — Ibérico Fat & Creamy Dairy",
+    style: "Contemporary Neapolitan White Base — Ibérico Fat, Ricotta & Lorenzo N°5",
     category: "classic",
     image: "https://ginopizzaovens.com/cdn/shop/articles/gino-pizza-fior-latte-parma-ham-rocket-parmesan.jpg?v=1683056519&width=1500",
-    toppings: "Fior di Latte cheese, ricotta, Jamón de Cebo Ibérico (Iberico ham), rocket (arugula), Parmigiano-Reggiano, Barbera Lorenzo Nº5 EVOO.",
+    toppings: "70g well-drained Fior di Latte + 50g fresh Ricotta di Bufala (pre-bake, 120g total), 35g–40g Jamón Ibérico de Cebo or de Bellota (room temperature, post-bake), 15g wild rocket tossed in 1g–2g Barbera Lorenzo N°5 (post-bake), 10g–12g Parmigiano Reggiano DOP shavings (post-bake), 2g Elizondo Nº3 Picual EVOO pre-bake, 3g–4g Barbera Lorenzo N°5 EVOO post-bake. Strictly no tomato sauce.",
     menuIngredients: "Mozzarella, ricotta, Iberico ham, arugula, Parmigiano",
-    build: "A luxurious white pizza with a Fior di Latte and fresh Ricotta base, topped post-bake with paper-thin Jamón de Cebo Ibérico, fresh wild rocket, Parmigiano-Reggiano, and finished with Barbera Lorenzo Nº5 EVOO.",
+    build: "A magnificent white base pie featuring creamy Fior di Latte, dollops of fresh Ricotta di Bufala, room-temperature Jamón Ibérico, wild rocket, shaved Parmigiano, and buttery Lorenzo N°5.",
+    postBake: "Transfer directly to a wooden board and rest for 30 seconds to vent steam, then sequentially stage the room-temperature Jamón Ibérico, dressed wild rocket, and shaved Parmigiano, finishing with a 3g–4g swirl of Barbera Lorenzo N°5 EVOO. Slice and serve immediately.",
+    flavorProgression: "Creamy melted Fior di Latte → milky Ricotta di Bufala → warm nutty Ibérico fat → peppery wild rocket → sharp shaved Parmigiano → almond-smooth Lorenzo N°5 finish",
     steps: [
-      { title: "1. Dough", sections: [
-        { bullets: ["Neapolitan-style dough (00 flour, well-fermented, elastic)", "280 g dough ball (default)", "Stretch to 30–33 cm", "Light, airy cornicione", "Do not degas edge gas"] },
-        { intro: "Key idea:", bullets: ["Air = oven spring + structure for dairy + ham balance"] },
+      { title: "1. Pre-Prep", sections: [
+        { bullets: ["Drain 50g fresh Ricotta di Bufala in a fine sieve for 30 minutes", "Hand-tear 70g Fior di Latte and drain thoroughly", "Bring 35g–40g Jamón Ibérico to room temperature before assembly so the delicate intramuscular fat softens and releases its aroma upon contact with the hot base", "Lightly toss 15g fresh wild rocket with 1g–2g Barbera Lorenzo N°5 in a bowl", "Shave 10g–12g Parmigiano Reggiano into thin ribbons"] },
       ] },
-      { title: "2. Base (Bianca Foundation)", sections: [
-        { bullets: ["No tomato sauce", "No olive oil under cheese (Neapolitan standard)", "Optional: tiny pinch of fine sea salt only"] },
-        { intro: "Key idea:", bullets: ["Clean dough expression — dairy must define flavour, not fat or tomato"] },
+      { title: "2. Dough Prep", sections: [
+        { bullets: ["Hand-stretch 280g dough ball to 30–33cm on semolina rimacinata, preserving gas in an airy 1.5cm cornicione"] },
       ] },
-      { title: "3. Fior di Latte & Ricotta (Pre-Bake Application)", sections: [
-        { bullets: ["Well-drained Fior di Latte", "Torn irregular pieces (not uniform cubes)", "Small spaced dollops of ricotta", "Even but light distribution", "Leave small gaps for melt flow"] },
-        { intro: "Effect:", bullets: ["Melts directly in oven", "Ricotta adds creamy, milky pockets", "Becomes integrated dairy layer", "Avoids post-bake reconstruction"] },
+      { title: "3. Layer Assembly (In Exact Order)", sections: [
+        { intro: "Layer 1 — Fior di Latte:", bullets: ["Scatter 70g well-drained Fior di Latte across the naked dough, leaving small gaps (no tomato sauce)"] },
+        { intro: "Layer 2 — Ricotta Dollops:", bullets: ["Apply 50g drained Ricotta di Bufala in 5–8 small, spaced dollops over the Fior di Latte"] },
+        { intro: "Layer 3 — Picual:", bullets: ["Apply a light 2g spiral micro-drizzle of Elizondo Nº3 Picual EVOO over the build"] },
       ] },
-      { title: "4. Bake (Single Cycle Only)", sections: [
-        { intro: "Gozney / High-Heat Oven:", bullets: ["🪨 Floor/Stone: 420°C–440°C", "🔥 Air/Dome: 450°C–480°C", "⏱ Cook time: 60–75 seconds"] },
-        { intro: "Goal:", bullets: ["Full bake of dough", "Full melt of Fior di Latte in-oven", "Light blistering on cornicione", "Slight browning on exposed cheese edges"] },
-        { intro: "Critical rule:", bullets: ["No second oven entry — everything must finish in one clean single-bake cycle"] },
+      { title: "4. Gozney Bake", sections: [
+        { intro: "Gozney / High-Heat Oven:", bullets: ["🪨 Stone Floor: 420°C–440°C", "🔥 Dome: 450°C–480°C", "⏱ Cook Time: 60–75 seconds", "🔄 Rotate regularly until the crust is fully blistered, the Fior di Latte is melted and glossy, and the ricotta dollops are set"] },
       ] },
-      { title: "5. Post-Bake Ibérico Ham Layer", sections: [
-        { bullets: ["Jamón de Cebo Ibérico (Iberico ham)", "Paper-thin slices", "Draped loosely over hot mozzarella"] },
-        { intro: "Tip:", bullets: ["Bring Jamón de Cebo Ibérico to room temperature before topping — the low melting point of Ibérico fat allows it to turn translucent and release its nutty aroma instantly upon contact with the hot ricotta base"] },
-        { intro: "Effect:", bullets: ["Fat softens from residual heat", "Salt blooms across warm dairy", "Texture remains silk-like, not cooked"] },
-      ] },
-      { title: "6. Rocket (Post-Bake)", sections: [
-        { bullets: ["Fresh wild rocket (arugula)", "Added immediately after oven exit", "Hand-torn, loose scatter"] },
-        { intro: "Effect:", bullets: ["Peppery freshness", "Cuts dairy richness", "Adds temperature contrast (hot base / cold greens)"] },
-      ] },
-      { title: "7. Parmigiano Finish", sections: [
-        { bullets: ["Freshly grated or shaved Parmigiano-Reggiano", "Light, even dusting over entire pizza"] },
-        { intro: "Effect:", bullets: ["Umami lift", "Subtle salt structure", "Integrates prosciutto + dairy profile"] },
-      ] },
-      { title: "8. Olive Oil Finish", sections: [
-        { bullets: ["Barbera Lorenzo Nº5 (Monovarietal Nocellara del Belice) — required post-bake finishing EVOO", "Final light drizzle only"] },
-        { intro: "Why:", bullets: ["Its sweet, buttery, low-bitterness profile complements the delicate ricotta and Ibérico fat without overpowering them"] },
-        { intro: "Effect:", bullets: ["Aromatic finish", "Softens salt edges", "Adds shine and perfume"] },
+      { title: "5. Rest & Sequential Post-Bake Staging", sections: [
+        { bullets: ["Transfer directly to a wooden board and rest for 30 seconds to vent steam"] },
+        { intro: "Stage 1 — Jamón Ibérico:", bullets: ["Drape 35g–40g room-temperature Jamón Ibérico loosely over the hot ricotta base, allowing the oleic-rich fat to soften and turn translucent from residual heat"] },
+        { intro: "Stage 2 — Rocket:", bullets: ["Mound the dressed wild rocket directly over the Ibérico ham"] },
+        { intro: "Stage 3 — Parmigiano & Finishing Oil:", bullets: ["Scatter shaved Parmigiano ribbons over the rocket and finish with a 3g–4g swirl of Barbera Lorenzo N°5 EVOO", "Slice and serve immediately"] },
+        { intro: "Technical Fat & Thermal Note:", bullets: ["Bringing Jamón Ibérico to room temperature before staging helps achieve the intended texture — the high proportion of unsaturated oleic fat softens readily and becomes more translucent from residual heat, releasing its nutty aromatics without altering its cured texture"] },
+        { intro: "Profile:", bullets: ["Creamy melted Fior di Latte → milky Ricotta di Bufala → warm nutty Ibérico fat → peppery wild rocket → sharp shaved Parmigiano → almond-smooth Lorenzo N°5 finish"] },
       ] },
     ],
   },
@@ -467,37 +448,34 @@ export const RECIPES: PizzaRecipe[] = [
     id: "quattro-formaggi",
     number: 13,
     name: "Quattro Formaggi",
-    style: "Classic Neapolitan — Pizza Bianca",
+    style: "Classic Neapolitan Pizza Bianca — Fior di Latte, Ricotta, Gorgonzola Dolce & Parmigiano",
     category: "classic",
     image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQib4tBZbanA4_Cd1takByQB8S_KSC4VKJpP0-Tey91vQ&s=10",
-    toppings: "Fior di Latte mozzarella, ricotta, Gorgonzola Dolce DOP, Parmigiano-Reggiano, Barbera Lorenzo Nº5 EVOO, optional fresh basil, optional wildflower honey & Belazu White Truffle EVOO.",
+    toppings: "15g Parmigiano Reggiano DOP (finely grated, dusted on dough), 55g–60g Fior di Latte (hand-torn, drained 1+ hour), 30g Ricotta di Bufala or fresh cow's milk ricotta (loosened, dolloped), 20g–25g Gorgonzola DOP Dolce (crumbled), 2g Elizondo Nº3 Picual EVOO pre-bake, 3g–4g Barbera Lorenzo N°5 EVOO post-bake, 1–2 fresh basil leaves (optional). Optional gourmet finish: wildflower honey micro-drizzle + 1–2 drops Belazu White Truffle EVOO. Strictly no tomato sauce.",
     menuIngredients: "Mozzarella, ricotta, gorgonzola, Parmigiano",
-    build: "The classic Neapolitan Quattro Formaggi is a white pizza (pizza bianca) engineered to balance four distinct cheese profiles: a structural melting base (Fior di Latte), a creamy mild accent (Ricotta), a sharp salty kick (Parmigiano-Reggiano), and a rich, spicy bite (Gorgonzola).",
-    postBake: "Finish with a fresh basil leaf and a delicate swirl of Barbera Lorenzo Nº5 (Nocellara del Belice DOP) — its sweet, buttery, low-bitterness finish unifies the blue cheese and rich dairy. Optional gourmet finish: a touch of wildflower honey and 1–2 drops of Belazu White Truffle EVOO.",
+    build: "A classic Neapolitan white benchmark — pairing a toasted Parmigiano base, melted Fior di Latte, milky Ricotta dollops, Gorgonzola Dolce pockets, and a smooth Lorenzo N°5 finish.",
+    postBake: "Transfer directly to a wooden board and rest for 30 seconds to allow the melted cheeses to stabilize, then finish with 1–2 fresh basil leaves and a 3g–4g swirl of Barbera Lorenzo N°5 EVOO. Optional: apply a micro-drizzle of wildflower honey and white truffle oil. Slice and serve immediately.",
+    flavorProgression: "Toasted Parmigiano crust → creamy melted Fior di Latte → milky ricotta pockets → rich Gorgonzola Dolce accent → almond-smooth Lorenzo N°5 finish",
     steps: [
-      { title: "1. Toppings & Proportions (280g Dough Ball, 30–33cm Stretch)", sections: [
-        { bullets: ["280g dough ball, hand-stretched to a 30–33cm disc", "50g–60g Fior di Latte Mozzarella (cubed or cut into strips)", "30g Ricotta Cheese (fresh cow's milk ricotta)", "20g–25g Gorgonzola Dolce DOP (for smooth, high-heat melting)", "15g Parmigiano-Reggiano (freshly, finely grated)", "Barbera Lorenzo Nº5 EVOO (post-bake finish)", "Fresh Basil leaves (optional)"] },
-        { intro: "Total:", bullets: ["~125g combined cheese — proportioned for even, high-heat melting without any single cheese overpowering the others"] },
+      { title: "1. Pre-Prep", sections: [
+        { bullets: ["Tear 55g–60g Fior di Latte into rustic strips and drain in a sieve for at least 1 hour", "Loosen 30g fresh ricotta in a small bowl with a tiny splash of water or oil until smooth", "Finely grate 15g Parmigiano Reggiano DOP", "Portion 20g–25g Gorgonzola DOP Dolce into small, discrete nuggets"] },
       ] },
-      { title: "2. Prep the Fior di Latte & Ricotta", sections: [
-        { bullets: ["Cut the Fior di Latte into strips or cubes and drain for at least 30–60 minutes in a sieve", "Whisk or loosen the ricotta in a small bowl with a tiny splash of olive oil or water so it's smooth and easy to dollop"] },
+      { title: "2. Dough Prep", sections: [
+        { bullets: ["Hand-stretch 280g dough ball to 30–33cm on semolina rimacinata, preserving gas in an airy 1.5–2cm cornicione"] },
       ] },
-      { title: "3. Stretch the Base", sections: [
-        { bullets: ["Stretch your 280g dough ball on semolina to a 30–33cm disc", "Leave a generous cornicione"] },
+      { title: "3. Layer Assembly (In Exact Order)", sections: [
+        { intro: "Layer 1 — Parmigiano Base Dusting:", bullets: ["Dust 15g finely grated Parmigiano Reggiano directly across the raw dough — placing hard cheese directly on the dough creates a savory, toasted layer"] },
+        { intro: "Layer 2 — Fior di Latte:", bullets: ["Distribute 55g–60g drained Fior di Latte strips evenly over the Parmigiano, leaving small gaps"] },
+        { intro: "Layer 3 — Ricotta & Gorgonzola Accents:", bullets: ["Drop 4–5 small dollops of smoothed ricotta and 4–5 crumbled nuggets of Gorgonzola Dolce into open spaces across the base"] },
+        { intro: "Layer 4 — Picual:", bullets: ["Apply a light 2g spiral micro-drizzle of Elizondo Nº3 Picual EVOO over the build"] },
       ] },
-      { title: "4. Layer the Cheeses", sections: [
-        { intro: "Base Layer:", bullets: ["Dust the stretched dough directly with the finely grated Parmigiano-Reggiano", "Placing the hard cheese directly on the dough creates an aromatic, toasted crust layer"] },
-        { intro: "Melt Layer:", bullets: ["Distribute the Fior di Latte evenly over the base"] },
-        { intro: "Accent Layer:", bullets: ["Drop small, spaced-out dollops of Ricotta and crumbled nuggets of Gorgonzola Dolce across the top using two spoons", "Keeping Gorgonzola in isolated clusters prevents its bold flavor from overpowering every single bite"] },
+      { title: "4. Gozney Bake", sections: [
+        { intro: "Gozney / High-Heat Oven:", bullets: ["🪨 Stone Floor: 430°C–450°C", "🔥 Dome: 450°C–480°C", "🔥 Manage the flame dynamically after launch, reducing it as needed to control browning and prevent excessive cheese fat separation", "⏱ Cook Time: 60–75 seconds", "🔄 Rotate regularly until the crust develops even blistering and colour and the cheeses are bubbling and integrated"] },
       ] },
-      { title: "5. Bake", sections: [
-        { intro: "Gozney / High-Heat Oven:", bullets: ["🪨 Floor/Stone: 430°C–450°C", "🔥 Dome: 450°C–480°C", "🔥 Flame: turn down to LOW upon launch to prevent cheese separation", "⏱ Cook time: 60–75 seconds total"] },
-        { intro: "Home Oven with Steel/Stone:", bullets: ["Bake near the top heating element for 5–7 minutes until the cheeses are bubbling and the crust is deeply golden"] },
-        { intro: "Watch closely:", bullets: ["Cheese-only pizzas burn slightly faster than tomato-sauced bases"] },
-      ] },
-      { title: "6. Finish", sections: [
-        { bullets: ["Finish with a fresh basil leaf and a delicate swirl of Barbera Lorenzo Nº5 (Nocellara del Belice DOP) — its smooth, sweet, buttery finish unifies the blue cheese and rich dairy without overpowering them"] },
-        { intro: "Optional Gourmet Finish:", bullets: ["Drizzle post-bake with a touch of wildflower honey and 1–2 drops of Belazu White Truffle EVOO"] },
+      { title: "5. Rest & Finish", sections: [
+        { bullets: ["Transfer directly to a wooden board and rest for 30 seconds to allow the melted cheeses to stabilize", "Finish with 1–2 fresh basil leaves and a 3g–4g swirl of Barbera Lorenzo N°5 EVOO", "Optional: apply micro-drizzle of wildflower honey and white truffle oil", "Slice and serve immediately"] },
+        { intro: "Technical Moisture & Fat Note:", bullets: ["Dusting Parmigiano Reggiano directly onto the naked dough creates an anchor layer that helps absorb moisture during baking and develops a toasted savoury base. Gorgonzola Dolce is used rather than Gorgonzola Piccante for its softer, creamier texture and gentler blue-cheese profile"] },
+        { intro: "Profile:", bullets: ["Toasted Parmigiano crust → creamy melted Fior di Latte → milky ricotta pockets → rich Gorgonzola Dolce accent → almond-smooth Lorenzo N°5 finish"] },
       ] },
     ],
   },
@@ -540,40 +518,38 @@ export const RECIPES: PizzaRecipe[] = [
     id: "ripieno-calzone",
     number: 15,
     name: "Ripieno (Calzone)",
-    style: "Folded Neapolitan Calzone — Ricotta, Fior di Latte & Salame",
+    style: "Classic Folded Neapolitan — Creamed Ricotta, Fior di Latte & Salame",
     category: "classic",
     image: "https://media-cdn.tripadvisor.com/media/photo-s/11/91/05/29/calzone-al-forno-ripieno.jpg",
-    toppings: "Interior: fresh ricotta, Fior di Latte mozzarella, Salame di Mugnano del Cardinale, coarsely ground black pepper. Exterior: San Marzano tomato sauce (Agro Sarnese-Nocerino DOP), Parmigiano-Reggiano DOP aged 24 months, Elizondo Nº3 Picual EVOO (pre-bake), Frantoio Muraglia or Barbera Lorenzo Nº5 EVOO (post-bake), fresh basil.",
+    toppings: "Interior (160g): 60g fresh Ricotta di Bufala or cow's milk ricotta (whisked smooth), 60g Fior di Latte (cubed, drained), 40g Salame di Mugnano del Cardinale or Salame Napoletano (diced), 0.5g freshly cracked black pepper. Exterior: 50g–60g hand-crushed San Marzano DOP, 15g Parmigiano Reggiano DOP 24M (grated), 2g Elizondo Nº3 Picual EVOO (pre-bake), 3g–4g Barbera Lorenzo Nº5 EVOO (post-bake), 2–3 fresh basil leaves.",
     menuIngredients: "Ricotta, mozzarella, salami, tomato, Parmigiano, basil",
-    build: "A folded calzone built around a creamy ricotta and Fior di Latte filling studded with diced Salame di Mugnano del Cardinale and cracked black pepper. The 280g dough ball is stretched thin and even to 30–32 cm (no built-up cornicione, since the whole edge is folded and sealed), filled on one half, folded into a crescent and crimped tight. The exterior is finished with crushed San Marzano tomato, grated Parmigiano-Reggiano and a pre-bake drizzle of Elizondo Nº3 Picual before baking, then a fresh basil leaf and a final post-bake swirl of Frantoio Muraglia or Barbera Lorenzo Nº5 right out of the oven.",
-    postBake: "Finish with a fresh basil leaf and a final post-bake swirl of Frantoio Muraglia (spicy, peppery kick) or Barbera Lorenzo Nº5 (smooth, velvety finish) right out of the oven.",
+    build: "A classic folded Neapolitan calzone — packed with peppered ricotta cream, Fior di Latte, and diced Salame, dressed externally with San Marzano DOP, Parmigiano, and Lorenzo N°5.",
+    postBake: "Transfer directly to a wooden board and rest for 60 seconds to allow internal steam pressure to equalize and fillings to set. Top with 2–3 fresh basil leaves and finish with a 3g–4g swirl of Barbera Lorenzo N°5 EVOO across the warm tomato exterior. Slice and serve immediately.",
+    flavorProgression: "Tangy exterior San Marzano & Parmigiano → golden baked crust → velvety black-peppered ricotta → melted Fior di Latte → savory diced Salame bite → smooth Lorenzo N°5 finish",
     steps: [
-      { title: "1. Interior Filling & Exterior Topping (Per 280g Dough Ball)", sections: [
-        { intro: "The Interior Filling:", bullets: ["60g Fresh Ricotta (whisked until creamy)", "60g Fior di Latte (cubed and thoroughly drained)", "40g Salame di Mugnano del Cardinale (diced into small cubes or thin strips)", "1/2 tsp Coarsely Ground Black Pepper (Pepe nero)"] },
-        { intro: "The Exterior Topping:", bullets: ["50g–60g Pomodoro San Marzano dell'Agro Sarnese-Nocerino DOP (crushed)", "15g Parmigiano-Reggiano DOP 24 mesi (finely grated)", "Elizondo Nº3 Picual EVOO (pre-bake exterior drizzle)", "Frantoio Muraglia or Barbera Lorenzo Nº5 EVOO (post-bake finish)", "Fresh Basil leaves"] },
+      { title: "1. Pre-Prep", sections: [
+        { bullets: ["Whisk 60g fresh ricotta with a small pinch of fine sea salt and 0.5g freshly cracked black pepper until smooth and velvety", "Cube 60g Fior di Latte into small 1cm pieces and drain in a sieve for at least 1 hour", "Dice 40g Salame into small 0.5cm cubes"] },
       ] },
-      { title: "2. Prep the Ricotta Cream", sections: [
-        { bullets: ["In a bowl, whisk the fresh ricotta with a pinch of salt and the freshly cracked black pepper until smooth"] },
+      { title: "2. Dough Prep", sections: [
+        { bullets: ["Hand-stretch 280g dough ball to an even 30–32cm disc on semolina rimacinata", "Do NOT push gas into a cornicione rim — keep the thickness uniform across the entire sheet"] },
       ] },
-      { title: "3. Stretch the Dough", sections: [
-        { bullets: ["Stretch your 280g dough ball on semolina to a 30–32 cm round", "Keep the thickness even — do not build a large cornicione since the entire edge will be folded and sealed"] },
+      { title: "3. Interior Layering & Sealing", sections: [
+        { intro: "Step A — Ricotta Cream:", bullets: ["Spread 60g whisked ricotta smoothly across the bottom half (crescent) of the dough, leaving a clean 2cm border around the edge"] },
+        { intro: "Step B — Cheese & Cured Meat:", bullets: ["Scatter 60g cubed Fior di Latte and 40g diced Salame evenly across the ricotta layer"] },
+        { intro: "Step C — Fold & Crimp:", bullets: ["Lightly moisten the clean 2cm border with water", "Fold the top empty half over the filling to form a crescent", "Press and crimp the edges firmly to form a firmly sealed edge"] },
+        { intro: "Step D — Steam Vent:", bullets: ["Prick a single, tiny steam release hole at the top center of the calzone"] },
       ] },
-      { title: "4. Fill One Half (Bottom Crescent)", sections: [
-        { bullets: ["Spread the creamed ricotta smoothly over one half of the dough disc, leaving a 2 cm clean border around the edge", "Scatter the drained Fior di Latte and diced Salame di Mugnano del Cardinale evenly over the ricotta"] },
+      { title: "4. Exterior Dressing", sections: [
+        { bullets: ["Spread 50g–60g crushed San Marzano DOP evenly across the top exterior of the sealed calzone", "Dust finely with 15g Parmigiano Reggiano DOP 24M and apply a 2g spiral micro-drizzle of Elizondo Nº3 Picual EVOO over the top"] },
       ] },
-      { title: "5. Fold & Seal", sections: [
-        { bullets: ["Fold the empty half of the dough over the filled half to form a crescent shape", "Press and crimp the border firmly to seal, preventing the filling from leaking during the bake"] },
-        { intro: "Tip:", bullets: ["Lightly moisten the clean 2cm border with water before folding into a crescent, then press and crimp tightly to ensure an airtight seal"] },
-        { intro: "Steam Tip:", bullets: ["Prick a tiny steam vent at the top center of the calzone before spreading the exterior tomato sauce"] },
+      { title: "5. Gozney Bake", sections: [
+        { intro: "Gozney / High-Heat Oven:", bullets: ["🪨 Stone Floor: 380°C–400°C (lower floor temp is required to melt interior fillings without burning the dough)", "🔥 Manage flame dynamically after launch, keeping top flame LOW/MEDIUM", "⏱ Cook Time: 100–120 seconds", "🔄 Rotate frequently until the exterior is deeply golden and blistered and the interior is fully melted and hot"] },
       ] },
-      { title: "6. Exterior Topping", sections: [
-        { bullets: ["Spread the crushed San Marzano tomato sauce over the top of the sealed calzone", "Dust with finely grated Parmigiano-Reggiano DOP 24 mesi", "Add a light pre-bake drizzle of Elizondo Nº3 Picual EVOO over the exterior"] },
-      ] },
-      { title: "7. Bake", sections: [
-        { intro: "Gozney / High-Heat Oven:", bullets: ["🪨 Stone: 380°C–400°C (lower floor temp required to cook the internal filling through without scorching the exterior)", "🔥 Flame: turn to MINIMUM immediately upon launch", "⏱ Cook time: 100–120 seconds total, with frequent turns, until the exterior is deeply golden and blistered and the interior filling is fully melted"] },
-      ] },
-      { title: "8. Finish", sections: [
-        { bullets: ["Finish with a fresh basil leaf and a final post-bake swirl of Frantoio Muraglia (Intense Fruity, for a spicy/peppery kick) or Barbera Lorenzo Nº5 (for a smooth, velvety finish) right out of the oven"] },
+      { title: "6. Rest & Post-Bake Finish", sections: [
+        { bullets: ["Transfer directly to a wooden board and rest for 60 seconds to allow the internal steam pressure to equalize and fillings to set"] },
+        { bullets: ["Top with 2–3 fresh basil leaves and finish with a 3g–4g swirl of Barbera Lorenzo N°5 EVOO across the warm tomato exterior", "Slice and serve immediately"] },
+        { intro: "Technical Thermal Note:", bullets: ["Calzones act as thermal insulators — target a lower stone temperature of 380°C–400°C for 100–120 seconds in your Gozney to allow heat to penetrate through the double dough fold without scorching the exterior. Resting on a wooden board for 60 seconds helps prevent hot ricotta blowout upon cutting"] },
+        { intro: "Profile:", bullets: ["Tangy exterior San Marzano & Parmigiano → golden baked crust → velvety black-peppered ricotta → melted Fior di Latte → savory diced Salame bite → smooth Lorenzo N°5 finish"] },
       ] },
     ],
   },
@@ -581,54 +557,34 @@ export const RECIPES: PizzaRecipe[] = [
     id: "double-pepperoni-hot-honey",
     number: 16,
     name: "Double Pepperoni & Hot Honey",
-    style: "Modern Crowd-Pleaser",
+    style: "Modern Crowd-Pleaser — Cup-and-Char, Salame Piccante, Provolone & Calabrian Honey",
     category: "innovative",
     image: "https://coolfooddude.com/wp-content/uploads/2020/12/Double-Pepperoni-and-honey-PIzza.jpg",
-    toppings: "San Marzano tomato sauce, Elizondo Nº3 Picual EVOO (pre-bake), low-moisture mozzarella, aged provolone, cup-and-char pepperoni, spicy dry-cured salami (piccante salame), Calabrian hot honey, fermented chili vinegar, flaky sea salt, Frantoio Muraglia EVOO (post-bake).",
+    toppings: "60g–70g hand-crushed San Marzano DOP tomatoes + light pinch of fine sea salt, 70g well-drained Fior di Latte (coarsely torn/shredded), 15g aged Provolone Piccante (coarsely grated), 35g cup-and-char pepperoni, 20g thinly sliced spicy dry-cured Salame Piccante, 2g–3g Elizondo Nº3 Picual EVOO pre-bake, 10g–12g warm Calabrian hot honey, 3–5 drops fermented chili vinegar, micro-pinch Maldon flaky sea salt, 2g Frantoio Muraglia Coratina EVOO post-bake. No basil.",
     menuIngredients: "Tomato, mozzarella, provolone, pepperoni, hot honey",
-    build: "Double-layer cup-and-char pepperoni over a mozzarella/provolone blend, finished post-bake with chili-infused honey and a whisper of acid lift.",
+    build: "A modern Neapolitan-style crowd-pleaser featuring a crisp dual-tier cured-meat architecture, aged provolone, warm Calabrian hot honey, and a precise fermented-chili vinegar lift.",
+    postBake: "Transfer directly to a wooden board and rest for 30 seconds, drizzle 10g–12g warm Calabrian hot honey rapidly across the pizza (concentrating slightly over the pepperoni cups), apply 3–5 tiny drops of fermented chili vinegar, add a tiny pinch of Maldon flaky sea salt, then finish with 2g Frantoio Muraglia Coratina EVOO. Slice and serve immediately.",
+    flavorProgression: "Bright San Marzano → nutty melted Provolone Piccante → blistered cup-and-char pepperoni & spicy salami → sweet Calabrian honey heat → subtle fermented-chili acidity → peppery Coratina finish",
     steps: [
-      { title: "1. Dough", sections: [
-        { bullets: ["Neapolitan-style dough with 24–48 hour fermentation", "280 g dough ball (standard)", "63–65% hydration", "Hand-stretched to 30–32 cm", "Well-developed but extensible gluten network", "Preserve rim gas during opening"] },
-        { intro: "Key idea:", bullets: ["Gluten network must be well developed to support the fat load of the double pepperoni layers and the provolone/mozzarella blend while retaining the lightness of modern Neapolitan pizza", "Slightly stronger structure than a Margherita dough"] },
+      { title: "1. Pre-Prep", sections: [
+        { bullets: ["Hand-crush 60g–70g San Marzano DOP tomatoes and season lightly with fine sea salt", "Combine 70g well-drained Fior di Latte with 15g aged Provolone Piccante, keeping pieces relatively coarse so they melt without forming a dense blanket", "Prepare 35g cup-and-char pepperoni and 20g spicy dry-cured Salame Piccante in thin slices", "Warm Calabrian Hot Honey gently until fluid enough for a controlled post-bake drizzle"] },
       ] },
-      { title: "2. Tomato Base", sections: [
-        { bullets: ["San Marzano tomatoes, lightly crushed by hand", "55–65 g per pizza", "Thin, even application", "1.5–2 cm clean border", "Fine sea salt only", "Micro-drizzle of Elizondo Nº3 Picual EVOO over the tomato base"] },
-        { intro: "Key idea:", bullets: ["Acidity should remain present but never dominate", "Tomato acts as a freshness layer beneath the pepperoni fat"] },
+      { title: "2. Dough Prep", sections: [
+        { bullets: ["Hand-stretch the 280g dough ball to 30–32cm on semolina rimacinata, preserving gas in an airy 1.5cm cornicione while keeping the center thin enough to support the topping load"] },
       ] },
-      { title: "3. Cheese Foundation", sections: [
-        { intro: "Mozzarella Blend:", bullets: ["80% low-moisture mozzarella", "20% aged provolone", "Cut into thin matchsticks and mixed together", "Apply a light, even layer with small gaps left visible"] },
-        { intro: "Effect:", bullets: ["Mozzarella provides creaminess", "Provolone contributes nutty depth and superior browning", "Blend prevents the pizza from tasting one-dimensional"] },
+      { title: "3. Layer Assembly (In Exact Order)", sections: [
+        { intro: "Layer 1 — San Marzano:", bullets: ["Spread 60g–70g San Marzano sauce evenly across the center, leaving a 1.5–2cm clean rim"] },
+        { intro: "Layer 2 — Cheese Foundation:", bullets: ["Scatter the 70g Fior di Latte / 15g Provolone Piccante blend evenly across the tomato, leaving small gaps"] },
+        { intro: "Layer 3 — Dual Cured Meat:", bullets: ["Distribute 35g cup-and-char pepperoni across the cheese", "Offset 20g Salame Piccante over the first layer rather than fully overlapping it"] },
+        { intro: "Layer 4 — Picual:", bullets: ["Apply a 2g–3g spiral micro-drizzle of Elizondo Nº3 Picual EVOO over the build"] },
       ] },
-      { title: "4. Double Pepperoni Architecture", sections: [
-        { intro: "Layer One:", bullets: ["Premium cup-and-char pepperoni", "Tight overlapping coverage across the entire pizza"] },
-        { intro: "Layer Two:", bullets: ["Offset pattern over the first layer", "Approximately 70% of the coverage of layer one"] },
-        { intro: "Recommended blend:", bullets: ["70% classic cup-and-char pepperoni", "30% spicy dry-cured salami or piccante salame"] },
-        { intro: "Effect:", bullets: ["Crisp edges", "Soft rendered centers", "Deep cured-meat complexity"] },
-        { intro: "Key idea:", bullets: ["Second layer is not about excess — it creates depth and fat retention zones for the honey glaze"] },
+      { title: "4. Gozney Bake", sections: [
+        { intro: "Gozney / High-Heat Oven:", bullets: ["🪨 Stone Floor: 410°C–430°C", "🔥 Dome: 450°C–480°C", "🔥 Manage the top flame dynamically throughout the bake, reducing it if the pepperoni or Provolone Piccante colors faster than the crust", "⏱ Cook Time: 70–80 seconds", "🔄 Rotate regularly for even rise and blistering"] },
       ] },
-      { title: "5. Bake", sections: [
-        { intro: "Gozney / High-Heat Oven:", bullets: ["🪨 Floor/Stone: 410°C–430°C", "🔥 Dome: 450°C–480°C", "🔥 Flame: reduce to MEDIUM upon launch so the pepperoni cups render and crisp without burning", "⏱ Cook time: 70–80 seconds", "🔄 Rotate every 15–20 seconds"] },
-        { intro: "Goal:", bullets: ["Pepperoni cups fully develop", "Edges crisp", "Cheese melts into channels beneath the meat", "Base remains dry and structured", "Cornicione achieves leopard spotting and internal softness"] },
-      ] },
-      { title: "6. Settling Phase", sections: [
-        { intro: "Immediately after baking:", bullets: ["Rest pizza 10–15 seconds"] },
-        { intro: "Why:", bullets: ["Allows rendered oils to stabilize", "Prevents honey from immediately sliding off", "Creates better glaze adhesion"] },
-      ] },
-      { title: "7. Hot Honey Finish", sections: [
-        { intro: "Honey:", bullets: ["High-quality wildflower honey", "Infused with Calabrian chili", "Warm gently before use"] },
-        { intro: "Application:", bullets: ["Fast zig-zag pattern", "Focus slightly heavier over pepperoni cup zones", "Light coverage only"] },
-        { intro: "Effect:", bullets: ["Honey mixes with rendered pepperoni oils", "Creates sweet-spicy pockets throughout the pizza", "Enhances caramelized cured-meat flavors"] },
-      ] },
-      { title: "8. Acid Lift (Critical Balance Layer)", sections: [
-        { intro: "Fermented chili vinegar — apply extremely sparingly:", bullets: ["3–5 tiny drops distributed around the pizza, OR", "Fine mist from atomizer"] },
-        { intro: "Effect:", bullets: ["Brightens the finish", "Prevents sweetness fatigue", "Keeps each bite feeling fresh"] },
-        { intro: "Key idea:", bullets: ["Almost invisible — nobody should identify it", "They should simply feel the pizza remains balanced until the final slice"] },
-      ] },
-      { title: "9. Final Finish", sections: [
-        { intro: "Flaky sea salt:", bullets: ["Very small pinch"] },
-        { intro: "Post-Bake EVOO:", bullets: ["Frantoio Muraglia Coratina (Intense Fruity)", "Micro-dots alongside the hot honey and fermented chili vinegar for a bold, peppery contrast"] },
-        { intro: "Effect:", bullets: ["Enhances aroma", "Extends finish", "Sharpens contrast against honey sweetness"] },
+      { title: "5. Rest & Post-Bake Finish", sections: [
+        { bullets: ["Transfer directly to a wooden board and rest for 30 seconds", "Drizzle 10g–12g warm Calabrian Hot Honey rapidly across the pizza, concentrating slightly over the pepperoni cups", "Apply 3–5 tiny drops of fermented chili vinegar around the pizza to provide an acidic counterpoint to the rendered meat and honey", "Add a tiny pinch of Maldon flaky sea salt", "Finish with 2g Frantoio Muraglia Coratina EVOO", "Slice and serve immediately"] },
+        { intro: "Culinary Science Note (Acid Lift):", bullets: ["The fermented chili vinegar acts as a balancing layer rather than a dominant topping — its acidity cuts through the rendered fat from the cured meats and offsets the sweetness of the hot honey, keeping the finish lively without introducing a separate dominant flavor"] },
+        { intro: "Profile:", bullets: ["Bright San Marzano → nutty melted Provolone Piccante → blistered cup-and-char pepperoni & spicy salami → sweet Calabrian honey heat → subtle fermented-chili acidity → peppery Coratina finish"] },
       ] },
     ],
   },
@@ -639,37 +595,32 @@ export const RECIPES: PizzaRecipe[] = [
     style: "Modern Neapolitan — Paprika Spice & Creamy Blue Pockets",
     category: "innovative",
     image: "https://image.eatencdn.com/image/1f55d2e1-e560-4a16-94a0-dcc00041e6cb/small/image.jpg",
-    toppings: "San Marzano tomatoes, Elizondo Nº3 Picual EVOO (pre-bake), standard mozzarella strips, dry and semi-dry cured Iberico chorizo, Gorgonzola DOP Dolce (primary recommendation; Stilton optional British twist), Frantoio Muraglia EVOO (post-bake).",
+    toppings: "60g–70g hand-crushed San Marzano DOP tomatoes + light pinch of fine sea salt, 70g–80g well-drained Fior di Latte (hand-torn), 30g–35g thinly sliced Ibérico or Spanish Cured Chorizo, 25g–30g Gorgonzola DOP Dolce (dotted in small pockets; Stilton optional regional variation), 2g–3g Elizondo Nº3 Picual EVOO pre-bake, 2g–3g Frantoio Muraglia Coratina EVOO post-bake. No basil.",
     menuIngredients: "Tomato, mozzarella, chorizo, blue cheese",
-    build: "A rich, high-contrast pizza featuring a San Marzano and Fior di Latte base topped with dry/semi-dry cured Ibérico chorizo, creamy Gorgonzola DOP Dolce pockets, and finished post-bake with Frantoio Muraglia (Intense Fruity) EVOO.",
+    build: "A modern flavor powerhouse — combining bright San Marzano DOP, well-drained Fior di Latte, smoky Ibérico chorizo, creamy Gorgonzola Dolce DOP, and a peppery Coratina finish.",
+    postBake: "Transfer directly to a wooden board and rest for 30–60 seconds to allow rendered fats and melted blue cheese to settle, then finish with a 2g–3g swirl of Frantoio Muraglia Coratina EVOO across the pie. Slice and serve immediately.",
+    flavorProgression: "Bright San Marzano → creamy melted Fior di Latte → smoky paprika-cured chorizo → rich Gorgonzola Dolce pockets → peppery Coratina finish",
     steps: [
-      { title: "1. Dough", sections: [
-        { bullets: ["Neapolitan-style sourdough (Franco Manca-inspired)", "280 g dough ball (standard)", "Stretch to 30–33 cm", "Light, airy cornicione", "Do not degas edge gas"] },
-        { intro: "Key idea:", bullets: ["Sourdough or extended fermentation acidity is essential to balance the rich chorizo fat", "High heat structure to support fat-rich toppings"] },
+      { title: "1. Pre-Prep", sections: [
+        { bullets: ["Hand-crush 60g–70g San Marzano DOP tomatoes and season lightly with fine sea salt", "Hand-tear 70g–80g Fior di Latte into irregular rustic pieces and drain in a sieve for 1–2 hours", "Thinly slice 30g–35g cured chorizo", "Portion/crumble 25g–30g Gorgonzola DOP Dolce into small, discrete pieces"] },
       ] },
-      { title: "2. Tomato Base", sections: [
-        { bullets: ["San Marzano tomatoes, lightly crushed", "~60–70 g", "Thin, even spread", "1–2 cm clean border", "Light pinch of sea salt", "Pre-bake drizzle of Elizondo Nº3 Picual EVOO over the tomato base"] },
-        { intro: "Key idea:", bullets: ["Bright acidity to balance chorizo fat and blue cheese salt"] },
+      { title: "2. Dough Prep", sections: [
+        { bullets: ["Hand-stretch the 280g dough ball to 30–33cm on semolina rimacinata, preserving gas in an airy 1.5cm cornicione"] },
       ] },
-      { title: "3. Fior di Latte", sections: [
-        { bullets: ["Well-drained Fior di Latte", "Torn irregularly", "Medium, even distribution with small gaps"] },
-        { intro: "Effect:", bullets: ["Creates melt base that absorbs rendered chorizo oil gradually"] },
+      { title: "3. Layer Assembly (In Exact Order)", sections: [
+        { intro: "Layer 1 — San Marzano:", bullets: ["Spread 60g–70g San Marzano sauce evenly across the center, leaving a 1.5–2cm clean rim"] },
+        { intro: "Layer 2 — Fior di Latte:", bullets: ["Scatter 70g–80g Fior di Latte strips over the tomato, leaving small gaps"] },
+        { intro: "Layer 3 — Chorizo:", bullets: ["Distribute 30g–35g thinly sliced chorizo evenly across the cheese, avoiding heavy clusters"] },
+        { intro: "Layer 4 — Gorgonzola Dolce:", bullets: ["Dot 25g–30g Gorgonzola DOP Dolce in small, spaced pockets into open gaps between the chorizo"] },
+        { intro: "Layer 5 — Picual:", bullets: ["Apply a 2g–3g spiral micro-drizzle of Elizondo Nº3 Picual EVOO over the build"] },
       ] },
-      { title: "4. Chorizo", sections: [
-        { bullets: ["Thin semi-cured chorizo slices", "Light, even scatter (avoid clustering)"] },
-        { intro: "Effect:", bullets: ["Paprika oils render into tomato and cheese during bake", "Adds smoky spice without overpowering structure"] },
+      { title: "4. Gozney Bake", sections: [
+        { intro: "Gozney / High-Heat Oven:", bullets: ["🪨 Stone Floor: 420°C–440°C", "🔥 Dome: 450°C–480°C", "🔥 Manage the top flame dynamically after launch, reducing to MEDIUM/LOW to prevent the paprika-rich chorizo and Gorgonzola fat from scorching or over-rendering", "⏱ Cook Time: 60–75 seconds", "🔄 Rotate regularly for an even cook"] },
       ] },
-      { title: "5. Blue Cheese", sections: [
-        { bullets: ["Gorgonzola DOP Dolce (primary recommendation — melts smoothly without separating under high heat)", "Stilton (optional British twist)", "Small, spaced crumbles"] },
-        { intro: "Effect:", bullets: ["Creamy blue pockets that melt into background richness"] },
-      ] },
-      { title: "6. Bake", sections: [
-        { intro: "Gozney / High-Heat Oven:", bullets: ["🪨 Floor/Stone: 420°C–440°C", "🔥 Dome: 450°C–480°C", "🔥 Flame: reduce to MEDIUM/LOW post-launch to prevent paprika/chorizo scorching", "⏱ Cook time: 60–75 seconds", "🔄 Rotate every 15–20 seconds"] },
-        { intro: "Goal:", bullets: ["Chorizo lightly crisps and renders", "Mozzarella melts into creamy layer", "Gorgonzola softens into pockets", "Crust blisters and stays structured"] },
-      ] },
-      { title: "7. Olive Oil Finish", sections: [
-        { intro: "Pre-Bake:", bullets: ["Elizondo Nº3 Picual EVOO over the tomato base"] },
-        { intro: "Post-Bake:", bullets: ["Frantoio Muraglia Coratina (Intense Fruity), applied in a very light spiral or micro dots", "A bold, peppery finish that cuts through the rich chorizo and blue cheese fat"] },
+      { title: "5. Rest & Finish", sections: [
+        { bullets: ["Transfer directly to a wooden board and rest for 30–60 seconds to allow rendered fats and melted blue cheese to settle", "Finish with a 2g–3g swirl of Frantoio Muraglia Coratina EVOO across the pie", "Slice and serve immediately"] },
+        { intro: "Technical Fat & Moisture Note:", bullets: ["Spanish chorizo renders smoky, paprika-infused oils during high-heat baking while Gorgonzola Dolce melts rapidly into creamy pockets — omitting basil prevents competing aromatic notes, allowing the fat, acidity, and blue cheese funk to maintain clear definition"] },
+        { intro: "Profile:", bullets: ["Bright San Marzano → creamy melted Fior di Latte → smoky paprika-cured chorizo → rich Gorgonzola Dolce pockets → peppery Coratina finish"] },
       ] },
     ],
   },
@@ -710,34 +661,36 @@ export const RECIPES: PizzaRecipe[] = [
     id: "bufala-e-iberico",
     number: 19,
     name: "Bufala e Ibérico",
-    style: "Contemporary Neapolitan Pizza Bianca — Creamy Mozzarella di Bufala DOP meets silky Jamón Ibérico fat.",
+    style: "Contemporary Neapolitan White Base — Inspired by Neapolitan Bufala e Fiocco Concepts",
     category: "innovative",
     image: "https://www.fllifiorentinoblog.it/wp-content/uploads/2022/11/316661686_3326119354306765_8744321983837170150_n.jpg",
-    toppings: "Mozzarella di Bufala Campana DOP, thin-sliced Jamón Ibérico, Barbera Lorenzo Nº5 EVOO (post-bake), fresh basil. Zero tomato sauce.",
+    toppings: "85g–90g Mozzarella di Bufala Campana DOP (torn, drained uncovered in fridge 2+ hours, rested 30 minutes at room temp), 35g–40g Jamón Ibérico de Cebo or de Bellota (room temperature, post-bake), 4–5 fresh basil leaves (2–3 pre-bake, 1–2 post-bake), 2g Elizondo Nº3 Picual EVOO pre-bake, 3g–4g Barbera Lorenzo N°5 EVOO post-bake. Strictly no tomato sauce; no ricotta, rocket, or Parmigiano.",
     menuIngredients: "Mozzarella di bufala, Jamón Ibérico, basil, olive oil",
-    build: "A luxurious white pizza with no tomato sauce, featuring hot melted Bufala DOP topped post-bake with room-temperature Jamón Ibérico slices, fresh basil, and finished with Barbera Lorenzo Nº5 (Nocellara del Belice) EVOO.",
+    build: "An exquisitely restrained Neapolitan Pizza Bianca inspired by classic Bufala e Fiocco concepts — pairing hot Mozzarella di Bufala Campana DOP with paper-thin room-temperature Jamón Ibérico and a Lorenzo N°5 finish.",
+    postBake: "Transfer directly to a wooden board and rest for 30 seconds to vent excess steam, then drape the room-temperature Jamón Ibérico over the hot melted Bufala, scatter the remaining basil, and finish with a 3g–4g swirl of Barbera Lorenzo N°5 EVOO. Slice and serve immediately.",
+    flavorProgression: "Pure hot dough base → rich creamy melted Bufala DOP → warm translucent Ibérico fat → warm basil → almond-smooth Lorenzo N°5 finish",
+    inspiredBy: "Neapolitan Bufala e Fiocco Concepts",
     steps: [
-      { title: "1. Toppings & Assembly (Per 280g Dough Ball)", sections: [
-        { bullets: ["100 g Mozzarella di Bufala Campana DOP", "50–60 g Jamón Ibérico, thinly sliced", "Barbera Lorenzo Nº5 EVOO (Monovarietal Nocellara del Belice), for the post-bake finish", "Fresh basil leaves"] },
+      { title: "1. Pre-Prep", sections: [
+        { bullets: ["Tear 85g–90g Mozzarella di Bufala Campana DOP into large rustic pieces, place in a sieve over a bowl, and refrigerate UNCOVERED for 2+ hours; rest at room temperature for 30 minutes prior to assembly", "Bring 35g–40g Jamón Ibérico to room temperature (20°C–22°C) so its delicate fat softens naturally upon contact with the hot pie"] },
       ] },
-      { title: "2. Prep the Mozzarella di Bufala", sections: [
-        { bullets: ["Slice or tear the buffalo mozzarella 1 to 2 hours beforehand", "Place it in a colander in the fridge to drain excess liquid"] },
-        { intro: "Why:", bullets: ["So it won't make your white pizza base soggy"] },
+      { title: "2. Dough Prep", sections: [
+        { bullets: ["Hand-stretch 280g dough ball to 30–33cm on semolina rimacinata, preserving gas in an airy 1.5cm cornicione"] },
       ] },
-      { title: "3. Stretch the Dough", sections: [
-        { bullets: ["Stretch a 280 g dough ball using semolina on your work surface", "Target stretch size: 30–33 cm", "Leave a raised cornicione (outer crust)"] },
+      { title: "3. Layer Assembly (In Exact Order)", sections: [
+        { intro: "Layer 1 — Bufala DOP:", bullets: ["Distribute 85g–90g well-drained Bufala DOP evenly across the naked dough, leaving small gaps and a clean 1.5–2cm border"] },
+        { intro: "Layer 2 — Basil Pre-Bake:", bullets: ["Tuck 2–3 fresh basil leaves under or between buffalo mozzarella pieces to protect them from direct flame scorching"] },
+        { intro: "Layer 3 — Picual:", bullets: ["Apply a light 2g spiral micro-drizzle of Elizondo Nº3 Picual EVOO over the build"] },
       ] },
-      { title: "4. Assemble the White Base", sections: [
-        { bullets: ["Distribute the drained Mozzarella di Bufala evenly across the base", "Add a couple of fresh basil leaves"] },
+      { title: "4. Gozney Bake", sections: [
+        { intro: "Gozney / High-Heat Oven:", bullets: ["🪨 Stone Floor: 430°C–450°C", "🔥 Dome: 450°C–480°C", "⏱ Cook Time: 60–75 seconds", "🔄 Rotate regularly until the cornicione develops even blistering and colour, the base sets cleanly, and the buffalo mozzarella is fully melted and glossy"] },
       ] },
-      { title: "5. Bake", sections: [
-        { intro: "Gozney / High-Heat Oven:", bullets: ["🪨 Floor/Stone: 430°C–450°C", "🔥 Dome: 450°C–480°C", "⏱ Cook time: 60–75 seconds"] },
-        { intro: "Tip:", bullets: ["Ensure stone floor is at least 430°C to set the bottom crust fast under the heavy buffalo mozzarella"] },
-        { intro: "Home oven with pizza steel/stone (max temp ~275°C / 530°F):", bullets: ["Pre-bake the dough base with just the mozzarella for 5–7 minutes until cooked through and golden"] },
-      ] },
-      { title: "6. Post-Bake Finishing", sections: [
-        { intro: "Temperature Tip:", bullets: ["Bring Jamón Ibérico to room temperature 30 minutes prior to topping so the fat renders instantly upon contact with the hot mozzarella"] },
-        { bullets: ["Immediately upon taking the pizza out, drape the delicate slices of Jamón Ibérico over the warm melted mozzarella so the fat gently renders from the heat of the crust", "Finish with a fresh leaf of basil and a final swirl of Barbera Lorenzo Nº5 EVOO (required finishing oil)"] },
+      { title: "5. Rest & Sequential Post-Bake Staging", sections: [
+        { bullets: ["Transfer directly to a wooden board and rest for 30 seconds to vent excess steam"] },
+        { intro: "Stage 1 — Jamón Ibérico:", bullets: ["Drape 35g–40g room-temperature Jamón Ibérico loosely in single-layer folds across the hot melted Bufala, allowing the fat to turn translucent and release its aroma from residual heat"] },
+        { intro: "Stage 2 — Basil & Finishing Oil:", bullets: ["Scatter 1–2 fresh basil leaves and finish with a 3g–4g swirl of Barbera Lorenzo N°5 EVOO across the ham and crust", "Slice and serve immediately"] },
+        { intro: "Technical Thermal Note:", bullets: ["Bringing Jamón Ibérico to room temperature before assembly helps achieve the intended texture — draping paper-thin slices over the rested 85g–90g buffalo mozzarella allows the delicate fat to soften naturally from residual surface heat without cooking or toughening the cured ham"] },
+        { intro: "Profile:", bullets: ["Pure hot dough base → rich creamy melted Bufala DOP → warm translucent Ibérico fat → warm basil → almond-smooth Lorenzo N°5 finish"] },
       ] },
     ],
   },
@@ -748,40 +701,34 @@ export const RECIPES: PizzaRecipe[] = [
     style: "Gourmet White Pizza — Four Cheese Blend, Baked Truffle Croutons & Chili Lift",
     category: "innovative",
     image: "https://rs-menus-api.roocdn.com/images/2018fd22-bd00-4726-bae8-5c9cc89ce052/image.jpeg",
-    toppings: "Fior di Latte mozzarella, Gorgonzola DOP, Parmigiano-Reggiano, Bufala DOP, Elizondo Nº3 Picual EVOO (pre-bake), truffle croutons, Belazu White Truffle Oil, Barbera Lorenzo Nº5 EVOO (post-bake), chilli flakes.",
+    toppings: "15g Parmigiano Reggiano DOP (finely grated, dusted on dough), 50g Fior di Latte (hand-torn, well-drained), 30g Mozzarella di Bufala DOP (drained 1+ hour, torn), 25g Gorgonzola DOP Dolce (crumbled), 2g Elizondo Nº3 Picual EVOO pre-bake, 20g–25g baked truffle croutons, 1g–2g Belazu White Truffle EVOO, 2g–3g Barbera Lorenzo N°5 EVOO (post-bake), 0.5g Calabrian dried chili flakes. Strictly no tomato sauce.",
     menuIngredients: "Mozzarella, gorgonzola, Parmigiano, bufala, truffle",
-    build: "Pizza Bianca — zero tomato sauce, no extra salt. A micro-drizzle of Elizondo Nº3 Picual EVOO goes on before baking; the four cheeses are layered in a specific order, baked hot and fast, then rested briefly and finished with truffle croutons, Belazu White Truffle Oil, Barbera Lorenzo Nº5 EVOO and chilli post-bake.",
+    build: "An extraordinary gourmet white pie featuring a balanced four-cheese foundation, crunchy house-baked truffle croutons, a delicate white truffle oil finish, and a subtle Calabrian chili lift.",
+    postBake: "Transfer directly to a wooden board and rest for 30 seconds to allow the cheeses to stabilize, then scatter the truffle croutons, apply the white truffle oil, finish with a swirl of Barbera Lorenzo N°5 EVOO, and top with a pinch of Calabrian chili flakes. Slice and serve immediately.",
+    flavorProgression: "Toasted Parmigiano base → creamy Fior di Latte & Bufala → sharp Gorgonzola Dolce → crunchy truffle crouton → delicate white truffle aroma → subtle chili kick → Lorenzo N°5 finish",
     steps: [
-      { title: "1. Prep the Cheeses", sections: [
-        { intro: "Fiordilatte — 65 g:", bullets: ["Tear into small pieces", "Drain in a sieve for 1 hour minimum"] },
-        { intro: "Bufala — 45 g:", bullets: ["Drain extremely well in a sieve for 1 hour minimum", "Tear into small pieces"] },
-        { intro: "Gorgonzola — 30 g:", bullets: ["Cut into small ~1 cm pieces"] },
-        { intro: "Parmigiano — 15 g:", bullets: ["Grate finely"] },
-        { intro: "Key idea:", bullets: ["The relatively small amount of cheese is deliberate", "With a Gozney, you don't want a huge pile of cheese because the top will burn before the base is ready"] },
+      { title: "1. Pre-Prep", sections: [
+        { intro: "Truffle Croutons:", bullets: ["Toss 20g–25g of 1cm bread cubes with a few drops of olive oil and white truffle oil", "Bake at 180°C until properly crunchy", "Set aside"] },
+        { bullets: ["Drain 50g Fior di Latte and 30g Bufala DOP in a fine sieve for at least 1 hour", "Finely grate 15g Parmigiano Reggiano DOP and portion 25g Gorgonzola Dolce DOP"] },
       ] },
-      { title: "2. Make the Truffle Croutons", sections: [
-        { bullets: ["Use approximately 20–25 g bread", "Cut into 1 cm cubes"] },
-        { intro: "Toss with:", bullets: ["A few drops of olive oil", "A tiny amount of truffle oil", "No/very little salt"] },
-        { intro: "Bake until properly crunchy", bullets: ["Set aside", "Don't put them on the pizza before launching"] },
+      { title: "2. Dough Prep", sections: [
+        { bullets: ["Hand-stretch 280g dough ball to 30–32cm on semolina rimacinata, preserving gas in an airy 1.5–2cm cornicione while keeping the center structured enough for crouton toppings"] },
       ] },
-      { title: "3. Stretch Your 280 g Dough", sections: [
-        { bullets: ["Style: Pizza Bianca — zero tomato sauce", "Take dough out of the fridge and let it warm up according to your normal dough process", "Stretch to a target size of 31–32 cm", "Leave a nice 1.5–2 cm rim"] },
-        { intro: "Important:", bullets: ["Since you're using a Gozney, don't make the centre paper-thin"] },
+      { title: "3. Layer Assembly (In Exact Order)", sections: [
+        { intro: "Layer 1 — Picual Base Drizzle:", bullets: ["Apply a light 2g spiral micro-drizzle of Elizondo Nº3 Picual EVOO over the bare dough"] },
+        { intro: "Layer 2 — Parmigiano Anchor:", bullets: ["Dust 15g finely grated Parmigiano Reggiano directly across the dough"] },
+        { intro: "Layer 3 — Melt Cheeses:", bullets: ["Scatter 50g Fior di Latte and 30g Bufala DOP evenly over the Parmigiano layer, leaving small gaps"] },
+        { intro: "Layer 4 — Gorgonzola Nuggets:", bullets: ["Drop 25g Gorgonzola Dolce DOP in small, spaced nuggets across open areas"] },
       ] },
-      { title: "4. Build the Pizza", sections: [
-        { intro: "Distribute in this order:", bullets: ["A micro-drizzle of Elizondo Nº3 Picual EVOO over the bare dough", "65 g Fiordilatte", "30 g Gorgonzola", "45 g Bufala", "15 g Parmigiano"] },
-        { intro: "Placement tip:", bullets: ["Put the Gorgonzola and Bufala in relatively small, separated pieces rather than creating four distinct sections", "You want every bite to get some combination of the cheeses"] },
+      { title: "4. Gozney Bake", sections: [
+        { intro: "Gozney / High-Heat Oven:", bullets: ["🪨 Stone Floor: 410°C–430°C", "🔥 Dome: 450°C–480°C", "🔥 Manage the top flame dynamically after launch, reducing as needed to prevent Gorgonzola and Parmigiano from scorching or separating while allowing the crust to fully spring and blister", "⏱ Cook Time: 75–90 seconds", "🔄 Rotate regularly for an even rise"] },
       ] },
-      { title: "5. Gozney Cooking", sections: [
-        { intro: "Gozney / High-Heat Oven:", bullets: ["🪨 Floor/Stone: 410°C–430°C (slightly lower than classic Neapolitan because of Gorgonzola and Parmesan)", "🔥 Dome/Air: 450°C–480°C", "🔥 Flame: drop to LOW immediately post-launch to prevent the Gorgonzola and Parmigiano from scorching", "⏱ Cook time: 75–90 seconds", "🔄 Rotate every 20–30 seconds"] },
-        { intro: "You want:", bullets: ["Inflated leopard-spotted crust", "Melted/bubbling cheeses", "Gorgonzola just melted", "Parmesan lightly browned", "No burnt Parmesan"] },
-      ] },
-      { title: "6. Finish Outside the Oven", sections: [
-        { intro: "Rest 30 seconds on a wire cooling rack, then:", bullets: ["① Truffle croutons — Scatter 20–25 g over the pizza", "② Belazu White Truffle Oil — Drizzle approximately 1 tsp (don't go crazy, good truffle oil is extremely powerful)", "③ Barbera Lorenzo Nº5 (Nocellara del Belice DOP) EVOO — Finishing drizzle", "④ Chilli — Add a small pinch of chilli flakes"] },
-      ] },
-      { title: "7. What You're Aiming For", sections: [
-        { intro: "The finished pizza should have:", bullets: ["Crispy, airy crust", "Creamy fiordilatte", "Sharp/funky Gorgonzola", "Sweet, rich bufala", "Salty umami Parmesan", "Crunchy truffle bread", "Truffle aroma", "Tiny chilli kick"] },
-        { intro: "Adjustments after first attempt:", bullets: ["If Gorgonzola dominates: drop to 25 g and increase Fiordilatte to 70 g", "If pizza tastes too mild: keep 30 g Gorgonzola and increase Parmesan to 20 g"] },
+      { title: "5. Rest & Post-Bake Finish", sections: [
+        { bullets: ["Transfer directly to a wooden board and rest for 30 seconds to allow the cheeses to stabilize"] },
+        { intro: "Stage 1 — Croutons:", bullets: ["Scatter 20g–25g crunchy truffle croutons across the hot cheese"] },
+        { intro: "Stage 2 — Aromatic Oils & Chili:", bullets: ["Apply 1g–2g Belazu White Truffle EVOO, followed by a 2g–3g swirl of Barbera Lorenzo N°5 EVOO, and finish with a 0.5g pinch of Calabrian chili flakes", "Slice and serve immediately"] },
+        { intro: "Technical Moisture & Fat Note:", bullets: ["Keeping total cheese to 120g helps maintain a balanced white base without making it excessively heavy — pre-baking the croutons separately and applying them post-bake over the rested wooden board preserves maximum crunch against the creamy melted cheeses"] },
+        { intro: "Profile:", bullets: ["Toasted Parmigiano base → creamy Fior di Latte & Bufala → sharp Gorgonzola Dolce → crunchy truffle crouton → delicate white truffle aroma → subtle chili kick → Lorenzo N°5 finish"] },
       ] },
     ],
     videoGuide: "Achieving the Perfect Golden Crunch on Croutons",

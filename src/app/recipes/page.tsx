@@ -171,6 +171,7 @@ function RecipeModal({
           <div>
             <h2 className="font-serif text-3xl font-semibold leading-tight">{recipe.name}</h2>
             {recipe.style && <p className="text-sm text-secondary italic mt-1">{recipe.style}</p>}
+            {recipe.inspiredBy && <p className="text-xs text-muted-foreground italic mt-1">{recipe.inspiredBy}</p>}
           </div>
 
           {recipe.flavorProgression && (

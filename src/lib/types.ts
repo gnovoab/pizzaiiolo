@@ -104,6 +104,8 @@ export interface PizzaRecipe {
   postBake?: string;
   /** Arrow-separated taste-journey summary (e.g. "Bright San Marzano → creamy Fior di Latte → ... → peppery Coratina finish"), rendered as a flavor-progression badge. */
   flavorProgression?: string;
+  /** Optional attribution note, e.g. "Inspired by Pizzeria Carmnella dal 1892 — Pizza DOC." Shown only in the Recipes page detail view. */
+  inspiredBy?: string;
   specialRule?: { label: string; detail: string };
   videoGuide?: string;
   videoUrl?: string;

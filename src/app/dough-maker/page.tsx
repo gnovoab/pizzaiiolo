@@ -4,35 +4,56 @@ import { useMemo, useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 
-// Neapolitan Pizza tab ratios (fixed percentages of flour weight) — the single
-// source of truth every dynamic quantity in that tab is derived from.
-const NEAPOLITAN_HYDRATION_LOW = 0.61;
-const NEAPOLITAN_HYDRATION_MID = 0.62;
-const NEAPOLITAN_HYDRATION_HIGH = 0.63;
+// Neapolitan Pizza tab baker's percentages (fixed, of flour weight) — the
+// single source of truth every dynamic quantity in that tab is derived from.
+const NEAPOLITAN_HYDRATION_PCT = 0.62;
 const NEAPOLITAN_SALT_PCT = 0.024;
-const NEAPOLITAN_YEAST_LOW = 0.0006;
-const NEAPOLITAN_YEAST_HIGH = 0.001;
-const NEAPOLITAN_FLOUR_STAGE_1_PCT = 0.7;
-const NEAPOLITAN_FLOUR_STAGE_2_PCT = 0.3;
+const NEAPOLITAN_YEAST_MIN_PCT = 0.0006;
+const NEAPOLITAN_YEAST_MAX_PCT = 0.001;
+const NEAPOLITAN_FIRST_FLOUR_PCT = 0.70;
+const NEAPOLITAN_REMAINING_FLOUR_PCT = 0.30;
+
+/**
+ * Single source of truth for every Neapolitan-tab quantity that depends on
+ * the selected flour weight and dough-ball size. No other function or JSX
+ * expression in this tab should recompute these ratios directly.
+ */
+function calculateDoughBatch(flourWeight: number, ballWeight: number) {
+  const water = flourWeight * NEAPOLITAN_HYDRATION_PCT;
+  const salt = flourWeight * NEAPOLITAN_SALT_PCT;
+  const yeastMin = flourWeight * NEAPOLITAN_YEAST_MIN_PCT;
+  const yeastMax = flourWeight * NEAPOLITAN_YEAST_MAX_PCT;
+
+  const firstFlour = flourWeight * NEAPOLITAN_FIRST_FLOUR_PCT;
+  const remainingFlour = flourWeight * NEAPOLITAN_REMAINING_FLOUR_PCT;
+
+  const totalDoughMin = flourWeight + water + salt + yeastMin;
+  const totalDoughMax = flourWeight + water + salt + yeastMax;
+
+  const fullBalls = Math.max(1, Math.floor(totalDoughMin / ballWeight));
+  const remainder = Math.max(0, totalDoughMin - fullBalls * ballWeight);
+
+  return {
+    flourWeight,
+    water,
+    salt,
+    yeastMin,
+    yeastMax,
+    firstFlour,
+    remainingFlour,
+    totalDoughMin,
+    totalDoughMax,
+    ballWeight,
+    fullBalls,
+    remainder,
+  };
+}
 
 export default function DoughMakerPage() {
   const [flourAmount, setFlourAmount] = useState(1000);
   const [ballWeight, setBallWeight] = useState(280);
 
-  const n = useMemo(() => {
-    const waterLow = flourAmount * NEAPOLITAN_HYDRATION_LOW;
-    const waterMid = flourAmount * NEAPOLITAN_HYDRATION_MID;
-    const waterHigh = flourAmount * NEAPOLITAN_HYDRATION_HIGH;
-    const salt = flourAmount * NEAPOLITAN_SALT_PCT;
-    const yeastLow = flourAmount * NEAPOLITAN_YEAST_LOW;
-    const yeastHigh = flourAmount * NEAPOLITAN_YEAST_HIGH;
-    const yeastMid = (yeastLow + yeastHigh) / 2;
-    const flourStage1 = flourAmount * NEAPOLITAN_FLOUR_STAGE_1_PCT;
-    const flourStage2 = flourAmount * NEAPOLITAN_FLOUR_STAGE_2_PCT;
-    const totalDough = flourAmount + waterMid + salt + yeastMid;
-    const numBalls = Math.max(1, Math.floor(totalDough / ballWeight));
-    return { waterLow, waterMid, waterHigh, salt, yeastLow, yeastHigh, flourStage1, flourStage2, totalDough, numBalls };
-  }, [flourAmount, ballWeight]);
+  const batch = useMemo(() => calculateDoughBatch(flourAmount, ballWeight), [flourAmount, ballWeight]);
 
   return (
     <div className="space-y-10">
@@ -59,7 +80,7 @@ export default function DoughMakerPage() {
       <Tabs defaultValue="neapolitan">
         <TabsList>
           <TabsTrigger value="neapolitan">🇮🇹 Neapolitan Pizza</TabsTrigger>
-          <TabsTrigger value="neapolitan2">🇮🇹 Napolitan 2.0</TabsTrigger>
+          <TabsTrigger value="neapolitan2">🇮🇹 Neapolitan 2.0</TabsTrigger>
           <TabsTrigger value="poolish">🫧 Poolish</TabsTrigger>
           <TabsTrigger value="roman">🇮🇹 Roman Thin Pizza</TabsTrigger>
           <TabsTrigger value="sicilian">🇮🇹 Sicilian-Style Pizza</TabsTrigger>
@@ -69,98 +90,161 @@ export default function DoughMakerPage() {
         </TabsList>
 
         <TabsContent value="neapolitan" className="space-y-6 mt-4">
-          <Section number={1} title="Batch Size & Ingredients" subtitle={`${fmtG(flourAmount)} g flour — Neapolitan style`}>
+          <Section number={1} title="Ingredients" subtitle={`${formatWeight(flourAmount)} flour — Neapolitan style`}>
             <div className="grid sm:grid-cols-2 gap-4 mb-5">
               <Field label="Flour (g)" value={flourAmount} onChange={setFlourAmount} min={1000} max={3000} step={10} />
               <Field label="Dough Ball Size (g)" value={ballWeight} onChange={setBallWeight} min={200} max={400} step={10} />
             </div>
-            <Subhead>Current Recipe</Subhead>
+
+            <BatchSummary batch={batch} />
+
+            <Subhead className="mt-5">Current Recipe</Subhead>
             <Bullets items={[
-              `${fmtG(flourAmount)} g 00 flour (Caputo Pizzeria)`,
-              `${fmtG(n.waterLow)}–${fmtG(n.waterHigh)} g water (start with ${fmtG(n.waterMid)} g)`,
-              `${fmtG(n.salt)} g salt`,
-              `${fmtG(n.yeastLow, 1)}–${fmtG(n.yeastHigh, 1)} g dry yeast (very small pinch)`,
+              `${formatWeight(batch.flourWeight)} 00 flour (Caputo Pizzeria)`,
+              `${formatWeight(batch.water)} water`,
+              `${formatWeight(batch.salt)} salt`,
+              `${formatYeast(batch.yeastMin, batch.yeastMax)} instant dry yeast`,
             ]} />
-            <Callout>👉 Approximately {fmtG(n.totalDough)} g total dough — about {n.numBalls} × {fmtG(ballWeight)} g balls. The entire recipe scales automatically from the Flour slider above.</Callout>
+            <Callout>👉 This is a classic slow-fermentation Neapolitan dough. Choose your flour quantity above and all ingredient quantities scale automatically using the same baker&apos;s percentages.</Callout>
           </Section>
 
-          <Section number={2} title="Famag Spiral Mixer Timeline" subtitle="8–10 minutes total — dual rotation, Ff 3.0°C">
+          <Section number={2} title="Famag Spiral Mixer Timeline" subtitle="8–10 minutes total — staged mixing">
             <Subhead>In your Famag IM 5-S-10V (HH)</Subhead>
-            <ol className="space-y-1.5">
-              {[
-                `0–1 min (Speed 1, 90 RPM): Pour the ${fmtG(n.waterMid)} g cold water into the bowl and dissolve the yeast (${fmtG(n.yeastLow, 1)}–${fmtG(n.yeastHigh, 1)} g)`,
-                `1–3 min (Speed 1–2): Add ~70% of the flour (about ${fmtG(n.flourStage1)} g); mix until a smooth batter forms around the breaker bar`,
-                `3–5 min (Speed 2–3): Add the salt (${fmtG(n.salt)} g) and the remaining 30% of flour (about ${fmtG(n.flourStage2)} g); mix until no dry flour remains`,
-                "5–9 min (Speed 4–5): Increase speed to build the gluten matrix until the dough detaches cleanly from the bowl sides into a smooth ring",
-              ].map((t, i) => (
-                <li key={t} className="text-[15px] flex gap-2.5 leading-relaxed">
-                  <span className="font-mono font-semibold text-primary shrink-0">{i + 1}.</span>
-                  <span><HighlightNumbers text={t} /></span>
-                </li>
-              ))}
-            </ol>
+            <Bullets items={[
+              `0–1 min · Speed 1 — Pour the ${formatWeight(batch.water)} cold water into the bowl and dissolve the yeast (${formatYeast(batch.yeastMin, batch.yeastMax)})`,
+              `1–3 min · Speed 1–2 — Add approximately ${formatWeight(batch.firstFlour)} of the flour (~70%); mix until a smooth batter forms and the flour is fully hydrated.`,
+              `3–5 min · Speed 2–3 — Add ${formatWeight(batch.salt)} fine sea salt and the remaining ${formatWeight(batch.remainingFlour)} of the flour (~30%); mix until no dry flour remains`,
+              "5–9/10 min · Speed 4–5 — Increase speed to build the gluten matrix until the dough detaches cleanly from the bowl sides into a smooth ring",
+            ]} />
             <Callout>💡 Keep salt and yeast separated at first — important for yeast health. Target total knead time: 8–10 minutes.</Callout>
           </Section>
 
-          <Section number={3} title="After Kneading — Short Bulk" subtitle="Puntata: ~1 hour at room temp">
-            <p className="text-[15px] mb-3 leading-relaxed">
-              <HighlightNumbers text="Tip out of the machine onto a lightly floured surface, fold the dough over itself a few times to tighten, cover, and rest 45–60 minutes at room temp." />
-              {" "}This short bulk (the <em>puntata</em>) lets the gluten relax before balling — it is <strong>not</strong> the long ferment.
-            </p>
-            <Callout>💡 The long ferment happens in the fridge — as <strong>balls</strong>, not as a single bulk mass.</Callout>
+          <Section number={3} title="Equipment">
+            <Bullets items={[
+              "Mixer: Famag IM 5-S-10V (HH)",
+              "Flour: Caputo Pizzeria 00",
+              "Optional flour: Caputo Nuvola — see flour variations",
+              "Opening/stretching flour: Caputo Semola Rimacinata",
+              "Oven: Gozney Arc",
+            ]} />
           </Section>
 
-          <Section number={4} title="Balling the Dough" subtitle="Staglio anticipato — early balling, the AVPN/pro method">
-            <p className="text-[15px] mb-3">Divide into <span className="font-semibold text-primary">{fmtG(ballWeight)} g</span> balls — about <span className="font-semibold text-primary">{n.numBalls} pizzas</span> — straight after the 1-hour puntata, then cold-ferment the balls in the fridge.</p>
+          <Section number={4} title="After Mixing — Puntata" subtitle="Initial rest: 45–60 minutes at room temperature">
+            <p className="text-[15px] mb-3 leading-relaxed">
+              <HighlightNumbers text="This is a short initial rest right after mixing — it lets the gluten relax before the dough is divided into balls. This recipe uses the main fermentation as dough balls, not as a single bulk mass." />
+            </p>
+            <Bullets items={[
+              "Tip the dough out if needed",
+              "Gently fold/tighten",
+              "Cover",
+              "Rest 45–60 minutes",
+            ]} />
+          </Section>
+
+          <Section number={5} title="Staglio — Divide & Ball">
+            <p className="text-[15px] mb-3">
+              Divide the dough into <span className="font-semibold text-primary">{formatWeight(ballWeight)}</span> portions, producing{" "}
+              <span className="font-semibold text-primary">{batch.fullBalls} full dough ball{batch.fullBalls === 1 ? "" : "s"}</span>
+              {batch.remainder > 0.5 ? <> plus approximately <span className="font-semibold text-primary">{formatWeight(batch.remainder)}</span> remaining dough</> : null}.
+            </p>
+            <Bullets items={[
+              "Divide accurately on a scale",
+              "Shape into smooth, taut balls",
+              "Keep the seam underneath",
+              "Place into a covered dough tray/container",
+            ]} />
+          </Section>
+
+          <Section number={6} title="Fermentation Options">
             <div className="grid sm:grid-cols-2 gap-4">
               <div className="rounded-xl border border-primary/30 bg-primary/5 p-4">
-                <div className="text-[11px] uppercase tracking-[0.15em] text-primary font-semibold mb-2">Option A — Recommended</div>
-                <div className="font-serif text-base font-semibold mb-1.5">Cold-fermented balls</div>
+                <div className="text-[11px] uppercase tracking-[0.15em] text-primary font-semibold mb-2">Option A — Cold Fermentation</div>
                 <ol className="text-[15px] space-y-1.5 leading-relaxed list-decimal pl-4">
-                  <li>Cut evenly on a scale</li>
-                  <li>Fold into tight, smooth balls (seam down)</li>
-                  <li>Place spaced out in a covered, lightly oiled tray</li>
-                  <li>Cold ferment <HighlightNumbers text="24–48 hours" /> in the fridge</li>
-                  <li>Pull out <HighlightNumbers text="4–6 hours" /> before baking to temper at room temp</li>
+                  <li><HighlightNumbers text="24–48 hours" /> refrigerated as covered dough balls</li>
+                  <li>Remove <HighlightNumbers text="4–6 hours" /> before baking</li>
+                  <li>Temper at room temperature</li>
+                  <li>Bake when balls are soft, relaxed and slightly domed</li>
                 </ol>
               </div>
               <div className="rounded-xl border border-secondary/30 bg-secondary/5 p-4">
-                <div className="text-[11px] uppercase tracking-[0.15em] text-secondary font-semibold mb-2">Option B — Same-day</div>
-                <div className="font-serif text-base font-semibold mb-1.5">Room-temp proof</div>
+                <div className="text-[11px] uppercase tracking-[0.15em] text-secondary font-semibold mb-2">Option B — Same-Day Dough</div>
                 <ol className="text-[15px] space-y-1.5 leading-relaxed list-decimal pl-4">
-                  <li>Ball immediately after the puntata</li>
-                  <li>Rest covered <HighlightNumbers text="4–6 hours" /> at room temp</li>
-                  <li>Bake when balls look puffy and slightly domed</li>
+                  <li>Ball after the initial rest</li>
+                  <li>Ferment covered for <HighlightNumbers text="4–6 hours" /> at room temperature</li>
+                  <li>Bake when relaxed, aerated and slightly domed</li>
                 </ol>
-                <p className="text-xs text-muted-foreground mt-2 italic">Faster, but less flavour and weaker structure.</p>
               </div>
             </div>
-            <Callout>👉 Ready-to-stretch: balls are soft, relaxed, and dome lightly when pushed. If they spring back hard, give them more time at room temp.</Callout>
           </Section>
 
-          <Section number={5} title="Why This Ratio Works" subtitle={`For ${fmtG(flourAmount)} g flour`}>
-            <Bullets items={[
-              `${Math.round(NEAPOLITAN_HYDRATION_LOW * 100)}–${Math.round(NEAPOLITAN_HYDRATION_HIGH * 100)}% hydration → balanced for high-heat oven`,
-              "Low yeast → long fermentation = better flavour",
-              `Salt ~${(NEAPOLITAN_SALT_PCT * 100).toFixed(1)}% → strengthens gluten without killing elasticity`,
-            ]} />
+          <Section number={7} title="Why This Ratio Works" subtitle={`For ${formatWeight(flourAmount)} flour`}>
+            <div className="grid sm:grid-cols-3 gap-4">
+              <RatioCard title={`${Math.round(NEAPOLITAN_HYDRATION_PCT * 100)}% Hydration`}>
+                Provides enough water for a soft, extensible dough while retaining the strength needed for hand stretching and high-temperature baking.
+              </RatioCard>
+              <RatioCard title={`${(NEAPOLITAN_SALT_PCT * 100).toFixed(1)}% Salt`}>
+                Provides seasoning while helping regulate fermentation and strengthen the dough structure.
+              </RatioCard>
+              <RatioCard title={`${(NEAPOLITAN_YEAST_MIN_PCT * 100).toFixed(2)}–${(NEAPOLITAN_YEAST_MAX_PCT * 100).toFixed(2)}% Instant Dry Yeast`}>
+                The low yeast level is designed for controlled fermentation over 24–48 hours.
+              </RatioCard>
+            </div>
             <Subhead className="mt-4">This Gives</Subhead>
             <Bullets items={[
-              "Airy crust (cornicione)",
-              "Soft interior",
-              "Good stretch resistance",
-              "Fast oven performance",
+              "Airy cornicione",
+              "Soft, flexible interior",
+              "Good extensibility",
+              "Controlled fermentation",
+              "Strong oven spring",
+              "Good performance in a high-heat oven",
             ]} />
           </Section>
 
-          <Section number={6} title="Key Mistakes to Avoid" subtitle="Especially with smaller batches">
+          <Section number={8} title="From Dough Ball to Pizza" subtitle="Tempered and ready to stretch">
+            <p className="text-[15px] mb-3">
+              <span className="font-semibold text-primary">{formatWeight(ballWeight)}</span> dough ball → <span className="font-semibold text-primary">30–33 cm</span> pizza
+            </p>
+            <Bullets items={[
+              "Dust with Caputo Semola Rimacinata",
+              "Press the centre outward",
+              "Preserve the gas around the perimeter",
+              "Maintain approximately 1.5–2 cm cornicione",
+              `Stretch gently to 30–33 cm for a ${formatWeight(ballWeight)} ball`,
+              "Avoid aggressive degassing",
+            ]} />
+          </Section>
+
+          <Section number={9} title="Gozney Arc — Neapolitan Bake">
+            <Bullets items={[
+              "Stone floor: 430–450°C",
+              "Dynamic top flame",
+              "Typical bake: 60–90 seconds",
+              "Rotate regularly",
+              "Adjust flame according to stone temperature, dough fermentation and topping moisture",
+            ]} />
+            <Callout>👉 60–90 seconds is a typical range, not a fixed rule — judge doneness by colour and structure.</Callout>
+          </Section>
+
+          <Section number={10} title="After the Bake">
+            <Bullets items={[
+              "Remove onto a wooden board",
+              "Rest approximately 30–60 seconds",
+              "Avoid a wire cooling rack",
+              "Slice and serve",
+            ]} />
+          </Section>
+
+          <Section number={11} title="Key Mistakes to Avoid">
             <ul className="space-y-2">
               {[
-                "Leaving dough warm too long after mixing → overproofing",
-                "Using too much flour when shaping → dry crust",
-                "Skipping fridge fermentation → weak flavour",
-                "Cold-fermenting as one big bulk instead of as balls → uneven proof, hard to divide",
-                "Not tempering balls 4–6 hours before baking → tight dough, no bubbles",
+                "Overmixing",
+                "Final dough temperature too high",
+                "Using excessive flour during shaping",
+                "Leaving dough balls uncovered",
+                "Overproofing",
+                "Aggressive stretching/degassing",
+                "Baking before the dough has relaxed",
+                "Insufficient room-temperature tempering",
               ].map((t) => (
                 <li key={t} className="text-[15px] flex gap-2.5 leading-relaxed">
                   <span className="text-destructive mt-0.5 shrink-0" aria-hidden>❌</span>
@@ -169,6 +253,33 @@ export default function DoughMakerPage() {
               ))}
             </ul>
           </Section>
+
+          <Section number={12} title="Master Workflow" subtitle="The full process, start to finish">
+            <div className="flex flex-wrap items-center gap-2">
+              {[
+                "Mix",
+                "45–60 min Puntata",
+                `${formatWeight(ballWeight)} Staglio & Balling`,
+                "24–48 h Cold Fermentation",
+                "4–6 h Room-Temperature Temper",
+                "Stretch",
+                "430–450°C Gozney Arc",
+                "60–90 sec Bake",
+                "30–60 sec Rest",
+                "Serve",
+              ].map((t, i, arr) => (
+                <span key={t} className="contents">
+                  <WorkflowChip text={t} />
+                  {i < arr.length - 1 && <WorkflowArrow />}
+                </span>
+              ))}
+            </div>
+          </Section>
+
+          <div className="rounded-xl border border-primary/30 bg-primary/5 p-5 text-center">
+            <div className="text-[11px] uppercase tracking-[0.15em] text-secondary font-semibold mb-2">Dough Maker Principle</div>
+            <p className="font-serif text-lg italic text-foreground">&ldquo;Control the dough temperature. Control the fermentation. Protect the gas. Then let the oven do the work.&rdquo;</p>
+          </div>
         </TabsContent>
 
         <TabsContent value="neapolitan2" className="space-y-6 mt-4">
@@ -1090,10 +1201,10 @@ function Section({ number, title, subtitle, children }: { number: number; title:
     <Card>
       <CardHeader className="pb-3 border-b border-border/60">
         <CardTitle className="font-serif text-xl flex items-center gap-3">
-          <span className="inline-flex items-center justify-center w-9 h-9 rounded-full bg-primary text-primary-foreground font-serif font-semibold text-base shadow-sm shrink-0">{number}</span>
+          <span className="inline-flex items-center justify-center w-9 h-9 rounded-full bg-primary text-primary-foreground font-serif font-semibold text-base shadow-sm shrink-0">{number}.</span>{" "}
           <span className="flex-1 min-w-0">
             <span className="text-foreground block leading-tight">{title}</span>
-            {subtitle && <span className="block text-xs font-sans font-normal text-muted-foreground italic mt-0.5 normal-case tracking-normal">{subtitle}</span>}
+            {subtitle && <>{"\n"}<span className="block text-xs font-sans font-normal text-muted-foreground italic mt-0.5 normal-case tracking-normal">{subtitle}</span></>}
           </span>
         </CardTitle>
       </CardHeader>
@@ -1125,6 +1236,69 @@ function Callout({ children }: { children: React.ReactNode }) {
 
 function fmtG(n: number, decimals = 0): string {
   return n.toLocaleString("en-US", { minimumFractionDigits: 0, maximumFractionDigits: decimals });
+}
+
+/** Rounds to the nearest gram and formats with thousands separators, e.g. 1234.56 -> "1,235 g". */
+function formatWeight(n: number): string {
+  if (isNaN(n) || !isFinite(n)) return "—";
+  return `${fmtG(n, 0)} g`;
+}
+
+/** Formats a yeast range to a fixed one decimal place, e.g. (0.6, 1.0) -> "0.6–1.0 g". */
+function formatYeast(min: number, max: number): string {
+  if (isNaN(min) || isNaN(max) || !isFinite(min) || !isFinite(max)) return "—";
+  return `${min.toFixed(1)}–${max.toFixed(1)} g`;
+}
+
+function BatchSummary({ batch }: { batch: ReturnType<typeof calculateDoughBatch> }) {
+  return (
+    <div className="rounded-xl border border-border/60 bg-muted/30 p-4 mb-5">
+      <div className="text-[11px] uppercase tracking-[0.15em] text-secondary font-semibold mb-3">Batch Summary</div>
+      <dl className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+        <SummaryStat label="Flour" value={formatWeight(batch.flourWeight)} />
+        <SummaryStat label="Water" value={formatWeight(batch.water)} />
+        <SummaryStat label="Salt" value={formatWeight(batch.salt)} />
+        <SummaryStat label="Yeast" value={formatYeast(batch.yeastMin, batch.yeastMax)} />
+      </dl>
+      <div className="mt-3 pt-3 border-t border-border/50 flex flex-wrap gap-x-8 gap-y-2">
+        <SummaryStat label="Total dough" value={`≈${formatWeight(batch.totalDoughMin)}`} />
+        <SummaryStat
+          label="Dough balls"
+          value={`${batch.fullBalls} × ${formatWeight(batch.ballWeight)}${batch.remainder > 0.5 ? ` + ${formatWeight(batch.remainder)}` : ""}`}
+        />
+      </div>
+    </div>
+  );
+}
+
+function SummaryStat({ label, value }: { label: string; value: string }) {
+  return (
+    <div>
+      <dt className="text-xs text-muted-foreground uppercase tracking-wide">{label}</dt>
+      <dd className="font-mono font-semibold text-primary text-[15px]">{value}</dd>
+    </div>
+  );
+}
+
+function RatioCard({ title, children }: { title: string; children: React.ReactNode }) {
+  return (
+    <div className="rounded-xl border border-primary/30 bg-primary/5 p-4">
+      <div className="font-serif text-base font-semibold mb-1.5 text-primary">{title}</div>
+      <p className="text-[15px] leading-relaxed">{children}</p>
+    </div>
+  );
+}
+
+function WorkflowChip({ text }: { text: string }) {
+  return (
+    <span className="inline-flex items-center rounded-full border border-primary/30 bg-primary/5 px-3 py-1.5 text-[14px] font-medium text-foreground">
+      <HighlightNumbers text={text} />
+    </span>
+  );
+}
+
+function WorkflowArrow() {
+  return <span className="text-muted-foreground" aria-hidden>→</span>;
 }
 
 function Field({ label, value, onChange, min, max, step = 1 }: {
