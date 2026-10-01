@@ -16,7 +16,7 @@ const BUFALINA_TRILOGY_TABLE: RecipeComparisonTable = {
 export const RECIPE_CATEGORIES: { id: PizzaRecipeCategory; label: string; blurb: string }[] = [
   { id: "classic", label: "Classic", blurb: "Margherita, Bufalina Classica, Bufalina a Freddo, Bufalina de la Casa, Cosacca, Marinara, Napoletana, Diavola, Prosciutto e Rucola, Ibérica Bianca, Prosciutto e Funghi, Capricciosa, Quattro Formaggi, Ortolana, Ripieno (Calzone)." },
   { id: "calzone-focaccia", label: "Calzone & Focaccia", blurb: "Folded and stuffed specialties." },
-  { id: "innovative", label: "Innovative", blurb: "Modern and rustic twists on Italian tradition — Double Pepperoni & Hot Honey, Chorizo and Gorgonzola, Burratina, Bufala e Ibérico, Tettoia — Four Cheese & Truffle, Calabrese, Quattro Latte e 'Nduja, 'Nduja & Hot Honey, Cetarese, Cacio e Pepe, Carbonara, Amatriciana, Gricia, Pesto & Burrata, Salsiccia al Pesto, Boscaiola, Mortadella and Pistachio, La Oro Verde." },
+  { id: "innovative", label: "Innovative", blurb: "Modern and rustic twists on Italian tradition — Double Pepperoni & Hot Honey, Chorizo and Gorgonzola, Burratina, Bufala e Ibérico, Tettoia — Four Cheese & Truffle, Calabrese, Quattro Latte e 'Nduja, 'Nduja & Hot Honey, Cetarese, Cacio e Pepe, Carbonara, Amatriciana, Gricia, Pesto Cremosa, Burrata & Pesto, Salsiccia al Pesto, Boscaiola, Mortadella and Pistachio, La Oro Verde." },
   { id: "pumpkin", label: "Pumpkin Base", blurb: "Replace tomato with smooth roasted pumpkin cream — Sfiziosa, Sfiziosa Signature, Mantovana, Norcina, Zucca Salsiccia e Provola, Zucca e 'Nduja, Zucca Guanciale e Rosmarino, Zucca, Gorgonzola & Noci." },
 ];
 
@@ -317,34 +317,43 @@ export const RECIPES: PizzaRecipe[] = [
     style: "Contemporary Neapolitan — Thermal & Textural Contrasts",
     category: "classic",
     image: "https://theuppercrustpizzeria.co.uk/cdn/shop/products/Parma.jpg?v=1639743529",
-    toppings: "70g–80g hand-crushed San Marzano DOP tomatoes + light pinch of fine sea salt, 50g well-drained Fior di Latte + 20g Mozzarella di Bufala DOP (pre-bake), 25g–30g fresh Mozzarella di Bufala DOP (post-bake), 35g–40g Prosciutto di Parma DOP or San Daniele DOP (post-bake), 15g–20g wild rocket tossed in 1g–2g Barbera Lorenzo Nº5 (post-bake), 10g–12g Parmigiano Reggiano DOP shavings (post-bake), 2g–3g Elizondo Nº3 Picual EVOO pre-bake, 3g–4g Barbera Lorenzo Nº5 EVOO post-bake.",
-    menuIngredients: "Tomato, mozzarella di bufala, Prosciutto di Parma, arugula, Parmigiano",
-    build: "A contemporary masterclass in thermal contrast — crisp baked crust topped sequentially with cool post-bake Bufala DOP, heat-warmed Prosciutto di Parma, peppery wild rocket, and shaved Parmigiano.",
-    postBake: "Transfer directly to a wooden board and rest for 30–40 seconds to vent excess steam, then sequentially stage the fresh Bufala DOP, Prosciutto di Parma, dressed wild rocket, and shaved Parmigiano, finishing with a 3g–4g swirl of Barbera Lorenzo Nº5 EVOO. Slice and serve immediately.",
-    flavorProgression: "Hot San Marzano → cool creamy Bufala DOP → warm relaxed Prosciutto di Parma → peppery wild rocket → sharp shaved Parmigiano → almond-smooth Lorenzo Nº5 finish",
+    toppings: "70g–80g hand-crushed San Marzano DOP tomatoes + light pinch of fine sea salt (no oil stirred into the raw sauce), 50g well-drained Fior di Latte + 20g Mozzarella di Bufala DOP (70g pre-bake cheese foundation), 25g–30g fresh Mozzarella di Bufala DOP (room temperature, post-bake), 35g–40g Serrano Ham (sliced paper-thin, room temperature, post-bake), 15g–20g fresh wild rocket / arugula (tossed with 1g Barbera Lorenzo N°5 drawn from the finishing allocation), 10g–12g Parmigiano Reggiano DOP (shaved into wide ribbons), 2g–3g Elizondo Nº3 Picual EVOO (spiral micro-drizzle pre-launch), and a 3g–4g Barbera Lorenzo N°5 EVOO total post-bake allocation (1g for the rocket, remaining 2g–3g for the finishing swirl).",
+    menuIngredients: "Tomato, mozzarella di bufala, Serrano ham, arugula, Parmigiano",
+    build: "A contemporary masterclass in thermal contrast — crisp baked crust topped sequentially with cool post-bake Bufala DOP, heat-warmed Serrano Ham, peppery wild rocket, and shaved Parmigiano.",
+    postBake: "Transfer directly to a wooden board and rest for 30–40 seconds to allow excess surface steam to dissipate and the base to settle. Distribute the fresh Bufala DOP across the hot base, then drape the Serrano Ham, mound the dressed wild rocket, and scatter the shaved Parmigiano, finishing with the remaining 2g–3g swirl of Barbera Lorenzo N°5 EVOO. Slice and serve immediately.",
+    flavorProgression: "Hot San Marzano → cool creamy Bufala DOP → warm relaxed Serrano Ham → peppery wild rocket → sharp shaved Parmigiano → almond-smooth Lorenzo N°5 finish",
     steps: [
       { title: "1. Pre-Prep", sections: [
-        { bullets: ["Hand-crush San Marzano DOP tomatoes and season with fine sea salt", "Combine 50g well-drained Fior di Latte and 20g Bufala DOP for the pre-bake layer", "Lightly toss 15g–20g fresh wild rocket with 1g–2g Barbera Lorenzo Nº5 in a bowl", "Shave 10g–12g Parmigiano Reggiano into thin ribbons"] },
+        { bullets: [
+          "Hand-crush San Marzano DOP tomatoes and season lightly with fine sea salt.",
+          "Combine 50g well-drained Fior di Latte and 20g Bufala DOP for the pre-bake layer.",
+          "Toss 15g–20g fresh wild rocket with 1g Barbera Lorenzo N°5 in a bowl (drawn from the 3g–4g post-bake oil allocation).",
+          "Shave 10g–12g Parmigiano Reggiano into thin ribbons.",
+        ] },
       ] },
       { title: "2. Dough Prep", sections: [
-        { bullets: ["Hand-stretch the 280g dough ball to 30–33cm on semolina rimacinata, preserving gas in an airy 1.5cm cornicione"] },
+        { bullets: ["Hand-stretch 280g dough ball to 30–33cm on semolina rimacinata, preserving gas in an airy 1.5cm cornicione."] },
       ] },
       { title: "3. Layer Assembly (In Exact Order)", sections: [
-        { intro: "Layer 1 — San Marzano:", bullets: ["Spread 70g–80g seasoned San Marzano DOP evenly across the center, leaving a 1.5–2cm clean rim"] },
-        { intro: "Layer 2 — Pre-Bake Cheese:", bullets: ["Scatter the 70g Fior di Latte / Bufala mix over the tomato, leaving small gaps"] },
-        { intro: "Layer 3 — Picual:", bullets: ["Apply a 2g–3g spiral micro-drizzle of Elizondo Nº3 Picual EVOO over the build"] },
+        { intro: "Layer 1 — San Marzano:", bullets: ["Spread 70g–80g seasoned San Marzano DOP evenly across the center — leave a 1.5–2cm rim clean."] },
+        { intro: "Layer 2 — Pre-Bake Cheese:", bullets: ["Scatter the 70g Fior di Latte / Bufala mix over the tomato, leaving small gaps."] },
+        { intro: "Layer 3 — Picual:", bullets: ["Apply a 2g–3g spiral micro-drizzle of Elizondo Nº3 Picual EVOO over the build immediately before launching."] },
       ] },
       { title: "4. Gozney Bake", sections: [
-        { intro: "Gozney / High-Heat Oven:", bullets: ["🪨 Stone Floor: 420°C–440°C", "🔥 Dome: 450°C–480°C", "⏱ Cook Time: 60–75 seconds", "🔄 Rotate regularly until the crust is fully blistered and structured to support cold toppings"] },
+        { intro: "Gozney / High-Heat Oven:", bullets: [
+          "🪨 Stone floor target: 420°C–440°C",
+          "🔥 Dome: 450°C–480°C",
+          "⏱ Cook Time: 60–75 seconds — rotate regularly until the crust is fully blistered and the base is set enough to support the fresh post-bake toppings.",
+        ] },
       ] },
       { title: "5. Rest & Sequential Post-Bake Staging", sections: [
-        { bullets: ["Transfer directly to a wooden board and rest for 30–40 seconds to vent excess steam"] },
-        { intro: "Stage 1 — Fresh Bufala:", bullets: ["Distribute 25g–30g fresh room-temperature Bufala DOP separately across the hot melted base"] },
-        { intro: "Stage 2 — Prosciutto:", bullets: ["Drape 35g–40g paper-thin Prosciutto di Parma loosely over the pizza, allowing the delicate fat to gently warm and relax from residual heat without cooking"] },
-        { intro: "Stage 3 — Rocket:", bullets: ["Mound the dressed wild rocket directly over the prosciutto"] },
-        { intro: "Stage 4 — Parmigiano & Finishing Oil:", bullets: ["Scatter shaved Parmigiano ribbons over the rocket and finish with a 3g–4g swirl of Barbera Lorenzo Nº5 EVOO", "Slice and serve immediately"] },
-        { intro: "Technical Thermal Note:", bullets: ["Resting the base for 30–40 seconds before staging prevents steam wilting — draping the Prosciutto di Parma loosely allows the cured fat to warm and relax naturally from residual surface heat, softening its texture and releasing aromatic volatile oils without cooking or toughening the meat"] },
-        { intro: "Profile:", bullets: ["Hot San Marzano → cool creamy Bufala DOP → warm relaxed Prosciutto di Parma → peppery wild rocket → sharp shaved Parmigiano → almond-smooth Lorenzo Nº5 finish"] },
+        { bullets: ["Transfer directly to a wooden board and rest for 30–40 seconds to allow excess surface steam to dissipate and the base to settle."] },
+        { intro: "Stage 1 — Fresh Bufala:", bullets: ["Distribute 25g–30g fresh room-temperature Bufala DOP across the hot base, keeping the fresh Bufala pieces distinct from the melted pre-bake cheese rather than mixing them together."] },
+        { intro: "Stage 2 — Serrano Ham:", bullets: ["Drape 35g–40g paper-thin Serrano Ham loosely over the fresh Bufala, allowing the delicate fat to gently warm and relax from residual heat, softening its texture and warming its flavour without cooking or toughening the meat."] },
+        { intro: "Stage 3 — Rocket:", bullets: ["Mound the dressed wild rocket directly over the Serrano ham."] },
+        { intro: "Stage 4 — Parmigiano & Finishing Oil:", bullets: ["Scatter shaved Parmigiano ribbons over the rocket and finish with the remaining 2g–3g swirl of Barbera Lorenzo N°5 EVOO.", "Slice and serve immediately."] },
+        { intro: "Technical Thermal Note:", bullets: ["A short 30–40 second rest allows excess surface steam to dissipate while allowing the crust to settle before cold toppings are added. Keeping the post-bake fresh Bufala pieces distinct from the melted pre-bake cheese preserves the intended thermal contrast between hot, bubbling dairy and cool, creamy fresh mozzarella."] },
+        { intro: "Profile:", bullets: ["Hot San Marzano → cool creamy Bufala DOP → warm relaxed Serrano Ham → peppery wild rocket → sharp shaved Parmigiano → almond-smooth Lorenzo N°5 finish"] },
       ] },
     ],
   },
@@ -389,58 +398,106 @@ export const RECIPES: PizzaRecipe[] = [
     id: "prosciutto-e-funghi",
     number: 11,
     name: "Prosciutto e Funghi",
-    style: "Classic Neapolitan — Blistered San Marzano, Sliced Cotto & Earthy Champignons",
+    style: "Classic Neapolitan — San Marzano DOP, Fior di Latte, Prosciutto Cotto & Champignons",
     category: "classic",
     image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRAP5MdbljTAVL7meY_XhtUQ1HIdHrEIdsxxZk_dqVevQ&s=10",
-    toppings: "San Marzano tomato sauce (Agro Sarnese-Nocerino DOP), Elizondo Nº3 Picual EVOO (pre-bake), house-made Fior di Latte mozzarella, sliced prosciutto cotto (cooked ham), Champignon mushrooms, Barbera Lorenzo Nº5 EVOO (post-bake), Parmigiano Reggiano DOP aged 24 months, fresh basil.",
-    menuIngredients: "Tomato, mozzarella, cooked ham, Champignon mushrooms, Parmigiano Reggiano, basil, olive oil",
-    build: "A comforting, familiar classic built on San Marzano tomatoes from the Agro Sarnese-Nocerino DOP finished pre-bake with a micro-drizzle of Elizondo Nº3 Picual EVOO, and our own house-made Fior di Latte. Sliced prosciutto cotto and Champignon mushrooms bake right into the pizza, then it's finished post-bake with Barbera Lorenzo Nº5 (Nocellara del Belice DOP), shavings of Parmigiano Reggiano DOP aged 24 months, and fresh basil for a smooth, velvety finish.",
-    postBake: "Finish with Barbera Lorenzo Nº5 (Nocellara del Belice DOP), shaved Parmigiano Reggiano DOP and fresh basil leaves for a smooth, velvety finish.",
+    toppings: "60g–70g hand-crushed San Marzano DOP tomatoes + light pinch of fine sea salt, 6g Parmigiano Reggiano DOP 24M (finely grated — house savory accent), 75g well-drained Fior di Latte (hand-torn into irregular rustic strips), 40g–50g Prosciutto Cotto (high-quality Italian cooked ham, torn into rustic strips), 35g–40g Champignon mushrooms (sliced 1–2mm, dry-sautéed without oil until moisture evaporates, cooled completely), 4–5 fresh basil leaves (split: 2–3 pre-bake, 1–2 post-bake), 2g–3g Elizondo Nº3 Picual EVOO (spiral micro-drizzle pre-launch), 3g–4g Barbera Lorenzo N°5 EVOO (Nocellara del Belice DOP — finishing swirl).",
+    menuIngredients: "Tomato, mozzarella, Parmigiano Reggiano, cooked ham, Champignon mushrooms, basil, olive oil",
+    build: "A cherished Neapolitan classic pairing bright San Marzano DOP and melted Fior di Latte with delicate Prosciutto Cotto, dry-sautéed Champignon mushrooms, and a smooth Lorenzo N°5 finish.",
+    postBake: "Transfer directly to a wooden board and rest for 30–60 seconds to allow rendered moisture and melted cheese to stabilize. Scatter 1–2 fresh basil leaves and finish with a 3g–4g swirl of Barbera Lorenzo N°5 EVOO across the pie. Slice and serve immediately.",
+    flavorProgression: "Bright San Marzano → toasted Parmigiano → creamy Fior di Latte → warm Prosciutto Cotto → earthy Champignons → almond-smooth Lorenzo N°5 finish",
     steps: [
-      { title: "1. Dough", sections: [{ bullets: ["Stretch the 280g dough ball to a target size of 30–32 cm", "Preserve a light, airy cornicione"] }] },
-      { title: "2. Tomato Base", sections: [{ bullets: ["60g–70g San Marzano tomato sauce (Agro Sarnese-Nocerino DOP)", "Spread in a thin, even layer", "Leave a clean 1.5–2 cm border", "A micro-drizzle of Elizondo Nº3 Picual EVOO over the tomato"] }] },
-      { title: "3. Mozzarella, Ham & Mushroom", sections: [
-        { bullets: ["70g–80g house-made Fior di Latte, well-drained and torn into pieces", "50g prosciutto cotto (cooked ham), thinly sliced", "40g Champignon mushrooms"] },
-        { intro: "Mushroom Tip:", bullets: ["Ensure Champignon mushrooms are sliced paper-thin or lightly dry-sautéed prior to topping to prevent water pooling on the pizza"] },
+      { title: "1. Pre-Prep", sections: [
+        { bullets: [
+          "Hand-crush San Marzano DOP tomatoes and season lightly with fine sea salt.",
+          "Hand-tear 75g Fior di Latte into irregular rustic strips and drain in a sieve for at least 1 hour.",
+          "Slice 35g–40g Champignon mushrooms (1–2mm). Dry-sauté briefly in a hot pan without oil until they release and evaporate visible moisture. Cool completely before assembly.",
+          "Tear 40g–50g Prosciutto Cotto into rustic strips.",
+        ] },
       ] },
-      { title: "4. Bake", sections: [
-        { intro: "Gozney / High-Heat Oven:", bullets: ["🪨 Floor/Stone: 420°C–440°C", "🔥 Dome/Air: 450°C–480°C", "⏱ Cook time: 60–75 seconds", "🔄 Rotate every 15–20 seconds"] },
+      { title: "2. Dough Prep", sections: [
+        { bullets: ["Hand-stretch 280g dough ball to 30–33cm on Caputo Semolina Rimacinata, preserving gas in an airy 1.5–2cm cornicione."] },
       ] },
-      { title: "5. Finish", sections: [{ bullets: ["Finish with Barbera Lorenzo Nº5 (Nocellara del Belice DOP) drizzled over the hot pizza", "Shave Parmigiano Reggiano DOP (24 months) over the top", "Scatter fresh basil leaves for a smooth, velvety finish"] }] },
+      { title: "3. Layer Assembly (In Exact Order)", sections: [
+        { intro: "Layer 1 — San Marzano:", bullets: ["Spread 60g–70g San Marzano sauce evenly across the center — leave a 1.5–2cm rim clean."] },
+        { intro: "Layer 2 — Parmigiano Accent:", bullets: ["Distribute 6g finely grated Parmigiano Reggiano DOP directly over the tomato sauce as a house savory accent."] },
+        { intro: "Layer 3 — Fior di Latte & Basil:", bullets: ["Scatter 75g Fior di Latte strips over the tomato and Parmigiano.", "Tuck 2–3 fresh basil leaves under cheese pieces."] },
+        { intro: "Layer 4 — Prosciutto Cotto & Champignons:", bullets: ["Distribute Prosciutto Cotto strips and dry-sautéed Champignon mushrooms evenly across the cheese."] },
+        { intro: "Layer 5 — Picual:", bullets: ["Apply a 2g–3g spiral micro-drizzle of Elizondo Nº3 Picual EVOO over the build."] },
+      ] },
+      { title: "4. Gozney Bake", sections: [
+        { intro: "Gozney / High-Heat Oven:", bullets: [
+          "🪨 Stone floor target: 420°C–440°C",
+          "🔥 Dome: 450°C–480°C",
+          "Manage top flame dynamically, reducing as needed to warm the Prosciutto Cotto and lightly roast the mushrooms without drying the ham.",
+          "⏱ Cook Time: 60–75 seconds — rotate regularly for even blistering and colour.",
+        ] },
+      ] },
+      { title: "5. Rest & Finish", sections: [
+        { bullets: [
+          "Transfer directly to a wooden board and rest for 30–60 seconds to allow rendered moisture and melted cheese to stabilize.",
+          "Scatter 1–2 fresh basil leaves and finish with a 3g–4g swirl of Barbera Lorenzo N°5 EVOO (Nocellara del Belice DOP) across the pie.",
+          "Slice and serve immediately.",
+        ] },
+        { intro: "Technical Moisture & Fat Note:", bullets: [
+          "A light 6g Parmigiano Reggiano layer over the tomato adds savoury depth as a house-level accent and helps absorb surface moisture during the bake.",
+          "Dry-sautéing the Champignon mushrooms before topping removes excess surface moisture and makes their texture more predictable during the high-heat bake.",
+        ] },
+        { intro: "Profile:", bullets: ["Bright San Marzano → toasted Parmigiano → creamy Fior di Latte → warm Prosciutto Cotto → earthy Champignons → almond-smooth Lorenzo N°5 finish"] },
+      ] },
     ],
   },
   {
     id: "capricciosa",
     number: 12,
     name: "Capricciosa",
-    style: "The Neapolitan Big Four — Cotto, Salame, Artichokes & Champignons",
+    style: "House Classic — Prosciutto Cotto, Salame, Artichokes & Champignons",
     category: "classic",
     image: "https://positano.lv/wp-content/uploads/2021/12/Capricciosa-1.png",
-    toppings: "San Marzano tomato sauce (Agro Sarnese-Nocerino DOP), Elizondo Nº3 Picual EVOO (pre-bake), Fior di Latte mozzarella, prosciutto cotto (cooked ham), Salame di Mugnano del Cardinale (garlic-and-pepper cured salami), Funghi Champignon, Carciofini Mammarelle artichoke hearts, Barbera Lorenzo Nº5 EVOO (post-bake), Parmigiano-Reggiano DOP aged 24 months, fresh basil.",
-    menuIngredients: "Tomato, mozzarella, cooked ham, salami, mushroom, artichoke, Parmigiano, basil",
-    build: "One of Naples' 'Big Four' classics alongside Margherita, Marinara and Diavola. A San Marzano base finished pre-bake with a micro-drizzle of Elizondo Nº3 Picual EVOO, then prosciutto cotto, spicy Salame di Mugnano del Cardinale, Funghi Champignon and quartered Carciofini Mammarelle are scattered together over Fior di Latte, baked hot, and finished post-bake with Barbera Lorenzo Nº5 (Nocellara del Belice DOP), grated Parmigiano-Reggiano DOP aged 24 months, and fresh basil for a smooth, velvety finish.",
-    postBake: "Finish with Barbera Lorenzo Nº5 (Nocellara del Belice DOP), grated Parmigiano-Reggiano DOP 24 months and fresh basil for a smooth, velvety finish.",
+    toppings: "60g–70g hand-crushed San Marzano DOP tomatoes + light pinch of fine sea salt, 6g Parmigiano Reggiano DOP 24M (finely grated — house savory accent), 75g well-drained Fior di Latte (hand-torn into rustic strips), 35g Prosciutto Cotto (high-quality Italian cooked ham, torn into rustic strips), 25g Salame di Mugnano del Cardinale or Salame Napoletano (thinly sliced), 30g Champignon mushrooms (sliced 1–2mm, dry-sautéed without oil until surface moisture evaporates, cooled completely), 30g Carciofini Mammarelle artichoke hearts (in oil/brine, gently pressed to remove excess surface oil while preserving their acidic brine profile, quartered), 4–5 fresh basil leaves (split: 2–3 pre-bake, 1–2 post-bake), 2g–3g Elizondo Nº3 Picual EVOO (spiral micro-drizzle pre-launch), 3g–4g Barbera Lorenzo N°5 EVOO (Nocellara del Belice DOP — finishing swirl).",
+    menuIngredients: "Tomato, mozzarella, cooked ham, salame, mushroom, artichoke, Parmigiano, basil",
+    build: "Our house interpretation of the grand Neapolitan classic featuring the 'Big Four' toppings — Prosciutto Cotto, Salame di Mugnano, dry-sautéed Champignons, and pressed artichoke hearts over San Marzano DOP and melted Fior di Latte.",
+    postBake: "Transfer directly to a wooden board and rest for 30–60 seconds to allow the cheese to settle and excess surface steam to dissipate. Scatter 1–2 fresh basil leaves and finish with a 3g–4g swirl of Barbera Lorenzo N°5 EVOO across the pie. Slice and serve immediately.",
+    flavorProgression: "Bright San Marzano → toasted Parmigiano → creamy Fior di Latte → savory Prosciutto Cotto & spiced Salame → earthy Champignons & tangy artichoke → almond-smooth Lorenzo N°5 finish",
     steps: [
-      { title: "1. Toppings & Proportions (Per 280g Dough Ball)", sections: [
-        { bullets: ["60g–70g Pomodoro San Marzano dell'Agro Sarnese-Nocerino DOP (crushed tomatoes with 1g fine salt per 100g, reduced to balance the heavy topping load)", "70g–80g Fior di Latte (cubed/sliced and thoroughly drained)", "40g Prosciutto Cotto (high-grade cooked ham, torn into bite-sized pieces)", "30g Salame di Mugnano del Cardinale (traditional Neapolitan garlic-and-pepper cured salami, thinly sliced)", "30g Funghi Champignon (fresh button mushrooms, thinly sliced)", "35g Carciofini Mammarelle (Roman/Neapolitan artichoke hearts in oil, thoroughly drained and quartered)", "15g Parmigiano-Reggiano DOP 24 mesi (finely grated, for the post-bake finish)", "4–5 Fresh Basil Leaves", "Elizondo Nº3 Picual EVOO (pre-bake) and Barbera Lorenzo Nº5 EVOO (post-bake)"] },
+      { title: "1. Pre-Prep", sections: [
+        { bullets: [
+          "Hand-crush San Marzano DOP tomatoes and season lightly with fine sea salt.",
+          "Hand-tear 75g Fior di Latte into rustic strips and drain in a sieve for at least 1 hour.",
+          "Slice 30g Champignon mushrooms (1–2mm) and dry-sauté briefly in a hot pan without oil until surface moisture evaporates. Cool completely.",
+          "Gently press 30g Carciofini Mammarelle quarters in paper towels to remove excess surface oil without draining their acidic brine.",
+          "Portion 35g Prosciutto Cotto and 25g thinly sliced Salame.",
+        ] },
       ] },
-      { title: "2. Moisture Control (Essential Step)", sections: [
-        { intro: "Fior di Latte:", bullets: ["Drain in a sieve for at least 1–2 hours"] },
-        { intro: "Artichokes (Carciofini):", bullets: ["Thoroughly press the artichoke quarters between paper towels to remove excess oil/brine so they crisp up rather than boil on the pizza"] },
-        { intro: "Mushrooms:", bullets: ["Slice thinly so they roast fast under high heat"] },
+      { title: "2. Dough Prep", sections: [
+        { bullets: ["Hand-stretch 280g dough ball to 30–32cm on semolina rimacinata, preserving gas in an airy 1.5–2cm cornicione while keeping the center structured to support the topping load."] },
       ] },
-      { title: "3. Stretch the Dough", sections: [
-        { bullets: ["Stretch the 280g dough ball on semolina rimacinata to a target size of 30–32 cm, leaving an airy 1.5–2 cm cornicione"] },
+      { title: "3. Layer Assembly (In Exact Order)", sections: [
+        { intro: "Layer 1 — San Marzano:", bullets: ["Spread 60g–70g San Marzano sauce evenly across the center — leave a 1.5–2cm rim clean."] },
+        { intro: "Layer 2 — Parmigiano Accent:", bullets: ["Distribute 6g finely grated Parmigiano Reggiano DOP directly over the tomato sauce as a house savory accent."] },
+        { intro: "Layer 3 — Fior di Latte & Basil:", bullets: ["Scatter 75g Fior di Latte strips over the tomato and Parmigiano.", "Tuck 2–3 fresh basil leaves under cheese pieces."] },
+        { intro: "Layer 4 — The Four Toppings:", bullets: ["Evenly distribute Prosciutto Cotto, Salame slices, dry-sautéed Champignons, and quartered artichoke pieces across the cheese."] },
+        { intro: "Layer 5 — Picual:", bullets: ["Apply a 2g–3g spiral micro-drizzle of Elizondo Nº3 Picual EVOO over the build."] },
       ] },
-      { title: "4. Assemble", sections: [
-        { bullets: ["Spread the 60g–70g San Marzano tomato sauce evenly outward in a quick spiral", "A micro-drizzle of Elizondo Nº3 Picual EVOO over the tomato base", "Scatter the drained Fior di Latte across the base", "Distribute the Funghi Champignon, Prosciutto Cotto, Salame di Mugnano del Cardinale, and quartered Carciofini Mammarelle evenly over the cheese"] },
+      { title: "4. Gozney Bake", sections: [
+        { intro: "Gozney / High-Heat Oven:", bullets: [
+          "🪨 Stone floor target: 430°C–440°C",
+          "🔥 Dome: 450°C–480°C",
+          "Manage top flame dynamically after launch, reducing as needed so floor heat cooks through the topping load without burning the top.",
+          "⏱ Cook Time: 70–80 seconds — rotate regularly until the crust shows even blistering and colour, salami edges lightly curl, and artichokes show slight char.",
+        ] },
       ] },
-      { title: "5. Bake", sections: [
-        { intro: "Gozney / High-Heat Oven:", bullets: ["🪨 Floor/Stone: 430°C–450°C", "🔥 Dome/Air: 450°C–480°C", "🔥 Flame: drop to Medium/Low immediately after launch so the floor heat cooks through the heavy toppings without burning the top", "⏱ Cook time: 70–80 seconds", "🔄 Rotate every 15–20 seconds"] },
-        { intro: "You're looking for:", bullets: ["Crust puffed and leopard-spotted, salami edges curled, artichokes slightly charred"] },
-      ] },
-      { title: "6. Finish", sections: [
-        { bullets: ["Finish with Barbera Lorenzo Nº5 (Nocellara del Belice DOP) drizzled over the hot pizza", "Shave/grate Parmigiano-Reggiano DOP 24 mesi over the top", "Scatter fresh basil leaves for a smooth, velvety finish"] },
+      { title: "5. Rest & Finish", sections: [
+        { bullets: [
+          "Transfer directly to a wooden board and rest for 30–60 seconds to allow the cheese to settle and excess surface steam to dissipate.",
+          "Scatter 1–2 fresh basil leaves and finish with a 3g–4g swirl of Barbera Lorenzo N°5 EVOO across the pie.",
+          "Slice and serve immediately.",
+        ] },
+        { intro: "Technical Moisture & Fat Note:", bullets: [
+          "Gently pressing artichokes removes excess surface oil while retaining their acidic brine character.",
+          "A light 6g Parmigiano Reggiano layer dusted directly on the raw tomato adds savory depth and helps absorb surface moisture during the bake.",
+        ] },
+        { intro: "Profile:", bullets: ["Bright San Marzano → toasted Parmigiano → creamy Fior di Latte → savory Prosciutto Cotto & spiced Salame → earthy Champignons & tangy artichoke → almond-smooth Lorenzo N°5 finish"] },
       ] },
     ],
   },
@@ -628,32 +685,44 @@ export const RECIPES: PizzaRecipe[] = [
     id: "burratina",
     number: 18,
     name: "Burratina",
-    style: "Blistered Volcanic Piennolo & Post-Bake Putignano Burrata Crown",
+    style: "Contemporary Neapolitan — Volcanic Piennolo DOP & Post-Bake Burrata Crown",
     category: "innovative",
     image: "https://www.rtagency.it/menu/pizzeria%20carmnella/images/cafona-carm.jpeg",
-    toppings: "Red Piennolo tomatoes (crushed a pacchetelle), finely grated hard cheese (Pecorino Romano or Grana Padano), mountain oregano, fresh basil, Elizondo Nº3 Picual EVOO (pre-bake), Burrata di Putignano (post-bake), Barbera Lorenzo Nº5 EVOO (post-bake).",
-    menuIngredients: "Red Piennolo tomato, hard cheese, oregano, basil, olive oil, Burrata di Putignano (post-bake)",
-    build: "Burratina plays on the contrast between warm, blistered Red Piennolo tomatoes and fresh, creamy Putignano Burrata, which is placed whole in the center after the bake and sliced open tableside so its rich stracciatella spills over the base.",
-    postBake: "Place the whole Burrata di Putignano in the center of the steaming tomato base, slice the top open with a knife so the creamy stracciatella spills over the tomatoes, basil, and oregano, then finish with a drizzle of Barbera Lorenzo Nº5 EVOO, then serve.",
+    toppings: "70g–80g Pomodorino del Piennolo del Vesuvio DOP (crushed a pacchetelle by hand), 8g Pecorino Romano DOP (finely grated), 0.5g wild mountain oregano (Origano di Montagna), 4–5 fresh basil leaves (split: 2–3 pre-bake, 1–2 post-bake), 2g–3g Elizondo Nº3 Picual EVOO (spiral micro-drizzle pre-launch), 100g Burrata di Putignano or Burrata di Andria DOP (120g max for 33cm stretched base; removed from refrigeration sufficiently ahead of service to take the chill off), 3g–4g Barbera Lorenzo N°5 EVOO (Nocellara del Belice DOP — finishing swirl over opened burrata).",
+    menuIngredients: "Red Piennolo tomato, Pecorino Romano, oregano, basil, olive oil, Burrata di Putignano (post-bake)",
+    build: "A contemporary masterclass in thermal contrast — blistered, concentrated Vesuvian Piennolo DOP tomatoes baked with mountain oregano and Pecorino Romano, crowned post-bake with a fresh, silky Pugliese Burrata.",
+    postBake: "Transfer directly to a wooden board and rest for 30–40 seconds to allow excess surface steam to dissipate and the base to settle. Place the room-temperature Putignano Burrata centrally on the hot base, cross-cut and open the pouch so the stracciatella spills over the tomatoes, scatter the remaining basil, and finish with a 3g–4g swirl of Barbera Lorenzo N°5 EVOO across the opened burrata and crust. Slice and serve immediately.",
+    flavorProgression: "Blistered Piennolo DOP → sharp Pecorino Romano & oregano → cool creamy Burrata stracciatella → sweet basil → almond-smooth Lorenzo N°5 finish",
     steps: [
-      { title: "1. Master Topping Specifications (For One 28–30cm Pizza)", sections: [
-        { intro: "Base:", bullets: ["70g–80g Red Piennolo tomatoes, crushed a pacchetelle by hand"] },
-        { intro: "Base Cheese & Seasoning:", bullets: ["8g–10g finely grated hard cheese (Pecorino Romano or Grana Padano)", "Mountain oregano", "Fresh basil", "Elizondo Nº3 Picual EVOO (pre-bake)"] },
-        { intro: "Post-Bake Hero Ingredient:", bullets: ["100g–125g Burrata di Putignano (Pugliese burrata, brought to room temperature before serving)", "Barbera Lorenzo Nº5 EVOO (Nocellara del Belice), for the post-bake finish"] },
+      { title: "1. Pre-Prep", sections: [
+        { bullets: [
+          "Hand-crush 70g–80g Piennolo del Vesuvio DOP tomatoes a pacchetelle.",
+          "Remove 100g Burrata from refrigeration sufficiently ahead of service to take the chill off so the internal stracciatella is not ice-cold.",
+          "Finely grate 8g Pecorino Romano DOP.",
+        ] },
       ] },
-      { title: "2. Prep & Stretch", sections: [
-        { intro: "Bring burrata to room temperature before serving:", bullets: ["Take the Putignano Burrata out of the fridge 30–45 minutes prior so the creamy stracciatella center isn't ice-cold when placed on the hot pizza", "Open your 280g dough ball in Caputo Semolina Rimacinata to 30–33 cm (12–13 in), pushing gas into the outer ring (cornicione)"] },
+      { title: "2. Dough Prep", sections: [
+        { bullets: ["Hand-stretch 280g dough ball to 30–33cm on semolina rimacinata, preserving gas in an airy 1.5–2cm cornicione."] },
       ] },
-      { title: "3. Pre-Bake Assembly", sections: [
-        { intro: "Burrata is strictly applied post-bake:", bullets: ["Spread 70g–80g of Red Piennolo tomatoes over the dough", "Dust the grated hard cheese across the tomatoes", "Scatter a generous pinch of mountain oregano and fresh basil leaves", "Finish with a spiral of Elizondo Nº3 Picual EVOO over the Piennolo tomatoes and mountain oregano"] },
-        { intro: "Rule:", bullets: ["Do not put the burrata in the oven — high heat causes it to break, separate into whey, and ruin the crust"] },
+      { title: "3. Layer Assembly (In Exact Order)", sections: [
+        { intro: "Layer 1 — Piennolo DOP:", bullets: ["Spread 70g–80g crushed Piennolo tomatoes evenly across the dough, leaving a clean 1.5–2cm border."] },
+        { intro: "Layer 2 — Cheese & Oregano:", bullets: ["Dust 8g finely grated Pecorino Romano DOP and 0.5g mountain oregano evenly over the tomatoes."] },
+        { intro: "Layer 3 — Basil & Picual:", bullets: ["Tuck 2–3 fresh basil leaves into the tomatoes and finish with a 2g–3g spiral micro-drizzle of Elizondo Nº3 Picual EVOO."] },
       ] },
-      { title: "4. Launch & Gozney Bake (75–90 Seconds)", sections: [
-        { intro: "Gozney / High-Heat Oven:", bullets: ["🪨 Floor/Stone: 430°C–450°C", "🔥 Dome/Air: 450°C–480°C", "🔥 Flame: drop to LOW immediately upon launch to caramelize the Piennolo tomatoes without scorching", "⏱ Cook time: 75–90 seconds"] },
-        { intro: "Blister the volcanic Piennolo tomatoes:", bullets: ["Rotate every 15 seconds as the Piennolo tomatoes caramelize and the rim inflates with dark leopard spots"] },
+      { title: "4. Gozney Bake", sections: [
+        { intro: "Gozney / High-Heat Oven:", bullets: [
+          "🪨 Stone floor target: 430°C–450°C",
+          "🔥 Dome: 450°C–480°C",
+          "Manage top flame dynamically after launch, reducing as needed so the sweet Piennolo tomatoes blister and concentrate without scorching.",
+          "⏱ Cook Time: 75–90 seconds — rotate regularly for even blistering and colour.",
+        ] },
       ] },
-      { title: "5. Post-Bake Burrata Finish", sections: [
-        { intro: "The signature Putignano Burrata crown:", bullets: ["Transfer the pizza directly onto a wire cooling rack for 60 seconds", "Place the whole Putignano Burrata right in the center of the steaming tomato base", "Slice the top of the burrata open with a knife so the rich, creamy stracciatella spills over the sweet Red Piennolo tomatoes, basil, and oregano", "Finish with a drizzle of Barbera Lorenzo Nº5 EVOO over the opened burrata stracciatella"] },
+      { title: "5. Rest & Sequential Post-Bake Staging", sections: [
+        { bullets: ["Transfer directly to a wooden board and rest for 30–40 seconds to allow excess surface steam to dissipate and the base to settle."] },
+        { intro: "Stage 1 — Burrata Crown:", bullets: ["Place the room-temperature Putignano Burrata centrally on the hot base. Make a light cross cut (+) in the outer skin of the top knot and gently open the pouch so the creamy stracciatella spills over the blistered Piennolo tomatoes."] },
+        { intro: "Stage 2 — Basil & Finishing Oil:", bullets: ["Scatter 1–2 fresh basil leaves over the stracciatella and finish with a 3g–4g swirl of Barbera Lorenzo N°5 EVOO across the opened burrata and crust.", "Slice and serve immediately."] },
+        { intro: "Technical Thermal Note:", bullets: ["Burrata must never enter the oven; extreme heat causes its delicate cream to separate into whey, saturating the crust. Resting the pizza for 30–40 seconds on a wooden board before crowning with room-temperature burrata preserves the thermal contrast between blistered, concentrated Vesuvian tomatoes and cool, silky stracciatella cream."] },
+        { intro: "Profile:", bullets: ["Blistered Piennolo DOP → sharp Pecorino Romano & oregano → cool creamy Burrata stracciatella → sweet basil → almond-smooth Lorenzo N°5 finish"] },
       ] },
     ],
   },
@@ -737,33 +806,47 @@ export const RECIPES: PizzaRecipe[] = [
     id: "calabrese",
     number: 21,
     name: "Calabrese",
-    style: "Contemporary White Pizza — Rendering 'Nduja di Spilinga & Creamy Gorgonzola Dolce Pockets",
+    style: "Contemporary White Base — Hybrid 'Nduja di Spilinga & Gorgonzola Dolce Pockets",
     category: "innovative",
     image: "https://media-cdn.tripadvisor.com/media/photo-s/1b/9e/0f/61/nduja-e-gorgonzola.jpg",
-    toppings: "Fior di Latte mozzarella, Gorgonzola Dolce DOP, 'Nduja di Spilinga, Elizondo Nº3 Picual EVOO (pre-bake), Parmigiano-Reggiano DOP aged 24 months, fresh basil, Frantoio Muraglia Coratina or Barbera Lorenzo Nº5 EVOO (post-bake). No tomato.",
+    toppings: "Strictly no tomato sauce. 8g Parmigiano Reggiano DOP 24M (finely grated — house savory layer), 60g Fior di Latte (hand-torn into rustic strips, drained 1+ hour), 25g Gorgonzola DOP Dolce (crumbled into 5–6 small isolated pockets), 25g 'Nduja di Spilinga total — hybrid staging: 15g–18g rolled into 6–8 hazelnut-sized pre-bake dollops, 7g–10g rolled into 3–4 tiny fresh post-bake dollops, 2g Elizondo Nº3 Picual EVOO (spiral micro-drizzle pre-launch), 3g–4g Frantoio Muraglia Coratina EVOO (Intense Fruity — peppery finishing kick), 2–3 fresh basil leaves (post-bake only).",
     menuIngredients: "Mozzarella, gorgonzola, 'nduja, Parmigiano, basil",
-    build: "Pizza Bianca — zero tomato sauce. A white pizza built on the contrast between mild, creamy Gorgonzola Dolce and small dollops of fiery 'Nduja di Spilinga, which render into a glossy red oil during the bake and weep their paprika spice into the pool of melted Fior di Latte, finished post-bake with either a spicy-peppery Frantoio Muraglia Coratina or a smooth, sweet Barbera Lorenzo Nº5 (Nocellara del Belice DOP).",
-    postBake: "Finish with Frantoio Muraglia Coratina EVOO for a spicy, peppery kick, or Barbera Lorenzo Nº5 (Nocellara del Belice DOP) for a smooth, sweet, creamy balance.",
+    build: "A bold Calabrian white pie pairing rendered and fresh 'Nduja di Spilinga with isolated pockets of Gorgonzola Dolce, toasted Parmigiano, and an intense Frantoio Muraglia Coratina finish.",
+    postBake: "Transfer directly to a wooden board and rest for 30–40 seconds to allow the cheeses and rendered fats to settle. Dot the remaining 7g–10g fresh room-temperature 'Nduja dollops across the hot pie, scatter 2–3 fresh basil leaves, and finish with a 3g–4g swirl of Frantoio Muraglia Coratina EVOO. Slice and serve immediately.",
+    flavorProgression: "Toasted Parmigiano base → creamy Fior di Latte → fiery Calabrian ’Nduja → rich Gorgonzola Dolce pocket → peppery Muraglia Coratina finish",
     steps: [
-      { title: "1. Ingredients & Proportions (Per 280g Dough Ball)", sections: [
-        { bullets: ["60g Fior di Latte (cubed/cut into strips, drained thoroughly)", "40g Gorgonzola Dolce DOP (broken into small dollops)", "35g–40g 'Nduja di Spilinga (rolled into small hazelnut-sized dollops)", "15g Parmigiano-Reggiano DOP 24 mesi (finely grated)", "4–5 Fresh Basil Leaves", "Elizondo Nº3 Picual EVOO (pre-bake) and Frantoio Muraglia Coratina or Barbera Lorenzo Nº5 EVOO (post-bake)"] },
+      { title: "1. Pre-Prep", sections: [
+        { bullets: [
+          "Tear 60g Fior di Latte into rustic strips and drain in a sieve for at least 1 hour.",
+          "Bring 'Nduja di Spilinga to room temperature so it softens. With wet fingers, portion into pre-bake (15g–18g) and post-bake (7g–10g) dollops.",
+          "Portion 25g Gorgonzola Dolce DOP into small nuggets.",
+          "Finely grate 8g Parmigiano Reggiano DOP 24M.",
+        ] },
       ] },
-      { title: "2. Moisture & Fat Management", sections: [
-        { intro: "Fior di Latte:", bullets: ["Drain in a sieve for at least 1–2 hours"] },
-        { intro: "'Nduja Prep:", bullets: ["Keep the 'Nduja at room temperature so it is soft", "Pinch off hazelnut-sized dollops with wet fingers", "Dotting small, even dollops across the pizza lets it render evenly into the Gorgonzola without forming heavy fat pools"] },
+      { title: "2. Dough Prep", sections: [
+        { bullets: ["Hand-stretch 280g dough ball to 30–32cm on semolina rimacinata, preserving gas in an airy 1.5–2cm cornicione."] },
       ] },
-      { title: "3. Stretch the Dough", sections: [
-        { bullets: ["Style: Pizza Bianca — zero tomato sauce", "Stretch the 280g dough ball on semolina rimacinata to a target size of 30–32 cm, preserving an airy, raised cornicione"] },
+      { title: "3. Layer Assembly (In Exact Order)", sections: [
+        { intro: "Layer 1 — Parmigiano Anchor:", bullets: ["Dust 8g finely grated Parmigiano Reggiano directly across the bare dough to create a toasted, savory base layer."] },
+        { intro: "Layer 2 — Fior di Latte:", bullets: ["Distribute 60g drained Fior di Latte strips evenly over the Parmigiano."] },
+        { intro: "Layer 3 — Gorgonzola Pockets:", bullets: ["Drop 25g Gorgonzola Dolce in 5–6 small, isolated pockets across open areas (keeping them discrete rather than uniform)."] },
+        { intro: "Layer 4 — Pre-Bake 'Nduja:", bullets: ["Dot 15g–18g hazelnut-sized 'Nduja dollops evenly between the cheese pockets."] },
+        { intro: "Layer 5 — Picual:", bullets: ["Apply a light 2g spiral micro-drizzle of Elizondo Nº3 Picual EVOO over the build."] },
       ] },
-      { title: "4. Pre-Bake Assembly", sections: [
-        { bullets: ["Dust the bare dough directly with the Parmigiano-Reggiano DOP 24 mesi", "Distribute the drained Fior di Latte evenly over the base", "Scatter dollops of the Gorgonzola Dolce DOP in between the fior di latte", "Dot the hazelnut-sized pieces of 'Nduja di Spilinga evenly across the top", "A micro-drizzle of Elizondo Nº3 Picual EVOO over the cheese base"] },
+      { title: "4. Gozney Bake", sections: [
+        { intro: "Gozney / High-Heat Oven:", bullets: [
+          "🪨 Stone floor target: 430°C–440°C",
+          "🔥 Dome: 450°C–480°C",
+          "Manage top flame dynamically after launch, keeping flame moderate so floor heat sets the crust while pre-bake 'Nduja renders Calabrian pork fat into the melting cheeses without scorching the Gorgonzola.",
+          "⏱ Cook Time: 60–75 seconds — rotate regularly for even blistering and colour.",
+        ] },
       ] },
-      { title: "5. Bake", sections: [
-        { intro: "Gozney / High-Heat Oven:", bullets: ["🪨 Floor/Stone: 430°C–450°C", "🔥 Dome/Air: 450°C–480°C", "🔥 Flame: drop to Medium/Low immediately post-launch", "⏱ Cook time: 60–75 seconds", "🔄 Rotate every 15–20 seconds"] },
-        { intro: "You're looking for:", bullets: ["The 'Nduja melted into a glossy red oil, weeping its paprika spice into the mild, creamy pool of Gorgonzola and Fior di Latte"] },
-      ] },
-      { title: "6. Finish", sections: [
-        { bullets: ["Add fresh basil leaves", "Finish with a swirl of Frantoio Muraglia Coratina EVOO for a spicy, peppery kick, or Barbera Lorenzo Nº5 (Nocellara del Belice DOP) for a smooth, sweet, creamy balance"] },
+      { title: "5. Rest & Sequential Post-Bake Staging", sections: [
+        { bullets: ["Transfer directly to a wooden board and rest for 30–40 seconds to allow the cheeses and rendered fats to settle."] },
+        { intro: "Stage 1 — Post-Bake 'Nduja:", bullets: ["Dot the remaining 7g–10g fresh room-temperature 'Nduja dollops across the hot pie to preserve fresh, aromatic pepper heat."] },
+        { intro: "Stage 2 — Aromatics & Finishing Oil:", bullets: ["Scatter 2–3 fresh basil leaves and finish with a 3g–4g swirl of Frantoio Muraglia Coratina EVOO.", "Slice and serve immediately."] },
+        { intro: "Technical Moisture & Fat Note:", bullets: ["A hybrid 'Nduja technique delivers two distinct textures: pre-bake dollops render flavorful Calabrian pork fat into the melting Gorgonzola pockets, while post-bake dollops add fresh, aromatic chili punch. Dusting 8g Parmigiano Reggiano directly onto the bare dough creates a savory anchor layer beneath the melted mozzarella."] },
+        { intro: "Profile:", bullets: ["Toasted Parmigiano base → creamy Fior di Latte → fiery Calabrian ’Nduja → rich Gorgonzola Dolce pocket → peppery Muraglia Coratina finish"] },
       ] },
     ],
   },
@@ -771,33 +854,48 @@ export const RECIPES: PizzaRecipe[] = [
     id: "quattro-latte-e-nduja",
     number: 22,
     name: "Quattro Latte e 'Nduja",
-    style: "Four-Milk Neapolitan Pizza Bianca — Buffalo, Cow, Sheep & Post-Bake Goat Cacioricotta",
+    style: "Four-Milk Pizza Bianca — Buffalo Ricotta, Fior di Latte, Pecorino & Goat Cacioricotta",
     category: "innovative",
-    toppings: "Ricotta di Búfala (buffalo), 'Nduja di Spilinga, Fior di Latte (cow), Crema di Pecorino Bagnolese (sheep), Elizondo Nº3 Picual EVOO (pre-bake), Cacioricotta di Capra (goat, post-bake), Frantoio Muraglia Coratina or Barbera Lorenzo Nº5 EVOO (post-bake).",
-    menuIngredients: "Buffalo ricotta, 'nduja, Fior di Latte, Pecorino cream, goat's milk Cacioricotta (post-bake)",
-    build: "Pizza Bianca — zero tomato sauce. A Neapolitan white pizza built around the four-milk concept — Buffalo, Cow, Sheep, and Goat — layered for maximum flavor separation: a smooth buffalo ricotta base carries dollops of spicy 'Nduja di Spilinga, blanketed in Fior di Latte and a swirl of sheep's-milk Pecorino cream, finished post-bake with a snowfall of aged goat's milk Cacioricotta and a finishing drizzle of Frantoio Muraglia Coratina or Barbera Lorenzo Nº5.",
-    postBake: "Rest on a wire cooling rack for 60 seconds, then grate a generous, even snowfall of aged goat's milk Cacioricotta di Capra over the steaming crust and center. Finish with Frantoio Muraglia Coratina EVOO for bold spice, or Barbera Lorenzo Nº5 for a smooth, velvety finish.",
+    toppings: "Animal Milk Taxonomy: Buffalo · Cow · Sheep · Goat. Strictly no tomato sauce. 40g Ricotta di Búfala (buffalo, whisked smooth with a tiny pinch of fine sea salt), 50g Fior di Latte (cow, hand-torn into rustic strips, well-drained 1+ hour), 20g–25g 'Nduja di Spilinga (rolled with wet fingers into 6–8 small hazelnut-sized dollops), 15g Crema di Pecorino Bagnolese (sheep, or finely grated Pecorino Romano whisked with warm cream until smooth), 6g–8g aged Cacioricotta di Capra (goat, Microplaned post-bake, or Caprino Stagionato), 2g Elizondo Nº3 Picual EVOO (spiral micro-drizzle pre-launch), 3g–4g Frantoio Muraglia Coratina EVOO (Intense Fruity — peppery finishing swirl).",
+    menuIngredients: "Buffalo ricotta, Fior di Latte, 'nduja, Pecorino cream, goat's milk Cacioricotta (post-bake)",
+    build: "An extraordinary four-milk white pizza architecture — pairing smooth Buffalo Ricotta, melting Cow Fior di Latte, Sheep Pecorino Cream, and a post-bake snowfall of Goat Cacioricotta with rendering 'Nduja di Spilinga.",
+    postBake: "Transfer directly to a wooden board and rest for 30–40 seconds to allow excess surface steam to dissipate and cheeses to settle. Microplane 6g–8g aged Cacioricotta di Capra over the hot pizza in an even snowfall, then finish with a 3g–4g swirl of Frantoio Muraglia Coratina EVOO across the center and crust. Slice and serve immediately.",
+    flavorProgression: "Velvety Buffalo Ricotta → melted Cow Fior di Latte → fiery rendered ’Nduja → sharp Sheep Pecorino Cream → snow-grated Goat Cacioricotta → peppery Muraglia Coratina finish",
     videoGuide: "Quattro Latte e 'Nduja — Four-Milk Layering Order",
     videoUrl: "https://www.youtube.com/shorts/TkejTs74130",
     steps: [
-      { title: "1. Ingredients & Topping Ratios (Per 280g Dough Ball)", sections: [
-        { bullets: ["280g dough ball (67% hydration Poolish blend), target stretch 30–33cm", "Milk 1 (Buffalo): 60–70g Ricotta di Búfala, whisked smooth with a tiny pinch of salt", "Spicy Element: 30–40g 'Nduja di Spilinga, rolled into small dime-sized pieces", "Milk 2 (Cow): 60–70g Fior di Latte, cut into strips and well-drained", "Milk 3 (Sheep): 20–25g Crema di Pecorino Bagnolese (substitute: whisk 15g finely grated Pecorino Romano into 10g warm heavy cream until smooth)", "Elizondo Nº3 Picual EVOO: micro-drizzle pre-bake", "Milk 4 (Goat, post-bake): 8–10g aged Cacioricotta di Capra (substitute: aged Caprino Stagionato or dry aged Goat Feta)", "Frantoio Muraglia Coratina or Barbera Lorenzo Nº5 EVOO (post-bake)"] },
+      { title: "1. Pre-Prep", sections: [
+        { bullets: [
+          "Whisk 40g Ricotta di Búfala with a tiny pinch of fine salt until velvety.",
+          "Drain 50g Fior di Latte strips in a sieve for at least 1 hour.",
+          "Prep 15g Crema di Pecorino Bagnolese.",
+          "Soften 'Nduja di Spilinga at room temperature and roll 20g–25g into 6–8 hazelnut-sized dollops.",
+        ] },
       ] },
-      { title: "2. Preheat & Station Prep", sections: [
-        { intro: "Gozney / High-Heat Oven:", bullets: ["🪨 Floor/Stone: 430°C–450°C", "🔥 Dome/Air: 450°C–480°C", "Preheat for 35–40 minutes until the stone is fully saturated"] },
-        { intro: "Station prep:", bullets: ["Whisk the buffalo ricotta, prep the Pecorino cream sauce, drain the Fior di Latte, and have the 'nduja at room temperature so it spreads easily in the oven heat"] },
+      { title: "2. Dough Prep", sections: [
+        { bullets: ["Hand-stretch 280g dough ball to 30–33cm on semolina rimacinata, preserving gas in an airy 1.5–2cm cornicione."] },
       ] },
-      { title: "3. Open the Dough", sections: [
-        { intro: "Preserve the puffy cornicione edge:", bullets: ["Style: Pizza Bianca — zero tomato sauce", "Drop the 280g dough ball into a mound of Caputo Semolina Rimacinata", "Press flat, joined fingers from the center outward, pushing gas into the outer 1.5cm ring (cornicione)", "Stretch using gravity or gentle knuckle turns to a target size of 30–33cm"] },
+      { title: "3. Layer Assembly (In Exact Order)", sections: [
+        { intro: "Layer 1 — Buffalo Ricotta Base:", bullets: ["Spread 40g smooth Ricotta di Búfala evenly across the center as the white sauce foundation."] },
+        { intro: "Layer 2 — Cow Fior di Latte:", bullets: ["Scatter 50g drained Fior di Latte strips over the ricotta."] },
+        { intro: "Layer 3 — 'Nduja Dollops:", bullets: ["Dot 20g–25g hazelnut-sized 'Nduja pieces across the cheeses."] },
+        { intro: "Layer 4 — Sheep Pecorino Cream:", bullets: ["Drizzle 15g Crema di Pecorino in fine spirals over the cheeses and 'nduja."] },
+        { intro: "Layer 5 — Picual:", bullets: ["Apply a light 2g spiral micro-drizzle of Elizondo Nº3 Picual EVOO over the build."] },
       ] },
-      { title: "4. Pre-Bake Assembly (In Exact Order)", sections: [
-        { intro: "Layering order for maximum flavor separation:", bullets: ["Ricotta di Búfala (Buffalo): spread 60–70g of smooth buffalo ricotta across the base as the primary sauce layer", "'Nduja di Spilinga: distribute small dollops of 'nduja across the ricotta base", "Fior di Latte (Cow): scatter 60–70g of drained mozzarella over the pie", "Crema di Pecorino (Sheep): drizzle the Pecorino cream sauce in a swirl over the cheeses and 'nduja", "Olive Oil: finish with a micro-drizzle of Elizondo Nº3 Picual EVOO over the cheese base"] },
+      { title: "4. Gozney Bake", sections: [
+        { intro: "Gozney / High-Heat Oven:", bullets: [
+          "🪨 Stone floor target: 430°C–440°C",
+          "🔥 Dome: 450°C–480°C",
+          "Manage top flame dynamically after launch, keeping top flame moderate so 'Nduja renders Calabrian chili oil into the white cheeses without scorching the Pecorino cream.",
+          "⏱ Cook Time: 60–75 seconds — rotate regularly for even blistering and colour.",
+        ] },
       ] },
-      { title: "5. Launch & Gozney Bake (75–90 Seconds)", sections: [
-        { intro: "Flame management for delicate cream bases:", bullets: ["Pull the assembled pizza onto your perforated launch peel", "Drop the flame to LOW immediately right before launching — the delicate ricotta and Pecorino cream scorch easily under high top flames", "Bake for 75–90 seconds, rotating every 15 seconds, as the 'nduja melts and renders its vibrant red chili oil into the white ricotta and mozzarella"] },
-      ] },
-      { title: "6. Post-Bake Finish & Rest", sections: [
-        { intro: "Goat milk finish completes the four-milk concept:", bullets: ["Retrieve the pizza and place it directly onto a wire cooling rack for 60 seconds to vent steam underneath", "Using a Microplane, grate a generous, even snowfall of aged goat's milk Cacioricotta over the steaming crust and center", "Finish with Frantoio Muraglia Coratina EVOO for bold spice, or Barbera Lorenzo Nº5 (Nocellara del Belice DOP) for a smooth, velvety finish", "Slice and serve immediately"] },
+      { title: "5. Rest & Sequential Post-Bake Staging", sections: [
+        { bullets: ["Transfer directly to a wooden board and rest for 30–40 seconds to allow excess surface steam to dissipate and cheeses to settle."] },
+        { intro: "Stage 1 — Goat Cacioricotta Snowfall:", bullets: ["Microplane 6g–8g aged Cacioricotta di Capra over the hot pizza in an even snowfall."] },
+        { intro: "Stage 2 — Finishing Oil:", bullets: ["Finish with a 3g–4g swirl of Frantoio Muraglia Coratina EVOO across the center and crust.", "Slice and serve immediately."] },
+        { intro: "Technical Moisture & Fat Note:", bullets: ["Each animal milk serves a distinct culinary function: Buffalo provides a smooth white base, Cow delivers structural melt, Sheep adds salty intensity, and Goat contributes a sharp post-bake caprine aroma. Microplaning aged Cacioricotta di Capra post-bake keeps its distinctive aged-goat aroma thermally distinct from the melted cheeses beneath."] },
+        { intro: "Profile:", bullets: ["Velvety Buffalo Ricotta → melted Cow Fior di Latte → fiery rendered ’Nduja → sharp Sheep Pecorino Cream → snow-grated Goat Cacioricotta → peppery Muraglia Coratina finish"] },
       ] },
     ],
   },
@@ -805,34 +903,47 @@ export const RECIPES: PizzaRecipe[] = [
     id: "nduja-honey",
     number: 23,
     name: "'Nduja & Hot Honey",
-    style: "Calabrian Chili Fire Meets Sweet Heat — Rendering 'Nduja di Spilinga & Hot Honey Glaze",
+    style: "Sweet Heat Neapolitan — 'Nduja di Spilinga & Hot Honey",
     category: "innovative",
     image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS-QIDb-C5YJ62kzmEGA9VLPE-dkJbayXDcvR90G2p1PjLMsJr48qWq6no&s=10",
-    toppings: "San Marzano tomato sauce, Elizondo Nº3 Picual EVOO (pre-bake), Fior di Latte mozzarella, spreadable 'Nduja di Spilinga, fresh red chili flakes, post-bake hot honey, Frantoio Muraglia Coratina EVOO (post-bake).",
-    menuIngredients: "Tomato, mozzarella, 'nduja, hot honey, chili",
-    build: "The 'Nduja & Hot Honey Pizza balances the slow-building, smoky heat of Calabrian spicy sausage with sweet, infused honey. Because honey burns instantly under intense, direct heat, the hot honey must be drizzled strictly post-bake, allowing it to warm and loosen over the hot pizza without caramelizing into a bitter crust, then finished with a peppery, spicy contrast of Frantoio Muraglia Coratina EVOO.",
-    postBake: "Rest on a wire cooling rack for 15–20 seconds, then drizzle the warm hot honey in a fine zigzag across the entire pie. Finish with Frantoio Muraglia Coratina EVOO for a peppery, spicy contrast — the residual heat will instantly thin the honey, allowing it to fuse with the rendered 'Nduja oil.",
+    toppings: "65g hand-crushed San Marzano DOP tomatoes + light pinch of fine sea salt, 6g Parmigiano Reggiano DOP 24M (finely grated — savoury aged-cheese accent), 70g well-drained Fior di Latte (hand-torn into rustic strips), 25g 'Nduja di Spilinga (rolled with wet fingers into 6–8 small hazelnut-sized dollops), 2g Elizondo Nº3 Picual EVOO (spiral micro-drizzle pre-launch), 12g Hot Honey (warmed slightly for a very fine, controlled zigzag drizzle), 3g–4g Frantoio Muraglia Coratina EVOO (Intense Fruity — peppery finishing swirl).",
+    menuIngredients: "Tomato, mozzarella, 'nduja, hot honey, Parmigiano",
+    build: "An addictive study in sweet heat — rendering 'Nduja di Spilinga over bright San Marzano DOP and Fior di Latte, finished with a precise hot honey glaze and peppery Coratina EVOO.",
+    postBake: "Transfer directly to a wooden board and rest for 30–40 seconds to allow excess surface steam to dissipate and rendered fats to settle. Drizzle 12g warmed hot honey in a very fine, controlled zigzag across the pie, then finish with a 3g–4g swirl of Frantoio Muraglia Coratina EVOO across the center and crust. Slice and serve immediately.",
+    flavorProgression: "Bright San Marzano → toasted Parmigiano → creamy Fior di Latte → fiery rendered ’Nduja → sweet hot honey → peppery Muraglia Coratina finish",
     steps: [
-      { title: "1. Ingredients & Proportions (Per 280g Dough Ball)", sections: [
-        { intro: "Pre-Bake:", bullets: ["60g–70g Pomodoro San Marzano DOP (crushed tomatoes with 1g fine salt per 100g, reduced to balance the rendering 'Nduja fat)", "70g Fior di Latte (cubed/cut into strips, drained thoroughly)", "35g–40g Spreadable 'Nduja di Spilinga (pinched into small hazelnut-sized dollops)", "1/2 tsp Fresh Red Chili Flakes (Peperoncino)", "Elizondo Nº3 Picual EVOO (micro-drizzle)"] },
-        { intro: "Post-Bake (The Finish):", bullets: ["1.5–2 tbsp Hot Honey (warmed slightly for a smooth, consistent drizzle)", "Frantoio Muraglia Coratina EVOO (finishing drizzle)"] },
+      { title: "1. Pre-Prep", sections: [
+        { bullets: [
+          "Hand-crush San Marzano DOP tomatoes and season lightly with fine sea salt.",
+          "Hand-tear 70g Fior di Latte into rustic strips and drain in a sieve for at least 1 hour.",
+          "Soften 'Nduja di Spilinga at room temperature and pinch 25g into 6–8 small hazelnut-sized dollops with wet fingers.",
+          "Gently warm 12g hot honey so it flows freely.",
+        ] },
       ] },
-      { title: "2. Moisture & 'Nduja Prep", sections: [
-        { intro: "Fior di Latte:", bullets: ["Drain in a sieve for at least 1–2 hours to prevent pooling water"] },
-        { intro: "'Nduja:", bullets: ["Keep at room temperature so it remains soft", "Pinch into small hazelnut-sized dollops with wet fingers", "Small, even dollops allow the spicy pork fat to render evenly across the base without creating heavy soggy patches"] },
+      { title: "2. Dough Prep", sections: [
+        { bullets: ["Hand-stretch 280g dough ball to 30–32cm on semolina rimacinata, preserving gas in an airy 1.5–2cm cornicione."] },
       ] },
-      { title: "3. Stretch the Dough", sections: [
-        { bullets: ["Stretch the 280g dough ball on semolina rimacinata to a target size of 30–32 cm, preserving an airy, raised cornicione"] },
+      { title: "3. Layer Assembly (In Exact Order)", sections: [
+        { intro: "Layer 1 — San Marzano:", bullets: ["Spread 65g San Marzano sauce evenly across the center (leave 1.5–2cm rim clean)."] },
+        { intro: "Layer 2 — Parmigiano Accent:", bullets: ["Dust 6g finely grated Parmigiano Reggiano DOP directly over the tomato sauce."] },
+        { intro: "Layer 3 — Fior di Latte:", bullets: ["Scatter 70g drained Fior di Latte strips over the base."] },
+        { intro: "Layer 4 — 'Nduja Dollops:", bullets: ["Dot hazelnut-sized 'Nduja dollops evenly across the cheese."] },
+        { intro: "Layer 5 — Picual:", bullets: ["Apply a light 2g spiral micro-drizzle of Elizondo Nº3 Picual EVOO over the build."] },
       ] },
-      { title: "4. Pre-Bake Assembly", sections: [
-        { bullets: ["Ladle the 60g–70g San Marzano tomato sauce into the center and spread outward in a smooth spiral", "A micro-drizzle of Elizondo Nº3 Picual EVOO over the tomatoes", "Distribute the drained Fior di Latte across the base", "Dot the small hazelnut-sized pieces of 'Nduja evenly over the cheese and sauce", "Scatter the fresh red chili flakes for an extra layer of sharp heat"] },
+      { title: "4. Gozney Bake", sections: [
+        { intro: "Gozney / High-Heat Oven:", bullets: [
+          "🪨 Stone floor target: 420°C–440°C",
+          "🔥 Dome: 450°C–480°C",
+          "Manage top flame dynamically after launch, reducing as needed so floor heat sets the crust while 'Nduja renders without scorching exposed fats.",
+          "⏱ Cook Time: 70–80 seconds — rotate regularly for even blistering and colour.",
+        ] },
       ] },
-      { title: "5. Bake", sections: [
-        { intro: "Gozney / High-Heat Oven:", bullets: ["🪨 Floor/Stone: 420°C–440°C", "🔥 Dome/Air: 450°C–480°C", "🔥 Flame: drop to Medium/Low immediately post-launch to render the 'Nduja without scorching", "⏱ Cook time: 70–80 seconds", "🔄 Rotate every 15–20 seconds"] },
-        { intro: "You're looking for:", bullets: ["The 'Nduja melted into a glossy orange-red paprika oil that pools gently into the San Marzano sauce and melted mozzarella"] },
-      ] },
-      { title: "6. Post-Bake Hot Honey Finish", sections: [
-        { bullets: ["Rest the pizza on a wire cooling rack for 15–20 seconds", "Zigzag the warm hot honey across the entire pie", "Finish with Frantoio Muraglia Coratina EVOO for a peppery, spicy contrast — the residual heat instantly thins the honey, allowing it to fuse with the rendered 'Nduja oil"] },
+      { title: "5. Rest & Sequential Post-Bake Staging", sections: [
+        { bullets: ["Transfer directly to a wooden board and rest for 30–40 seconds to allow excess surface steam to dissipate and rendered fats to settle."] },
+        { intro: "Stage 1 — Hot Honey Glaze:", bullets: ["Drizzle 12g warmed hot honey in a very fine, controlled zigzag across the pie."] },
+        { intro: "Stage 2 — Finishing Oil:", bullets: ["Finish with a 3g–4g swirl of Frantoio Muraglia Coratina EVOO across the center and crust.", "Slice and serve immediately."] },
+        { intro: "Technical Moisture & Fat Note:", bullets: ["A precise 12g hot honey allocation prevents sweet saturation while highlighting the fiery pork fat of the rendered 'Nduja. The short wooden-board rest lets surface steam dissipate before the hot honey and finishing oil are applied, keeping the glaze defined rather than diluted by condensation."] },
+        { intro: "Profile:", bullets: ["Bright San Marzano → toasted Parmigiano → creamy Fior di Latte → fiery rendered ’Nduja → sweet hot honey → peppery Muraglia Coratina finish"] },
       ] },
     ],
   },
@@ -840,37 +951,47 @@ export const RECIPES: PizzaRecipe[] = [
     id: "cetarese",
     number: 24,
     name: "Cetarese",
-    style: "Amalfi Coast Tribute — Blistered Cherry Tomatoes, Desalted Capers & Post-Bake Alici di Cetara",
+    style: "Amalfi Coast Tribute — Blistered Piennolo, Gaeta Olives, Capers & Post-Bake Alici di Cetara",
     category: "innovative",
     image: "https://lnx.spaghettitaliani.com/si/wp-content/uploads/2022/02/Pizza-Cetarese.jpg",
-    toppings: "Sweet red or yellow cherry tomatoes (Piennolo del Vesuvio or Corbara — UK sub: Piccolo/Santini cherry tomatoes or Finest/Extra Special San Marzano), Elizondo Nº3 Picual EVOO (pre-bake), fiordilatte or a dollop of fresh stracciatella, desalted capers, black or crushed green olives, garlic, wild oregano; finished post-bake with whole Alici di Cetara (salted cured anchovies), Frantoio Muraglia Coratina EVOO, and a few drops of colatura di alici.",
-    menuIngredients: "Cherry tomatoes, fiordilatte or stracciatella, capers, olives, garlic, oregano, Alici di Cetara anchovies (post-bake)",
-    build: "Contemporary Neapolitan — Pizza Cetarese (or Pizza di Cetara) pays homage to Cetara, a small fishing village on the Amalfi Coast famous for its anchovies and colatura di alici. It shifts the classic Neapolitan focus onto bold, salty seafood accents — Cetara's anchovies and colatura, capers, and olives — balanced against sweet cherry tomatoes, with cheese kept light or optional. The critical technical rule is adding the anchovies POST-BAKE: high-grade salted anchovies contain delicate oils that dry out, turn bitter, and release harsh saltiness if exposed to high flame.",
-    postBake: "Rest on a wire cooling rack for 30 seconds, then drape the delicate Alici di Cetara fillets whole across the top (and optional Stracciatella dollops). The ambient heat from the hot cheese will soften the anchovy fillets, releasing their rich, savory umami into the crust without cooking away their sweetness. Finish with Frantoio Muraglia Coratina EVOO and 3–5 drops of colatura di alici.",
+    toppings: "60g sweet red Piennolo del Vesuvio DOP or Corbarino tomatoes (halved lengthwise a pacchetelle, lightly drained of free juice; UK sub: Piccolo/Santini/Extra Special San Marzano), 60g well-drained Fior di Latte (hand-torn into rustic strips), 7g capers (salted, soaked in warm water for 20 mins, thoroughly dried), 20g Gaeta olives (pitted and halved), 3g–4g garlic (sliced paper-thin), 0.5g wild mountain oregano (Origano di Montagna), 1g–2g Elizondo Nº3 Picual EVOO (spiral micro-drizzle pre-launch); finished post-bake with 6 whole fillets of Alici di Cetara (salted cured anchovies in olive oil; 8 max for small fillets), 3–4 drops of Colatura di Alici di Cetara, and 3g Frantoio Muraglia Coratina EVOO (Intense Fruity — peppery finishing swirl).",
+    menuIngredients: "Piennolo tomatoes, Fior di Latte, capers, Gaeta olives, garlic, oregano, Alici di Cetara anchovies & Colatura (post-bake)",
+    build: "A contemporary tribute to the fishing village of Cetara — sweet blistered Piennolo tomatoes, desalted capers, and Gaeta olives over Fior di Latte, finished post-bake with whole Alici di Cetara, Coratina EVOO, and drops of Colatura.",
+    postBake: "Transfer directly to a wooden board and rest for 30–40 seconds to allow excess surface steam to dissipate and the melted cheese to settle. Drape 6 whole fillets of Alici di Cetara across the hot melted mozzarella, allowing residual surface heat to soften the fish and release its umami oils. Apply 3–4 drops of Colatura di Alici di Cetara across the pie and finish with a 3g swirl of Frantoio Muraglia Coratina EVOO. Slice and serve immediately.",
+    flavorProgression: "Blistered sweet tomatoes → melted Fior di Latte → aromatic garlic & oregano → saline capers & Gaeta olives → rich Alici di Cetara → intense Colatura & peppery Coratina finish",
     videoGuide: "Post-Bake Anchovy Placement — Alici di Cetara",
     videoUrl: "https://www.youtube.com/shorts/NTx-rgtDH14",
     steps: [
-      { title: "1. Ingredients & Proportions (Per 280g Dough Ball)", sections: [
-        { intro: "Pre-Bake Toppings:", bullets: ["70g sweet red or yellow cherry tomatoes (Piennolo/Corbara, or UK-sourced Piccolo/Santini cherry tomatoes/Finest San Marzano), halved and squeezed of excess juice", "60g–70g Fiordilatte (cubed and well-drained) or a dollop of fresh stracciatella", "15g capers (salted, soaked and desalted)", "30g black or crushed green olives (pitted and halved)", "1 tsp wild dried oregano", "1 clove garlic (sliced razor-thin, optional)", "Elizondo Nº3 Picual EVOO (pre-bake drizzle)"] },
-        { intro: "Post-Bake Finish:", bullets: ["6–8 whole fillets of Alici di Cetara (salted cured anchovies)", "Optional dollops of fresh Stracciatella", "Frantoio Muraglia Coratina EVOO", "3–5 drops of colatura di alici"] },
+      { title: "1. Pre-Prep", sections: [
+        { bullets: [
+          "Halve 60g sweet Piennolo tomatoes lengthwise and lightly drain excess free juice.",
+          "Soak 7g salted capers in warm water for 20 minutes to draw out excess salt, then pat completely dry on paper towels.",
+          "Drain 60g Fior di Latte strips in a sieve for at least 1 hour.",
+          "Slice garlic paper-thin (3g–4g).",
+        ] },
       ] },
-      { title: "2. Moisture Control & Desalting", sections: [
-        { intro: "Cherry Tomatoes:", bullets: ["Halve the sweet cherry tomatoes and gently squeeze out excess juice before topping"] },
-        { intro: "Capers:", bullets: ["Soak the salted capers in warm water for 20 minutes to draw out excess salt", "Pat completely dry on paper towels"] },
-        { intro: "Cheese:", bullets: ["Cut fiordilatte into strips 1–2 hours in advance and strain out excess moisture, or keep stracciatella chilled until the pizza comes out of the oven"] },
+      { title: "2. Dough Prep", sections: [
+        { bullets: ["Hand-stretch 280g dough ball to 30–32cm on semolina rimacinata, preserving gas in an airy 1.5–2cm cornicione."] },
       ] },
-      { title: "3. Stretch the Dough", sections: [
-        { bullets: ["Stretch the 280g dough ball on semolina rimacinata to a target size of 30–32 cm", "Preserve a high, airy cornicione"] },
+      { title: "3. Layer Assembly (In Exact Order)", sections: [
+        { intro: "Layer 1 — Tomatoes, Fior di Latte & Garlic:", bullets: ["Scatter halved Piennolo tomatoes and 60g Fior di Latte strips across the bare dough. Nestling the 3g–4g thin garlic slices among the tomatoes and cheese protects them from scorching under high heat."] },
+        { intro: "Layer 2 — Capers, Gaeta Olives & Oregano:", bullets: ["Scatter 7g desalted capers, 20g halved Gaeta olives, and 0.5g mountain oregano over the tomato and cheese layer."] },
+        { intro: "Layer 3 — Picual:", bullets: ["Apply a light 1g–2g spiral micro-drizzle of Elizondo Nº3 Picual EVOO over the build."] },
       ] },
-      { title: "4. Pre-Bake Assembly", sections: [
-        { bullets: ["Scatter the halved, squeezed cherry tomatoes in a light layer over the base", "If using fiordilatte, scatter the drained cheese across the tomatoes now; if using stracciatella, add it after the bake instead", "Distribute the desalted capers, halved olives, thin garlic slices, and a generous pinch of wild oregano", "Drizzle Elizondo Nº3 Picual EVOO over the cherry tomatoes, capers, and oregano"] },
+      { title: "4. Gozney Bake", sections: [
+        { intro: "Gozney / High-Heat Oven:", bullets: [
+          "🪨 Stone floor target: 430°C–440°C",
+          "🔥 Dome: 450°C–480°C",
+          "Manage top flame dynamically after launch, keeping top flame moderate so high stone heat blisters the tomatoes and melts the mozzarella without burning the garlic or oregano.",
+          "⏱ Cook Time: 65–75 seconds — rotate regularly for even blistering and colour.",
+        ] },
       ] },
-      { title: "5. Bake", sections: [
-        { intro: "Gozney / High-Heat Oven:", bullets: ["🪨 Floor/Stone: 430°C–450°C", "🔥 Dome/Air: 450°C–480°C", "🔥 Flame: drop to Medium/Low immediately post-launch", "⏱ Cook time: 60–75 seconds", "🔄 Rotate every 15–20 seconds"] },
-        { intro: "You're looking for:", bullets: ["The intense heat blisters the tomatoes, melts the fiordilatte, and toasts the oregano and capers into a fragrant topping"] },
-      ] },
-      { title: "6. Post-Bake Anchovy Finish", sections: [
-        { bullets: ["Rest the pizza on a wire cooling rack for 30 seconds", "Drape the whole Alici di Cetara fillets across the top (add optional Stracciatella dollops now if using)", "The ambient heat will soften the anchovy fillets, releasing their umami without cooking away their sweetness", "Finish with Frantoio Muraglia Coratina EVOO and 3–5 drops of colatura di alici"] },
+      { title: "5. Rest & Sequential Post-Bake Staging", sections: [
+        { bullets: ["Transfer directly to a wooden board and rest for 30–40 seconds to allow excess surface steam to dissipate and the melted cheese to settle."] },
+        { intro: "Stage 1 — Alici di Cetara:", bullets: ["Drape 6 whole fillets of Alici di Cetara across the hot melted mozzarella, allowing residual surface heat to soften the fish and release its umami oils."] },
+        { intro: "Stage 2 — Colatura & Finishing Oil:", bullets: ["Apply 3–4 drops of Colatura di Alici di Cetara across the pie and finish with a 3g swirl of Frantoio Muraglia Coratina EVOO.", "Slice and serve immediately."] },
+        { intro: "Technical Moisture & Salt Note:", bullets: ["Soaking capers and lightly draining Piennolo tomatoes are critical moisture and salt management steps. Adding the Alici di Cetara post-bake preserves their delicate texture and concentrated cured-anchovy character rather than exposing them to full oven heat."] },
+        { intro: "Profile:", bullets: ["Blistered sweet tomatoes → melted Fior di Latte → aromatic garlic & oregano → saline capers & Gaeta olives → rich Alici di Cetara → intense Colatura & peppery Coratina finish"] },
       ] },
     ],
   },
@@ -878,30 +999,44 @@ export const RECIPES: PizzaRecipe[] = [
     id: "cacio-e-pepe",
     number: 25,
     name: "Cacio e Pepe",
-    style: "Stefano Callegari Method — Ice-Cube Boiling Pool & Post-Bake Pecorino Emulsion",
+    style: "Callegari-Inspired Roman Pizza — Ice-Cube Bake & Pecorino Romano Cremina",
     category: "innovative",
     image: "https://d3h1lg3ksw6i6b.cloudfront.net/media/image/2018/07/02/bb7c436164c0454fb27f55eadbcb9cde_Cacio_e_Pepe_SimoPizza__Credit+Francesco+Sapienza.jpg",
-    toppings: "Elizondo Nº3 Picual EVOO (pre-bake), ice cubes (melted into the bake to create the emulsion), finely grated Pecorino Romano DOP, coarsely toasted and cracked whole black peppercorns, Barbera Lorenzo Nº5 or Frantoio Muraglia Coratina EVOO (post-bake).",
+    toppings: "3 ice cubes (approx. 40g total water mass — in-bake moisture engine), 1g–1.2g whole Tellicherry black peppercorns (lightly toasted in a dry skillet, coarsely cracked), no pre-bake oil (baked entirely naked with ice and pepper); finished post-bake with 50g Pecorino Romano DOP (finely grated using a Microplane into a light, fluffy mound) and 3g–4g Barbera Lorenzo Nº5 EVOO (Nocellara del Belice DOP — finishing swirl).",
     menuIngredients: "Pecorino Romano, cracked black pepper, olive oil",
-    build: "Contemporary Pizza Bianca — Ice Emulsion Technique. In a 450°C+ oven, raw Pecorino Romano burns instantly — so Stefano Callegari's technique places ice cubes directly on the raw dough before baking, creating a pool of boiling starchy water on the surface. As soon as the pizza is pulled from the oven, finely grated Pecorino is showered over that hot puddle: the residual heat instantly binds the cheese fat and protein with the starchy water, forming the exact creamy emulsion (cremina) of traditional Cacio e Pepe pasta.",
-    postBake: "Immediately shower the entire hot center with the finely grated Pecorino Romano and swirl vigorously with a spatula for 10–15 seconds to lock the silky cremina, then finish with a heavy dusting of toasted cracked black pepper and Barbera Lorenzo Nº5 (Nocellara del Belice DOP) for a smooth, velvety finish, or Frantoio Muraglia Coratina for a bold peppery lift.",
+    build: "An ingenious Roman pizza architecture inspired by Stefano Callegari — ice cubes melt during the bake to keep the center humid, allowing Microplaned Pecorino Romano and toasted black pepper to bind into a creamy layer post-bake.",
+    postBake: "Transfer to a wooden board with the center still visibly humid and a small pool of hot water remaining. Immediately shower the entire humid center with the 50g Microplaned Pecorino Romano, gently working the cheese into the central moisture with the back of a spoon to create a moist, creamy Pecorino layer. Dust with the remaining cracked black pepper and finish with a 3g–4g swirl of Barbera Lorenzo Nº5 EVOO across the cheese and crust. Slice and serve immediately.",
+    flavorProgression: "Golden baked crust → creamy Pecorino Romano → fragrant toasted black pepper → salty sheep's-cheese depth → almond-smooth Lorenzo N°5 finish",
     videoGuide: "Stefano Callegari's Ice-Cube Cacio e Pepe Technique",
     steps: [
-      { title: "1. Ingredients (Per 280g Dough Ball)", sections: [
-        { bullets: ["4 standard Ice Cubes (~50g–60g total water)", "60g–70g Pecorino Romano DOP (extremely finely grated using a Microplane)", "2 tsp Whole Black Peppercorns (coarsely toasted and cracked)", "Elizondo Nº3 Picual EVOO (pre-bake) and Barbera Lorenzo Nº5 or Frantoio Muraglia Coratina EVOO (post-bake)"] },
+      { title: "1. Pre-Prep", sections: [
+        { bullets: [
+          "Lightly toast 1g–1.2g whole black peppercorns in a dry skillet just until fragrant, then coarsely crack in a mortar and pestle.",
+          "Microplane 50g Pecorino Romano DOP into a fluffy, razor-thin mountain for rapid melting.",
+          "Have 3 ice cubes (~40g total) ready.",
+        ] },
       ] },
-      { title: "2. Prep the Dough & Pepper", sections: [
-        { bullets: ["Stretch the 280g dough ball on semolina rimacinata to a target size of 30–32 cm, keeping a defined cornicione"] },
-        { intro: "Toast the pepper:", bullets: ["Toast whole black peppercorns in a dry pan until fragrant", "Coarsely crush with a mortar and pestle"] },
+      { title: "2. Dough Prep", sections: [
+        { bullets: ["Hand-stretch 280g dough ball to 30–32cm on semolina rimacinata. Create a shallow central basin with a slightly raised cornicione rim acting as a natural dam to retain the melting ice."] },
       ] },
-      { title: "3. Add the Ice & Bake", sections: [
-        { bullets: ["Lightly dimple the center of the raw stretched dough and place 4 standard ice cubes (~50g–60g total water) directly in the well", "Sprinkle a small pinch of cracked pepper around the dough", "A micro-drizzle of Elizondo Nº3 Picual EVOO"] },
-        { intro: "Gozney / High-Heat Oven:", bullets: ["🪨 Floor/Stone: 430°C–450°C", "🔥 Dome/Air: 450°C–480°C", "⏱ Cook time: 70–80 seconds", "As it bakes, the ice melts rapidly and boils into a hot puddle of starchy water on the crust while keeping the center flat and hydrated"] },
+      { title: "3. Layer Assembly (In Exact Order)", sections: [
+        { intro: "Layer 1 — Ice Engine:", bullets: ["Place the 3 ice cubes directly in the shallow central basin of the raw dough."] },
+        { intro: "Layer 2 — Pepper Accent:", bullets: ["Sprinkle ~0.3g of the cracked black pepper around the base. Do NOT add oil pre-bake."] },
       ] },
-      { title: "4. The Creamy Finish (Post-Bake Emulsion)", sections: [
-        { bullets: ["As soon as the crust is puffed and leopard-spotted, pull the pizza out", "Immediately shower the entire hot center with the 60g–70g of finely grated Pecorino Romano"] },
-        { intro: "Why it works:", bullets: ["The starchy, hot water instantly binds with the cheese fat and protein, forming the exact creamy emulsion (cremina) of traditional Cacio e Pepe pasta"] },
-        { intro: "Finish:", bullets: ["Swirl vigorously with a spatula for 10–15 seconds directly in the boiling water pool to lock the silky cremina", "Finish with a heavy dusting of toasted cracked black pepper and Barbera Lorenzo Nº5 (Nocellara del Belice DOP) for a smooth, velvety finish, or Frantoio Muraglia Coratina for a bold peppery lift"] },
+      { title: "4. Gozney Bake (Special Thermal Profile)", sections: [
+        { intro: "Gozney / High-Heat Oven:", bullets: [
+          "🪨 Stone floor target: 400°C–420°C",
+          "🔥 Dome: 450°C–470°C",
+          "Manage top flame dynamically, keeping top flame moderate so the lower floor heat allows the dough beneath the water pool to cook through while the ice melts and boils into the central basin.",
+          "⏱ Cook Time: 90–120 seconds — rotate regularly until the crust is fully set and structured.",
+        ] },
+      ] },
+      { title: "5. Rest & Post-Bake Staging", sections: [
+        { bullets: ["Transfer the pizza to a wooden board with the center still visibly humid and a small pool of hot water remaining."] },
+        { intro: "Stage 1 — Pecorino Shower:", bullets: ["Immediately shower the entire humid center with the 50g Microplaned Pecorino Romano. If needed, gently work the cheese into the central moisture with the back of a spoon to create a moist, creamy Pecorino layer."] },
+        { intro: "Stage 2 — Pepper & Finishing Oil:", bullets: ["Dust with the remaining ~0.8g cracked black pepper and finish with a 3g–4g swirl of Barbera Lorenzo Nº5 EVOO across the cheese and crust.", "Slice and serve immediately."] },
+        { intro: "Technical Moisture & Emulsion Note:", bullets: ["Baking with ice cubes keeps the center humid and leaves a small pool of hot water post-bake. Adding Microplaned Pecorino Romano immediately upon removal allows the cheese to bind with the surface moisture, creating a creamy Pecorino layer that echoes the emulsion of classic Roman cacio e pepe. Lowering the stone floor to 400°C–420°C ensures the dough beneath the wet center cooks through without scorching the bottom."] },
+        { intro: "Profile:", bullets: ["Golden baked crust → creamy Pecorino Romano → fragrant toasted black pepper → salty sheep's-cheese depth → almond-smooth Lorenzo N°5 finish"] },
       ] },
     ],
   },
@@ -909,33 +1044,41 @@ export const RECIPES: PizzaRecipe[] = [
     id: "carbonara",
     number: 26,
     name: "Carbonara",
-    style: "Gourmet Contemporary — Crispy Guanciale, Pecorino Romano DOP & Post-Bake Yolk Emulsion",
+    style: "Contemporary Roman-Inspired — Crispy Guanciale, Pecorino Romano & Warm Yolk Crema",
     category: "innovative",
     image: "https://www.vincenzosplate.com/wp-content/uploads/2022/10/1500x1500-Photo-4_1951-How-to-Make-CARBONARA-PIZZA-Like-an-Italian-V1.jpg",
-    toppings: "Elizondo Nº3 Picual EVOO (pre-bake), crispy pre-rendered Guanciale di Maiale Nero, Pecorino Romano DOP (baked in and post-bake), coarsely cracked black pepper, post-bake egg yolk emulsion, Frantoio Muraglia Coratina EVOO (post-bake).",
-    menuIngredients: "Pecorino Romano, crispy guanciale, egg yolk, black pepper",
-    build: "Contemporary Pizza Bianca — zero tomato sauce. A pizza translation of pasta carbonara. A bare dough disc gets a micro-drizzle of Elizondo Nº3 Picual EVOO, then is showered with Pecorino Romano and crispy pre-rendered Guanciale di Maiale Nero, baked until the cheese melts into the rendered pork fat. As soon as it leaves the oven, a smooth egg yolk emulsion (whisked with warm water and rendered guanciale fat) is drizzled across the piping-hot crust — the residual heat instantly warms and sets it into a silky, glossy cream — before a final shower of Pecorino, cracked black pepper, and Frantoio Muraglia Coratina EVOO.",
-    postBake: "Rest on a wire cooling rack for 20–30 seconds, then drizzle the egg yolk emulsion in a zigzag pattern across the piping-hot pizza so the crust's heat sets it into a silky, glossy cream. Shower with 20g fresh Pecorino Romano and a final heavy dusting of coarsely cracked black pepper, and finish with Frantoio Muraglia Coratina EVOO.",
+    toppings: "Strictly no tomato sauce. 40g raw Guanciale di Maiale (diced into 6–8mm lardons, pre-rendered until golden and slightly yielding; reserve 1 tsp rendered fat), 35g total Pecorino Romano DOP split across 18g finely grated pre-bake base, 5g in the yolk crema, and 12g Microplaned post-bake snowfall, 2 fresh egg yolks + 10g warm water + 1 tsp reserved rendered guanciale fat + 5g Pecorino Romano (warm yolk crema, cooked to 65°C–70°C), 1.0g whole Tellicherry black peppercorns (lightly toasted, coarsely cracked; ~0.3g pre-bake, ~0.7g post-bake), no pre-bake oil, 2g–3g Barbera Lorenzo Nº5 EVOO (Nocellara del Belice DOP — smooth finishing swirl, post-bake).",
+    menuIngredients: "Pecorino Romano, crispy guanciale, warm yolk crema, black pepper",
+    build: "A contemporary pizza interpretation of Rome's carbonara — crisp rendered guanciale and toasted Pecorino on white dough, finished with a warm yolk crema and freshly cracked Tellicherry pepper.",
+    postBake: "Transfer directly to a wooden board and rest for 20–30 seconds to allow surface steam to dissipate and the crust to settle. Spoon or drizzle the warm carbonara yolk crema in controlled ribbons across the pie, shower with 12g Microplaned Pecorino Romano, dust with ~0.7g cracked black pepper, and finish with a 2g–3g swirl of Barbera Lorenzo Nº5 EVOO. Slice and serve immediately.",
+    flavorProgression: "Toasted Pecorino base → crisp rendered guanciale → warm yolk carbonara crema → fresh Pecorino snowfall → fragrant Tellicherry pepper → smooth Lorenzo N°5 finish",
     steps: [
-      { title: "1. Toppings & Proportions (Per 280g Dough Ball)", sections: [
-        { intro: "Pre-Bake (The Base):", bullets: ["60g–70g Guanciale di Maiale Nero (diced into lardons and pre-rendered in a dry pan until crispy)", "25g Pecorino Romano DOP (finely grated)", "Coarsely cracked black pepper", "Elizondo Nº3 Picual EVOO (micro-drizzle)"] },
-        { intro: "Post-Bake (The Drizzle & Finish):", bullets: ["2 Fresh Egg Yolks (whisked with 1 tbsp warm water and 1 tsp rendered guanciale fat into a smooth, pourable squeeze-bottle emulsion)", "20g Pecorino Romano DOP (for the final shower)", "Extra cracked black pepper", "Frantoio Muraglia Coratina EVOO (finishing drizzle)"] },
+      { title: "1. Pre-Prep", sections: [
+        { intro: "Guanciale Prep:", bullets: ["Dice 40g raw guanciale into 6–8mm lardons. Pre-render in a dry pan over medium heat until golden and slightly rendered, keeping the center slightly tender. Drain on paper towels, reserving 1 tsp rendered pork fat."] },
+        { intro: "Warm Yolk Crema:", bullets: ["In a small heatproof bowl over gentle indirect heat (or warm water bath), whisk 2 egg yolks with 10g warm water, 1 tsp reserved guanciale fat, and 5g Pecorino Romano until thickened, glossy, and warmed to ~65°C–70°C. Keep warm."] },
+        { intro: "Pepper Prep:", bullets: ["Lightly toast whole Tellicherry peppercorns in a dry skillet until fragrant, then coarsely crack in a mortar."] },
       ] },
-      { title: "2. Pre-Cook the Pork", sections: [
-        { bullets: ["Dice the Guanciale di Maiale Nero into lardons and pre-render in a dry pan over medium heat for 3–5 minutes until crisp and golden", "Drain on paper towels, reserving 1 tsp of the rendered fat for the yolk emulsion"] },
+      { title: "2. Dough Prep", sections: [
+        { bullets: ["Hand-stretch 280g dough ball to 30–32cm on semolina rimacinata, preserving gas in an airy 1.5–2cm cornicione."] },
       ] },
-      { title: "3. Prep the Yolk Drizzle", sections: [
-        { bullets: ["In a small bowl or squeeze bottle, whisk the 2 egg yolks with 1 tbsp warm water and 1 tsp of the reserved rendered guanciale fat until fluid and smooth enough to drizzle", "Keep at room temperature"] },
+      { title: "3. Layer Assembly (In Exact Order)", sections: [
+        { intro: "Layer 1 — Pecorino Base:", bullets: ["Distribute 18g finely grated Pecorino Romano DOP evenly across the bare dough."] },
+        { intro: "Layer 2 — Guanciale & Pepper:", bullets: ["Scatter the golden pre-rendered guanciale lardons over the Pecorino and sprinkle ~0.3g cracked black pepper. Do NOT add oil pre-bake."] },
       ] },
-      { title: "4. Stretch & Assemble Base", sections: [
-        { bullets: ["Stretch the 280g dough ball on semolina to a target size of 30–32 cm, keeping a pronounced cornicione", "A micro-drizzle of Elizondo Nº3 Picual EVOO over the bare dough", "Shower the dough directly with 25g of finely grated Pecorino Romano", "Scatter the crispy pre-rendered Guanciale evenly across the Pecorino", "Add a pinch of cracked black pepper"] },
+      { title: "4. Gozney Bake", sections: [
+        { intro: "Gozney / High-Heat Oven:", bullets: [
+          "🪨 Stone floor target: 420°C–430°C",
+          "🔥 Dome: 450°C–480°C",
+          "Manage top flame dynamically after launch, keeping flame moderate so floor heat cooks the base while Pecorino lightly toasts into the rendered guanciale without burning.",
+          "⏱ Cook Time: 70–80 seconds — rotate regularly for even blistering and colour.",
+        ] },
       ] },
-      { title: "5. Bake", sections: [
-        { intro: "Gozney / High-Heat Oven:", bullets: ["🪨 Floor/Stone: 420°C–440°C", "🔥 Dome/Air: 450°C–480°C", "🔥 Flame: drop to Medium/Low immediately post-launch to prevent the Pecorino base from burning", "⏱ Cook time: 70–80 seconds"] },
-        { intro: "You're looking for:", bullets: ["The crust puffed and leopard-spotted and the Pecorino melted into the rendered pork fat on the dough"] },
-      ] },
-      { title: "6. Post-Bake Finishing", sections: [
-        { bullets: ["Pull the pizza out of the oven and rest on a wire cooling rack for 20–30 seconds", "Drizzle the egg yolk emulsion in a zigzag pattern across the piping-hot pizza — the heat of the crust instantly warms and sets it into a silky, glossy cream", "Shower with the remaining 20g fresh Pecorino Romano and a final heavy dusting of coarsely cracked black pepper", "Finish with Frantoio Muraglia Coratina EVOO"] },
+      { title: "5. Rest & Sequential Post-Bake Staging", sections: [
+        { bullets: ["Transfer directly to a wooden board and rest for 20–30 seconds to allow surface steam to dissipate and the crust to settle."] },
+        { intro: "Stage 1 — Warm Yolk Crema:", bullets: ["Spoon or drizzle the warm carbonara yolk crema in controlled ribbons across the pie."] },
+        { intro: "Stage 2 — Pecorino Snowfall & Finish:", bullets: ["Shower with 12g Microplaned Pecorino Romano, dust with ~0.7g cracked black pepper, and finish with a 2g–3g swirl of Barbera Lorenzo Nº5 EVOO.", "Slice and serve immediately."] },
+        { intro: "Technical Moisture & Fat Note:", bullets: ["Pre-cooking the egg yolk emulsion to 65°C–70°C creates a velvety carbonara crema that remains thermally stable without relying on unpredictable pizza surface heat. Pre-rendering 6–8mm guanciale lardons until golden—rather than fully crisp—prevents the pork from scorching during the Gozney bake."] },
+        { intro: "Profile:", bullets: ["Toasted Pecorino base → crisp rendered guanciale → warm yolk carbonara crema → fresh Pecorino snowfall → fragrant Tellicherry pepper → smooth Lorenzo N°5 finish"] },
       ] },
     ],
   },
@@ -943,34 +1086,42 @@ export const RECIPES: PizzaRecipe[] = [
     id: "amatriciana",
     number: 27,
     name: "Amatriciana",
-    style: "Roman Classic Redefined — Guanciale-Infused San Marzano DOP, Pecorino & Crispy Guanciale Crunch",
+    style: "Roman Classic Redefined — San Marzano DOP, Guanciale, Pecorino Romano & Peperoncino",
     category: "innovative",
     image: "https://doublethespoonfuls.com/wp-content/uploads/2023/07/amatriciana-pizza-finished.jpg",
-    toppings: "Elizondo Nº3 Picual EVOO (pre-bake), San Marzano DOP tomato sauce (infused with rendered guanciale fat), Fior di Latte mozzarella, crispy pre-rendered guanciale, Pecorino Romano DOP, dried red chili flakes, Frantoio Muraglia Coratina EVOO (post-bake), optional fresh basil.",
+    toppings: "65g hand-crushed San Marzano DOP tomatoes + light pinch of fine sea salt (no oil stirred into raw sauce), 40g raw Guanciale di Maiale (diced into 6–8mm lardons, pre-rendered until golden with browned edges but slightly yielding; Pancetta di Maiale works as an acceptable fallback), 50g well-drained Fior di Latte (hand-torn into rustic strips), 15g Pecorino Romano DOP (finely grated; split: 8g pre-bake, 7g post-bake), 0.4g dried red chili flakes (Peperoncino), no pre-bake oil, 2g–3g Barbera Lorenzo Nº5 EVOO (Nocellara del Belice DOP — smooth finishing swirl, post-bake).",
     menuIngredients: "Tomato, mozzarella, guanciale, Pecorino Romano, chili",
-    build: "Contemporary Neapolitan. Pizza all'Amatriciana translates Amatrice's iconic pasta sauce onto a high-heat Neapolitan base. The magic lies in the contrast between sweet San Marzano DOP tomato sauce, rich rendered guanciale (cured pork cheek), sharp Pecorino Romano DOP, and a hint of fresh chili heat. Because raw guanciale releases a lot of fat at high oven temperatures, pre-rendering the pork is crucial to avoid a soggy center.",
-    postBake: "Rest on a wire cooling rack for 30 seconds, then immediately shower the remaining Pecorino Romano DOP over the piping-hot tomato sauce so it melts into a silky coating. Top with the reserved crispy guanciale for maximum crunch, add fresh basil if desired, and finish with Frantoio Muraglia Coratina EVOO for a bold, peppery kick.",
+    build: "Amatrice's legendary pasta reimagined on dough — bright San Marzano DOP, melted Fior di Latte, toasted Pecorino Romano, and a two-stage guanciale build delivering both rendered depth and a crisp pork crunch.",
+    postBake: "Transfer directly to a wooden board and rest for 30–40 seconds to allow excess surface steam to dissipate and the sauce to settle. Scatter the remaining 15g reserved crisp guanciale lardons over the hot pie, shower 7g Microplaned Pecorino Romano DOP over the top, and finish with a 2g–3g swirl of Barbera Lorenzo Nº5 EVOO. Slice and serve immediately.",
+    flavorProgression: "Bright San Marzano → creamy Fior di Latte → rendered Guanciale → fiery peperoncino → sharp Pecorino Romano → crisp Guanciale crunch → smooth Lorenzo N°5 finish",
     steps: [
-      { title: "1. Ingredients & Proportions (Per 280g Dough Ball)", sections: [
-        { intro: "For the Crispy Pork:", bullets: ["60g Guanciale (sliced into 5mm strips / lardons) — Pancetta works as a fine substitute if guanciale isn't available"] },
-        { intro: "For the Base & Toppings:", bullets: ["60g–70g Pomodoro San Marzano DOP (crushed tomatoes with 1g fine salt per 100g)", "60g Fior di Latte Mozzarella (cubed and thoroughly drained)", "25g Pecorino Romano DOP (finely grated)", "1/2 tsp Dried Red Chili Flakes (Peperoncino, or a splash of chili oil)", "Elizondo Nº3 Picual EVOO (pre-bake) and Frantoio Muraglia Coratina EVOO (post-bake)", "Fresh Basil leaves (optional)"] },
+      { title: "1. Pre-Prep", sections: [
+        { intro: "Guanciale Prep:", bullets: ["Dice 40g raw guanciale into 6–8mm lardons. Pre-render in a dry skillet over medium-low heat until golden with browned edges, keeping the center slightly tender. Drain on paper towels."] },
+        { intro: "Cheese & Tomato Prep:", bullets: ["Hand-crush 65g San Marzano DOP tomatoes with a pinch of fine sea salt. Drain 50g Fior di Latte strips in a sieve for at least 1 hour. Finely grate 15g Pecorino Romano DOP."] },
       ] },
-      { title: "2. Pre-Render the Guanciale (Crucial Step)", sections: [
-        { bullets: ["Fry the guanciale strips in a dry skillet over medium-low heat for 4–5 minutes until the fat renders out and the edges turn crispy and golden", "Remove the crispy pork and drain on paper towels"] },
-        { intro: "Pro Tip:", bullets: ["Stir 1 tsp of warm rendered guanciale fat directly into the crushed San Marzano tomatoes for authentic Roman depth"] },
+      { title: "2. Dough Prep", sections: [
+        { bullets: ["Hand-stretch 280g dough ball to 30–32cm on semolina rimacinata, preserving gas in an airy 1.5–2cm cornicione."] },
       ] },
-      { title: "3. Prep the Cheese", sections: [
-        { bullets: ["Cut your Fior di Latte into strips or cubes and let it drain in a sieve for at least 1–2 hours"] },
+      { title: "3. Layer Assembly (In Exact Order)", sections: [
+        { intro: "Layer 1 — San Marzano:", bullets: ["Spread 65g San Marzano sauce evenly across the dough (leave 1.5–2cm border clean)."] },
+        { intro: "Layer 2 — Pre-Bake Pecorino & Chili:", bullets: ["Dust 8g finely grated Pecorino Romano DOP and 0.4g chili flakes directly over the tomato sauce."] },
+        { intro: "Layer 3 — Fior di Latte:", bullets: ["Distribute 50g drained Fior di Latte strips over the pie."] },
+        { intro: "Layer 4 — Pre-Bake Guanciale:", bullets: ["Scatter 25g of the golden pre-rendered guanciale lardons across the cheese. Do NOT add pre-bake oil."] },
       ] },
-      { title: "4. Stretch & Assemble", sections: [
-        { bullets: ["Stretch the 280g dough ball on semolina rimacinata to a target size of 30–32 cm, leaving an elevated cornicione", "Ladle the 60g–70g San Marzano DOP tomato sauce (infused with the guanciale fat) evenly over the base", "A micro-drizzle of Elizondo Nº3 Picual EVOO over the tomato base", "Dust with half of the finely grated Pecorino Romano (about 10g–15g) and the dried chili flakes", "Scatter the drained Fior di Latte across the sauce", "Distribute three-quarters of the pre-cooked crispy guanciale over the top"] },
+      { title: "4. Gozney Bake", sections: [
+        { intro: "Gozney / High-Heat Oven:", bullets: [
+          "🪨 Stone floor target: 420°C–430°C",
+          "🔥 Dome: 450°C–480°C",
+          "Manage top flame dynamically after launch, keeping top flame moderate so floor heat cooks the base while the pork fat renders into the mozzarella without burning the Pecorino.",
+          "⏱ Cook Time: 65–75 seconds — rotate regularly for even blistering and colour.",
+        ] },
       ] },
-      { title: "5. Bake", sections: [
-        { intro: "Gozney / High-Heat Oven:", bullets: ["🪨 Floor/Stone: 420°C–440°C", "🔥 Dome/Air: 450°C–480°C", "🔥 Flame: drop to Medium/Low immediately post-launch to protect the Pecorino and guanciale", "⏱ Cook time: 70–80 seconds"] },
-        { intro: "You're looking for:", bullets: ["The crust puffed with dark leopard spots and the cheese fully melted and bubbling"] },
-      ] },
-      { title: "6. Post-Bake Finishing", sections: [
-        { bullets: ["Pull the pizza out of the oven and rest on a wire cooling rack for 30 seconds", "Immediately shower the remaining 10g–15g of fresh Pecorino Romano DOP over the piping-hot tomato sauce so it melts into a silky coating", "Top with the reserved crispy guanciale for maximum crunch, add fresh basil if desired, and finish with Frantoio Muraglia Coratina EVOO for a bold, peppery kick"] },
+      { title: "5. Rest & Sequential Post-Bake Staging", sections: [
+        { bullets: ["Transfer directly to a wooden board and rest for 30–40 seconds to allow excess surface steam to dissipate and the sauce to settle."] },
+        { intro: "Stage 1 — Crisp Guanciale Crunch:", bullets: ["Scatter the remaining 15g reserved crisp guanciale lardons over the hot pie."] },
+        { intro: "Stage 2 — Pecorino Snowfall & Finish:", bullets: ["Shower 7g Microplaned Pecorino Romano DOP over the top and finish with a 2g–3g swirl of Barbera Lorenzo Nº5 EVOO.", "Slice and serve immediately."] },
+        { intro: "Technical Moisture & Fat Note:", bullets: ["Pre-rendering the guanciale controls its moisture and fat while creating two distinct textures: savory rendered pork integrated into the bake and a crisp finishing bite. Splitting the guanciale between pre- and post-bake stages preserves both flavor depth and crisp texture."] },
+        { intro: "Profile:", bullets: ["Bright San Marzano → creamy Fior di Latte → rendered Guanciale → fiery peperoncino → sharp Pecorino Romano → crisp Guanciale crunch → smooth Lorenzo N°5 finish"] },
       ] },
     ],
   },
@@ -978,69 +1129,130 @@ export const RECIPES: PizzaRecipe[] = [
     id: "gricia",
     number: 28,
     name: "Gricia",
-    style: "Roman Pasta-Inspired — Guanciale & Pecorino, No Tomato",
+    style: "Roman White Classic — Crispy Guanciale, Pecorino Romano & Tellicherry Pepper",
     category: "innovative",
     image: "https://cache.marieclaire.fr/data/photo/w1475_ci/6w/pizza-a-la-gricia.webp",
-    toppings: "Fior di Latte mozzarella, crispy pre-rendered guanciale, Pecorino Romano DOP (baked in and as a post-bake cremina), coarsely cracked toasted black pepper, extra virgin olive oil. No tomato.",
+    toppings: "Strictly no tomato sauce. 40g raw Guanciale di Maiale (diced into 6–8mm lardons, pre-rendered until golden with browned edges but slightly yielding), 55g well-drained Fior di Latte (hand-torn into rustic strips), 20g total Pecorino Romano DOP split across 12g finely grated pre-bake base and 8g Microplaned post-bake snowfall, 1.0g whole Tellicherry black peppercorns (lightly toasted, coarsely cracked; split: 0.3g pre-bake, 0.7g post-bake), no pre-bake oil, 2g–3g Barbera Lorenzo Nº5 EVOO (Nocellara del Belice DOP — smooth finishing swirl, post-bake).",
     menuIngredients: "Mozzarella, guanciale, Pecorino Romano, black pepper",
-    build: "Pizza alla Gricia translates Rome's oldest pasta sauce — the direct ancestor of both Carbonara and Amatriciana — onto a high-heat Neapolitan white base (pizza bianca). Because a Gricia relies entirely on guanciale, Pecorino Romano, and toasted black pepper, baking it in a high-heat Gozney (450°C–480°C) requires managing the pork fat and creating a smooth cheese emulsion post-bake so the Pecorino doesn't separate or burn.",
-    postBake: "As soon as the pizza comes out of the oven, spoon or drizzle the Pecorino cremina across the hot melted Fior di Latte — the heat of the crust binds the cream smoothly with the melted cheese. Top with the remaining reserved crispy guanciale for texture contrast, then finish with a heavy shower of freshly cracked toasted black pepper and a final dusting of raw Pecorino Romano.",
+    build: "Rome's iconic white pasta classic reimagined — toasted Pecorino Romano, melted Fior di Latte, and a two-stage guanciale build finished with cracked Tellicherry black pepper and Lorenzo N°5 EVOO.",
+    postBake: "Transfer directly to a wooden board and rest for 30–40 seconds to allow excess surface steam to dissipate and the melted cheese to settle. Shower 8g Microplaned Pecorino Romano DOP over the hot cheese, scatter the remaining 15g reserved crisp guanciale lardons over the top, dust with 0.7g cracked black pepper, and finish with a 2g–3g swirl of Barbera Lorenzo Nº5 EVOO. Slice and serve immediately.",
+    flavorProgression: "Toasted Pecorino base → creamy Fior di Latte → savoury rendered Guanciale → sharp fresh Pecorino → crisp Guanciale crunch → fragrant Tellicherry pepper → smooth Lorenzo N°5 finish",
     steps: [
-      { title: "1. Toppings & Proportions (Per 250g–280g Dough Ball)", sections: [
-        { intro: "Pre-Bake (The Base & Pork):", bullets: ["60g Fior di Latte Mozzarella (cubed and thoroughly drained)", "60g Guanciale (sliced into 5mm strips / lardons)", "15g Pecorino Romano DOP (finely grated)", "1 tsp Whole Black Peppercorns (toasted and coarsely cracked)"] },
-        { intro: "Post-Bake (The Pecorino Cremina & Finish):", bullets: ["30g Pecorino Romano DOP (finely grated)", "2–3 tbsp Starchy Hot Water (or hot pasta/pizza cooking water)", "Extra cracked black pepper", "Extra Virgin Olive Oil (light swirl)"] },
+      { title: "1. Pre-Prep", sections: [
+        { intro: "Guanciale Prep:", bullets: ["Dice 40g raw guanciale into 6–8mm lardons. Pre-render in a dry skillet over medium-low heat until golden with browned edges, keeping the center slightly tender. Drain on paper towels."] },
+        { intro: "Cheese & Pepper Prep:", bullets: ["Drain 55g Fior di Latte strips in a sieve for at least 1 hour. Finely grate 20g Pecorino Romano DOP. Lightly toast whole Tellicherry peppercorns in a dry skillet until fragrant, then coarsely crack in a mortar."] },
       ] },
-      { title: "2. Pre-Render the Guanciale (Crucial Step)", sections: [
-        { bullets: ["Fry the guanciale strips in a dry skillet over low-medium heat for 4–5 minutes until the fat renders out and the edges turn golden and crispy", "Drain on paper towels and reserve 1 tsp of the warm rendered pork fat in a bowl"] },
-        { intro: "Why:", bullets: ["Launching raw guanciale into a 450°C Gozney will cause excess grease to pool in the center of the dough"] },
+      { title: "2. Dough Prep", sections: [
+        { bullets: ["Hand-stretch 280g dough ball to 30–33cm on semolina rimacinata, preserving gas in an airy 1.5–2cm cornicione."] },
       ] },
-      { title: "3. Make the Gricia Pecorino Paste (La Cremina)", sections: [
-        { bullets: ["In a small bowl, whisk together the 30g Pecorino Romano, 1 tsp of saved rendered guanciale fat, and 2–3 tbsp of hot water until you form a smooth, velvety cheese paste"] },
+      { title: "3. Layer Assembly (In Exact Order)", sections: [
+        { intro: "Layer 1 — Pecorino Base:", bullets: ["Distribute 12g finely grated Pecorino Romano DOP evenly across the bare dough to build a toasted, savory base layer."] },
+        { intro: "Layer 2 — Fior di Latte:", bullets: ["Distribute 55g drained Fior di Latte strips over the Pecorino."] },
+        { intro: "Layer 3 — Pre-Bake Guanciale & Pepper:", bullets: ["Scatter 25g of the golden pre-rendered guanciale lardons with plenty of visible gaps across the cheese, then dust with 0.3g cracked black pepper. Do NOT add pre-bake oil."] },
       ] },
-      { title: "4. Stretch & Assemble Base", sections: [
-        { bullets: ["Stretch your dough disc on semolina rimacinata, leaving an airy, raised cornicione", "Dust the bare base with the initial 15g Pecorino Romano", "Scatter the drained Fior di Latte evenly across the dough", "Distribute three-quarters of the pre-cooked crispy guanciale over the cheese", "Add a pinch of cracked black pepper and a very light swirl of olive oil"] },
+      { title: "4. Gozney Bake", sections: [
+        { intro: "Gozney / High-Heat Oven:", bullets: [
+          "🪨 Stone floor target: 420°C–430°C",
+          "🔥 Dome: 450°C–480°C",
+          "Manage top flame dynamically after launch, keeping top flame moderate so floor heat cooks the base while the pork fat renders into the mozzarella without burning the Pecorino.",
+          "⏱ Cook Time: 65–75 seconds — rotate regularly for even blistering and colour.",
+        ] },
       ] },
-      { title: "5. Bake in the Gozney (60–90 Seconds)", sections: [
-        { bullets: ["Fire your Gozney floor stone to 450°C–480°C", "Lower the flame slightly right before launching", "Launch and turn every 15–20 seconds until the crust is leopard-spotted and the Fior di Latte is completely melted"] },
-      ] },
-      { title: "6. Post-Bake Finishing", sections: [
-        { bullets: ["As soon as the pizza comes out of the oven, spoon or drizzle the Pecorino cremina across the hot melted Fior di Latte — the heat of the crust will bind the cream smoothly with the melted cheese", "Top with the remaining reserved crispy guanciale for texture contrast", "Finish with a heavy shower of freshly cracked toasted black pepper and a final dusting of raw Pecorino Romano"] },
+      { title: "5. Rest & Sequential Post-Bake Staging", sections: [
+        { bullets: ["Transfer directly to a wooden board and rest for 30–40 seconds to allow excess surface steam to dissipate and the melted cheese to settle."] },
+        { intro: "Stage 1 — Pecorino Snowfall:", bullets: ["Shower 8g Microplaned Pecorino Romano DOP over the hot cheese."] },
+        { intro: "Stage 2 — Crisp Guanciale Crunch & Finish:", bullets: ["Scatter the remaining 15g reserved crisp guanciale lardons over the top, dust with 0.7g cracked black pepper, and finish with a 2g–3g swirl of Barbera Lorenzo Nº5 EVOO.", "Slice and serve immediately."] },
+        { intro: "Technical Moisture & Fat Note:", bullets: ["Pre-rendering the guanciale controls moisture and excess grease while creating two distinct textures: savory rendered pork integrated into the bake and a crisp finishing bite. Dusting Pecorino directly onto the dough creates a toasted savoury base and allows the cheese to brown lightly as the guanciale renders above it."] },
+        { intro: "Profile:", bullets: ["Toasted Pecorino base → creamy Fior di Latte → savoury rendered Guanciale → sharp fresh Pecorino → crisp Guanciale crunch → fragrant Tellicherry pepper → smooth Lorenzo N°5 finish"] },
       ] },
     ],
   },
   {
-    id: "pesto-burrata",
+    id: "pesto-cremosa",
     number: 29,
-    name: "Pesto & Burrata",
-    style: "Contemporary Pizza Bianca — Baked Genovese Pesto & Cold Stracciatella Crown",
+    name: "Pesto Cremosa",
+    style: "Contemporary Pizza Bianca — Baked Genovese Pesto & Burrata Stracciatella Crown",
     category: "innovative",
     image: "/pizzas/pesto-burrata.jpeg",
-    toppings: "Fior di Latte mozzarella (well-drained), Genovese basil pesto, Elizondo Nº3 Picual EVOO (pre-bake), Burrata di Putignano, fresh basil, flaky sea salt, Barbera Lorenzo Nº5 EVOO — Monovarietal Nocellara del Belice (post-bake).",
+    toppings: "Strictly no tomato sauce. 25g Pesto alla Genovese (fresh basil, Parmigiano Reggiano, pine nuts, garlic, EVOO), 60g Fior di Latte (hand-torn into rustic strips, well-drained for 1+ hour), 1g–2g Elizondo Nº3 Picual EVOO (light spiral micro-drizzle pre-launch); finished post-bake with 100g Burrata di Andria IGP or Burrata di Putignano (removed 30–45 minutes before service so it is cool-to-room-temperature; 120g max for 33cm+ stretch), 3–4 fresh basil leaves, 3g toasted pine nuts (optional), Maldon sea salt flakes, and 3g–4g Barbera Lorenzo Nº5 EVOO (Nocellara del Belice DOP — finishing swirl over opened burrata).",
     menuIngredients: "Mozzarella, pesto, burrata, olive oil",
-    build: "Fior di Latte → pesto → Gozney → burrata → EVOO. A Pizza Bianca with zero tomato sauce — well-drained Fior di Latte laid directly on the bare dough, Genovese pesto dolloped between the cheese to shield it from the flame, baked hot, then finished post-bake with torn room-temperature Burrata di Putignano, fresh basil, and a generous drizzle of Barbera Lorenzo Nº5 EVOO.",
-    postBake: "Serve immediately.",
+    build: "A contemporary masterclass in thermal contrast — aromatic Genovese basil pesto baked under melting Fior di Latte, crowned post-bake with cool Burrata stracciatella and Lorenzo N°5 EVOO.",
+    postBake: "Transfer directly to a wooden board and rest for 30–40 seconds to allow excess surface steam to dissipate and the base to settle. Place the cool-to-room-temperature Burrata centrally on the base, make a light cross cut (+) in the outer skin of the top knot, and gently open the pouch so creamy stracciatella spills over the baked pesto and cheese base. Scatter 3–4 fresh basil leaves, 3g toasted pine nuts (optional), and a light pinch of Maldon sea salt flakes over the stracciatella. Finish with a 3g–4g swirl of Barbera Lorenzo Nº5 EVOO across the opened burrata and crust. Slice and serve immediately.",
+    flavorProgression: "Baked Genovese pesto → melted Fior di Latte → cool creamy Burrata stracciatella → sweet basil & toasted pine nuts → almond-smooth Lorenzo N°5 finish",
     videoGuide: "Fresh Pesto Base & Post-Bake Burrata",
     steps: [
-      { title: "1. Stretch the Dough", sections: [
-        { bullets: ["Stretch the 280g dough ball to a target size of 30–32 cm, leaving a raised cornicione"] },
-        { intro: "Style:", bullets: ["Pizza Bianca — zero tomato sauce"] },
+      { title: "1. Pre-Prep", sections: [
+        { bullets: [
+          "Drain 60g Fior di Latte strips in a sieve for at least 1 hour.",
+          "Remove 100g Burrata from refrigeration 30–45 minutes before service so it is cool-to-room-temperature rather than fridge-cold.",
+          "Toast 3g pine nuts in a dry skillet until lightly golden (if using).",
+        ] },
       ] },
-      { title: "2. Lay the Fior di Latte Base", sections: [
-        { bullets: ["Lay 70g well-drained Fior di Latte mozzarella evenly across the bare dough disc first, distributed fairly lightly"] },
+      { title: "2. Dough Prep", sections: [
+        { bullets: ["Hand-stretch 280g dough ball to 30–32cm on semolina rimacinata, preserving gas in an airy 1.5–2cm cornicione."] },
       ] },
-      { title: "3. Add the Pesto", sections: [
-        { intro: "Add:", bullets: ["35g–40g Genovese basil pesto, dolloped between the Fior di Latte strips", "A micro-drizzle of Elizondo Nº3 Picual EVOO to finish"] },
-        { intro: "Pesto Protection Tip:", bullets: ["Tuck the pesto between/under the Fior di Latte strips so the mozzarella shields it from direct top flame"] },
-        { intro: "Note:", bullets: ["Don't overload it — the burrata added afterwards provides a lot of richness"] },
+      { title: "3. Layer Assembly (In Exact Order)", sections: [
+        { intro: "Layer 1 — Pesto Foundation:", bullets: ["Dollop 25g Pesto alla Genovese across the bare dough in discrete spots."] },
+        { intro: "Layer 2 — Fior di Latte Shield:", bullets: ["Scatter 60g drained Fior di Latte strips over the pesto dollops. The Fior di Latte partially shields the pesto from direct top heat, reducing scorching while allowing the pesto to warm and release its aroma."] },
+        { intro: "Layer 3 — Picual:", bullets: ["Apply a light 1g–2g spiral micro-drizzle of Elizondo Nº3 Picual EVOO over the build."] },
       ] },
-      { title: "4. Bake in the Gozney", sections: [
-        { intro: "Gozney / High-Heat Oven:", bullets: ["🪨 Floor/Stone: 430°C–450°C", "🔥 Dome/Air: 450°C–480°C", "🔥 Flame: drop to LOW immediately upon launch", "⏱ Cook time: 60–75 seconds"] },
-        { intro: "You're looking for:", bullets: ["Well-risen, leopard-spotted crust", "Melted Fior di Latte", "Pesto still relatively fresh rather than burnt (shielded by the mozzarella)"] },
+      { title: "4. Gozney Bake", sections: [
+        { intro: "Gozney / High-Heat Oven:", bullets: [
+          "🪨 Stone floor target: 430°C–435°C",
+          "🔥 Dome: 450°C–480°C",
+          "Manage top flame dynamically after launch, keeping top flame moderate so floor heat sets the crust while mozzarella melts over the pesto without burning.",
+          "⏱ Cook Time: 60–75 seconds — rotate regularly for even blistering and colour.",
+        ] },
       ] },
-      { title: "5. Post-Bake Burrata & EVOO Finish", sections: [
-        { intro: "Important:", bullets: ["Do NOT bake the burrata"] },
-        { bullets: ["Rest the baked pizza on a wire cooling rack for 30 seconds", "Tear open 100g room-temperature Burrata di Putignano in the centre and distribute over the hot pizza"] },
-        { intro: "Finish with:", bullets: ["Fresh basil leaves", "A generous drizzle of Barbera Lorenzo Nº5 EVOO (Monovarietal Nocellara del Belice) for a smooth, sweet, creamy finish", "Tiny pinch of flaky sea salt if needed", "Serve immediately"] },
+      { title: "5. Rest & Sequential Post-Bake Staging", sections: [
+        { bullets: ["Transfer directly to a wooden board and rest for 30–40 seconds to allow excess surface steam to dissipate and the base to settle."] },
+        { intro: "Stage 1 — Burrata Crown:", bullets: ["Place the cool-to-room-temperature Burrata centrally on the base. Make a light cross cut (+) in the outer skin of the top knot and gently open the pouch so creamy stracciatella spills over the baked pesto and cheese base."] },
+        { intro: "Stage 2 — Aromatics & Finishing Oil:", bullets: ["Scatter 3–4 fresh basil leaves, 3g toasted pine nuts (optional), and a light pinch of Maldon sea salt flakes over the stracciatella.", "Finish with a 3g–4g swirl of Barbera Lorenzo Nº5 EVOO across the opened burrata and crust.", "Slice and serve immediately."] },
+        { intro: "Technical Moisture & Thermal Note:", bullets: ["Genovese pesto scorches easily at 450°C+, turning bitter if exposed directly to top flames. Placing Fior di Latte strips directly over the pesto dollops partially shields the basil oils during the bake. Crowning post-bake with cool-to-room-temperature Burrata creates a striking contrast between hot, baked herbs and cool, silky stracciatella."] },
+        { intro: "Profile:", bullets: ["Baked Genovese pesto → melted Fior di Latte → cool creamy Burrata stracciatella → sweet basil & toasted pine nuts → almond-smooth Lorenzo N°5 finish"] },
+      ] },
+    ],
+  },
+  {
+    id: "burrata-and-pesto",
+    number: 47,
+    name: "Burrata & Pesto",
+    style: "Contemporary Pizza Bianca — Baked Genovese Pesto & Burrata Stracciatella",
+    category: "innovative",
+    image: "/pizzas/burrata-and-pesto.jpeg",
+    toppings: "Strictly no tomato sauce. Strictly no Fior di Latte. Strictly no additional cheese or extra pine nuts. Exactly 25g fresh Pesto alla Genovese (fresh basil, Parmigiano Reggiano, pine nuts, garlic, EVOO; kept chilled until assembly), 0g–1g Elizondo Nº3 Picual EVOO (0g preferred for strict minimalism; max 1g micro-drizzle over pesto patches); finished post-bake with 100g Burrata di Andria IGP or fresh Burrata from Putignano (removed 30–45 minutes before service; cool-to-room-temperature rather than fridge-cold), 3g–4g Barbera Lorenzo Nº5 EVOO (Nocellara del Belice DOP — finishing swirl over opened burrata), and optional 3–4 fresh basil leaves and a tiny pinch of Maldon sea salt flakes.",
+    menuIngredients: "Pesto, burrata, olive oil",
+    build: "A minimalist contemporary Bianca built around two hero ingredients — aromatic Genovese pesto baked directly onto the dough, then crowned post-bake with cool, creamy Burrata for a striking contrast between hot basil intensity and silky stracciatella.",
+    postBake: "Transfer directly to a wooden board and rest for 30–40 seconds to allow excess surface steam to dissipate and the base to settle. Place the 100g cool Burrata centrally on the hot pizza, make a light cross cut (+) through the outer skin of the Burrata pouch, and gently open it so internal stracciatella and cream spread naturally across the baked pesto. Finish with a 3g–4g swirl of Barbera Lorenzo Nº5 EVOO over the opened Burrata and selected areas of the crust. Add optional fresh basil leaves or a tiny pinch of Maldon sea salt if desired. Slice and serve immediately.",
+    flavorProgression: "Baked Genovese pesto → cool creamy Burrata stracciatella → fresh basil → almond-smooth Lorenzo N°5 finish",
+    steps: [
+      { title: "1. Pre-Prep", sections: [
+        { bullets: [
+          "Remove 100g Burrata from refrigeration 30–45 minutes before service so it is cool-to-room-temperature rather than fridge-cold.",
+          "Keep 25g fresh Pesto alla Genovese chilled until build time.",
+        ] },
+      ] },
+      { title: "2. Dough Prep", sections: [
+        { bullets: ["Hand-stretch 280g dough ball to 30–32cm on semolina rimacinata, shaping a relatively flat centre while preserving an airy 1.5–2cm cornicione."] },
+      ] },
+      { title: "3. Layer Assembly (In Exact Order)", sections: [
+        { intro: "Layer 1 — Pesto Foundation:", bullets: ["Apply exactly 25g Pesto alla Genovese directly across the bare dough in 6–8 thin, discrete patches, leaving small areas of exposed dough between them. Do NOT create a continuous thick layer."] },
+        { intro: "Layer 2 — Pre-Bake Oil (Optional):", bullets: ["Omit pre-bake oil for the strict minimalist build (or apply no more than 1g Elizondo Nº3 Picual EVOO as an extremely light micro-drizzle over the pesto patches). Do NOT oil the cornicione."] },
+      ] },
+      { title: "4. Gozney Bake", sections: [
+        { intro: "Gozney / High-Heat Oven:", bullets: [
+          "🪨 Stone floor target: 430°C–435°C",
+          "🔥 Dome: 450°C–480°C",
+          "Launch with pesto-heavy areas facing away from direct flame initially. Manage top flame dynamically at low/moderate intensity, rotating progressively throughout the bake to develop the crust while avoiding prolonged direct flame exposure over the pesto.",
+          "⏱ Cook Time: 60–75 seconds.",
+        ] },
+      ] },
+      { title: "5. Rest & Sequential Post-Bake Staging", sections: [
+        { bullets: ["Transfer directly to a wooden board and rest for 30–40 seconds to allow excess surface steam to dissipate and the base to settle."] },
+        { intro: "Stage 1 — Burrata Crown:", bullets: ["Place the 100g cool Burrata centrally on the hot pizza. Make a light cross cut (+) through the outer skin of the Burrata pouch and gently open it so internal stracciatella and cream spread naturally across the baked pesto."] },
+        { intro: "Stage 2 — Final Finish:", bullets: ["Finish with a 3g–4g swirl of Barbera Lorenzo Nº5 EVOO over the opened Burrata and selected areas of the crust.", "Add optional fresh basil leaves or a tiny pinch of Maldon sea salt if desired.", "Slice and serve immediately."] },
+        { intro: "Technical Thermal Note:", bullets: ["Fresh Genovese pesto is delicate under Neapolitan pizza temperatures. A thick continuous layer can overheat, separate, and develop bitter notes. The 6–8 thin-patch technique limits oil pooling and reduces prolonged direct flame exposure while allowing the pesto to warm and concentrate against the dough. The Burrata is deliberately kept out of the oven to preserve its fresh dairy character and contrast with the hot baked pesto."] },
+        { intro: "Profile:", bullets: ["Baked Genovese pesto → cool creamy Burrata stracciatella → fresh basil → almond-smooth Lorenzo N°5 finish"] },
       ] },
     ],
   },
@@ -1048,30 +1260,43 @@ export const RECIPES: PizzaRecipe[] = [
     id: "salsiccia-al-pesto",
     number: 30,
     name: "Salsiccia al Pesto",
-    style: "White Pizza — Genoese Pesto & Smoked Provola",
+    style: "Contemporary Pizza Bianca — Smoked Agerola Provola, Genoese Pesto & Fennel Pork Sausage",
     category: "innovative",
     image: "https://www.rtagency.it/menu/pizzeria%20carmnella/images/contadino-in-trasferta18-scaled.jpg",
-    toppings: "Genoese basil pesto, Smoked Agerola Provola (drained strips), finely grated hard cheese, hand-cut fresh pork sausage (crumbled raw).",
-    menuIngredients: "Basil pesto, smoked Agerola provola, hard cheese, fresh pork sausage",
-    build: "A rich, savory white pizza using Genoese basil pesto as the base sauce, topped with hand-cut fresh pork sausage and rustic smoked Agerola provola.",
-    postBake: "Transfer directly to a wire cooling rack for 60 seconds to vent steam beneath the crust, then slice and serve.",
+    toppings: "Strictly no tomato sauce. 25g fresh Pesto alla Genovese (fresh basil, Parmigiano Reggiano, pine nuts, garlic, EVOO; kept chilled until assembly), 60g Smoked Agerola Provola (cut into strips, well-drained for 2+ hours), 8g Pecorino Romano DOP (finely grated), 40g fresh Italian pork sausage with fennel/black pepper (casing removed, pinched into small, uniform 5mm–8mm raw morsels), 1g Elizondo Nº3 Picual EVOO (light micro-drizzle pre-launch); finished post-bake with 3g Barbera Lorenzo Nº5 EVOO (Nocellara del Belice DOP — finishing swirl) and 2–3 fresh basil leaves (optional).",
+    menuIngredients: "Basil pesto, smoked Agerola provola, Pecorino Romano, fennel pork sausage",
+    build: "A rich, smoky Ligurian-Campanian fusion — aromatic Genovese pesto partially shielded under melting Smoked Agerola Provola, topped with small morsels of fresh fennel pork sausage that sizzle and crisp in the Gozney.",
+    postBake: "Transfer directly to a wooden board and rest for 30–40 seconds to allow excess surface steam to dissipate and the base to settle. Apply a 3g swirl of Barbera Lorenzo Nº5 EVOO across the pie and add optional fresh basil leaves. Slice and serve immediately.",
+    flavorProgression: "Aromatic Genovese pesto → smoky melted Provola → savoury fennel pork sausage → sharp Pecorino Romano → almond-smooth Lorenzo N°5 finish",
     steps: [
-      { title: "1. Ingredients (For One 28–30cm Pizza)", sections: [
-        { intro: "Base:", bullets: ["50g–60g Genoese Basil Pesto, spread across the base"] },
-        { intro: "Cheese:", bullets: ["80g–90g Smoked Agerola Provola, cut into strips and well-drained", "8g–10g finely grated hard cheese"] },
-        { intro: "Meat:", bullets: ["60g–70g hand-cut fresh pork sausage, crumbled raw into small pieces"] },
+      { title: "1. Pre-Prep", sections: [
+        { bullets: [
+          "Cut 60g Smoked Agerola Provola into strips and drain in a sieve for at least 2 hours to remove excess moisture.",
+          "Remove casing from fresh Italian pork sausage and pinch into small 5mm–8mm raw morsels (40g total). Keep refrigerated until assembly.",
+        ] },
       ] },
-      { title: "2. Stretch the Dough", sections: [
-        { intro: "Handle gently to prevent center tears:", bullets: ["Open the dough ball in semolina to 28–30cm, preserving a prominent outer rim"] },
+      { title: "2. Dough Prep", sections: [
+        { bullets: ["Hand-stretch 280g dough ball to 30–32cm on semolina rimacinata, preserving gas in an airy 1.5–2cm cornicione."] },
       ] },
-      { title: "3. Pre-Bake Assembly", sections: [
-        { intro: "Layer raw sausage over pesto and smoked provola:", bullets: ["Spread a thin, even layer of Genoese Basil Pesto as your base sauce", "Distribute the Smoked Agerola Provola strips over the pesto", "Scatter crumbled hand-cut fresh pork sausage evenly across the cheese so it bakes through directly under the flame", "Dust with hard cheese"] },
+      { title: "3. Layer Assembly (In Exact Order)", sections: [
+        { intro: "Layer 1 — Pesto Foundation:", bullets: ["Apply 25g Pesto alla Genovese across the bare dough in 6–8 discrete patches."] },
+        { intro: "Layer 2 — Smoked Provola Base:", bullets: ["Distribute 60g drained Smoked Provola strips over the pesto patches. The Provola partially shields the pesto from direct top heat, helping reduce scorching while allowing the pesto to warm and release its aroma."] },
+        { intro: "Layer 3 — Sausage & Pecorino:", bullets: ["Scatter 40g of small 5mm–8mm raw sausage morsels sparsely over the cheese so they are exposed to direct heat. Dust with 8g Pecorino Romano DOP."] },
+        { intro: "Layer 4 — Picual:", bullets: ["Apply a light 1g spiral micro-drizzle of Elizondo Nº3 Picual EVOO over the build."] },
       ] },
-      { title: "4. Launch & Gozney Bake", sections: [
-        { intro: "Cook sausage completely while protecting the pesto base:", bullets: ["Launch into your preheated Gozney and keep the flame on LOW", "Bake for 75–90 seconds, rotating continuously so the hand-cut sausage sizzles and cooks through while the provola melts into the green pesto base"] },
+      { title: "4. Gozney Bake", sections: [
+        { intro: "Gozney / High-Heat Oven:", bullets: [
+          "🪨 Stone floor target: 420°C–430°C",
+          "🔥 Dome: 450°C–480°C",
+          "Manage top flame dynamically, keeping top flame low-to-moderate as required.",
+          "⏱ Cook Time: 75–90 seconds — rotate progressively so the small sausage morsels sizzle and render while the Provola melts smoothly without charring the pesto.",
+        ] },
       ] },
-      { title: "5. Rest & Serve", sections: [
-        { intro: "Rest on wire rack:", bullets: ["Transfer directly to a wire cooling rack for 60 seconds to vent steam beneath the crust", "Slice and serve"] },
+      { title: "5. Rest & Sequential Post-Bake Staging", sections: [
+        { bullets: ["Transfer directly to a wooden board and rest for 30–40 seconds to allow excess surface steam to dissipate and the base to settle."] },
+        { intro: "Stage 1 — Finish:", bullets: ["Apply a 3g swirl of Barbera Lorenzo Nº5 EVOO across the pie and add optional fresh basil leaves.", "Slice and serve immediately."] },
+        { intro: "Technical Moisture & Thermal Note:", bullets: ["Placing Smoked Provola strips over the pesto patches partially shields delicate basil oils from high top heat. Pinching the raw sausage into small 5mm–8mm morsels and distributing them sparsely ensures rapid heat transfer and even rendering during the 75–90 second bake."] },
+        { intro: "Profile:", bullets: ["Aromatic Genovese pesto → smoky melted Provola → savoury fennel pork sausage → sharp Pecorino Romano → almond-smooth Lorenzo N°5 finish"] },
       ] },
     ],
   },
@@ -1079,67 +1304,84 @@ export const RECIPES: PizzaRecipe[] = [
     id: "boscaiola",
     number: 31,
     name: "Boscaiola",
-    style: "Forester's Pizza — Sausage & Mushroom, Pizza Bianca",
+    style: "Contemporary Boscaiola — Fennel Sausage, Sautéed Mushrooms & Parmigiano-Reggiano",
     category: "innovative",
     image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS4c90OTCp_IEocTO38KnTvWuXxhkRs-NpLzRLtET9QDw&s=10",
-    toppings: "Fior di Latte (or Provola Affumicata), fresh Italian pork sausage (Salsiccia), Porcini or Champignon mushrooms, Parmigiano-Reggiano DOP 24 mesi, extra virgin olive oil. No tomato.",
-    menuIngredients: "Mozzarella or smoked provola, sausage, mushroom, Parmigiano",
-    build: "Pizza alla Boscaiola (\"forester's pizza\") is a classic autumnal pie built around earthiness and smoke. In Naples, it is traditionally made as a white pizza (pizza bianca) using fresh Italian sausage (Salsiccia) and mushrooms (Funghi Porcini or Champignon) over a base of Fior di Latte or smoked Provola. The main technical rule for your Gozney is pre-cooking the mushrooms (to remove their high water content) and pinching raw fresh sausage into small nuggets so they cook through completely in 60–90 seconds.",
-    postBake: "Finish with fresh thyme or a tiny swirl of raw EVOO right out of the oven.",
+    toppings: "Strictly no tomato sauce. 10g Parmigiano-Reggiano DOP 24 Mesi (finely grated), 60g well-drained Fior di Latte (hand-torn into rustic strips, drained for 1+ hour), 40g fresh Champignon or Cremini mushrooms (sliced thinly, dry-sautéed without salt until moisture evaporates, lightly salted after evaporation, and cooled), 40g fresh fennel pork sausage (casing removed, pinched into small, uniform 5mm–8mm raw morsels), 0g–1g Elizondo Nº3 Picual EVOO (optional light micro-drizzle pre-launch); finished post-bake with 3g Barbera Lorenzo Nº5 EVOO (Nocellara del Belice DOP — finishing swirl) and fresh thyme leaves to taste (stripped post-bake).",
+    menuIngredients: "Mozzarella, sausage, mushroom, Parmigiano",
+    build: "An earthy Italian classic — dry-sautéed Champignon mushrooms, sizzling raw fennel pork sausage, and melting Fior di Latte over a toasted Parmigiano-Reggiano base, finished with fresh thyme and Lorenzo N°5 EVOO.",
+    postBake: "Transfer directly to a wooden board and rest for 30–40 seconds to allow excess surface steam to dissipate and the base to settle. Strip fresh thyme leaves over the hot pizza and finish with a 3g swirl of Barbera Lorenzo Nº5 EVOO. Slice and serve immediately.",
+    flavorProgression: "Toasted Parmigiano base → creamy Fior di Latte → earthy sautéed mushrooms → savoury fennel pork sausage → aromatic fresh thyme → almond-smooth Lorenzo N°5 finish",
     steps: [
-      { title: "1. Ingredients & Proportions (Per 250g–280g Dough Ball)", sections: [
-        { intro: "Pre-Bake:", bullets: ["70g Fior di Latte (or Provola Affumicata for a smoky twist, cubed and well-drained)", "50g Fresh Italian Pork Sausage (Salsiccia) (casing removed, crumbled into small hazelnut-sized pieces)", "40g Mushrooms (Porcini or fresh Champignon, sliced thinly)", "15g Parmigiano-Reggiano DOP 24 mesi (finely grated)", "Extra Virgin Olive Oil (light swirl)"] },
-        { intro: "Optional Finish:", bullets: ["Fresh Thyme leaves or chopped parsley", "Extra Virgin Olive Oil"] },
+      { title: "1. Pre-Prep", sections: [
+        { intro: "Mushroom Prep:", bullets: ["Slice 40g Champignon/Cremini mushrooms thinly. Dry-sauté in a hot pan over medium-high heat without salt or oil for 2–3 minutes until liquid releases and completely evaporates. Lightly season with fine salt after evaporation, then cool completely."] },
+        { intro: "Sausage Prep:", bullets: ["Remove casing from fresh fennel pork sausage and pinch into small 5mm–8mm raw morsels (40g total). Keep chilled until assembly."] },
+        { intro: "Cheese Prep:", bullets: ["Drain 60g Fior di Latte strips in a sieve for at least 1 hour. Finely grate 10g Parmigiano-Reggiano DOP 24 Mesi."] },
       ] },
-      { title: "2. Pre-Sauté the Mushrooms", sections: [
-        { bullets: ["Sauté the sliced mushrooms in a dry skillet over medium-high heat with a tiny splash of olive oil and a pinch of salt for 2–3 minutes until they release their liquid and soften", "Drain on paper towels"] },
+      { title: "2. Dough Prep", sections: [
+        { bullets: ["Hand-stretch 280g dough ball to 30–32cm on semolina rimacinata, preserving gas in an airy 1.5–2cm cornicione."] },
       ] },
-      { title: "3. Prep the Sausage", sections: [
-        { bullets: ["Remove the sausage meat from its casing and pinch into small, loose hazelnut-sized nuggets using wet fingers", "Keep them small so the high ambient heat in your Gozney renders the fat and cooks the meat through thoroughly in under 90 seconds"] },
+      { title: "3. Layer Assembly (In Exact Order)", sections: [
+        { intro: "Layer 1 — Parmigiano Base:", bullets: ["Dust 10g finely grated Parmigiano-Reggiano DOP 24 Mesi directly onto the bare dough to build a toasted, savory base layer."] },
+        { intro: "Layer 2 — Fior di Latte:", bullets: ["Distribute 60g drained Fior di Latte strips over the Parmigiano base."] },
+        { intro: "Layer 3 — Mushrooms & Sausage:", bullets: ["Scatter the cooled dry-sautéed mushrooms and 40g of small 5mm–8mm raw fennel sausage morsels evenly over the cheese so they face direct top heat."] },
+        { intro: "Layer 4 — Picual (Optional):", bullets: ["Apply an optional light 0g–1g spiral micro-drizzle of Elizondo Nº3 Picual EVOO over the build."] },
       ] },
-      { title: "4. Stretch & Assemble", sections: [
-        { bullets: ["Stretch your dough disc on semolina rimacinata, preserving an airy, raised cornicione", "Dust the bare base directly with the Parmigiano-Reggiano DOP 24 mesi", "Scatter the drained Fior di Latte across the base", "Distribute the pre-sautéed mushrooms and raw sausage nuggets evenly over the cheese", "Add a light spiral of Extra Virgin Olive Oil"] },
+      { title: "4. Gozney Bake", sections: [
+        { intro: "Gozney / High-Heat Oven:", bullets: [
+          "🪨 Stone floor target: 420°C–430°C",
+          "🔥 Dome: 450°C–480°C",
+          "Manage top flame dynamically, reducing direct flame exposure if the Parmigiano or sausage colors too rapidly.",
+          "⏱ Cook Time: 75–90 seconds — rotate progressively so the small sausage morsels render and cook through while the mushrooms concentrate and the cheese melts smoothly.",
+        ] },
       ] },
-      { title: "5. Bake in the Gozney (60–90 Seconds)", sections: [
-        { bullets: ["Preheat your Gozney floor stone to 450°C–480°C (840°F–900°F). Turn the flame down slightly right before launching", "Launch and turn every 15–20 seconds. The high heat roasts the sausage, crisps the edges of the mushrooms, and melts the cheese into a savory pool"] },
-      ] },
-      { title: "6. Finish", sections: [
-        { bullets: ["Finish with fresh thyme or a tiny swirl of raw EVOO right out of the oven"] },
+      { title: "5. Rest & Sequential Post-Bake Staging", sections: [
+        { bullets: ["Transfer directly to a wooden board and rest for 30–40 seconds to allow excess surface steam to dissipate and the base to settle."] },
+        { intro: "Stage 1 — Finish:", bullets: ["Strip fresh thyme leaves over the hot pizza and finish with a 3g swirl of Barbera Lorenzo Nº5 EVOO.", "Slice and serve immediately."] },
+        { intro: "Technical Moisture & Thermal Note:", bullets: ["Dry-sautéing mushrooms without salt first drives off internal moisture before assembly, preventing water separation during the bake. Parmigiano-Reggiano baked directly against the dough creates a concentrated toasted savoury layer beneath the Fior di Latte. Small 5mm–8mm sausage morsels promote rapid, even cooking and rendering during the high-temperature bake."] },
+        { intro: "Profile:", bullets: ["Toasted Parmigiano base → creamy Fior di Latte → earthy sautéed mushrooms → savoury fennel pork sausage → aromatic fresh thyme → almond-smooth Lorenzo N°5 finish"] },
       ] },
     ],
   },
   {
-    id: "mortadella-pistachio",
+    id: "mortadella-e-pistacchio",
     number: 32,
-    name: "Mortadella and Pistachio",
-    style: "Gourmet Pizza Bianca — Franco Pepe-Style Mortadella Ribbons, Ricotta Quenelles & Bronte Pistachio",
+    name: "Mortadella e Pistacchio",
+    style: "Contemporary Pizza Bianca — Mortadella Ribbons, Whipped Ricotta & Bronte Pistachio",
     category: "innovative",
     image: "https://myhusbandmakespies.com/wp-content/uploads/2025/07/mortadella-ricotta-pizza-ooni-baked.jpg",
-    toppings: "Fior di Latte mozzarella, Elizondo Nº3 Picual EVOO (pre-bake), Mortadella di Suino Nero Casertano, fresh cow's milk ricotta, granella di pistacchio (Bronte pistachios), fresh basil leaves, Barbera Lorenzo Nº5 EVOO (post-bake).",
+    toppings: "Strictly no tomato sauce. 60g Fior di Latte (hand-torn into rustic strips, well-drained for 1+ hour), 0g–1g Elizondo Nº3 Picual EVOO (optional light micro-drizzle pre-launch); finished post-bake with 50g Mortadella IGP (preferably Mortadella di Suino Nero Casertano, paper-thin slices draped into elevated rosettes), 40g fresh cow's milk ricotta (whipped smooth with a tiny pinch of fine sea salt; no oil added), 10g–12g Granella di Pistacchio (coarsely crushed Bronte pistachios), 2–3 fresh basil leaves, and 3g Barbera Lorenzo Nº5 EVOO (Nocellara del Belice DOP — finishing swirl).",
     menuIngredients: "Mozzarella, mortadella, ricotta, pistachio, basil",
-    build: "A hot, crispy white pizza base cooked with Fior di Latte, topped post-bake with cool, ultra-premium Casertano black pig mortadella, fresh creamed ricotta, crunchy pistachios, and intense local Caiazzano extra virgin olive oil.",
-    postBake: "Drape the mortadella loosely in ribbon-like folds over the hot melted cheese, pipe or dollop the smooth ricotta between the folds, scatter the pistachio granella generously, then finish with fresh basil leaves and a final delicate swirl of Barbera Lorenzo Nº5 (Nocellara del Belice DOP) so the sweet butter and green almond notes complement the mortadella and pistachio.",
+    build: "A contemporary Campanian-inspired Bianca masterclass — melting Fior di Latte baked on bare dough, layered post-bake with paper-thin mortadella ribbons, dollops of whipped ricotta, Bronte pistachio crunch, and Lorenzo N°5 EVOO.",
+    postBake: "Transfer directly to a wooden board and rest for 30–40 seconds to allow excess surface steam to dissipate and the base to settle. Drape 50g of thin mortadella slices loosely in elevated, ribbon-like folds across the hot melted mozzarella. Pipe or spoon neat dollops of whipped ricotta between and over the mortadella folds. Shower with 10g–12g pistachio granella. Tuck 2–3 fresh basil leaves into the build and finish with a 3g swirl of Barbera Lorenzo N°5 EVOO. Slice and serve immediately.",
+    flavorProgression: "Melted Fior di Latte → gently tempered Mortadella IGP ribbons → cool whipped Ricotta → crunchy Bronte pistachio → sweet basil → almond-smooth Lorenzo N°5 finish",
     steps: [
-      { title: "1. Toppings & Proportions (Per 280g Dough Ball)", sections: [
-        { intro: "Pre-Bake:", bullets: ["70g–80g Fior di Latte Mozzarella (cubed or cut into strips and well-drained)", "Elizondo Nº3 Picual EVOO, light micro-drizzle"] },
-        { intro: "Post-Bake (Finishing Touches):", bullets: ["60g–70g Mortadella di Suino Nero Casertano (thinly sliced, high-grade artisanal mortadella)", "40g Fresh Cow's Milk Ricotta", "15g Granella di Pistacchio (coarsely chopped/crushed Bronte or high-quality pistachios)", "Barbera Lorenzo Nº5 EVOO (Nocellara del Belice DOP — mandatory final delicate raw finish)", "Fresh Basil leaves"] },
+      { title: "1. Pre-Prep", sections: [
+        { intro: "Dairy Prep:", bullets: ["Drain 60g Fior di Latte strips in a sieve for at least 1 hour. In a small bowl, whip 40g fresh ricotta with a tiny pinch of fine salt until smooth and velvety. Transfer to a piping bag (or reserve for spooning)."] },
+        { intro: "Meat & Nut Prep:", bullets: ["Slice mortadella paper-thin (50g total). Coarsely crush 10g–12g Bronte pistachios."] },
       ] },
-      { title: "2. Prep the Ricotta", sections: [
-        { bullets: ["Whisk the fresh ricotta in a small bowl with a tiny splash of extra virgin olive oil and a pinch of salt until smooth and velvety", "Transfer to a piping bag (or use two spoons to form neat quenelles/dollops)"] },
+      { title: "2. Dough Prep", sections: [
+        { bullets: ["Hand-stretch 280g dough ball to 30–32cm on semolina rimacinata, preserving gas in an airy 1.5–2cm cornicione."] },
       ] },
-      { title: "3. Drain the Fior di Latte", sections: [
-        { bullets: ["Cut the mozzarella into strips 1–2 hours ahead and let it drain thoroughly in a sieve"] },
+      { title: "3. Layer Assembly (In Exact Order)", sections: [
+        { intro: "Layer 1 — Fior di Latte:", bullets: ["Distribute 60g drained Fior di Latte strips evenly across the bare dough."] },
+        { intro: "Layer 2 — Picual (Optional):", bullets: ["Apply an optional light 0g–1g spiral micro-drizzle of Elizondo Nº3 Picual EVOO over the cheese base."] },
       ] },
-      { title: "4. Stretch & Pre-Bake", sections: [
-        { bullets: ["Stretch the 280g dough ball on semolina rimacinata to a target size of 30–33 cm, leaving an airy, raised cornicione", "Lay the drained Fior di Latte evenly across the bare dough disc", "Add a light micro-drizzle of Elizondo Nº3 Picual EVOO over the Fior di Latte base"] },
+      { title: "4. Gozney Bake", sections: [
+        { intro: "Gozney / High-Heat Oven:", bullets: [
+          "🪨 Stone floor target: 430°C–440°C",
+          "🔥 Dome: 450°C–480°C",
+          "Manage top flame dynamically, keeping top flame moderate after launch.",
+          "⏱ Cook Time: 60–75 seconds — rotate regularly until the crust is puffed and leopard-spotted and the Fior di Latte is completely melted.",
+        ] },
       ] },
-      { title: "5. Bake", sections: [
-        { intro: "Gozney / High-Heat Oven:", bullets: ["🪨 Floor/Stone: 430°C–450°C", "🔥 Dome/Air: 450°C–480°C", "⏱ Cook time: 60–75 seconds"] },
-        { intro: "Home Oven with Steel/Stone:", bullets: ["Bake at maximum temperature for 5–7 minutes until golden and bubbling"] },
-      ] },
-      { title: "6. Post-Bake Layering (The Pepe in Grani Method)", sections: [
-        { intro: "Tip:", bullets: ["Rest baked base on a cooling rack for 30s before topping to keep the crust crisp"] },
-        { bullets: ["Drape the thin slices of Mortadella di Nero Casertano loosely in ribbon-like folds (a rose) over the hot melted cheese", "Pipe or dollop the smooth ricotta directly onto or between the folds of mortadella", "Generously scatter the granella di pistacchio over the top for crucial crunch", "Finish with fresh basil leaves and a final delicate swirl of Barbera Lorenzo Nº5 (Nocellara del Belice DOP) — the mandatory finishing oil, its sweet butter and green almond notes complementing the mortadella, ricotta, and pistachio"] },
+      { title: "5. Rest & Sequential Post-Bake Staging", sections: [
+        { bullets: ["Transfer directly to a wooden board and rest for 30–40 seconds to allow excess surface steam to dissipate and the base to settle."] },
+        { intro: "Stage 1 — Mortadella Rosettes:", bullets: ["Drape 50g of thin mortadella slices loosely in elevated, ribbon-like folds across the hot melted mozzarella."] },
+        { intro: "Stage 2 — Whipped Ricotta & Pistachio Crunch:", bullets: ["Pipe or spoon neat dollops of whipped ricotta between and over the mortadella folds. Shower with 10g–12g pistachio granella."] },
+        { intro: "Stage 3 — Finish:", bullets: ["Tuck 2–3 fresh basil leaves into the build and finish with a 3g swirl of Barbera Lorenzo N°5 EVOO.", "Slice and serve immediately."] },
+        { intro: "Technical Moisture & Thermal Note:", bullets: ["Direct exposure to the high heat of the pizza oven can cause Mortadella to lose its delicate texture and render excessive fat. Post-bake staging preserves the delicate texture of the Mortadella and the fresh, creamy character of the ricotta while keeping the pistachio aromatic and crunchy."] },
+        { intro: "Profile:", bullets: ["Melted Fior di Latte → gently tempered Mortadella IGP ribbons → cool whipped Ricotta → crunchy Bronte pistachio → sweet basil → almond-smooth Lorenzo N°5 finish"] },
       ] },
     ],
   },
@@ -1147,38 +1389,42 @@ export const RECIPES: PizzaRecipe[] = [
     id: "la-oro-verde",
     number: 33,
     name: "La Oro Verde",
-    style: "Gourmet White Pizza — Mortadella Ribbons, Cold Stracciatella & Pistachio Pesto",
+    style: "Contemporary Pizza Bianca — Mortadella Ribbons, Cold Stracciatella & Pistachio Pesto",
     category: "innovative",
     image: "https://assets.tmecosys.com/image/upload/t_web_rdp_recipe_584x480_1_5x/img/recipe/ras/Assets/a211bd6f00b7a30664e5d05480027f27/Derivates/01948b21d82cfcb00473494c5780e3b3e3d00e52.jpg",
-    toppings: "Fior di Latte mozzarella (well-drained), Elizondo Nº3 Picual EVOO (pre-bake), thinly sliced artisanal Mortadella, fresh cold Stracciatella di Burrata, Pistachio Pesto (Pesto di Pistacchio), granella di pistacchio, fresh basil leaves, Barbera Lorenzo Nº5 EVOO — Monovarietal Nocellara del Belice DOP (post-bake).",
+    toppings: "Strictly no tomato sauce. 60g Fior di Latte (hand-torn into rustic strips, well-drained for 1+ hour), 0g–1g Elizondo Nº3 Picual EVOO (0g preferred for strict balance; max 1g micro-drizzle pre-launch); finished post-bake with 50g Mortadella IGP (preferably Mortadella di Suino Nero Casertano, paper-thin slices loosely folded into ribbons), 45g fresh Stracciatella di Burrata (spooned in discrete pools), 20g Pistachio Pesto (piped or dotted in small discrete accents), 10g Granella di Pistacchio (coarsely crushed Bronte pistachios), 2–3 fresh basil leaves, and 3g Barbera Lorenzo Nº5 EVOO (Nocellara del Belice DOP — finishing swirl).",
     menuIngredients: "Mozzarella, mortadella, stracciatella, pistachio pesto, basil",
-    build: "A Contemporary Pizza Bianca with zero tomato sauce — a hot, crispy Fior di Latte base, topped post-bake with warm ribbons of artisanal mortadella, cold creamy stracciatella di burrata, room-temp pistachio pesto, crunchy pistachio granella, and fresh basil.",
-    postBake: "Drape the mortadella in loose ribbon-like folds over the hot melted cheese, spoon dollops of cold stracciatella across and between the folds, drizzle generously with room-temp pistachio pesto, then finish with crushed granella di pistacchio, fresh basil leaves, and a final light swirl of Barbera Lorenzo Nº5 (Monovarietal Nocellara del Belice DOP) so the sweet butter and green almond notes complement the mortadella, stracciatella, and pistachio.",
+    build: "The ultimate expression of Italian green gold — melting Fior di Latte baked on bare dough, crowned post-bake with paper-thin mortadella ribbons, cold Stracciatella di Burrata, rich pistachio pesto, and Lorenzo N°5 EVOO.",
+    postBake: "Transfer directly to a wooden board and rest for 30–40 seconds to allow excess surface steam to dissipate and the base to settle. Drape 50g of paper-thin mortadella slices loosely in ribbons across the hot melted mozzarella. Spoon 45g of cold Stracciatella di Burrata into discrete pools across the mortadella. Pipe or dot 20g Pistachio Pesto in small accents around and over the creamy pockets. Shower with 10g pistachio granella, tuck 2–3 fresh basil leaves into the build, and finish with a 3g swirl of Barbera Lorenzo N°5 EVOO. Slice and serve immediately.",
+    flavorProgression: "Melted Fior di Latte → gently tempered Mortadella IGP ribbons → cool Stracciatella di Burrata → rich Pistachio Pesto → crunchy Bronte pistachio → almond-smooth Lorenzo N°5 finish",
     steps: [
-      { title: "1. Toppings & Proportions (Per 280g Dough Ball)", sections: [
-        { intro: "Pre-Bake (Base):", bullets: ["60g–70g Fior di Latte Mozzarella (well-drained)", "Elizondo Nº3 Picual EVOO, micro-drizzle"] },
-        { intro: "Post-Bake (The Fresh Layering):", bullets: ["60g–70g Mortadella (thinly sliced, artisanal)", "60g–70g Stracciatella di Burrata (fresh, cold)", "3–4 tbsp Pistachio Pesto (room temperature)", "15g Granella di Pistacchio (coarsely crushed pistachios)", "Fresh Basil Leaves", "Barbera Lorenzo Nº5 EVOO (Monovarietal Nocellara del Belice DOP)"] },
-        { intro: "Style:", bullets: ["Contemporary Pizza Bianca — zero tomato sauce"] },
+      { title: "1. Pre-Prep", sections: [
+        { intro: "Dairy Prep:", bullets: ["Drain 60g Fior di Latte strips in a sieve for at least 1 hour. Keep 45g Stracciatella di Burrata chilled until service."] },
+        { intro: "Pesto & Nut Prep:", bullets: ["Bring 20g Pistachio Pesto to room temperature. Coarsely crush 10g Bronte pistachios."] },
+        { intro: "Meat Prep:", bullets: ["Slice mortadella paper-thin (50g total)."] },
       ] },
-      { title: "2. Fire Up the Gozney", sections: [
-        { intro: "Gozney / High-Heat Oven:", bullets: ["🪨 Floor/Stone: 430°C–450°C", "🔥 Dome/Air: 450°C–480°C", "🔥 Flame: drop to LOW immediately upon launch"] },
+      { title: "2. Dough Prep", sections: [
+        { bullets: ["Hand-stretch 280g dough ball to 30–32cm on semolina rimacinata, preserving gas in an airy 1.5–2cm cornicione."] },
       ] },
-      { title: "3. Stretch the Dough", sections: [
-        { bullets: ["Stretch the 280g dough ball on semolina rimacinata to a target size of 30–33 cm, keeping a soft, elevated cornicione"] },
+      { title: "3. Layer Assembly (In Exact Order)", sections: [
+        { intro: "Layer 1 — Fior di Latte:", bullets: ["Distribute 60g drained Fior di Latte strips evenly across the bare dough."] },
+        { intro: "Layer 2 — Picual (Optional):", bullets: ["Omit pre-bake oil for the default build (or apply no more than 1g Elizondo Nº3 Picual EVOO as a light micro-drizzle)."] },
       ] },
-      { title: "4. Pre-Bake Assembly", sections: [
-        { bullets: ["Scatter the 60g–70g well-drained Fior di Latte evenly across the bare dough", "Add a micro-drizzle of Elizondo Nº3 Picual EVOO"] },
+      { title: "4. Gozney Bake", sections: [
+        { intro: "Gozney / High-Heat Oven:", bullets: [
+          "🪨 Stone floor target: 430°C–440°C",
+          "🔥 Dome: 450°C–480°C",
+          "Manage top flame dynamically, keeping top flame moderate after launch.",
+          "⏱ Cook Time: 60–75 seconds — rotate regularly until the crust is fully puffed and well blistered, with the Fior di Latte melted but not excessively browned.",
+        ] },
       ] },
-      { title: "5. Bake (60–75 Seconds)", sections: [
-        { bullets: ["Launch into your Gozney and rotate every 15–20 seconds", "Cook time: 60–75 seconds, until the base is crisp, the fior di latte is completely melted, and the crust has signature leopard spots"] },
-      ] },
-      { title: "6. Post-Bake Staging & Layering", sections: [
-        { intro: "Rest:", bullets: ["Rest the baked base on a wire cooling rack for 30–45 seconds before topping"] },
-        { intro: "1. Mortadella:", bullets: ["Drape the thin slices of Mortadella over the melted fior di latte in loose, ribbon-like folds (a rose)", "The heat from the crust will warm the meat and render its delicate fats"] },
-        { intro: "2. Stracciatella:", bullets: ["Spoon dollops of cold Stracciatella across and between the mortadella folds"] },
-        { intro: "3. Pistachio Pesto:", bullets: ["Drizzle the room-temperature Pistachio Pesto generously over the stracciatella and mortadella"] },
-        { intro: "4. Crunch & Garnish:", bullets: ["Finish with a heavy dusting of crushed Granella di Pistacchio and fresh basil leaves"] },
-        { intro: "Finishing EVOO:", bullets: ["A final light swirl of Barbera Lorenzo Nº5 (Monovarietal Nocellara del Belice DOP) for a sweet butter and green almond finish"] },
+      { title: "5. Rest & Sequential Post-Bake Staging", sections: [
+        { bullets: ["Transfer directly to a wooden board and rest for 30–40 seconds to allow excess surface steam to dissipate and the base to settle."] },
+        { intro: "Stage 1 — Mortadella Ribbons:", bullets: ["Drape 50g of paper-thin mortadella slices loosely in ribbons across the hot melted mozzarella."] },
+        { intro: "Stage 2 — Stracciatella & Pistachio Pesto Accents:", bullets: ["Spoon 45g of cold Stracciatella di Burrata into discrete pools across the mortadella. Pipe or dot 20g Pistachio Pesto in small accents around and over the creamy pockets."] },
+        { intro: "Stage 3 — Finish & Crunch:", bullets: ["Shower with 10g pistachio granella, tuck 2–3 fresh basil leaves into the build, and finish with a 3g swirl of Barbera Lorenzo N°5 EVOO.", "Slice and serve immediately."] },
+        { intro: "Technical Moisture & Thermal Note:", bullets: ["The Stracciatella and pistachio pesto are added entirely post-bake to preserve their cool creamy texture, fresh pistachio aroma, and vibrant colour. Keeping them off the high heat also prevents excess moisture from being driven into the crust."] },
+        { intro: "Profile:", bullets: ["Melted Fior di Latte → gently tempered Mortadella IGP ribbons → cool Stracciatella di Burrata → rich Pistachio Pesto → crunchy Bronte pistachio → almond-smooth Lorenzo N°5 finish"] },
       ] },
     ],
   },
@@ -1186,36 +1432,44 @@ export const RECIPES: PizzaRecipe[] = [
     id: "margherita-della-casa",
     number: 34,
     name: "Margherita della Casa",
-    style: "House Margherita — Piennolo Tomatoes, Buffalo Mozzarella & Hard Cheese Crown",
+    style: "House Margherita — San Marzano, Blistered Piennolo, Buffalo Mozzarella & Pecorino Crown",
     category: "classic",
     image: "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/08/47/06/c4/pizza-buonissima-ci-siamo.jpg?w=2000&h=-1&s=1",
-    toppings: "60g–70g hand-crushed San Marzano DOP, 5–6 halved Pomodorini del Piennolo del Vesuvio DOP, 80g–90g Mozzarella di Bufala Campana DOP medallions, 8g–10g Grana Padano DOP & Pecorino Romano DOP blend, 4–5 fresh basil leaves, Elizondo Nº3 Picual EVOO pre-bake.",
-    menuIngredients: "Tomato, Piennolo cherry tomatoes, mozzarella di bufala, Grana Padano, Pecorino Romano, basil, olive oil",
-    build: "A rich, umami-forward house Margherita featuring blistered Piennolo del Vesuvio tomatoes, buffalo mozzarella, a toasted Grana & Pecorino crown, and zero post-bake additions.",
-    postBake: "Strictly no post-bake additions — nothing added after baking.",
-    flavorProgression: "Concentrated San Marzano → sweet blistered Piennolo → rich buffalo cream → toasted Grana & Pecorino umami → warm baked Picual",
+    toppings: "60g hand-crushed San Marzano DOP (seasoned with a light pinch of fine salt), 35g Pomodorini del Piennolo del Vesuvio DOP (halved lengthwise, kept as substantial, clearly visible protagonist pieces), 70g Mozzarella di Bufala Campana DOP (thick medallions, drained 1–2 hours and gently patted dry), 8g finely grated Pecorino Romano DOP, 4–5 fresh basil leaves, 2g–3g Elizondo Nº3 Picual EVOO (pre-bake spiral micro-drizzle). Strictly no post-bake additions.",
+    menuIngredients: "Tomato, Piennolo cherry tomatoes, mozzarella di bufala, Pecorino Romano, basil, olive oil",
+    build: "Our definitive house Margherita — inspired by Maestro Roberto at Pizzeria Al Terrazzo (Dal 1953), featuring hand-crushed San Marzano, prominent blistered Piennolo tomatoes, rich melting Buffalo mozzarella, and a savory Pecorino crown baked with Picual EVOO.",
+    postBake: "Transfer directly to a wooden board and rest for 30–60 seconds to allow excess moisture to vent and the crust to stabilize. Strictly no post-bake additions — no oil, basil, or cheese added after baking. Slice and serve immediately.",
+    flavorProgression: "Concentrated San Marzano → sweet blistered Piennolo → rich buffalo cream → toasted Pecorino umami → warm baked Picual",
+    inspiredBy: "Inspired by the artisanal techniques of Maestro Roberto at Pizzeria Ristorante Al Terrazzo (Dal 1953).",
     steps: [
       { title: "1. Pre-Prep", sections: [
-        { bullets: ["Cut 80g–90g Mozzarella di Bufala DOP into thick medallions and pat gently with paper towels to remove excess surface whey (do not press or squeeze)", "Halve 5–6 Pomodorini del Piennolo del Vesuvio DOP lengthwise and season the cut surfaces with a tiny pinch of fine sea salt"] },
+        { bullets: ["Cut 70g Mozzarella di Bufala Campana DOP into thick medallions and drain in a sieve for 1–2 hours. Gently pat dry with paper towels to remove excess surface whey (do not squeeze).", "Halve Piennolo tomatoes lengthwise, keeping them as prominent, clearly visible pieces (do not pre-salt)."] },
       ] },
       { title: "2. Dough Prep", sections: [
-        { bullets: ["Hand-stretch the 280g dough ball to 30–32cm on Caputo Semolina Rimacinata, preserving gas in the airy 1.5cm cornicione"] },
+        { bullets: ["Hand-stretch 280g dough ball to 30–32cm on semolina rimacinata, preserving gas in an airy 1.5–2cm cornicione."] },
       ] },
       { title: "3. Layer Assembly (In Exact Order)", sections: [
-        { intro: "Layer 1 — San Marzano:", bullets: ["Spread 60g–70g hand-crushed San Marzano DOP evenly, leaving a 1.5–2cm clean rim"] },
-        { intro: "Layer 2 — Piennolo:", bullets: ["Arrange the halved Piennolo tomatoes cut-side up across the sauce"] },
-        { intro: "Layer 3 — Basil:", bullets: ["Distribute 4–5 fresh basil leaves"] },
-        { intro: "Layer 4 — Buffalo:", bullets: ["Arrange the Bufala DOP medallions over the basil and tomatoes"] },
-        { intro: "Layer 5 — Hard Cheese Crown:", bullets: ["Distribute 8g–10g finely grated Grana Padano DOP + Pecorino Romano DOP blend over the mozzarella and exposed tomato areas rather than a solid blanket, leaving small gaps between the cheese"] },
-        { intro: "Layer 6 — Picual:", bullets: ["Apply a 3g–4g spiral drizzle of Elizondo Nº3 Picual EVOO over the complete build"] },
+        { intro: "Layer 1 — San Marzano:", bullets: ["Spread 60g hand-crushed San Marzano DOP evenly across the centre, leaving a clean 1.5–2cm cornicione rim."] },
+        { intro: "Layer 2 — Piennolo:", bullets: ["Arrange the halved Piennolo tomatoes cut-side up across the sauce as distinct, prominent features."] },
+        { intro: "Layer 3 — Basil:", bullets: ["Distribute 4–5 fresh basil leaves over the tomatoes."] },
+        { intro: "Layer 4 — Buffalo Mozzarella:", bullets: ["Distribute the drained Bufala DOP medallions evenly over the basil and tomatoes."] },
+        { intro: "Layer 5 — Pecorino Crown:", bullets: ["Scatter 8g of finely grated Pecorino Romano DOP in small gaps over the mozzarella and exposed tomato areas (avoiding a solid blanket)."] },
+        { intro: "Layer 6 — Picual:", bullets: ["Apply a 2g–3g spiral micro-drizzle of Elizondo Nº3 Picual EVOO over the complete build."] },
       ] },
       { title: "4. Gozney Bake", sections: [
-        { intro: "Gozney / High-Heat Oven:", bullets: ["🪨 Stone Floor: 430°C–450°C", "⏱ Cook Time: 75–90 seconds", "🔥 Manage the top flame dynamically post-launch — allow the Piennolo tomatoes to soften and blister while controlling hard-cheese browning to prevent scorching", "🔄 Rotate regularly for an even rise and leopard spotting"] },
+        { intro: "Gozney / High-Heat Oven:", bullets: [
+          "🪨 Stone floor target: 430°C–440°C",
+          "🔥 Dome: 450°C–480°C",
+          "Manage top flame dynamically post-launch — allow the Piennolo tomatoes to soften and blister while controlling Pecorino browning to prevent scorching.",
+          "🔄 Rotate regularly for an even rise and leopard spotting.",
+          "⏱ Cook Time: 75–90 seconds.",
+        ] },
       ] },
       { title: "5. Rest & Serve", sections: [
-        { intro: "Rest Protocol:", bullets: ["Transfer directly to a WOODEN BOARD (not a wire rack) and rest for 30–60 seconds"] },
-        { intro: "Strictly no post-bake additions:", bullets: ["No post-bake oil, basil, or cheese — slice and serve immediately"] },
-        { intro: "Profile:", bullets: ["Concentrated San Marzano → sweet blistered Piennolo → rich buffalo cream → toasted Grana & Pecorino umami → warm baked Picual"] },
+        { bullets: ["Transfer directly to a wooden board and rest for 30–60 seconds to allow excess moisture to vent and the crust to stabilize."] },
+        { intro: "Strictly no post-bake additions:", bullets: ["No oil, basil, or cheese added after baking. Slice and serve immediately."] },
+        { intro: "Technical Moisture & Thermal Note:", bullets: ["Mozzarella di Bufala has a high moisture content that releases free whey during high-heat baking. Thoroughly draining the medallions for 1–2 hours helps control free moisture during the bake. The Pecorino Romano crown bakes directly into the tomato and buffalo cream, building a deep, toasted umami finish."] },
+        { intro: "Profile:", bullets: ["Concentrated San Marzano → sweet blistered Piennolo → rich buffalo cream → toasted Pecorino umami → warm baked Picual"] },
       ] },
     ],
   },
@@ -1223,29 +1477,41 @@ export const RECIPES: PizzaRecipe[] = [
     id: "margherita-duo",
     number: 35,
     name: "Margherita Duo",
-    style: "Dual-Color Piennolo — Agerola Fior di Latte",
+    style: "Dual-Color Piennolo — Yellow & Red Vesuvian Tomatoes & Agerola Fior di Latte",
     category: "classic",
     image: "https://www.rtagency.it/menu/pizzeria%20carmnella/images/70-scaled.jpg",
-    toppings: "70g–80g Red and Yellow Piennolo del Vesuvio DOP tomatoes (50/50, hand-torn into rough pieces, keeping the Red and Yellow varieties visually distinct), 80g–90g Agerola Fior di Latte (well drained), 8g finely grated Grana Padano DOP, 4–5 fresh basil leaves, Elizondo Nº3 Picual EVOO pre-bake, Frantoio Muraglia Coratina EVOO post-bake.",
+    toppings: "35g yellow Piennolo-style Vesuvian tomatoes (hand-torn into rough pieces), 35g Pomodorini del Piennolo del Vesuvio DOP (red, hand-torn into rough pieces), 70g Agerola Fior di Latte (hand-torn into irregular strips, drained for 1+ hours), 8g finely grated Grana Padano DOP, 4–5 fresh basil leaves (tucked entirely pre-bake), 1g–2g Elizondo Nº3 Picual EVOO (pre-bake spiral micro-drizzle); finished post-bake with 3g Frantoio Muraglia Coratina EVOO (monovarietal Coratina — pungent, herbaceous, intensely peppery).",
     menuIngredients: "Red & Yellow Piennolo tomato, Agerola Fior di Latte, Grana Padano, basil, Picual & Coratina EVOO",
-    build: "A celebration of Vesuvian agriculture pairing sweet Red and Yellow Piennolo tomatoes with fresh Agerola Fior di Latte.",
-    postBake: "Rest on a wooden board for 30–60 seconds, scatter the remaining 1–2 fresh basil leaves, finish with 3g–4g Frantoio Muraglia Coratina EVOO, then slice and serve immediately.",
+    build: "A vibrant house interpretation inspired by Pizzeria Carmnella's Neapolitan Pride (dal 1892) — sweet yellow and mineral red Piennolo tomatoes paired with creamy Agerola Fior di Latte, toasted Grana Padano and a peppery Coratina EVOO finish.",
+    postBake: "Transfer directly to a wooden board and rest for 30–60 seconds to allow excess surface steam to dissipate and the base to settle. Apply a finishing 3g swirl of Frantoio Muraglia Coratina EVOO. Slice and serve immediately (zero post-bake basil).",
     flavorProgression: "Sweet Yellow Piennolo → mineral Red Piennolo → creamy Agerola Fior di Latte → toasted Grana Padano → warm fruity Picual → peppery Coratina finish",
+    inspiredBy: "Inspired by the dual-colour Piennolo tradition of \"Neapolitan Pride\" at Pizzeria Carmnella (dal 1892).",
     steps: [
-      { title: "1. Ingredients", sections: [
-        { intro: "Prepare the two Piennolo colors separately:", bullets: ["Divide the Red and Yellow Piennolo equally", "Hand-tear into rough pieces and lightly salt", "Keep the two varieties separate during preparation so their colors remain visually distinct", "Drain the Agerola Fior di Latte thoroughly and tear into irregular strips", "Have 8g finely grated Grana Padano ready for assembly"] },
+      { title: "1. Pre-Prep", sections: [
+        { bullets: ["Drain 70g Agerola Fior di Latte strips in a sieve for at least 1 hour.", "Hand-tear the red and yellow Piennolo tomatoes into rough pieces, keeping the two varieties visually separated during prep (do not salt)."] },
       ] },
-      { title: "2. Stretch the Dough", sections: [
-        { intro: "Form a thin center with a prominent airy cornicione:", bullets: ["Stretch the 280g dough ball gently in semolina to 28–30cm", "Push the air outward into the rim while preserving approximately 1.5cm of airy cornicione", "Avoid excessively thinning the center"] },
+      { title: "2. Dough Prep", sections: [
+        { bullets: ["Hand-stretch 280g dough ball to 30–32cm on semolina rimacinata, pushing air outward into the rim while preserving an airy 1.5cm cornicione. Avoid thinning the centre excessively."] },
       ] },
-      { title: "3. Pre-Bake Assembly", sections: [
-        { intro: "Create the distinctive two-color tomato pattern:", bullets: ["Distribute the 70g–80g Red and Yellow Piennolo across the base in alternating clusters, keeping the two colors clearly distinguishable", "Leave a 1.5–2cm rim clear", "Scatter the 80g–90g Agerola Fior di Latte in irregular strips over and between the tomato clusters, leaving small gaps", "Distribute the 8g Grana Padano over the mozzarella and exposed tomato rather than creating a solid blanket", "Tuck 2–3 basil leaves between the cheese pieces", "Finish with a 2g–3g spiral of Elizondo Nº3 Picual EVOO"] },
+      { title: "3. Layer Assembly (In Exact Order)", sections: [
+        { intro: "Layer 1 — Dual-Color Piennolo:", bullets: ["Distribute the 35g yellow and 35g red Piennolo tomatoes across the base in alternating clusters, keeping the two colors clearly distinguishable and leaving a 1.5–2cm clean rim."] },
+        { intro: "Layer 2 — Fior di Latte:", bullets: ["Scatter 70g drained Agerola Fior di Latte strips over and between the tomato clusters, leaving small gaps."] },
+        { intro: "Layer 3 — Hard Cheese:", bullets: ["Distribute 8g finely grated Grana Padano DOP over the mozzarella and exposed tomato areas (avoiding a solid blanket)."] },
+        { intro: "Layer 4 — Basil:", bullets: ["Tuck 4–5 fresh basil leaves between the cheese and tomato pieces."] },
+        { intro: "Layer 5 — Picual:", bullets: ["Apply a light 1g–2g spiral micro-drizzle of Elizondo Nº3 Picual EVOO over the build."] },
       ] },
-      { title: "4. Launch & Gozney Bake", sections: [
-        { intro: "High stone heat blisters the Piennolo while keeping the cheese creamy:", bullets: ["Target a 430°C–450°C stone floor", "Launch onto the stone and manage the top flame dynamically after launch", "Allow the Red and Yellow Piennolo to soften, blister and concentrate while controlling the Grana Padano so it browns without scorching", "Bake for approximately 75–90 seconds, rotating regularly for even cooking and leopard spotting"] },
+      { title: "4. Gozney Bake", sections: [
+        { intro: "Gozney / High-Heat Oven:", bullets: [
+          "🪨 Stone floor target: 430°C–440°C",
+          "🔥 Dome: 450°C–480°C",
+          "Manage top flame dynamically post-launch — allow the red and yellow Piennolo tomatoes to soften, blister, and concentrate while controlling the Grana Padano so it browns without scorching.",
+          "🔄 Rotate regularly for even cooking and leopard spotting.",
+          "⏱ Cook Time: 75–90 seconds.",
+        ] },
       ] },
       { title: "5. Rest & Serve", sections: [
-        { intro: "Finish with fresh basil and peppery Coratina:", bullets: ["Transfer to a wooden board and rest for 30–60 seconds", "Scatter the remaining 1–2 fresh basil leaves over the pizza", "Finish with 3g–4g Frantoio Muraglia Coratina EVOO", "Slice and serve immediately"] },
+        { bullets: ["Transfer directly to a wooden board and rest for 30–60 seconds to allow excess surface steam to dissipate and the base to settle.", "Apply a finishing 3g swirl of Frantoio Muraglia Coratina EVOO. Slice and serve immediately (zero post-bake basil)."] },
+        { intro: "Technical Moisture & Thermal Note:", bullets: ["Keeping the red and yellow Piennolo tomatoes unsalted allows their natural sweetness, acidity and mineral character to remain clearly differentiated during the bake. The high heat blisters and concentrates the tomatoes while the Agerola Fior di Latte melts around them without overwhelming the dual-colour tomato profile."] },
         { intro: "Profile:", bullets: ["Sweet Yellow Piennolo → mineral Red Piennolo → creamy Agerola Fior di Latte → toasted Grana Padano → warm fruity Picual → peppery Coratina finish"] },
       ] },
     ],
@@ -1254,39 +1520,43 @@ export const RECIPES: PizzaRecipe[] = [
     id: "margherita-macchiata",
     number: 36,
     name: "Margherita Macchiata",
-    style: "Blistered Piennolo, Fior di Latte & Post-Bake Pesto alla Genovese",
+    style: "Blistered Piennolo, Fior di Latte & Post-Bake Pesto Macchie",
     category: "classic",
-    toppings: "70g–80g hand-torn Pomodorino del Piennolo del Vesuvio DOP, 6g–8g finely grated Grana Padano DOP, 4–5 fresh basil leaves, 80g–90g Agerola Fior di Latte, 2g–3g Elizondo Nº3 Picual EVOO pre-bake, 12g–15g Pesto alla Genovese for post-bake macchie. No additional post-bake EVOO.",
+    toppings: "70g Pomodorini del Piennolo del Vesuvio DOP (hand-torn into substantial rough pieces, kept unsalted pre-bake), 70g Agerola Fior di Latte (hand-torn into irregular rustic strips, drained for 1+ hours), 8g finely grated Grana Padano DOP, 4–5 fresh basil leaves (distributed on and among the Fior di Latte), 1g Elizondo Nº3 Picual EVOO (light pre-bake micro-drizzle); finished post-bake with 12g fresh room-temperature Pesto alla Genovese (applied as 6–8 distinct raw dots/macchie). Strictly 0g additional post-bake EVOO.",
     menuIngredients: "Piennolo cherry tomatoes, Grana Padano, basil, Agerola Fior di Latte, Pesto Genovese (post-bake)",
-    build: "A contemporary Neapolitan pie featuring sweet blistered Piennolo tomatoes, Agerola Fior di Latte, and vibrant post-bake macchie of raw Pesto alla Genovese.",
-    postBake: "Rest 30–60 seconds on a wooden board, then use a squeeze bottle or small spoon to distribute 12g–15g of distinct raw dots (macchie) of Pesto alla Genovese directly over the melted Fior di Latte and blistered tomatoes. Slice and serve immediately. No additional post-bake EVOO.",
-    flavorProgression: "Hot sweet Piennolo → creamy Agerola Fior di Latte → toasted Grana → warm fruity Picual → cold, intensely aromatic Genovese pesto",
+    build: "A contemporary Margherita hybrid — blistered Vesuvian Piennolo tomatoes and melting Agerola Fior di Latte over a toasted Grana base, finished post-bake with fresh Genovese pesto macchie.",
+    postBake: "Transfer directly to a wooden board and rest for 30–60 seconds to allow excess surface steam to dissipate and the base to settle. Using a squeeze bottle or small spoon, distribute 12g of pesto in 6–8 distinct raw dots (macchie) directly over the melted Fior di Latte and blistered tomatoes. Slice and serve immediately (zero post-bake EVOO).",
+    flavorProgression: "Hot sweet Piennolo → creamy Agerola Fior di Latte → toasted Grana → warm fruity Picual → fresh, intensely aromatic Genovese pesto",
     videoGuide: "Margherita Macchiata — Exact Layering & Post-Bake Pesto",
     videoUrl: "https://www.youtube.com/shorts/os-6iufgy9E",
     steps: [
       { title: "1. Pre-Prep", sections: [
-        { bullets: ["Hand-tear fresh Piennolo tomatoes into rough pieces, toss lightly with fine sea salt, and set in a sieve for 10 minutes to drain excess juice", "Hand-tear 80g–90g Agerola Fior di Latte into irregular rustic strips and drain in a sieve for 1–2 hours", "Fill a squeeze bottle with 12g–15g fresh room-temperature Pesto alla Genovese"] },
+        { bullets: ["Drain 70g Agerola Fior di Latte strips in a sieve for at least 1 hour. Hand-tear 70g Piennolo tomatoes into substantial rough pieces.", "Load 12g fresh room-temperature Pesto alla Genovese into a squeeze bottle or small spooning dish."] },
       ] },
       { title: "2. Dough Prep", sections: [
-        { bullets: ["Hand-stretch the 280g dough ball to 30–32cm on Caputo Semolina Rimacinata, preserving gas in the airy 1.5cm cornicione"] },
+        { bullets: ["Hand-stretch 280g dough ball to 30–32cm on semolina rimacinata, preserving gas in an airy 1.5cm cornicione."] },
       ] },
       { title: "3. Layer Assembly (In Exact Order)", sections: [
-        { intro: "Layer 1 — Piennolo:", bullets: ["Spread 70g–80g drained Piennolo pieces evenly across the base, leaving a 1.5–2cm clean rim"] },
-        { intro: "Layer 2 — Grana Padano:", bullets: ["Distribute 6g–8g finely grated Grana Padano DOP over the tomatoes"] },
-        { intro: "Layer 3 — Basil:", bullets: ["Lay 4–5 fresh basil leaves across the tomato layer"] },
-        { intro: "Layer 4 — Fior di Latte:", bullets: ["Scatter 80g–90g well-drained Fior di Latte strips over the basil and tomatoes, leaving small gaps"] },
-        { intro: "Layer 5 — Picual:", bullets: ["Apply a 2g–3g spiral drizzle of Elizondo Nº3 Picual EVOO over the build"] },
+        { intro: "Layer 1 — Piennolo:", bullets: ["Spread 70g hand-torn Piennolo rough pieces evenly across the base, leaving a 1.5–2cm clean rim."] },
+        { intro: "Layer 2 — Grana Padano:", bullets: ["Distribute 8g finely grated Grana Padano DOP over the tomatoes."] },
+        { intro: "Layer 3 — Fior di Latte:", bullets: ["Scatter 70g well-drained Agerola Fior di Latte strips over the Grana and tomatoes, leaving small gaps."] },
+        { intro: "Layer 4 — Basil:", bullets: ["Lay 4–5 fresh basil leaves directly on and among the Fior di Latte strips for proper heat exposure."] },
+        { intro: "Layer 5 — Picual:", bullets: ["Apply a light 1g spiral micro-drizzle of Elizondo Nº3 Picual EVOO over the build."] },
       ] },
       { title: "4. Gozney Bake", sections: [
-        { intro: "Gozney / High-Heat Oven:", bullets: ["🪨 Stone Floor: 430°C–450°C", "⏱ Cook Time: 75–90 seconds", "🔥 Manage the top flame dynamically post-launch — allow the Piennolo tomatoes to soften, blister and concentrate while controlling cheese browning", "🔄 Rotate regularly for an even rise and leopard spotting"] },
+        { intro: "Gozney / High-Heat Oven:", bullets: [
+          "🪨 Stone floor target: 430°C–440°C",
+          "🔥 Dome: 450°C–480°C",
+          "Manage top flame dynamically post-launch — allow the Piennolo tomatoes to soften, blister, and concentrate while controlling cheese browning.",
+          "🔄 Rotate regularly for an even rise and leopard spotting.",
+          "⏱ Cook Time: 75–90 seconds.",
+        ] },
       ] },
-      { title: "5. Rest & Post-Bake Finish", sections: [
-        { intro: "Rest Protocol:", bullets: ["Transfer directly to a WOODEN BOARD and rest for 30–60 seconds"] },
-        { bullets: ["Using a squeeze bottle or small spoon, distribute 12g–15g of distinct raw dots (macchie) of Pesto alla Genovese across the pizza, directly over the melted Fior di Latte and blistered tomatoes", "Slice and serve immediately", "No additional post-bake EVOO"] },
-        { intro: "Profile:", bullets: ["Hot sweet Piennolo → creamy Agerola Fior di Latte → toasted Grana → warm fruity Picual → cold, intensely aromatic Genovese pesto"] },
-      ] },
-      { title: "6. Culinary Technique Note", sections: [
-        { intro: "Why post-bake for the pesto?", bullets: ["Pesto Genovese is applied raw post-bake because intense oven heat can alter the pesto's delicate texture, cause oil separation, and diminish the fresh basil aroma and vibrant green character"] },
+      { title: "5. Rest & Post-Bake Macchie Finish", sections: [
+        { bullets: ["Transfer directly to a wooden board and rest for 30–60 seconds to allow excess surface steam to dissipate and the base to settle."] },
+        { bullets: ["Using a squeeze bottle or small spoon, distribute 12g of pesto in 6–8 distinct raw dots (macchie) directly over the melted Fior di Latte and blistered tomatoes.", "Slice and serve immediately (zero post-bake EVOO)."] },
+        { intro: "Technical Moisture & Thermal Note:", bullets: ["Adding the Genovese pesto entirely post-bake preserves its fresh basil aroma and vibrant colour by avoiding direct high-heat exposure. Applying it as discrete macchie keeps the pesto concentrated and visually distinct against the blistered Piennolo and melted Fior di Latte."] },
+        { intro: "Profile:", bullets: ["Hot sweet Piennolo → creamy Agerola Fior di Latte → toasted Grana → warm fruity Picual → fresh, intensely aromatic Genovese pesto"] },
       ] },
     ],
   },
@@ -1294,32 +1564,87 @@ export const RECIPES: PizzaRecipe[] = [
     id: "marinara-al-salame",
     number: 37,
     name: "Marinara al Salame",
-    style: "Yellow Marinara — Neapolitan Salami",
+    style: "Yellow Marinara — Vesuvian Yellow Tomatoes, Neapolitan Salami & Mountain Oregano",
     category: "classic",
     image: "https://www.rtagency.it/menu/pizzeria%20carmnella/images/don-alberto22-scaled.jpg",
-    toppings: "Yellow Piennolo tomatoes (crushed or halved), thinly sliced Neapolitan salami, sliced garlic, mountain oregano, fresh basil, extra virgin olive oil. No cheese.",
-    menuIngredients: "Yellow Piennolo tomato, Neapolitan salami, garlic, oregano, basil, olive oil",
-    build: "A vibrant yellow Marinara variation that pairs the sweetness of Yellow Piennolo tomatoes with savory Neapolitan salami, sliced garlic, and aromatic oregano.",
-    postBake: "Transfer to a wire cooling rack for 60 seconds to vent steam and keep the bottom shell crisp, then slice and serve.",
+    toppings: "70g yellow Piennolo-style Vesuvian tomatoes (hand-torn into rough, irregular pieces, kept unsalted pre-bake), 30g–35g thinly sliced Salame Napoli, 1 small garlic clove (very thinly sliced), 0.8g–1g dried mountain oregano (origano di montagna), 4–5 fresh basil leaves, 2g Elizondo Nº3 Picual EVOO pre-bake, 2g Barbera Lorenzo Nº5 EVOO post-bake. Strictly NONE (zero cheese).",
+    menuIngredients: "Yellow Piennolo tomato, Neapolitan salami, garlic, mountain oregano, basil, Picual & Lorenzo Nº5 EVOO",
+    build: "A vibrant house interpretation inspired by Don Alberto at Pizzeria Carmnella (dal 1892) — sweet yellow Vesuvian tomatoes, sliced garlic, mountain oregano, and rendering slices of Neapolitan salami baked with Picual EVOO.",
+    postBake: "Transfer directly to a wooden board and rest for 30–40 seconds to allow excess surface steam to dissipate and the base to stabilize. Apply a light 2g finishing swirl of Barbera Lorenzo Nº5 EVOO. Slice and serve immediately.",
+    flavorProgression: "Sweet yellow Vesuvian tomatoes → savoury Neapolitan salami → sliced garlic → aromatic mountain oregano → warm Picual → almond-smooth Lorenzo N°5 finish",
+    inspiredBy: "A house interpretation inspired by Don Alberto at Pizzeria Carmnella (dal 1892).",
     videoGuide: "Marinara al Salame — Yellow Piennolo & Salame Napoletano",
     videoUrl: "https://www.youtube.com/shorts/pFQqAXboCeY",
     steps: [
-      { title: "1. Ingredients (For One 28–30cm Pizza)", sections: [
-        { intro: "Base:", bullets: ["70g–80g Yellow Piennolo tomatoes (crushed or halved)"] },
-        { intro: "Toppings:", bullets: ["6–8 thin slices of Neapolitan salami", "1 small clove, finely sliced garlic", "Pinch of mountain oregano", "Fresh basil", "Extra virgin olive oil"] },
-        { intro: "Cheese:", bullets: ["None"] },
+      { title: "1. Pre-Prep", sections: [
+        { bullets: ["Hand-tear or crush 70g yellow Piennolo-style Vesuvian tomatoes into rough pieces. Slice 1 small garlic clove very thinly. Weigh out 30g–35g Salame Napoli and 0.8g–1g mountain oregano."] },
       ] },
-      { title: "2. Stretch the Dough", sections: [
-        { intro: "Preserve gas pockets in the 67% Poolish dough:", bullets: ["Open your 280g dough ball in semolina to 28–30cm (11–12in), keeping the outer 1.5cm rim untouched"] },
+      { title: "2. Dough Prep", sections: [
+        { bullets: ["Hand-stretch 280g dough ball to 30–32cm on semolina rimacinata, preserving gas in an airy 1.5–2cm cornicione."] },
       ] },
-      { title: "3. Pre-Bake Assembly", sections: [
-        { intro: "Classic garlic & salami Marinara structure:", bullets: ["Spread 70g–80g of crushed Yellow Piennolo tomatoes", "Scatter sliced garlic, a pinch of oregano, and thin slices of Neapolitan salami", "Lay fresh basil leaves across the top and finish with a spiral of extra virgin olive oil"] },
+      { title: "3. Layer Assembly (In Exact Order)", sections: [
+        { intro: "Layer 1 — Yellow Tomato Base:", bullets: ["Spread 70g crushed yellow Piennolo tomatoes evenly across the base, leaving a 1.5–2cm clean rim."] },
+        { intro: "Layer 2 — Garlic & Oregano:", bullets: ["Scatter the very thinly sliced garlic and 0.8g–1g mountain oregano across the tomatoes."] },
+        { intro: "Layer 3 — Salami & Basil:", bullets: ["Arrange 30g–35g thin Salame Napoli slices evenly across the pie. Lay 4–5 fresh basil leaves over the build."] },
+        { intro: "Layer 4 — Picual:", bullets: ["Apply a 2g spiral micro-drizzle of Elizondo Nº3 Picual EVOO."] },
       ] },
-      { title: "4. Launch & Gozney Bake", sections: [
-        { intro: "Low flame prevents garlic and salami edges from scorching:", bullets: ["Launch into the 430–450°C (800–840°F) Gozney and turn the burner down to LOW immediately", "Bake for 75–90 seconds, rotating every 15 seconds until the rim balloons with dark leopard spots and the salami renders into the yellow tomatoes"] },
+      { title: "4. Gozney Bake", sections: [
+        { intro: "Gozney / High-Heat Oven:", bullets: [
+          "🪨 Stone floor target: 430°C–440°C",
+          "🔥 Dome: 450°C–480°C",
+          "Manage top flame dynamically post-launch — keep the burner moderate so the thin garlic and salami edges do not scorch.",
+          "🔄 Rotate regularly until the cornicione is fully inflated and blistered, the tomato is concentrated, and the salami edges are lightly crisped with some fat rendered.",
+          "⏱ Cook Time: 75–85 seconds.",
+        ] },
       ] },
       { title: "5. Rest & Serve", sections: [
-        { intro: "Vent steam beneath the base:", bullets: ["Transfer to a wire cooling rack for 60 seconds to keep the bottom shell crisp", "Slice and serve"] },
+        { bullets: ["Transfer directly to a wooden board and rest for 30–40 seconds to allow excess surface steam to dissipate and the base to stabilize."] },
+        { intro: "Stage 1 (Finish):", bullets: ["Apply a light 2g finishing swirl of Barbera Lorenzo Nº5 EVOO. Slice and serve immediately."] },
+        { intro: "Technical Moisture & Thermal Note:", bullets: ["Yellow Vesuvian tomatoes provide a vibrant sweetness that contrasts with the savory, cured profile of Neapolitan salami. Because thin garlic and salami slices are vulnerable to high oven heat, dynamic top-flame management during the 75–85 second bake ensures controlled fat rendering and aromatic caramelization without scorching."] },
+        { intro: "Profile:", bullets: ["Sweet yellow Vesuvian tomatoes → savoury Neapolitan salami → sliced garlic → aromatic mountain oregano → warm Picual → almond-smooth Lorenzo N°5 finish"] },
+      ] },
+    ],
+  },
+  {
+    id: "burratina-della-casa",
+    number: 48,
+    name: "Burratina della Casa",
+    style: "House Burratina Pizza — Red Piennolo, Mountain Oregano & Creamy Putignano Burratina",
+    category: "classic",
+    image: "https://www.rtagency.it/menu/pizzeria%20carmnella/images/cafona-carm.jpeg",
+    toppings: "70g Pomodorini del Piennolo del Vesuvio DOP (red, hand-torn into rough pieces, kept unsalted pre-bake), 8g finely grated Grana Padano DOP, 0.8g–1g dried mountain oregano (origano di montagna); finished post-bake with ~100g Burratina di Putignano (drained, placed centrally with a gentle incision on top), 4–5 fresh basil leaves tucked around the burratina, 3g Barbera Lorenzo Nº5 EVOO (Nocellara del Belice DOP). Zero pre-bake oil.",
+    menuIngredients: "Red Piennolo tomato, Grana Padano, mountain oregano, Burratina di Putignano (post-bake), basil, Lorenzo Nº5 EVOO",
+    build: "A luxurious house interpretation inspired by Pizza Cafona at Pizzeria Carmnella (dal 1892) — sweet red Piennolo tomatoes and mountain oregano baked over a toasted Grana base, crowned post-bake with a creamy Putignano burratina, fresh basil, and Lorenzo Nº5 EVOO.",
+    postBake: "Transfer directly to a wooden board and rest for 30–40 seconds to allow excess surface steam to dissipate and the base to stabilize. Place the ~100g Burratina di Putignano squarely in the center with a gentle incision on top, tuck 4–5 fresh basil leaves around it, and finish with a 3g swirl of Barbera Lorenzo Nº5 EVOO primarily around the burratina and lightly across the crust. Slice and serve immediately.",
+    flavorProgression: "Sweet red Piennolo → toasted Grana → aromatic mountain oregano → cool creamy Putignano burratina → fresh basil → almond-smooth Lorenzo N°5 finish",
+    inspiredBy: "Inspired by Pizza Cafona at Pizzeria Carmnella (dal 1892).",
+    steps: [
+      { title: "1. Pre-Prep", sections: [
+        { bullets: ["Hand-tear 70g red Piennolo tomatoes into rough pieces. Weigh out 8g Grana Padano and 0.8g–1g mountain oregano. Keep the ~100g Burratina di Putignano cool until service."] },
+      ] },
+      { title: "2. Dough Prep", sections: [
+        { bullets: ["Hand-stretch 280g dough ball to 30–32cm on semolina rimacinata, preserving gas in an airy 1.5–2cm cornicione."] },
+      ] },
+      { title: "3. Layer Assembly (In Exact Order)", sections: [
+        { intro: "Layer 1 — Red Piennolo Base:", bullets: ["Spread 70g hand-torn red Piennolo tomatoes evenly across the base, leaving a 1.5–2cm clean rim."] },
+        { intro: "Layer 2 — Grana & Oregano:", bullets: ["Distribute 8g finely grated Grana Padano DOP and 0.8g–1g mountain oregano evenly over the tomatoes."] },
+        { intro: "Layer 3 — Oil:", bullets: ["Zero pre-bake oil."] },
+      ] },
+      { title: "4. Gozney Bake", sections: [
+        { intro: "Gozney / High-Heat Oven:", bullets: [
+          "🪨 Stone floor target: 430°C–440°C",
+          "🔥 Dome: 450°C–480°C",
+          "Manage top flame dynamically post-launch — allow the red Piennolo tomatoes to soften, blister, and concentrate while the Grana toasts underneath.",
+          "🔄 Rotate regularly until the cornicione is fully inflated and leopard-spotted.",
+          "⏱ Cook Time: ~75–85 seconds.",
+        ] },
+      ] },
+      { title: "5. Rest & Sequential Post-Bake Staging", sections: [
+        { bullets: ["Transfer directly to a wooden board and rest for 30–40 seconds to allow excess surface steam to dissipate and the base to stabilize."] },
+        { intro: "Stage 1 (Burratina Crown):", bullets: ["Place the ~100g Burratina di Putignano squarely in the center. Make a gentle opening in the top to reveal the creamy stracciatella interior."] },
+        { intro: "Stage 2 (Herb & Oil Finish):", bullets: ["Tuck 4–5 fresh basil leaves around the burratina. Apply a 3g finishing swirl of Barbera Lorenzo Nº5 EVOO primarily around the burratina and lightly across the crust. Slice and serve immediately."] },
+        { intro: "Technical Moisture & Thermal Note:", bullets: ["Adding the burratina post-bake keeps its creamy stracciatella interior away from direct oven heat and preserves its cool, fluid texture. Baking the red Piennolo tomatoes with Grana Padano and mountain oregano creates a concentrated, savoury red layer that contrasts with the rich, milky burratina."] },
+        { intro: "Profile:", bullets: ["Sweet red Piennolo → toasted Grana → aromatic mountain oregano → cool creamy Putignano burratina → fresh basil → almond-smooth Lorenzo N°5 finish"] },
       ] },
     ],
   },
@@ -1675,35 +2000,46 @@ export const RECIPES: PizzaRecipe[] = [
     ],
   },
   {
-    id: "zucca-guanciale-rosmarino",
+    id: "zucca-guanciale-e-rosmarino",
     number: 45,
     name: "Zucca, Guanciale e Rosmarino",
-    style: "Pumpkin Base — Guanciale & Rosemary",
+    style: "Pumpkin Cream Base — Crispy Guanciale, Fresh Rosemary & Pecorino Romano",
     category: "pumpkin",
     image: "https://foodionista.com/wp-content/uploads/2022/10/zucca-pancetta.jpg",
-    toppings: "Greci or Demetra pumpkin cream, Fior di Latte, fresh rosemary, Guanciale, Pecorino Romano, extra virgin olive oil.",
-    menuIngredients: "Pumpkin cream, mozzarella, rosemary, guanciale, pecorino",
-    build: "An aromatic, crispy pie. Fresh rosemary infuses into the pumpkin sauce during the bake, topped with crispy cured guanciale strips.",
-    postBake: "Rest on a wire rack for 60 seconds, scatter warm crispy guanciale (if pan-fried separately) and microplane 8–10 g of Pecorino Romano over the top. Serve immediately.",
+    toppings: "Strictly no tomato sauce. 70g thick, spreadable prepared pumpkin cream (e.g., Greci or Demetra), 60g well-drained Fior di Latte (hand-torn into strips, drained for 1+ hours), 0.5g–0.7g finely chopped fresh rosemary leaves, 40g Guanciale (cut into thin strips, pan-crisped separately and drained completely; zero reserved fat added to the pie), 8g finely microplaned Pecorino Romano DOP (post-bake), zero pre-bake oil, 3g Barbera Lorenzo Nº5 EVOO (Nocellara del Belice DOP — post-bake finishing swirl).",
+    menuIngredients: "Pumpkin cream, Fior di Latte, rosemary, crispy guanciale, Pecorino Romano",
+    build: "A refined autumn-winter white pizza — sweet pumpkin cream and melting Fior di Latte baked with fresh rosemary, then finished with crisp guanciale, Pecorino Romano and Lorenzo Nº5 EVOO.",
+    postBake: "Transfer directly to a wooden board and rest for 30–40 seconds to allow excess surface steam to dissipate and the base to stabilize. Scatter the warm, pan-crisped guanciale strips across the hot pizza, microplane 8g Pecorino Romano DOP evenly over the top, and finish with a 3g swirl of Barbera Lorenzo Nº5 EVOO. Slice and serve immediately.",
+    flavorProgression: "Velvety pumpkin cream → creamy Fior di Latte → aromatic fresh rosemary → crispy guanciale → sharp Pecorino Romano → almond-smooth Lorenzo N°5 finish",
     steps: [
-      { title: "1. Ingredients", sections: [
-        { intro: "Base:", bullets: ["75 g prepared Greci OR Demetra Pumpkin Cream"] },
-        { intro: "Cheese:", bullets: ["75 g Fior di Latte (cut into strips and well-drained)"] },
-        { intro: "Aromatics:", bullets: ["1 tsp finely chopped fresh rosemary leaves"] },
-        { intro: "Cured Pork:", bullets: ["50–60 g Guanciale (cut into thin strips). Can be baked pre-bake OR crisp-pan-fried separately and added post-bake"] },
-        { intro: "Finish:", bullets: ["8–10 g Pecorino Romano (microplaned post-bake), EVOO"] },
+      { title: "1. Pre-Prep", sections: [
+        { bullets: ["Drain 60g Fior di Latte strips in a sieve for at least 1 hour. Finely chop 0.5g–0.7g fresh rosemary leaves."] },
+        { intro: "Guanciale Prep:", bullets: ["Sauté 40g thin guanciale strips in a dry skillet over medium-low heat until golden and ultra-crisp. Drain completely on paper towels (reserve no fat for the pizza)."] },
       ] },
-      { title: "2. Stretch Dough", sections: [
-        { intro: "Open an extensible, thin base:", bullets: ["Open your 280 g dough ball in semolina to 28–30 cm"] },
+      { title: "2. Dough Prep", sections: [
+        { bullets: ["Hand-stretch 280g dough ball to 30–32cm on semolina rimacinata, preserving gas in an airy 1.5–2cm cornicione."] },
       ] },
-      { title: "3. Pre-Bake Assembly", sections: [
-        { intro: "Rosemary releases aromatic oils in the oven:", bullets: ["Spread 75 g of Greci or Demetra Pumpkin Cream", "Scatter 75 g of drained Fior di Latte", "Sprinkle 1 tsp of chopped fresh rosemary evenly over the cheese and sauce", "(If baking guanciale directly on the pie): scatter thin raw guanciale strips over the top so the pork fat renders into the pumpkin cream", "Drizzle a thin spiral of EVOO"] },
+      { title: "3. Layer Assembly (In Exact Order)", sections: [
+        { intro: "Layer 1 — Pumpkin Cream:", bullets: ["Spread 70g thick, spreadable pumpkin cream evenly across the base, leaving a clean 1.5–2cm rim."] },
+        { intro: "Layer 2 — Fior di Latte:", bullets: ["Scatter 60g drained Fior di Latte strips evenly over the pumpkin cream."] },
+        { intro: "Layer 3 — Rosemary:", bullets: ["Sprinkle 0.5g–0.7g finely chopped fresh rosemary evenly across the cheese and pumpkin base."] },
+        { intro: "Layer 4 — Oil:", bullets: ["Zero pre-bake oil."] },
       ] },
-      { title: "4. Launch & Gozney Bake (75–90 Seconds)", sections: [
-        { intro: "Renders pork fat while keeping dough crisp:", bullets: ["Launch into the Gozney and turn burner down to LOW immediately", "Bake for 75–90 seconds, rotating every 15 seconds until the rim balloons and the guanciale edges crisp up"] },
+      { title: "4. Gozney Bake", sections: [
+        { intro: "Gozney / High-Heat Oven:", bullets: [
+          "🪨 Stone floor target: 430°C–440°C",
+          "🔥 Dome: 450°C–480°C",
+          "Manage top flame dynamically post-launch — keep the burner on low-to-moderate so the pumpkin cream heats through and the Fior di Latte melts cleanly without scorching.",
+          "🔄 Rotate regularly until the cornicione is fully inflated and leopard-spotted.",
+          "⏱ Cook Time: 75–85 seconds.",
+        ] },
       ] },
-      { title: "5. Post-Bake Finish", sections: [
-        { intro: "Add pan-crisped guanciale (if pre-fried) & cheese:", bullets: ["Rest on a wire rack for 60 seconds", "(If crisping guanciale separately in a pan): scatter the warm, ultra-crispy guanciale strips over the hot pizza now", "Microplane 8–10 g of Pecorino Romano over the top. Serve immediately"] },
+      { title: "5. Rest & Sequential Post-Bake Staging", sections: [
+        { bullets: ["Transfer directly to a wooden board and rest for 30–40 seconds to allow excess surface steam to dissipate and the base to stabilize."] },
+        { intro: "Stage 1 (Crispy Guanciale):", bullets: ["Scatter the warm, pan-crisped guanciale strips across the hot pizza."] },
+        { intro: "Stage 2 (Pecorino & Oil Finish):", bullets: ["Microplane 8g Pecorino Romano DOP evenly over the top. Finish with a 3g finishing swirl of Barbera Lorenzo Nº5 EVOO. Slice and serve immediately."] },
+        { intro: "Technical Moisture & Thermal Note:", bullets: ["Pan-crisping the guanciale separately limits its exposure to intense dome heat and allows the pizza to retain the guanciale's crisp texture when added post-bake. Spreading a thick, spreadable pumpkin cream base beneath the Fior di Latte and rosemary creates a sweet, velvety foundation that balances the sharp, salty Pecorino Romano."] },
+        { intro: "Profile:", bullets: ["Velvety pumpkin cream → creamy Fior di Latte → aromatic fresh rosemary → crispy guanciale → sharp Pecorino Romano → almond-smooth Lorenzo N°5 finish"] },
       ] },
     ],
   },

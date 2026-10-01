@@ -10,9 +10,10 @@ const RUSTIC_IDS = [
   "margherita-duo",
   "margherita-macchiata",
   "marinara-al-salame",
+  "burratina-della-casa",
 ];
 const RUSTIC_BLURB =
-  "Margherita della Casa, Margherita Duo, Margherita Macchiata, Marinara al Salame.";
+  "Margherita della Casa, Margherita Duo, Margherita Macchiata, Marinara al Salame, Burratina della Casa.";
 
 export default function RecipesPage() {
   const [selected, setSelected] = useState<PizzaRecipe | null>(null);

@@ -54,6 +54,7 @@ const VIDEOS: VideoEntry[] = [
    { title: "Nome Pizzeria: Carosello",         category: "Making Pizzas",  url: "https://www.youtube.com/watch?v=piPSOF68Krs" },
    { title: "Seu Pizza Illuminati — Pier Daniele Seu e Valeria Zuppardo", category: "Making Pizzas",  url: "https://www.youtube.com/watch?v=lT7d6cDUe5o" },
    { title: "30 pizzas en 30 días",             category: "Making Pizzas",  url: "https://www.youtube.com/watch?v=nMyxtLx8e9g" },
+   { title: "Making Pizza as Maestro Roberto",  category: "Making Pizzas",  url: "https://www.youtube.com/shorts/PuM3LecDwMk" },
 
     { title: "Pizza en bandeja",                 category: "Cooking Pizzas",  url: "https://www.youtube.com/shorts/vmuVySxuGC0" },
    { title: "Cooking with Gozney",               category: "Cooking Pizzas", url: "https://www.youtube.com/watch?v=wC34d4i_RMs" },
