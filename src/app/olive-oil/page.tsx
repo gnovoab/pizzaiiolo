@@ -133,6 +133,76 @@ const ROWS: Row[] = [
   { pizza: "Pumpkin Base Pizzas",          style: "Seasonal White",   region: "Puglia blend",             profile: "Smooth, slightly sweet balance",       whenToUse: "Post-bake: Barbera Lorenzo Nº5" },
 ];
 
+interface OilMapRow {
+  n: number;
+  pizza: string;
+  pre: string;
+  post: string;
+  why: string;
+}
+
+const OIL_LEGEND: { code: string; name: string }[] = [
+  { code: "P", name: "Elizondo Nº3 Picual" },
+  { code: "L", name: "Barbera Lorenzo N°5" },
+  { code: "O", name: "Odysea Kalamata/Koroneiki" },
+  { code: "C", name: "Frantoio Muraglia Coratina" },
+  { code: "T", name: "Belazu White Truffle EVOO" },
+];
+
+const OIL_MAP: OilMapRow[] = [
+  { n: 1, pizza: "Cosacca", pre: "2g Elizondo Nº3 Picual", post: "2g Frantoio Muraglia Coratina", why: "Pecorino needs Coratina's peppery/bitter counterpoint" },
+  { n: 2, pizza: "Marinara", pre: "2g Elizondo Nº3 Picual", post: "2–3g Odysea Kalamata/Koroneiki", why: "Odysea's tomato-vine/herbaceous character is excellent with garlic & oregano" },
+  { n: 3, pizza: "Margherita", pre: "2g Elizondo Nº3 Picual", post: "3g Barbera Lorenzo N°5", why: "Lets tomato, FdL and basil stay delicate" },
+  { n: 4, pizza: "Margherita della Casa", pre: "2g Elizondo Nº3 Picual", post: "3g Barbera Lorenzo N°5", why: "Sweet Piennolo + buffalo benefit from Lorenzo" },
+  { n: 5, pizza: "Margherita Macchiata", pre: "2g Elizondo Nº3 Picual", post: "3g Barbera Lorenzo N°5", why: "Piennolo + pesto don't need Coratina" },
+  { n: 6, pizza: "Margherita Duo", pre: "2g Elizondo Nº3 Picual", post: "3g Barbera Lorenzo N°5", why: "Keeps red/yellow Piennolo at the centre" },
+  { n: 7, pizza: "Bufalina Classica", pre: "2g Elizondo Nº3 Picual", post: "3g Barbera Lorenzo N°5", why: "Buffalo is too delicate for a heavy Coratina finish" },
+  { n: 8, pizza: "Bufalina a Freddo", pre: "2g Elizondo Nº3 Picual", post: "3g Barbera Lorenzo N°5", why: "Especially good with cold buffalo" },
+  { n: 9, pizza: "Bufalina de la Casa", pre: "2g Elizondo Nº3 Picual", post: "3g Barbera Lorenzo N°5", why: "Datterini + buffalo need a soft finish" },
+  { n: 10, pizza: "Burratina", pre: "2g Elizondo Nº3 Picual", post: "3g Barbera Lorenzo N°5", why: "Creamy burrata + tomato + Lorenzo is very balanced" },
+  { n: 11, pizza: "Marinara al Salame", pre: "2g Elizondo Nº3 Picual", post: "2g Frantoio Muraglia Coratina", why: "Salame gives enough weight for Coratina" },
+  { n: 12, pizza: "Quattro Formaggi", pre: "1–2g Odysea Kalamata/Koroneiki", post: "2g Frantoio Muraglia Coratina", why: "Odysea lifts the cheese; Coratina cuts richness" },
+  { n: 13, pizza: "Napoletana", pre: "2g Elizondo Nº3 Picual", post: "2–3g Odysea Kalamata/Koroneiki", why: "Herbaceous Odysea works beautifully with tomato, anchovy/capers-style savouriness" },
+  { n: 14, pizza: "Diavola", pre: "2g Elizondo Nº3 Picual", post: "2–3g Frantoio Muraglia Coratina", why: "Peppery Coratina reinforces the spicy salami" },
+  { n: 15, pizza: "Prosciutto e Funghi", pre: "2g Elizondo Nº3 Picual", post: "3g Barbera Lorenzo N°5", why: "Keeps mushroom + ham elegant" },
+  { n: 16, pizza: "Capricciosa", pre: "2g Elizondo Nº3 Picual", post: "2g Odysea Kalamata/Koroneiki", why: "Herbaceous/citrus notes complement artichoke, mushroom and ham" },
+  { n: 17, pizza: "Prosciutto e Rucola", pre: "2g Elizondo Nº3 Picual", post: "3g Barbera Lorenzo N°5", why: "Soft oil balances Serrano + rocket" },
+  { n: 18, pizza: "Ibérica Bianca", pre: "2g Elizondo Nº3 Picual", post: "3g Barbera Lorenzo N°5", why: "Jamón + ricotta/FdL need a gentle finish" },
+  { n: 19, pizza: "Ortolana", pre: "2g Odysea Kalamata/Koroneiki", post: "3g Odysea Kalamata/Koroneiki", why: "Odysea's green/herbaceous profile suits vegetables" },
+  { n: 20, pizza: "Ripieno (Calzone)", pre: "2g Elizondo Nº3 Picual", post: "2g Odysea Kalamata/Koroneiki", why: "Odysea gives freshness to the enclosed, richer filling" },
+  { n: 21, pizza: "Margherita Datterini", pre: "2g Elizondo Nº3 Picual", post: "3g Barbera Lorenzo N°5 ⭐", why: "Best match: sweet tomato + FdL + aged cheese" },
+  { n: 22, pizza: "Tettoia — Four Cheese & Truffle", pre: "1g Elizondo Nº3 Picual", post: "1–2g Belazu White Truffle EVOO + 2g Barbera Lorenzo N°5", why: "Truffle is the specialist finish; Lorenzo rounds it" },
+  { n: 23, pizza: "Double Pepperoni & Hot Honey", pre: "2g Elizondo Nº3 Picual", post: "2g Frantoio Muraglia Coratina", why: "Pepper + chilli + honey need Coratina's bitterness" },
+  { n: 24, pizza: "Chorizo & Gorgonzola", pre: "2g Elizondo Nº3 Picual", post: "2g Frantoio Muraglia Coratina", why: "Big flavours can handle Coratina" },
+  { n: 25, pizza: "Datterini & Serrano", pre: "2g Elizondo Nº3 Picual", post: "3g Barbera Lorenzo N°5 ⭐", why: "Sweet Datterini + cured ham benefits from soft Nocellara" },
+  { n: 26, pizza: "Bufala e Ibérico", pre: "2g Elizondo Nº3 Picual", post: "3g Barbera Lorenzo N°5", why: "Buffalo + Ibérico is already rich and aromatic" },
+  { n: 27, pizza: "Cetarese", pre: "1–2g Odysea Kalamata/Koroneiki", post: "2g Frantoio Muraglia Coratina", why: "Mediterranean herbaceousness pre; Coratina handles anchovy/colatura" },
+  { n: 28, pizza: "Piennolo & Alici di Cetara", pre: "2g Odysea Kalamata/Koroneiki", post: "2g Odysea Kalamata/Koroneiki", why: "Fish + Piennolo + Provola suit Odysea's citrus/herbal profile" },
+  { n: 29, pizza: "Datterini & Spianata", pre: "2g Elizondo Nº3 Picual", post: "2–3g Frantoio Muraglia Coratina", why: "Sweet Datterini against spicy cured meat" },
+  { n: 30, pizza: "'Nduja & Hot Honey", pre: "2g Elizondo Nº3 Picual", post: "2g Frantoio Muraglia Coratina", why: "Excellent sweet/chilli/bitter contrast" },
+  { n: 31, pizza: "Calabrese", pre: "2g Elizondo Nº3 Picual", post: "2g Frantoio Muraglia Coratina", why: "Gorgonzola + 'nduja can absorb the intensity" },
+  { n: 32, pizza: "Quattro Latte e 'Nduja", pre: "1g Elizondo Nº3 Picual", post: "2g Frantoio Muraglia Coratina", why: "Rich cheese + 'nduja needs a strong finish" },
+  { n: 33, pizza: "Cacio e Pepe", pre: "—", post: "2–3g Odysea Kalamata/Koroneiki", why: "Odysea gives herbaceous lift without overwhelming Pecorino" },
+  { n: 34, pizza: "Carbonara", pre: "—", post: "2–3g Barbera Lorenzo N°5", why: "Lorenzo is ideal with yolk, guanciale and Pecorino" },
+  { n: 35, pizza: "Amatriciana", pre: "2g Elizondo Nº3 Picual", post: "2g Frantoio Muraglia Coratina", why: "Tomato + guanciale + Pecorino can handle Coratina" },
+  { n: 36, pizza: "Gricia", pre: "—", post: "2–3g Barbera Lorenzo N°5", why: "Soft finish against guanciale/Pecorino" },
+  { n: 37, pizza: "Pesto Cremosa", pre: "1g Odysea Kalamata/Koroneiki", post: "2–3g Barbera Lorenzo N°5", why: "Odysea reinforces basil; Lorenzo softens the dairy" },
+  { n: 38, pizza: "Burrata & Pesto", pre: "—", post: "3g Barbera Lorenzo N°5", why: "Keep the pesto/burrata combination clean" },
+  { n: 39, pizza: "Salsiccia al Pesto", pre: "1–2g Odysea Kalamata/Koroneiki", post: "2g Frantoio Muraglia Coratina", why: "Herbaceous pre-oil + stronger finish for sausage" },
+  { n: 40, pizza: "Boscaiola", pre: "1–2g Odysea Kalamata/Koroneiki", post: "2g Barbera Lorenzo N°5", why: "Mushroom + sausage benefit from restraint" },
+  { n: 41, pizza: "Mortadella e Pistacchio", pre: "—", post: "3g Barbera Lorenzo N°5", why: "Very delicate; don't introduce Coratina" },
+  { n: 42, pizza: "La Oro Verde", pre: "— / 1g Elizondo Nº3 Picual", post: "3g Barbera Lorenzo N°5", why: "Pistachio + mortadella + stracciatella need elegance" },
+  { n: 43, pizza: "Zucca, Guanciale e Rosmarino", pre: "—", post: "2g Barbera Lorenzo N°5", why: "Pumpkin sweetness + guanciale + rosemary; Coratina unnecessary" },
+  { n: 44, pizza: "Zucca e 'Nduja", pre: "—", post: "2g Frantoio Muraglia Coratina", why: "Pumpkin sweetness + 'nduja loves the bitter/peppery contrast" },
+  { n: 45, pizza: "Zucca, Salsiccia e Provola", pre: "—", post: "2g Odysea Kalamata/Koroneiki", why: "Odysea adds green/herbaceous lift without fighting smoked Provola" },
+  { n: 46, pizza: "Norcina", pre: "—", post: "2g Belazu White Truffle EVOO + 1g Barbera Lorenzo N°5", why: "Truffle + mushroom + sausage; Lorenzo rounds the finish" },
+  { n: 47, pizza: "Mantovana", pre: "—", post: "2g Barbera Lorenzo N°5", why: "Gorgonzola, bacon, sage and pumpkin already have plenty of character" },
+  { n: 48, pizza: "Zucca, Gorgonzola & Noci", pre: "—", post: "2g Barbera Lorenzo N°5", why: "Pumpkin + walnut + Gorgonzola needs softness" },
+  { n: 49, pizza: "Sfiziosa", pre: "—", post: "2g Belazu White Truffle EVOO + 1g Barbera Lorenzo N°5", why: "Truffle + pumpkin + guanciale; specialist finish" },
+  { n: 50, pizza: "Sfiziosa (Basilico)", pre: "—", post: "3g Barbera Lorenzo N°5", why: "Sage oil already supplies the aromatic finish" },
+  { n: 51, pizza: "Ragù Napoletano", pre: "2g Elizondo Nº3 Picual", post: "3g Barbera Lorenzo N°5", why: "Rich ragù + Parmigiano needs a soft finish so the thyme stays forward" },
+];
+
 const REGION_COLORS: Record<string, string> = {
   Campania: "#B91C1C",      // tomato red
   Tuscany:  "#7C5E3B",      // olive wood
@@ -195,6 +265,62 @@ export default function OliveOilPage() {
               </button>
             );
           })}
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader className="pb-3">
+          <CardTitle className="font-serif text-lg">Your Complete Pizza Oil Map</CardTitle>
+          <p className="text-sm text-muted-foreground mt-1">
+            Each oil has a distinct job: <span className="font-semibold text-foreground">Lorenzo N°5</span> is soft and naturally sweet,{" "}
+            <span className="font-semibold text-foreground">Muraglia Coratina</span> is powerful, bitter/peppery, and{" "}
+            <span className="font-semibold text-foreground">Odysea Koroneiki</span> is herbaceous, citrusy and tomato-vine driven.
+          </p>
+        </CardHeader>
+        <CardContent className="space-y-4">
+          <div className="flex flex-wrap gap-3">
+            {OIL_LEGEND.map((l) => (
+              <span key={l.code} className="inline-flex items-center gap-1.5 text-xs rounded-full border border-border bg-muted/40 px-2.5 py-1">
+                <span className="font-mono font-bold text-primary">{l.code}</span>
+                <span className="text-muted-foreground">= {l.name}</span>
+              </span>
+            ))}
+            <span className="inline-flex items-center gap-1.5 text-xs rounded-full border border-border bg-muted/40 px-2.5 py-1">
+              <span className="font-mono font-bold text-primary">—</span>
+              <span className="text-muted-foreground">= no oil needed at that stage</span>
+            </span>
+          </div>
+          <div className="overflow-x-auto px-0">
+            <table className="w-full text-sm border-collapse min-w-[760px]">
+              <thead>
+                <tr className="text-left bg-muted/60 border-b-2 border-primary/30">
+                  <Th sticky>#</Th>
+                  <Th>Pizza</Th>
+                  <Th>Pre-bake</Th>
+                  <Th>Post-bake</Th>
+                  <Th>Why</Th>
+                </tr>
+              </thead>
+              <tbody>
+                {OIL_MAP.map((r, i) => {
+                  const zebra = i % 2 === 1;
+                  return (
+                    <tr key={r.n} className={`border-b border-border/60 last:border-0 align-top ${zebra ? "bg-muted/30" : ""} hover:bg-primary/5 transition-colors`}>
+                      <td className={`px-4 py-3 whitespace-nowrap sticky left-0 ${zebra ? "bg-[#F5EBD6]" : "bg-card"} z-10 text-muted-foreground`}>
+                        {r.n}
+                      </td>
+                      <td className="px-4 py-3 whitespace-nowrap">
+                        <span className="font-serif font-semibold text-foreground">{r.pizza}</span>
+                      </td>
+                      <Td>{r.pre}</Td>
+                      <Td>{r.post}</Td>
+                      <Td muted>{r.why}</Td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+          </div>
         </CardContent>
       </Card>
 
