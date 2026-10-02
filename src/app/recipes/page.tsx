@@ -4,8 +4,36 @@ import { Fragment, useEffect, useState } from "react";
 import { RECIPES, RECIPE_CATEGORIES, getRecipesByCategory } from "@/lib/recipes";
 import type { PizzaRecipe, RecipeStep, RecipeStepSection } from "@/lib/types";
 
+type IngredientFilter = { label: string; match: RegExp };
+
+/** Quick ingredient filters, grouped so a visual divider can separate sauce / cheese / pumpkin. */
+const INGREDIENT_FILTER_GROUPS: IngredientFilter[][] = [
+  [
+    { label: "San Marzano", match: /san marzano/i },
+    { label: "Datterini", match: /datterini/i },
+    { label: "Piennolo", match: /piennolo/i },
+    { label: "Pesto", match: /pesto/i },
+  ],
+  [
+    { label: "Fior di Latte", match: /fior di latte/i },
+    { label: "Bufala", match: /bufala/i },
+    { label: "Burrata", match: /burrat/i },
+  ],
+  [
+    { label: "Demetra Pumpkin", match: /demetra[^.]*zucca/i },
+    { label: "Greci Pumpkin", match: /greci[^.]*zucca/i },
+  ],
+];
+
+const INGREDIENT_FILTERS: IngredientFilter[] = INGREDIENT_FILTER_GROUPS.flat();
+
+function recipeSearchText(r: PizzaRecipe): string {
+  return `${r.name} ${r.toppings} ${r.menuIngredients ?? ""}`;
+}
+
 export default function RecipesPage() {
   const [selected, setSelected] = useState<PizzaRecipe | null>(null);
+  const [activeIngredients, setActiveIngredients] = useState<string[]>([]);
 
   useEffect(() => {
     if (!selected) return;
@@ -18,18 +46,62 @@ export default function RecipesPage() {
     };
   }, [selected]);
 
+  function toggleIngredient(label: string) {
+    setActiveIngredients((prev) =>
+      prev.includes(label) ? prev.filter((l) => l !== label) : [...prev, label]
+    );
+  }
+
+  const activeMatchers = INGREDIENT_FILTERS.filter((f) => activeIngredients.includes(f.label));
+  const matchesActiveIngredients = (r: PizzaRecipe) =>
+    activeMatchers.length === 0 || activeMatchers.some((f) => f.match.test(recipeSearchText(r)));
+
+  const filteredCount = RECIPES.filter(matchesActiveIngredients).length;
+
   return (
     <div className="space-y-12">
       <div className="text-center pb-6 border-b border-border/70">
         <p className="text-[11px] uppercase tracking-[0.4em] text-secondary font-medium">Il Menù</p>
         <h1 className="font-serif text-4xl sm:text-5xl font-semibold mt-3 text-foreground">Pizza Recipes</h1>
         <p className="text-muted-foreground text-base mt-3 max-w-xl mx-auto italic">
-          {RECIPES.length} pizzas · tap any item for the full build, bake parameters and finishing notes.
+          {filteredCount} pizzas · tap any item for the full build, bake parameters and finishing notes.
         </p>
       </div>
 
+      <div className="flex flex-wrap items-center gap-2 justify-center">
+        {INGREDIENT_FILTER_GROUPS.map((group, gi) => (
+          <Fragment key={gi}>
+            {gi > 0 && <span className="w-px h-5 bg-border mx-1 shrink-0" aria-hidden />}
+            {group.map((f) => {
+              const active = activeIngredients.includes(f.label);
+              return (
+                <button
+                  key={f.label}
+                  onClick={() => toggleIngredient(f.label)}
+                  className={`text-xs sm:text-[13px] font-medium px-3 py-1.5 rounded-full border transition-colors ${
+                    active
+                      ? "bg-primary text-primary-foreground border-primary"
+                      : "bg-card text-foreground/80 border-border hover:border-primary/60"
+                  }`}
+                >
+                  {f.label}
+                </button>
+              );
+            })}
+          </Fragment>
+        ))}
+        {activeIngredients.length > 0 && (
+          <button
+            onClick={() => setActiveIngredients([])}
+            className="text-xs sm:text-[13px] font-medium px-3 py-1.5 rounded-full border border-destructive/40 text-destructive hover:bg-destructive/10 transition-colors"
+          >
+            Clear filters ✕
+          </button>
+        )}
+      </div>
+
       {RECIPE_CATEGORIES.map((c) => {
-        const items = getRecipesByCategory(c.id);
+        const items = getRecipesByCategory(c.id).filter(matchesActiveIngredients);
         if (items.length === 0) return null;
         return (
           <section key={c.id} className="space-y-5">
@@ -48,6 +120,12 @@ export default function RecipesPage() {
           </section>
         );
       })}
+
+      {filteredCount === 0 && (
+        <p className="text-center text-muted-foreground italic py-12">
+          No pizzas match the selected ingredient filters.
+        </p>
+      )}
 
       {selected && (
         <RecipeModal

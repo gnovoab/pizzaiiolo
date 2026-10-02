@@ -24,6 +24,7 @@ const NAV_SECTIONS = [
       { href: "/fridge", label: "🧊 Fridge", short: "Fridge" },
       { href: "/oven", label: "🔥 Oven", short: "Oven" },
       { href: "/olive-oil", label: "🫒 Olive Oil", short: "Oil" },
+      { href: "/tomato-sauce", label: "🍅 Tomato Sauce", short: "Tomato" },
       { href: "/pumpkin-base", label: "🎃 Pumpkin Base", short: "Pumpkin" },
       { href: "/preferments", label: "🧫 Preferments", short: "Pref." },
       { href: "/yeast", label: "🔬 Yeast", short: "Yeast" },
