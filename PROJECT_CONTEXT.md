@@ -18,7 +18,7 @@ Pizza Lab is two apps sharing one Next.js codebase and one nav shell:
 
 ## 0. Versioning
 
-- **Current version: `1.0.0`** — tracked in `package.json` (`version` field). This is
+- **Current version: `1.0.1`** — tracked in `package.json` (`version` field). This is
   the **single source of truth** for the app version.
 - Surfaced in the UI via `src/lib/version.ts` (imports `package.json`) and rendered in
   `src/components/layout/AppShell.tsx` (desktop sidebar footer + mobile top bar).
@@ -107,7 +107,7 @@ src/
 
   lib/
     types.ts                     # ⭐ Single source of truth for all Cookbook data shapes
-    pizzaioli.ts                  # ⭐ PIZZAIOLI array — 8 masters with technique + videos
+    pizzaioli.ts                  # ⭐ PIZZAIOLI array — comparison profiles with technique + videos
     recipes.ts                    # ⭐ RECIPES array — pizza recipes w/ step-by-step builds (fallback defaults for the Gabriellos menu too)
     recipeSteps.ts                # Reusable recipe step content (used by /create)
     calculations.ts               # Dough math (Flour = Total/(1+H+S+Y)), poolish/biga/yeast/water-temp
@@ -162,7 +162,7 @@ mobile bottom bar, extend the icon ternary near the bottom of the file).
 ### Section: "Pizzaiolo"
 | Route | What it does |
 |---|---|
-| `/comparison` (📊 Comparison) | Side-by-side comparison of all 8 `PIZZAIOLI` — hydration/salt/yeast/fermentation bar charts (Recharts), sticky-column spec tables, and a tomato-sauce quantity scaler. |
+| `/comparison` (📊 Comparison) | Side-by-side comparison of all `PIZZAIOLI` profiles — hydration/salt/yeast/fermentation bar charts (Recharts), sticky-column spec tables, and a tomato-sauce quantity scaler. |
 | `/calculator` (🍕 Calculator) | The general-purpose dough calculator: pick a pizzaiolo (or custom ratios) and a mode (by pizza count / by flour / by water), get live flour/water/salt/yeast/total-dough output. Backed by `usePizzaStore` so inputs persist across pages. |
 | `/create` (👨‍🍳 Create a Pizza) | A guided, single-page build hub: pick a pizzaiolo, compute the dough batch, see a generated numbered recipe (`buildRecipeSteps`), compute mixing water temperature, and see a bake-schedule timeline (`calcBakePlan`/`buildBakeEvents`) from mix time to bake time. |
 
@@ -254,7 +254,7 @@ How the restaurant's menu/catering tool is wired together, end to end.
 ## 7. Data Model Highlights (see `src/lib/types.ts`)
 
 ### `Pizzaiolo`
-The hero entity. 8 instances in `pizzaioli.ts`. Includes hydration/salt/yeast ratios, flour W rating, fermentation ranges, sauce profile, philosophy, **and** a `technique` object with `videos: TechniqueVideo[]`.
+The hero entity. Profiles in `pizzaioli.ts` include hydration/salt/yeast ratios, flour W rating, fermentation ranges, sauce profile, philosophy, **and** a `technique` object with `videos: TechniqueVideo[]`.
 
 ### `TechniqueVideoCategory`
 Union: `"dough" | "fermentation" | "stretching" | "sauce" | "general" | "recipe" | "hydration"`.

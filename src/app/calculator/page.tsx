@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo } from "react";
+import { useEffect, useMemo } from "react";
 import { usePizzaStore } from "@/store/usePizzaStore";
 import { PIZZAIOLI } from "@/lib/pizzaioli";
 import { calcDough, fmt } from "@/lib/calculations";
@@ -11,6 +11,14 @@ import type { DoughMode } from "@/lib/types";
 export default function CalculatorPage() {
   const store = usePizzaStore();
   const { set, setFromPizzaiolo } = store;
+  const selectedPizzaiolo = PIZZAIOLI.find(p => p.id === store.selectedPizzaioloId);
+  const fallbackPizzaiolo = selectedPizzaiolo || PIZZAIOLI[0];
+
+  useEffect(() => {
+    if (!selectedPizzaiolo) {
+      setFromPizzaiolo(fallbackPizzaiolo.id, fallbackPizzaiolo.hydration, fallbackPizzaiolo.salt, fallbackPizzaiolo.yeast);
+    }
+  }, [selectedPizzaiolo, fallbackPizzaiolo, setFromPizzaiolo]);
 
   const result = useMemo(() =>
     calcDough({
@@ -19,13 +27,14 @@ export default function CalculatorPage() {
       ballWeight: store.ballWeight,
       flour: store.flourInput,
       water: store.waterInput,
-      hydration: store.hydration,
-      salt: store.salt,
-      yeast: store.yeast,
-      selectedPizzaioloId: store.selectedPizzaioloId,
+      hydration: selectedPizzaiolo ? store.hydration : fallbackPizzaiolo.hydration,
+      salt: selectedPizzaiolo ? store.salt : fallbackPizzaiolo.salt,
+      yeast: selectedPizzaiolo ? store.yeast : fallbackPizzaiolo.yeast,
+      selectedPizzaioloId: fallbackPizzaiolo.id,
     }),
     [store.doughMode, store.numPizzas, store.ballWeight, store.flourInput, store.waterInput,
-     store.hydration, store.salt, store.yeast, store.selectedPizzaioloId]
+     store.hydration, store.salt, store.yeast, store.selectedPizzaioloId,
+     selectedPizzaiolo, fallbackPizzaiolo]
   );
 
   const modes: { key: DoughMode; label: string }[] = [
@@ -54,7 +63,7 @@ export default function CalculatorPage() {
         <CardContent className="pt-4">
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">
             {PIZZAIOLI.map((p) => {
-              const active = store.selectedPizzaioloId === p.id;
+              const active = fallbackPizzaiolo.id === p.id;
               return (
                 <button
                   key={p.id}

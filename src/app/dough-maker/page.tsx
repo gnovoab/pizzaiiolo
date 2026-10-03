@@ -62,48 +62,6 @@ interface DoughBatchSummary {
   remainder: number;
 }
 
-// Neapolitan 2.0 tab baker's percentages (fixed, of total flour weight) —
-// derived from the published 2-stage recipe (500 g Nuvola + 500 g Pizzeria +
-// 640 g water + 24 g salt + 0.3 g yeast per 1,000 g total flour).
-const N2_NUVOLA_PCT = 0.5;
-const N2_PIZZERIA_PCT = 0.5;
-const N2_HYDRATION_PCT = 0.64;
-const N2_SALT_PCT = 0.024;
-const N2_YEAST_PCT = 0.0003;
-// Stage-1/stage-2 flour-addition split during mixing, each expressed as a
-// percentage of that flour type's own total (the published recipe adds
-// Nuvola and Pizzeria in different proportions at each stage).
-const N2_NUVOLA_FIRST_PCT = 0.7;
-const N2_NUVOLA_REMAINING_PCT = 0.3;
-const N2_PIZZERIA_FIRST_PCT = 0.4;
-const N2_PIZZERIA_REMAINING_PCT = 0.6;
-
-/** Single source of truth for every Neapolitan 2.0-tab quantity. */
-function calculateNeapolitan2Batch(flourWeight: number, ballWeight: number) {
-  const nuvola = flourWeight * N2_NUVOLA_PCT;
-  const pizzeria = flourWeight * N2_PIZZERIA_PCT;
-  const water = flourWeight * N2_HYDRATION_PCT;
-  const salt = flourWeight * N2_SALT_PCT;
-  const yeast = flourWeight * N2_YEAST_PCT;
-
-  const nuvolaFirst = nuvola * N2_NUVOLA_FIRST_PCT;
-  const nuvolaRemaining = nuvola * N2_NUVOLA_REMAINING_PCT;
-  const pizzeriaFirst = pizzeria * N2_PIZZERIA_FIRST_PCT;
-  const pizzeriaRemaining = pizzeria * N2_PIZZERIA_REMAINING_PCT;
-
-  const totalDough = flourWeight + water + salt + yeast;
-  const fullBalls = Math.max(1, Math.floor(totalDough / ballWeight));
-  const remainder = Math.max(0, totalDough - fullBalls * ballWeight);
-
-  return {
-    flourWeight, nuvola, pizzeria, water, salt,
-    yeastMin: yeast, yeastMax: yeast,
-    nuvolaFirst, nuvolaRemaining, pizzeriaFirst, pizzeriaRemaining,
-    totalDoughMin: totalDough,
-    ballWeight, fullBalls, remainder,
-  } satisfies DoughBatchSummary & Record<string, number>;
-}
-
 // Poolish tab baker's percentages (fixed, of total flour weight) — derived
 // from the published 100% Poolish + cold-ferment recipe (500 g Nuvola in the
 // poolish stage + 500 g Pizzeria in the final mix, 670 g total water, 24 g
@@ -148,13 +106,6 @@ export default function DoughMakerPage() {
 
   const batch = useMemo(() => calculateDoughBatch(flourAmount, ballWeight), [flourAmount, ballWeight]);
 
-  const [neapolitan2FlourAmount, setNeapolitan2FlourAmount] = useState(1000);
-  const [neapolitan2BallWeight, setNeapolitan2BallWeight] = useState(275);
-  const neapolitan2Batch = useMemo(
-    () => calculateNeapolitan2Batch(neapolitan2FlourAmount, neapolitan2BallWeight),
-    [neapolitan2FlourAmount, neapolitan2BallWeight]
-  );
-
   const [poolishFlourAmount, setPoolishFlourAmount] = useState(1000);
   const [poolishBallWeight, setPoolishBallWeight] = useState(280);
   const poolishBatch = useMemo(
@@ -187,7 +138,6 @@ export default function DoughMakerPage() {
       <Tabs defaultValue="neapolitan">
         <TabsList>
           <TabsTrigger value="neapolitan">🇮🇹 Neapolitan Pizza</TabsTrigger>
-          <TabsTrigger value="neapolitan2">🇮🇹 Neapolitan 2.0</TabsTrigger>
           <TabsTrigger value="poolish">🫧 Poolish</TabsTrigger>
           <TabsTrigger value="roman">🇮🇹 Roman Thin Pizza</TabsTrigger>
           <TabsTrigger value="sicilian">🇮🇹 Sicilian-Style Pizza</TabsTrigger>
@@ -387,78 +337,6 @@ export default function DoughMakerPage() {
             <div className="text-[11px] uppercase tracking-[0.15em] text-secondary font-semibold mb-2">Dough Maker Principle</div>
             <p className="font-serif text-lg italic text-foreground">&ldquo;Control the dough temperature. Control the fermentation. Protect the gas. Then let the oven do the work.&rdquo;</p>
           </div>
-        </TabsContent>
-
-        <TabsContent value="neapolitan2" className="space-y-6 mt-4">
-          <p className="text-[15px] text-muted-foreground italic border-l-2 border-primary/30 pl-3 leading-relaxed">
-            <HighlightNumbers text="Eric Ayala's updated 2-stage pizza dough recipe, scaled for the Famag IM 5-S-10V (HH) spiral mixer. Because this process relies on long, cool fermentations instead of heat, the Famag is used solely for mixing and kneading — there is no heated program to worry about." />
-          </p>
-
-          <Section number={1} title="Ingredients" subtitle={`${formatWeight(neapolitan2Batch.flourWeight)} total flour — 50/50 Nuvola & Pizzeria`}>
-            <div className="grid sm:grid-cols-2 gap-4 mb-5">
-              <Field label="Total Flour (g)" value={neapolitan2FlourAmount} onChange={setNeapolitan2FlourAmount} min={1000} max={3000} step={10} />
-              <Field label="Dough Ball Size (g)" value={neapolitan2BallWeight} onChange={setNeapolitan2BallWeight} min={200} max={400} step={5} />
-            </div>
-
-            <BatchSummary batch={neapolitan2Batch} />
-
-            <Subhead className="mt-5">Current Recipe</Subhead>
-            <Bullets items={[
-              `${formatWeight(neapolitan2Batch.nuvola)} Caputo Nuvola Flour — gives the airy, high-volume cornicione (rim)`,
-              `${formatWeight(neapolitan2Batch.pizzeria)} Caputo Pizzeria 00 Flour — provides traditional texture and strength`,
-              `${formatWeight(neapolitan2Batch.water)} cool tap water — ~64% hydration for a soft, light dough`,
-              `${formatWeight(neapolitan2Batch.salt)} fine sea salt — ~2.4% salt`,
-              `${formatWeightPrecise(neapolitan2Batch.yeastMin)} Caputo dry yeast — a tiny speck (approx. 1/8 tsp)`,
-              "Caputo Semolina Rimacinata, as needed — for dusting the work surface when shaping",
-            ]} />
-            <Callout>👉 Choose your flour quantity above and every ingredient scales automatically using the same baker&apos;s percentages.</Callout>
-          </Section>
-
-          <Section number={2} title="Mixing in the Famag" subtitle="8–10 minutes, Speed 1–5">
-            <ol className="space-y-1.5">
-              {[
-                `0–1 min (Speed 1, 90 RPM): Pour the ${formatWeight(neapolitan2Batch.water)} cool tap water into the bowl and dissolve the tiny speck (${formatWeightPrecise(neapolitan2Batch.yeastMin)}) of Caputo dry yeast`,
-                `1–3 min (Speed 1–2): Add the first portion of flour (${formatWeight(neapolitan2Batch.nuvolaFirst)} Nuvola + ${formatWeight(neapolitan2Batch.pizzeriaFirst)} Pizzeria); mix until a smooth batter forms around the breaker bar`,
-                `3–5 min (Speed 2–3): Add the ${formatWeight(neapolitan2Batch.salt)} salt and the remaining flour (${formatWeight(neapolitan2Batch.nuvolaRemaining)} Nuvola + ${formatWeight(neapolitan2Batch.pizzeriaRemaining)} Pizzeria); mix until no dry flour remains`,
-                "5–9 min (Speed 4–5): Build the gluten matrix until the dough detaches cleanly from the bowl sides into a smooth ring",
-              ].map((t, i) => (
-                <li key={t} className="text-[15px] flex gap-2.5 leading-relaxed">
-                  <span className="font-mono font-semibold text-primary shrink-0">{i + 1}.</span>
-                  <span><HighlightNumbers text={t} /></span>
-                </li>
-              ))}
-            </ol>
-            <Callout>💡 The Famag is used for mixing and kneading only — no heated or proving cycle to worry about. Target total knead time: 8–10 minutes.</Callout>
-          </Section>
-
-          <Section number={3} title="1st Ferment" subtitle="Bulk rest at ~15°C">
-            <Bullets items={[
-              "Remove the dough from the pan and place it into a lightly oiled container with a lid",
-              "Rest the whole block of dough in a cool spot (around 15°C–16°C, e.g., a wine cellar or cool room) for 18 to 21 hours",
-              "The dough will expand significantly despite the minimal yeast",
-            ]} />
-          </Section>
-
-          <Section number={4} title="Balling (Staglio) & 2nd Ferment">
-            <p className="text-[15px] mb-3">
-              Divide the dough into <span className="font-semibold text-primary">{formatWeight(neapolitan2BallWeight)}</span> portions, producing{" "}
-              <span className="font-semibold text-primary">{neapolitan2Batch.fullBalls} dough ball{neapolitan2Batch.fullBalls === 1 ? "" : "s"}</span>
-              {neapolitan2Batch.remainder > 0.5 ? <> plus approximately <span className="font-semibold text-primary">{formatWeight(neapolitan2Batch.remainder)}</span> remaining dough</> : null}.
-            </p>
-            <Bullets items={[
-              "Dump the relaxed dough onto your surface",
-              "Gently divide into equal balls without overworking or squeezing out all the air",
-              "Place the dough balls into a covered dough box or container and rest at room temperature (20°C–22°C) for 8 to 10 hours until puffy and soft",
-            ]} />
-          </Section>
-
-          <Section number={5} title="Stretching & Baking">
-            <Bullets items={[
-              "Generously coat your work surface with Caputo Semolina Rimacinata",
-              "Gently press the air out from the center toward the edges to build the outer rim (cornicione)",
-              "Stretch, top with San Marzano tomatoes and mozzarella, and bake at the highest temperature your oven can reach",
-            ]} />
-          </Section>
         </TabsContent>
 
         <TabsContent value="poolish" className="space-y-6 mt-4">

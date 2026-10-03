@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo } from "react";
+import { useEffect, useMemo } from "react";
 import { usePizzaStore } from "@/store/usePizzaStore";
 import { PIZZAIOLI } from "@/lib/pizzaioli";
 import { calcDough, calcWaterTemp, fmt } from "@/lib/calculations";
@@ -14,7 +14,14 @@ export default function CreatePizzaPage() {
   const store = usePizzaStore();
   const { set, setFromPizzaiolo } = store;
 
-  const pizzaiolo = PIZZAIOLI.find(p => p.id === store.selectedPizzaioloId) || PIZZAIOLI[0];
+  const selectedPizzaiolo = PIZZAIOLI.find(p => p.id === store.selectedPizzaioloId);
+  const pizzaiolo = selectedPizzaiolo || PIZZAIOLI[0];
+  useEffect(() => {
+    if (!selectedPizzaiolo) {
+      setFromPizzaiolo(pizzaiolo.id, pizzaiolo.hydration, pizzaiolo.salt, pizzaiolo.yeast);
+    }
+  }, [selectedPizzaiolo, pizzaiolo, setFromPizzaiolo]);
+  const isVincenzo = pizzaiolo.id === "vincenzo-esposito";
 
   const result = useMemo(() =>
     calcDough({
@@ -30,19 +37,33 @@ export default function CreatePizzaPage() {
     }),
     [store.doughMode, store.numPizzas, store.ballWeight, store.flourInput, store.waterInput, pizzaiolo]
   );
+  const initialWater = result.water * 0.96;
+  const reservedWater = result.water - initialWater;
+  const resultBallWeight = store.doughMode === "pizzas"
+    ? store.ballWeight
+    : Math.round(result.totalDough / result.numPizzas);
 
   const steps = useMemo(() => buildRecipeSteps(pizzaiolo, result), [pizzaiolo, result]);
 
-  const waterTemp = useMemo(
-    () => calcWaterTemp(store.roomTempForWater, store.flourTemp, store.frictionFactor),
-    [store.roomTempForWater, store.flourTemp, store.frictionFactor]
-  );
+  const waterTemp = useMemo(() => {
+    const baseTemp = calcWaterTemp(store.roomTempForWater, store.flourTemp, store.frictionFactor);
+    return isVincenzo ? baseTemp + 1.5 : baseTemp;
+  }, [store.roomTempForWater, store.flourTemp, store.frictionFactor, isVincenzo]);
 
   const plan = useMemo(
     () => calcBakePlan(store.bakeDate, store.bakeTime, pizzaiolo.fermentationMin, pizzaiolo.fermentationMax),
     [store.bakeDate, store.bakeTime, pizzaiolo]
   );
-  const events = useMemo(() => buildBakeEvents(plan, store.roomTemp, store.fridgeTemp), [plan, store.roomTemp, store.fridgeTemp]);
+  const events = useMemo(() => {
+    if (!isVincenzo || plan.type !== "room-temp") return buildBakeEvents(plan, store.roomTemp, store.fridgeTemp);
+    const mixTime = new Date(plan.bakeTime.getTime() - 12.5 * 60 * 60 * 1000);
+    const ballTime = new Date(mixTime.getTime() + 30 * 60 * 1000);
+    return [
+      { label: "Mix Dough", time: mixTime, icon: "🥣", desc: "Mix and develop; target 23–24°C final dough temperature." },
+      { label: "Ball & Begin Fermentation", time: ballTime, icon: "⚽", desc: "After the 30-minute initial rest, divide and ball. 12h 00m room-temperature fermentation starts now, after balling." },
+      { label: "Bake! 🔥", time: plan.bakeTime, icon: "🍕", desc: "Open gently and bake." },
+    ];
+  }, [plan, store.roomTemp, store.fridgeTemp, isVincenzo]);
   const isRoomTemp = plan.type === "room-temp";
 
   const modes: { key: DoughMode; label: string }[] = [
@@ -64,11 +85,16 @@ export default function CreatePizzaPage() {
       <NumberedCard n={1} title="Pick a Pizzaiolo">
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">
           {PIZZAIOLI.map((p) => {
-            const active = store.selectedPizzaioloId === p.id;
+            const active = pizzaiolo.id === p.id;
             return (
               <button
                 key={p.id}
-                onClick={() => setFromPizzaiolo(p.id, p.hydration, p.salt, p.yeast)}
+                onClick={() => {
+                  setFromPizzaiolo(p.id, p.hydration, p.salt, p.yeast);
+                  if (p.id === "vincenzo-esposito") {
+                    set({ doughMode: "flour", flourInput: 1000, ballWeight: 276, numPizzas: 6 });
+                  }
+                }}
                 className="relative overflow-hidden p-3 pt-4 rounded-xl border text-left transition-all hover:-translate-y-0.5 hover:shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-primary"
                 style={{
                   borderColor: active ? p.color : "var(--border)",
@@ -79,7 +105,7 @@ export default function CreatePizzaPage() {
                 <div className="font-serif font-semibold text-sm leading-tight text-foreground">{p.name}</div>
                 <div className="text-xs text-muted-foreground italic mt-0.5">{p.style}</div>
                 <div className="mt-2 flex gap-1 flex-wrap">
-                  <span className="bg-muted rounded px-1.5 py-0.5 text-[10px] font-mono">{Math.round(p.hydration * 100)}% H</span>
+                  <span className="bg-muted rounded px-1.5 py-0.5 text-[10px] font-mono">{(p.hydration * 100).toFixed(p.id === "vincenzo-esposito" ? 1 : 0)}% H</span>
                   {p.preferment && (
                     <span className="rounded px-1.5 py-0.5 text-[10px] font-medium uppercase tracking-wide" style={{ backgroundColor: p.color + "22", color: p.color }}>
                       {p.preferment}
@@ -177,7 +203,7 @@ export default function CreatePizzaPage() {
         )}
         <p className="text-sm text-muted-foreground italic border-l-2 border-primary/30 pl-3 mt-1">
           Hydration, salt and yeast are locked to <span style={{ color: pizzaiolo.color }} className="font-semibold not-italic">{pizzaiolo.name}</span>&apos;s
-          recipe ({Math.round(pizzaiolo.hydration * 100)}% / {(pizzaiolo.salt * 100).toFixed(1)}% / {(pizzaiolo.yeast * 100).toFixed(2)}%).
+          recipe ({(pizzaiolo.hydration * 100).toFixed(isVincenzo ? 1 : 0)}% / {(pizzaiolo.salt * 100).toFixed(isVincenzo ? 3 : 1)}% / {isVincenzo ? "~" : ""}{(pizzaiolo.yeast * 100).toFixed(2)}%).
         </p>
       </NumberedCard>
 
@@ -186,7 +212,7 @@ export default function CreatePizzaPage() {
           <CardTitle className="font-serif text-xl flex items-center gap-3 flex-wrap">
             <span className="inline-flex items-center justify-center w-9 h-9 rounded-full bg-primary text-primary-foreground font-serif font-semibold text-base shadow-sm shrink-0">★</span>
             <span>Your Recipe</span>
-            <Badge variant="outline" className="text-primary border-primary/40 text-[10px] uppercase tracking-wider ml-auto">{result.numPizzas} × {fmt(store.ballWeight, 0)}g</Badge>
+            <Badge variant="outline" className="text-primary border-primary/40 text-[10px] uppercase tracking-wider ml-auto">{result.numPizzas} × {fmt(resultBallWeight, 0)}g</Badge>
           </CardTitle>
         </CardHeader>
         <CardContent className="pt-4 grid grid-cols-2 sm:grid-cols-4 gap-3">
@@ -198,32 +224,105 @@ export default function CreatePizzaPage() {
           ].map(({ label, value }) => (
             <div key={label} className="rounded-lg border border-border bg-muted/30 p-3">
               <div className="text-[10px] uppercase tracking-[0.15em] text-secondary font-semibold">{label}</div>
-              <div className="font-mono font-bold text-primary text-lg mt-1">{fmt(value, 1)} g</div>
+              <div className="font-mono font-bold text-primary text-lg mt-1">{fmt(value, isVincenzo ? label === "Salt" ? 2 : label === "Yeast" ? 2 : 0 : 1)} g</div>
             </div>
           ))}
         </CardContent>
       </Card>
 
-      <NumberedCard n={3} title="Water Temperature" subtitle="Famag spiral mixer — Ff 3.0°C">
+      {isVincenzo && (
+        <div className="space-y-5">
+          <Card className="border-primary/30">
+            <CardHeader className="pb-3 border-b border-border/60">
+              <CardTitle className="font-serif text-xl">Published recipe &amp; provenance</CardTitle>
+            </CardHeader>
+            <CardContent className="pt-4 space-y-3 text-[15px] leading-relaxed">
+              <p><strong>Pizza Sarchiapone</strong> is the published formula associated with Vincenzo Esposito of Pizzeria Carmnella, Naples: 800g flour, 500g water, 25g salt and 1.5g fresh yeast. That is 62.5% hydration, 3.125% salt and 0.1875% fresh yeast. This scaled 1kg batch uses 625g water, 31.25g salt and approximately 0.60g instant dry yeast (about 1.875g fresh yeast equivalent); the instant yeast is a home conversion, not a claim about Esposito&apos;s exact yeast quantity.</p>
+              <div className="grid sm:grid-cols-2 gap-3">
+                <div className="rounded-lg border border-border bg-muted/30 p-3">
+                  <div className="text-[11px] uppercase tracking-[0.15em] text-secondary font-semibold mb-1">Published by Vincenzo Esposito</div>
+                  <p>Ingredient quantities, direct dough, and at least 12 hours of room-temperature fermentation after balling.</p>
+                </div>
+                <div className="rounded-lg border border-primary/30 bg-primary/5 p-3">
+                  <div className="text-[11px] uppercase tracking-[0.15em] text-secondary font-semibold mb-1">Home / Famag method</div>
+                  <p>Speed 0/1/5, staged 600 + 25g water, machine mixing times and 23–24°C final dough temperature are practical home reproduction instructions, not Carmnella instructions.</p>
+                </div>
+              </div>
+              <p>This is a specific published recipe, not a claim that it is Carmnella&apos;s current universal dough for every pizza. Refrigeration is a separate home adaptation and is not part of the published method.</p>
+              <p className="text-muted-foreground">At 1kg flour, the batch is approximately 1,657g: six 276g balls use essentially the whole batch, or five 280g balls leave about 257g for another pizza. A 280g ball is a useful starting point for a 30cm pizza.</p>
+            </CardContent>
+          </Card>
+
+          <Card>
+            <CardHeader className="pb-3 border-b border-border/60">
+              <CardTitle className="font-serif text-xl">Famag IM5-S-10V-HH mixing method</CardTitle>
+            </CardHeader>
+            <CardContent className="pt-4 space-y-5 text-[15px] leading-relaxed">
+              <p>The 1kg flour reference batch uses exactly 625g total water: 600g initial water and 25g reserved for final hydration. For the current scaled batch, total water is {fmt(result.water, 0)}g, split into {fmt(initialWater, 0)}g initial and {fmt(reservedWater, 0)}g reserved water. Weigh the reserved portion into a separate small jug before starting the mixer; add it progressively rather than measuring it directly into the moving mixer. This develops the dough first at approximately 60% hydration before incorporating the remainder.</p>
+              <ol className="space-y-3">
+                <li><strong>Speed 0 · 30–60 sec:</strong> Mix {fmt(result.flour, 0)}g flour with {fmt(result.yeast, 2)}g instant yeast to distribute the yeast evenly.</li>
+                <li><strong>Speed 1 · 60–90 sec addition:</strong> Gradually add {fmt(initialWater, 0)}g water. Continue at Speed 1 for about 4–6 minutes from the start of the water addition. Look for loose flour to disappear, dough gathering around the spiral, a cleaner bowl, increasing elasticity, and a rough rounded shape around the spiral and breaker bar. It need not be smooth yet.</li>
+                <li><strong>Speed 5:</strong> Add the reserved {fmt(reservedWater, 0)}g water gradually, about 5–10g at a time. Wait for the water to absorb and for the dough to become cohesive again before adding the next portion. Do not add the next portion while water is still visibly loose around the dough; the additions need not be exactly 5g.</li>
+                <li><strong>Salt &amp; finish:</strong> Add {fmt(result.salt, 2)}g fine salt toward the latter part of mixing, once most water is incorporated. Continue at Speed 5 for about 1–2 minutes, stopping when the dough is smooth, elastic, cohesive, supple and slightly tacky, and largely cleans the bowl.</li>
+              </ol>
+              <p><strong>Temperature and timing:</strong> Target a final dough temperature of 23–24°C. Total mixing time is usually about 8–12 minutes. The times are starting points, not hard stops; judge the dough by its condition and measured final temperature rather than trying to hit an exact timer. Avoid overheating.</p>
+              <div className="rounded-lg border border-border bg-muted/30 p-3 space-y-2 text-sm">
+                <p><strong>If water remains around the dough:</strong> pause additions and wait for absorption. If the dough turns very wet, let it regain structure before continuing. If it feels stiff, first check that the full {fmt(result.water, 0)}g water is incorporated; don&apos;t add extra water when reproducing the published formula.</p>
+                <p><strong>If the dough gets hot or tears:</strong> stop and check its temperature. If it tears easily, continue development briefly and reassess. Adjust water temperature on the next batch if the mixer generates excess heat.</p>
+              </div>
+              <p className="text-muted-foreground">These Speed 0 / 1 / 5 settings and the staged water addition describe the home Famag method, not extra instructions from the published Carmnella formula.</p>
+            </CardContent>
+          </Card>
+
+          <Card>
+            <CardHeader className="pb-3 border-b border-border/60">
+              <CardTitle className="font-serif text-xl">First Batch Checkpoints</CardTitle>
+            </CardHeader>
+            <CardContent className="pt-4 grid sm:grid-cols-2 gap-x-6 gap-y-2 text-[15px]">
+              {[
+                ["Flour", "1000 g"], ["Total water", "625 g"],
+                ["Initial water", "600 g"], ["Reserved water", "25 g"],
+                ["Hydration", "62.5%"], ["Fine salt", "31.25 g"],
+                ["Instant dry yeast", "~0.60 g"], ["Final dough temperature", "23–24°C"],
+                ["Initial rest", "30 min"], ["Ball fermentation", "Minimum 12 h at room temperature"],
+                ["Six equal dough balls", "~276 g each; essentially the whole batch"], ["Alternative yield", "5 × 280 g + ~257 g remainder"],
+                ["Starting Gozney stone temperature", "430–450°C"],
+              ].map(([label, value]) => (
+                <div key={label} className="flex justify-between gap-3 border-b border-border/40 py-1.5">
+                  <span className="text-muted-foreground">{label}</span>
+                  <span className="font-mono text-right">{value}</span>
+                </div>
+              ))}
+            </CardContent>
+          </Card>
+        </div>
+      )}
+
+      <NumberedCard n={3} title="Water Temperature" subtitle={isVincenzo ? "Calculated starting estimate — adjust to the measured final dough temperature" : "Famag spiral mixer — Ff 3.0°C"}>
         <div className="grid sm:grid-cols-3 gap-3">
           <Field label="Room Temp (°C)" value={store.roomTempForWater} onChange={v => set({ roomTempForWater: v })} min={10} max={35} step={1} />
           <Field label="Flour Temp (°C)" value={store.flourTemp} onChange={v => set({ flourTemp: v })} min={5} max={30} step={1} />
-          <Field label="Friction Factor (°C)" value={store.frictionFactor} onChange={v => set({ frictionFactor: v })} min={0} max={10} step={0.5} />
+          <Field label={isVincenzo ? "Mixer friction estimate (°C)" : "Friction Factor (°C)"} value={store.frictionFactor} onChange={v => set({ frictionFactor: v })} min={0} max={10} step={0.5} />
         </div>
         <div className="mt-2 flex justify-between items-baseline bg-primary/8 border border-primary/20 rounded-lg px-3 py-2.5" style={{ backgroundColor: "rgba(194,65,12,0.08)" }}>
-          <span className="font-serif text-base font-semibold">Target Water Temp</span>
+          <span className="font-serif text-base font-semibold">{isVincenzo ? "Calculated Starting Water Temperature" : "Target Water Temp"}</span>
           <span className="font-mono font-bold text-primary text-lg">{fmt(waterTemp, 1)}°C</span>
         </div>
+        {isVincenzo && (
+          <p className="text-sm text-muted-foreground italic leading-relaxed">
+            This calculated temperature is a starting point (about 22.5°C with the current default inputs), not an absolute Famag specification. Mixer friction varies with flour quantity, speed, mixing time and dough consistency; adjust the water temperature based on the measured final dough temperature. Target 23–24°C. The friction estimate is adjustable and is not universal.
+          </p>
+        )}
         {waterTemp < 5 ? (
           <div className="flex items-center gap-2 px-3 py-2 rounded-lg text-sm font-medium w-fit bg-blue-700/10 text-blue-800 border border-blue-700/30">
-            🧊 Use ice-chilled water — target is near or below fridge temperature.
+            {isVincenzo ? "🧊 Starting estimate is near or below fridge temperature; use appropriately chilled water and check the final dough temperature." : "🧊 Use ice-chilled water — target is near or below fridge temperature."}
           </div>
         ) : waterTemp < 15 ? (
           <div className="flex items-center gap-2 px-3 py-2 rounded-lg text-sm font-medium w-fit bg-blue-700/10 text-blue-800 border border-blue-700/30">
-            ❄️ Use refrigerated water for this batch to hit the target dough temp.
+            {isVincenzo ? "❄️ Use refrigerated water near this starting estimate, then check and adjust based on final dough temperature." : "❄️ Use refrigerated water for this batch to hit the target dough temp."}
           </div>
         ) : (
-          <p className="text-sm text-muted-foreground italic">Cool tap water should be sufficient to reach this target.</p>
+          <p className="text-sm text-muted-foreground italic">{isVincenzo ? "Start near this calculated temperature and adjust based on the measured final dough temperature." : "Cool tap water should be sufficient to reach this target."}</p>
         )}
       </NumberedCard>
 
