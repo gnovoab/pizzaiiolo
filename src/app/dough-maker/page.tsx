@@ -4,14 +4,16 @@ import { useMemo, useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 
-// Neapolitan Pizza tab baker's percentages (fixed, of flour weight) — the
-// single source of truth every dynamic quantity in that tab is derived from.
-const NEAPOLITAN_HYDRATION_PCT = 0.62;
+// Neapolitan Pizza tab baker's percentages (fixed, of total flour weight).
+const NEAPOLITAN_HYDRATION_PCT = 0.63;
 const NEAPOLITAN_SALT_PCT = 0.024;
 const NEAPOLITAN_YEAST_MIN_PCT = 0.0006;
-const NEAPOLITAN_YEAST_MAX_PCT = 0.001;
+const NEAPOLITAN_YEAST_MAX_PCT = 0.0006;
 const NEAPOLITAN_FIRST_FLOUR_PCT = 0.70;
 const NEAPOLITAN_REMAINING_FLOUR_PCT = 0.30;
+const NEAPOLITAN_CAPUTO_00_PCT = 0.50;
+const NEAPOLITAN_NUVOLA_PCT = 0.50;
+const NEAPOLITAN_INITIAL_WATER_PCT = 570 / 630;
 
 /**
  * Single source of truth for every Neapolitan-tab quantity that depends on
@@ -23,9 +25,17 @@ function calculateDoughBatch(flourWeight: number, ballWeight: number) {
   const salt = flourWeight * NEAPOLITAN_SALT_PCT;
   const yeastMin = flourWeight * NEAPOLITAN_YEAST_MIN_PCT;
   const yeastMax = flourWeight * NEAPOLITAN_YEAST_MAX_PCT;
+  const caputo00 = flourWeight * NEAPOLITAN_CAPUTO_00_PCT;
+  const nuvola = flourWeight * NEAPOLITAN_NUVOLA_PCT;
+  const initialWater = water * NEAPOLITAN_INITIAL_WATER_PCT;
+  const reservedWater = water - initialWater;
 
   const firstFlour = flourWeight * NEAPOLITAN_FIRST_FLOUR_PCT;
   const remainingFlour = flourWeight * NEAPOLITAN_REMAINING_FLOUR_PCT;
+  const firstCaputo00 = firstFlour * NEAPOLITAN_CAPUTO_00_PCT;
+  const firstNuvola = firstFlour * NEAPOLITAN_NUVOLA_PCT;
+  const remainingCaputo00 = remainingFlour * NEAPOLITAN_CAPUTO_00_PCT;
+  const remainingNuvola = remainingFlour * NEAPOLITAN_NUVOLA_PCT;
 
   const totalDoughMin = flourWeight + water + salt + yeastMin;
   const totalDoughMax = flourWeight + water + salt + yeastMax;
@@ -39,8 +49,16 @@ function calculateDoughBatch(flourWeight: number, ballWeight: number) {
     salt,
     yeastMin,
     yeastMax,
+    caputo00,
+    nuvola,
+    initialWater,
+    reservedWater,
     firstFlour,
     remainingFlour,
+    firstCaputo00,
+    firstNuvola,
+    remainingCaputo00,
+    remainingNuvola,
     totalDoughMin,
     totalDoughMax,
     ballWeight,
@@ -101,8 +119,8 @@ function calculatePoolishBatch(flourWeight: number, ballWeight: number) {
 }
 
 export default function DoughMakerPage() {
-  const [flourAmount, setFlourAmount] = useState(1000);
-  const [ballWeight, setBallWeight] = useState(280);
+  const [flourAmount, setFlourAmount] = useState(2000);
+  const [ballWeight, setBallWeight] = useState(275.7);
 
   const batch = useMemo(() => calculateDoughBatch(flourAmount, ballWeight), [flourAmount, ballWeight]);
 
@@ -119,7 +137,7 @@ export default function DoughMakerPage() {
         <p className="text-[11px] uppercase tracking-[0.4em] text-secondary font-medium">L&apos;Impasto</p>
         <h1 className="font-serif text-4xl sm:text-5xl font-semibold mt-3 text-foreground">Dough Maker</h1>
         <p className="text-muted-foreground text-base mt-3 max-w-xl mx-auto italic">
-          Neapolitan, Deep Dish, Detroit-Style, NY, Roman &amp; Sicilian doughs from your spiral mixer — 1,000–3,000 g flour batches (Caputo 00 &amp; Nuvola), Famag IM 5-S-10V (HH).
+          Neapolitan, Deep Dish, Detroit-Style, NY, Roman &amp; Sicilian doughs from your spiral mixer — 500–3,000 g flour batches (Caputo 00 &amp; Nuvola), Famag IM 5-S-10V (HH).
         </p>
       </div>
 
@@ -147,183 +165,173 @@ export default function DoughMakerPage() {
         </TabsList>
 
         <TabsContent value="neapolitan" className="space-y-6 mt-4">
-          <Section number={1} title="Ingredients" subtitle={`${formatWeight(flourAmount)} flour — Neapolitan style`}>
+          <Section number={1} title="Formula" subtitle={`${formatWeight(flourAmount)} total flour — 50% Caputo 00 + 50% Caputo Nuvola`}>
             <div className="grid sm:grid-cols-2 gap-4 mb-5">
-              <Field label="Flour (g)" value={flourAmount} onChange={setFlourAmount} min={1000} max={3000} step={10} />
-              <Field label="Dough Ball Size (g)" value={ballWeight} onChange={setBallWeight} min={200} max={400} step={10} />
+              <Field label="Flour (g)" value={flourAmount} onChange={setFlourAmount} min={500} max={3000} step={10} />
+              <Field label="Dough Ball Size (g)" value={ballWeight} onChange={setBallWeight} min={200} max={400} step={0.1} />
             </div>
 
             <BatchSummary batch={batch} />
 
-            <Subhead className="mt-5">Current Recipe</Subhead>
+            <Subhead className="mt-5">Recipe at this flour weight</Subhead>
             <Bullets items={[
-              `${formatWeight(batch.flourWeight)} 00 flour (Caputo Pizzeria)`,
-              `${formatWeight(batch.water)} water`,
-              `${formatWeight(batch.salt)} salt`,
-              `${formatYeast(batch.yeastMin, batch.yeastMax)} instant dry yeast`,
+              `${formatWeight(batch.caputo00)} Caputo 00 flour`,
+              `${formatWeight(batch.nuvola)} Caputo Nuvola flour`,
+              `${formatWeight(batch.water)} water — 63%`,
+              `${formatWeight(batch.salt)} fine salt — 2.4%`,
+              `${formatYeast(batch.yeastMin, batch.yeastMax)} fresh yeast — 0.06%`,
+              `Total: ${fmtG(batch.totalDoughMin, 1)} g`,
+              `→ ${batch.fullBalls} × ~${fmtG(batch.totalDoughMin / batch.fullBalls, 0)} g dough balls`,
             ]} />
-            <Callout>👉 This is a classic slow-fermentation Neapolitan dough. Choose your flour quantity above and all ingredient quantities scale automatically using the same baker&apos;s percentages.</Callout>
+            <Callout>All quantities scale from the formula above. The default 1,000 g flour batch makes approximately 1,654.6 g dough, or six portions of about 276 g.</Callout>
           </Section>
 
-          <Section number={2} title="Famag Spiral Mixer Timeline" subtitle="8–10 minutes total — staged mixing">
-            <Subhead>In your Famag IM 5-S-10V (HH)</Subhead>
+          <Section number={2} title="Prepare the Water" subtitle="Famag home method">
             <Bullets items={[
-              `0–1 min · Speed 1 — Pour the ${formatWeight(batch.water)} cold water into the bowl and dissolve the yeast (${formatYeast(batch.yeastMin, batch.yeastMax)})`,
-              `1–3 min · Speed 1–2 — Add approximately ${formatWeight(batch.firstFlour)} of the flour (~70%); mix until a smooth batter forms and the flour is fully hydrated.`,
-              `3–5 min · Speed 2–3 — Add ${formatWeight(batch.salt)} fine sea salt and the remaining ${formatWeight(batch.remainingFlour)} of the flour (~30%); mix until no dry flour remains`,
-              "5–9/10 min · Speed 4–5 — Increase speed to build the gluten matrix until the dough detaches cleanly from the bowl sides into a smooth ring",
+              `${formatWeight(batch.water)} total water: ${formatWeight(batch.initialWater)} for the initial mix and ${formatWeight(batch.reservedWater)} held back`,
+              "Use cool water, not warm. Because the Famag generates heat, ice-cold water is usually unnecessary unless the kitchen is particularly warm.",
+              "Target final dough temperature: 23–25°C.",
             ]} />
-            <Callout>💡 Keep salt and yeast separated at first — important for yeast health. Target total knead time: 8–10 minutes.</Callout>
+            <Callout>For the 1,000 g flour batch, split 630 g water into 570 g initial water + 60 g held back.</Callout>
           </Section>
 
-          <Section number={3} title="Equipment">
+          <Section number={3} title="Water & Yeast" subtitle="0–2 minutes — Speed 1">
             <Bullets items={[
-              "Mixer: Famag IM 5-S-10V (HH)",
-              "Flour: Caputo Pizzeria 00",
-              "Optional flour: Caputo Nuvola — see flour variations",
-              "Opening/stretching flour: Caputo Semola Rimacinata",
-              "Oven: Gozney Arc",
+              `Add ${formatWeight(batch.initialWater)} water and ${formatYeast(batch.yeastMin, batch.yeastMax)} fresh yeast to the Famag bowl.`,
+              "Mix at Speed 1 for a full 1–2 minutes to disperse the yeast.",
             ]} />
           </Section>
 
-          <Section number={4} title="After Mixing — Puntata" subtitle="Initial rest: 45–60 minutes at room temperature">
-            <p className="text-[15px] mb-3 leading-relaxed">
-              <HighlightNumbers text="This is a short initial rest right after mixing — it lets the gluten relax before the dough is divided into balls. This recipe uses the main fermentation as dough balls, not as a single bulk mass." />
-            </p>
+          <Section number={4} title="Add the Flour & Salt" subtitle="2–5 minutes — staged flour addition">
             <Bullets items={[
-              "Tip the dough out if needed",
-              "Gently fold/tighten",
-              "Cover",
-              "Rest 45–60 minutes",
+              `2–4 min · Speed 1–2: Add ${formatWeight(batch.firstFlour)} flour progressively (70% of total; approximately ${formatWeight(batch.firstCaputo00)} Caputo 00 + ${formatWeight(batch.firstNuvola)} Nuvola). Let it hydrate and form a cohesive mixture.`,
+              `4–5 min · Speed 2–3: Add the remaining ${formatWeight(batch.remainingFlour)} flour (approximately ${formatWeight(batch.remainingCaputo00)} Caputo 00 + ${formatWeight(batch.remainingNuvola)} Nuvola) and ${formatWeight(batch.salt)} fine salt. Mix until no dry flour remains.`,
             ]} />
           </Section>
 
-          <Section number={5} title="Staglio — Divide & Ball">
-            <p className="text-[15px] mb-3">
-              Divide the dough into <span className="font-semibold text-primary">{formatWeight(ballWeight)}</span> portions, producing{" "}
-              <span className="font-semibold text-primary">{batch.fullBalls} full dough ball{batch.fullBalls === 1 ? "" : "s"}</span>
-              {batch.remainder > 0.5 ? <> plus approximately <span className="font-semibold text-primary">{formatWeight(batch.remainder)}</span> remaining dough</> : null}.
-            </p>
+          <Section number={5} title="Add the Held-Back Water" subtitle="Around minute 5 onward — Speed 2–3, batch-size dependent">
             <Bullets items={[
-              "Divide accurately on a scale",
-              "Shape into smooth, taut balls",
-              "Keep the seam underneath",
-              "Place into a covered dough tray/container",
+              `At ${formatWeight(flourAmount)} flour, ${formatWeight(batch.reservedWater)} water remains. Add it gradually at Speed 2–3, in portions of about ${formatWeight(batch.reservedWater / 4)} each, waiting for each addition to absorb before adding the next.`,
+              "The dough will progressively become smoother and more elastic. Do not add all the held-back water at once.",
             ]} />
+            <Callout>{`For this batch, an example is ${Array.from({ length: 4 }, () => `${formatWeight(batch.reservedWater / 4)} → absorb (~30–45 seconds)`).join(" → ")}. The portions do not need to be exactly ${formatWeight(batch.reservedWater / 4)}. These times are a 1 kg batch starting guide: larger flour batches have more held-back water to absorb, so each addition can take longer. Wait for the dough to become cohesive again before adding more.`}</Callout>
           </Section>
 
-          <Section number={6} title="Fermentation Options">
-            <div className="grid sm:grid-cols-2 gap-4">
-              <div className="rounded-xl border border-primary/30 bg-primary/5 p-4">
-                <div className="text-[11px] uppercase tracking-[0.15em] text-primary font-semibold mb-2">Option A — Cold Fermentation</div>
-                <ol className="text-[15px] space-y-1.5 leading-relaxed list-decimal pl-4">
-                  <li><HighlightNumbers text="24–48 hours" /> refrigerated as covered dough balls</li>
-                  <li>Remove <HighlightNumbers text="4–6 hours" /> before baking</li>
-                  <li>Temper at room temperature</li>
-                  <li>Bake when balls are soft, relaxed and slightly domed</li>
-                </ol>
-              </div>
-              <div className="rounded-xl border border-secondary/30 bg-secondary/5 p-4">
-                <div className="text-[11px] uppercase tracking-[0.15em] text-secondary font-semibold mb-2">Option B — Same-Day Dough</div>
-                <ol className="text-[15px] space-y-1.5 leading-relaxed list-decimal pl-4">
-                  <li>Ball after the initial rest</li>
-                  <li>Ferment covered for <HighlightNumbers text="4–6 hours" /> at room temperature</li>
-                  <li>Bake when relaxed, aerated and slightly domed</li>
-                </ol>
-              </div>
+          <Section number={6} title="Gluten Development" subtitle="Around minute 8 onward — Speed 4–5, batch-size dependent">
+            <Bullets items={[
+              "Increase to Speed 4–5 and watch the dough rather than following the timer.",
+              "Look for a smooth surface, elastic dough wrapping around the spiral, a relatively clean bowl, and a cohesive mass that is elastic without becoming excessively tight.",
+              "Larger flour batches contain more dough and take longer for the mass to gather around the spiral and for the bowl to look clean. Allow extra time as needed, while continuing to judge the dough by its condition and temperature.",
+              "Stop as soon as the dough reaches this condition. Do not keep mixing for another 5–10 minutes just because the machine can.",
+            ]} />
+            <Callout>Approximately 8–10 minutes total is a guide for the 1 kg batch. Larger batches can take longer; use the batch-size timing table as a guide, not a hard timer. Dough condition matters more than reaching an exact time.</Callout>
+            <Callout>So when the Famag reaches: smooth + cohesive + elastic + moist + bowl mostly clean + wrapping the spiral + still relaxed → STOP.</Callout>
+          </Section>
+
+          <Section number={7} title="Famag — exact stages (time guidance)">
+            <div className="overflow-x-auto -mx-1">
+              <table className="w-full text-sm border-collapse min-w-[760px]">
+                <thead>
+                  <tr className="border-b border-border/70 text-left text-[11px] uppercase tracking-wider text-muted-foreground">
+                    {["Time", "Step", "500 g flour", "1 kg flour", "2 kg flour", "3 kg flour"].map((heading) => (
+                      <th key={heading} className="py-2 px-2 font-semibold">{heading}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {[
+                    ["0–2 min", "Water + yeast, Speed 1", "1–2 min", "1–2 min", "1–2 min", "1–2 min"],
+                    ["2–4 min", "Add 70% flour, Speed 1–2", "2 min", "2 min", "2 min", "2 min"],
+                    ["4–5 min", "Add 30% flour + salt, Speed 2–3", "1 min", "1 min", "1 min", "1 min"],
+                    ["~5–8 min ★", "Add held-back water gradually", "2:30 min", "2:30 min", "3 min", "3 min"],
+                    ["~8 min onward ★", "Speed 4–5, gluten development", "2:30 min", "2:30–3 min", "3–4 min", "4–5 min"],
+                    ["TOTAL ★", "", "~10 min", "~10–11 min", "~11–13 min", "~12–14 min"],
+                  ].map((row) => (
+                    <tr key={row[0]} className="border-b border-border/40 last:border-0">
+                      {row.map((cell, i) => (
+                        i === 0
+                          ? <th key={i} scope="row" className="py-2 px-2 text-left font-mono font-semibold text-primary whitespace-nowrap">{cell}</th>
+                          : <td key={i} className={`py-2 px-2 ${i === 1 ? "text-foreground" : "font-mono text-muted-foreground whitespace-nowrap"}`}>{cell}</td>
+                      ))}
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
             </div>
+            <Callout>The held-back water amount and dough mass increase with batch size, so water absorption and bowl-cleaning/gluten development can take longer. Follow the dough’s condition; the listed stage times are approximate guidance.</Callout>
           </Section>
 
-          <Section number={7} title="Why This Ratio Works" subtitle={`For ${formatWeight(flourAmount)} flour`}>
-            <div className="grid sm:grid-cols-3 gap-4">
-              <RatioCard title={`${Math.round(NEAPOLITAN_HYDRATION_PCT * 100)}% Hydration`}>
-                Provides enough water for a soft, extensible dough while retaining the strength needed for hand stretching and high-temperature baking.
-              </RatioCard>
-              <RatioCard title={`${(NEAPOLITAN_SALT_PCT * 100).toFixed(1)}% Salt`}>
-                Provides seasoning while helping regulate fermentation and strengthen the dough structure.
-              </RatioCard>
-              <RatioCard title={`${(NEAPOLITAN_YEAST_MIN_PCT * 100).toFixed(2)}–${(NEAPOLITAN_YEAST_MAX_PCT * 100).toFixed(2)}% Instant Dry Yeast`}>
-                The low yeast level is designed for controlled fermentation over 24–48 hours.
-              </RatioCard>
-            </div>
-            <Subhead className="mt-4">This Gives</Subhead>
+          <Section number={8} title="Check the Dough Temperature">
             <Bullets items={[
-              "Airy cornicione",
-              "Soft, flexible interior",
-              "Good extensibility",
-              "Controlled fermentation",
-              "Strong oven spring",
-              "Good performance in a high-heat oven",
+              "Check the dough temperature immediately after mixing; target 23–25°C. Around 24°C is ideal.",
+              "If batches consistently reach 26–27°C, use colder water next time. At 28°C or higher, adjust the water temperature to reduce the final dough temperature.",
             ]} />
           </Section>
 
-          <Section number={8} title="From Dough Ball to Pizza" subtitle="Tempered and ready to stretch">
-            <p className="text-[15px] mb-3">
-              <span className="font-semibold text-primary">{formatWeight(ballWeight)}</span> dough ball → <span className="font-semibold text-primary">30–33 cm</span> pizza
-            </p>
+          <Section number={9} title="Bench Rest, Fold & Short Bulk">
             <Bullets items={[
-              "Dust with Caputo Semola Rimacinata",
-              "Press the centre outward",
-              "Preserve the gas around the perimeter",
-              "Maintain approximately 1.5–2 cm cornicione",
-              `Stretch gently to 30–33 cm for a ${formatWeight(ballWeight)} ball`,
-              "Avoid aggressive degassing",
+              "Remove the dough and place it in a covered container. Rest for 20–30 minutes to relax; do not immediately start folding.",
+              "After the rest, give the dough one gentle stretch-and-fold to tighten its structure. Do not knead it.",
+              "Cover and leave at room temperature for another 20–30 minutes. Total time from the end of mixing to balling is approximately 40–60 minutes.",
             ]} />
           </Section>
 
-          <Section number={9} title="Gozney Arc — Neapolitan Bake">
+          <Section number={10} title="Divide & Ball">
             <Bullets items={[
-              "Stone floor: 430–450°C",
-              "Dynamic top flame",
-              "Typical bake: 60–90 seconds",
-              "Rotate regularly",
-              "Adjust flame according to stone temperature, dough fermentation and topping moisture",
-            ]} />
-            <Callout>👉 60–90 seconds is a typical range, not a fixed rule — judge doneness by colour and structure.</Callout>
-          </Section>
-
-          <Section number={10} title="After the Bake">
-            <Bullets items={[
-              "Remove onto a wooden board",
-              "Rest approximately 30–60 seconds",
-              "Avoid a wire cooling rack",
-              "Slice and serve",
+              `Divide this batch into ${batch.fullBalls} portions of approximately ${fmtG(batch.totalDoughMin / batch.fullBalls, 1)} g each (about 276 g for the 1,000 g flour batch).`,
+              "Turn the dough onto the bench without aggressively degassing it. Fold the edges underneath, turn over, and gently tighten into a smooth, taut ball.",
+              "Place the dough balls in a covered dough box.",
             ]} />
           </Section>
 
-          <Section number={11} title="Key Mistakes to Avoid">
-            <ul className="space-y-2">
-              {[
-                "Overmixing",
-                "Final dough temperature too high",
-                "Using excessive flour during shaping",
-                "Leaving dough balls uncovered",
-                "Overproofing",
-                "Aggressive stretching/degassing",
-                "Baking before the dough has relaxed",
-                "Insufficient room-temperature tempering",
-              ].map((t) => (
-                <li key={t} className="text-[15px] flex gap-2.5 leading-relaxed">
-                  <span className="text-destructive mt-0.5 shrink-0" aria-hidden>❌</span>
-                  <span><HighlightNumbers text={t} /></span>
-                </li>
-              ))}
-            </ul>
+          <Section number={11} title="Cold Fermentation" subtitle="Approximately 4°C">
+            <Bullets items={[
+              "Refrigerate the covered dough balls at approximately 4°C. First choice for this formula: 60 hours.",
+              "Then compare 48 h, 60 h and 72 h batches. The expectation that 60–72 h may suit the 00/Nuvola blend is a hypothesis to test, not a guaranteed result.",
+            ]} />
           </Section>
 
-          <Section number={12} title="Master Workflow" subtitle="The full process, start to finish">
+          <Section number={12} title="Final Proof" subtitle="Take the dough balls out about 3 hours before baking">
+            <Bullets items={[
+              "Proof at normal room temperature. Readiness matters more than the clock: look for balls that are noticeably expanded, soft, relaxed, slightly puffy, extensible and still holding their structure.",
+              "If already very puffy after 2 hours, bake earlier. If still tight after 3 hours, give them another 30–60 minutes.",
+            ]} />
+          </Section>
+
+          <Section number={13} title="Open, Top & Bake">
+            <Subhead>Open the pizza</Subhead>
+            <Bullets items={[
+              "Lightly flour the bench and turn out the dough ball. Press from the centre toward the edge, leaving the outer 1.5–2 cm untouched for the cornicione.",
+              "Stretch gradually by hand to approximately 30–32 cm. Do not use a rolling pin or aggressively press out the gas.",
+            ]} />
+            <Subhead className="mt-4">Top and launch</Subhead>
+            <Bullets items={[
+              "Top quickly (sauce → cheese/toppings → launch). Do not let a wet pizza sit on the peel.",
+              "For a Bufalina, have the toppings ready before opening the dough so the topped pizza can be launched promptly.",
+            ]} />
+            <Subhead className="mt-4">Gozney</Subhead>
+            <Bullets items={[
+              "Start around 430–450°C stone temperature and control the flame carefully. Aim for enough top heat to develop the cornicione without burning the toppings.",
+            ]} />
+          </Section>
+
+          <Section number={14} title="The Whole Process at a Glance">
             <div className="flex flex-wrap items-center gap-2">
               {[
-                "Mix",
-                "45–60 min Puntata",
-                `${formatWeight(ballWeight)} Staglio & Balling`,
-                "24–48 h Cold Fermentation",
-                "4–6 h Room-Temperature Temper",
-                "Stretch",
-                "430–450°C Gozney Arc",
-                "60–90 sec Bake",
-                "30–60 sec Rest",
-                "Serve",
+                "500 g Caputo 00 + 500 g Nuvola",
+                "570 g water + 0.6 g fresh yeast",
+                "700 g flour · 2 min Speed 1",
+                "Remaining 300 g flour · Speed 2",
+                "24 g salt",
+                "60 g water added gradually",
+                "Speed 4–5 · stop at ~8–10 min total",
+                "23–25°C final dough",
+                "20–30 min rest · one gentle fold · 20–30 min bulk",
+                "6 × ~276 g balls",
+                "60 h at ~4°C",
+                "~3 h room-temperature proof",
+                "30–32 cm pizza",
+                "Gozney · 430–450°C starting point",
               ].map((t, i, arr) => (
                 <span key={t} className="contents">
                   <WorkflowChip text={t} />

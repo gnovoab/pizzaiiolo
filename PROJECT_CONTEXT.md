@@ -18,7 +18,7 @@ Pizza Lab is two apps sharing one Next.js codebase and one nav shell:
 
 ## 0. Versioning
 
-- **Current version: `1.0.1`** — tracked in `package.json` (`version` field). This is
+- **Current version: `1.0.2`** — tracked in `package.json` (`version` field). This is
   the **single source of truth** for the app version.
 - Surfaced in the UI via `src/lib/version.ts` (imports `package.json`) and rendered in
   `src/components/layout/AppShell.tsx` (desktop sidebar footer + mobile top bar).
