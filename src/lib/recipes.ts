@@ -4,7 +4,7 @@ import type { PizzaRecipe, PizzaRecipeCategory, RecipeComparisonTable } from "./
 const BUFALINA_TRILOGY_TABLE: RecipeComparisonTable = {
   headers: ["Spec", "Bufalina Classica", "Bufalina a Freddo", "Bufalina de la Casa"],
   rows: [
-    { label: "Tomato Base", values: ["80–90g San Marzano DOP", "80–90g San Marzano DOP", "100–110g Fresh Datterini Fillets"] },
+    { label: "Tomato Base", values: ["80–90g San Marzano DOP", "80–90g San Marzano DOP", "100–110g Piccolina Vine Tomatoes"] },
     { label: "Umami Layer", values: ["3–4g Parmigiano Reggiano", "None", "None"] },
     { label: "Buffalo Mozzarella", values: ["80–90g (Baked)", "90–100g (Post-Bake)", "85–90g (Baked)"] },
     { label: "Pre-Bake Oil", values: ["2g Elizondo Nº3 Picual", "2g Elizondo Nº3 Picual", "2–3g Elizondo Nº3 Picual"] },
@@ -14,16 +14,16 @@ const BUFALINA_TRILOGY_TABLE: RecipeComparisonTable = {
 };
 
 export const RECIPE_CATEGORIES: { id: PizzaRecipeCategory; label: string; blurb: string }[] = [
-  { id: "classic", label: "Classic", blurb: "Cosacca, Marinara, Marinara alle Alici, Margherita, Margherita della Casa, Margherita Macchiata, Margherita Duo, Bufalina Classica, Bufalina a Freddo, Bufalina de la Casa, Burratina, Quattro Formaggi, Diavola, Napoletana, Prosciutto e Funghi, Capricciosa, Prosciutto e Rucola, Ibérica Bianca, Marinara al Salame, Ortolana, Ripieno (Calzone)." },
+  { id: "classic", label: "Classic", blurb: "Cosacca, Marinara, Margherita, Margherita della Casa, Margherita Macchiata, Margherita Duo, Bufalina Classica, Bufalina a Freddo, Bufalina de la Casa, Burratina, Quattro Formaggi, Diavola, Napoletana, Marinara alle Alici, Prosciutto e Rucola, Ibérica Bianca, Prosciutto e Funghi, Capricciosa, Marinara al Salame, Ortolana, Ripieno (Calzone)." },
   { id: "calzone-focaccia", label: "Calzone & Focaccia", blurb: "Folded and stuffed specialties." },
-  { id: "innovative", label: "Innovative", blurb: "Modern and rustic twists on Italian tradition — Margherita Datterini, Double Pepperoni & Hot Honey, Chorizo and Gorgonzola, Datterini & Serrano, Bufala e Ibérico, Tettoia — Four Cheese & Truffle, Calabrese, Quattro Latte e 'Nduja, 'Nduja & Hot Honey, Cetarese, Cacio e Pepe, Carbonara, Amatriciana, Gricia, Pesto Cremosa, Burrata & Pesto, Salsiccia al Pesto, Boscaiola, Mortadella and Pistachio, La Oro Verde, Datterini & Spianata, Piennolo & Alici di Cetara, Alici & Stracciatella, Ragù Napoletano." },
+  { id: "innovative", label: "Innovative", blurb: "Modern and rustic twists on Italian tradition — Margherita Datterini, Double Pepperoni & Hot Honey, Chorizo and Gorgonzola, Bufala e Ibérico, Tettoia — Four Cheese & Truffle, Calabrese, Quattro Latte e 'Nduja, 'Nduja & Hot Honey, Alici & Stracciatella, Cetarese, Cacio e Pepe, Carbonara, Amatriciana, Gricia, Pesto Cremosa, Burrata & Pesto, Boscaiola, Mortadella and Pistachio, La Oro Verde, Salsiccia al Pesto, Piennolo & Alici di Cetara, Ragù Napoletano." },
   { id: "pumpkin", label: "Pumpkin Base", blurb: "Replace tomato with smooth roasted pumpkin cream — Sfiziosa, Mantovana, Norcina, Zucca Salsiccia e Provola, Zucca e 'Nduja, Zucca Guanciale e Rosmarino, Zucca, Gorgonzola & Noci." },
 ];
 
 export const RECIPES: PizzaRecipe[] = [
   {
     id: "margherita",
-    number: 4,
+    number: 3,
     name: "Margherita",
     style: "Traditional Base — San Marzano DOP, Fior di Latte & Dual-Oil Protocol",
     category: "classic",
@@ -57,7 +57,7 @@ export const RECIPES: PizzaRecipe[] = [
   },
   {
     id: "bufalina-classica",
-    number: 8,
+    number: 7,
     name: "Bufalina Classica",
     style: "Traditional Neapolitan — Integrated Hot San Marzano & Melted Buffalo Mozzarella",
     category: "classic",
@@ -69,7 +69,7 @@ export const RECIPES: PizzaRecipe[] = [
     flavorProgression: "Hot San Marzano → savoury Parmigiano Reggiano → melted creamy buffalo → cooked basil → almond-smooth Lorenzo N°5 finish",
     variations: [
       { relatedId: "bufalina-a-freddo", relatedName: "Bufalina a Freddo", summary: "Baked vs. Post-Bake Buffalo Mozzarella — integrated heat vs. cold, silky contrast." },
-      { relatedId: "bufalina-de-la-casa", relatedName: "Bufalina de la Casa", summary: "San Marzano classic vs. sweet Datterini & dual-oil house special." },
+      { relatedId: "bufalina-de-la-casa", relatedName: "Bufalina de la Casa", summary: "San Marzano classic vs. sweet Piccolina vine tomatoes & dual-oil house special." },
     ],
     comparisonTable: BUFALINA_TRILOGY_TABLE,
     steps: [
@@ -93,7 +93,7 @@ export const RECIPES: PizzaRecipe[] = [
   },
   {
     id: "bufalina-a-freddo",
-    number: 9,
+    number: 8,
     name: "Bufalina a Freddo",
     style: "Contemporary Neapolitan — Hot Blistered Tomato & Cold Silky Buffalo Crown",
     category: "classic",
@@ -104,7 +104,7 @@ export const RECIPES: PizzaRecipe[] = [
     postBake: "Rest 30 seconds on a wooden board, tear 45g cold/room-temperature Bufala into 5–6 pools directly over the hot base, scatter 1–2 fresh basil leaves and finish with a 3g swirl of Barbera Lorenzo N°5 EVOO.",
     variations: [
       { relatedId: "bufalina-classica", relatedName: "Bufalina Classica", summary: "Post-Bake vs. Baked Buffalo Mozzarella — cold, silky contrast vs. integrated heat." },
-      { relatedId: "bufalina-de-la-casa", relatedName: "Bufalina de la Casa", summary: "Thermal contrast classic vs. sweet Datterini & dual-oil house special." },
+      { relatedId: "bufalina-de-la-casa", relatedName: "Bufalina de la Casa", summary: "Thermal contrast classic vs. sweet Piccolina vine tomatoes & dual-oil house special." },
     ],
     comparisonTable: BUFALINA_TRILOGY_TABLE,
     steps: [
@@ -131,41 +131,41 @@ export const RECIPES: PizzaRecipe[] = [
   },
   {
     id: "bufalina-de-la-casa",
-    number: 10,
+    number: 9,
     name: "Bufalina de la Casa",
-    style: "House Neapolitan — Fresh Datterini, Buffalo Mozzarella & Dual-Oil Finish",
+    style: "House Neapolitan — Piccolina Vine Tomatoes, Buffalo Mozzarella & Dual-Oil Finish",
     category: "classic",
     image: "https://www.rtagency.it/menu/pizzeria%20carmnella/images/doc-carmnella.jpg",
-    toppings: "100g–110g fresh Datterini tomatoes (filleted lengthwise, lightly salted, drained), 85g–90g Mozzarella di Bufala Campana DOP, 4–5 fresh basil leaves, Elizondo Nº3 Picual EVOO pre-bake, Barbera Lorenzo N°5 EVOO finishing swirl. No hard cheese.",
-    menuIngredients: "Datterini tomato, buffalo mozzarella, basil, olive oil",
-    build: "Our flagship house Bufalina inspired by classic Naples restraint — sweet filleted Datterini tomatoes, rich Mozzarella di Bufala Campana DOP, and a smooth Barbera Lorenzo N°5 finish.",
+    toppings: "100g–110g Piccolina vine tomatoes (halved lengthwise, lightly salted and drained), 85g–90g Mozzarella di Bufala Campana DOP, 4–5 fresh basil leaves, Elizondo Nº3 Picual EVOO pre-bake, Barbera Lorenzo N°5 EVOO finishing swirl. No hard cheese.",
+    menuIngredients: "Piccolina vine tomatoes, buffalo mozzarella, basil, olive oil",
+    build: "Our flagship house Bufalina inspired by classic Naples restraint — sweet Piccolina vine tomatoes, rich Mozzarella di Bufala Campana DOP, and a smooth Barbera Lorenzo N°5 finish.",
     postBake: "Rest 30–60 seconds on a wooden board, then scatter 1–2 fresh basil leaves and finish with a 3g–4g swirl of Barbera Lorenzo N°5 EVOO (Nocellara del Belice DOP).",
     inspiredBy: "Inspired by Pizzeria Carmnella dal 1892 — Pizza DOC.",
     variations: [
-      { relatedId: "bufalina-classica", relatedName: "Bufalina Classica", summary: "Sweet Datterini & dual-oil house special vs. San Marzano classic." },
-      { relatedId: "bufalina-a-freddo", relatedName: "Bufalina a Freddo", summary: "Sweet Datterini & dual-oil house special vs. thermal contrast classic." },
+      { relatedId: "bufalina-classica", relatedName: "Bufalina Classica", summary: "Sweet Piccolina vine tomatoes & dual-oil house special vs. San Marzano classic." },
+      { relatedId: "bufalina-a-freddo", relatedName: "Bufalina a Freddo", summary: "Sweet Piccolina vine tomatoes & dual-oil house special vs. thermal contrast classic." },
     ],
     comparisonTable: BUFALINA_TRILOGY_TABLE,
     steps: [
       { title: "1. Pre-Prep", sections: [
-        { bullets: ["Slice fresh Datterini tomatoes lengthwise into fillets, toss with a tiny pinch of fine sea salt, and drain in a sieve for 10 minutes", "Tear 85g–90g Mozzarella di Bufala Campana DOP into large pieces and drain thoroughly in a sieve"] },
+        { bullets: ["Halve 100g–110g Piccolina vine tomatoes lengthwise, toss with a tiny pinch of fine sea salt, and drain in a sieve for 10 minutes", "Tear 85g–90g Mozzarella di Bufala Campana DOP into large pieces and drain thoroughly in a sieve"] },
       ] },
       { title: "2. Dough Prep", sections: [
         { bullets: ["Hand-stretch the 280g dough ball to 30–33cm on semolina rimacinata, preserving gas in the 1.5–2cm cornicione"] },
       ] },
       { title: "3. Layer Assembly (In Exact Order)", sections: [
-        { intro: "Layer 1 — Datterini Fillets:", bullets: ["Spread 100g–110g filleted Datterini tomatoes evenly across the dough, leaving a 1.5–2cm rim clean"] },
-        { intro: "Layer 2 — Bufala DOP:", bullets: ["Distribute 85g–90g well-drained Bufala DOP pieces over the Datterini layer"] },
+        { intro: "Layer 1 — Piccolina Vine Tomatoes:", bullets: ["Spread 100g–110g halved Piccolina vine tomatoes evenly across the dough, leaving a 1.5–2cm rim clean"] },
+        { intro: "Layer 2 — Bufala DOP:", bullets: ["Distribute 85g–90g well-drained Bufala DOP pieces over the tomatoes"] },
         { intro: "Layer 3 — Basil:", bullets: ["Tuck 2–3 fresh basil leaves under the Bufala pieces"] },
         { intro: "Layer 4 — Picual:", bullets: ["Apply a 2g–3g spiral micro-drizzle of Elizondo Nº3 Picual EVOO over the build"] },
       ] },
       { title: "4. Gozney Bake", sections: [
-        { intro: "Gozney / High-Heat Oven:", bullets: ["🧱 Stone Floor: 430°C–440°C", "⏱ Cook Time: 60–90 seconds", "🔥 Manage top flame dynamically to allow the Datterini fillets to soften, sweeten, and blister while controlling buffalo cheese melting"] },
+        { intro: "Gozney / High-Heat Oven:", bullets: ["🧱 Stone Floor: 430°C–440°C", "⏱ Cook Time: 60–90 seconds", "🔥 Manage top flame dynamically to allow the Piccolina vine tomatoes to soften, sweeten, and blister while controlling buffalo cheese melting"] },
       ] },
       { title: "5. Rest & Finish", sections: [
         { intro: "Rest Protocol:", bullets: ["Transfer directly to a WOODEN BOARD and rest for 30–60 seconds"] },
         { bullets: ["Scatter 1–2 fresh basil leaves and finish with a 3g–4g swirl of Barbera Lorenzo N°5 EVOO", "Slice and serve immediately"] },
-        { intro: "Profile:", bullets: ["Sweet blistered Datterini → rich creamy buffalo → warm basil → baked Picual → buttery Lorenzo N°5 finish"] },
+        { intro: "Profile:", bullets: ["Sweet blistered Piccolina vine tomatoes → rich creamy buffalo → warm basil → baked Picual → buttery Lorenzo N°5 finish"] },
       ] },
     ],
   },
@@ -176,7 +176,7 @@ export const RECIPES: PizzaRecipe[] = [
     style: "Historic Neapolitan — San Marzano DOP, Pecorino Romano & Dual-Oil Protocol",
     category: "classic",
     image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ76JLGq7RrjabxAASmGaLI7E9ZYoLUAyTVG41MbMh-KA&s=10",
-    toppings: "70g–80g hand-crushed San Marzano DOP tomatoes (Datterini DOP can also be used as a sweeter variation), 10g–12g Pecorino Romano DOP (8g–10g pre-bake, 2g–3g post-bake), 3–4 fresh basil leaves, 2g–3g Elizondo Nº3 Picual EVOO pre-bake, 2g–3g Frantoio Muraglia Coratina EVOO post-bake. No mozzarella.",
+    toppings: "70g–80g hand-crushed San Marzano DOP tomatoes, 10g–12g Pecorino Romano DOP (8g–10g pre-bake, 2g–3g post-bake), 3–4 fresh basil leaves, 2g–3g Elizondo Nº3 Picual EVOO pre-bake, 2g–3g Frantoio Muraglia Coratina EVOO post-bake. No mozzarella.",
     menuIngredients: "San Marzano DOP, Pecorino Romano, basil, Picual & Coratina EVOO",
     build: "A historic Neapolitan classic — a minimalist, mozzarella-free build defined by bright San Marzano DOP, dual-stage Pecorino Romano DOP, and dual EVOO integration.",
     postBake: "Rest on a wooden board for 30–60 seconds, distribute the remaining 2g–3g finely grated Pecorino Romano DOP as a light snowfall over the hot pizza, finish with a 2g–3g swirl of Frantoio Muraglia Coratina EVOO, then slice and serve immediately.",
@@ -188,7 +188,7 @@ export const RECIPES: PizzaRecipe[] = [
         { bullets: ["Hand-stretch the 280g dough ball to 30–33cm on Caputo Semolina Rimacinata", "Press the gas outward into the perimeter to form a pronounced, airy 1.5cm cornicione", "Keep the center thin and evenly stretched"] },
       ] },
       { title: "2. Layer Assembly (In Exact Order)", sections: [
-        { intro: "Layer 1 — San Marzano:", bullets: ["Spread 70g–80g hand-crushed San Marzano DOP evenly across the center, leaving a 1.5–2cm clean rim", "Season with a light pinch of fine sea salt", "Variation: Datterini DOP can be used in place of San Marzano for a sweeter profile"] },
+        { intro: "Layer 1 — San Marzano:", bullets: ["Spread 70g–80g hand-crushed San Marzano DOP evenly across the center, leaving a 1.5–2cm clean rim", "Season with a light pinch of fine sea salt"] },
         { intro: "Layer 2 — Pecorino Romano:", bullets: ["Distribute 8g–10g finely grated Pecorino Romano DOP evenly over the tomato, seasoning the sauce without creating a dense cheese blanket"] },
         { intro: "Layer 3 — Basil:", bullets: ["Lay 3–4 fresh basil leaves directly over the tomato and Pecorino layer"] },
         { intro: "Layer 4 — Picual:", bullets: ["Apply a 2g–3g spiral drizzle of Elizondo Nº3 Picual EVOO over the build"] },
@@ -241,7 +241,7 @@ export const RECIPES: PizzaRecipe[] = [
   },
   {
     id: "napoli",
-    number: 14,
+    number: 13,
     name: "Napoletana",
     style: "Classic Neapolitan — San Marzano DOP, Fior di Latte, Cantabrian Anchovies, Capers & Olives",
     category: "classic",
@@ -279,7 +279,7 @@ export const RECIPES: PizzaRecipe[] = [
   },
   {
     id: "diavola",
-    number: 13,
+    number: 12,
     name: "Diavola",
     style: "Margherita con Salame Piccante — San Marzano DOP, Fior di Latte & Spicy Salami",
     category: "classic",
@@ -315,7 +315,7 @@ export const RECIPES: PizzaRecipe[] = [
   },
   {
     id: "seven-stars-parma",
-    number: 17,
+    number: 15,
     name: "Prosciutto e Rucola",
     style: "Contemporary Neapolitan — Thermal & Textural Contrasts",
     category: "classic",
@@ -362,7 +362,7 @@ export const RECIPES: PizzaRecipe[] = [
   },
   {
     id: "parma-bianca",
-    number: 18,
+    number: 16,
     name: "Ibérica Bianca",
     style: "Contemporary Neapolitan White Base — Ibérico Fat, Ricotta & Lorenzo N°5",
     category: "classic",
@@ -399,7 +399,7 @@ export const RECIPES: PizzaRecipe[] = [
   },
   {
     id: "prosciutto-e-funghi",
-    number: 15,
+    number: 17,
     name: "Prosciutto e Funghi",
     style: "Classic Neapolitan — San Marzano DOP, Fior di Latte, Prosciutto Cotto & Champignons",
     category: "classic",
@@ -452,7 +452,7 @@ export const RECIPES: PizzaRecipe[] = [
   },
   {
     id: "capricciosa",
-    number: 16,
+    number: 18,
     name: "Capricciosa",
     style: "House Classic — Prosciutto Cotto, Salame, Artichokes & Champignons",
     category: "classic",
@@ -506,7 +506,7 @@ export const RECIPES: PizzaRecipe[] = [
   },
   {
     id: "quattro-formaggi",
-    number: 12,
+    number: 11,
     name: "Quattro Formaggi",
     style: "Classic Neapolitan Pizza Bianca — Fior di Latte, Ricotta, Gorgonzola Dolce & Parmigiano",
     category: "classic",
@@ -615,7 +615,7 @@ export const RECIPES: PizzaRecipe[] = [
   },
   {
     id: "margherita-datterini",
-    number: 22,
+    number: 24,
     name: "Margherita Datterini",
     style: "Contemporary Neapolitan — Demetra Datterini Pelati, Fior di Latte & Dual-Oil Finish",
     category: "innovative",
@@ -647,7 +647,7 @@ export const RECIPES: PizzaRecipe[] = [
   },
   {
     id: "double-pepperoni-hot-honey",
-    number: 24,
+    number: 26,
     name: "Double Pepperoni & Hot Honey",
     style: "Modern Crowd-Pleaser — Cup-and-Char, Salame Piccante, Provolone & Calabrian Honey",
     category: "innovative",
@@ -682,7 +682,7 @@ export const RECIPES: PizzaRecipe[] = [
   },
   {
     id: "chorizo",
-    number: 25,
+    number: 27,
     name: "Chorizo and Gorgonzola",
     style: "Modern Neapolitan — Paprika Spice & Creamy Blue Pockets",
     category: "innovative",
@@ -717,38 +717,8 @@ export const RECIPES: PizzaRecipe[] = [
     ],
   },
   {
-    id: "datterini-e-serrano",
-    number: 26,
-    name: "Datterini & Serrano",
-    style: "Contemporary Neapolitan — Demetra Datterini Pelati, Fior di Latte & Jamón Serrano",
-    category: "innovative",
-    toppings: "75g Demetra Datterini Pelati (lightly hand-crushed), 65g Fior di Latte (drained 1–2 hours, torn into small pieces), 35g Jamón Serrano (thinly sliced), 4–5 fresh basil leaves, 2g Elizondo Nº3 Picual EVOO (pre-bake), 3g Barbera Lorenzo N°5 EVOO (post-bake). No additional salt initially — taste the Datterini before seasoning; their natural sweetness and concentration are part of the profile, add only a very small amount of salt if the batch tastes flat.",
-    menuIngredients: "Datterini tomato, Fior di Latte, Jamón Serrano, basil, dual-oil finish",
-    build: "A contemporary Neapolitan built on sweet, lightly-crushed Demetra Datterini Pelati and well-drained Fior di Latte, finished with delicate cured Jamón Serrano, basil and a dual-oil protocol.",
-    postBake: "Transfer directly to a wooden board and rest. Finish with a 3g swirl of Barbera Lorenzo N°5 EVOO. Slice and serve immediately.",
-    flavorProgression: "Sweet fruity Datterini → creamy Fior di Latte → delicate cured Serrano → warm basil → fruity Picual → buttery Lorenzo N°5 finish",
-    steps: [
-      { title: "1. Dough Prep", sections: [
-        { bullets: ["Use 280g Neapolitan dough", "Open to approximately 30–32cm on Caputo Semolina Rimacinata", "Keep a pronounced 1.5–2cm airy cornicione", "Keep the centre thin and even", "Avoid pressing the centre excessively so the dough retains enough structure for the relatively wet tomato base"] },
-      ] },
-      { title: "2. Layer Assembly (In Exact Order)", sections: [
-        { intro: "Layer 1 — Datterini:", bullets: ["Use 75g Demetra Datterini Pelati", "Drain off only excessive free juice", "Crush gently by hand, leaving small pieces", "Spread evenly across the centre, stopping approximately 1.5–2cm from the rim", "Do not blend into a smooth purée", "Do not add salt unless the tomatoes need it"] },
-        { intro: "Layer 2 — Fior di Latte:", bullets: ["Add 65g well-drained Fior di Latte", "Tear into small, evenly distributed pieces", "Keep the distribution relatively open so the Datterini remain visible between the cheese"] },
-        { intro: "Layer 3 — Basil:", bullets: ["Add 4–5 basil leaves", "Distribute them across the pizza rather than concentrating them in the centre"] },
-        { intro: "Layer 4 — Picual:", bullets: ["Finish the pre-bake build with 2g Elizondo Nº3 Picual EVOO", "Apply as a light spiral over the pizza, avoiding heavy pooling"] },
-      ] },
-      { title: "3. Gozney Bake", sections: [
-        { intro: "Gozney / High-Heat Oven:", bullets: ["🪨 Stone Floor: 430°C–440°C", "🔥 Dome: 450°C–480°C", "⏱ Cook Time: approximately 60–75 seconds", "🔄 Manage the top flame dynamically and rotate regularly for even cooking and cornicione development"] },
-      ] },
-      { title: "4. Rest & Finish", sections: [
-        { bullets: ["Transfer directly to a wooden board and rest for 30–45 seconds", "Drape the 35g thinly sliced Jamón Serrano over the hot cheese and Datterini", "Finish with a 3g swirl of Barbera Lorenzo N°5 EVOO", "Slice and serve immediately"] },
-        { intro: "Profile:", bullets: ["Sweet fruity Datterini → creamy Fior di Latte → delicate cured Serrano → warm basil → fruity Picual → buttery Lorenzo N°5 finish"] },
-      ] },
-    ],
-  },
-  {
     id: "bufala-e-iberico",
-    number: 27,
+    number: 29,
     name: "Bufala e Ibérico",
     style: "Contemporary Neapolitan White Base — Inspired by Neapolitan Bufala e Fiocco Concepts",
     category: "innovative",
@@ -785,7 +755,7 @@ export const RECIPES: PizzaRecipe[] = [
   },
   {
     id: "tettoia-four-cheese-truffle",
-    number: 23,
+    number: 25,
     name: "Tettoia — Four Cheese & Truffle",
     style: "Gourmet White Pizza — Four Cheese Blend, Baked Truffle Croutons & Chili Lift",
     category: "innovative",
@@ -824,7 +794,7 @@ export const RECIPES: PizzaRecipe[] = [
   },
   {
     id: "calabrese",
-    number: 32,
+    number: 35,
     name: "Calabrese",
     style: "Contemporary White Base — Hybrid 'Nduja di Spilinga & Gorgonzola Dolce Pockets",
     category: "innovative",
@@ -872,7 +842,7 @@ export const RECIPES: PizzaRecipe[] = [
   },
   {
     id: "quattro-latte-e-nduja",
-    number: 33,
+    number: 37,
     name: "Quattro Latte e 'Nduja",
     style: "Four-Milk Pizza Bianca — Buffalo Ricotta, Fior di Latte, Pecorino & Goat Cacioricotta",
     category: "innovative",
@@ -921,7 +891,7 @@ export const RECIPES: PizzaRecipe[] = [
   },
   {
     id: "nduja-honey",
-    number: 31,
+    number: 36,
     name: "'Nduja & Hot Honey",
     style: "Sweet Heat Neapolitan — 'Nduja di Spilinga & Hot Honey",
     category: "innovative",
@@ -969,7 +939,7 @@ export const RECIPES: PizzaRecipe[] = [
   },
   {
     id: "cetarese",
-    number: 28,
+    number: 31,
     name: "Cetarese",
     style: "Amalfi Coast Tribute — Blistered Piennolo, Gaeta Olives, Capers & Post-Bake Alici di Cetara",
     category: "innovative",
@@ -1017,7 +987,7 @@ export const RECIPES: PizzaRecipe[] = [
   },
   {
     id: "piennolo-e-alici-di-cetara",
-    number: 29,
+    number: 32,
     name: "Piennolo & Alici di Cetara",
     style: "Pizza Bianca — Smoky Provola, Vesuvian Piennolo & Post-Bake Alici di Cetara",
     category: "innovative",
@@ -1060,49 +1030,8 @@ export const RECIPES: PizzaRecipe[] = [
     ],
   },
   {
-    id: "datterini-e-spianata",
-    number: 30,
-    name: "Datterini & Spianata",
-    style: "Sweet Demetra Datterini Sauce — Spianata Calabra, Fior di Latte & Dual-Oil Protocol",
-    category: "innovative",
-    toppings: "70g–75g Demetra Datterini Pelati (hand-crushed, no salt initially), 70g Fior di Latte (drained), 30g Spianata Calabra, 4–5 fresh basil leaves, 2g Elizondo Nº3 Picual EVOO (pre-bake), 2g–3g Frantoio Muraglia Coratina EVOO (post-bake).",
-    menuIngredients: "Datterini tomato, Fior di Latte, Spianata Calabra, basil, olive oil",
-    build: "A sweet, concentrated twist on the classic — hand-crushed Demetra Datterini sauce and creamy Fior di Latte baked with chili-rich Spianata Calabra, finished with a peppery Coratina swirl.",
-    postBake: "Rest 30–60 seconds on a wooden board, then finish with a 2g–3g swirl of Frantoio Muraglia Coratina EVOO.",
-    flavorProgression: "Sweet, concentrated, fruity Datterini → creamy Fior di Latte → chili heat and saltiness contrast of Spianata → basil → peppery Coratina finish",
-    steps: [
-      { title: "1. Pre-Prep", sections: [
-        { bullets: [
-          "Hand-crush 70g–75g Demetra Datterini Pelati (no salt initially).",
-          "Drain 70g Fior di Latte in a sieve for at least 1 hour.",
-          "Slice 30g Spianata Calabra.",
-        ] },
-      ] },
-      { title: "2. Dough Prep", sections: [
-        { bullets: ["Hand-stretch 280g dough ball to 30–32cm on semolina rimacinata, preserving gas in an airy 1.5–2cm cornicione."] },
-      ] },
-      { title: "3. Layer Assembly (In Exact Order)", sections: [
-        { intro: "Layer 1 — Hand-Crushed Datterini:", bullets: ["Spread the hand-crushed Datterini sauce evenly across the centre, leaving a clean rim."] },
-        { intro: "Layer 2 — Fior di Latte:", bullets: ["Scatter 70g drained Fior di Latte over the sauce."] },
-        { intro: "Layer 3 — Spianata & Basil:", bullets: ["Arrange 30g Spianata Calabra slices over the mozzarella and tuck 4–5 basil leaves among the build."] },
-        { intro: "Layer 4 — Picual:", bullets: ["Apply a 2g drizzle of Elizondo Nº3 Picual EVOO over the build."] },
-      ] },
-      { title: "4. Gozney Bake", sections: [
-        { intro: "Gozney / High-Heat Oven:", bullets: [
-          "🪨 Stone floor target: 420°C–440°C",
-          "🔥 Dome: 450°C–480°C",
-          "⏱ Cook Time: 60–75 seconds — rotate regularly for even blistering and colour.",
-        ] },
-      ] },
-      { title: "5. Rest & Serve", sections: [
-        { bullets: ["Rest 30–60 seconds on a wooden board, then finish with a 2g–3g swirl of Frantoio Muraglia Coratina EVOO. Slice and serve immediately."] },
-        { intro: "Profile:", bullets: ["Sweet, concentrated, fruity Datterini → creamy Fior di Latte → chili heat and saltiness contrast of Spianata → basil → peppery Coratina finish"] },
-      ] },
-    ],
-  },
-  {
     id: "cacio-e-pepe",
-    number: 34,
+    number: 38,
     name: "Cacio e Pepe",
     style: "Callegari-Inspired Roman Pizza — Ice-Cube Bake & Pecorino Romano Cremina",
     category: "innovative",
@@ -1155,7 +1084,7 @@ export const RECIPES: PizzaRecipe[] = [
   },
   {
     id: "carbonara",
-    number: 35,
+    number: 39,
     name: "Carbonara",
     style: "Contemporary Roman-Inspired — Crispy Guanciale, Pecorino Romano & Warm Yolk Crema",
     category: "innovative",
@@ -1197,7 +1126,7 @@ export const RECIPES: PizzaRecipe[] = [
   },
   {
     id: "amatriciana",
-    number: 36,
+    number: 40,
     name: "Amatriciana",
     style: "Roman Classic Redefined — San Marzano DOP, Guanciale, Pecorino Romano & Peperoncino",
     category: "innovative",
@@ -1240,7 +1169,7 @@ export const RECIPES: PizzaRecipe[] = [
   },
   {
     id: "gricia",
-    number: 37,
+    number: 41,
     name: "Gricia",
     style: "Roman White Classic — Crispy Guanciale, Pecorino Romano & Tellicherry Pepper",
     category: "innovative",
@@ -1282,7 +1211,7 @@ export const RECIPES: PizzaRecipe[] = [
   },
   {
     id: "pesto-cremosa",
-    number: 38,
+    number: 42,
     name: "Pesto Cremosa",
     style: "Contemporary Pizza Bianca — Baked Genovese Pesto & Burrata Stracciatella Crown",
     category: "innovative",
@@ -1328,7 +1257,7 @@ export const RECIPES: PizzaRecipe[] = [
   },
   {
     id: "burrata-and-pesto",
-    number: 39,
+    number: 43,
     name: "Burrata & Pesto",
     style: "Contemporary Pizza Bianca — Baked Genovese Pesto & Burrata Stracciatella",
     category: "innovative",
@@ -1371,7 +1300,7 @@ export const RECIPES: PizzaRecipe[] = [
   },
   {
     id: "salsiccia-al-pesto",
-    number: 40,
+    number: 46,
     name: "Salsiccia al Pesto",
     style: "Contemporary Pizza Bianca — Smoked Agerola Provola, Genoese Pesto & Fennel Pork Sausage",
     category: "innovative",
@@ -1415,7 +1344,7 @@ export const RECIPES: PizzaRecipe[] = [
   },
   {
     id: "boscaiola",
-    number: 41,
+    number: 34,
     name: "Boscaiola",
     style: "Contemporary Boscaiola — Fennel Sausage, Sautéed Mushrooms & Parmigiano-Reggiano",
     category: "innovative",
@@ -1458,7 +1387,7 @@ export const RECIPES: PizzaRecipe[] = [
   },
   {
     id: "mortadella-e-pistacchio",
-    number: 42,
+    number: 44,
     name: "Mortadella e Pistacchio",
     style: "Contemporary Pizza Bianca — Mortadella Ribbons, Whipped Ricotta & Bronte Pistachio",
     category: "innovative",
@@ -1500,7 +1429,7 @@ export const RECIPES: PizzaRecipe[] = [
   },
   {
     id: "la-oro-verde",
-    number: 43,
+    number: 45,
     name: "La Oro Verde",
     style: "Contemporary Pizza Bianca — Mortadella Ribbons, Cold Stracciatella & Pistachio Pesto",
     category: "innovative",
@@ -1543,7 +1472,7 @@ export const RECIPES: PizzaRecipe[] = [
   },
   {
     id: "margherita-della-casa",
-    number: 5,
+    number: 4,
     name: "Margherita della Casa",
     style: "House Margherita — San Marzano, Blistered Piennolo, Buffalo Mozzarella & Pecorino Crown",
     category: "classic",
@@ -1588,7 +1517,7 @@ export const RECIPES: PizzaRecipe[] = [
   },
   {
     id: "margherita-duo",
-    number: 7,
+    number: 6,
     name: "Margherita Duo",
     style: "Dual-Color Piennolo — Yellow & Red Vesuvian Tomatoes & Fior di Latte",
     category: "classic",
@@ -1631,7 +1560,7 @@ export const RECIPES: PizzaRecipe[] = [
   },
   {
     id: "margherita-macchiata",
-    number: 6,
+    number: 5,
     name: "Margherita Macchiata",
     style: "Blistered Piennolo, Fior di Latte & Post-Bake Pesto Macchie",
     category: "classic",
@@ -1721,7 +1650,7 @@ export const RECIPES: PizzaRecipe[] = [
   },
   {
     id: "burratina-della-casa",
-    number: 11,
+    number: 10,
     name: "Burratina",
     style: "House Burratina Pizza — Red Piennolo, Mountain Oregano & Creamy Putignano Burratina",
     category: "classic",
@@ -1764,7 +1693,7 @@ export const RECIPES: PizzaRecipe[] = [
   },
   {
     id: "sfiziosa-basilico",
-    number: 51,
+    number: 54,
     name: "Sfiziosa (Basilico)",
     style: "Pumpkin Cream Base — Sautéed Mushrooms, Pancetta, Lorenzo Nº5 EVOO & Parmigiano",
     category: "pumpkin",
@@ -1806,7 +1735,7 @@ export const RECIPES: PizzaRecipe[] = [
   },
   {
     id: "sfiziosa",
-    number: 50,
+    number: 53,
     name: "Sfiziosa",
     style: "Pumpkin Cream Base — Smoked Guanciale, Fresh Burrata, Black Truffle Cream & Crispy Sage",
     category: "pumpkin",
@@ -1852,7 +1781,7 @@ export const RECIPES: PizzaRecipe[] = [
   },
   {
     id: "mantovana",
-    number: 48,
+    number: 51,
     name: "Mantovana",
     style: "Pumpkin Cream Base — Gorgonzola Dolce, Smoked Bacon, Quick-Pickled Onions & Crispy Sage",
     category: "pumpkin",
@@ -1897,7 +1826,7 @@ export const RECIPES: PizzaRecipe[] = [
   },
   {
     id: "norcina",
-    number: 47,
+    number: 50,
     name: "Norcina",
     style: "Pumpkin Cream Base — Porcini, Fennel Sausage, Parmigiano & Crispy Sage",
     category: "pumpkin",
@@ -1942,7 +1871,7 @@ export const RECIPES: PizzaRecipe[] = [
   },
   {
     id: "zucca-salsiccia-e-provola",
-    number: 46,
+    number: 49,
     name: "Zucca, Salsiccia e Provola",
     style: "Pumpkin Cream Base — Smoked Provola, Crumbled Fresh Sausage & Pecorino Romano",
     category: "pumpkin",
@@ -1984,7 +1913,7 @@ export const RECIPES: PizzaRecipe[] = [
   },
   {
     id: "zucca-e-nduja",
-    number: 45,
+    number: 48,
     name: "Zucca e 'Nduja",
     style: "Pumpkin Cream Base — Spicy 'Nduja di Spilinga & Cool Stracciatella",
     category: "pumpkin",
@@ -2027,7 +1956,7 @@ export const RECIPES: PizzaRecipe[] = [
   },
   {
     id: "zucca-guanciale-e-rosmarino",
-    number: 44,
+    number: 47,
     name: "Zucca, Guanciale e Rosmarino",
     style: "Pumpkin Cream Base — Crispy Guanciale, Fresh Rosemary & Pecorino Romano",
     category: "pumpkin",
@@ -2072,7 +2001,7 @@ export const RECIPES: PizzaRecipe[] = [
   },
   {
     id: "zucca-gorgonzola-e-noci",
-    number: 49,
+    number: 52,
     name: "Zucca, Gorgonzola & Noci",
     style: "Pumpkin Cream Base — Gorgonzola Dolce, Toasted Walnuts, Crisp Sage & Acacia Honey",
     category: "pumpkin",
@@ -2115,7 +2044,7 @@ export const RECIPES: PizzaRecipe[] = [
   },
   {
     id: "ragu-napoletano",
-    number: 52,
+    number: 55,
     name: "Ragù Napoletano",
     style: "Contemporary Neapolitan — Slow-Cooked Beef & Pork Ragù, Fior di Latte, Parmigiano & Fresh Thyme",
     category: "innovative",
@@ -2146,7 +2075,7 @@ export const RECIPES: PizzaRecipe[] = [
   },
   {
     id: "marinara-alle-alici",
-    number: 3,
+    number: 14,
     name: "Marinara alle Alici",
     style: "Rustic Marinara — San Marzano, Pacchetelle, Alici, Capers & Gaeta Olives",
     category: "classic",
@@ -2182,7 +2111,7 @@ export const RECIPES: PizzaRecipe[] = [
   },
   {
     id: "alici-e-stracciatella",
-    number: 53,
+    number: 30,
     name: "Alici & Stracciatella",
     style: "Piennolo, Capers, Gaeta Olives, Alici di Cetara, Colatura & Stracciatella",
     category: "innovative",
