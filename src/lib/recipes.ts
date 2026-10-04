@@ -14,16 +14,16 @@ const BUFALINA_TRILOGY_TABLE: RecipeComparisonTable = {
 };
 
 export const RECIPE_CATEGORIES: { id: PizzaRecipeCategory; label: string; blurb: string }[] = [
-  { id: "classic", label: "Classic", blurb: "Cosacca, Marinara, Margherita, Margherita della Casa, Margherita Duo, Margherita Macchiata, Marinara al Salame, Burratina, Bufalina Classica, Bufalina a Freddo, Bufalina de la Casa, Napoletana, Diavola, Prosciutto e Rucola, Ibérica Bianca, Prosciutto e Funghi, Capricciosa, Quattro Formaggi, Ortolana, Ripieno (Calzone)." },
+  { id: "classic", label: "Classic", blurb: "Cosacca, Marinara, Marinara alle Alici, Margherita, Margherita della Casa, Margherita Macchiata, Margherita Duo, Bufalina Classica, Bufalina a Freddo, Bufalina de la Casa, Burratina, Quattro Formaggi, Diavola, Napoletana, Prosciutto e Funghi, Capricciosa, Prosciutto e Rucola, Ibérica Bianca, Marinara al Salame, Ortolana, Ripieno (Calzone)." },
   { id: "calzone-focaccia", label: "Calzone & Focaccia", blurb: "Folded and stuffed specialties." },
-  { id: "innovative", label: "Innovative", blurb: "Modern and rustic twists on Italian tradition — Margherita Datterini, Double Pepperoni & Hot Honey, Chorizo and Gorgonzola, Datterini & Serrano, Bufala e Ibérico, Tettoia — Four Cheese & Truffle, Calabrese, Quattro Latte e 'Nduja, 'Nduja & Hot Honey, Cetarese, Cacio e Pepe, Carbonara, Amatriciana, Gricia, Pesto Cremosa, Burrata & Pesto, Salsiccia al Pesto, Boscaiola, Mortadella and Pistachio, La Oro Verde, Datterini & Spianata, Piennolo & Alici di Cetara, Ragù Napoletano." },
+  { id: "innovative", label: "Innovative", blurb: "Modern and rustic twists on Italian tradition — Margherita Datterini, Double Pepperoni & Hot Honey, Chorizo and Gorgonzola, Datterini & Serrano, Bufala e Ibérico, Tettoia — Four Cheese & Truffle, Calabrese, Quattro Latte e 'Nduja, 'Nduja & Hot Honey, Cetarese, Cacio e Pepe, Carbonara, Amatriciana, Gricia, Pesto Cremosa, Burrata & Pesto, Salsiccia al Pesto, Boscaiola, Mortadella and Pistachio, La Oro Verde, Datterini & Spianata, Piennolo & Alici di Cetara, Alici & Stracciatella, Ragù Napoletano." },
   { id: "pumpkin", label: "Pumpkin Base", blurb: "Replace tomato with smooth roasted pumpkin cream — Sfiziosa, Mantovana, Norcina, Zucca Salsiccia e Provola, Zucca e 'Nduja, Zucca Guanciale e Rosmarino, Zucca, Gorgonzola & Noci." },
 ];
 
 export const RECIPES: PizzaRecipe[] = [
   {
     id: "margherita",
-    number: 3,
+    number: 4,
     name: "Margherita",
     style: "Traditional Base — San Marzano DOP, Fior di Latte & Dual-Oil Protocol",
     category: "classic",
@@ -57,7 +57,7 @@ export const RECIPES: PizzaRecipe[] = [
   },
   {
     id: "bufalina-classica",
-    number: 7,
+    number: 8,
     name: "Bufalina Classica",
     style: "Traditional Neapolitan — Integrated Hot San Marzano & Melted Buffalo Mozzarella",
     category: "classic",
@@ -93,7 +93,7 @@ export const RECIPES: PizzaRecipe[] = [
   },
   {
     id: "bufalina-a-freddo",
-    number: 8,
+    number: 9,
     name: "Bufalina a Freddo",
     style: "Contemporary Neapolitan — Hot Blistered Tomato & Cold Silky Buffalo Crown",
     category: "classic",
@@ -131,7 +131,7 @@ export const RECIPES: PizzaRecipe[] = [
   },
   {
     id: "bufalina-de-la-casa",
-    number: 9,
+    number: 10,
     name: "Bufalina de la Casa",
     style: "House Neapolitan — Fresh Datterini, Buffalo Mozzarella & Dual-Oil Finish",
     category: "classic",
@@ -241,7 +241,7 @@ export const RECIPES: PizzaRecipe[] = [
   },
   {
     id: "napoli",
-    number: 13,
+    number: 14,
     name: "Napoletana",
     style: "Classic Neapolitan — San Marzano DOP, Fior di Latte, Cantabrian Anchovies, Capers & Olives",
     category: "classic",
@@ -279,7 +279,7 @@ export const RECIPES: PizzaRecipe[] = [
   },
   {
     id: "diavola",
-    number: 14,
+    number: 13,
     name: "Diavola",
     style: "Margherita con Salame Piccante — San Marzano DOP, Fior di Latte & Spicy Salami",
     category: "classic",
@@ -541,7 +541,7 @@ export const RECIPES: PizzaRecipe[] = [
   },
   {
     id: "ortolana",
-    number: 19,
+    number: 20,
     name: "Ortolana",
     style: "Gourmet Neapolitan — Slow Food Pappacella Peppers, Grilled Veggies & Pacchetelle Fillets",
     category: "classic",
@@ -576,7 +576,7 @@ export const RECIPES: PizzaRecipe[] = [
   },
   {
     id: "ripieno-calzone",
-    number: 20,
+    number: 21,
     name: "Ripieno (Calzone)",
     style: "Classic Folded Neapolitan — Creamed Ricotta, Fior di Latte & Salame",
     category: "classic",
@@ -615,7 +615,7 @@ export const RECIPES: PizzaRecipe[] = [
   },
   {
     id: "margherita-datterini",
-    number: 21,
+    number: 22,
     name: "Margherita Datterini",
     style: "Contemporary Neapolitan — Demetra Datterini Pelati, Fior di Latte & Dual-Oil Finish",
     category: "innovative",
@@ -647,7 +647,7 @@ export const RECIPES: PizzaRecipe[] = [
   },
   {
     id: "double-pepperoni-hot-honey",
-    number: 23,
+    number: 24,
     name: "Double Pepperoni & Hot Honey",
     style: "Modern Crowd-Pleaser — Cup-and-Char, Salame Piccante, Provolone & Calabrian Honey",
     category: "innovative",
@@ -682,7 +682,7 @@ export const RECIPES: PizzaRecipe[] = [
   },
   {
     id: "chorizo",
-    number: 24,
+    number: 25,
     name: "Chorizo and Gorgonzola",
     style: "Modern Neapolitan — Paprika Spice & Creamy Blue Pockets",
     category: "innovative",
@@ -718,7 +718,7 @@ export const RECIPES: PizzaRecipe[] = [
   },
   {
     id: "datterini-e-serrano",
-    number: 25,
+    number: 26,
     name: "Datterini & Serrano",
     style: "Contemporary Neapolitan — Demetra Datterini Pelati, Fior di Latte & Jamón Serrano",
     category: "innovative",
@@ -748,7 +748,7 @@ export const RECIPES: PizzaRecipe[] = [
   },
   {
     id: "bufala-e-iberico",
-    number: 26,
+    number: 27,
     name: "Bufala e Ibérico",
     style: "Contemporary Neapolitan White Base — Inspired by Neapolitan Bufala e Fiocco Concepts",
     category: "innovative",
@@ -785,7 +785,7 @@ export const RECIPES: PizzaRecipe[] = [
   },
   {
     id: "tettoia-four-cheese-truffle",
-    number: 22,
+    number: 23,
     name: "Tettoia — Four Cheese & Truffle",
     style: "Gourmet White Pizza — Four Cheese Blend, Baked Truffle Croutons & Chili Lift",
     category: "innovative",
@@ -824,7 +824,7 @@ export const RECIPES: PizzaRecipe[] = [
   },
   {
     id: "calabrese",
-    number: 31,
+    number: 32,
     name: "Calabrese",
     style: "Contemporary White Base — Hybrid 'Nduja di Spilinga & Gorgonzola Dolce Pockets",
     category: "innovative",
@@ -872,7 +872,7 @@ export const RECIPES: PizzaRecipe[] = [
   },
   {
     id: "quattro-latte-e-nduja",
-    number: 32,
+    number: 33,
     name: "Quattro Latte e 'Nduja",
     style: "Four-Milk Pizza Bianca — Buffalo Ricotta, Fior di Latte, Pecorino & Goat Cacioricotta",
     category: "innovative",
@@ -921,7 +921,7 @@ export const RECIPES: PizzaRecipe[] = [
   },
   {
     id: "nduja-honey",
-    number: 30,
+    number: 31,
     name: "'Nduja & Hot Honey",
     style: "Sweet Heat Neapolitan — 'Nduja di Spilinga & Hot Honey",
     category: "innovative",
@@ -969,7 +969,7 @@ export const RECIPES: PizzaRecipe[] = [
   },
   {
     id: "cetarese",
-    number: 27,
+    number: 28,
     name: "Cetarese",
     style: "Amalfi Coast Tribute — Blistered Piennolo, Gaeta Olives, Capers & Post-Bake Alici di Cetara",
     category: "innovative",
@@ -1017,7 +1017,7 @@ export const RECIPES: PizzaRecipe[] = [
   },
   {
     id: "piennolo-e-alici-di-cetara",
-    number: 28,
+    number: 29,
     name: "Piennolo & Alici di Cetara",
     style: "Pizza Bianca — Smoky Provola, Vesuvian Piennolo & Post-Bake Alici di Cetara",
     category: "innovative",
@@ -1061,7 +1061,7 @@ export const RECIPES: PizzaRecipe[] = [
   },
   {
     id: "datterini-e-spianata",
-    number: 29,
+    number: 30,
     name: "Datterini & Spianata",
     style: "Sweet Demetra Datterini Sauce — Spianata Calabra, Fior di Latte & Dual-Oil Protocol",
     category: "innovative",
@@ -1102,7 +1102,7 @@ export const RECIPES: PizzaRecipe[] = [
   },
   {
     id: "cacio-e-pepe",
-    number: 33,
+    number: 34,
     name: "Cacio e Pepe",
     style: "Callegari-Inspired Roman Pizza — Ice-Cube Bake & Pecorino Romano Cremina",
     category: "innovative",
@@ -1155,7 +1155,7 @@ export const RECIPES: PizzaRecipe[] = [
   },
   {
     id: "carbonara",
-    number: 34,
+    number: 35,
     name: "Carbonara",
     style: "Contemporary Roman-Inspired — Crispy Guanciale, Pecorino Romano & Warm Yolk Crema",
     category: "innovative",
@@ -1197,7 +1197,7 @@ export const RECIPES: PizzaRecipe[] = [
   },
   {
     id: "amatriciana",
-    number: 35,
+    number: 36,
     name: "Amatriciana",
     style: "Roman Classic Redefined — San Marzano DOP, Guanciale, Pecorino Romano & Peperoncino",
     category: "innovative",
@@ -1240,7 +1240,7 @@ export const RECIPES: PizzaRecipe[] = [
   },
   {
     id: "gricia",
-    number: 36,
+    number: 37,
     name: "Gricia",
     style: "Roman White Classic — Crispy Guanciale, Pecorino Romano & Tellicherry Pepper",
     category: "innovative",
@@ -1282,7 +1282,7 @@ export const RECIPES: PizzaRecipe[] = [
   },
   {
     id: "pesto-cremosa",
-    number: 37,
+    number: 38,
     name: "Pesto Cremosa",
     style: "Contemporary Pizza Bianca — Baked Genovese Pesto & Burrata Stracciatella Crown",
     category: "innovative",
@@ -1328,7 +1328,7 @@ export const RECIPES: PizzaRecipe[] = [
   },
   {
     id: "burrata-and-pesto",
-    number: 38,
+    number: 39,
     name: "Burrata & Pesto",
     style: "Contemporary Pizza Bianca — Baked Genovese Pesto & Burrata Stracciatella",
     category: "innovative",
@@ -1371,7 +1371,7 @@ export const RECIPES: PizzaRecipe[] = [
   },
   {
     id: "salsiccia-al-pesto",
-    number: 39,
+    number: 40,
     name: "Salsiccia al Pesto",
     style: "Contemporary Pizza Bianca — Smoked Agerola Provola, Genoese Pesto & Fennel Pork Sausage",
     category: "innovative",
@@ -1415,7 +1415,7 @@ export const RECIPES: PizzaRecipe[] = [
   },
   {
     id: "boscaiola",
-    number: 40,
+    number: 41,
     name: "Boscaiola",
     style: "Contemporary Boscaiola — Fennel Sausage, Sautéed Mushrooms & Parmigiano-Reggiano",
     category: "innovative",
@@ -1458,7 +1458,7 @@ export const RECIPES: PizzaRecipe[] = [
   },
   {
     id: "mortadella-e-pistacchio",
-    number: 41,
+    number: 42,
     name: "Mortadella e Pistacchio",
     style: "Contemporary Pizza Bianca — Mortadella Ribbons, Whipped Ricotta & Bronte Pistachio",
     category: "innovative",
@@ -1500,7 +1500,7 @@ export const RECIPES: PizzaRecipe[] = [
   },
   {
     id: "la-oro-verde",
-    number: 42,
+    number: 43,
     name: "La Oro Verde",
     style: "Contemporary Pizza Bianca — Mortadella Ribbons, Cold Stracciatella & Pistachio Pesto",
     category: "innovative",
@@ -1543,7 +1543,7 @@ export const RECIPES: PizzaRecipe[] = [
   },
   {
     id: "margherita-della-casa",
-    number: 4,
+    number: 5,
     name: "Margherita della Casa",
     style: "House Margherita — San Marzano, Blistered Piennolo, Buffalo Mozzarella & Pecorino Crown",
     category: "classic",
@@ -1588,7 +1588,7 @@ export const RECIPES: PizzaRecipe[] = [
   },
   {
     id: "margherita-duo",
-    number: 6,
+    number: 7,
     name: "Margherita Duo",
     style: "Dual-Color Piennolo — Yellow & Red Vesuvian Tomatoes & Fior di Latte",
     category: "classic",
@@ -1631,10 +1631,11 @@ export const RECIPES: PizzaRecipe[] = [
   },
   {
     id: "margherita-macchiata",
-    number: 5,
+    number: 6,
     name: "Margherita Macchiata",
     style: "Blistered Piennolo, Fior di Latte & Post-Bake Pesto Macchie",
     category: "classic",
+    image: "/pizzas/margherita-macchiata.png",
     toppings: "70g Pomodorini del Piennolo del Vesuvio DOP (hand-torn into substantial rough pieces, kept unsalted pre-bake), 70g Fior di Latte (hand-torn into irregular rustic strips, drained for 1+ hours), 8g finely grated Grana Padano DOP, 4–5 fresh basil leaves (distributed on and among the Fior di Latte), 1g Elizondo Nº3 Picual EVOO (light pre-bake micro-drizzle); finished post-bake with 12g fresh room-temperature Pesto alla Genovese (applied as 6–8 distinct raw dots/macchie). Strictly 0g additional post-bake EVOO.",
     menuIngredients: "Piennolo cherry tomatoes, Grana Padano, basil, Fior di Latte, Pesto Genovese (post-bake)",
     build: "A contemporary Margherita hybrid — blistered Vesuvian Piennolo tomatoes and melting Fior di Latte over a toasted Grana base, finished post-bake with fresh Genovese pesto macchie.",
@@ -1675,7 +1676,7 @@ export const RECIPES: PizzaRecipe[] = [
   },
   {
     id: "marinara-al-salame",
-    number: 11,
+    number: 19,
     name: "Marinara al Salame",
     style: "Yellow Marinara — Vesuvian Yellow Tomatoes, Neapolitan Salami & Mountain Oregano",
     category: "classic",
@@ -1720,7 +1721,7 @@ export const RECIPES: PizzaRecipe[] = [
   },
   {
     id: "burratina-della-casa",
-    number: 10,
+    number: 11,
     name: "Burratina",
     style: "House Burratina Pizza — Red Piennolo, Mountain Oregano & Creamy Putignano Burratina",
     category: "classic",
@@ -1763,7 +1764,7 @@ export const RECIPES: PizzaRecipe[] = [
   },
   {
     id: "sfiziosa-basilico",
-    number: 50,
+    number: 51,
     name: "Sfiziosa (Basilico)",
     style: "Pumpkin Cream Base — Sautéed Mushrooms, Pancetta, Lorenzo Nº5 EVOO & Parmigiano",
     category: "pumpkin",
@@ -1805,7 +1806,7 @@ export const RECIPES: PizzaRecipe[] = [
   },
   {
     id: "sfiziosa",
-    number: 49,
+    number: 50,
     name: "Sfiziosa",
     style: "Pumpkin Cream Base — Smoked Guanciale, Fresh Burrata, Black Truffle Cream & Crispy Sage",
     category: "pumpkin",
@@ -1851,7 +1852,7 @@ export const RECIPES: PizzaRecipe[] = [
   },
   {
     id: "mantovana",
-    number: 47,
+    number: 48,
     name: "Mantovana",
     style: "Pumpkin Cream Base — Gorgonzola Dolce, Smoked Bacon, Quick-Pickled Onions & Crispy Sage",
     category: "pumpkin",
@@ -1896,7 +1897,7 @@ export const RECIPES: PizzaRecipe[] = [
   },
   {
     id: "norcina",
-    number: 46,
+    number: 47,
     name: "Norcina",
     style: "Pumpkin Cream Base — Porcini, Fennel Sausage, Parmigiano & Crispy Sage",
     category: "pumpkin",
@@ -1941,7 +1942,7 @@ export const RECIPES: PizzaRecipe[] = [
   },
   {
     id: "zucca-salsiccia-e-provola",
-    number: 45,
+    number: 46,
     name: "Zucca, Salsiccia e Provola",
     style: "Pumpkin Cream Base — Smoked Provola, Crumbled Fresh Sausage & Pecorino Romano",
     category: "pumpkin",
@@ -1983,7 +1984,7 @@ export const RECIPES: PizzaRecipe[] = [
   },
   {
     id: "zucca-e-nduja",
-    number: 44,
+    number: 45,
     name: "Zucca e 'Nduja",
     style: "Pumpkin Cream Base — Spicy 'Nduja di Spilinga & Cool Stracciatella",
     category: "pumpkin",
@@ -2026,7 +2027,7 @@ export const RECIPES: PizzaRecipe[] = [
   },
   {
     id: "zucca-guanciale-e-rosmarino",
-    number: 43,
+    number: 44,
     name: "Zucca, Guanciale e Rosmarino",
     style: "Pumpkin Cream Base — Crispy Guanciale, Fresh Rosemary & Pecorino Romano",
     category: "pumpkin",
@@ -2071,7 +2072,7 @@ export const RECIPES: PizzaRecipe[] = [
   },
   {
     id: "zucca-gorgonzola-e-noci",
-    number: 48,
+    number: 49,
     name: "Zucca, Gorgonzola & Noci",
     style: "Pumpkin Cream Base — Gorgonzola Dolce, Toasted Walnuts, Crisp Sage & Acacia Honey",
     category: "pumpkin",
@@ -2114,7 +2115,7 @@ export const RECIPES: PizzaRecipe[] = [
   },
   {
     id: "ragu-napoletano",
-    number: 51,
+    number: 52,
     name: "Ragù Napoletano",
     style: "Contemporary Neapolitan — Slow-Cooked Beef & Pork Ragù, Fior di Latte, Parmigiano & Fresh Thyme",
     category: "innovative",
@@ -2140,6 +2141,81 @@ export const RECIPES: PizzaRecipe[] = [
       { title: "4. Rest & Finish", sections: [
         { bullets: ["Transfer directly to a wooden board and rest for 30–45 seconds", "Add 2–3 small fresh thyme leaves or tiny sprigs", "Finish with a 3g swirl of Barbera Lorenzo N°5 EVOO, distributed lightly over the ragù and cheese", "Slice and serve immediately"] },
         { intro: "Profile:", bullets: ["Rich beef & pork ragù → creamy Fior di Latte → savoury Parmigiano → fresh thyme → fruity Lorenzo N°5 finish"] },
+      ] },
+    ],
+  },
+  {
+    id: "marinara-alle-alici",
+    number: 3,
+    name: "Marinara alle Alici",
+    style: "Rustic Marinara — San Marzano, Pacchetelle, Alici, Capers & Gaeta Olives",
+    category: "classic",
+    toppings: "80g–85g hand-crushed San Marzano DOP tomato, 25g–30g lightly drained Pacchetelle di San Marzano (torn), 5–6 whole Alici di Cetara fillets (post-bake), 6g salted capers (soaked 20 minutes and dried thoroughly), 15g pitted Gaeta olives (halved), 3g paper-thin garlic, 0.5g wild mountain oregano, 2g Odysea Koroneiki EVOO (pre-bake), 2g–3g Frantoio Muraglia Coratina EVOO (post-bake), optional 2–3 basil leaves.",
+    menuIngredients: "San Marzano, Pacchetelle, Alici di Cetara, capers, Gaeta olives, garlic, oregano",
+    build: "A serious, stripped-back anchovy marinara: clean San Marzano and sweet concentrated Pacchetelle with garlic, oregano, saline capers and Gaeta olives, finished with post-bake Alici di Cetara and peppery Coratina EVOO.",
+    postBake: "Rest on a wooden board for 20–30 seconds. Lay 5–6 whole Alici di Cetara across the hot tomato so residual heat gently warms them without cooking them. Finish with 2g–3g Frantoio Muraglia Coratina EVOO and, optionally, 2–3 small basil leaves. Slice and serve immediately.",
+    flavorProgression: "Bright San Marzano → sweet concentrated Pacchetelle → garlic & oregano → saline capers & Gaeta olives → rich anchovy → peppery Coratina EVOO finish",
+    steps: [
+      { title: "1. Prepare", sections: [
+        { bullets: ["Hand-crush the San Marzano tomatoes; keep them clean and bright without mixing anything into the tomato.", "Soak 6g salted capers for 20 minutes, then dry thoroughly. Halve 15g pitted Gaeta olives and slice 3g garlic paper-thin.", "Lightly drain and tear 25g–30g Pacchetelle di San Marzano."] },
+      ] },
+      { title: "2. Stretch", sections: [
+        { bullets: ["Stretch the 280g dough ball to 30–32cm, preserving a generous, airy cornicione."] },
+      ] },
+      { title: "3. Assembly", sections: [
+        { intro: "Layer 1 — San Marzano:", bullets: ["Spread 80g–85g hand-crushed tomato evenly over the dough, leaving the rim clean."] },
+        { intro: "Layer 2 — Pacchetelle:", bullets: ["Distribute 25g–30g torn Pacchetelle over the tomato."] },
+        { intro: "Layer 3 — Garlic:", bullets: ["Distribute the paper-thin garlic slices evenly."] },
+        { intro: "Layer 4 — Capers, olives & oregano:", bullets: ["Scatter 6g dried capers, 15g halved Gaeta olives and 0.5g wild mountain oregano over the pizza."] },
+        { intro: "Layer 5 — Odysea:", bullets: ["Finish the pre-bake build with a very light 2g spiral of Odysea Koroneiki EVOO."] },
+      ] },
+      { title: "4. Gozney Bake", sections: [
+        { intro: "Gozney / High-Heat Oven:", bullets: ["🪨 Stone floor: 430°C–440°C", "🔥 Dome: 450°C–480°C", "⏱ Cook time: approximately 65–75 seconds", "Rotate regularly. Blister the Pacchetelle and caramelise their edges while keeping the garlic from burning."] },
+      ] },
+      { title: "5. Post-Bake", sections: [
+        { bullets: ["Rest on a wooden board for 20–30 seconds."] },
+        { intro: "Stage 1 — Alici:", bullets: ["Lay 5–6 whole Alici di Cetara across the hot tomato. Keep them out of the oven; residual heat gently warms them while preserving their texture and concentrated flavour."] },
+        { intro: "Stage 2 — Finishing oil:", bullets: ["Finish with 2g–3g Frantoio Muraglia Coratina EVOO and, optionally, a tiny basil finish. Slice and serve immediately."] },
+        { intro: "Profile:", bullets: ["San Marzano → Pacchetelle → garlic → oregano → capers → Gaeta olives → Alici → Coratina"] },
+      ] },
+    ],
+  },
+  {
+    id: "alici-e-stracciatella",
+    number: 53,
+    name: "Alici & Stracciatella",
+    style: "Piennolo, Capers, Gaeta Olives, Alici di Cetara, Colatura & Stracciatella",
+    category: "innovative",
+    image: "/pizzas/alici-stracciatella.png",
+    toppings: "75g–80g crushed San Marzano tomato, 50g–55g halved Piennolo del Vesuvio DOP, 60g well-drained Stracciatella di Bufala (post-bake), 6g salted capers (soaked 20 minutes and dried), 15g–18g pitted Gaeta olives (halved), 3g paper-thin garlic, 0.5g wild mountain oregano, 2g Odysea Koroneiki EVOO (pre-bake), 5–6 Alici di Cetara (post-bake), 2–3 micro-drops Colatura di Alici (post-bake), 3g Frantoio Muraglia Coratina EVOO (post-bake), optional 2–3 basil leaves.",
+    menuIngredients: "San Marzano, Piennolo, Stracciatella di Bufala, Alici di Cetara, capers, Gaeta olives, Colatura",
+    build: "A more luxurious, layered take on the anchovy marinara: blistered San Marzano and sweet-tart Piennolo with capers, Gaeta olives and oregano, crowned after baking with cool Stracciatella, Alici di Cetara, a restrained touch of Colatura and Coratina EVOO.",
+    postBake: "Transfer to a wooden board and rest for 30–40 seconds. Add 60g Stracciatella di Bufala in 5–7 distinct small dollops, then drape 5–6 whole Alici di Cetara over the pizza, crossing some over the Stracciatella. Add only 2–3 tiny drops of Colatura di Alici, then finish with a fine 3g spiral of Frantoio Muraglia Coratina EVOO and optional basil. Slice and serve immediately.",
+    flavorProgression: "Bright San Marzano → sweet-tart blistered Piennolo → garlic & oregano → saline capers & Gaeta olives → rich Alici and aromatic Colatura → cool creamy Stracciatella → peppery Coratina finish",
+    steps: [
+      { title: "1. Prepare", sections: [
+        { bullets: ["Drain 60g Stracciatella di Bufala in a fine sieve for 30–60 minutes if needed; keep it creamy but not watery.", "Halve 50g–55g Piennolo tomatoes, cut side ready for assembly. Soak 6g salted capers for 20 minutes and dry thoroughly.", "Halve 15g–18g pitted Gaeta olives and slice 3g garlic paper-thin."] },
+      ] },
+      { title: "2. Stretch", sections: [
+        { bullets: ["Stretch the 280g dough ball to 30–32cm, preserving the inflated cornicione."] },
+      ] },
+      { title: "3. Assembly", sections: [
+        { intro: "Layer 1 — San Marzano:", bullets: ["Spread 75g–80g crushed tomato over the dough."] },
+        { intro: "Layer 2 — Piennolo:", bullets: ["Distribute 50g–55g halved Piennolo, cut side facing upward where possible."] },
+        { intro: "Layer 3 — Garlic:", bullets: ["Nestle the thin garlic slices between the tomatoes."] },
+        { intro: "Layer 4 — Capers, olives & oregano:", bullets: ["Add 6g dried capers, 15g–18g halved Gaeta olives and 0.5g wild mountain oregano."] },
+        { intro: "Layer 5 — Odysea:", bullets: ["Finish the pre-bake build with approximately 2g Odysea Koroneiki EVOO."] },
+      ] },
+      { title: "4. Gozney Bake", sections: [
+        { intro: "Gozney / High-Heat Oven:", bullets: ["🪨 Stone floor: 430°C–440°C", "🔥 Dome: 450°C–480°C", "⏱ Cook time: approximately 65–75 seconds", "Give the flame close attention so the Piennolo blisters and releases its concentrated sweet-tart juices without burning the garlic. Rotate regularly."] },
+      ] },
+      { title: "5. Post-Bake — Important Sequence", sections: [
+        { bullets: ["Transfer to a wooden board and rest for 30–40 seconds."] },
+        { intro: "Stage 1 — Stracciatella:", bullets: ["Place 60g Stracciatella di Bufala in 5–7 small dollops around the pizza. Keep distinct creamy pockets rather than spreading a continuous layer."] },
+        { intro: "Stage 2 — Alici:", bullets: ["Drape 5–6 whole Alici di Cetara over the pizza, preferably crossing some of the Stracciatella."] },
+        { intro: "Stage 3 — Colatura:", bullets: ["Use only 2–3 tiny drops of Colatura di Alici. With the anchovies, capers and olives already bringing salt, use it as an aromatic accent, not a sauce."] },
+        { intro: "Stage 4 — Coratina:", bullets: ["Finish with a fine 3g spiral of Frantoio Muraglia Coratina EVOO and optional tiny basil leaves. Slice and serve immediately."] },
+        { intro: "Profile:", bullets: ["Piennolo → capers → Gaeta olives → Alici di Cetara → restrained Colatura → cool Stracciatella → Coratina"] },
       ] },
     ],
   },
