@@ -111,7 +111,7 @@ export interface PizzaRecipe {
   videoUrl?: string;
   image?: string;
   steps?: RecipeStep[];
-  /** Sibling "style variation" recipes this one can switch to/compare against (e.g. the Bufalina trilogy). */
+  /** Sibling "style variation" recipes this one can switch to/compare against (e.g. Bufalina Classica ↔ Bufalina a Freddo). */
   variations?: RecipeVariation[];
   /** Side-by-side spec comparison table, shown next to the variation switch. */
   comparisonTable?: RecipeComparisonTable;

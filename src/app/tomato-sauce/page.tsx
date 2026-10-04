@@ -106,7 +106,7 @@ export default function TomatoSaucePage() {
           </SubStep>
           <SubStep label="Best Suited To">
             <ul className="space-y-1 list-disc pl-5 text-[14px] text-muted-foreground">
-              <li>Margherita Duo, Margherita della Casa, Margherita variants</li>
+              <li>Margherita Duo, Piennolo e Bufala, Margherita variants</li>
               <li>Cetarese</li>
               <li>pizzas where concentrated tomato pieces are desirable</li>
               <li>combinations with Fior di Latte, Bufala, aged cheese, basil and EVOO</li>
@@ -148,7 +148,7 @@ export default function TomatoSaucePage() {
       <Section number={5} title="Combination Rule" subtitle="When using two tomato types on the same pizza, give them different jobs">
         <div className="grid sm:grid-cols-2 gap-4">
           <div className="rounded-xl border border-primary/30 bg-primary/5 p-4">
-            <div className="font-serif text-base font-semibold mb-2">Margherita della Casa</div>
+            <div className="font-serif text-base font-semibold mb-2">Piennolo e Bufala</div>
             <p className="text-[14px] text-muted-foreground leading-relaxed">
               <strong className="font-serif text-foreground not-italic">San Marzano</strong> → continuous sauce foundation.<br />
               <strong className="font-serif text-foreground not-italic">Piennolo</strong> → concentrated tomato pieces.

@@ -1,20 +1,20 @@
 import type { PizzaRecipe, PizzaRecipeCategory, RecipeComparisonTable } from "./types";
 
-/** Shared spec-comparison matrix for the Bufalina trilogy (Classica / a Freddo / de la Casa). */
-const BUFALINA_TRILOGY_TABLE: RecipeComparisonTable = {
-  headers: ["Spec", "Bufalina Classica", "Bufalina a Freddo", "Bufalina de la Casa"],
+/** Shared comparison matrix for the two Bufalina builds (Classica / a Freddo). */
+const BUFALINA_COMPARISON_TABLE: RecipeComparisonTable = {
+  headers: ["Spec", "Bufalina Classica", "Bufalina a Freddo"],
   rows: [
-    { label: "Tomato Base", values: ["80–90g San Marzano DOP", "80–90g San Marzano DOP", "100–110g Piccolina Vine Tomatoes"] },
-    { label: "Umami Layer", values: ["3–4g Parmigiano Reggiano", "None", "None"] },
-    { label: "Buffalo Mozzarella", values: ["80–90g (Baked)", "90–100g (Post-Bake)", "85–90g (Baked)"] },
-    { label: "Pre-Bake Oil", values: ["2g Elizondo Nº3 Picual", "2g Elizondo Nº3 Picual", "2–3g Elizondo Nº3 Picual"] },
-    { label: "Finishing Oil", values: ["Barbera Lorenzo N°5", "Barbera Lorenzo N°5", "Barbera Lorenzo N°5"] },
-    { label: "Core Character", values: ["Integrated classic", "Thermal & textural contrast", "Sweet, rich & complex house special"] },
+    { label: "Tomato Base", values: ["80–90g San Marzano DOP", "80–90g San Marzano DOP"] },
+    { label: "Umami Layer", values: ["3–4g Parmigiano Reggiano", "None"] },
+    { label: "Buffalo Mozzarella", values: ["80–90g (Baked)", "90–100g (Post-Bake)"] },
+    { label: "Pre-Bake Oil", values: ["2g Elizondo Nº3 Picual", "2g Elizondo Nº3 Picual"] },
+    { label: "Finishing Oil", values: ["Barbera Lorenzo N°5", "Barbera Lorenzo N°5"] },
+    { label: "Core Character", values: ["Integrated classic", "Thermal & textural contrast"] },
   ],
 };
 
 export const RECIPE_CATEGORIES: { id: PizzaRecipeCategory; label: string; blurb: string }[] = [
-  { id: "classic", label: "Classic", blurb: "Cosacca, Marinara, Margherita, Margherita della Casa, Margherita Macchiata, Margherita Duo, Bufalina Classica, Bufalina a Freddo, Bufalina de la Casa, Burratina, Quattro Formaggi, Diavola, Napoletana, Marinara alle Alici, Prosciutto e Rucola, Ibérica Bianca, Prosciutto e Funghi, Capricciosa, Marinara al Salame, Ortolana, Ripieno (Calzone)." },
+  { id: "classic", label: "Classic", blurb: "Cosacca, Marinara, Margherita, Margherita Duo, Margherita Macchiata, Piennolo e Bufala, Bufalina Classica, Bufalina a Freddo, Burratina, Quattro Formaggi, Diavola, Napoletana, Marinara alle Alici, Prosciutto e Rucola, Ibérica Bianca, Prosciutto e Funghi, Capricciosa, Marinara al Salame, Ortolana, Ripieno (Calzone)." },
   { id: "calzone-focaccia", label: "Calzone & Focaccia", blurb: "Folded and stuffed specialties." },
   { id: "innovative", label: "Innovative", blurb: "Modern and rustic twists on Italian tradition — Margherita Datterini, Double Pepperoni & Hot Honey, Chorizo and Gorgonzola, Bufala e Ibérico, Tettoia — Four Cheese & Truffle, Calabrese, Quattro Latte e 'Nduja, 'Nduja & Hot Honey, Alici & Stracciatella, Cetarese, Cacio e Pepe, Carbonara, Amatriciana, Gricia, Pesto Cremosa, Burrata & Pesto, Boscaiola, Mortadella and Pistachio, La Oro Verde, Salsiccia al Pesto, Piennolo & Alici di Cetara, Ragù Napoletano." },
   { id: "pumpkin", label: "Pumpkin Base", blurb: "Replace tomato with smooth roasted pumpkin cream — Sfiziosa, Mantovana, Norcina, Zucca Salsiccia e Provola, Zucca e 'Nduja, Zucca Guanciale e Rosmarino, Zucca, Gorgonzola & Noci." },
@@ -69,9 +69,8 @@ export const RECIPES: PizzaRecipe[] = [
     flavorProgression: "Hot San Marzano → savoury Parmigiano Reggiano → melted creamy buffalo → cooked basil → almond-smooth Lorenzo N°5 finish",
     variations: [
       { relatedId: "bufalina-a-freddo", relatedName: "Bufalina a Freddo", summary: "Baked vs. Post-Bake Buffalo Mozzarella — integrated heat vs. cold, silky contrast." },
-      { relatedId: "bufalina-de-la-casa", relatedName: "Bufalina de la Casa", summary: "San Marzano classic vs. sweet Piccolina vine tomatoes & dual-oil house special." },
     ],
-    comparisonTable: BUFALINA_TRILOGY_TABLE,
+    comparisonTable: BUFALINA_COMPARISON_TABLE,
     steps: [
       { title: "1. Prep Tomato", sections: [
         { bullets: ["80g–90g San Marzano DOP tomatoes, hand-crushed raw with 1g fine sea salt per 100g of tomato", "No cooking, no oil in the sauce"] },
@@ -104,9 +103,8 @@ export const RECIPES: PizzaRecipe[] = [
     postBake: "Rest 30 seconds on a wooden board, tear 45g cold/room-temperature Bufala into 5–6 pools directly over the hot base, scatter 1–2 fresh basil leaves and finish with a 3g swirl of Barbera Lorenzo N°5 EVOO.",
     variations: [
       { relatedId: "bufalina-classica", relatedName: "Bufalina Classica", summary: "Post-Bake vs. Baked Buffalo Mozzarella — cold, silky contrast vs. integrated heat." },
-      { relatedId: "bufalina-de-la-casa", relatedName: "Bufalina de la Casa", summary: "Thermal contrast classic vs. sweet Piccolina vine tomatoes & dual-oil house special." },
     ],
-    comparisonTable: BUFALINA_TRILOGY_TABLE,
+    comparisonTable: BUFALINA_COMPARISON_TABLE,
     steps: [
       { title: "1. Prep Tomato", sections: [
         { bullets: ["80g San Marzano DOP tomatoes, hand-crushed raw with 1g fine sea salt per 100g of tomato", "No cooking, no oil in the sauce"] },
@@ -126,46 +124,6 @@ export const RECIPES: PizzaRecipe[] = [
       { title: "6. Rest & Finish", sections: [
         { bullets: ["Rest 30 seconds on a WOODEN BOARD", "Tear 45g cold or room-temperature Bufala into 5–6 pools directly over the hot base", "Scatter 1–2 fresh basil leaves and finish with a 3g swirl of Barbera Lorenzo N°5 EVOO"] },
         { intro: "Profile:", bullets: ["Hot San Marzano → melted Fior di Latte → blistered crust → cool, silky buffalo pools → fresh basil → almond-smooth Lorenzo N°5 finish"] },
-      ] },
-    ],
-  },
-  {
-    id: "bufalina-de-la-casa",
-    number: 9,
-    name: "Bufalina de la Casa",
-    style: "House Neapolitan — Piccolina Vine Tomatoes, Buffalo Mozzarella & Dual-Oil Finish",
-    category: "classic",
-    image: "https://www.rtagency.it/menu/pizzeria%20carmnella/images/doc-carmnella.jpg",
-    toppings: "100g–110g Piccolina vine tomatoes (halved lengthwise, lightly salted and drained), 85g–90g Mozzarella di Bufala Campana DOP, 4–5 fresh basil leaves, Elizondo Nº3 Picual EVOO pre-bake, Barbera Lorenzo N°5 EVOO finishing swirl. No hard cheese.",
-    menuIngredients: "Piccolina vine tomatoes, buffalo mozzarella, basil, olive oil",
-    build: "Our flagship house Bufalina inspired by classic Naples restraint — sweet Piccolina vine tomatoes, rich Mozzarella di Bufala Campana DOP, and a smooth Barbera Lorenzo N°5 finish.",
-    postBake: "Rest 30–60 seconds on a wooden board, then scatter 1–2 fresh basil leaves and finish with a 3g–4g swirl of Barbera Lorenzo N°5 EVOO (Nocellara del Belice DOP).",
-    inspiredBy: "Inspired by Pizzeria Carmnella dal 1892 — Pizza DOC.",
-    variations: [
-      { relatedId: "bufalina-classica", relatedName: "Bufalina Classica", summary: "Sweet Piccolina vine tomatoes & dual-oil house special vs. San Marzano classic." },
-      { relatedId: "bufalina-a-freddo", relatedName: "Bufalina a Freddo", summary: "Sweet Piccolina vine tomatoes & dual-oil house special vs. thermal contrast classic." },
-    ],
-    comparisonTable: BUFALINA_TRILOGY_TABLE,
-    steps: [
-      { title: "1. Pre-Prep", sections: [
-        { bullets: ["Halve 100g–110g Piccolina vine tomatoes lengthwise, toss with a tiny pinch of fine sea salt, and drain in a sieve for 10 minutes", "Tear 85g–90g Mozzarella di Bufala Campana DOP into large pieces and drain thoroughly in a sieve"] },
-      ] },
-      { title: "2. Dough Prep", sections: [
-        { bullets: ["Hand-stretch the 280g dough ball to 30–33cm on semolina rimacinata, preserving gas in the 1.5–2cm cornicione"] },
-      ] },
-      { title: "3. Layer Assembly (In Exact Order)", sections: [
-        { intro: "Layer 1 — Piccolina Vine Tomatoes:", bullets: ["Spread 100g–110g halved Piccolina vine tomatoes evenly across the dough, leaving a 1.5–2cm rim clean"] },
-        { intro: "Layer 2 — Bufala DOP:", bullets: ["Distribute 85g–90g well-drained Bufala DOP pieces over the tomatoes"] },
-        { intro: "Layer 3 — Basil:", bullets: ["Tuck 2–3 fresh basil leaves under the Bufala pieces"] },
-        { intro: "Layer 4 — Picual:", bullets: ["Apply a 2g–3g spiral micro-drizzle of Elizondo Nº3 Picual EVOO over the build"] },
-      ] },
-      { title: "4. Gozney Bake", sections: [
-        { intro: "Gozney / High-Heat Oven:", bullets: ["🧱 Stone Floor: 430°C–440°C", "⏱ Cook Time: 60–90 seconds", "🔥 Manage top flame dynamically to allow the Piccolina vine tomatoes to soften, sweeten, and blister while controlling buffalo cheese melting"] },
-      ] },
-      { title: "5. Rest & Finish", sections: [
-        { intro: "Rest Protocol:", bullets: ["Transfer directly to a WOODEN BOARD and rest for 30–60 seconds"] },
-        { bullets: ["Scatter 1–2 fresh basil leaves and finish with a 3g–4g swirl of Barbera Lorenzo N°5 EVOO", "Slice and serve immediately"] },
-        { intro: "Profile:", bullets: ["Sweet blistered Piccolina vine tomatoes → rich creamy buffalo → warm basil → baked Picual → buttery Lorenzo N°5 finish"] },
       ] },
     ],
   },
@@ -214,8 +172,8 @@ export const RECIPES: PizzaRecipe[] = [
     build: "A historic mozzarella-free Neapolitan classic built around bright San Marzano DOP, razor-thin garlic, wild oregano, and a two-stage EVOO finish.",
     postBake: "Rest on a wooden board for 30–60 seconds, apply a 2g–3g finishing swirl of Odysea Koroneiki EVOO across the hot pie, then slice and serve immediately.",
     flavorProgression: "Concentrated San Marzano → sweet baked garlic → fragrant wild oregano → baked Picual → herbaceous Odysea finish",
-    videoGuide: "Marinara — No-Cheese Technique",
-    videoUrl: "https://www.youtube.com/shorts/SsJtUw2jnV4",
+    videoGuide: "Marinara — Video Reference",
+    videoUrl: "https://www.youtube.com/shorts/j8dtDOemTPk",
     steps: [
       { title: "1. Pre-Prep", sections: [
         { bullets: ["Drain crushed San Marzano DOP tomatoes in a fine sieve for 10 minutes if watery, then season with 0.8g–1.2g fine sea salt", "Slice garlic cloves (4g–6g, 1 large or 2 small) as thinly as possible using a mandoline or razor-sharp knife", "Keep dried wild oregano ready at assembly"] },
@@ -241,7 +199,7 @@ export const RECIPES: PizzaRecipe[] = [
   },
   {
     id: "napoli",
-    number: 13,
+    number: 14,
     name: "Napoletana",
     style: "Classic Neapolitan — San Marzano DOP, Fior di Latte, Cantabrian Anchovies, Capers & Olives",
     category: "classic",
@@ -279,7 +237,7 @@ export const RECIPES: PizzaRecipe[] = [
   },
   {
     id: "diavola",
-    number: 12,
+    number: 13,
     name: "Diavola",
     style: "Margherita con Salame Piccante — San Marzano DOP, Fior di Latte & Spicy Salami",
     category: "classic",
@@ -315,7 +273,7 @@ export const RECIPES: PizzaRecipe[] = [
   },
   {
     id: "seven-stars-parma",
-    number: 15,
+    number: 16,
     name: "Prosciutto e Rucola",
     style: "Contemporary Neapolitan — Thermal & Textural Contrasts",
     category: "classic",
@@ -362,7 +320,7 @@ export const RECIPES: PizzaRecipe[] = [
   },
   {
     id: "parma-bianca",
-    number: 16,
+    number: 17,
     name: "Ibérica Bianca",
     style: "Contemporary Neapolitan White Base — Ibérico Fat, Ricotta & Lorenzo N°5",
     category: "classic",
@@ -399,7 +357,7 @@ export const RECIPES: PizzaRecipe[] = [
   },
   {
     id: "prosciutto-e-funghi",
-    number: 17,
+    number: 18,
     name: "Prosciutto e Funghi",
     style: "Classic Neapolitan — San Marzano DOP, Fior di Latte, Prosciutto Cotto & Champignons",
     category: "classic",
@@ -452,7 +410,7 @@ export const RECIPES: PizzaRecipe[] = [
   },
   {
     id: "capricciosa",
-    number: 18,
+    number: 19,
     name: "Capricciosa",
     style: "House Classic — Prosciutto Cotto, Salame, Artichokes & Champignons",
     category: "classic",
@@ -506,7 +464,7 @@ export const RECIPES: PizzaRecipe[] = [
   },
   {
     id: "quattro-formaggi",
-    number: 11,
+    number: 12,
     name: "Quattro Formaggi",
     style: "Classic Neapolitan Pizza Bianca — Fior di Latte, Ricotta, Gorgonzola Dolce & Parmigiano",
     category: "classic",
@@ -516,6 +474,8 @@ export const RECIPES: PizzaRecipe[] = [
     build: "A classic Neapolitan white benchmark — pairing a toasted Parmigiano base, melted Fior di Latte, milky Ricotta dollops, Gorgonzola Dolce pockets, and a peppery Coratina finish.",
     postBake: "Transfer directly to a wooden board and rest for 30 seconds to allow the melted cheeses to stabilize, then finish with 1–2 fresh basil leaves and a 2g swirl of Frantoio Muraglia Coratina EVOO. Slice and serve immediately.",
     flavorProgression: "Toasted Parmigiano crust → creamy melted Fior di Latte → milky ricotta pockets → rich Gorgonzola Dolce accent → peppery Coratina finish",
+    videoGuide: "Quattro Formaggi — Video Reference",
+    videoUrl: "https://www.youtube.com/shorts/7OXG78wz8EA",
     steps: [
       { title: "1. Pre-Prep", sections: [
         { bullets: ["Tear 60g Fior di Latte into rustic strips and drain in a sieve for at least 1 hour", "Loosen 30g fresh ricotta in a small bowl with a tiny splash of water or oil until smooth", "Finely grate 15g Parmigiano Reggiano DOP", "Portion 20g Gorgonzola DOP Dolce into small, discrete nuggets"] },
@@ -586,6 +546,8 @@ export const RECIPES: PizzaRecipe[] = [
     build: "A classic folded Neapolitan calzone — packed with peppered ricotta cream, Fior di Latte, and diced Salame, dressed externally with San Marzano DOP, Parmigiano, and Odysea Koroneiki EVOO.",
     postBake: "Transfer directly to a wooden board and rest for 60 seconds to allow internal steam pressure to equalize and fillings to set. Top with 2–3 fresh basil leaves and finish with a 2g swirl of Odysea Koroneiki EVOO across the warm tomato exterior. Slice and serve immediately.",
     flavorProgression: "Tangy exterior San Marzano & Parmigiano → golden baked crust → velvety black-peppered ricotta → melted Fior di Latte → savory diced Salame bite → herbaceous Odysea finish",
+    videoGuide: "Ripieno — Video Reference",
+    videoUrl: "https://www.youtube.com/shorts/cSsncURDc-k",
     steps: [
       { title: "1. Pre-Prep", sections: [
         { bullets: ["Whisk 60g fresh ricotta with a small pinch of fine sea salt and 0.5g freshly cracked black pepper until smooth and velvety", "Cube 60g Fior di Latte into small 1cm pieces and drain in a sieve for at least 1 hour", "Dice 40g Salame into small 0.5cm cubes"] },
@@ -625,6 +587,8 @@ export const RECIPES: PizzaRecipe[] = [
     build: "A contemporary Neapolitan Margherita built on sweet, lightly-crushed Demetra Datterini Pelati rather than a smooth sauce, seasoned with a light dusting of aged hard cheese before the Fior di Latte, basil and dual-oil finish.",
     postBake: "Rest 30–45 seconds on a wooden board, then finish with a 3g swirl of Barbera Lorenzo N°5 EVOO, letting the oil fall across both the cheese and exposed Datterini. Slice and serve immediately.",
     flavorProgression: "Sweet fruity Datterini → creamy Fior di Latte → toasted aged cheese → warm basil → fruity Picual → buttery Lorenzo N°5 finish",
+    videoGuide: "Margherita Datterini — Video Reference",
+    videoUrl: "https://www.youtube.com/shorts/pFQqAXboCeY",
     steps: [
       { title: "1. Dough Prep", sections: [
         { bullets: ["Hand-stretch the 280g dough ball to 30–32cm on Caputo Semolina Rimacinata", "Press the gas outward into the perimeter to form a pronounced, airy 1.5–2cm cornicione", "Keep the center thin and evenly stretched"] },
@@ -1472,31 +1436,33 @@ export const RECIPES: PizzaRecipe[] = [
   },
   {
     id: "margherita-della-casa",
-    number: 4,
-    name: "Margherita della Casa",
+    number: 6,
+    name: "Piennolo e Bufala",
     style: "House Margherita — San Marzano, Blistered Piennolo, Buffalo Mozzarella & Pecorino Crown",
     category: "classic",
-    image: "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/08/47/06/c4/pizza-buonissima-ci-siamo.jpg?w=2000&h=-1&s=1",
-    toppings: "60g hand-crushed San Marzano DOP (seasoned with a light pinch of fine salt), 35g Pomodorini del Piennolo del Vesuvio DOP (halved lengthwise, kept as substantial, clearly visible protagonist pieces), 70g Mozzarella di Bufala Campana DOP (thick medallions, drained 1–2 hours and gently patted dry), 8g finely grated Pecorino Romano DOP, 4–5 fresh basil leaves, 2g–3g Elizondo Nº3 Picual EVOO (pre-bake spiral micro-drizzle). Strictly no post-bake additions.",
-    menuIngredients: "Tomato, Piennolo cherry tomatoes, mozzarella di bufala, Pecorino Romano, basil, olive oil",
-    build: "Our definitive house Margherita — inspired by Maestro Roberto at Pizzeria Al Terrazzo (Dal 1953), featuring hand-crushed San Marzano, prominent blistered Piennolo tomatoes, rich melting Buffalo mozzarella, and a savory Pecorino crown baked with Picual EVOO.",
-    postBake: "Transfer directly to a wooden board and rest for 30–60 seconds to allow excess moisture to vent and the crust to stabilize. Strictly no post-bake additions — no oil, basil, or cheese added after baking. Slice and serve immediately.",
-    flavorProgression: "Concentrated San Marzano → sweet blistered Piennolo → rich buffalo cream → toasted Pecorino umami → warm baked Picual",
+    image: "https://www.rtagency.it/menu/pizzeria%20carmnella/images/doc-carmnella.jpg",
+    toppings: "60g hand-crushed San Marzano DOP (seasoned with a light pinch of fine salt), 35g Pomodorini del Piennolo del Vesuvio DOP (halved lengthwise and lightly salted), 70g Mozzarella di Bufala Campana DOP (thick medallions, drained 1–2 hours and gently patted dry), a small amount of finely grated Grana Padano DOP, 8g finely grated Pecorino Romano DOP, 4–5 fresh basil leaves, 2g–3g Elizondo Nº3 Picual EVOO (pre-bake spiral micro-drizzle), optional 3g Barbera Lorenzo N°5 EVOO (post-bake).",
+    menuIngredients: "San Marzano, salted Piennolo tomatoes, buffalo mozzarella, Grana Padano, Pecorino Romano, basil, Picual EVOO, optional Lorenzo N°5",
+    build: "Our house Piennolo e Bufala — inspired by Maestro Roberto at Pizzeria Al Terrazzo (Dal 1953), with hand-crushed San Marzano, salted and blistered Piennolo tomatoes, basil, rich Buffalo mozzarella medallions, a light Grana Padano and Pecorino finish, Picual EVOO, and optional post-bake Lorenzo N°5.",
+    postBake: "Transfer directly to a wooden board and rest for 30–60 seconds to allow excess moisture to vent and the crust to stabilize. Optionally finish with a 3g swirl of Barbera Lorenzo N°5 EVOO. Slice and serve immediately.",
+    flavorProgression: "Concentrated San Marzano → sweet salted Piennolo → warm basil → rich buffalo cream → toasted Grana and Pecorino → warm baked Picual → optional Lorenzo N°5 finish",
     inspiredBy: "Inspired by the artisanal techniques of Maestro Roberto at Pizzeria Ristorante Al Terrazzo (Dal 1953).",
+    videoGuide: "Maestro Roberto — Piennolo e Bufala Reference",
+    videoUrl: "https://www.youtube.com/shorts/PuM3LecDwMk",
     steps: [
       { title: "1. Pre-Prep", sections: [
-        { bullets: ["Cut 70g Mozzarella di Bufala Campana DOP into thick medallions and drain in a sieve for 1–2 hours. Gently pat dry with paper towels to remove excess surface whey (do not squeeze).", "Halve Piennolo tomatoes lengthwise, keeping them as prominent, clearly visible pieces (do not pre-salt)."] },
+        { bullets: ["Cut 70g Mozzarella di Bufala Campana DOP into thick medallions and drain in a sieve for 1–2 hours. Gently pat dry with paper towels to remove excess surface whey (do not squeeze).", "Halve 35g Pomodorini del Piennolo del Vesuvio DOP lengthwise, keeping the pieces prominent and clearly visible, then season lightly with salt."] },
       ] },
       { title: "2. Dough Prep", sections: [
         { bullets: ["Hand-stretch 280g dough ball to 30–32cm on semolina rimacinata, preserving gas in an airy 1.5–2cm cornicione."] },
       ] },
       { title: "3. Layer Assembly (In Exact Order)", sections: [
         { intro: "Layer 1 — San Marzano:", bullets: ["Spread 60g hand-crushed San Marzano DOP evenly across the centre, leaving a clean 1.5–2cm cornicione rim."] },
-        { intro: "Layer 2 — Piennolo:", bullets: ["Arrange the halved Piennolo tomatoes cut-side up across the sauce as distinct, prominent features."] },
+        { intro: "Layer 2 — Salted Piennolo:", bullets: ["Arrange the halved, lightly salted Piennolo tomatoes cut-side up across the sauce as distinct, prominent pieces."] },
         { intro: "Layer 3 — Basil:", bullets: ["Distribute 4–5 fresh basil leaves over the tomatoes."] },
-        { intro: "Layer 4 — Buffalo Mozzarella:", bullets: ["Distribute the drained Bufala DOP medallions evenly over the basil and tomatoes."] },
-        { intro: "Layer 5 — Pecorino Crown:", bullets: ["Scatter 8g of finely grated Pecorino Romano DOP in small gaps over the mozzarella and exposed tomato areas (avoiding a solid blanket)."] },
-        { intro: "Layer 6 — Picual:", bullets: ["Apply a 2g–3g spiral micro-drizzle of Elizondo Nº3 Picual EVOO over the complete build."] },
+        { intro: "Layer 4 — Buffalo Mozzarella:", bullets: ["Place the drained Bufala DOP medallions over the basil and tomatoes."] },
+        { intro: "Layer 5 — Grana Padano & Pecorino:", bullets: ["Scatter a small amount of finely grated Grana Padano DOP and 8g finely grated Pecorino Romano DOP over the pizza, keeping the cheese light rather than forming a blanket."] },
+        { intro: "Layer 6 — Picual:", bullets: ["Finish with a tiny 2g–3g spiral micro-drizzle of Elizondo Nº3 Picual EVOO over the complete build."] },
       ] },
       { title: "4. Gozney Bake", sections: [
         { intro: "Gozney / High-Heat Oven:", bullets: [
@@ -1509,15 +1475,15 @@ export const RECIPES: PizzaRecipe[] = [
       ] },
       { title: "5. Rest & Serve", sections: [
         { bullets: ["Transfer directly to a wooden board and rest for 30–60 seconds to allow excess moisture to vent and the crust to stabilize."] },
-        { intro: "Strictly no post-bake additions:", bullets: ["No oil, basil, or cheese added after baking. Slice and serve immediately."] },
-        { intro: "Technical Moisture & Thermal Note:", bullets: ["Mozzarella di Bufala has a high moisture content that releases free whey during high-heat baking. Thoroughly draining the medallions for 1–2 hours helps control free moisture during the bake. The Pecorino Romano crown bakes directly into the tomato and buffalo cream, building a deep, toasted umami finish."] },
-        { intro: "Profile:", bullets: ["Concentrated San Marzano → sweet blistered Piennolo → rich buffalo cream → toasted Pecorino umami → warm baked Picual"] },
+        { intro: "Optional post-bake finish:", bullets: ["Add a 3g swirl of Barbera Lorenzo N°5 EVOO if desired. Slice and serve immediately."] },
+        { intro: "Technical Moisture & Thermal Note:", bullets: ["Mozzarella di Bufala has a high moisture content that releases free whey during high-heat baking. Thoroughly draining the medallions for 1–2 hours helps control free moisture during the bake. The light Grana Padano and Pecorino Romano finish toasts over the tomato and buffalo, building a savoury umami finish."] },
+        { intro: "Profile:", bullets: ["Concentrated San Marzano → sweet salted Piennolo → warm basil → rich buffalo cream → toasted Grana and Pecorino → warm baked Picual"] },
       ] },
     ],
   },
   {
     id: "margherita-duo",
-    number: 6,
+    number: 4,
     name: "Margherita Duo",
     style: "Dual-Color Piennolo — Yellow & Red Vesuvian Tomatoes & Fior di Latte",
     category: "classic",
@@ -1605,7 +1571,7 @@ export const RECIPES: PizzaRecipe[] = [
   },
   {
     id: "marinara-al-salame",
-    number: 19,
+    number: 11,
     name: "Marinara al Salame",
     style: "Yellow Marinara — Vesuvian Yellow Tomatoes, Neapolitan Salami & Mountain Oregano",
     category: "classic",
@@ -2075,7 +2041,7 @@ export const RECIPES: PizzaRecipe[] = [
   },
   {
     id: "marinara-alle-alici",
-    number: 14,
+    number: 15,
     name: "Marinara alle Alici",
     style: "Rustic Marinara — San Marzano, Pacchetelle, Alici, Capers & Gaeta Olives",
     category: "classic",
@@ -2084,6 +2050,8 @@ export const RECIPES: PizzaRecipe[] = [
     build: "A serious, stripped-back anchovy marinara: clean San Marzano and sweet concentrated Pacchetelle with garlic, oregano, saline capers and Gaeta olives, finished with post-bake Alici di Cetara and peppery Coratina EVOO.",
     postBake: "Rest on a wooden board for 20–30 seconds. Lay 5–6 whole Alici di Cetara across the hot tomato so residual heat gently warms them without cooking them. Finish with 2g–3g Frantoio Muraglia Coratina EVOO and, optionally, 2–3 small basil leaves. Slice and serve immediately.",
     flavorProgression: "Bright San Marzano → sweet concentrated Pacchetelle → garlic & oregano → saline capers & Gaeta olives → rich anchovy → peppery Coratina EVOO finish",
+    videoGuide: "Marinara alle Alici — Video Reference",
+    videoUrl: "https://www.youtube.com/shorts/rVVF0TIPtFc",
     steps: [
       { title: "1. Prepare", sections: [
         { bullets: ["Hand-crush the San Marzano tomatoes; keep them clean and bright without mixing anything into the tomato.", "Soak 6g salted capers for 20 minutes, then dry thoroughly. Halve 15g pitted Gaeta olives and slice 3g garlic paper-thin.", "Lightly drain and tear 25g–30g Pacchetelle di San Marzano."] },
