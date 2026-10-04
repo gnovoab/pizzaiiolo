@@ -80,18 +80,14 @@ interface DoughBatchSummary {
   remainder: number;
 }
 
-// Poolish tab baker's percentages (fixed, of total flour weight) — derived
-// from the published 100% Poolish + cold-ferment recipe (500 g Nuvola in the
-// poolish stage + 500 g Pizzeria in the final mix, 670 g total water, 24 g
-// salt, 0.8 g total yeast split 0.6 g poolish / 0.2 g final mix, per 1,000 g
-// total flour).
+// Vito-style Poolish tab baker's percentages, optimized for the Famag + Gozney
+// setup. All yeast goes into the poolish; the final dough gets no extra yeast.
 const POOLISH_NUVOLA_PCT = 0.5;
 const POOLISH_PIZZERIA_PCT = 0.5;
 const POOLISH_STAGE_WATER_PCT = 0.5;
 const POOLISH_FINAL_WATER_PCT = 0.17;
 const POOLISH_SALT_PCT = 0.024;
-const POOLISH_STAGE_YEAST_PCT = 0.0006;
-const POOLISH_FINAL_YEAST_PCT = 0.0002;
+const POOLISH_YEAST_PCT = 0.0008;
 
 /** Single source of truth for every Poolish-tab quantity. */
 function calculatePoolishBatch(flourWeight: number, ballWeight: number) {
@@ -101,8 +97,8 @@ function calculatePoolishBatch(flourWeight: number, ballWeight: number) {
   const finalWater = flourWeight * POOLISH_FINAL_WATER_PCT;
   const water = poolishWater + finalWater;
   const salt = flourWeight * POOLISH_SALT_PCT;
-  const poolishYeast = flourWeight * POOLISH_STAGE_YEAST_PCT;
-  const finalYeast = flourWeight * POOLISH_FINAL_YEAST_PCT;
+  const poolishYeast = flourWeight * POOLISH_YEAST_PCT;
+  const finalYeast = 0;
   const yeast = poolishYeast + finalYeast;
 
   const totalDough = flourWeight + water + salt + yeast;
@@ -124,12 +120,19 @@ export default function DoughMakerPage() {
 
   const batch = useMemo(() => calculateDoughBatch(flourAmount, ballWeight), [flourAmount, ballWeight]);
 
-  const [poolishFlourAmount, setPoolishFlourAmount] = useState(1000);
+  const [poolishFlourAmount, setPoolishFlourAmount] = useState(2000);
   const [poolishBallWeight, setPoolishBallWeight] = useState(280);
   const poolishBatch = useMemo(
     () => calculatePoolishBatch(poolishFlourAmount, poolishBallWeight),
     [poolishFlourAmount, poolishBallWeight]
   );
+  const directBaseline = {
+    nuvola: poolishFlourAmount * 0.5,
+    pizzeria: poolishFlourAmount * 0.5,
+    water: poolishFlourAmount * 0.63,
+    salt: poolishFlourAmount * 0.024,
+    freshYeast: poolishFlourAmount * 0.0006,
+  };
 
   return (
     <div className="space-y-10">
@@ -349,220 +352,163 @@ export default function DoughMakerPage() {
 
         <TabsContent value="poolish" className="space-y-6 mt-4">
           <p className="text-[15px] text-muted-foreground italic border-l-2 border-primary/30 pl-3 leading-relaxed">
-            <HighlightNumbers text="If you want to achieve the absolute gold standard of modern Neapolitan (Canotto-style) pizza in your Gozney, the best approach is to switch from a direct dough to a 100% Poolish Preferment method combined with a cold ferment. This is the technique favored by contemporary Italian master pizzaiolos (like Vito Iacopelli and Diego Vitagliano) and Gozney's own recipe developers. It produces a crust that is dramatically airier, far lighter on the stomach, and explodes into giant, blistered rims under high heat." />
+            <HighlightNumbers text="Vito-Style Poolish — Famag + Gozney. This is a Vito Iacopelli-inspired poolish method optimized for a Famag spiral mixer, Gozney high-temperature oven, 50/50 Caputo Pizzeria 00 and Caputo Nuvola, 67% hydration, and 280g dough balls. It is an adaptation for this setup, not a claim to reproduce Vito Iacopelli’s exact original recipe." />
           </p>
 
-          <Section number={1} title="Why the 100% Poolish + Cold Ferment Wins">
-            <Bullets items={[
-              "Explosive Micro-Bubbling — A Poolish creates heavy enzymatic activity before the final mix. When this liquid starter hits the 450°C Gozney stone, the micro-bubbles expand instantly, puffing the rim into a hollow shell",
-              "Softness Without Toughness — Because half the flour gets pre-hydrated overnight, the gluten network becomes extremely relaxed and extensible. You get zero rubbery chew",
-              "Deep, Sweet Wheat Flavor — The extended preferment breaks down complex starches into natural sugars, producing a fragrant, sweet, buttery crust aroma instead of a sharp yeast smell",
-            ]} />
-            <Callout>👉 Uses the Famag spiral mixer only for the final short knead. Choose your flour quantity in the next section and every ingredient scales automatically using the same baker&apos;s percentages.</Callout>
-          </Section>
-
-          <Section number={2} title="Two Critical Adjustments for the Gozney" subtitle={`${formatWeight(poolishBatch.flourWeight)} flour and ${formatWeight(poolishBatch.water)} water (67% hydration) are correct — yeast and honey are not`}>
+          <Section number={1} title="Formula & Batch Calculator" subtitle="50/50 Caputo Pizzeria 00 + Caputo Nuvola · 67% hydration · 2.4% salt · 0.08% instant dry yeast">
             <div className="grid sm:grid-cols-2 gap-4 mb-5">
-              <Field label="Total Flour (g)" value={poolishFlourAmount} onChange={setPoolishFlourAmount} min={1000} max={3000} step={10} />
+              <Field label="Total Flour (g)" value={poolishFlourAmount} onChange={setPoolishFlourAmount} min={500} max={3000} step={10} />
               <Field label="Dough Ball Size (g)" value={poolishBallWeight} onChange={setPoolishBallWeight} min={200} max={400} step={5} />
             </div>
-            <p className="text-[15px] mb-4 leading-relaxed">
-              <HighlightNumbers text={`The ${formatWeight(poolishBatch.flourWeight)} flour total and ${formatWeight(poolishBatch.water)} water (67% hydration) are calculated correctly, but there are two critical adjustments to the yeast and honey before you mix this for your Gozney.`} />
-            </p>
-            <div className="grid sm:grid-cols-2 gap-4">
-              <div className="rounded-xl border border-destructive/30 bg-destructive/5 p-4">
-                <div className="text-[11px] uppercase tracking-[0.15em] text-destructive font-semibold mb-2">1. Drop the Honey Completely (0 g)</div>
-                <p className="text-[15px] leading-relaxed"><span className="font-semibold">The Error:</span> Adding 6 g of honey to a Poolish cooked in a Gozney at 450–500°C will cause the rim to char and burn too quickly before the inside cooks through. Honey is meant for home ovens (250°C).</p>
-                <p className="text-[15px] leading-relaxed mt-2"><span className="font-semibold">The Fix:</span> 0 g honey. At 450°C, the natural sugars released by the Poolish are more than enough to give you perfect leopard spotting without burning.</p>
-              </div>
-              <div className="rounded-xl border border-destructive/30 bg-destructive/5 p-4">
-                <div className="text-[11px] uppercase tracking-[0.15em] text-destructive font-semibold mb-2">2. Reduce the Yeast (0.8–1.0 g max per 1,000 g flour)</div>
-                <p className="text-[15px] leading-relaxed"><span className="font-semibold">The Error:</span> 1.6 g of dry yeast across a Poolish + 24-hour cold ferment is too aggressive for 1,000 g of flour. The dough will over-proof in the fridge, become overly acidic, lose its gluten strength, and collapse or tear when stretched.</p>
-                <p className="text-[15px] leading-relaxed mt-2"><span className="font-semibold">The Fix:</span> 0.8 g to 1.0 g total dry yeast per 1,000 g flour (about a generous 1/4 tsp).</p>
-              </div>
-            </div>
-          </Section>
-
-          <Section number={3} title="Corrected Final Measurements" subtitle="Gozney + Famag setup">
             <BatchSummary batch={poolishBatch} />
             <div className="overflow-x-auto -mx-1">
-              <table className="w-full text-[15px] border-collapse min-w-[560px]">
+              <table className="w-full text-[15px] border-collapse min-w-[420px]">
                 <thead>
                   <tr className="border-b border-border/70 text-left text-[11px] uppercase tracking-wider text-muted-foreground">
-                    <th className="py-2 px-1 font-semibold">Ingredient</th>
-                    <th className="py-2 px-1 font-semibold">Measurement</th>
-                    <th className="py-2 px-1 font-semibold">% Ratio</th>
-                    <th className="py-2 px-1 font-semibold">Purpose in the Recipe</th>
+                    <th className="py-2 px-1 font-semibold">Ingredient / yield</th>
+                    <th className="py-2 px-1 font-semibold">Amount at selected flour weight</th>
+                    <th className="py-2 px-1 font-semibold">Baker&apos;s %</th>
                   </tr>
                 </thead>
                 <tbody>
                   {[
-                    ["Caputo Nuvola Flour", formatWeight(poolishBatch.nuvola), "50%", "High gas retention for an airy rim"],
-                    ["Caputo Pizzeria 00 Flour", formatWeight(poolishBatch.pizzeria), "50%", "Strength and elasticity for the base"],
-                    ["Cool Water", formatWeight(poolishBatch.water), "67%", "Moisture for a cloud-like interior in high heat"],
-                    ["Trapani / Fine Sea Salt", formatWeight(poolishBatch.salt), "2.4%", "Gluten structure and taste"],
-                    ["Caputo Instant Dry Yeast", formatWeightPrecise(poolishBatch.yeastMin), "0.08%", "Just a generous 1/4 tsp for the entire process"],
-                    ["Honey / Sugar", "0 g", "0%", "Omit for Gozney to prevent burning"],
+                    ["Caputo Nuvola", formatWeight(poolishBatch.nuvola), "50%"],
+                    ["Caputo Pizzeria 00", formatWeight(poolishBatch.pizzeria), "50%"],
+                    ["Water", formatWeight(poolishBatch.water), "67%"],
+                    ["Fine sea salt", formatWeight(poolishBatch.salt), "2.4%"],
+                    ["Caputo Instant Dry Yeast (all in poolish)", formatWeightPrecise(poolishBatch.poolishYeast), "0.08%"],
+                    ["Honey / sugar", "0 g", "0%"],
+                    ["Total dough", `~${fmtG(poolishBatch.totalDoughMin, 1)} g`, "~"],
+                    ["Dough balls", `${poolishBatch.fullBalls} × ${formatWeight(poolishBatch.ballWeight)}`, "—"],
+                    ["Remaining dough", `~${fmtG(poolishBatch.remainder, 1)} g`, "—"],
                   ].map((row) => (
                     <tr key={row[0]} className="border-b border-border/40 last:border-0">
                       <td className="py-2 px-1 font-medium text-foreground">{row[0]}</td>
                       <td className="py-2 px-1 font-mono text-primary font-semibold whitespace-nowrap">{row[1]}</td>
                       <td className="py-2 px-1 font-mono whitespace-nowrap">{row[2]}</td>
-                      <td className="py-2 px-1 text-muted-foreground">{row[3]}</td>
                     </tr>
                   ))}
                 </tbody>
               </table>
             </div>
-          </Section>
+            <Callout>Measure the instant yeast with a precision scale. Do not estimate it with a teaspoon or pinch.</Callout>
 
-          <Section number={4} title="How to Divide the Yeast Exactly Between Steps" subtitle={`Splitting ${formatWeightPrecise(poolishBatch.poolishYeast + poolishBatch.finalYeast)} across the Poolish and final mix`}>
+            <Subhead className="mt-6">Comparison baseline — kept separate</Subhead>
             <div className="grid sm:grid-cols-2 gap-4">
-              <div className="rounded-xl border border-primary/30 bg-primary/5 p-4">
-                <div className="text-[11px] uppercase tracking-[0.15em] text-primary font-semibold mb-2">Step 1 — The Poolish (Day 1)</div>
-                <ul className="text-[15px] space-y-1.5 leading-relaxed list-disc pl-4">
-                  <li>{formatWeight(poolishBatch.nuvola)} Caputo Nuvola</li>
-                  <li>{formatWeight(poolishBatch.poolishWater)} Water</li>
-                  <li>{formatWeightPrecise(poolishBatch.poolishYeast)} Yeast (a standard 1/4 tsp pinch)</li>
-                </ul>
-                <p className="text-[15px] mt-2 leading-relaxed">Mix, leave 1 hour on the counter, then fridge for 16–18 hours.</p>
+              <div className="rounded-xl border border-border/70 bg-muted/20 p-4">
+                <div className="font-serif font-semibold mb-2">Direct dough baseline</div>
+                <Bullets items={[
+                  `${formatWeight(directBaseline.pizzeria)} Caputo Pizzeria 00 + ${formatWeight(directBaseline.nuvola)} Caputo Nuvola`,
+                  `${formatWeight(directBaseline.water)} water · 63% hydration`,
+                  `${formatWeight(directBaseline.salt)} salt · 2.4%`,
+                  `${formatWeightPrecise(directBaseline.freshYeast)} fresh yeast`,
+                  "Approximately 60 hours cold fermentation",
+                ]} />
               </div>
-              <div className="rounded-xl border border-secondary/30 bg-secondary/5 p-4">
-                <div className="text-[11px] uppercase tracking-[0.15em] text-secondary font-semibold mb-2">Step 2 — The Final Mix (Day 2)</div>
-                <ul className="text-[15px] space-y-1.5 leading-relaxed list-disc pl-4">
-                  <li>All of the cold Poolish</li>
-                  <li>{formatWeight(poolishBatch.pizzeria)} Caputo Pizzeria</li>
-                  <li>{formatWeight(poolishBatch.finalWater)} Water</li>
-                  <li>{formatWeight(poolishBatch.salt)} Salt</li>
-                  <li>{formatWeightPrecise(poolishBatch.finalYeast)} Yeast (a tiny micro-pinch)</li>
-                </ul>
-                <p className="text-[15px] mt-2 leading-relaxed">Mix in the Famag on Speed 1–3 for 6–8 minutes, then fridge for 24 hours.</p>
+              <div className="rounded-xl border border-primary/30 bg-primary/5 p-4">
+                <div className="font-serif font-semibold mb-2">Vito-style poolish test</div>
+                <Bullets items={[
+                  `${formatWeight(poolishBatch.pizzeria)} Caputo Pizzeria 00 + ${formatWeight(poolishBatch.nuvola)} Caputo Nuvola`,
+                  `${formatWeight(poolishBatch.water)} water · 67% hydration`,
+                  `${formatWeight(poolishBatch.salt)} salt · 2.4%`,
+                  `${formatWeightPrecise(poolishBatch.poolishYeast)} instant dry yeast, all in the poolish`,
+                  "Poolish + approximately 24 hours final cold fermentation",
+                ]} />
               </div>
             </div>
+            <Callout>Keeping both recipes separate allows a controlled taste and handling comparison without changing multiple variables within either method.</Callout>
           </Section>
 
-          <Section number={5} title="Phase 1: The Poolish Preferment" subtitle="Day 1 — Morning">
-            <ol className="space-y-1.5">
+          <Section number={2} title="Day 1 — Poolish" subtitle="All yeast goes here · no honey or sugar">
+            <Bullets items={[
+              `${formatWeight(poolishBatch.poolishWater)} water`,
+              `${formatWeight(poolishBatch.nuvola)} Caputo Nuvola`,
+              `${formatWeightPrecise(poolishBatch.poolishYeast)} Caputo Instant Dry Yeast — weigh precisely`,
+            ]} />
+            <ol className="space-y-3 mt-4">
               {[
-                `In a glass jar or bowl, mix ${formatWeight(poolishBatch.poolishWater)} of the water and ${formatWeightPrecise(poolishBatch.poolishYeast)} of dry yeast (a standard 1/4 tsp pinch) until dissolved`,
-                `Whisk in ${formatWeight(poolishBatch.nuvola)} of the Caputo Nuvola flour until a smooth, pancake-like batter forms`,
-                "Cover loosely and leave on the counter at room temperature for 1 hour to kickstart fermentation, then place in the refrigerator (4°C) for 16–18 hours",
-              ].map((t, i) => (
-                <li key={t} className="text-[15px] flex gap-2.5 leading-relaxed">
+                `Add ${formatWeight(poolishBatch.poolishWater)} water to the poolish container. Add ${formatWeightPrecise(poolishBatch.poolishYeast)} instant dry yeast and mix until reasonably dispersed.`,
+                `Add ${formatWeight(poolishBatch.nuvola)} Caputo Nuvola. Mix thoroughly until no dry flour remains and the mixture resembles a smooth, thick batter.`,
+                "Cover loosely and leave at room temperature for approximately 1 hour.",
+                "Cover and refrigerate at approximately 4°C for around 16–18 hours. Look for a visibly fermented, bubbly poolish that has not collapsed or become excessively degraded; the clock is a guide, not an absolute.",
+              ].map((text, i) => (
+                <li key={text} className="flex gap-3 leading-relaxed">
                   <span className="font-mono font-semibold text-primary shrink-0">{i + 1}.</span>
-                  <span><HighlightNumbers text={t} /></span>
-                </li>
-              ))}
-            </ol>
-            <Callout>💡 It will double in size and become bubbly. No honey — the natural sugars from the Poolish are enough for a Gozney-hot bake.</Callout>
-          </Section>
-
-          <Section number={6} title="Phase 2: The Final Knead" subtitle="Day 2 — Morning">
-            <ol className="space-y-1.5">
-              {[
-                "Scrape the cold, bubbly Poolish directly into the Famag bowl",
-                `Pour in the remaining ${formatWeight(poolishBatch.finalWater)} of cold water`,
-                `Add the remaining ${formatWeight(poolishBatch.pizzeria)} Caputo Pizzeria flour, the remaining ${formatWeightPrecise(poolishBatch.finalYeast)} dry yeast (a tiny micro-pinch), and the ${formatWeight(poolishBatch.salt)} salt`,
-                "Run Speed 1–2 for the first 2–3 minutes, then Speed 3–4 for 6 to 8 minutes max — just until a smooth, cohesive dough ball detaches from the bowl",
-                "Stop the mixer immediately once the dough is smooth",
-              ].map((t, i) => (
-                <li key={t} className="text-[15px] flex gap-2.5 leading-relaxed">
-                  <span className="font-mono font-semibold text-primary shrink-0">{i + 1}.</span>
-                  <span><HighlightNumbers text={t} /></span>
+                  <span><HighlightNumbers text={text} /></span>
                 </li>
               ))}
             </ol>
           </Section>
 
-          <Section number={7} title="Phase 3: Cold Ferment & Balling" subtitle="Day 2 to Day 3">
+          <Section number={3} title="Day 2 — Final Dough & Famag Mixing" subtitle="All of the cold poolish · no additional yeast · no honey">
+            <Subhead>Final-dough ingredients</Subhead>
             <Bullets items={[
-              "Transfer the dough to an airtight container and place it back in the fridge (4°C) for 24 hours",
-              `5 to 6 hours before baking on Day 3, take the cold dough out and divide it into ${poolishBatch.fullBalls} equal ball${poolishBatch.fullBalls === 1 ? "" : "s"} (~${formatWeight(poolishBatch.ballWeight)} each)${poolishBatch.remainder > 0.5 ? ` plus approximately ${formatWeight(poolishBatch.remainder)} remaining dough` : ""}`,
-              "Shape gently into tight balls, place in a covered proofing box, and let rise at room temperature (20°C–22°C) until doubled, pillowy, and soft",
+              "All of the cold poolish",
+              `${formatWeight(poolishBatch.pizzeria)} Caputo Pizzeria 00`,
+              `${formatWeight(poolishBatch.finalWater)} cold water`,
+              `${formatWeight(poolishBatch.salt)} fine sea salt`,
+              "No additional yeast and no honey",
             ]} />
-          </Section>
-
-          <p className="text-[15px] text-muted-foreground italic border-l-2 border-primary/30 pl-3 leading-relaxed">
-            <HighlightNumbers text="Handling a 67% hydration Poolish dough requires a different touch than a lower-hydration direct dough. Because the preferment makes the gluten extremely extensible (stretchy and relaxed), the dough will open up almost effortlessly, but it can tear if pulled aggressively or stretched from the center. Here is the step-by-step master technique for shaping, launching, and controlling the flame in your Gozney (Roccbox, Arc, or Dome) to achieve a giant, airy cornicione without burning." />
-          </p>
-
-          <Section number={8} title="Preheat the Gozney & Prep Your Station" subtitle="Set up before touching the dough">
-            <Bullets items={[
-              "Preheat the oven: turn your Gozney flame to MAX for 30–40 minutes until the stone temperature reads 430–450°C (800–840°F) on an infrared thermometer",
-              "Prep the workstation: dump a generous mound of Caputo Semolina Rimacinata onto your work surface",
-              "Dough box prep: dust the top of your dough balls inside the proofing container with a light sprinkling of semolina so your hands don't stick when lifting them out",
-            ]} />
-          </Section>
-
-          <Section number={9} title="Extract the Dough Ball" subtitle="Preserve the gas structure">
-            <Bullets items={[
-              "Use a wide flexible dough spatula/scraper to scoop around the dough ball",
-              "Lift gently from underneath — do not pull from the top, or you will deflate the delicate gas pockets built up by the Poolish",
-              "Drop the ball directly into the mound of semolina, coating both the top and bottom completely",
-            ]} />
-          </Section>
-
-          <Section number={10} title="Form the Rim (Gas Pushing Technique)" subtitle="Never touch the outer ring!">
-            <Bullets items={[
-              "Place the semolina-coated dough ball on a clean spot on your counter",
-              "Keeping your fingers flat and joined together, press into the dough starting 1.5 cm (0.5 inch) away from the edge",
-              "Push the trapped air outwards toward the rim using short, firm presses. Work your way down, flip the dough over, and repeat the process going back up",
-            ]} />
-            <Callout>⚠️ Rule: Never press down on the outer 1.5 cm edge — this ring must stay uncompressed to expand into a giant, airy cornicione.</Callout>
-          </Section>
-
-          <Section number={11} title="Open the Base" subtitle="Neapolitan Slap or Knuckle Stretch — avoid pulling from the center">
-            <div className="grid sm:grid-cols-2 gap-4">
-              <div className="rounded-xl border border-primary/30 bg-primary/5 p-4">
-                <div className="font-serif text-base font-semibold mb-1.5">Steering Wheel / Gravity Method</div>
-                <p className="text-[15px] leading-relaxed">Pick up the dough by holding the inner boundary of the rim with both hands, letting gravity pull the dough down while rotating it like a steering wheel.</p>
-              </div>
-              <div className="rounded-xl border border-secondary/30 bg-secondary/5 p-4">
-                <div className="font-serif text-base font-semibold mb-1.5">Knuckle Stretch</div>
-                <p className="text-[15px] leading-relaxed">Make two fists, place your knuckles beneath the inner circle of the dough, and gently pull your hands apart. Rotate 90° and repeat.</p>
-              </div>
-            </div>
-            <Callout>👉 Stop stretching once the base reaches 28–30 cm (11–12 inches). The middle will feel thin, while the outer rim will look noticeably thick and puffy.</Callout>
-          </Section>
-
-          <Section number={12} title="Top & Load the Peel" subtitle="Keep movement fast to prevent sticking">
-            <Bullets items={[
-              "Perforated peel: lightly dust your launch peel with a tiny bit of semolina (shake off any excess)",
-              "Quick topping: spread your crushed San Marzano DOP tomatoes, fresh mozzarella, olive oil, and basil quickly — high-hydration dough absorbs moisture fast, so if toppings sit too long, the dough will stick to the peel",
-              "Drag the pizza onto your peel in one smooth, confident movement",
-            ]} />
-          </Section>
-
-          <Section number={13} title="Flame Management & Baking in the Gozney" subtitle="Prevent burning the high rim">
-            <ol className="space-y-1.5">
+            <Subhead className="mt-5">Famag mixing process</Subhead>
+            <ol className="space-y-3">
               {[
-                "Lower the flame: right before launching, turn the Gozney burner knob down to LOW (or medium-low) — the high-hydration rim expands so tall that a maximum top flame will scorch it before the interior bakes",
-                "The launch: aim for the back-middle of the stone (where heat is most even) and slide the pizza off the peel with a crisp back-and-forth motion",
-                "The first turn: let the pizza cook untouched for 25–30 seconds until the base sets and the back rim begins to puff and spot",
-                "Rotate: insert your turning peel under the firm base and rotate 180° so the front rim moves toward the back flame. Turn every 15 seconds",
-              ].map((t, i) => (
-                <li key={t} className="text-[15px] flex gap-2.5 leading-relaxed">
+                `0–2 min · Speed 1: Add all of the cold poolish to the bowl with ${formatWeight(poolishBatch.finalWater)} cold water. Mix to loosen and disperse the poolish.`,
+                `2–4 min · Speed 1–2: Progressively add ${formatWeight(poolishBatch.pizzeria)} Caputo Pizzeria 00. Let the flour hydrate and the dough come together.`,
+                `4–5 min · Speed 2–3: Add ${formatWeight(poolishBatch.salt)} salt. Mix until everything is incorporated and there is no dry flour.`,
+                "Approximately 5–8/10 min · Speed 3–4: Develop until the dough is smooth, cohesive, elastic, wraps around the spiral and is relatively clean from the bowl. It should remain soft and extensible, properly developed but not tight or rubbery.",
+              ].map((text, i) => (
+                <li key={text} className="flex gap-3 leading-relaxed">
                   <span className="font-mono font-semibold text-primary shrink-0">{i + 1}.</span>
-                  <span><HighlightNumbers text={t} /></span>
+                  <span><HighlightNumbers text={text} /></span>
                 </li>
               ))}
             </ol>
-            <Callout>🔥 Total bake time: 75 to 90 seconds.</Callout>
+            <Callout>Mix to the dough&apos;s condition, not a fixed timer. Do not chase an extreme windowpane or keep mixing to 10 minutes if development is already right. Target a final dough temperature of 23–25°C; if the dough gets too warm, stop instead of chasing more gluten development.</Callout>
           </Section>
 
-          <Section number={14} title="Post-Bake Rest" subtitle="Maintain crispness">
+          <Section number={4} title="Post-Mixing & Balling" subtitle="Approximately 60 minutes total bulk after mixing">
+            <Subhead>Rest and bulk</Subhead>
             <Bullets items={[
-              "Retrieve the pizza and place it onto a wire cooling rack for 60 seconds before moving it to a wooden cutting board or plate",
+              "Transfer the dough to a covered container and rest for approximately 15–20 minutes.",
+              "Perform one gentle stretch-and-fold to organize and strengthen the dough. Do not knead aggressively. A second fold is only needed if the dough is unusually slack and weak.",
+              "Rest for approximately another 40–45 minutes. Dough condition takes priority over the exact clock.",
             ]} />
-            <Callout>💡 Why? Placing a 67% hydration pizza directly onto a flat board creates steam underneath, turning the bottom crust soggy. A cooling rack lets steam vent, keeping the bottom shell crisp.</Callout>
+            <Subhead className="mt-5">Divide and ball</Subhead>
+            <Bullets items={[
+              `Divide into ${poolishBatch.fullBalls} × ${formatWeight(poolishBatch.ballWeight)} dough balls${poolishBatch.remainder > 0.5 ? `, with approximately ${fmtG(poolishBatch.remainder, 1)} g remaining` : ""}.`,
+              "Shape gently into smooth balls without aggressively degassing.",
+              "Place the balls into the Genus Dei dough box.",
+            ]} />
           </Section>
 
-          <Section number={15} title="Critical Reminders for High Hydration (67%)">
+          <Section number={5} title="Second Cold Fermentation & Final Proof">
+            <Subhead>Second cold fermentation</Subhead>
+            <Bullets items={["Refrigerate at approximately 4°C for around 24 hours. Refrigerator temperature and dough activity can shift the ideal timing, so treat 24 hours as a guide rather than an absolute requirement."]} />
+            <Subhead className="mt-5">Final proof</Subhead>
             <Bullets items={[
-              "Use semolina, not 00 flour, for dusting — raw 00 flour burns at 450°C and tastes bitter. Semolina acts like tiny ball bearings beneath the wet dough and slides off the perforated peel cleanly",
-              "Keep sauce cold/room temp — never put warm tomato sauce on high-hydration dough; it weakens the gluten instantly and causes tears",
-              "Don't overload the middle — high-hydration dough is delicate. Keep your sauce layer thin and cheese spread evenly so the center doesn't get weighed down or soggy",
+              "Initially remove the dough balls approximately 3–4 hours before baking. Aim for a room temperature around 20–22°C.",
+              "Do not require the dough to double in size. Look for dough that is visibly expanded, soft and pillowy, relaxed, extensible, actively fermenting and still strong enough to open without tearing.",
+              "If the dough is still tight, allow more time. If it is already very gassy, weak or fragile, bake sooner.",
             ]} />
+          </Section>
+
+          <Section number={6} title="Important Process Principles">
+            <ol className="space-y-2 list-decimal pl-5">
+              {[
+                "This is a Vito-style poolish adaptation, not a claim to reproduce Vito Iacopelli’s exact current recipe.",
+                "67% hydration is intentional for this Famag/Gozney test.",
+                "Honey is omitted; it is not required for browning or flavour in a high-temperature Gozney bake.",
+                "Put all instant yeast in the poolish. Do not split it between poolish and final dough; 0.2g is difficult to measure reliably and makes fermentation less reproducible.",
+                "Use a precision scale for the yeast.",
+                "Choose the Famag mixing endpoint by dough development and temperature, not an arbitrary number of minutes.",
+                "Do not overdevelop the dough.",
+                "One gentle stretch-and-fold is the default.",
+                "Do not force a full doubling during final proof.",
+                "Fermentation condition takes priority over rigid clock times.",
+              ].map((text) => (
+                <li key={text} className="text-[15px] leading-relaxed"><HighlightNumbers text={text} /></li>
+              ))}
+            </ol>
           </Section>
         </TabsContent>
 
