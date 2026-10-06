@@ -190,9 +190,9 @@ export default function DoughMakerPage() {
         <TabsList>
           <TabsTrigger value="neapolitan">🇮🇹 Neapolitan Pizza</TabsTrigger>
           <TabsTrigger value="poolish">🫧 Poolish</TabsTrigger>
+          <TabsTrigger value="ny">🇺🇸 NY Pizza</TabsTrigger>
           <TabsTrigger value="roman">🇮🇹 Roman Thin Pizza</TabsTrigger>
           <TabsTrigger value="sicilian">🇮🇹 Sicilian-Style Pizza</TabsTrigger>
-          <TabsTrigger value="ny">🇺🇸 NY Pizza</TabsTrigger>
           <TabsTrigger value="detroit">🇺🇸 Detroit-Style Pizza</TabsTrigger>
           <TabsTrigger value="deepdish">🇺🇸 Chicago Deep Dish Pizza</TabsTrigger>
         </TabsList>
