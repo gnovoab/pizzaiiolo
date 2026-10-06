@@ -89,6 +89,32 @@ const POOLISH_FINAL_WATER_PCT = 0.17;
 const POOLISH_SALT_PCT = 0.024;
 const POOLISH_YEAST_PCT = 0.0008;
 
+// NY-style direct dough baseline baker's percentages.
+const NY_HYDRATION_PCT = 0.58;
+const NY_OIL_PCT = 0.03;
+const NY_SALT_PCT = 0.024;
+const NY_YEAST_PCT = 0.0006;
+const NY_INITIAL_WATER_PCT = 530 / 580;
+
+/** Single source of truth for every NY-tab quantity. */
+function calculateNYBatch(flourWeight: number, ballWeight: number) {
+  const water = flourWeight * NY_HYDRATION_PCT;
+  const initialWater = water * NY_INITIAL_WATER_PCT;
+  const remainingWater = water - initialWater;
+  const oil = flourWeight * NY_OIL_PCT;
+  const salt = flourWeight * NY_SALT_PCT;
+  const yeast = flourWeight * NY_YEAST_PCT;
+  const totalDough = flourWeight + water + oil + salt + yeast;
+  const fullBalls = Math.max(1, Math.floor(totalDough / ballWeight));
+  const remainder = Math.max(0, totalDough - fullBalls * ballWeight);
+
+  return {
+    flourWeight, water, initialWater, remainingWater, oil, salt,
+    yeastMin: yeast, yeastMax: yeast, totalDoughMin: totalDough,
+    ballWeight, fullBalls, remainder,
+  } satisfies DoughBatchSummary & Record<string, number>;
+}
+
 /** Single source of truth for every Poolish-tab quantity. */
 function calculatePoolishBatch(flourWeight: number, ballWeight: number) {
   const nuvola = flourWeight * POOLISH_NUVOLA_PCT;
@@ -119,6 +145,10 @@ export default function DoughMakerPage() {
   const [ballWeight, setBallWeight] = useState(275.7);
 
   const batch = useMemo(() => calculateDoughBatch(flourAmount, ballWeight), [flourAmount, ballWeight]);
+
+  const [nyFlourAmount, setNyFlourAmount] = useState(2000);
+  const [nyBallWeight, setNyBallWeight] = useState(350);
+  const nyBatch = useMemo(() => calculateNYBatch(nyFlourAmount, nyBallWeight), [nyFlourAmount, nyBallWeight]);
 
   const [poolishFlourAmount, setPoolishFlourAmount] = useState(2000);
   const [poolishBallWeight, setPoolishBallWeight] = useState(280);
@@ -815,152 +845,79 @@ export default function DoughMakerPage() {
         </TabsContent>
 
         <TabsContent value="ny" className="space-y-6 mt-4">
-            <p className="text-[15px] text-muted-foreground italic border-l-2 border-primary/30 pl-3 leading-relaxed">
-              <HighlightNumbers text="To get that authentic, foldable, crispy-yet-chewy New York slice, this lower-hydration, oil-enriched dough is designed for your Gozney Arc's stone-baking capabilities. Quantities below use 1,000 g total flour — double everything again for a 2,000 g (2 kg) batch." />
-            </p>
-
-            <Section number={1} title="The Proper NY Dough Recipe" subtitle="Famag IM 5-S-10V (HH)">
-              <Subhead>Ingredients</Subhead>
-              <Bullets items={[
-                "1,000g Bread Flour (or High-Gluten Flour — essential for that signature NY chew)",
-                "580g Water (Cold)",
-                "30g Olive Oil (essential for the NY texture)",
-                "24g Salt",
-                "0.6g Dry Yeast (a tiny pinch — NY dough needs a slower, longer rise)",
-                "2 tsp Honey (optional, for better browning)",
-              ]} />
-
-              <Subhead className="mt-4">The Procedure</Subhead>
-              <Bullets items={[
-                "Poolish (optional): Mix 200g flour, 200g water, pinch of yeast. Let sit 4–8 hours.",
-                "Spiral Mixer: Add all ingredients (including poolish) to the Famag bowl. Run Speed 1–2 for 2–3 minutes, then Speed 3–4 until smooth.",
-                "Salt &amp; Oil: Add salt and olive oil 5 minutes after the mixer starts kneading.",
-                'The "Crispy" Adjustment: When the dough detaches cleanly from the bowl (around 8–10 minutes total), take it out and hand-knead it for 60 seconds on the counter. Feel for a supple, elastic texture. If it feels sticky, add a dusting of flour. This hand-work connects you to the dough structure.',
-                "Balling: Once done, divide into four equal pieces (~400g each). Roll into tight, smooth balls.",
-                "Cold Ferment: Place each ball into a separate, lightly oiled container. Refrigerate for 24–72 hours. This is the key to the New York flavor and structure.",
-              ]} />
-            </Section>
-
-            <Section number={2} title="The Stretching Ritual">
-              <Subhead>Tempering</Subhead>
-              <Bullets items={[
-                "Take your dough out of the fridge 2 hours before baking. Cold dough will fight you and shrink back.",
-              ]} />
-
-              <Subhead className="mt-4">The Surface</Subhead>
-              <Bullets items={[
-                "Use a light dusting of your Caputo Rimacinata (semolina) on the counter.",
-              ]} />
-
-              <Subhead className="mt-4">The Technique</Subhead>
-              <Bullets items={[
-                "Press the center of the ball down, pushing air outward toward the edges. Do not squash the rim.",
-                "Pick it up and gently rotate it over your knuckles, letting gravity stretch it to about 14 inches.",
-                "The center should be thin enough to see light through it; the rim should remain slightly thicker.",
-              ]} />
-            </Section>
-
-            <Section number={3} title="The Gozney Arc Bake">
-              <p className="text-[15px] text-muted-foreground italic mb-3">With a lower-hydration dough, you need to manage heat carefully for a crispy bottom without burning the top.</p>
-
-              <Subhead>Preheat</Subhead>
-              <Bullets items={[
-                "Get your Gozney Arc stone to 380°C (720°F).",
-              ]} />
-
-              <Subhead className="mt-4">Flame Control</Subhead>
-              <Bullets items={[
-                "Turn the flame to LOW before you launch the pizza.",
-              ]} />
-
-              <Subhead className="mt-4">Assembly</Subhead>
-              <Bullets items={[
-                "Stretch the dough on a peel.",
-                "Apply a thin, even layer of sauce.",
-                "Apply a moderate amount of low-moisture, grated mozzarella.",
-              ]} />
-
-              <Subhead className="mt-4">The Launch</Subhead>
-              <Bullets items={[
-                "Slide it onto the center of the stone.",
-              ]} />
-
-              <Subhead className="mt-4">The Rotation</Subhead>
-              <Bullets items={[
-                "This is a 3–5 minute bake. Rotate the pizza 90 degrees every 60 seconds.",
-                "Look for a uniform, golden-brown crust and a blistered, melted cheese top.",
-              ]} />
-            </Section>
-
-            <Section number={4} title='The Pro "NY" Finishing Touches'>
-              <Subhead>The Cut</Subhead>
-              <Bullets items={[
-                "Use a pizza wheel or rocker blade to cut it into 8 large, classic NY triangles.",
-              ]} />
-
-              <Subhead className="mt-4">The Fold</Subhead>
-              <Bullets items={[
-                "Pick up a slice, fold it down the center, and enjoy.",
-                "The bottom should be rigid enough to hold the weight of the cheese without flopping too much.",
-              ]} />
-
-              <Subhead className="mt-4">Garnish</Subhead>
-              <Bullets items={[
-                "A classic NY pizzeria move: offer a side of garlic dipping sauce or a light dusting of dried oregano and parmesan immediately after it comes out of the oven.",
-              ]} />
-            </Section>
-
-            <div className="rounded-xl border border-primary/30 bg-primary/5 p-4">
-              <div className="text-[11px] uppercase tracking-[0.15em] text-primary font-semibold mb-3">Summary Checklist for Success</div>
-              <div className="overflow-x-auto">
-                <table className="w-full text-[13px]">
-                  <thead>
-                    <tr className="border-b border-primary/20">
-                      <th className="text-left font-semibold text-foreground pb-2 pr-4">Stage</th>
-                      <th className="text-left font-semibold text-foreground pb-2">Key Detail</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr className="border-b border-primary/10">
-                      <td className="py-2 pr-4 text-secondary font-medium align-top whitespace-nowrap">Hydration</td>
-                      <td className="py-2"><HighlightNumbers text="58% (580g water / 1,000g flour) — keeps it foldable, not soggy." /></td>
-                    </tr>
-                    <tr className="border-b border-primary/10">
-                      <td className="py-2 pr-4 text-secondary font-medium align-top whitespace-nowrap">Fermentation</td>
-                      <td className="py-2"><HighlightNumbers text="24+ hours cold — essential for the New York taste." /></td>
-                    </tr>
-                    <tr className="border-b border-primary/10">
-                      <td className="py-2 pr-4 text-secondary font-medium align-top whitespace-nowrap">Stretching</td>
-                      <td className="py-2">Knuckle-stretch — keep the rim airy, center thin.</td>
-                    </tr>
-                    <tr>
-                      <td className="py-2 pr-4 text-secondary font-medium align-top whitespace-nowrap">Bake</td>
-                      <td className="py-2"><HighlightNumbers text="Medium-High Stone / Low Flame — even cooking without scorching." /></td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
+          <Section number={1} title="NY-Style Pizza — Final Baseline" subtitle="Classic New York · direct dough · Famag + Gozney">
+            <HighlightNumbers text="100% Caputo Pizzeria 00, 58% hydration, 3% olive oil, 2.4% salt and 0.06% Caputo instant dry yeast. No poolish, Nuvola, honey or sugar. Scale the flour from 500g to 3,000g; default batch is 2,000g." />
+            <div className="grid sm:grid-cols-2 gap-4 mt-5">
+              <Field label="Total flour (g)" value={nyFlourAmount} onChange={setNyFlourAmount} min={500} max={3000} step={10} />
+              <Field label="Dough ball size (g)" value={nyBallWeight} onChange={setNyBallWeight} min={250} max={420} step={5} />
             </div>
+            <BatchSummary batch={nyBatch} />
+            <Subhead>Scaled ingredients</Subhead>
+            <Bullets items={[
+              `${formatWeight(nyBatch.flourWeight)} Caputo Pizzeria 00 (100%)`,
+              `${formatWeight(nyBatch.water)} cold water (58%): ${formatWeight(nyBatch.initialWater)} initially + ${formatWeight(nyBatch.remainingWater)} held back`,
+              `${formatWeight(nyBatch.oil)} olive oil (3%)`,
+              `${formatWeight(nyBatch.salt)} salt (2.4%)`,
+              `${formatWeightPrecise(nyBatch.yeastMin)} Caputo Instant Dry Yeast (0.06%)`,
+              `Honey / sugar: 0 g · Total dough: approximately ${fmtG(nyBatch.totalDoughMin, 1)} g`,
+              `At ${formatWeight(nyBatch.ballWeight)} per ball: ${nyBatch.fullBalls} full dough balls${nyBatch.remainder > 0.5 ? ` with approximately ${fmtG(nyBatch.remainder, 1)} g remaining` : ""}.`,
+            ]} />
+            <Callout>For the 1,000g reference formula: 1,000g flour, 580g water, 30g olive oil, 24g salt and 0.6g IDY make approximately 1,634.6g dough. That is six 272–273g balls, or use 340–400g balls for larger NY pies.</Callout>
+          </Section>
+
+          <Section number={2} title="Famag Mixing" subtitle="Keep the dough cool; target a 23–25°C final dough temperature">
+            <Bullets items={[
+              `0–1 min · Speed 1: Add ${formatWeight(nyBatch.initialWater)} cold water and ${formatWeightPrecise(nyBatch.yeastMin)} IDY. Mix to disperse the yeast.`,
+              `1–4 min · Speed 1, then 2: Gradually add ${formatWeight(nyBatch.flourWeight)} Caputo Pizzeria 00.`,
+              `Around 4 min · Speed 2: Add ${formatWeight(nyBatch.salt)} salt and mix until incorporated.`,
+              `Around 4:30 · Speed 2: Add ${formatWeight(nyBatch.remainingWater)} remaining water in 2–3 small additions. Let each addition disappear before adding more.`,
+              `Around 5:30: Slowly add ${formatWeight(nyBatch.oil)} olive oil and let it fully incorporate.`,
+              "Around 6–9 min · Speed 2–3: Develop until smooth, elastic, cohesive, supple and slightly tacky; it should wrap around the spiral and release reasonably cleanly from the bowl.",
+              "Stop when properly developed. Do not chase an extreme windowpane or keep mixing if the dough gets too warm.",
+            ]} />
+          </Section>
+
+          <Section number={3} title="Rest, Ball & Cold Ferment">
+            <Bullets items={[
+              "Remove the dough from the mixer, form a loose ball, cover and rest at room temperature for 20–30 minutes.",
+              `Divide into ${nyBatch.fullBalls} × approximately ${formatWeight(nyBatch.ballWeight)} balls${nyBatch.remainder > 0.5 ? `, with ${fmtG(nyBatch.remainder, 1)} g remaining` : ""}. Shape gently; avoid tearing the dough.`,
+              "Place dough balls in lightly oiled containers or a dough box and refrigerate at approximately 4°C.",
+              "Use 60 hours as the baseline cold fermentation; 48–72 hours is the useful range.",
+            ]} />
+          </Section>
+
+          <Section number={4} title="Temper & Stretch">
+            <Bullets items={[
+              "Remove the covered dough from the refrigerator about 2 hours before baking. It should be relaxed, soft, extensible and slightly puffy; do not wait for it to double.",
+              "Dust the counter lightly with Caputo Rimacinata. Press the centre and push gas outward, leaving a modest rim rather than a large Neapolitan cornicione.",
+              "Gently stretch or knuckle-stretch to the target size. A 350g ball makes about a 13-inch / 33cm pizza; keep the centre very thin and the edge slightly thicker.",
+              "Keep toppings light: a thin layer of tomato sauce, low-moisture mozzarella, optional Parmesan, and oregano or basil as desired.",
+            ]} />
+          </Section>
+
+          <Section number={5} title="Gozney Bake" subtitle="New York bake · low flame">
+            <Bullets items={[
+              "Preheat the stone to approximately 370–380°C, then reduce the flame to LOW before launch.",
+              "Launch onto the centre of the stone and bake for approximately 3–5 minutes.",
+              "Rotate roughly every 60–90 seconds, adjusting to how the oven is cooking.",
+              "Look for an evenly browned crust, crisp underside, melted and browned cheese, thin flexible centre, chewy body and modestly inflated rim.",
+            ]} />
+          </Section>
+
+          <Section number={6} title="Locked Baseline Summary">
+            <Bullets items={[
+              "100% Caputo Pizzeria 00 · 58% hydration · 3% olive oil · 2.4% salt · 0.06% IDY",
+              "No honey or sugar · no poolish · no Nuvola",
+              "60 hours cold fermentation · approximately 2 hours temper",
+              "370–380°C stone · low flame · 3–5 minute bake",
+            ]} />
+          </Section>
 
           <div className="rounded-xl border border-border bg-muted/30 p-4">
             <div className="text-[11px] uppercase tracking-[0.2em] text-secondary font-semibold mb-1.5">Video Guide</div>
             <div className="flex flex-col gap-1.5">
-              <a
-                href="https://www.youtube.com/watch?v=i1a1QTQ6MNY"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 text-[15px] text-primary hover:underline font-medium"
-              >
-                ▶ New York-Style Pizza tutorial <span className="text-xs opacity-60">↗</span>
-              </a>
-              <a
-                href="https://www.youtube.com/watch?v=R8V0WYS-f7I"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 text-[15px] text-primary hover:underline font-medium"
-              >
-                ▶ NY Pizza style — video guide <span className="text-xs opacity-60">↗</span>
-              </a>
+              <a href="https://www.youtube.com/watch?v=i1a1QTQ6MNY" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 text-[15px] text-primary hover:underline font-medium">▶ New York-Style Pizza tutorial <span className="text-xs opacity-60">↗</span></a>
+              <a href="https://www.youtube.com/watch?v=R8V0WYS-f7I" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 text-[15px] text-primary hover:underline font-medium">▶ NY Pizza style — video guide <span className="text-xs opacity-60">↗</span></a>
             </div>
           </div>
         </TabsContent>
