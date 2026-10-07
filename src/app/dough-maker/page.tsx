@@ -250,14 +250,14 @@ export default function DoughMakerPage() {
             <Callout>{`For this batch, an example is ${Array.from({ length: 4 }, () => `${formatWeight(batch.reservedWater / 4)} → absorb (~30–45 seconds)`).join(" → ")}. The portions do not need to be exactly ${formatWeight(batch.reservedWater / 4)}. These times are a 1 kg batch starting guide: larger flour batches have more held-back water to absorb, so each addition can take longer. Wait for the dough to become cohesive again before adding more.`}</Callout>
           </Section>
 
-          <Section number={6} title="Gluten Development" subtitle="Around minute 8 onward — Speed 4–5, batch-size dependent">
+          <Section number={6} title="Gluten Development" subtitle="Around minute 8 onward — increase gradually to Speed 4">
             <Bullets items={[
-              "Increase to Speed 4–5 and watch the dough rather than following the timer.",
+              "Increase gradually to Speed 4; use Speed 5 only if the dough needs additional development. Watch the dough rather than following the timer.",
               "Look for a smooth surface, elastic dough wrapping around the spiral, a relatively clean bowl, and a cohesive mass that is elastic without becoming excessively tight.",
               "Larger flour batches contain more dough and take longer for the mass to gather around the spiral and for the bowl to look clean. Allow extra time as needed, while continuing to judge the dough by its condition and temperature.",
               "Stop as soon as the dough reaches this condition. Do not keep mixing for another 5–10 minutes just because the machine can.",
             ]} />
-            <Callout>Approximately 8–10 minutes total is a guide for the 1 kg batch. Larger batches can take longer; use the batch-size timing table as a guide, not a hard timer. Dough condition matters more than reaching an exact time.</Callout>
+            <Callout>Mixing times are approximate guides. For 2 kg flour, around 10–14 minutes can be perfectly normal depending on flour temperature, water temperature and how aggressively you mix. Stop based on dough condition and final dough temperature (target 23–25°C), not because the timer reaches 10 minutes. Avoid overdeveloping or unnecessarily heating the dough.</Callout>
             <Callout>So when the Famag reaches: smooth + cohesive + elastic + moist + bowl mostly clean + wrapping the spiral + still relaxed → STOP.</Callout>
           </Section>
 
@@ -277,8 +277,8 @@ export default function DoughMakerPage() {
                     ["2–4 min", "Add 70% flour, Speed 1–2", "2 min", "2 min", "2 min", "2 min"],
                     ["4–5 min", "Add 30% flour + salt, Speed 2–3", "1 min", "1 min", "1 min", "1 min"],
                     ["~5–8 min ★", "Add held-back water gradually", "2:30 min", "2:30 min", "3 min", "3 min"],
-                    ["~8 min onward ★", "Speed 4–5, gluten development", "2:30 min", "2:30–3 min", "3–4 min", "4–5 min"],
-                    ["TOTAL ★", "", "~10 min", "~10–11 min", "~11–13 min", "~12–14 min"],
+                    ["~8 min onward ★", "Increase gradually to Speed 4; Speed 5 only if needed", "2:30 min", "2:30–3 min", "3–5 min", "4–5 min"],
+                    ["TOTAL ★", "Approximate guide", "~10 min", "~10–11 min", "~10–14 min", "~12–14 min"],
                   ].map((row) => (
                     <tr key={row[0]} className="border-b border-border/40 last:border-0">
                       {row.map((cell, i) => (
@@ -357,7 +357,7 @@ export default function DoughMakerPage() {
                 "Remaining 300 g flour · Speed 2",
                 "24 g salt",
                 "60 g water added gradually",
-                "Speed 4–5 · stop at ~8–10 min total",
+                "Increase gradually to Speed 4; Speed 5 only if needed · stop by dough condition and temperature",
                 "23–25°C final dough",
                 "20–30 min rest · one gentle fold · 20–30 min bulk",
                 "6 × ~276 g balls",
