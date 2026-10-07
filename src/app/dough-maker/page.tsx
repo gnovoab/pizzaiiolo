@@ -395,15 +395,16 @@ export default function DoughMakerPage() {
             <div className="text-[11px] uppercase tracking-[0.2em] text-secondary font-semibold mb-1.5">Sample Videos</div>
             <div className="flex flex-col gap-1.5">
               {[
-                "https://www.youtube.com/watch?v=e3Wd3n1EJag",
-                "https://www.youtube.com/shorts/g-ssatVbD0Q",
-                "https://www.youtube.com/watch?v=gDiFd5BpTY0&t=207s",
-                "https://www.youtube.com/watch?v=HgW_WzP4seU&t=522s",
-                "https://www.youtube.com/watch?v=keUvOIEVNk8&t=208s",
-                "https://www.youtube.com/watch?v=KOvqoHGWQSM",
-              ].map((url, index) => (
+                { title: "Impasto perfetto al 65%", url: "https://www.youtube.com/watch?v=aBcD5dmZ3sk" },
+                { title: "Impasto perfetto al 70%", url: "https://www.youtube.com/watch?v=_kBsyg2Li0w" },
+                { title: "Caputo NUVOLA - Impasto completo con Grilletta IM5 Famag", url: "https://www.youtube.com/watch?v=e3Wd3n1EJag" },
+                { title: "Promo", url: "https://www.youtube.com/shorts/g-ssatVbD0Q" },
+                { title: "FAMAG IM-5S Spiral Dough Mixer | REVIEW & Comparison", url: "https://www.youtube.com/watch?v=gDiFd5BpTY0&t=207s" },
+                { title: "First Dough With A Famag IM5S V10", url: "https://www.youtube.com/watch?v=HgW_WzP4seU&t=522s" },
+                { title: "Famag Grilletta IM 5-S-10V-HH High-hydration Spiral Mixer - 10 speeds - Customer's operating video", url: "https://www.youtube.com/watch?v=keUvOIEVNk8&t=208s" },
+              ].map(({ title, url }) => (
                 <a key={url} href={url} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 text-[15px] text-primary hover:underline font-medium">
-                  ▶ Sample video {index + 1} <span className="text-xs opacity-60">↗</span>
+                  ▶ {title} <span className="text-xs opacity-60">↗</span>
                 </a>
               ))}
             </div>
