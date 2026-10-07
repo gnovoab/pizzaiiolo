@@ -7,8 +7,9 @@ import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 // Neapolitan Pizza tab baker's percentages (fixed, of total flour weight).
 const NEAPOLITAN_HYDRATION_PCT = 0.63;
 const NEAPOLITAN_SALT_PCT = 0.024;
-const NEAPOLITAN_YEAST_MIN_PCT = 0.0006;
-const NEAPOLITAN_YEAST_MAX_PCT = 0.0006;
+// 0.06% fresh yeast converts to 0.02% instant dry yeast at a 3:1 ratio.
+const NEAPOLITAN_YEAST_MIN_PCT = 0.0002;
+const NEAPOLITAN_YEAST_MAX_PCT = 0.0002;
 const NEAPOLITAN_FIRST_FLOUR_PCT = 0.70;
 const NEAPOLITAN_REMAINING_FLOUR_PCT = 0.30;
 const NEAPOLITAN_CAPUTO_00_PCT = 0.50;
@@ -161,7 +162,7 @@ export default function DoughMakerPage() {
     pizzeria: poolishFlourAmount * 0.5,
     water: poolishFlourAmount * 0.63,
     salt: poolishFlourAmount * 0.024,
-    freshYeast: poolishFlourAmount * 0.0006,
+    instantYeast: poolishFlourAmount * 0.0002,
   };
 
   return (
@@ -212,56 +213,65 @@ export default function DoughMakerPage() {
               `${formatWeight(batch.nuvola)} Caputo Nuvola flour`,
               `${formatWeight(batch.water)} water — 63%`,
               `${formatWeight(batch.salt)} fine salt — 2.4%`,
-              `${formatYeast(batch.yeastMin, batch.yeastMax)} fresh yeast — 0.06%`,
+              `${formatYeast(batch.yeastMin, batch.yeastMax)} instant dry yeast — 0.02% (equivalent to ${formatWeightPrecise(batch.yeastMin * 3)} fresh yeast / 0.06%)`,
               `Total: ${fmtG(batch.totalDoughMin, 1)} g`,
               `→ ${batch.fullBalls} × ~${fmtG(batch.totalDoughMin / batch.fullBalls, 0)} g dough balls`,
             ]} />
-            <Callout>All quantities scale from the formula above. The default 1,000 g flour batch makes approximately 1,654.6 g dough, or six portions of about 276 g.</Callout>
+            <Callout>All quantities scale from the formula above. Yeast is converted at 3 parts fresh yeast to 1 part instant dry yeast. The 1,000 g flour batch makes approximately 1,654.2 g dough, or six portions of about 276 g.</Callout>
           </Section>
 
           <Section number={2} title="Prepare the Water" subtitle="Famag home method">
             <Bullets items={[
               `${formatWeight(batch.water)} total water: ${formatWeight(batch.initialWater)} for the initial mix and ${formatWeight(batch.reservedWater)} held back`,
               "Use cool water, not warm. Because the Famag generates heat, ice-cold water is usually unnecessary unless the kitchen is particularly warm.",
-              "Target final dough temperature: 23–25°C.",
+              "Target final dough temperature (FDT): 21–23°C; ideally around 22°C.",
             ]} />
             <Callout>For the 1,000 g flour batch, split 630 g water into 570 g initial water + 60 g held back.</Callout>
           </Section>
 
-          <Section number={3} title="Water & Yeast" subtitle="0–2 minutes — Speed 1">
+          <Section number={3} title="Water & Yeast" subtitle="0–1 minute — Speed 1">
             <Bullets items={[
-              `Add ${formatWeight(batch.initialWater)} water and ${formatYeast(batch.yeastMin, batch.yeastMax)} fresh yeast to the Famag bowl.`,
-              "Mix at Speed 1 for a full 1–2 minutes to disperse the yeast.",
+              `Add ${formatWeight(batch.initialWater)} water and ${formatYeast(batch.yeastMin, batch.yeastMax)} instant dry yeast to the Famag bowl.`,
+              "Mix at Speed 1 for approximately 30–60 seconds to disperse the yeast.",
             ]} />
           </Section>
 
-          <Section number={4} title="Add the Flour & Salt" subtitle="2–5 minutes — staged flour addition">
+          <Section number={4} title="Add the Flour & Salt" subtitle="1–4 minutes — staged flour addition">
             <Bullets items={[
-              `2–4 min · Speed 1–2: Add ${formatWeight(batch.firstFlour)} flour progressively (70% of total; approximately ${formatWeight(batch.firstCaputo00)} Caputo 00 + ${formatWeight(batch.firstNuvola)} Nuvola). Let it hydrate and form a cohesive mixture.`,
-              `4–5 min · Speed 2–3: Add the remaining ${formatWeight(batch.remainingFlour)} flour (approximately ${formatWeight(batch.remainingCaputo00)} Caputo 00 + ${formatWeight(batch.remainingNuvola)} Nuvola) and ${formatWeight(batch.salt)} fine salt. Mix until no dry flour remains.`,
+              `1–3 min · Speed 1–2: Add ${formatWeight(batch.firstFlour)} flour progressively (70% of total; approximately ${formatWeight(batch.firstCaputo00)} Caputo 00 + ${formatWeight(batch.firstNuvola)} Nuvola). Let it hydrate and form a cohesive mixture.`,
+              `3–4 min · Speed 2–3: Add the remaining ${formatWeight(batch.remainingFlour)} flour (approximately ${formatWeight(batch.remainingCaputo00)} Caputo 00 + ${formatWeight(batch.remainingNuvola)} Nuvola) and ${formatWeight(batch.salt)} fine salt. Mix until no dry flour remains.`,
             ]} />
           </Section>
 
-          <Section number={5} title="Add the Held-Back Water" subtitle="Around minute 5 onward — Speed 2–3, batch-size dependent">
+          <Section number={5} title="Add the Held-Back Water (Bassinage)" subtitle="Around minute 4 onward — Speed 2–3, batch-size dependent">
             <Bullets items={[
               `At ${formatWeight(flourAmount)} flour, ${formatWeight(batch.reservedWater)} water remains. Add it gradually at Speed 2–3, in portions of about ${formatWeight(batch.reservedWater / 4)} each, waiting for each addition to absorb before adding the next.`,
               "The dough will progressively become smoother and more elastic. Do not add all the held-back water at once.",
             ]} />
-            <Callout>{`For this batch, an example is ${Array.from({ length: 4 }, () => `${formatWeight(batch.reservedWater / 4)} → absorb (~30–45 seconds)`).join(" → ")}. The portions do not need to be exactly ${formatWeight(batch.reservedWater / 4)}. These times are a 1 kg batch starting guide: larger flour batches have more held-back water to absorb, so each addition can take longer. Wait for the dough to become cohesive again before adding more.`}</Callout>
+            <Callout>For this batch, add the held-back water in approximately 4 × 30 g portions. After each addition, <strong>wait until the water is fully incorporated and the dough has regained a cohesive, elastic structure before adding the next portion</strong>. As a rough guide, each addition may take around 30–45 seconds to absorb, but this is not a fixed timing—larger batches or a less-developed dough may take longer. <strong>Do not add the next portion while the dough is still loose, glossy or sloshing around the bowl.</strong> The portions do not need to be exactly 30 g.</Callout>
           </Section>
 
-          <Section number={6} title="Gluten Development" subtitle="Around minute 8 onward — increase gradually to Speed 4">
+          <Section number={6} title="Gluten Development" subtitle="Around minute 7 onward — increase gradually to Speed 4">
             <Bullets items={[
               "Increase gradually to Speed 4; use Speed 5 only if the dough needs additional development. Watch the dough rather than following the timer.",
               "Look for a smooth surface, elastic dough wrapping around the spiral, a relatively clean bowl, and a cohesive mass that is elastic without becoming excessively tight.",
               "Larger flour batches contain more dough and take longer for the mass to gather around the spiral and for the bowl to look clean. Allow extra time as needed, while continuing to judge the dough by its condition and temperature.",
               "Stop as soon as the dough reaches this condition. Do not keep mixing for another 5–10 minutes just because the machine can.",
             ]} />
-            <Callout>Mixing times are approximate guides. For 2 kg flour, around 10–14 minutes can be perfectly normal depending on flour temperature, water temperature and how aggressively you mix. Stop based on dough condition and final dough temperature (target 23–25°C), not because the timer reaches 10 minutes. Avoid overdeveloping or unnecessarily heating the dough.</Callout>
+            <Callout>Mixing times are approximate guides. For 2 kg flour, around 10–14 minutes can be perfectly normal depending on flour temperature, water temperature and how aggressively you mix. Stop based on dough condition and final dough temperature (target 21–23°C, ideally around 22°C), not because the timer reaches 10 minutes. Avoid overdeveloping or unnecessarily heating the dough.</Callout>
             <Callout>So when the Famag reaches: smooth + cohesive + elastic + moist + bowl mostly clean + wrapping the spiral + still relaxed → STOP.</Callout>
           </Section>
 
-          <Section number={7} title="Famag — exact stages (time guidance)">
+          <Section number={7} title="Dough Removal — Optional Reverse">
+            <Bullets items={[
+              "When mixing is complete, reduce to Speed 1.",
+              "Switch to Reverse ← for approximately 5–10 seconds to help unwind the dough from the spiral and breaker bar.",
+              "Stop the machine and remove the dough.",
+              "Do not use Reverse during normal mixing or gluten development.",
+            ]} />
+          </Section>
+
+          <Section number={8} title="Famag — stage and time guidance">
             <div className="overflow-x-auto -mx-1">
               <table className="w-full text-sm border-collapse min-w-[760px]">
                 <thead>
@@ -273,11 +283,11 @@ export default function DoughMakerPage() {
                 </thead>
                 <tbody>
                   {[
-                    ["0–2 min", "Water + yeast, Speed 1", "1–2 min", "1–2 min", "1–2 min", "1–2 min"],
-                    ["2–4 min", "Add 70% flour, Speed 1–2", "2 min", "2 min", "2 min", "2 min"],
-                    ["4–5 min", "Add 30% flour + salt, Speed 2–3", "1 min", "1 min", "1 min", "1 min"],
-                    ["~5–8 min ★", "Add held-back water gradually", "2:30 min", "2:30 min", "3 min", "3 min"],
-                    ["~8 min onward ★", "Increase gradually to Speed 4; Speed 5 only if needed", "2:30 min", "2:30–3 min", "3–5 min", "4–5 min"],
+                    ["0–1 min", "Water + yeast, Speed 1", "30–60 sec", "30–60 sec", "30–60 sec", "30–60 sec"],
+                    ["1–3 min", "Add 70% flour, Speed 1–2", "2 min", "2 min", "2 min", "2 min"],
+                    ["3–4 min", "Add 30% flour + salt, Speed 2–3", "1 min", "1 min", "1 min", "1 min"],
+                    ["~4 min onward ★", "Add held-back water gradually until fully incorporated", "Condition-led", "Condition-led", "Condition-led", "Condition-led"],
+                    ["~7 min onward ★", "Increase gradually to Speed 4; Speed 5 only if needed", "2:30 min", "2:30–3 min", "3–5 min", "4–5 min"],
                     ["TOTAL ★", "Approximate guide", "~10 min", "~10–11 min", "~10–14 min", "~12–14 min"],
                   ].map((row) => (
                     <tr key={row[0]} className="border-b border-border/40 last:border-0">
@@ -294,44 +304,47 @@ export default function DoughMakerPage() {
             <Callout>The held-back water amount and dough mass increase with batch size, so water absorption and bowl-cleaning/gluten development can take longer. Follow the dough’s condition; the listed stage times are approximate guidance.</Callout>
           </Section>
 
-          <Section number={8} title="Check the Dough Temperature">
+          <Section number={9} title="Check the Dough Temperature">
             <Bullets items={[
-              "Check the dough temperature immediately after mixing; target 23–25°C. Around 24°C is ideal.",
-              "If batches consistently reach 26–27°C, use colder water next time. At 28°C or higher, adjust the water temperature to reduce the final dough temperature.",
+              "Check the dough temperature immediately after mixing; target 21–23°C. Around 22°C is ideal.",
+              "If the dough consistently finishes above 23°C, use colder water next time. If it reaches 26°C or higher, treat this as a sign that the mixing process is generating too much heat and make a more substantial water-temperature adjustment for the next batch.",
             ]} />
           </Section>
 
-          <Section number={9} title="Bench Rest, Fold & Short Bulk">
+          <Section number={10} title="Bench Rest & Short Bulk">
             <Bullets items={[
-              "Remove the dough and place it in a covered container. Rest for 20–30 minutes to relax; do not immediately start folding.",
-              "After the rest, give the dough one gentle stretch-and-fold to tighten its structure. Do not knead it.",
-              "Cover and leave at room temperature for another 20–30 minutes. Total time from the end of mixing to balling is approximately 40–60 minutes.",
+              "Transfer the finished dough to a covered container and rest for approximately 1 hour at room temperature.",
+              "Do not automatically fold or knead the dough. The Famag has already developed the gluten structure.",
+              "After approximately 1 hour, assess the dough. It should feel smooth, elastic, cohesive and relaxed, while still having enough strength to hold its shape.",
+              "Only if the dough feels unusually slack, weak or lacks structure, give it one gentle stretch-and-fold during the bulk rest, then allow it to relax before dividing. Do not knead or aggressively degas it.",
+              "After the bulk rest, divide and ball immediately.",
             ]} />
           </Section>
 
-          <Section number={10} title="Divide & Ball">
+          <Section number={11} title="Divide & Ball">
             <Bullets items={[
-              `Divide this batch into ${batch.fullBalls} portions of approximately ${fmtG(batch.totalDoughMin / batch.fullBalls, 1)} g each (about 276 g for the 1,000 g flour batch).`,
+              "Divide the 2,000 g flour batch into 12 × approximately 275.7 g dough balls (about 276 g each).",
+              "The 1,000 g flour batch produces 6 × approximately 275.7 g dough balls.",
               "Turn the dough onto the bench without aggressively degassing it. Fold the edges underneath, turn over, and gently tighten into a smooth, taut ball.",
               "Place the dough balls in a covered dough box.",
             ]} />
           </Section>
 
-          <Section number={11} title="Cold Fermentation" subtitle="Approximately 4°C">
+          <Section number={12} title="Cold Fermentation" subtitle="Approximately 4°C">
             <Bullets items={[
               "Refrigerate the covered dough balls at approximately 4°C. First choice for this formula: 60 hours.",
               "Then compare 48 h, 60 h and 72 h batches. The expectation that 60–72 h may suit the 00/Nuvola blend is a hypothesis to test, not a guaranteed result.",
             ]} />
           </Section>
 
-          <Section number={12} title="Final Proof" subtitle="Take the dough balls out about 3 hours before baking">
+          <Section number={13} title="Final Proof" subtitle="Start with approximately 3–4 hours before baking">
             <Bullets items={[
               "Proof at normal room temperature. Readiness matters more than the clock: look for balls that are noticeably expanded, soft, relaxed, slightly puffy, extensible and still holding their structure.",
-              "If already very puffy after 2 hours, bake earlier. If still tight after 3 hours, give them another 30–60 minutes.",
+              "If already very puffy after 2 hours, bake earlier. If still tight at the end of the expected 3–4 hour conditioning window, give them another 30–60 minutes.",
             ]} />
           </Section>
 
-          <Section number={13} title="Open, Top & Bake">
+          <Section number={14} title="Open, Top & Bake">
             <Subhead>Open the pizza</Subhead>
             <Bullets items={[
               "Lightly flour the bench and turn out the dough ball. Press from the centre toward the edge, leaving the outer 1.5–2 cm untouched for the cornicione.",
@@ -348,21 +361,20 @@ export default function DoughMakerPage() {
             ]} />
           </Section>
 
-          <Section number={14} title="The Whole Process at a Glance">
+          <Section number={15} title="The Whole Process at a Glance">
             <div className="flex flex-wrap items-center gap-2">
               {[
-                "500 g Caputo 00 + 500 g Nuvola",
-                "570 g water + 0.6 g fresh yeast",
-                "700 g flour · 2 min Speed 1",
-                "Remaining 300 g flour · Speed 2",
-                "24 g salt",
-                "60 g water added gradually",
-                "Increase gradually to Speed 4; Speed 5 only if needed · stop by dough condition and temperature",
-                "23–25°C final dough",
-                "20–30 min rest · one gentle fold · 20–30 min bulk",
-                "6 × ~276 g balls",
-                "60 h at ~4°C",
-                "~3 h room-temperature proof",
+                "1,000 g Caputo 00 + 1,000 g Nuvola",
+                "1,140 g initial water + 120 g bassinage + 0.4 g IDY",
+                "1,400 g flour · Speed 1",
+                "600 g flour + 48 g salt",
+                "Gradual bassinage",
+                "Speed 4 development · Speed 5 only if needed",
+                "21–23°C FDT · ideally ~22°C",
+                "~1 h covered bulk · optional gentle fold only if unusually slack/weak",
+                "12 × ~276 g balls",
+                "60–72 h at 3–4°C",
+                "~3–4 h room-temperature conditioning",
                 "30–32 cm pizza",
                 "Gozney · 430–450°C starting point",
               ].map((t, i, arr) => (
@@ -377,6 +389,24 @@ export default function DoughMakerPage() {
           <div className="rounded-xl border border-primary/30 bg-primary/5 p-5 text-center">
             <div className="text-[11px] uppercase tracking-[0.15em] text-secondary font-semibold mb-2">Dough Maker Principle</div>
             <p className="font-serif text-lg italic text-foreground">&ldquo;Control the dough temperature. Control the fermentation. Protect the gas. Then let the oven do the work.&rdquo;</p>
+          </div>
+
+          <div className="rounded-xl border border-border bg-muted/30 p-4">
+            <div className="text-[11px] uppercase tracking-[0.2em] text-secondary font-semibold mb-1.5">Sample Videos</div>
+            <div className="flex flex-col gap-1.5">
+              {[
+                "https://www.youtube.com/watch?v=e3Wd3n1EJag",
+                "https://www.youtube.com/shorts/g-ssatVbD0Q",
+                "https://www.youtube.com/watch?v=gDiFd5BpTY0&t=207s",
+                "https://www.youtube.com/watch?v=HgW_WzP4seU&t=522s",
+                "https://www.youtube.com/watch?v=keUvOIEVNk8&t=208s",
+                "https://www.youtube.com/watch?v=KOvqoHGWQSM",
+              ].map((url, index) => (
+                <a key={url} href={url} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 text-[15px] text-primary hover:underline font-medium">
+                  ▶ Sample video {index + 1} <span className="text-xs opacity-60">↗</span>
+                </a>
+              ))}
+            </div>
           </div>
         </TabsContent>
 
@@ -431,7 +461,7 @@ export default function DoughMakerPage() {
                   `${formatWeight(directBaseline.pizzeria)} Caputo Pizzeria 00 + ${formatWeight(directBaseline.nuvola)} Caputo Nuvola`,
                   `${formatWeight(directBaseline.water)} water · 63% hydration`,
                   `${formatWeight(directBaseline.salt)} salt · 2.4%`,
-                  `${formatWeightPrecise(directBaseline.freshYeast)} fresh yeast`,
+                  `${formatWeightPrecise(directBaseline.instantYeast)} instant dry yeast · 0.02% (equivalent to ${formatWeightPrecise(directBaseline.instantYeast * 3)} fresh yeast / 0.06%)`,
                   "Approximately 60 hours cold fermentation",
                 ]} />
               </div>
