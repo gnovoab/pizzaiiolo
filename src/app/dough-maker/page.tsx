@@ -350,6 +350,9 @@ export default function DoughMakerPage() {
               "Lightly flour the bench and turn out the dough ball. Press from the centre toward the edge, leaving the outer 1.5–2 cm untouched for the cornicione.",
               "Stretch gradually by hand to approximately 30–32 cm. Do not use a rolling pin or aggressively press out the gas.",
             ]} />
+            <a href="https://www.youtube.com/shorts/mgyW14VCuAU" target="_blank" rel="noopener noreferrer" className="mt-2 inline-flex items-center gap-1.5 text-[15px] text-primary hover:underline font-medium">
+              ▶ Stretching 2 <span className="text-xs opacity-60">↗</span>
+            </a>
             <Subhead className="mt-4">Top and launch</Subhead>
             <Bullets items={[
               "Top quickly (sauce → cheese/toppings → launch). Do not let a wet pizza sit on the peel.",
