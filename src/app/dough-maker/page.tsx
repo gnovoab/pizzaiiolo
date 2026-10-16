@@ -4,8 +4,8 @@ import { useMemo, useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 
-// Neapolitan Pizza tab baker's percentages (fixed, of total flour weight).
-const NEAPOLITAN_HYDRATION_PCT = 0.63;
+// Neapolitan Pizza tab baker's percentages (of total flour weight).
+const NEAPOLITAN_DEFAULT_HYDRATION_PCT = 63;
 const NEAPOLITAN_SALT_PCT = 0.024;
 // 0.06% fresh yeast converts to 0.02% instant dry yeast at a 3:1 ratio.
 const NEAPOLITAN_YEAST_MIN_PCT = 0.0002;
@@ -21,8 +21,8 @@ const NEAPOLITAN_INITIAL_WATER_PCT = 570 / 630;
  * the selected flour weight and dough-ball size. No other function or JSX
  * expression in this tab should recompute these ratios directly.
  */
-function calculateDoughBatch(flourWeight: number, ballWeight: number) {
-  const water = flourWeight * NEAPOLITAN_HYDRATION_PCT;
+function calculateDoughBatch(flourWeight: number, ballWeight: number, hydrationPct: number) {
+  const water = flourWeight * hydrationPct / 100;
   const salt = flourWeight * NEAPOLITAN_SALT_PCT;
   const yeastMin = flourWeight * NEAPOLITAN_YEAST_MIN_PCT;
   const yeastMax = flourWeight * NEAPOLITAN_YEAST_MAX_PCT;
@@ -144,8 +144,10 @@ function calculatePoolishBatch(flourWeight: number, ballWeight: number) {
 export default function DoughMakerPage() {
   const [flourAmount, setFlourAmount] = useState(2000);
   const [ballWeight, setBallWeight] = useState(275.7);
+  const [hydrationPct, setHydrationPct] = useState(NEAPOLITAN_DEFAULT_HYDRATION_PCT);
 
-  const batch = useMemo(() => calculateDoughBatch(flourAmount, ballWeight), [flourAmount, ballWeight]);
+  const batch = useMemo(() => calculateDoughBatch(flourAmount, ballWeight, hydrationPct), [flourAmount, ballWeight, hydrationPct]);
+  const masterBatch = useMemo(() => calculateDoughBatch(2000, 275.7, hydrationPct), [hydrationPct]);
 
   const [nyFlourAmount, setNyFlourAmount] = useState(2000);
   const [nyBallWeight, setNyBallWeight] = useState(350);
@@ -199,10 +201,11 @@ export default function DoughMakerPage() {
         </TabsList>
 
         <TabsContent value="neapolitan" className="space-y-6 mt-4">
-          <Section number={1} title="Formula" subtitle={`${formatWeight(flourAmount)} total flour — 50% Caputo 00 + 50% Caputo Nuvola`}>
-            <div className="grid sm:grid-cols-2 gap-4 mb-5">
+          <Section number={1} title="Formula" subtitle={`${formatWeight(flourAmount)} total flour — 50% Caputo 00 + 50% Caputo Nuvola — ${hydrationPct}% hydration`}>
+            <div className="grid sm:grid-cols-3 gap-4 mb-5">
               <Field label="Flour (g)" value={flourAmount} onChange={setFlourAmount} min={500} max={3000} step={10} />
               <Field label="Dough Ball Size (g)" value={ballWeight} onChange={setBallWeight} min={200} max={400} step={0.1} />
+              <Field label="Hydration (%)" value={hydrationPct} onChange={setHydrationPct} min={55} max={75} step={1} />
             </div>
 
             <BatchSummary batch={batch} />
@@ -211,13 +214,13 @@ export default function DoughMakerPage() {
             <Bullets items={[
               `${formatWeight(batch.caputo00)} Caputo 00 flour`,
               `${formatWeight(batch.nuvola)} Caputo Nuvola flour`,
-              `${formatWeight(batch.water)} water — 63%`,
+              `${formatWeight(batch.water)} water — ${hydrationPct}%`,
               `${formatWeight(batch.salt)} fine salt — 2.4%`,
               `${formatYeast(batch.yeastMin, batch.yeastMax)} instant dry yeast — 0.02% (equivalent to ${formatWeightPrecise(batch.yeastMin * 3)} fresh yeast / 0.06%)`,
               `Total: ${fmtG(batch.totalDoughMin, 1)} g`,
               `→ ${batch.fullBalls} × ~${fmtG(batch.totalDoughMin / batch.fullBalls, 0)} g dough balls`,
             ]} />
-            <Callout>All quantities scale from the formula above. Yeast is converted at 3 parts fresh yeast to 1 part instant dry yeast. The 1,000 g flour batch makes approximately 1,654.2 g dough, or six portions of about 276 g.</Callout>
+            <Callout>All quantities scale from the flour weight and selected hydration. Yeast is converted at 3 parts fresh yeast to 1 part instant dry yeast. At this hydration, the 1,000 g flour reference batch makes approximately {fmtG(masterBatch.totalDoughMin / 2, 1)} g dough before portioning.</Callout>
           </Section>
 
           <Section number={2} title="Prepare the Water" subtitle="Famag home method">
@@ -226,7 +229,7 @@ export default function DoughMakerPage() {
               "Use cool water, not warm. Because the Famag generates heat, ice-cold water is usually unnecessary unless the kitchen is particularly warm.",
               "Target final dough temperature (FDT): 21–23°C; ideally around 22°C.",
             ]} />
-            <Callout>For the 1,000 g flour batch, split 630 g water into 570 g initial water + 60 g held back.</Callout>
+            <Callout>For 1,000 g flour at {hydrationPct}% hydration, split {formatWeight(masterBatch.water / 2)} water into {formatWeight(masterBatch.initialWater / 2)} for the initial mix + {formatWeight(masterBatch.reservedWater / 2)} held back.</Callout>
           </Section>
 
           <Section number={3} title="Water & Yeast" subtitle="0–1 minute — Speed 1">
@@ -248,7 +251,7 @@ export default function DoughMakerPage() {
               `At ${formatWeight(flourAmount)} flour, ${formatWeight(batch.reservedWater)} water remains. Add it gradually at Speed 2–3, in portions of about ${formatWeight(batch.reservedWater / 4)} each, waiting for each addition to absorb before adding the next.`,
               "The dough will progressively become smoother and more elastic. Do not add all the held-back water at once.",
             ]} />
-            <Callout>For this batch, add the held-back water in approximately 4 × 30 g portions. After each addition, <strong>wait until the water is fully incorporated and the dough has regained a cohesive, elastic structure before adding the next portion</strong>. As a rough guide, each addition may take around 30–45 seconds to absorb, but this is not a fixed timing—larger batches or a less-developed dough may take longer. <strong>Do not add the next portion while the dough is still loose, glossy or sloshing around the bowl.</strong> The portions do not need to be exactly 30 g.</Callout>
+            <Callout>For this batch, add the held-back water in approximately 4 × {formatWeight(batch.reservedWater / 4)} portions. After each addition, <strong>wait until the water is fully incorporated and the dough has regained a cohesive, elastic structure before adding the next portion</strong>. As a rough guide, each addition may take around 30–45 seconds to absorb, but this is not a fixed timing—larger batches or a less-developed dough may take longer. <strong>Do not add the next portion while the dough is still loose, glossy or sloshing around the bowl.</strong> The portions do not need to be exactly {formatWeight(batch.reservedWater / 4)}.</Callout>
           </Section>
 
           <Section number={6} title="Gluten Development" subtitle="Around minute 7 onward — increase gradually to Speed 4">
@@ -368,14 +371,14 @@ export default function DoughMakerPage() {
             <div className="flex flex-wrap items-center gap-2">
               {[
                 "1,000 g Caputo 00 + 1,000 g Nuvola",
-                "1,140 g initial water + 120 g bassinage + 0.4 g IDY",
+                `${formatWeight(masterBatch.initialWater)} initial water + ${formatWeight(masterBatch.reservedWater)} bassinage + ${formatWeightPrecise(masterBatch.yeastMin)} IDY at ${hydrationPct}% hydration`,
                 "1,400 g flour · Speed 1",
                 "600 g flour + 48 g salt",
                 "Gradual bassinage",
                 "Speed 4 development · Speed 5 only if needed",
                 "21–23°C FDT · ideally ~22°C",
                 "~1 h covered bulk · optional gentle fold only if unusually slack/weak",
-                "12 × ~276 g balls",
+                `12 × ~${fmtG(masterBatch.totalDoughMin / 12, 1)} g balls`,
                 "60–72 h at 3–4°C",
                 "~3–4 h room-temperature conditioning",
                 "30–32 cm pizza",
