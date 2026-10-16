@@ -177,7 +177,7 @@ const OIL_MAP: OilMapRow[] = [
   { n: 27, pizza: "Cetarese", pre: "1–2g Odysea Kalamata/Koroneiki", post: "2g Frantoio Muraglia Coratina", why: "Mediterranean herbaceousness pre; Coratina handles anchovy/colatura" },
   { n: 28, pizza: "Piennolo & Alici di Cetara", pre: "2g Odysea Kalamata/Koroneiki", post: "2g Odysea Kalamata/Koroneiki", why: "Fish + Piennolo + Provola suit Odysea's citrus/herbal profile" },
   { n: 30, pizza: "'Nduja & Hot Honey", pre: "2g Elizondo Nº3 Picual", post: "2g Frantoio Muraglia Coratina", why: "Excellent sweet/chilli/bitter contrast" },
-  { n: 31, pizza: "Calabrese", pre: "2g Elizondo Nº3 Picual", post: "2g Frantoio Muraglia Coratina", why: "Gorgonzola + 'nduja can absorb the intensity" },
+  { n: 31, pizza: "’Nduja & Gorgonzola", pre: "2g Elizondo Nº3 Picual", post: "2g Frantoio Muraglia Coratina", why: "Gorgonzola + 'nduja can absorb the intensity" },
   { n: 32, pizza: "Quattro Latte e 'Nduja", pre: "1g Elizondo Nº3 Picual", post: "2g Frantoio Muraglia Coratina", why: "Rich cheese + 'nduja needs a strong finish" },
   { n: 33, pizza: "Cacio e Pepe", pre: "—", post: "2–3g Odysea Kalamata/Koroneiki", why: "Odysea gives herbaceous lift without overwhelming Pecorino" },
   { n: 34, pizza: "Carbonara", pre: "—", post: "2–3g Barbera Lorenzo N°5", why: "Lorenzo is ideal with yolk, guanciale and Pecorino" },

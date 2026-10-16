@@ -6,7 +6,7 @@ import type { PizzaRecipe, RecipeStep, RecipeStepSection } from "@/lib/types";
 
 type IngredientFilter = { label: string; match: RegExp };
 
-/** Quick ingredient filters, grouped so a visual divider can separate sauce / cheese / pumpkin. */
+/** Quick ingredient filters, grouped so a visual divider can separate sauces, cheeses and pumpkin. */
 const INGREDIENT_FILTER_GROUPS: IngredientFilter[][] = [
   [
     { label: "San Marzano", match: /san marzano/i },
@@ -68,7 +68,7 @@ export default function RecipesPage() {
         </p>
       </div>
 
-      <div className="flex flex-wrap items-center gap-2 justify-center">
+      <div className="flex w-full flex-nowrap items-center justify-start gap-2 overflow-x-auto pb-1">
         {INGREDIENT_FILTER_GROUPS.map((group, gi) => (
           <Fragment key={gi}>
             {gi > 0 && <span className="w-px h-5 bg-border mx-1 shrink-0" aria-hidden />}
@@ -78,7 +78,7 @@ export default function RecipesPage() {
                 <button
                   key={f.label}
                   onClick={() => toggleIngredient(f.label)}
-                  className={`text-xs sm:text-[13px] font-medium px-3 py-1.5 rounded-full border transition-colors ${
+                  className={`shrink-0 whitespace-nowrap text-xs sm:text-[13px] font-medium px-3 py-1.5 rounded-full border transition-colors ${
                     active
                       ? "bg-primary text-primary-foreground border-primary"
                       : "bg-card text-foreground/80 border-border hover:border-primary/60"
@@ -93,7 +93,7 @@ export default function RecipesPage() {
         {activeIngredients.length > 0 && (
           <button
             onClick={() => setActiveIngredients([])}
-            className="text-xs sm:text-[13px] font-medium px-3 py-1.5 rounded-full border border-destructive/40 text-destructive hover:bg-destructive/10 transition-colors"
+            className="shrink-0 whitespace-nowrap text-xs sm:text-[13px] font-medium px-3 py-1.5 rounded-full border border-destructive/40 text-destructive hover:bg-destructive/10 transition-colors"
           >
             Clear filters ✕
           </button>

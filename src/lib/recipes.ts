@@ -16,7 +16,7 @@ const BUFALINA_COMPARISON_TABLE: RecipeComparisonTable = {
 export const RECIPE_CATEGORIES: { id: PizzaRecipeCategory; label: string; blurb: string }[] = [
   { id: "classic", label: "Classic", blurb: "Cosacca, Marinara, Margherita, Margherita Duo, Margherita Macchiata, Piennolo e Bufala, Bufalina Classica, Bufalina a Freddo, Burratina, Quattro Formaggi, Diavola, Napoletana, Marinara alle Alici, Prosciutto e Rucola, Ibérica Bianca, Prosciutto e Funghi, Capricciosa, Marinara al Salame, Ortolana, Ripieno (Calzone)." },
   { id: "calzone-focaccia", label: "Calzone & Focaccia", blurb: "Folded and stuffed specialties." },
-  { id: "innovative", label: "Innovative", blurb: "Modern and rustic twists on Italian tradition — Margherita Datterini, Double Pepperoni & Hot Honey, Chorizo and Gorgonzola, Bufala e Ibérico, Tettoia — Four Cheese & Truffle, Calabrese, Quattro Latte e 'Nduja, 'Nduja & Hot Honey, Alici & Stracciatella, Cetarese, Cacio e Pepe, Carbonara, Amatriciana, Gricia, Pesto Cremosa, Burrata & Pesto, Boscaiola, Mortadella and Pistachio, La Oro Verde, Salsiccia al Pesto, Piennolo & Alici di Cetara, Ragù Napoletano." },
+  { id: "innovative", label: "Innovative", blurb: "Modern and rustic twists on Italian tradition — Margherita Datterini, Double Pepperoni & Hot Honey, Chorizo and Gorgonzola, Bufala e Ibérico, Tettoia — Four Cheese & Truffle, ’Nduja & Gorgonzola, Quattro Latte e 'Nduja, 'Nduja & Hot Honey, Alici & Stracciatella, Cetarese, Cacio e Pepe, Carbonara, Amatriciana, Gricia, Pesto Cremosa, Burrata & Pesto, Boscaiola, Mortadella and Pistachio, La Oro Verde, Salsiccia al Pesto, Piennolo & Alici di Cetara, Ragù Napoletano." },
   { id: "pumpkin", label: "Pumpkin Base", blurb: "Replace tomato with smooth roasted pumpkin cream — Sfiziosa, Mantovana, Norcina, Zucca Salsiccia e Provola, Zucca e 'Nduja, Zucca Guanciale e Rosmarino, Zucca, Gorgonzola & Noci." },
 ];
 
@@ -759,7 +759,7 @@ export const RECIPES: PizzaRecipe[] = [
   {
     id: "calabrese",
     number: 35,
-    name: "Calabrese",
+    name: "’Nduja & Gorgonzola",
     style: "Contemporary White Base — 'Nduja di Spilinga & Gorgonzola Piccante",
     category: "innovative",
     image: "https://media-cdn.tripadvisor.com/media/photo-s/1b/9e/0f/61/nduja-e-gorgonzola.jpg",
