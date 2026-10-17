@@ -16,7 +16,7 @@ const BUFALINA_COMPARISON_TABLE: RecipeComparisonTable = {
 export const RECIPE_CATEGORIES: { id: PizzaRecipeCategory; label: string; blurb: string }[] = [
   { id: "classic", label: "Classic", blurb: "Cosacca, Marinara, Margherita, Margherita Duo, Margherita Macchiata, Piennolo e Bufala, Bufalina Classica, Bufalina a Freddo, Burratina, Quattro Formaggi, Diavola, Napoletana, Marinara alle Alici, Prosciutto e Rucola, Ibérica Bianca, Prosciutto e Funghi, Capricciosa, Marinara al Salame, Ortolana, Ripieno (Calzone)." },
   { id: "calzone-focaccia", label: "Calzone & Focaccia", blurb: "Folded and stuffed specialties." },
-  { id: "innovative", label: "Innovative", blurb: "Modern and rustic twists on Italian tradition — Margherita Datterini, Double Pepperoni & Hot Honey, Chorizo and Gorgonzola, Bufala e Ibérico, Tettoia — Four Cheese & Truffle, ’Nduja & Gorgonzola, Quattro Latte e 'Nduja, 'Nduja & Hot Honey, Alici & Stracciatella, Cetarese, Cacio e Pepe, Carbonara, Amatriciana, Gricia, Pesto Cremosa, Burrata & Pesto, Boscaiola, Mortadella and Pistachio, La Oro Verde, Salsiccia al Pesto, Piennolo & Alici di Cetara, Ragù Napoletano." },
+  { id: "innovative", label: "Innovative", blurb: "Modern and rustic twists on Italian tradition — Margherita Datterini, Double Pepperoni & Hot Honey, Chorizo and Gorgonzola, Bufala e Ibérico, Tettoia — Four Cheese & Truffle, ’Nduja & Gorgonzola, Quattro Latte e 'Nduja, 'Nduja & Hot Honey, Alici & Stracciatella, Cetarese, Cacio e Pepe, Carbonara, Amatriciana, Gricia, Pesto Cremosa, Burrata & Pesto, Boscaiola, Mortadella and Pistachio, La Oro Verde, Salsiccia al Pesto, Piennolo & Alici di Cetara." },
   { id: "pumpkin", label: "Pumpkin Base", blurb: "Replace tomato with smooth roasted pumpkin cream — Sfiziosa, Mantovana, Norcina, Zucca Salsiccia e Provola, Zucca e 'Nduja, Zucca Guanciale e Rosmarino, Zucca, Gorgonzola & Noci." },
 ];
 
@@ -2006,37 +2006,6 @@ export const RECIPES: PizzaRecipe[] = [
         { intro: "Stage 2 (Honey & Oil Finish):", bullets: ["Drizzle 7g acacia honey directly onto the gorgonzola and walnuts, followed immediately by a light 2g finishing swirl of Barbera Lorenzo Nº5 EVOO. Slice and serve immediately."] },
         { intro: "Technical Moisture & Thermal Note:", bullets: ["Greci Crema di Zucca Mantovana (prepared with its 20% water integration) provides a clean, naturally sweet pumpkin canvas that highlights the creamy funk of Gorgonzola Dolce. Staging the dry-toasted walnuts, crisp sage, acacia honey, and Lorenzo EVOO entirely post-bake preserves their distinct textures and aromatic clarity against the hot, melted cheese matrix."] },
         { intro: "Profile:", bullets: ["Clean Greci pumpkin cream → creamy Fior di Latte → melting Gorgonzola Dolce → toasted walnuts → crispy sage → delicate honey drizzle → almond-smooth Lorenzo N°5 finish"] },
-      ] },
-    ],
-  },
-  {
-    id: "ragu-napoletano",
-    number: 55,
-    name: "Ragù Napoletano",
-    style: "Contemporary Neapolitan — Slow-Cooked Beef & Pork Ragù, Fior di Latte, Parmigiano & Fresh Thyme",
-    category: "innovative",
-    toppings: "80g slow-cooked beef & pork ragù (carrot, onion, celery, pepper, beer and thyme, reduced thick and spoonable), 8g finely grated Parmigiano-Reggiano, 55g Fior di Latte (drained 1–2 hours, torn into small pieces), 2–3 small fresh thyme leaves/sprigs (post-bake), 2g Elizondo Nº3 Picual EVOO (pre-bake), 3g Barbera Lorenzo N°5 EVOO (post-bake).",
-    menuIngredients: "Beef & pork ragù, Fior di Latte, Parmigiano-Reggiano, thyme, olive oil",
-    build: "A contemporary Neapolitan built on a thick, slow-cooked beef and pork ragù, layered under Parmigiano-Reggiano and well-drained Fior di Latte, finished with fresh thyme and a dual-oil protocol.",
-    postBake: "Transfer directly to a wooden board and rest for 30–45 seconds. Add 2–3 small fresh thyme leaves or tiny sprigs and finish with a 3g swirl of Barbera Lorenzo N°5 EVOO, distributed lightly over the ragù and cheese. Slice and serve immediately.",
-    flavorProgression: "Rich beef & pork ragù → creamy Fior di Latte → savoury Parmigiano → fresh thyme → fruity Lorenzo N°5 finish",
-    steps: [
-      { title: "1. Dough Prep", sections: [
-        { bullets: ["Hand-stretch the 280g dough ball to approximately 30–32cm on Caputo Semolina Rimacinata", "Press the gas outward into the perimeter to form a pronounced, airy 1.5–2cm cornicione", "Keep the centre thin and evenly stretched"] },
-      ] },
-      { title: "2. Layer Assembly (In Exact Order)", sections: [
-        { intro: "Layer 1 — Ragù:", bullets: ["Use 80g cooled beef & pork ragù", "Spread evenly across the centre, leaving a 1.5–2cm clean rim", "Distribute the shredded meat evenly rather than creating a heavy central mound", "The ragù should form the pizza's primary topping layer"] },
-        { intro: "Layer 2 — Parmigiano:", bullets: ["Distribute 8g finely grated Parmigiano-Reggiano evenly over the ragù", "Keep the layer light so it seasons the meat without becoming a dominant cheese layer"] },
-        { intro: "Layer 3 — Fior di Latte:", bullets: ["Add 55g well-drained Fior di Latte", "Tear into small pieces and distribute evenly", "Leave some areas of ragù exposed between the cheese"] },
-        { intro: "Layer 4 — Picual:", bullets: ["Finish the pre-bake build with 2g Elizondo Nº3 Picual EVOO", "Apply as a light spiral across the pizza"] },
-      ] },
-      { title: "3. Gozney Bake", sections: [
-        { intro: "Gozney / High-Heat Oven:", bullets: ["🪨 Stone Floor: 420°C–430°C", "🔥 Dome: 450°C–480°C", "⏱ Cook Time: 75–90 seconds", "🔄 Rotate regularly for even cooking"] },
-        { intro: "Look for:", bullets: ["A fully opened, well-blistered cornicione", "Fior di Latte completely melted with light browning", "Ragù hot throughout with the meat lightly caramelised at exposed edges", "A centre that remains moist and rich without becoming wet or loose", "The heavier ragù topping justifies the slightly longer bake compared with a lighter Margherita-style pizza"] },
-      ] },
-      { title: "4. Rest & Finish", sections: [
-        { bullets: ["Transfer directly to a wooden board and rest for 30–45 seconds", "Add 2–3 small fresh thyme leaves or tiny sprigs", "Finish with a 3g swirl of Barbera Lorenzo N°5 EVOO, distributed lightly over the ragù and cheese", "Slice and serve immediately"] },
-        { intro: "Profile:", bullets: ["Rich beef & pork ragù → creamy Fior di Latte → savoury Parmigiano → fresh thyme → fruity Lorenzo N°5 finish"] },
       ] },
     ],
   },

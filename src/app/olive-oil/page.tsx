@@ -197,7 +197,6 @@ const OIL_MAP: OilMapRow[] = [
   { n: 48, pizza: "Zucca, Gorgonzola & Noci", pre: "—", post: "2g Barbera Lorenzo N°5", why: "Pumpkin + walnut + Gorgonzola needs softness" },
   { n: 49, pizza: "Sfiziosa", pre: "—", post: "2g Belazu White Truffle EVOO + 1g Barbera Lorenzo N°5", why: "Truffle + pumpkin + guanciale; specialist finish" },
   { n: 50, pizza: "Sfiziosa (Basilico)", pre: "—", post: "3g Barbera Lorenzo N°5", why: "Sage oil already supplies the aromatic finish" },
-  { n: 51, pizza: "Ragù Napoletano", pre: "2g Elizondo Nº3 Picual", post: "3g Barbera Lorenzo N°5", why: "Rich ragù + Parmigiano needs a soft finish so the thyme stays forward" },
 ];
 
 const REGION_COLORS: Record<string, string> = {
