@@ -1,12 +1,41 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useState, useMemo, type ReactNode } from "react";
 import { convertYeast } from "@/lib/calculations";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 
 type YeastType = "instant" | "fresh" | "activeDry";
 
 export default function YeastPage() {
+  return (
+    <div className="space-y-6">
+      <div>
+        <h1 className="text-2xl font-bold">Yeast</h1>
+        <p className="text-muted-foreground text-sm mt-1">
+          Convert between yeast types, and store Caputo Instant Dry Yeast
+        </p>
+      </div>
+
+      <Tabs defaultValue="conversion">
+        <TabsList>
+          <TabsTrigger value="conversion">Conversion</TabsTrigger>
+          <TabsTrigger value="storage">Storage</TabsTrigger>
+        </TabsList>
+
+        <TabsContent value="conversion" className="mt-4">
+          <ConversionSection />
+        </TabsContent>
+
+        <TabsContent value="storage" className="mt-4">
+          <StorageSection />
+        </TabsContent>
+      </Tabs>
+    </div>
+  );
+}
+
+function ConversionSection() {
   const [inputType, setInputType] = useState<YeastType>("instant");
   const [amount, setAmount] = useState(2);
   const [coldHours, setColdHours] = useState(24);
@@ -47,10 +76,7 @@ export default function YeastPage() {
 
   return (
     <div className="space-y-6">
-      <div>
-        <h1 className="text-2xl font-bold">Yeast Converter</h1>
-        <p className="text-muted-foreground text-sm mt-1">Convert between instant, fresh, and active dry yeast</p>
-      </div>
+      <p className="text-muted-foreground text-sm">Convert between instant, fresh, and active dry yeast</p>
 
       {/* Input type selector */}
       <Card>
@@ -184,5 +210,122 @@ export default function YeastPage() {
         </CardContent>
       </Card>
     </div>
+  );
+}
+
+function StorageSection() {
+  return (
+    <div className="space-y-6">
+      <Card>
+        <CardContent className="pt-5 text-sm leading-relaxed text-muted-foreground space-y-3">
+          <p>
+            Stored properly in the freezer, Caputo Instant Dry Yeast maintains full fermentation power for 12 to 24 months. Proper storage prevents exposure to humidity, oxygen, and ambient heat, which degrade live yeast cells over time.
+          </p>
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <CardTitle className="text-base">Step-by-Step Storage Guide</CardTitle>
+        </CardHeader>
+        <CardContent className="space-y-6">
+          <Step number={1} title="Transfer to an Airtight Glass Container">
+            <p>
+              Once you open the original foil tin or pouch, transfer all the dry yeast into a clean, completely dry glass jar with a rubber seal or tight screw lid (a small mason jar or spice jar works best).
+            </p>
+            <p>
+              Avoid plastic Ziploc bags for long-term storage, as polythene is slightly permeable to oxygen and humidity over time.
+            </p>
+          </Step>
+
+          <Step number={2} title="Place Directly in the Freezer">
+            <p>
+              Store the sealed glass jar in your freezer (ideally at or below -18°C).
+            </p>
+            <p>
+              Because instant dry yeast has virtually zero moisture content, it will not freeze solid or clump together. It remains a free-flowing powder.
+            </p>
+          </Step>
+
+          <Step number={3} title="Measure Directly from Frozen">
+            <p>
+              When preparing your dough, remove the jar from the freezer, scoop the exact dosage (e.g., 1.6 g) directly onto your precision scale, and return the jar to the freezer immediately.
+            </p>
+            <Verification>
+              Ensure your spoon and scale tray are 100% dry before measuring. Never introduce moisture into the jar.
+            </Verification>
+          </Step>
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <CardTitle className="text-base">How to Perform a Proof Test Before Baking</CardTitle>
+        </CardHeader>
+        <CardContent className="space-y-6">
+          <p className="text-sm leading-relaxed text-muted-foreground">
+            If your yeast has been stored for several months and you want to verify that it is fully active before starting a full dough batch, perform this simple 10-minute proofing test:
+          </p>
+
+          <Step number={1} title="Prepare Warm Water">
+            <p>
+              Measure 50 g of lukewarm water into a small glass or measuring cup. Target a water temperature of 30–35°C.
+            </p>
+            <Verification>
+              Water that feels comfortably warm (not hot) to the touch is ideal. Water above 45°C will kill the yeast.
+            </Verification>
+          </Step>
+
+          <Step number={2} title="Add Sugar and Yeast">
+            <p>
+              Add 1 g (about 1/4 tsp) of sugar or honey to the water and stir until fully dissolved. Then add 1 g of Caputo Instant Dry Yeast and stir gently for 5–10 seconds to disperse the grains.
+            </p>
+          </Step>
+
+          <Step number={3} title="Rest and Observe (10 Minutes)">
+            <p>
+              Leave the mixture undisturbed at room temperature for 10 to 15 minutes.
+            </p>
+            <div className="grid sm:grid-cols-2 gap-3">
+              <div className="rounded-lg border border-primary/30 bg-primary/5 p-3 text-sm leading-relaxed">
+                <div className="font-semibold text-foreground mb-1">Active Yeast (Pass)</div>
+                <p className="text-muted-foreground">
+                  Within 10 minutes, a thick layer of creamy foam, small bubbling carbon dioxide clusters, and a distinct yeasty aroma will form on the surface.
+                </p>
+              </div>
+              <div className="rounded-lg border border-red-500/30 bg-red-500/10 p-3 text-sm leading-relaxed">
+                <div className="font-semibold text-red-900 dark:text-red-300 mb-1">Inactive/Degraded Yeast (Fail)</div>
+                <p className="text-red-900/90 dark:text-red-300/90">
+                  The water remains flat with no foam, surface bubbles, or volume expansion. If this happens, discard the yeast and open a fresh batch.
+                </p>
+              </div>
+            </div>
+          </Step>
+        </CardContent>
+      </Card>
+    </div>
+  );
+}
+
+function Step({ number, title, children }: { number: number; title: string; children: ReactNode }) {
+  return (
+    <div className="flex gap-3">
+      <span className="inline-flex items-center justify-center w-7 h-7 rounded-full bg-primary text-primary-foreground font-semibold text-sm shrink-0 mt-0.5">
+        {number}
+      </span>
+      <div className="space-y-2 min-w-0">
+        <h3 className="font-medium text-foreground">{title}</h3>
+        <div className="text-sm text-muted-foreground leading-relaxed space-y-2">{children}</div>
+      </div>
+    </div>
+  );
+}
+
+function Verification({ children }: { children: ReactNode }) {
+  return (
+    <p className="text-sm rounded-lg p-3 border bg-amber-500/10 border-amber-500/30 text-amber-900 dark:text-amber-300">
+      <span className="font-semibold">Verification: </span>
+      {children}
+    </p>
   );
 }
