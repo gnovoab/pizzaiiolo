@@ -7,9 +7,9 @@ import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 // Neapolitan Pizza tab baker's percentages (of total flour weight).
 const NEAPOLITAN_DEFAULT_HYDRATION_PCT = 63;
 const NEAPOLITAN_SALT_PCT = 0.024;
-// 0.06% fresh yeast converts to 0.02% instant dry yeast at a 3:1 ratio.
-const NEAPOLITAN_YEAST_MIN_PCT = 0.0002;
-const NEAPOLITAN_YEAST_MAX_PCT = 0.0002;
+// 0.24% fresh yeast converts to 0.08% instant dry yeast at a 3:1 ratio.
+const NEAPOLITAN_YEAST_MIN_PCT = 0.0008;
+const NEAPOLITAN_YEAST_MAX_PCT = 0.0008;
 const NEAPOLITAN_FIRST_FLOUR_PCT = 0.70;
 const NEAPOLITAN_REMAINING_FLOUR_PCT = 0.30;
 const NEAPOLITAN_CAPUTO_00_PCT = 0.50;
@@ -164,7 +164,7 @@ export default function DoughMakerPage() {
     pizzeria: poolishFlourAmount * 0.5,
     water: poolishFlourAmount * 0.63,
     salt: poolishFlourAmount * 0.024,
-    instantYeast: poolishFlourAmount * 0.0002,
+    instantYeast: poolishFlourAmount * NEAPOLITAN_YEAST_MIN_PCT,
   };
 
   return (
@@ -216,7 +216,7 @@ export default function DoughMakerPage() {
               `${formatWeight(batch.nuvola)} Caputo Nuvola flour`,
               `${formatWeight(batch.water)} water — ${hydrationPct}%`,
               `${formatWeight(batch.salt)} fine salt — 2.4%`,
-              `${formatYeast(batch.yeastMin, batch.yeastMax)} instant dry yeast — 0.02% (equivalent to ${formatWeightPrecise(batch.yeastMin * 3)} fresh yeast / 0.06%)`,
+              `${formatYeast(batch.yeastMin, batch.yeastMax)} instant dry yeast — 0.08% (equivalent to ${formatWeightPrecise(batch.yeastMin * 3)} fresh yeast / 0.24%)`,
               `Total: ${fmtG(batch.totalDoughMin, 1)} g`,
               `→ ${batch.fullBalls} × ~${fmtG(batch.totalDoughMin / batch.fullBalls, 0)} g dough balls`,
             ]} />
@@ -468,7 +468,7 @@ export default function DoughMakerPage() {
                   `${formatWeight(directBaseline.pizzeria)} Caputo Pizzeria 00 + ${formatWeight(directBaseline.nuvola)} Caputo Nuvola`,
                   `${formatWeight(directBaseline.water)} water · 63% hydration`,
                   `${formatWeight(directBaseline.salt)} salt · 2.4%`,
-                  `${formatWeightPrecise(directBaseline.instantYeast)} instant dry yeast · 0.02% (equivalent to ${formatWeightPrecise(directBaseline.instantYeast * 3)} fresh yeast / 0.06%)`,
+                  `${formatWeightPrecise(directBaseline.instantYeast)} instant dry yeast · 0.08% (equivalent to ${formatWeightPrecise(directBaseline.instantYeast * 3)} fresh yeast / 0.24%)`,
                   "Approximately 60 hours cold fermentation",
                 ]} />
               </div>
