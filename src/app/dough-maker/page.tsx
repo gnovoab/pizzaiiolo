@@ -143,11 +143,11 @@ function calculatePoolishBatch(flourWeight: number, ballWeight: number) {
 
 export default function DoughMakerPage() {
   const [flourAmount, setFlourAmount] = useState(2000);
-  const [ballWeight, setBallWeight] = useState(275.7);
+  const [ballWeight, setBallWeight] = useState(280);
   const [hydrationPct, setHydrationPct] = useState(NEAPOLITAN_DEFAULT_HYDRATION_PCT);
 
   const batch = useMemo(() => calculateDoughBatch(flourAmount, ballWeight, hydrationPct), [flourAmount, ballWeight, hydrationPct]);
-  const masterBatch = useMemo(() => calculateDoughBatch(2000, 275.7, hydrationPct), [hydrationPct]);
+  const masterBatch = useMemo(() => calculateDoughBatch(2000, 280, hydrationPct), [hydrationPct]);
 
   const [nyFlourAmount, setNyFlourAmount] = useState(2000);
   const [nyBallWeight, setNyBallWeight] = useState(350);
@@ -314,56 +314,56 @@ export default function DoughMakerPage() {
             ]} />
           </Section>
 
-          <Section number={10} title="Bench Rest & Short Bulk">
+          <Section number={10} title="Bench Rest, Stretch & Fold, and Bulk Fermentation">
             <Bullets items={[
-              "Transfer the finished dough to a covered container and rest for approximately 1 hour at room temperature.",
-              "Do not automatically fold or knead the dough. The Famag has already developed the gluten structure.",
-              "After approximately 1 hour, assess the dough. It should feel smooth, elastic, cohesive and relaxed, while still having enough strength to hold its shape.",
-              "Only if the dough feels unusually slack, weak or lacks structure, give it one gentle stretch-and-fold during the bulk rest, then allow it to relax before dividing. Do not knead or aggressively degas it.",
-              "After the bulk rest, divide and ball immediately.",
+              "First bench rest (15 minutes post-mix): Turn the dough out of the FAMAG mixer onto a clean worktop or tray. Invert a bowl over it or cover with a lid or damp towel, then rest undisturbed for 15 minutes.",
+              "Set 1 — first gravity stretch-and-fold, after the 15-minute rest: Lightly wet your hands with cold water. Lift the dough mass, allowing gravity to gently pull the lower half down under its own weight, then fold it back over the top. Rotate 90° and repeat 3–4 times.",
+              "Covered rest (30 minutes): Cover the dough and let it rest for 30 minutes.",
+              "Set 2 — second stretch-and-fold: After the covered 30-minute rest, perform another round of stretch-and-folds on the counter to smooth the surface and build structural strength.",
+              "Bulk fermentation rest (60 minutes): Cover the bulk mass and rest it for a full 1 hour (60 minutes) before portioning.",
             ]} />
           </Section>
 
           <Section number={11} title="Divide & Ball">
             <Bullets items={[
-              "Divide the 2,000 g flour batch into 12 × approximately 275.7 g dough balls (about 276 g each).",
-              "The 1,000 g flour batch produces 6 × approximately 275.7 g dough balls.",
-              "Turn the dough onto the bench without aggressively degassing it. Fold the edges underneath, turn over, and gently tighten into a smooth, taut ball.",
-              "Place the dough balls in a covered dough box.",
+              `Target weight: portion into ${formatWeight(batch.ballWeight)} balls for a 30–33 cm pizza, using a digital scale and scraper.`,
+              "Shape each portion by rolling it firmly against an unfloured counter to build a tight, smooth outer dome with strong surface tension.",
+              "If dry flour prevents the bottom seam from closing, moisten your fingertips with a drop of water, pinch the flaps tightly together like a dumpling, and give a clockwise twist. Drag the ball seam-side down across the counter to lock the seal, then place it seam-side down in the tray.",
             ]} />
           </Section>
 
-          <Section number={12} title="Cold Fermentation" subtitle="Approximately 4°C">
+          <Section number={12} title="Cold Fermentation & Thermal Management" subtitle="2°C–4°C">
             <Bullets items={[
-              "Refrigerate the covered dough balls at approximately 4°C. First choice for this formula: 60 hours.",
-              "Then compare 48 h, 60 h and 72 h batches. The expectation that 60–72 h may suit the 00/Nuvola blend is a hypothesis to test, not a guaranteed result.",
+              "Initial vented chill (crucial): Arrange the dough balls in the tray with ample spacing. Put the tray straight into a 2°C–4°C fridge with its lid slightly cracked or ajar for the first 30–45 minutes to vent core friction heat and slow yeast activity.",
+              "Sealed cold rest: After 30–45 minutes, snap the tray lid completely shut to trap humidity. Cold ferment for 24–48 hours, or test up to 60–72 hours.",
             ]} />
           </Section>
 
-          <Section number={13} title="Final Proof" subtitle="Start with approximately 3–4 hours before baking">
+          <Section number={13} title="Pre-Bake Conditioning & Final Proof">
             <Bullets items={[
-              "Proof at normal room temperature. Readiness matters more than the clock: look for balls that are noticeably expanded, soft, relaxed, slightly puffy, extensible and still holding their structure.",
-              "If already very puffy after 2 hours, bake earlier. If still tight at the end of the expected 3–4 hour conditioning window, give them another 30–60 minutes.",
+              "Temper window: Remove the tray from the fridge no more than 45–60 minutes before baking, or up to 1.5–2 hours in a cooler room.",
+              "Look for dough balls that are expanded, soft, relaxed, slightly puffy, extensible and still holding a defined dome shape. Avoid leaving them at room temperature for more than 2 hours to prevent over-proofing.",
             ]} />
           </Section>
 
-          <Section number={14} title="Open, Top & Bake">
+          <Section number={14} title="Open, Top & Gozney Arc Bake">
             <Subhead>Open the pizza</Subhead>
             <Bullets items={[
-              "Lightly flour the bench and turn out the dough ball. Press from the centre toward the edge, leaving the outer 1.5–2 cm untouched for the cornicione.",
-              "Stretch gradually by hand to approximately 30–32 cm. Do not use a rolling pin or aggressively press out the gas.",
+              "Dust the worktop with Caputo Semolina Rimacinata only; never use 00 flour. Press with your finger pads 1.5–2 cm from the outer edge, pushing gas into the rim for a puffy cornicione.",
+              "Stretch using the steering-wheel or knuckle method to 30–33 cm.",
             ]} />
             <a href="https://www.youtube.com/shorts/mgyW14VCuAU" target="_blank" rel="noopener noreferrer" className="mt-2 inline-flex items-center gap-1.5 text-[15px] text-primary hover:underline font-medium">
               ▶ Stretching 2 <span className="text-xs opacity-60">↗</span>
             </a>
-            <Subhead className="mt-4">Top and launch</Subhead>
+            <Subhead className="mt-4">Topping</Subhead>
             <Bullets items={[
-              "Top quickly (sauce → cheese/toppings → launch). Do not let a wet pizza sit on the peel.",
-              "For a Bufalina, have the toppings ready before opening the dough so the topped pizza can be launched promptly.",
+              "Drizzle 2–3 g Elizondo Nº3 Picual EVOO over the sauce or base before baking. Top quickly so the high-hydration dough does not stick.",
             ]} />
-            <Subhead className="mt-4">Gozney</Subhead>
+            <Subhead className="mt-4">Gozney Arc parameters and bake</Subhead>
             <Bullets items={[
-              "Start around 430–450°C stone temperature and control the flame carefully. Aim for enough top heat to develop the cornicione without burning the toppings.",
+              "Target a stone floor of 430–440°C and a dome zone of 450–480°C.",
+              "Launch onto the stone and leave it in place for 15–20 seconds, then rotate every 15 seconds for a total bake of 60–90 seconds. Lower the top flame to LOW/MEDIUM-LOW for heavy toppings.",
+              "Rest on a wooden board for 30–60 seconds before slicing.",
             ]} />
           </Section>
 
@@ -377,12 +377,12 @@ export default function DoughMakerPage() {
                 "Gradual bassinage",
                 "Speed 4 development · Speed 5 only if needed",
                 "21–23°C FDT · ideally ~22°C",
-                "~1 h covered bulk · optional gentle fold only if unusually slack/weak",
-                `12 × ~${fmtG(masterBatch.totalDoughMin / 12, 1)} g balls`,
-                "60–72 h at 3–4°C",
-                "~3–4 h room-temperature conditioning",
-                "30–32 cm pizza",
-                "Gozney · 430–450°C starting point",
+                "15 min rest → first fold → 30 min covered rest → second fold → 60 min covered bulk",
+                `${masterBatch.fullBalls} × ${formatWeight(masterBatch.ballWeight)} balls${masterBatch.remainder > 0 ? ` + ~${fmtG(masterBatch.remainder, 1)} g remainder` : ""}`,
+                "30–45 min vented chill · then sealed 24–48 h (test up to 60–72 h)",
+                "45–60 min conditioning · up to 1.5–2 h in cooler rooms",
+                "30–33 cm pizza · Semolina Rimacinata",
+                "Gozney Arc · 430–440°C floor · 450–480°C dome · 60–90 sec bake",
               ].map((t, i, arr) => (
                 <span key={t} className="contents">
                   <WorkflowChip text={t} />
