@@ -5,7 +5,8 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 
 // Neapolitan Pizza tab baker's percentages (of total flour weight).
-const NEAPOLITAN_DEFAULT_HYDRATION_PCT = 63;
+const NEAPOLITAN_DEFAULT_HYDRATION_PCT = 68;
+const NEAPOLITAN_OIL_PCT = 0.02;
 const NEAPOLITAN_SALT_PCT = 0.024;
 // 0.24% fresh yeast converts to 0.08% instant dry yeast at a 3:1 ratio.
 const NEAPOLITAN_YEAST_MIN_PCT = 0.0008;
@@ -26,6 +27,7 @@ function calculateDoughBatch(flourWeight: number, ballWeight: number, hydrationP
   const salt = flourWeight * NEAPOLITAN_SALT_PCT;
   const yeastMin = flourWeight * NEAPOLITAN_YEAST_MIN_PCT;
   const yeastMax = flourWeight * NEAPOLITAN_YEAST_MAX_PCT;
+  const oil = flourWeight * NEAPOLITAN_OIL_PCT;
   const caputo00 = flourWeight * NEAPOLITAN_CAPUTO_00_PCT;
   const nuvola = flourWeight * NEAPOLITAN_NUVOLA_PCT;
   const initialWater = water * NEAPOLITAN_INITIAL_WATER_PCT;
@@ -38,8 +40,8 @@ function calculateDoughBatch(flourWeight: number, ballWeight: number, hydrationP
   const remainingCaputo00 = remainingFlour * NEAPOLITAN_CAPUTO_00_PCT;
   const remainingNuvola = remainingFlour * NEAPOLITAN_NUVOLA_PCT;
 
-  const totalDoughMin = flourWeight + water + salt + yeastMin;
-  const totalDoughMax = flourWeight + water + salt + yeastMax;
+  const totalDoughMin = flourWeight + water + oil + salt + yeastMin;
+  const totalDoughMax = flourWeight + water + oil + salt + yeastMax;
 
   const fullBalls = Math.max(1, Math.floor(totalDoughMin / ballWeight));
   const remainder = Math.max(0, totalDoughMin - fullBalls * ballWeight);
@@ -50,6 +52,7 @@ function calculateDoughBatch(flourWeight: number, ballWeight: number, hydrationP
     salt,
     yeastMin,
     yeastMax,
+    oil,
     caputo00,
     nuvola,
     initialWater,
@@ -217,6 +220,7 @@ export default function DoughMakerPage() {
               `${formatWeight(batch.water)} water — ${hydrationPct}%`,
               `${formatWeight(batch.salt)} fine salt — 2.4%`,
               `${formatYeast(batch.yeastMin, batch.yeastMax)} instant dry yeast — 0.08% (equivalent to ${formatWeightPrecise(batch.yeastMin * 3)} fresh yeast / 0.24%)`,
+              `${formatWeight(batch.oil)} olive oil — 2% (20 g per kg flour)`,
               `Total: ${fmtG(batch.totalDoughMin, 1)} g`,
               `→ ${batch.fullBalls} × ~${fmtG(batch.totalDoughMin / batch.fullBalls, 0)} g dough balls`,
             ]} />
@@ -259,10 +263,11 @@ export default function DoughMakerPage() {
               "Increase gradually to Speed 4; use Speed 5 only if the dough needs additional development. Watch the dough rather than following the timer.",
               "Look for a smooth surface, elastic dough wrapping around the spiral, a relatively clean bowl, and a cohesive mass that is elastic without becoming excessively tight.",
               "Larger flour batches contain more dough and take longer for the mass to gather around the spiral and for the bowl to look clean. Allow extra time as needed, while continuing to judge the dough by its condition and temperature.",
-              "Stop as soon as the dough reaches this condition. Do not keep mixing for another 5–10 minutes just because the machine can.",
+              `Once the smooth, cohesive dough mass (“Zucca”) has formed, add ${formatWeight(batch.oil)} olive oil (20 g per kg flour) at the very end and mix just until incorporated.`,
+              "Stop as soon as the oil is incorporated and the dough reaches the desired condition. Do not keep mixing for another 5–10 minutes just because the machine can.",
             ]} />
             <Callout>Mixing times are approximate guides. For 2 kg flour, around 10–14 minutes can be perfectly normal depending on flour temperature, water temperature and how aggressively you mix. Stop based on dough condition and final dough temperature (target 21–23°C, ideally around 22°C), not because the timer reaches 10 minutes. Avoid overdeveloping or unnecessarily heating the dough.</Callout>
-            <Callout>So when the Famag reaches: smooth + cohesive + elastic + moist + bowl mostly clean + wrapping the spiral + still relaxed → STOP.</Callout>
+            <Callout>Once the Famag dough is smooth + cohesive + elastic + moist, the bowl is mostly clean, and the dough wraps the spiral while staying relaxed, add the olive oil. Stop mixing as soon as it is incorporated.</Callout>
           </Section>
 
           <Section number={7} title="Dough Removal — Optional Reverse">

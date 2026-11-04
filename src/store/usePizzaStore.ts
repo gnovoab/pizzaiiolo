@@ -71,8 +71,8 @@ export const usePizzaStore = create<PizzaState>()(
       numPizzas: 4,
       ballWeight: 270,
       flourInput: 1000,
-      waterInput: 620,
-      hydration: 0.62,
+      waterInput: 680,
+      hydration: 0.68,
       salt: 0.024,
       yeast: 0.0009,
 
