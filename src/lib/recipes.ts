@@ -14,7 +14,7 @@ const BUFALINA_COMPARISON_TABLE: RecipeComparisonTable = {
 };
 
 export const RECIPE_CATEGORIES: { id: PizzaRecipeCategory; label: string; blurb: string }[] = [
-  { id: "classic", label: "Classic", blurb: "Cosacca, Marinara, Margherita, Margherita Duo, Margherita Macchiata, Piennolo e Bufala, Bufalina Classica, Bufalina a Freddo, Burratina, Quattro Formaggi, Diavola, Napoletana, Marinara alle Alici, Prosciutto e Rucola, Ibérica Bianca, Prosciutto e Funghi, Capricciosa, Marinara al Salame, Ortolana, Ripieno (Calzone)." },
+  { id: "classic", label: "Classic", blurb: "Cosacca, Marinara, Margherita, Margherita Duo, Margherita Macchiata, Piennolo e Bufala, Quattro Formaggi, Margherita e Pancetta, Diavola, Napoletana, Marinara alle Alici, Prosciutto e Rucola, Ibérica Bianca, Prosciutto e Funghi, Capricciosa, Marinara al Salame, Ortolana, Bufalina Classica, Bufalina a Freddo, Burratina, Ripieno (Calzone)." },
   { id: "calzone-focaccia", label: "Calzone & Focaccia", blurb: "Folded and stuffed specialties." },
   { id: "innovative", label: "Innovative", blurb: "Modern and rustic twists on Italian tradition — Margherita Datterini, Double Pepperoni & Hot Honey, Chorizo and Gorgonzola, Bufala e Ibérico, Tettoia — Four Cheese & Truffle, ’Nduja & Gorgonzola, Quattro Latte e 'Nduja, 'Nduja & Hot Honey, Alici & Stracciatella, Cetarese, Cacio e Pepe, Carbonara, Amatriciana, Gricia, Pesto Cremosa, Burrata & Pesto, Boscaiola, Mortadella and Pistachio, La Oro Verde, Salsiccia al Pesto, Piennolo & Alici di Cetara." },
   { id: "pumpkin", label: "Pumpkin Base", blurb: "Replace tomato with smooth roasted pumpkin cream — Sfiziosa, Mantovana, Norcina, Zucca Salsiccia e Provola, Zucca e 'Nduja, Zucca Guanciale e Rosmarino, Zucca, Gorgonzola & Noci." },
@@ -52,6 +52,36 @@ export const RECIPES: PizzaRecipe[] = [
         { intro: "Rest Protocol:", bullets: ["Transfer directly to a WOODEN BOARD (do NOT use a wire rack) and rest for 30 seconds"] },
         { bullets: ["Scatter 1–2 fresh basil leaves", "Finish with a 3g swirl of Barbera Lorenzo N°5 EVOO", "Slice and serve immediately"] },
         { intro: "Profile:", bullets: ["Bright San Marzano → creamy melted Fior di Latte → warm basil & fruity Picual → fresh basil → buttery Lorenzo N°5 finish"] },
+      ] },
+    ],
+  },
+  {
+    id: "margherita-con-pancetta",
+    number: 13,
+    name: "Margherita e Pancetta",
+    style: "Margherita Variation — Crisp Pancetta, Fior di Latte & Lorenzo N°5 Finish",
+    category: "classic",
+    toppings: "75g hand-crushed San Marzano DOP tomatoes, 75g–80g well-drained Fior di Latte, 30g–35g pancetta arranged in a single loose layer, fresh basil leaves (2–3 pre-bake, remaining leaves post-bake), 2g Elizondo Nº3 Picual EVOO (pre-bake), 2g–3g Barbera Lorenzo N°5 EVOO (post-bake).",
+    menuIngredients: "San Marzano tomato, Fior di Latte, pancetta, basil, Picual and Lorenzo N°5 olive oils",
+    build: "A sensible, attractive Margherita variation: lightly salted San Marzano, Fior di Latte and a loose layer of pancetta, finished with fresh basil and Lorenzo N°5 EVOO.",
+    postBake: "Rest on a wooden board for 30–45 seconds. Add the remaining fresh basil and finish with 2g–3g Barbera Lorenzo N°5 EVOO.",
+    flavorProgression: "San Marzano → creamy Fior di Latte → crisp, savoury pancetta → fresh basil → buttery Lorenzo N°5 finish",
+    steps: [
+      { title: "1. Dough Prep", sections: [
+        { bullets: ["Stretch a 280g dough ball to 30–32cm on Caputo Semolina Rimacinata, preserving a 1.5–2cm cornicione."] },
+      ] },
+      { title: "2. Layer Assembly (In Exact Order)", sections: [
+        { intro: "Layer 1 — San Marzano:", bullets: ["Spread 75g San Marzano tomatoes, leaving the 1.5–2cm rim clear."] },
+        { intro: "Layer 2 — Basil:", bullets: ["Add 2–3 fresh basil leaves."] },
+        { intro: "Layer 3 — Fior di Latte:", bullets: ["Distribute 75g–80g well-drained Fior di Latte evenly."] },
+        { intro: "Layer 4 — Pancetta:", bullets: ["Arrange 30g–35g pancetta in a single, loose layer, with some pieces slightly exposed.", "For thick pancetta, pre-render it first and use the oven bake as a finishing step rather than relying on the oven to cook it."] },
+        { intro: "Layer 5 — Picual:", bullets: ["Drizzle with 2g Elizondo Nº3 Picual EVOO."] },
+      ] },
+      { title: "3. Bake — Gozney Arc", sections: [
+        { intro: "Gozney / High-Heat Oven:", bullets: ["🪨 Stone floor: 430°C–440°C.", "🔥 Dome: 450°C–480°C.", "⏱ Bake for 60–75 seconds, rotating as necessary.", "Adjust the flame if the pancetta browns too quickly.", "For thick pancetta, pre-render it first and use this bake as a finishing step rather than relying on the oven to cook it."] },
+      ] },
+      { title: "4. Rest & Finish", sections: [
+        { bullets: ["Rest on a wooden board for 30–45 seconds.", "Add the remaining fresh basil.", "Finish with 2g–3g Barbera Lorenzo N°5 EVOO. Slice and serve immediately."] },
       ] },
     ],
   },
@@ -199,7 +229,7 @@ export const RECIPES: PizzaRecipe[] = [
   },
   {
     id: "napoli",
-    number: 14,
+    number: 15,
     name: "Napoletana",
     style: "Classic Neapolitan — San Marzano DOP, Fior di Latte, Cantabrian Anchovies, Capers & Olives",
     category: "classic",
@@ -237,7 +267,7 @@ export const RECIPES: PizzaRecipe[] = [
   },
   {
     id: "diavola",
-    number: 13,
+    number: 14,
     name: "Diavola",
     style: "Margherita con Salame Piccante — San Marzano DOP, Fior di Latte & Spicy Salami",
     category: "classic",
@@ -273,7 +303,7 @@ export const RECIPES: PizzaRecipe[] = [
   },
   {
     id: "seven-stars-parma",
-    number: 16,
+    number: 17,
     name: "Prosciutto e Rucola",
     style: "Contemporary Neapolitan — Thermal & Textural Contrasts",
     category: "classic",
@@ -320,7 +350,7 @@ export const RECIPES: PizzaRecipe[] = [
   },
   {
     id: "parma-bianca",
-    number: 17,
+    number: 18,
     name: "Ibérica Bianca",
     style: "Contemporary Neapolitan White Base — Ibérico Fat, Ricotta & Lorenzo N°5",
     category: "classic",
@@ -357,7 +387,7 @@ export const RECIPES: PizzaRecipe[] = [
   },
   {
     id: "prosciutto-e-funghi",
-    number: 18,
+    number: 19,
     name: "Prosciutto e Funghi",
     style: "Classic Neapolitan — San Marzano DOP, Fior di Latte, Prosciutto Cotto & Champignons",
     category: "classic",
@@ -410,7 +440,7 @@ export const RECIPES: PizzaRecipe[] = [
   },
   {
     id: "capricciosa",
-    number: 19,
+    number: 20,
     name: "Capricciosa",
     style: "House Classic — Prosciutto Cotto, Salame, Artichokes & Champignons",
     category: "classic",
@@ -501,7 +531,7 @@ export const RECIPES: PizzaRecipe[] = [
   },
   {
     id: "ortolana",
-    number: 20,
+    number: 22,
     name: "Ortolana",
     style: "Gourmet Neapolitan — Slow Food Pappacella Peppers, Grilled Veggies & Pacchetelle Fillets",
     category: "classic",
@@ -536,7 +566,7 @@ export const RECIPES: PizzaRecipe[] = [
   },
   {
     id: "ripieno-calzone",
-    number: 21,
+    number: 23,
     name: "Ripieno (Calzone)",
     style: "Classic Folded Neapolitan — Creamed Ricotta, Fior di Latte & Salame",
     category: "classic",
@@ -1572,7 +1602,7 @@ export const RECIPES: PizzaRecipe[] = [
   },
   {
     id: "marinara-al-salame",
-    number: 11,
+    number: 21,
     name: "Marinara al Salame",
     style: "Yellow Marinara — Vesuvian Yellow Tomatoes, Neapolitan Salami & Mountain Oregano",
     category: "classic",
@@ -2011,7 +2041,7 @@ export const RECIPES: PizzaRecipe[] = [
   },
   {
     id: "marinara-alle-alici",
-    number: 15,
+    number: 16,
     name: "Marinara alle Alici",
     style: "Rustic Marinara — San Marzano, Pacchetelle, Alici, Capers & Gaeta Olives",
     category: "classic",
