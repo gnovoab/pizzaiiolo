@@ -16,7 +16,7 @@ const BUFALINA_COMPARISON_TABLE: RecipeComparisonTable = {
 export const RECIPE_CATEGORIES: { id: PizzaRecipeCategory; label: string; blurb: string }[] = [
   { id: "classic", label: "Classic", blurb: "Cosacca, Marinara, Margherita, Margherita Duo, Margherita Macchiata, Piennolo e Bufala, Quattro Formaggi, Margherita e Pancetta, Diavola, Napoletana, Marinara alle Alici, Prosciutto e Rucola, Ibérica Bianca, Prosciutto e Funghi, Capricciosa, Marinara al Salame, Ortolana, Bufalina Classica, Bufalina a Freddo, Burratina, Ripieno (Calzone)." },
   { id: "calzone-focaccia", label: "Calzone & Focaccia", blurb: "Folded and stuffed specialties." },
-  { id: "innovative", label: "Innovative", blurb: "Modern and rustic twists on Italian tradition — Margherita Datterini, Double Pepperoni & Hot Honey, Chorizo and Gorgonzola, Bufala e Ibérico, Tettoia — Four Cheese & Truffle, ’Nduja & Gorgonzola, Quattro Latte e 'Nduja, 'Nduja & Hot Honey, Alici & Stracciatella, Cetarese, Cacio e Pepe, Carbonara, Amatriciana, Gricia, Pesto Cremosa, Burrata & Pesto, Boscaiola, Mortadella and Pistachio, La Oro Verde, Salsiccia al Pesto, Piennolo & Alici di Cetara." },
+  { id: "innovative", label: "Innovative", blurb: "Modern and rustic twists on Italian tradition — Margherita Datterini, Double Pepperoni & Hot Honey, Chorizo and Gorgonzola, Bufala e Ibérico, Tettoia — Four Cheese & Truffle, ’Nduja & Gorgonzola, Quattro Latte e 'Nduja, 'Nduja & Hot Honey, Alici & Stracciatella, Cetarese, Pizza al Ragù Napoletano, Cacio e Pepe, Carbonara, Amatriciana, Gricia, Pesto Cremosa, Burrata & Pesto, Boscaiola, Mortadella and Pistachio, La Oro Verde, Salsiccia al Pesto, Piennolo & Alici di Cetara." },
   { id: "pumpkin", label: "Pumpkin Base", blurb: "Replace tomato with smooth roasted pumpkin cream — Sfiziosa, Mantovana, Norcina, Zucca Salsiccia e Provola, Zucca e 'Nduja, Zucca Guanciale e Rosmarino, Zucca, Gorgonzola & Noci." },
 ];
 
@@ -1025,8 +1025,39 @@ export const RECIPES: PizzaRecipe[] = [
     ],
   },
   {
-    id: "cacio-e-pepe",
+    id: "pizza-al-ragu-napoletano",
     number: 38,
+    name: "Pizza al Ragù Napoletano",
+    style: "Neapolitan Ragù Pizza — Slow-Cooked Meat Sauce, Fior di Latte & Ricotta",
+    category: "innovative",
+    image: "https://littleferrarokitchen.com/wp-content/uploads/2023/01/Bolognese-Sauce-Pizza-749x1024.jpg",
+    toppings: "65g–70g thick Bolognese ragù, 4g–5g Parmigiano Reggiano (reserve a little for the finish), 75g–80g well-drained Fior di Latte, 20g ricotta in small dollops, 2–3 fresh basil leaves pre-bake plus fresh basil to finish, 2g Frantoio Muraglia Coratina EVOO (post-bake).",
+    menuIngredients: "Thick ragù, Fior di Latte, ricotta, Parmigiano, basil, Coratina EVOO",
+    build: "A rich, comforting Neapolitan-style ragù pizza, balanced with creamy Fior di Latte and ricotta, a Parmigiano finish, fresh basil and peppery Coratina EVOO.",
+    postBake: "Finish with the reserved Parmigiano, fresh basil and 2g Frantoio Muraglia Coratina EVOO. Slice and serve immediately.",
+    flavorProgression: "Slow-cooked ragù → creamy Fior di Latte and ricotta → savoury Parmigiano → fresh basil → peppery Coratina finish",
+    steps: [
+      { title: "1. Dough Prep", sections: [
+        { bullets: ["Stretch a 280g dough ball to 30–33cm, preserving an airy cornicione."] },
+      ] },
+      { title: "2. Layer Assembly (In Exact Order)", sections: [
+        { intro: "Layer 1 — Ragù:", bullets: ["Spread 65g–70g thick Bolognese ragù over the dough, leaving a clean 1.5–2cm cornicione."] },
+        { intro: "Layer 2 — Parmigiano:", bullets: ["Distribute 4g–5g Parmigiano Reggiano, reserving a little for the finish."] },
+        { intro: "Layer 3 — Fior di Latte:", bullets: ["Add 75g–80g well-drained Fior di Latte."] },
+        { intro: "Layer 4 — Ricotta:", bullets: ["Add 20g ricotta in 4–5 small dollops."] },
+        { intro: "Layer 5 — Basil:", bullets: ["Add 2–3 fresh basil leaves."] },
+      ] },
+      { title: "3. Bake — Gozney Arc", sections: [
+        { intro: "Gozney / High-Heat Oven:", bullets: ["🪨 Stone floor: 420°C–435°C.", "🔥 Dome: 450°C–475°C.", "Keep the flame LOW/MEDIUM-LOW after launch.", "⏱ Bake for approximately 75–85 seconds."] },
+      ] },
+      { title: "4. Rest & Finish", sections: [
+        { bullets: ["Finish with the reserved Parmigiano, fresh basil and 2g Frantoio Muraglia Coratina EVOO. Slice and serve immediately."] },
+      ] },
+    ],
+  },
+  {
+    id: "cacio-e-pepe",
+    number: 39,
     name: "Cacio e Pepe",
     style: "Callegari-Inspired Roman Pizza — Ice-Cube Bake & Pecorino Romano Cremina",
     category: "innovative",
@@ -1079,7 +1110,7 @@ export const RECIPES: PizzaRecipe[] = [
   },
   {
     id: "carbonara",
-    number: 39,
+    number: 40,
     name: "Carbonara",
     style: "Contemporary Roman-Inspired — Crispy Guanciale, Pecorino Romano & Warm Yolk Crema",
     category: "innovative",
@@ -1121,7 +1152,7 @@ export const RECIPES: PizzaRecipe[] = [
   },
   {
     id: "amatriciana",
-    number: 40,
+    number: 41,
     name: "Amatriciana",
     style: "Roman Classic Redefined — San Marzano DOP, Guanciale, Pecorino Romano & Peperoncino",
     category: "innovative",
@@ -1164,7 +1195,7 @@ export const RECIPES: PizzaRecipe[] = [
   },
   {
     id: "gricia",
-    number: 41,
+    number: 42,
     name: "Gricia",
     style: "Roman White Classic — Crispy Guanciale, Pecorino Romano & Tellicherry Pepper",
     category: "innovative",
@@ -1206,7 +1237,7 @@ export const RECIPES: PizzaRecipe[] = [
   },
   {
     id: "pesto-cremosa",
-    number: 42,
+    number: 43,
     name: "Pesto Cremosa",
     style: "Contemporary Pizza Bianca — Baked Genovese Pesto & Burrata Stracciatella Crown",
     category: "innovative",
@@ -1252,7 +1283,7 @@ export const RECIPES: PizzaRecipe[] = [
   },
   {
     id: "burrata-and-pesto",
-    number: 43,
+    number: 44,
     name: "Burrata & Pesto",
     style: "Contemporary Pizza Bianca — Baked Genovese Pesto & Burrata Stracciatella",
     category: "innovative",
@@ -1295,7 +1326,7 @@ export const RECIPES: PizzaRecipe[] = [
   },
   {
     id: "salsiccia-al-pesto",
-    number: 46,
+    number: 47,
     name: "Salsiccia al Pesto",
     style: "Contemporary Pizza Bianca — Smoked Agerola Provola, Genoese Pesto & Fennel Pork Sausage",
     category: "innovative",
@@ -1382,7 +1413,7 @@ export const RECIPES: PizzaRecipe[] = [
   },
   {
     id: "mortadella-e-pistacchio",
-    number: 44,
+    number: 45,
     name: "Mortadella e Pistacchio",
     style: "Contemporary Pizza Bianca — Mortadella Ribbons, Whipped Ricotta & Bronte Pistachio",
     category: "innovative",
@@ -1424,7 +1455,7 @@ export const RECIPES: PizzaRecipe[] = [
   },
   {
     id: "la-oro-verde",
-    number: 45,
+    number: 46,
     name: "La Oro Verde",
     style: "Contemporary Pizza Bianca — Mortadella Ribbons, Cold Stracciatella & Pistachio Pesto",
     category: "innovative",
@@ -1690,7 +1721,7 @@ export const RECIPES: PizzaRecipe[] = [
   },
   {
     id: "sfiziosa-basilico",
-    number: 54,
+    number: 55,
     name: "Sfiziosa (Basilico)",
     style: "Pumpkin Cream Base — Sautéed Mushrooms, Pancetta, Lorenzo Nº5 EVOO & Parmigiano",
     category: "pumpkin",
@@ -1732,7 +1763,7 @@ export const RECIPES: PizzaRecipe[] = [
   },
   {
     id: "sfiziosa",
-    number: 53,
+    number: 54,
     name: "Sfiziosa",
     style: "Pumpkin Cream Base — Smoked Guanciale, Fresh Burrata, Black Truffle Cream & Crispy Sage",
     category: "pumpkin",
@@ -1778,7 +1809,7 @@ export const RECIPES: PizzaRecipe[] = [
   },
   {
     id: "mantovana",
-    number: 51,
+    number: 52,
     name: "Mantovana",
     style: "Pumpkin Cream Base — Gorgonzola Dolce, Smoked Bacon, Quick-Pickled Onions & Crispy Sage",
     category: "pumpkin",
@@ -1823,7 +1854,7 @@ export const RECIPES: PizzaRecipe[] = [
   },
   {
     id: "norcina",
-    number: 50,
+    number: 51,
     name: "Norcina",
     style: "Pumpkin Cream Base — Porcini, Fennel Sausage, Parmigiano & Crispy Sage",
     category: "pumpkin",
@@ -1868,7 +1899,7 @@ export const RECIPES: PizzaRecipe[] = [
   },
   {
     id: "zucca-salsiccia-e-provola",
-    number: 49,
+    number: 50,
     name: "Zucca, Salsiccia e Provola",
     style: "Pumpkin Cream Base — Smoked Provola, Crumbled Fresh Sausage & Pecorino Romano",
     category: "pumpkin",
@@ -1910,7 +1941,7 @@ export const RECIPES: PizzaRecipe[] = [
   },
   {
     id: "zucca-e-nduja",
-    number: 48,
+    number: 49,
     name: "Zucca e 'Nduja",
     style: "Pumpkin Cream Base — Spicy 'Nduja di Spilinga & Cool Stracciatella",
     category: "pumpkin",
@@ -1953,7 +1984,7 @@ export const RECIPES: PizzaRecipe[] = [
   },
   {
     id: "zucca-guanciale-e-rosmarino",
-    number: 47,
+    number: 48,
     name: "Zucca, Guanciale e Rosmarino",
     style: "Pumpkin Cream Base — Crispy Guanciale, Fresh Rosemary & Pecorino Romano",
     category: "pumpkin",
@@ -1998,7 +2029,7 @@ export const RECIPES: PizzaRecipe[] = [
   },
   {
     id: "zucca-gorgonzola-e-noci",
-    number: 52,
+    number: 53,
     name: "Zucca, Gorgonzola & Noci",
     style: "Pumpkin Cream Base — Gorgonzola Dolce, Toasted Walnuts, Crisp Sage & Acacia Honey",
     category: "pumpkin",
